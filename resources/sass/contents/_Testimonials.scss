@@ -1,0 +1,155 @@
+.testimonial-content, .table-1 { 
+    padding: 1em 2em;
+    width: 83%;
+
+    header {
+        div {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+
+            &.h-1 {  
+
+                button {
+                    background-color: darken($color: $Color-4, $amount: 20);
+                    color: #fff;
+                    border: none;
+                    border-radius: 0.3em; 
+                    cursor: pointer;
+                    margin-block: 0.5em;
+                    padding: 1em 2em;
+
+                    &:hover {
+                        background: #fff; 
+                        color: $Color-5;
+                    }
+                }
+
+                h1 { 
+                    color: #fff;
+                    font-size: 5em;
+                    font-weight: 800;
+                    padding-bottom: 0.075em; 
+                    text-transform: uppercase;
+                }
+            }
+
+            &.h-2 { 
+                background: darken($color: $Color-5, $amount: 3);
+                display: none;
+                padding: 1em;
+
+                input {
+                    background: darken($color: $Color-5, $amount: 0);
+                    border-radius: 0.5em;
+                    color: #fff;
+                    border: none;
+                    margin-block: 1em;
+                    outline: none;
+                    padding: 1em;
+                    width: 60%;
+
+                    &::placeholder {
+                        color: #fff;
+                    }
+                }
+
+                span {
+                    align-items: center;
+                    color: #fff;    
+                    cursor: pointer;    
+                    display: flex; 
+
+                    img {
+                        margin-right: 1em;
+                        width: 2em;
+                    }
+                }
+            }
+
+            &.h-3 {
+                background-color: darken($color: $Color-5, $amount: 3); 
+                justify-content: start;
+
+                h2 { 
+                    cursor: pointer; 
+                    font-weight: 500;
+                    margin-right: 2em;
+                    padding-block: 0.5em;
+                    translate: 0 0.25em;
+
+                    &.active {
+                        background-color: #fff;   
+                        border-bottom: 2px solid darken($color: $Color-4, $amount: 25);
+                        padding: 1em; 
+                    }
+
+                    &.inactive { 
+                        background-color: #111;
+                        color: #fff; 
+                        padding: 1em; 
+
+                        &:hover { 
+                            border-bottom: 2px solid darken($color: $Color-4, $amount: 20);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .table {
+        height: 70vh;
+        padding-block: 2em;
+        margin-top: 1em;
+        overflow-y: scroll;
+
+        table {  
+            text-align: left;
+            width: 100%;
+
+            td, th { 
+                background-color: darken($color: $Color-5, $amount: 10);
+                border: 1px solid $Color-5;
+                color: #fff;
+                padding: 1em;  
+            }
+
+            th { 
+                background-color: #222; 
+                font-weight: unset;
+                position: sticky;
+                top: -2em;
+            }
+
+            tr {
+                border: 1px solid #fff;
+                border-bottom: 1px solid darken($color: $Color-5, $amount: 5);
+
+                td {
+                    &.data-x { 
+                        font-weight: 500;
+                    }
+
+                    &.action  {
+                        background-color: #000;
+                    }
+
+                    &:not(&.action)  {
+                        background-color: #111;
+                    }
+
+                    img {
+                        cursor: pointer;
+                        margin-right: 1em;
+                        width: 1.65em;
+                    }
+
+                    &:hover {
+                        background-color: #444;
+                    }
+                }
+            }
+        }
+    }
+}

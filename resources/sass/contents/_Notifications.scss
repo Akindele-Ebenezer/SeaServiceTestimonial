@@ -1,0 +1,164 @@
+.dashboard { 
+    padding: 1em;
+
+    &-inner {
+        .board-1, .board-2, .board-3 {
+            display: flex;
+            justify-content: space-between;
+            margin-block: 1em;
+
+            .div {
+                background: #222;
+                border-radius: 0.65em;
+                height: 20em;
+                padding: 2em;
+                width: 32%;
+
+                h1 { 
+                    background: #222;
+                    border-bottom: 1px solid #444;
+                    font-size: 1.2em; 
+                    justify-content: space-between;
+                    padding-inline: unset; 
+
+                    span {
+                        button, select {
+                            border: none;
+                            border-radius: .1em;
+                            background: lighten($color: $Color-1, $amount: 10);
+                            color: #fff;
+                            outline: none;
+                            padding: .2em .5em;
+                            width: 8em;
+                        }
+
+                        button {  
+                            cursor: pointer;
+                            width: unset;
+                        }
+                    }
+                }
+
+                h2 {
+                    align-items: center;
+                    display: flex;
+                    font-weight: 100;
+                    justify-content: space-between; 
+
+                    span {
+                        border-radius: .3em;
+                        display: block;
+                        padding: .35em;
+                        
+                        &:first-of-type { 
+                            color: darken($color: $Color-6, $amount: 30);
+                            font-weight: bold;
+                            margin-right: 2em;
+                            padding: 0.5em 1em 1em 1em;
+                            
+                            svg {
+                                fill: darken($color: $Color-6, $amount: 15);
+                                margin-right: .5em; 
+                                translate: 0 .5em;
+                                width: 1.65em;
+                            }
+                        }
+                        
+                        &:last-of-type {
+                            background-color: #333;
+                            color: #fff;   
+                        }
+                    }
+                    
+                }
+
+                strong {
+                    color: #eee;
+                    font-size: 5em; 
+                }
+ 
+                .sub-heading {  
+                    color: darken($color: $Color-4, $amount: 15);
+                    display: block;
+                    font-weight: bold;
+                    padding-block: 0.5em;
+                    text-align: center; 
+                }
+
+                svg {
+                    fill: lighten($color: $Color-1, $amount: 10);
+                    width: 2.5em;
+                }
+            }
+        }
+
+        .board-2 {
+            .div {
+                width: 49%;
+
+                .canvas {
+                    .inner-x {
+                        border-bottom: 1px solid #555;
+                        justify-content: left;
+
+                        span {
+                            &:first-of-type {
+                                color: #fff;
+                                margin-right: 1em;
+                                width: 6em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .board-3 {
+            .div {
+                height: 20em;
+                overflow-y: scroll;
+                width: 100%;
+
+                table {
+                    border-collapse: collapse;
+                    text-align: left;
+                    width: 100%;
+
+                    td, th {
+                        border-bottom: 1px solid #555;
+                        color: #ccc;
+                        padding: 1em;
+                    }
+
+                    th {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        h1 {
+            align-items: center; 
+            color: #fff;
+            display: flex;
+            font-size: 2em;
+            padding: 0.5em;
+            padding-left: 1em;  
+
+            svg { 
+                border-radius: 0.4em;
+                fill: $Color-5;
+                padding: 0.5em;
+                margin-right: 1em;
+                width: 4em;
+
+                &.-x {
+                    fill: #fff;
+                    height: 4em;
+                    padding: unset;
+                    width: 5em;
+                }
+            }
+        }
+    }
+}

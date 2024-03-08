@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    font-family: "system-ui", sans-serif; 
+    font-size: small;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+$Color-1: #777;
+$Color-2: #6060ff;
+$Color-3: #eee;
+$Color-4: #ffcece;
+$Color-5: #111;
+$Color-6: #8cff9a;
+
+::-webkit-scrollbar {
+    background-color: none;
+    width: .75em;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #333; 
+}
+  
+@import 'contents/_Loader';
+@import 'contents/_NoData';
+@import '_Login';
+@import '_Layout-2';
+@import 'contents/_Vessels';
+@import 'contents/_Testimonials';
+@import 'contents/_Operations';
+@import 'contents/_Notifications';

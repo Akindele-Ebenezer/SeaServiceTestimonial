@@ -1,0 +1,183 @@
+main { 
+    background: darken($color: $Color-5, $amount: 5);
+    display: flex;
+    height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+
+    .left-navigation {  
+        background-color: #fff;
+        border-right: 1px solid lighten($color: $Color-2, $amount: 27);
+        overflow-y: scroll;
+        padding: 1.5em;
+        padding-bottom: 9em;
+        width: 20em;
+
+        &-x {
+            background: $Color-2;
+            display: flex;
+            justify-content: center;
+            margin-right: unset;
+            overflow: hidden;
+            padding: 0.1em;
+            padding-top: 1em;
+            width: 5em;
+
+            ul {
+                h1 {
+                    background: darken($color: $Color-4, $amount: 25);
+                    border-radius: .5em;
+                    color: #fff !important;
+                    display: block !important;
+                    margin-bottom: 2.5em;
+                    text-align: center;
+                }
+
+                li {    
+                    &:hover { 
+                        svg {
+                            fill: $Color-2 !important;
+                        }
+                    }
+    
+                    svg {
+                        fill: lighten($color: $Color-2, $amount: 20) !important;
+                        width: 1.5em !important;
+                    }
+                }
+            }
+        }
+
+        .user {
+            align-items: center;
+            background: #fff;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 1em;
+            position: absolute;
+
+            div {
+                color: lighten($color: $Color-2, $amount: 5);
+                cursor: pointer;
+
+                img {
+                    margin-right: .5em;
+                    width: 3em;
+                }
+
+                span {
+                    background: darken($color: $Color-4, $amount: 25);
+                    border-radius: 0.3em;
+                    color: #fff;
+                    font-size: smaller; 
+                    padding-inline: 1em;
+                }
+            }
+        }
+
+        ul {
+            h1 {
+                align-items: center;
+                color: $Color-2;
+                display: flex;
+                font-size: 1.5em;
+            }
+
+            h2 {
+                color: $Color-2;
+                margin-bottom: 1em;
+            }
+
+            span{
+                border-bottom: 1px solid lighten($color: $Color-2, $amount: 25);
+                display: block;
+            }
+
+            img {
+                margin-right: 1em;
+                width: 4em;
+
+                &:first-child {
+                    padding-left: 0.3em;
+                    width: 3.5em;
+                }
+            }
+
+            input {
+                background: lighten($color: $Color-5, $amount: 90);
+                border-radius: 0.5em;
+                color: $Color-1;
+                border: none;
+                margin-block: 1em;
+                outline: none;
+                padding: 1em;
+                width: 100%;
+
+                &::placeholder {
+                    color: $Color-1;
+                }
+            }
+
+            li {
+                align-items: center;
+                color: $Color-2;
+                display: flex;
+                padding-block: 1em;
+                padding-left: 1em;
+                position: relative;
+
+                &.active {
+                    background: $Color-2;
+                    border-radius: 0.7em;
+                    color: #fff;
+                    font-weight: bold;
+
+                    svg {
+                        fill: #fff;
+                    }
+                }
+
+                &.active-x {
+                    background: lighten($color: $Color-2, $amount: 20) !important;
+                    border-radius: 0.7em;
+
+                    svg {
+                        fill: $Color-2 !important;
+                    }
+                }
+
+                &:hover {
+                    background: lighten($color: $Color-2, $amount: 20);
+                    border-radius: 0.7em;
+                    color: #fff;
+                    cursor: pointer;
+                    font-weight: bold;
+
+                    svg {
+                        fill: #fff;
+                    }
+                }
+
+                svg {
+                    fill: lighten($color: $Color-2, $amount: 15);
+                    margin-right: 1em;
+                    width: 1.5em;
+                }
+
+                .total {
+                    background: darken($color: $Color-4, $amount: 25);
+                    border-radius: 0.5em;
+                    border-bottom: unset;
+                    color: #fff;
+                    font-size: smaller; 
+                    right: 15px;
+                    padding: 0.2em .7em;
+                    position: absolute;
+                    text-align: center;
+                    width: 2.5em;
+                }
+            }
+        }
+    }
+}

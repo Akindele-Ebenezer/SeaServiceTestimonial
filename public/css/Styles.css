@@ -1,0 +1,683 @@
+* {
+  box-sizing: border-box;
+  font-family: "system-ui", sans-serif;
+  font-size: small;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  background-color: none;
+  width: 0.75em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+}
+
+.loader {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  position: absolute;
+  width: 100vw;
+  z-index: 100;
+}
+.loader img {
+  border-radius: 15em;
+  height: 15em;
+  width: 15em;
+}
+
+.no-data-selected, .no-data {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+.no-data-selected center, .no-data center {
+  background: #222;
+  border-radius: 1em;
+  padding: 3em;
+}
+.no-data-selected center button, .no-data center button {
+  align-items: center;
+  background: #6060ff;
+  border: none;
+  border-radius: 0.25em;
+  display: flex;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2em;
+  padding: 0.5em 1em;
+}
+.no-data-selected center button:hover, .no-data center button:hover {
+  background-color: #919191;
+}
+.no-data-selected center button svg, .no-data center button svg {
+  fill: #fff;
+  margin-right: 1em;
+  width: 1.5em;
+}
+.no-data-selected center h1, .no-data center h1 {
+  color: #ff6868;
+  font-size: 2em;
+}
+.no-data-selected center svg, .no-data center svg {
+  fill: #fff;
+  margin-bottom: 2em;
+  width: 55%;
+}
+.no-data-selected center p, .no-data center p {
+  color: #fff;
+  font-size: 1.5em;
+  margin-block: 1em;
+  width: 24em;
+}
+
+.no-data {
+  display: none;
+  height: 70%;
+}
+
+.Login {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+.Login .inner {
+  background: #fff;
+  border-radius: 0.5em;
+  padding: 2em;
+  width: 35em;
+}
+.Login .inner button {
+  background: #6060ff;
+  border: none;
+  border-radius: 0.3em;
+  color: #eee;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
+}
+.Login .inner h1, .Login .inner h2 {
+  font-size: big;
+  text-align: center;
+}
+.Login .inner h1 {
+  color: #ff8c8c;
+  font-size: 3em;
+  font-weight: 900;
+  padding: 0.3em;
+}
+.Login .inner h2 {
+  color: #9393ff;
+  font-size: 1.5em;
+  font-weight: unset;
+  padding-bottom: 2em;
+}
+.Login .inner img {
+  width: 4em;
+}
+.Login .inner input {
+  border: none;
+  border-bottom: 1px solid #9d9d9d;
+  color: #6060ff;
+  height: 3em;
+  margin-block: 1em;
+  outline: none;
+  width: 100%;
+}
+.Login .inner input:focus {
+  border-bottom: 2px solid #6060ff;
+}
+.Login .inner label {
+  color: #6060ff;
+  font-size: 1.5em;
+}
+.Login .inner svg {
+  fill: #ffcece;
+  width: 2em;
+}
+
+main {
+  background: #040404;
+  display: flex;
+  height: 100vh;
+  overflow-x: hidden;
+  width: 100vw;
+}
+main .left-navigation {
+  background-color: #fff;
+  border-right: 1px solid #eaeaff;
+  overflow-y: scroll;
+  padding: 1.5em;
+  padding-bottom: 9em;
+  width: 20em;
+}
+main .left-navigation-x {
+  background: #6060ff;
+  display: flex;
+  justify-content: center;
+  margin-right: unset;
+  overflow: hidden;
+  padding: 0.1em;
+  padding-top: 1em;
+  width: 5em;
+}
+main .left-navigation-x ul h1 {
+  background: #ff4f4f;
+  border-radius: 0.5em;
+  color: #fff !important;
+  display: block !important;
+  margin-bottom: 2.5em;
+  text-align: center;
+}
+main .left-navigation-x ul li:hover svg {
+  fill: #6060ff !important;
+}
+main .left-navigation-x ul li svg {
+  fill: #c6c6ff !important;
+  width: 1.5em !important;
+}
+main .left-navigation .user {
+  align-items: center;
+  background: #fff;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  position: absolute;
+}
+main .left-navigation .user div {
+  color: #7a7aff;
+  cursor: pointer;
+}
+main .left-navigation .user div img {
+  margin-right: 0.5em;
+  width: 3em;
+}
+main .left-navigation .user div span {
+  background: #ff4f4f;
+  border-radius: 0.3em;
+  color: #fff;
+  font-size: smaller;
+  padding-inline: 1em;
+}
+main .left-navigation ul h1 {
+  align-items: center;
+  color: #6060ff;
+  display: flex;
+  font-size: 1.5em;
+}
+main .left-navigation ul h2 {
+  color: #6060ff;
+  margin-bottom: 1em;
+}
+main .left-navigation ul span {
+  border-bottom: 1px solid #e0e0ff;
+  display: block;
+}
+main .left-navigation ul img {
+  margin-right: 1em;
+  width: 4em;
+}
+main .left-navigation ul img:first-child {
+  padding-left: 0.3em;
+  width: 3.5em;
+}
+main .left-navigation ul input {
+  background: #f7f7f7;
+  border-radius: 0.5em;
+  color: #777;
+  border: none;
+  margin-block: 1em;
+  outline: none;
+  padding: 1em;
+  width: 100%;
+}
+main .left-navigation ul input::placeholder {
+  color: #777;
+}
+main .left-navigation ul li {
+  align-items: center;
+  color: #6060ff;
+  display: flex;
+  padding-block: 1em;
+  padding-left: 1em;
+  position: relative;
+}
+main .left-navigation ul li.active {
+  background: #6060ff;
+  border-radius: 0.7em;
+  color: #fff;
+  font-weight: bold;
+}
+main .left-navigation ul li.active svg {
+  fill: #fff;
+}
+main .left-navigation ul li.active-x {
+  background: #c6c6ff !important;
+  border-radius: 0.7em;
+}
+main .left-navigation ul li.active-x svg {
+  fill: #6060ff !important;
+}
+main .left-navigation ul li:hover {
+  background: #c6c6ff;
+  border-radius: 0.7em;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+main .left-navigation ul li:hover svg {
+  fill: #fff;
+}
+main .left-navigation ul li svg {
+  fill: #adadff;
+  margin-right: 1em;
+  width: 1.5em;
+}
+main .left-navigation ul li .total {
+  background: #ff4f4f;
+  border-radius: 0.5em;
+  border-bottom: unset;
+  color: #fff;
+  font-size: smaller;
+  right: 15px;
+  padding: 0.2em 0.7em;
+  position: absolute;
+  text-align: center;
+  width: 2.5em;
+}
+
+.vessel-content {
+  background: #111;
+  overflow-y: scroll;
+  padding-inline: 1em;
+  width: 25%;
+}
+.vessel-content h2 {
+  align-items: center;
+  background: #222;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding-block: 1em;
+  padding-left: 1em;
+  position: sticky;
+  top: 0em;
+}
+.vessel-content h2 img {
+  border-radius: 0.3em;
+  margin-right: 1em;
+  width: 2em;
+}
+.vessel-content .list {
+  align-items: center;
+  background-color: #111;
+  border-bottom: 1px solid #444444;
+  padding: 1em;
+}
+.vessel-content .list:hover {
+  background: #333;
+  color: #222;
+  cursor: pointer;
+}
+.vessel-content .list .inner {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.vessel-content .list .inner.-x {
+  width: 100%;
+}
+.vessel-content .list .inner img {
+  width: 2em;
+}
+.vessel-content .list .inner strong {
+  border-radius: 0.3em;
+  color: #ccc;
+  margin-right: 2em;
+  padding: 0.5em;
+  text-align: left;
+  width: 17em;
+}
+.vessel-content .list .inner strong .imo {
+  color: #fff;
+  font-size: 0.85em;
+}
+.vessel-content .list .inner .vessel {
+  text-align: left;
+  width: 5em;
+}
+
+.content-data {
+  overflow-y: scroll;
+  padding: 1em;
+  padding-left: 0;
+  width: 58%;
+}
+.content-data .inner {
+  display: none;
+}
+.content-data .inner h1 {
+  align-items: center;
+  background: #000;
+  color: #fff;
+  display: flex;
+  font-size: 2em;
+  padding: 0.5em;
+  padding-left: 1em;
+  position: sticky;
+  top: -0.5em;
+}
+.content-data .inner h1 .id {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 100;
+}
+.content-data .inner h1 img {
+  border: 1px solid #515151;
+  border-radius: 0.4em;
+  padding: 0.5em;
+  margin-right: 1em;
+  width: 4em;
+}
+.content-data .inner-x {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.content-data .inner-x .data {
+  background-color: #333;
+  border-radius: 0.5em;
+  margin-inline: 0.4em;
+  padding: 1em;
+  width: 48.5%;
+}
+.content-data .inner-x .data h2 {
+  color: #ff6868;
+  position: sticky;
+  text-align: center;
+  top: 5em;
+}
+.content-data .inner-x .data ul li {
+  border-bottom: 1px solid #515151;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1em;
+}
+.content-data .inner-x .data ul li span:first-of-type {
+  color: #fff;
+}
+.content-data .inner-x .data ul li span strong {
+  color: #fff;
+}
+
+.testimonial-content, .table-1 {
+  padding: 1em 2em;
+  width: 83%;
+}
+.testimonial-content header div, .table-1 header div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.testimonial-content header div.h-1 button, .table-1 header div.h-1 button {
+  background-color: #ff6868;
+  color: #fff;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
+}
+.testimonial-content header div.h-1 button:hover, .table-1 header div.h-1 button:hover {
+  background: #fff;
+  color: #111;
+}
+.testimonial-content header div.h-1 h1, .table-1 header div.h-1 h1 {
+  color: #fff;
+  font-size: 5em;
+  font-weight: 800;
+  padding-bottom: 0.075em;
+  text-transform: uppercase;
+}
+.testimonial-content header div.h-2, .table-1 header div.h-2 {
+  background: #090909;
+  display: none;
+  padding: 1em;
+}
+.testimonial-content header div.h-2 input, .table-1 header div.h-2 input {
+  background: #111111;
+  border-radius: 0.5em;
+  color: #fff;
+  border: none;
+  margin-block: 1em;
+  outline: none;
+  padding: 1em;
+  width: 60%;
+}
+.testimonial-content header div.h-2 input::placeholder, .table-1 header div.h-2 input::placeholder {
+  color: #fff;
+}
+.testimonial-content header div.h-2 span, .table-1 header div.h-2 span {
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+}
+.testimonial-content header div.h-2 span img, .table-1 header div.h-2 span img {
+  margin-right: 1em;
+  width: 2em;
+}
+.testimonial-content header div.h-3, .table-1 header div.h-3 {
+  background-color: #090909;
+  justify-content: start;
+}
+.testimonial-content header div.h-3 h2, .table-1 header div.h-3 h2 {
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 2em;
+  padding-block: 0.5em;
+  translate: 0 0.25em;
+}
+.testimonial-content header div.h-3 h2.active, .table-1 header div.h-3 h2.active {
+  background-color: #fff;
+  border-bottom: 2px solid #ff4f4f;
+  padding: 1em;
+}
+.testimonial-content header div.h-3 h2.inactive, .table-1 header div.h-3 h2.inactive {
+  background-color: #111;
+  color: #fff;
+  padding: 1em;
+}
+.testimonial-content header div.h-3 h2.inactive:hover, .table-1 header div.h-3 h2.inactive:hover {
+  border-bottom: 2px solid #ff6868;
+}
+.testimonial-content .table, .table-1 .table {
+  height: 70vh;
+  padding-block: 2em;
+  margin-top: 1em;
+  overflow-y: scroll;
+}
+.testimonial-content .table table, .table-1 .table table {
+  text-align: left;
+  width: 100%;
+}
+.testimonial-content .table table td, .testimonial-content .table table th, .table-1 .table table td, .table-1 .table table th {
+  background-color: black;
+  border: 1px solid #111;
+  color: #fff;
+  padding: 1em;
+}
+.testimonial-content .table table th, .table-1 .table table th {
+  background-color: #222;
+  font-weight: unset;
+  position: sticky;
+  top: -2em;
+}
+.testimonial-content .table table tr, .table-1 .table table tr {
+  border: 1px solid #fff;
+  border-bottom: 1px solid #040404;
+}
+.testimonial-content .table table tr td.data-x, .table-1 .table table tr td.data-x {
+  font-weight: 500;
+}
+.testimonial-content .table table tr td.action, .table-1 .table table tr td.action {
+  background-color: #000;
+}
+.testimonial-content .table table tr td:not(.testimonial-content .table table tr td.action, .table-1 .table table tr td.action), .table-1 .table table tr td:not(.testimonial-content .table table tr td.action, .table-1 .table table tr td.action) {
+  background-color: #111;
+}
+.testimonial-content .table table tr td img, .table-1 .table table tr td img {
+  cursor: pointer;
+  margin-right: 1em;
+  width: 1.65em;
+}
+.testimonial-content .table table tr td:hover, .table-1 .table table tr td:hover {
+  background-color: #444;
+}
+
+.operation-content .table table tr th:nth-child(4) {
+  width: 35%;
+}
+
+.dashboard {
+  padding: 1em;
+}
+.dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 1em;
+}
+.dashboard-inner .board-1 .div, .dashboard-inner .board-2 .div, .dashboard-inner .board-3 .div {
+  background: #222;
+  border-radius: 0.65em;
+  height: 20em;
+  padding: 2em;
+  width: 32%;
+}
+.dashboard-inner .board-1 .div h1, .dashboard-inner .board-2 .div h1, .dashboard-inner .board-3 .div h1 {
+  background: #222;
+  border-bottom: 1px solid #444;
+  font-size: 1.2em;
+  justify-content: space-between;
+  padding-inline: unset;
+}
+.dashboard-inner .board-1 .div h1 span button, .dashboard-inner .board-1 .div h1 span select, .dashboard-inner .board-2 .div h1 span button, .dashboard-inner .board-2 .div h1 span select, .dashboard-inner .board-3 .div h1 span button, .dashboard-inner .board-3 .div h1 span select {
+  border: none;
+  border-radius: 0.1em;
+  background: #919191;
+  color: #fff;
+  outline: none;
+  padding: 0.2em 0.5em;
+  width: 8em;
+}
+.dashboard-inner .board-1 .div h1 span button, .dashboard-inner .board-2 .div h1 span button, .dashboard-inner .board-3 .div h1 span button {
+  cursor: pointer;
+  width: unset;
+}
+.dashboard-inner .board-1 .div h2, .dashboard-inner .board-2 .div h2, .dashboard-inner .board-3 .div h2 {
+  align-items: center;
+  display: flex;
+  font-weight: 100;
+  justify-content: space-between;
+}
+.dashboard-inner .board-1 .div h2 span, .dashboard-inner .board-2 .div h2 span, .dashboard-inner .board-3 .div h2 span {
+  border-radius: 0.3em;
+  display: block;
+  padding: 0.35em;
+}
+.dashboard-inner .board-1 .div h2 span:first-of-type, .dashboard-inner .board-2 .div h2 span:first-of-type, .dashboard-inner .board-3 .div h2 span:first-of-type {
+  color: #00f21d;
+  font-weight: bold;
+  margin-right: 2em;
+  padding: 0.5em 1em 1em 1em;
+}
+.dashboard-inner .board-1 .div h2 span:first-of-type svg, .dashboard-inner .board-2 .div h2 span:first-of-type svg, .dashboard-inner .board-3 .div h2 span:first-of-type svg {
+  fill: #40ff57;
+  margin-right: 0.5em;
+  translate: 0 0.5em;
+  width: 1.65em;
+}
+.dashboard-inner .board-1 .div h2 span:last-of-type, .dashboard-inner .board-2 .div h2 span:last-of-type, .dashboard-inner .board-3 .div h2 span:last-of-type {
+  background-color: #333;
+  color: #fff;
+}
+.dashboard-inner .board-1 .div strong, .dashboard-inner .board-2 .div strong, .dashboard-inner .board-3 .div strong {
+  color: #eee;
+  font-size: 5em;
+}
+.dashboard-inner .board-1 .div .sub-heading, .dashboard-inner .board-2 .div .sub-heading, .dashboard-inner .board-3 .div .sub-heading {
+  color: #ff8282;
+  display: block;
+  font-weight: bold;
+  padding-block: 0.5em;
+  text-align: center;
+}
+.dashboard-inner .board-1 .div svg, .dashboard-inner .board-2 .div svg, .dashboard-inner .board-3 .div svg {
+  fill: #919191;
+  width: 2.5em;
+}
+.dashboard-inner .board-2 .div {
+  width: 49%;
+}
+.dashboard-inner .board-2 .div .canvas .inner-x {
+  border-bottom: 1px solid #555;
+  justify-content: left;
+}
+.dashboard-inner .board-2 .div .canvas .inner-x span:first-of-type {
+  color: #fff;
+  margin-right: 1em;
+  width: 6em;
+}
+.dashboard-inner .board-3 .div {
+  height: 20em;
+  overflow-y: scroll;
+  width: 100%;
+}
+.dashboard-inner .board-3 .div table {
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+}
+.dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
+  border-bottom: 1px solid #555;
+  color: #ccc;
+  padding: 1em;
+}
+.dashboard-inner .board-3 .div table th {
+  color: #fff;
+}
+.dashboard-inner h1 {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-size: 2em;
+  padding: 0.5em;
+  padding-left: 1em;
+}
+.dashboard-inner h1 svg {
+  border-radius: 0.4em;
+  fill: #111;
+  padding: 0.5em;
+  margin-right: 1em;
+  width: 4em;
+}
+.dashboard-inner h1 svg.-x {
+  fill: #fff;
+  height: 4em;
+  padding: unset;
+  width: 5em;
+}
+
+/*# sourceMappingURL=Styles.css.map */

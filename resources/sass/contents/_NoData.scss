@@ -1,0 +1,57 @@
+.no-data-selected, .no-data {
+    align-items: center; 
+    display: flex;
+    height: 100%;
+    justify-content: center;
+
+    center {
+        background: #222;
+        border-radius: 1em;
+        padding: 3em;
+
+        button {
+            align-items: center;
+            background: $Color-2;
+            border: none;
+            border-radius: 0.25em;
+            display: flex;
+            color: #fff;
+            cursor: pointer;
+            font-size: 2em;
+            padding: 0.5em 1em;
+
+            &:hover {
+                background-color: lighten($color: $Color-1, $amount: 10);
+            }
+
+            svg {
+                fill: #fff;
+                margin-right: 1em;
+                width: 1.5em;
+            }
+        }
+
+        h1 {
+            color:  darken($color: $Color-4, $amount: 20);
+            font-size: 2em;
+        }
+
+        svg {
+            fill: #fff;
+            margin-bottom: 2em;
+            width: 55%;
+        }
+
+        p {
+            color: #fff;
+            font-size: 1.5em;
+            margin-block: 1em;
+            width: 24em;
+        }
+    }
+}
+
+.no-data {
+    display: none;
+    height: 70%;
+}

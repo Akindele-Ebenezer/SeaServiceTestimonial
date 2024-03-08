@@ -1,0 +1,70 @@
+.Login {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+
+    .inner {
+        background: #fff;
+        border-radius: 0.5em; 
+        padding: 2em;
+        width: 35em;
+
+        button {
+            background: $Color-2;
+            border: none;
+            border-radius: 0.3em;
+            color: $Color-3;
+            cursor: pointer;
+            margin-block: 0.5em;
+            padding: 1em 2em;
+        }
+
+        h1, h2 {
+            font-size: big;
+            text-align: center;
+        }
+
+        h1 {
+            color: darken($color: $Color-4, $amount:  13);
+            font-size: 3em;
+            font-weight: 900;
+            padding: .3em;
+        }
+
+        h2 {
+            color: lighten($color: $Color-2, $amount: 10);
+            font-size: 1.5em;
+            font-weight: unset;
+            padding-bottom: 2em;
+        }
+
+        img {
+            width: 4em;
+        }
+
+        input {
+            border: none;
+            border-bottom:  1px solid lighten($color: $Color-1, $amount: 15);
+            color: $Color-2;
+            height: 3em;
+            margin-block: 1em;
+            outline: none;
+            width: 100%;
+
+            &:focus {
+                border-bottom: 2px solid $Color-2;
+            }
+        }
+
+        label {
+            color: $Color-2;
+            font-size: 1.5em;
+        }
+
+        svg {
+            fill: $Color-4;
+            width: 2em;
+        }
+    }
+}
