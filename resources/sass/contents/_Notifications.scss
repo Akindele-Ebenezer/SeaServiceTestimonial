@@ -1,4 +1,5 @@
 .dashboard { 
+    background-color: $Color-2;
     padding: 1em;
 
     &-inner {
@@ -8,15 +9,14 @@
             margin-block: 1em;
 
             .div {
-                background: #222;
+                background: darken($color: $Color-2, $amount: 7);
                 border-radius: 0.65em;
                 height: 20em;
                 padding: 2em;
                 width: 32%;
 
-                h1 { 
-                    background: #222;
-                    border-bottom: 1px solid #444;
+                h1 {  
+                    border-bottom: 1px solid lighten($color: $Color-2, $amount: 7);
                     font-size: 1.2em; 
                     justify-content: space-between;
                     padding-inline: unset; 
@@ -98,7 +98,7 @@
 
                 .canvas {
                     .inner-x {
-                        border-bottom: 1px solid #555;
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 7);
                         justify-content: left;
 
                         span {
@@ -125,7 +125,7 @@
                     width: 100%;
 
                     td, th {
-                        border-bottom: 1px solid #555;
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 7);
                         color: #ccc;
                         padding: 1em;
                     }

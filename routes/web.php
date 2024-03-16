@@ -6,6 +6,7 @@ use App\Http\Controllers\VesselController;
 use App\Http\Controllers\SeaServiceTestimonialController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SeaServiceTestimonialPdf;
  
 Route::get('/', [LoginController::class, 'login']);
 
@@ -24,3 +25,8 @@ Route::get('/Users', [UserController::class, 'index'])->name('Users');
 Route::get('/DeckRating', [EmployeeController::class, 'deck_rating'])->name('DeckRating');
 Route::get('/Engineers', [EmployeeController::class, 'engineers'])->name('Engineers');
 Route::get('/Captains', [EmployeeController::class, 'captains'])->name('Captains');
+
+// PDF 
+Route::get('/Testimonials/Template/1', [SeaServiceTestimonialPdf::class, 'template_1'])->name('template_1');
+Route::get('/Testimonials/Template/2', [SeaServiceTestimonialPdf::class, 'template_2'])->name('template_2');
+Route::get('/Testimonials/Template/3', [SeaServiceTestimonialPdf::class, 'template_3'])->name('template_3');

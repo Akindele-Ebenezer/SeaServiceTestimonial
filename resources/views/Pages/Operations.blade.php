@@ -1,12 +1,13 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Operations - SEA SERVICE TESTIMONIAL')
+@include('Components.Forms.Add.Testimonial')
 
 @section('Content')
 <div class="operation-content table-1"> 
    <header>
       <div class="h-1">
          <h1>Operations</h1>
-         <button>+ Add Testimonial</button>
+         <button class="CreateTestimonialButton">+ Add Testimonial</button>
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search operations..">
@@ -121,4 +122,5 @@
       </table>
    </div>
 </div>
+<script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection

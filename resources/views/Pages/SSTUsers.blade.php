@@ -1,12 +1,14 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Users - SEA SERVICE TESTIMONIAL')
+@include('Components.Forms.Add.User')
+@include('Components.Forms.Edit.User')
 
 @section('Content')
 <div class="users-content table-1"> 
    <header>
       <div class="h-1">
          <h1>Users</h1>
-         <button>+ Add User</button>
+         <button class="AddUserButton">+ Add User</button>
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search sst users..">
@@ -15,9 +17,7 @@
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
       <div class="h-3">
-         <h2 class="active">All users</h2>
-         <h2 class="inactive">DEPASA</h2>
-         <h2 class="inactive">LTT</h2>
+         <h2 class="active">All users</h2> 
       </div>
    </header> 
    <div class="no-data">
@@ -121,4 +121,5 @@
       </table>
    </div>
 </div>
+<script src="{{ asset('js/Components/Add/User.js') }}"></script>
 @endsection

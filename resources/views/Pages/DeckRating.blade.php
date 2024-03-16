@@ -1,12 +1,13 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Deck Rating - SEA SERVICE TESTIMONIAL')
+@include('Components.Forms.Add.Testimonial')
 
 @section('Content')
 <div class="operation-content table-1"> 
    <header>
       <div class="h-1">
          <h1>Deck rating</h1>
-         <button>+ Add Testimonial</button>
+         <button class="CreateTestimonialButton">+ Add Testimonial</button>
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search deck rating..">
@@ -30,74 +31,86 @@
    </div>
    <div class="table">
       <table>
-         <tr>
-            <th>Vessel</th>  
-            <th>Name</th>
-            <th>Working period</th>
+         <tr>  
+            <th>Deck</th> 
             <th>Rank</th>
             <th>Company</th> 
             <th>#</th> 
          </tr>
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
+         <tr> 
+            <td class="data-x">
+               DISI SAMUEL
+               <br>
+               <div class="sub-x">
+                  <span class="-1">asaga</span>
+                  <span class="-2">20 days</span>
+               </div>
+            </td> 
+            <td>Deck</td>
+            <td>LTT</td>
+            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
+         </tr>   
+         <tr> 
+            <td class="data-x">
+               DISI SAMUEL
+               <br>
+               <div class="sub-x">
+                  <span class="-1">asaga</span>
+                  <span class="-2">20 days</span>
+               </div>
+            </td> 
             <td>Deck</td>
             <td>LTT</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
+         <tr> 
+            <td class="data-x">
+               DISI SAMUEL
+               <br>
+               <div class="sub-x">
+                  <span class="-1">asaga</span>
+                  <span class="-2">20 days</span>
+               </div>
+            </td> 
             <td>Deck</td>
             <td>LTT</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
+         <tr> 
+            <td class="data-x">
+               DISI SAMUEL
+               <br>
+               <div class="sub-x">
+                  <span class="-1">asaga</span>
+                  <span class="-2">20 days</span>
+               </div>
+            </td> 
             <td>Deck</td>
             <td>LTT</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
+         <tr> 
+            <td class="data-x">
+               DISI SAMUEL
+               <br>
+               <div class="sub-x">
+                  <span class="-1">asaga</span>
+                  <span class="-2">20 days</span>
+               </div>
+            </td> 
             <td>Deck</td>
             <td>LTT</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr>
-            <td>ASAGA</td>
-            <td class="data-x">Name</td>
-            <td>20 days</td>
+         <tr> 
+            <td class="data-x">
+               DISI SAMUEL
+               <br>
+               <div class="sub-x">
+                  <span class="-1">asaga</span>
+                  <span class="-2">20 days</span>
+               </div>
+            </td> 
             <td>Deck</td>
             <td>LTT</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
@@ -105,4 +118,5 @@
       </table>
    </div>
 </div>
+<script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection

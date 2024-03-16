@@ -25,12 +25,173 @@
   justify-content: center;
   position: absolute;
   width: 100vw;
-  z-index: 100;
+  z-index: 300;
 }
 .loader img {
   border-radius: 15em;
   height: 15em;
   width: 15em;
+}
+
+.form-1 {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  height: 100vh;
+  padding: 1em;
+  position: absolute;
+  width: 100vw;
+  z-index: 200;
+}
+.form-1 .close-button {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.5em;
+  position: sticky;
+  top: 0;
+  translate: 0 -1em;
+  width: 100%;
+}
+.form-1 .close-button button {
+  background-color: unset;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.form-1 .close-button h1 {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5em;
+}
+.form-1 form {
+  display: flex;
+  justify-content: space-around;
+}
+.form-1 form + button {
+  background: #225f7d;
+  border: none;
+  border-radius: 0.3em;
+  bottom: 0.2em;
+  color: #eee;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
+  position: absolute;
+  right: 2em;
+}
+.form-1 form + button:hover {
+  background-color: #111;
+}
+.form-1 form .input, .form-1 form td {
+  align-items: center;
+  display: flex;
+  padding-block: 0.25em;
+  width: 100%;
+}
+.form-1 form .input label, .form-1 form td label {
+  font-weight: 500;
+  text-align: left;
+  width: 8em;
+}
+.form-1 form .input select, .form-1 form .input input, .form-1 form td select, .form-1 form td input {
+  background-color: #f0f7fb;
+  border: none;
+  border-radius: 0.1em;
+  color: #225f7d;
+  outline: none;
+  padding: 0.5em;
+  width: 65%;
+}
+.form-1 form .input select:focus, .form-1 form .input input:focus, .form-1 form td select:focus, .form-1 form td input:focus {
+  border-bottom: 3px solid #225f7d;
+}
+.form-1 form .inner-1, .form-1 form .inner-2 {
+  padding-inline: 1em;
+}
+.form-1 form .inner-1 h1, .form-1 form .inner-2 h1 {
+  align-items: center;
+  border-bottom: 1px solid #d4e9f3;
+  display: flex;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.3em;
+  padding-left: 0;
+}
+.form-1 form .inner-1 h1 svg, .form-1 form .inner-2 h1 svg {
+  display: none;
+  fill: #225f7d;
+  margin-right: 1em;
+  width: 1.5em;
+}
+.form-1 form .inner-1 .t-f, .form-1 form .inner-2 .t-f {
+  translate: 0 4em;
+}
+.form-1 form .inner-2 section p a {
+  color: #444;
+  padding-left: 0.5em;
+}
+.form-1 form .inner-2 section p a:hover {
+  color: #ccc;
+}
+.form-1 form .inner-2 .working-period table {
+  width: 100%;
+}
+.form-1 form .inner-2 .working-period table tr input, .form-1 form .inner-2 .working-period table tr td {
+  width: 95%;
+}
+.form-1 form .inner-2 .working-period table tr td {
+  display: table-cell;
+  width: unset;
+}
+.form-1 form .inner-2 .working-period table tr td span {
+  background-color: #ff6868;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  padding: 0.3em;
+}
+.form-1 form .inner-2 .working-period table tr th {
+  font-weight: 500;
+  text-align: left;
+}
+.form-1 form h2 {
+  color: #ff6868;
+}
+.form-1 form section.-x2, .form-1 form section.-x3 {
+  display: flex;
+}
+.form-1 form section.-x2 .input, .form-1 form section.-x3 .input {
+  display: unset;
+  text-align: left;
+}
+.form-1 form section.-x2 input, .form-1 form section.-x2 select, .form-1 form section.-x3 input, .form-1 form section.-x3 select {
+  width: 96%;
+}
+.form-1 form section.-x2 label, .form-1 form section.-x3 label {
+  display: block;
+  padding-block: 1em;
+}
+.form-1 form p {
+  text-align: left;
+}
+.form-1 form p strong {
+  font-weight: 400;
+}
+.form-1 .inner {
+  background-color: #fff;
+  border-radius: 0.5em;
+  overflow-y: scroll;
+  padding: 1em;
+  padding-bottom: 5em;
+  position: relative;
+}
+.form-1 .inner::-webkit-scrollbar-thumb {
+  background-color: #ffc4c4;
 }
 
 .no-data-selected, .no-data {
@@ -40,13 +201,13 @@
   justify-content: center;
 }
 .no-data-selected center, .no-data center {
-  background: #222;
+  border: 1px solid #c8e3f0;
   border-radius: 1em;
   padding: 3em;
 }
 .no-data-selected center button, .no-data center button {
   align-items: center;
-  background: #6060ff;
+  background: #225f7d;
   border: none;
   border-radius: 0.25em;
   display: flex;
@@ -56,7 +217,7 @@
   padding: 0.5em 1em;
 }
 .no-data-selected center button:hover, .no-data center button:hover {
-  background-color: #919191;
+  background-color: #000;
 }
 .no-data-selected center button svg, .no-data center button svg {
   fill: #fff;
@@ -68,12 +229,12 @@
   font-size: 2em;
 }
 .no-data-selected center svg, .no-data center svg {
-  fill: #fff;
+  fill: #225f7d;
   margin-bottom: 2em;
   width: 55%;
 }
 .no-data-selected center p, .no-data center p {
-  color: #fff;
+  color: #225f7d;
   font-size: 1.5em;
   margin-block: 1em;
   width: 24em;
@@ -91,19 +252,23 @@
   justify-content: center;
 }
 .Login .inner {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #bbb;
   border-radius: 0.5em;
-  padding: 2em;
-  width: 35em;
+  padding: 1em;
+  width: 27em;
 }
 .Login .inner button {
-  background: #6060ff;
+  background: #225f7d;
   border: none;
   border-radius: 0.3em;
   color: #eee;
   cursor: pointer;
   margin-block: 0.5em;
   padding: 1em 2em;
+}
+.Login .inner button:hover {
+  background-color: #111;
 }
 .Login .inner h1, .Login .inner h2 {
   font-size: big;
@@ -113,31 +278,33 @@
   color: #ff8c8c;
   font-size: 3em;
   font-weight: 900;
-  padding: 0.3em;
+  padding: 0.2em;
 }
 .Login .inner h2 {
-  color: #9393ff;
+  color: #fff;
   font-size: 1.5em;
   font-weight: unset;
   padding-bottom: 2em;
 }
-.Login .inner img {
-  width: 4em;
-}
 .Login .inner input {
+  background-color: unset;
   border: none;
   border-bottom: 1px solid #9d9d9d;
-  color: #6060ff;
+  color: #fff;
   height: 3em;
   margin-block: 1em;
   outline: none;
+  padding-inline: 1em;
   width: 100%;
 }
 .Login .inner input:focus {
-  border-bottom: 2px solid #6060ff;
+  border-bottom: 2px solid #225f7d;
+}
+.Login .inner input::placeholder {
+  color: #fff;
 }
 .Login .inner label {
-  color: #6060ff;
+  color: #fff;
   font-size: 1.5em;
 }
 .Login .inner svg {
@@ -146,7 +313,7 @@
 }
 
 main {
-  background: #040404;
+  background-color: #163d51;
   display: flex;
   height: 100vh;
   overflow-x: hidden;
@@ -154,14 +321,14 @@ main {
 }
 main .left-navigation {
   background-color: #fff;
-  border-right: 1px solid #eaeaff;
+  border-right: 1px solid #57a9d1;
   overflow-y: scroll;
   padding: 1.5em;
   padding-bottom: 9em;
   width: 20em;
 }
 main .left-navigation-x {
-  background: #6060ff;
+  background: #225f7d;
   display: flex;
   justify-content: center;
   margin-right: unset;
@@ -179,10 +346,10 @@ main .left-navigation-x ul h1 {
   text-align: center;
 }
 main .left-navigation-x ul li:hover svg {
-  fill: #6060ff !important;
+  fill: #225f7d !important;
 }
 main .left-navigation-x ul li svg {
-  fill: #c6c6ff !important;
+  fill: #3b9bca !important;
   width: 1.5em !important;
 }
 main .left-navigation .user {
@@ -195,7 +362,7 @@ main .left-navigation .user {
   position: absolute;
 }
 main .left-navigation .user div {
-  color: #7a7aff;
+  color: #276e91;
   cursor: pointer;
 }
 main .left-navigation .user div img {
@@ -211,16 +378,16 @@ main .left-navigation .user div span {
 }
 main .left-navigation ul h1 {
   align-items: center;
-  color: #6060ff;
+  color: #225f7d;
   display: flex;
   font-size: 1.5em;
 }
 main .left-navigation ul h2 {
-  color: #6060ff;
+  color: #225f7d;
   margin-bottom: 1em;
 }
 main .left-navigation ul span {
-  border-bottom: 1px solid #e0e0ff;
+  border-bottom: 1px solid #c8e3f0;
   display: block;
 }
 main .left-navigation ul img {
@@ -246,14 +413,14 @@ main .left-navigation ul input::placeholder {
 }
 main .left-navigation ul li {
   align-items: center;
-  color: #6060ff;
+  color: #225f7d;
   display: flex;
   padding-block: 1em;
   padding-left: 1em;
   position: relative;
 }
 main .left-navigation ul li.active {
-  background: #6060ff;
+  background: #225f7d;
   border-radius: 0.7em;
   color: #fff;
   font-weight: bold;
@@ -262,14 +429,14 @@ main .left-navigation ul li.active svg {
   fill: #fff;
 }
 main .left-navigation ul li.active-x {
-  background: #c6c6ff !important;
+  background: #3b9bca !important;
   border-radius: 0.7em;
 }
 main .left-navigation ul li.active-x svg {
-  fill: #6060ff !important;
+  fill: #225f7d !important;
 }
 main .left-navigation ul li:hover {
-  background: #c6c6ff;
+  background: #3b9bca;
   border-radius: 0.7em;
   color: #fff;
   cursor: pointer;
@@ -279,7 +446,7 @@ main .left-navigation ul li:hover svg {
   fill: #fff;
 }
 main .left-navigation ul li svg {
-  fill: #adadff;
+  fill: #328db9;
   margin-right: 1em;
   width: 1.5em;
 }
@@ -297,16 +464,17 @@ main .left-navigation ul li .total {
 }
 
 .vessel-content {
-  background: #111;
+  background: #225f7d;
   overflow-y: scroll;
   padding-inline: 1em;
   width: 25%;
 }
 .vessel-content h2 {
   align-items: center;
-  background: #222;
+  background: #1d5069;
   color: #fff;
   display: flex;
+  font-weight: 100;
   justify-content: center;
   padding-block: 1em;
   padding-left: 1em;
@@ -320,13 +488,12 @@ main .left-navigation ul li .total {
 }
 .vessel-content .list {
   align-items: center;
-  background-color: #111;
-  border-bottom: 1px solid #444444;
+  background-color: #225f7d;
+  border-bottom: 1px solid #297195;
   padding: 1em;
 }
 .vessel-content .list:hover {
-  background: #333;
-  color: #222;
+  background: #246585;
   cursor: pointer;
 }
 .vessel-content .list .inner {
@@ -344,7 +511,8 @@ main .left-navigation ul li .total {
 }
 .vessel-content .list .inner strong {
   border-radius: 0.3em;
-  color: #ccc;
+  color: #fff;
+  font-weight: 500;
   margin-right: 2em;
   padding: 0.5em;
   text-align: left;
@@ -360,17 +528,59 @@ main .left-navigation ul li .total {
 }
 
 .content-data {
+  background-color: #fff;
   overflow-y: scroll;
   padding: 1em;
   padding-left: 0;
   width: 58%;
+}
+.content-data .add-testimonial-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.content-data .add-testimonial-wrapper .AddTestimonial {
+  background-color: unset;
+  display: none;
+  height: unset;
+  position: unset;
+  width: fit-content;
+}
+.content-data .add-testimonial-wrapper .AddTestimonial .inner {
+  color: #333;
+  display: block;
+}
+.content-data .add-testimonial-wrapper .AddTestimonial .inner form h1 {
+  background-color: #fff;
+  border-bottom: 1px solid #b4d8ea;
+  color: #333;
+  font-size: unset;
+}
+.content-data .add-testimonial-wrapper .AddTestimonial .inner form select, .content-data .add-testimonial-wrapper .AddTestimonial .inner form input {
+  border: none;
+}
+.content-data .add-testimonial-wrapper .AddTestimonial .inner form select:focus, .content-data .add-testimonial-wrapper .AddTestimonial .inner form input:focus {
+  border-bottom: 3px solid #225f7d;
+}
+.content-data .AddVesselButton {
+  display: flex;
+  justify-content: end;
+}
+.content-data .AddVesselButton button {
+  background-color: #ff6868;
+  color: #fff;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
 }
 .content-data .inner {
   display: none;
 }
 .content-data .inner h1 {
   align-items: center;
-  background: #000;
+  background: #225f7d;
   color: #fff;
   display: flex;
   font-size: 2em;
@@ -378,6 +588,16 @@ main .left-navigation ul li .total {
   padding-left: 1em;
   position: sticky;
   top: -0.5em;
+}
+.content-data .inner h1 button {
+  background: #fff;
+  border: none;
+  border-radius: 0.15em;
+  color: red;
+  cursor: pointer;
+  padding: 0.2em;
+  position: absolute;
+  right: 1em;
 }
 .content-data .inner h1 .id {
   color: #fff;
@@ -397,7 +617,7 @@ main .left-navigation ul li .total {
   padding: 1em;
 }
 .content-data .inner-x .data {
-  background-color: #333;
+  background: #fff;
   border-radius: 0.5em;
   margin-inline: 0.4em;
   padding: 1em;
@@ -405,21 +625,22 @@ main .left-navigation ul li .total {
 }
 .content-data .inner-x .data h2 {
   color: #ff6868;
+  font-weight: 500;
   position: sticky;
   text-align: center;
   top: 5em;
 }
 .content-data .inner-x .data ul li {
-  border-bottom: 1px solid #515151;
+  border-bottom: 1px solid #b4d8ea;
   display: flex;
   justify-content: space-between;
   padding-block: 1em;
 }
 .content-data .inner-x .data ul li span:first-of-type {
-  color: #fff;
+  color: #777;
 }
 .content-data .inner-x .data ul li span strong {
-  color: #fff;
+  color: #444;
 }
 
 .testimonial-content, .table-1 {
@@ -480,7 +701,7 @@ main .left-navigation ul li .total {
   width: 2em;
 }
 .testimonial-content header div.h-3, .table-1 header div.h-3 {
-  background-color: #090909;
+  background-color: #163d51;
   justify-content: start;
 }
 .testimonial-content header div.h-3 h2, .table-1 header div.h-3 h2 {
@@ -496,7 +717,7 @@ main .left-navigation ul li .total {
   padding: 1em;
 }
 .testimonial-content header div.h-3 h2.inactive, .table-1 header div.h-3 h2.inactive {
-  background-color: #111;
+  background-color: #163d51;
   color: #fff;
   padding: 1em;
 }
@@ -514,13 +735,15 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .testimonial-content .table table td, .testimonial-content .table table th, .table-1 .table table td, .table-1 .table table th {
-  background-color: black;
-  border: 1px solid #111;
+  background-color: #174155;
   color: #fff;
   padding: 1em;
 }
+.testimonial-content .table table td:hover, .testimonial-content .table table th:hover, .table-1 .table table td:hover, .table-1 .table table th:hover {
+  background-color: #1a4a61 !important;
+}
 .testimonial-content .table table th, .table-1 .table table th {
-  background-color: #222;
+  background-color: #1d5069;
   font-weight: unset;
   position: sticky;
   top: -2em;
@@ -531,12 +754,25 @@ main .left-navigation ul li .total {
 }
 .testimonial-content .table table tr td.data-x, .table-1 .table table tr td.data-x {
   font-weight: 500;
+  border-bottom: 1px solid #256889;
+}
+.testimonial-content .table table tr td.data-x .sub-x, .table-1 .table table tr td.data-x .sub-x {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.testimonial-content .table table tr td.data-x .sub-x .\-1, .table-1 .table table tr td.data-x .sub-x .\-1 {
+  background-color: #1d5069;
+  border-radius: 0.3em;
+  margin-block: 0.5em;
+  margin-right: 1em;
+  padding: 0.5em;
 }
 .testimonial-content .table table tr td.action, .table-1 .table table tr td.action {
-  background-color: #000;
+  background-color: #163d51;
 }
 .testimonial-content .table table tr td:not(.testimonial-content .table table tr td.action, .table-1 .table table tr td.action), .table-1 .table table tr td:not(.testimonial-content .table table tr td.action, .table-1 .table table tr td.action) {
-  background-color: #111;
+  background-color: #163d51;
 }
 .testimonial-content .table table tr td img, .table-1 .table table tr td img {
   cursor: pointer;
@@ -552,6 +788,7 @@ main .left-navigation ul li .total {
 }
 
 .dashboard {
+  background-color: #225f7d;
   padding: 1em;
 }
 .dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
@@ -560,15 +797,14 @@ main .left-navigation ul li .total {
   margin-block: 1em;
 }
 .dashboard-inner .board-1 .div, .dashboard-inner .board-2 .div, .dashboard-inner .board-3 .div {
-  background: #222;
+  background: #1a4a61;
   border-radius: 0.65em;
   height: 20em;
   padding: 2em;
   width: 32%;
 }
 .dashboard-inner .board-1 .div h1, .dashboard-inner .board-2 .div h1, .dashboard-inner .board-3 .div h1 {
-  background: #222;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #2a7499;
   font-size: 1.2em;
   justify-content: space-between;
   padding-inline: unset;
@@ -632,7 +868,7 @@ main .left-navigation ul li .total {
   width: 49%;
 }
 .dashboard-inner .board-2 .div .canvas .inner-x {
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #2a7499;
   justify-content: left;
 }
 .dashboard-inner .board-2 .div .canvas .inner-x span:first-of-type {
@@ -651,7 +887,7 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #2a7499;
   color: #ccc;
   padding: 1em;
 }

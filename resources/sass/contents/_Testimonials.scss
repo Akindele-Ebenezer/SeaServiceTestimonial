@@ -68,7 +68,7 @@
             }
 
             &.h-3 {
-                background-color: darken($color: $Color-5, $amount: 3); 
+                background-color: darken($color: $Color-2, $amount: 11);
                 justify-content: start;
 
                 h2 { 
@@ -85,7 +85,7 @@
                     }
 
                     &.inactive { 
-                        background-color: #111;
+                        background-color: darken($color: $Color-2, $amount: 11);
                         color: #fff; 
                         padding: 1em; 
 
@@ -109,14 +109,17 @@
             width: 100%;
 
             td, th { 
-                background-color: darken($color: $Color-5, $amount: 10);
-                border: 1px solid $Color-5;
+                background-color: darken($color: $Color-2, $amount: 10); 
                 color: #fff;
                 padding: 1em;  
+
+                &:hover {
+                    background-color: darken($color: $Color-2, $amount: 7) !important ;
+                }
             }
 
             th { 
-                background-color: #222; 
+                background-color: darken($color: $Color-2, $amount: 5);
                 font-weight: unset;
                 position: sticky;
                 top: -2em;
@@ -129,14 +132,29 @@
                 td {
                     &.data-x { 
                         font-weight: 500;
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 3);
+
+                        .sub-x {
+                            align-items: center;
+                            display: flex;
+                            justify-content: space-between;
+
+                            .\-1 {
+                                background-color: darken($color: $Color-2, $amount: 5);
+                                border-radius: 0.3em;
+                                margin-block: 0.5em;
+                                margin-right: 1em;
+                                padding: 0.5em;
+                            }
+                        }
                     }
 
                     &.action  {
-                        background-color: #000;
+                        background-color: darken($color: $Color-2, $amount: 11);
                     }
 
                     &:not(&.action)  {
-                        background-color: #111;
+                        background-color: darken($color: $Color-2, $amount: 11);
                     }
 
                     img {

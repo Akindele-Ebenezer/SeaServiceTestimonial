@@ -8,7 +8,8 @@
 }
  
 $Color-1: #777;
-$Color-2: #6060ff;
+// $Color-2: #163e64;
+$Color-2: #225f7d;
 $Color-3: #eee;
 $Color-4: #ffcece;
 $Color-5: #111;
@@ -23,6 +24,7 @@ $Color-6: #8cff9a;
 }
   
 @import 'contents/_Loader';
+@import 'forms/_Form-1';
 @import 'contents/_NoData';
 @import '_Login';
 @import '_Layout-2';

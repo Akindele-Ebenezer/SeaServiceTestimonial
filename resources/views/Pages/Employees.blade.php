@@ -1,12 +1,14 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Employees - SEA SERVICE TESTIMONIAL')
+@include('Components.Forms.Add.Employee')
+@include('Components.Forms.Edit.Employee')
 
 @section('Content')
-<div class="operation-content table-1"> 
+<div class="employees-content table-1"> 
    <header>
       <div class="h-1">
          <h1>Employees</h1>
-         <button>+ Add Employee</button>
+         <button class="AddEmployeeButton">+ Add Employee</button>
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search employees..">
@@ -38,6 +40,7 @@
             <th>Rank</th>
             <th>Discharge book</th> 
             <th>Company</th> 
+            <th>#</th> 
          </tr>
          <tr>
             <td>23553</td>
@@ -47,62 +50,10 @@
             <td>CAPTAIN</td>
             <td>51673</td>
             <td>DEPASA</td>
-         </tr>    
-         <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-         </tr>    
-         <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-         </tr>    
-         <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-         </tr>    
-         <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-         </tr>    
-         <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-         </tr>    
-         <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-         </tr>    
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+         </tr>     
       </table>
    </div>
 </div>
+<script src="{{ asset('js/Components/Add/Employee.js') }}"></script>
 @endsection
