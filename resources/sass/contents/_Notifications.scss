@@ -1,5 +1,5 @@
 .dashboard { 
-    background-color: $Color-2;
+    background-color: #eee;
     padding: 1em;
 
     &-inner {
@@ -9,32 +9,42 @@
             margin-block: 1em;
 
             .div {
-                background: darken($color: $Color-2, $amount: 7);
+                background: #fff;
                 border-radius: 0.65em;
                 height: 20em;
                 padding: 2em;
                 width: 32%;
 
                 h1 {  
-                    border-bottom: 1px solid lighten($color: $Color-2, $amount: 7);
+                    border-bottom: 1px solid lighten($color: $Color-2, $amount: 63);
                     font-size: 1.2em; 
                     justify-content: space-between;
                     padding-inline: unset; 
 
-                    span {
-                        button, select {
+                    span { 
+
+                        select {
                             border: none;
                             border-radius: .1em;
-                            background: lighten($color: $Color-1, $amount: 10);
-                            color: #fff;
+                            background-color: lighten($color: $Color-2, $amount: 65); 
+                            color: $Color-2;
                             outline: none;
                             padding: .2em .5em;
                             width: 8em;
                         }
 
                         button {  
-                            cursor: pointer;
-                            width: unset;
+                            background-color: darken($color: $Color-4, $amount: 25);
+                            border: none;
+                            border-radius: .25em;
+                            color: #fff;
+                            cursor: pointer; 
+                            padding: .2em;
+                            width: 4em;
+
+                            &:hover {
+                                background-color: #000;
+                            }
                         }
                     }
                 }
@@ -51,7 +61,9 @@
                         padding: .35em;
                         
                         &:first-of-type { 
+                            align-items: center;
                             color: darken($color: $Color-6, $amount: 30);
+                            display: flex;
                             font-weight: bold;
                             margin-right: 2em;
                             padding: 0.5em 1em 1em 1em;
@@ -59,21 +71,20 @@
                             svg {
                                 fill: darken($color: $Color-6, $amount: 15);
                                 margin-right: .5em; 
-                                translate: 0 .5em;
+                                translate: 0 .15em;
                                 width: 1.65em;
                             }
                         }
                         
                         &:last-of-type {
-                            background-color: #333;
-                            color: #fff;   
+                            background-color: lighten($color: $Color-2, $amount: 65); 
                         }
                     }
                     
                 }
 
                 strong {
-                    color: #eee;
+                    color: #333;
                     font-size: 5em; 
                 }
  
@@ -98,12 +109,11 @@
 
                 .canvas {
                     .inner-x {
-                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 7);
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 63);
                         justify-content: left;
 
                         span {
-                            &:first-of-type {
-                                color: #fff;
+                            &:first-of-type { 
                                 margin-right: 1em;
                                 width: 6em;
                             }
@@ -125,21 +135,31 @@
                     width: 100%;
 
                     td, th {
-                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 7);
-                        color: #ccc;
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 63);
                         padding: 1em;
                     }
 
-                    th {
-                        color: #fff;
+                    th { 
                     }
                 }
             }
         }
 
+        .dashboard-heading {
+            background-color: $Color-2;
+            color: #fff;
+            position: sticky;
+            top: -0.5em;
+            z-index: 100;
+
+            svg {
+                fill: #fff !important;
+            }
+        }
+
         h1 {
             align-items: center; 
-            color: #fff;
+            color: #222;
             display: flex;
             font-size: 2em;
             padding: 0.5em;
@@ -153,7 +173,7 @@
                 width: 4em;
 
                 &.-x {
-                    fill: #fff;
+                    fill: #222;
                     height: 4em;
                     padding: unset;
                     width: 5em;

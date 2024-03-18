@@ -78,6 +78,7 @@
     overflow-y: scroll;
     padding: 1em;
     padding-left: 0;
+    position: relative;
     width: 58%;
 
     .add-testimonial-wrapper {
@@ -119,6 +120,14 @@
     .AddVesselButton {
         display: flex;
         justify-content: end;
+        position: absolute;
+        right: .5em;
+        top: 0;
+
+        &:hover {
+            background-color: #000;
+        }
+
         button{
             background-color: darken($color: $Color-4, $amount: 20);
             color: #fff;
@@ -127,6 +136,7 @@
             cursor: pointer;
             margin-block: 0.5em;
             padding: 1em 2em;
+            width: 10em;
         }
     }
     
@@ -192,7 +202,7 @@
 
                 ul {
                     li {
-                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 50);
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 65);
                         display: flex;
                         justify-content: space-between;
                         padding-block: 1em;

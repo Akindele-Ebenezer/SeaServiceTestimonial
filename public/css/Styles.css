@@ -532,6 +532,7 @@ main .left-navigation ul li .total {
   overflow-y: scroll;
   padding: 1em;
   padding-left: 0;
+  position: relative;
   width: 58%;
 }
 .content-data .add-testimonial-wrapper {
@@ -565,6 +566,12 @@ main .left-navigation ul li .total {
 .content-data .AddVesselButton {
   display: flex;
   justify-content: end;
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+}
+.content-data .AddVesselButton:hover {
+  background-color: #000;
 }
 .content-data .AddVesselButton button {
   background-color: #ff6868;
@@ -574,6 +581,7 @@ main .left-navigation ul li .total {
   cursor: pointer;
   margin-block: 0.5em;
   padding: 1em 2em;
+  width: 10em;
 }
 .content-data .inner {
   display: none;
@@ -631,7 +639,7 @@ main .left-navigation ul li .total {
   top: 5em;
 }
 .content-data .inner-x .data ul li {
-  border-bottom: 1px solid #b4d8ea;
+  border-bottom: 1px solid #f0f7fb;
   display: flex;
   justify-content: space-between;
   padding-block: 1em;
@@ -788,7 +796,7 @@ main .left-navigation ul li .total {
 }
 
 .dashboard {
-  background-color: #225f7d;
+  background-color: #eee;
   padding: 1em;
 }
 .dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
@@ -797,30 +805,38 @@ main .left-navigation ul li .total {
   margin-block: 1em;
 }
 .dashboard-inner .board-1 .div, .dashboard-inner .board-2 .div, .dashboard-inner .board-3 .div {
-  background: #1a4a61;
+  background: #fff;
   border-radius: 0.65em;
   height: 20em;
   padding: 2em;
   width: 32%;
 }
 .dashboard-inner .board-1 .div h1, .dashboard-inner .board-2 .div h1, .dashboard-inner .board-3 .div h1 {
-  border-bottom: 1px solid #2a7499;
+  border-bottom: 1px solid #e8f3f9;
   font-size: 1.2em;
   justify-content: space-between;
   padding-inline: unset;
 }
-.dashboard-inner .board-1 .div h1 span button, .dashboard-inner .board-1 .div h1 span select, .dashboard-inner .board-2 .div h1 span button, .dashboard-inner .board-2 .div h1 span select, .dashboard-inner .board-3 .div h1 span button, .dashboard-inner .board-3 .div h1 span select {
+.dashboard-inner .board-1 .div h1 span select, .dashboard-inner .board-2 .div h1 span select, .dashboard-inner .board-3 .div h1 span select {
   border: none;
   border-radius: 0.1em;
-  background: #919191;
-  color: #fff;
+  background-color: #f0f7fb;
+  color: #225f7d;
   outline: none;
   padding: 0.2em 0.5em;
   width: 8em;
 }
 .dashboard-inner .board-1 .div h1 span button, .dashboard-inner .board-2 .div h1 span button, .dashboard-inner .board-3 .div h1 span button {
+  background-color: #ff4f4f;
+  border: none;
+  border-radius: 0.25em;
+  color: #fff;
   cursor: pointer;
-  width: unset;
+  padding: 0.2em;
+  width: 4em;
+}
+.dashboard-inner .board-1 .div h1 span button:hover, .dashboard-inner .board-2 .div h1 span button:hover, .dashboard-inner .board-3 .div h1 span button:hover {
+  background-color: #000;
 }
 .dashboard-inner .board-1 .div h2, .dashboard-inner .board-2 .div h2, .dashboard-inner .board-3 .div h2 {
   align-items: center;
@@ -834,7 +850,9 @@ main .left-navigation ul li .total {
   padding: 0.35em;
 }
 .dashboard-inner .board-1 .div h2 span:first-of-type, .dashboard-inner .board-2 .div h2 span:first-of-type, .dashboard-inner .board-3 .div h2 span:first-of-type {
+  align-items: center;
   color: #00f21d;
+  display: flex;
   font-weight: bold;
   margin-right: 2em;
   padding: 0.5em 1em 1em 1em;
@@ -842,15 +860,14 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-1 .div h2 span:first-of-type svg, .dashboard-inner .board-2 .div h2 span:first-of-type svg, .dashboard-inner .board-3 .div h2 span:first-of-type svg {
   fill: #40ff57;
   margin-right: 0.5em;
-  translate: 0 0.5em;
+  translate: 0 0.15em;
   width: 1.65em;
 }
 .dashboard-inner .board-1 .div h2 span:last-of-type, .dashboard-inner .board-2 .div h2 span:last-of-type, .dashboard-inner .board-3 .div h2 span:last-of-type {
-  background-color: #333;
-  color: #fff;
+  background-color: #f0f7fb;
 }
 .dashboard-inner .board-1 .div strong, .dashboard-inner .board-2 .div strong, .dashboard-inner .board-3 .div strong {
-  color: #eee;
+  color: #333;
   font-size: 5em;
 }
 .dashboard-inner .board-1 .div .sub-heading, .dashboard-inner .board-2 .div .sub-heading, .dashboard-inner .board-3 .div .sub-heading {
@@ -868,11 +885,10 @@ main .left-navigation ul li .total {
   width: 49%;
 }
 .dashboard-inner .board-2 .div .canvas .inner-x {
-  border-bottom: 1px solid #2a7499;
+  border-bottom: 1px solid #e8f3f9;
   justify-content: left;
 }
 .dashboard-inner .board-2 .div .canvas .inner-x span:first-of-type {
-  color: #fff;
   margin-right: 1em;
   width: 6em;
 }
@@ -887,16 +903,22 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
-  border-bottom: 1px solid #2a7499;
-  color: #ccc;
+  border-bottom: 1px solid #e8f3f9;
   padding: 1em;
 }
-.dashboard-inner .board-3 .div table th {
+.dashboard-inner .dashboard-heading {
+  background-color: #225f7d;
   color: #fff;
+  position: sticky;
+  top: -0.5em;
+  z-index: 100;
+}
+.dashboard-inner .dashboard-heading svg {
+  fill: #fff !important;
 }
 .dashboard-inner h1 {
   align-items: center;
-  color: #fff;
+  color: #222;
   display: flex;
   font-size: 2em;
   padding: 0.5em;
@@ -910,7 +932,7 @@ main .left-navigation ul li .total {
   width: 4em;
 }
 .dashboard-inner h1 svg.-x {
-  fill: #fff;
+  fill: #222;
   height: 4em;
   padding: unset;
   width: 5em;

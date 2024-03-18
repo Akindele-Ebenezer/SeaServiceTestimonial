@@ -16,7 +16,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->Ln(30);          
         $fpdf->SetFont('Times', '', 11); 
-        $fpdf->Cell(190, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+        $fpdf->Cell(165, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         $fpdf->Ln(5);     
         $fpdf->SetFont('Times', 'BU', 17); 
         $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
@@ -32,6 +32,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln(5);          
         
         //// TABLE HEAD
+        $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(60, 10, 'Period of Service & Date', 1, 0, 'C');
         $fpdf->Cell(30, 18, 'Rank', 1, 0, 'C');
         $fpdf->Cell(40, 18, 'Area of Operation', 1, 0, 'C');
@@ -42,14 +43,19 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln();
         //// TABLE COLUMNS
         $fpdf->SetFont('Times', '', 9); 
-        $fpdf->Cell(60, 25, 'Row 2, Column 1', 1, 0, 'C');
-        $fpdf->Cell(30, 25, 'Row 2, Column 2', 1, 0, 'C');
-        $fpdf->Cell(40, 25, 'Sea Dredging', 1, 0, 'C'); 
-        $fpdf->MultiCell(59, 5, 'Navigational watch for not less than 12 hours out of every 24 hours whilst the vessel was engage on operation. General maintenance of vessel.', 1); 
-
+        $fpdf->Cell(60, 28, 'Row 2, Column 1', 1, 0, 'C');
+        $fpdf->Cell(30, 28, 'Row 2, Column 2', 1, 0, 'C');
+        $fpdf->Cell(40, 28, 'Sea Dredging', 1, 0, 'C'); 
+        $DutiesPerformed = 'Hey there! Just wanted to share some exciting news. I recently discovered a hidden gem of a restaurant in our city. The food is absolutely delicious, with a wide variety of mouthwatering dishes. The ambiance is cozy and inviting, perfect for a night out with friends or a romantic';
+        $fpdf->MultiCell(59, 4,  $DutiesPerformed, 1);  
+        $fpdf->Cell(60, 28, 'Row 2, Column 1', 1, 0, 'C');
+        $fpdf->Cell(30, 28, 'Row 2, Column 2', 1, 0, 'C');
+        $fpdf->Cell(40, 28, 'Sea Dredging', 1, 0, 'C'); 
+        $DutiesPerformed = 'Hey there! Just wanted to share some exciting news. I recently discovered a hidden gem of a restaurant in our city. The food is absolutely delicious, with a wide variety of mouthwatering dishes. The ambiance is cozy and inviting, perfect for a night out with friends or a romantic';
+        $fpdf->MultiCell(59, 4,  $DutiesPerformed, 1);  
         $fpdf->Ln(10);       
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted (nil) days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, strlen($DutiesPerformed) . 'During the whole period stated above, the above-named officer was granted (nil) days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(45, 8, 'Conduct:', 0);
@@ -108,6 +114,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln(5);          
         
         //// TABLE HEAD 
+        $fpdf->SetFont('Times', 'B', 10); 
         $fpdf->Cell(20, 8, 'START', 'LTR', 0, 'C'); 
         $fpdf->Cell(20, 8, 'END', 'LTR', 0, 'C');
         $fpdf->Cell(30, 9, 'VESSEL', 'LTR', 0, 'C'); 
@@ -282,6 +289,29 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(50, 25, 'Company stamp and date: ', 0, 0);  
         $fpdf->SetFont('Times', '', 12);
         $fpdf->Cell(60, 25, date("j F, Y"), 0, 1);  
+        $fpdf->Output();        
+        exit;
+    }
+    
+    public function test(Fpdf $fpdf) {
+        $fpdf->AddPage();    
+        $fpdf->SetAutoPageBreak(false);
+        $fpdf->SetTitle('Template 3 - SEA SERVICE TESTIMONIAL');   
+        $fpdf->SetFont('Times', 'B', 12);  
+        $fpdf->SetDrawColor(200, 200, 200); 
+  
+        $fpdf->Cell(40, 10, 'Name', 1);
+        $fpdf->Cell(60, 10, 'Email', 1);
+        $fpdf->Cell(30, 10, 'Address', 1);
+        $fpdf->Cell(40, 10, 'Date of Birth', 1);
+        $fpdf->Ln();
+
+        $fpdf->Cell(40, 10, '$data[0]', 1);
+        $fpdf->Cell(60, 10, '$data[1]', 1);
+        $fpdf->MultiCell(30, 10, '$data[2]$data[2]$data[2]$data[2]$data[2]$data[2]', 1);
+        $fpdf->Cell(40, 10, '$data[3]', 1);
+        $fpdf->Ln();
+
         $fpdf->Output();        
         exit;
     }

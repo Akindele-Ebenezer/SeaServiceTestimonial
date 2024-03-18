@@ -30,3 +30,4 @@ Route::get('/Captains', [EmployeeController::class, 'captains'])->name('Captains
 Route::get('/Testimonials/Template/1', [SeaServiceTestimonialPdf::class, 'template_1'])->name('template_1');
 Route::get('/Testimonials/Template/2', [SeaServiceTestimonialPdf::class, 'template_2'])->name('template_2');
 Route::get('/Testimonials/Template/3', [SeaServiceTestimonialPdf::class, 'template_3'])->name('template_3');
+Route::get('/Testimonials/Template/4', [SeaServiceTestimonialPdf::class, 'test']);
