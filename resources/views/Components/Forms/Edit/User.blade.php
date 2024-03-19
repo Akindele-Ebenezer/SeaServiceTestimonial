@@ -1,6 +1,6 @@
 <div class="form-1 EditUser">
     <div class="inner">
-        <div class="close-button">
+        <div class="close-button-update">
             <button>✖</button>
         </div>
         <form action="">

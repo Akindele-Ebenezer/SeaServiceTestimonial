@@ -9,7 +9,9 @@
     width: 100vw;
     z-index: 200;
 
-    .close-button {
+    &.AddVessel { z-index: 300; }
+
+    .close-button, .close-button-update {
         align-items: center; 
         display: flex;
         justify-content: space-between;
@@ -60,6 +62,7 @@
             align-items: center;
             display: flex;
             padding-block: .25em;
+            position: relative;
             width: 100%;
 
             label { 
@@ -113,7 +116,7 @@
             }
 
             .t-f {
-                translate: 0 4em;
+                translate: 0 7em;
             }
         }
 

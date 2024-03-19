@@ -2,6 +2,7 @@
 @section('Title', 'Testimonials - SEA SERVICE TESTIMONIAL')
 @include('Components.Forms.Add.Testimonial') 
 @include('Components.Forms.Edit.Testimonial')
+@include('Components.Forms.Delete.Testimonial')
 
 @section('Content')
 <div class="table-1"> 
@@ -48,7 +49,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr> 
             <th>Employee</th>
@@ -75,7 +76,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -84,7 +85,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -93,7 +94,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -102,7 +103,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -111,7 +112,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -120,7 +121,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -129,7 +130,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -138,7 +139,7 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
@@ -147,10 +148,12 @@
             <td>536635</td>
             <td>661</td>
             <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
       </table>
    </div>
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/Testimonial.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/Testimonial.js') }}"></script>
 @endsection

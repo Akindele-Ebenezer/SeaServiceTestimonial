@@ -16,6 +16,68 @@
   background-color: #333;
 }
 
+.Show {
+  display: block !important;
+}
+
+.filter-list-wrapper, .filter-list-wrapper-2 {
+  background: #fff;
+  display: none;
+  height: 25em;
+  overflow-y: scroll;
+  padding: 0.2em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  translate: 0 3em;
+  width: 100%;
+  z-index: 10;
+}
+.filter-list-wrapper .empty, .filter-list-wrapper-2 .empty {
+  display: none;
+  padding-block: 1em;
+}
+.filter-list-wrapper .empty center h1, .filter-list-wrapper-2 .empty center h1 {
+  display: block !important;
+  font-size: large !important;
+}
+.filter-list-wrapper .empty center p, .filter-list-wrapper-2 .empty center p {
+  color: #666;
+  font-size: larger !important;
+  text-align: center;
+}
+.filter-list-wrapper .empty center svg, .filter-list-wrapper-2 .empty center svg {
+  background: #ffeded;
+  border-radius: 5em;
+  fill: #ff6868;
+  height: 5em;
+  width: 5em;
+  padding: 0.8em;
+}
+.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper-2 .filter-value, .filter-list-wrapper-2 .filter-value-2 {
+  border-bottom: 1px solid #ffe8e8;
+  cursor: pointer;
+  padding: 0.2em;
+}
+.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper-2 .filter-value:hover h1, .filter-list-wrapper-2 .filter-value:hover div, .filter-list-wrapper-2 .filter-value-2:hover h1, .filter-list-wrapper-2 .filter-value-2:hover div {
+  background-color: #f4f9fc !important;
+}
+.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper-2 .filter-value div, .filter-list-wrapper-2 .filter-value-2 div {
+  display: flex;
+  justify-content: space-between;
+}
+.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper-2 .filter-value div span, .filter-list-wrapper-2 .filter-value-2 div span {
+  font-size: smaller;
+}
+.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper-2 .filter-value h1, .filter-list-wrapper-2 .filter-value-2 h1 {
+  border: none !important;
+  color: #225f7d !important;
+  font-size: small;
+  font-weight: bold !important;
+  margin: unset !important;
+  padding: 0em !important;
+}
+
 .loader {
   align-items: center;
   background: rgba(0, 0, 0, 0.8);
@@ -44,7 +106,10 @@
   width: 100vw;
   z-index: 200;
 }
-.form-1 .close-button {
+.form-1.AddVessel {
+  z-index: 300;
+}
+.form-1 .close-button, .form-1 .close-button-update {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -54,7 +119,7 @@
   translate: 0 -1em;
   width: 100%;
 }
-.form-1 .close-button button {
+.form-1 .close-button button, .form-1 .close-button-update button {
   background-color: unset;
   border: none;
   color: red;
@@ -62,7 +127,7 @@
   font-size: 1.2em;
   font-weight: bold;
 }
-.form-1 .close-button h1 {
+.form-1 .close-button h1, .form-1 .close-button-update h1 {
   background-color: #000;
   color: #fff;
   padding: 0.5em;
@@ -90,6 +155,7 @@
   align-items: center;
   display: flex;
   padding-block: 0.25em;
+  position: relative;
   width: 100%;
 }
 .form-1 form .input label, .form-1 form td label {
@@ -128,7 +194,7 @@
   width: 1.5em;
 }
 .form-1 form .inner-1 .t-f, .form-1 form .inner-2 .t-f {
-  translate: 0 4em;
+  translate: 0 7em;
 }
 .form-1 form .inner-2 section p a {
   color: #444;
@@ -194,6 +260,54 @@
   background-color: #ffc4c4;
 }
 
+.DeleteModal {
+  display: none;
+}
+.DeleteModal .inner {
+  padding: 5em;
+  padding-top: 2em;
+  position: relative;
+}
+.DeleteModal .inner .action {
+  bottom: 1.5em;
+  padding-top: 2em;
+  position: absolute;
+  right: 5em;
+}
+.DeleteModal .inner .action button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
+}
+.DeleteModal .inner .action button:last-of-type {
+  background-color: #ff6868;
+  color: #fff;
+}
+.DeleteModal .inner .action button:last-of-type:hover {
+  background-color: #000;
+}
+.DeleteModal .inner center h1 {
+  font-size: 2em;
+  padding-top: 1em;
+}
+.DeleteModal .inner center p {
+  color: #777;
+  font-size: 1.5em;
+  padding-block: 1em;
+}
+.DeleteModal .inner center svg {
+  background: #ffeded;
+  border-radius: 5em;
+  fill: #ff6868;
+  height: 5em;
+  width: 5em;
+  padding: 0.8em;
+}
+
 .no-data-selected, .no-data {
   align-items: center;
   display: flex;
@@ -229,9 +343,12 @@
   font-size: 2em;
 }
 .no-data-selected center svg, .no-data center svg {
+  background: #f4f9fc;
+  border-radius: 11em;
   fill: #225f7d;
   margin-bottom: 2em;
-  width: 55%;
+  padding: 1em;
+  width: 60%;
 }
 .no-data-selected center p, .no-data center p {
   color: #225f7d;
@@ -351,6 +468,12 @@ main .left-navigation-x ul li:hover svg {
 main .left-navigation-x ul li svg {
   fill: #3b9bca !important;
   width: 1.5em !important;
+}
+main .left-navigation ul {
+  position: relative;
+}
+main .left-navigation ul .filter-list-wrapper-2 {
+  translate: 0 11em;
 }
 main .left-navigation .user {
   align-items: center;
@@ -506,8 +629,11 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner.-x {
   width: 100%;
 }
+.vessel-content .list .inner .action {
+  display: none;
+}
 .vessel-content .list .inner img {
-  width: 2em;
+  width: 1.5em;
 }
 .vessel-content .list .inner strong {
   border-radius: 0.3em;

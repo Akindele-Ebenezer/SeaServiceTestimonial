@@ -37,9 +37,12 @@
         }
 
         svg {
+            background: lighten($color: $Color-2, $amount: 66);
+            border-radius: 11em;
             fill: $Color-2;
             margin-bottom: 2em;
-            width: 55%;
+            padding: 1em;
+            width: 60%;
         }
 
         p {

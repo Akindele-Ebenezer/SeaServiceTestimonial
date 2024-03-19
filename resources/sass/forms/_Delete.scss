@@ -1,0 +1,57 @@
+.DeleteModal {
+    display: none;
+
+    .inner {
+        padding: 5em;
+        padding-top: 2em;
+        position: relative; 
+
+        .action {
+            bottom: 1.5em;
+            padding-top: 2em;
+            position: absolute;
+            right: 5em;
+
+            button {
+                background-color: #fff;
+                color: #333;
+                border: none;
+                border-radius: 0.3em;
+                cursor: pointer;
+                margin-block: 0.5em;
+                padding: 1em 2em;
+
+                &:last-of-type {
+                    background-color: darken($color: $Color-4, $amount: 20);
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+
+        center {
+            h1 {
+                font-size: 2em;
+                padding-top: 1em;
+            }
+
+            p {
+                color: #777;
+                font-size: 1.5em;
+                padding-block: 1em;
+            }
+
+            svg {
+                background: lighten($color: $Color-4, $amount: 6);
+                border-radius: 5em;
+                fill: darken($color: $Color-4, $amount: 20); 
+                height: 5em;
+                width: 5em;
+                padding: .8em;
+            }
+        }
+    }
+}

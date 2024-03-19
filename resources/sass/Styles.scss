@@ -22,9 +22,13 @@ $Color-6: #8cff9a;
 ::-webkit-scrollbar-thumb {
     background-color: #333; 
 }
+
+.Show { display: block !important }
   
+@import 'forms/_Filter';
 @import 'contents/_Loader';
 @import 'forms/_Form-1';
+@import 'forms/_Delete';
 @import 'contents/_NoData';
 @import '_Login';
 @import '_Layout-2';

@@ -2,6 +2,7 @@
 @section('Title', 'Users - SEA SERVICE TESTIMONIAL')
 @include('Components.Forms.Add.User')
 @include('Components.Forms.Edit.User')
+@include('Components.Forms.Delete.User')
 
 @section('Content')
 <div class="users-content table-1"> 
@@ -50,7 +51,7 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
          <tr>
             <td>2</td> 
@@ -61,7 +62,7 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
          <tr>
             <td>3</td> 
@@ -72,7 +73,7 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
          <tr>
             <td>4</td> 
@@ -83,7 +84,7 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
          <tr>
             <td>5</td> 
@@ -94,7 +95,7 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
          <tr>
             <td>6</td> 
@@ -105,7 +106,7 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
          <tr>
             <td>7</td> 
@@ -116,10 +117,12 @@
             <td>user</td>
             <td>09-03-2024</td> 
             <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr> 
       </table>
    </div>
 </div>
 <script src="{{ asset('js/Components/Add/User.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/User.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/User.js') }}"></script>
 @endsection

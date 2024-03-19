@@ -48,6 +48,14 @@ main {
             }
         }
 
+        ul {
+            position: relative;
+
+            .filter-list-wrapper-2,  {
+                translate: 0 11em;
+            }
+        }
+
         .user {
             align-items: center;
             background: #fff;

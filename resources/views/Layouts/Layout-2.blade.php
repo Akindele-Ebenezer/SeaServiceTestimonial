@@ -34,8 +34,103 @@
                 <h1>
                     <img src="{{ asset('images/ltt-logo(1).png') }}" alt="">
                     Sea Service Testimonial
-                </h1>
-                <input type="text" placeholder="Marine Search..">
+                </h1> 
+                <input type="text" placeholder="Marine Search.." autocomplete="off" id="FILTER_Input2" onkeyup="filterFunction2()" name="Employees">
+                <div class="filter-list-wrapper-2">
+                    <div class="filter-value-2">
+                        <h1>John Smith</h1>
+                        <div>
+                            <span>351344</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Sarah Johnson</h1>
+                        <div>
+                            <span>23456</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Michael Brown</h1>
+                        <div>
+                            <span>34567</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Emily Davis</h1>
+                        <div>
+                            <span>45678</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>David Wilson</h1>
+                        <div>
+                            <span>56789</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Jennifer Taylor</h1>
+                        <div>
+                            <span>67890</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Christopher Clark</h1>
+                        <div>
+                            <span>78901</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Jessica Martinez</h1>
+                        <div>
+                            <span>89012</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Matthew Anderson</h1>
+                        <div>
+                            <span>90123</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Amanda Rodriguez</h1>
+                        <div>
+                            <span>01234</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Disi Samuel</h1>
+                        <div>
+                            <span>351344</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="filter-value-2">
+                        <h1>Disi Samuel</h1>
+                        <div>
+                            <span>351344</span>
+                            <span>Captain</span>
+                        </div>
+                    </div>
+                    <div class="empty empty2">
+                        <center>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                            <h1>No data available</h1>
+                            <p>Looks like the search value you entered isn't in the list.</p>
+                            <br>
+                            <p>Please try again!</p>
+                        </center>
+                    </div>
+                </div>
                 <h2>Menu</h2>
                 <span></span> 
                 <li  class="vessels-route {{ Route::is('Vessels') ? 'active' : '' }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M192 32c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32V64h48c26.5 0 48 21.5 48 48V240l44.4 14.8c23.1 7.7 29.5 37.5 11.5 53.9l-101 92.6c-16.2 9.4-34.7 15.1-50.9 15.1c-19.6 0-40.8-7.7-59.2-20.3c-22.1-15.5-51.6-15.5-73.7 0c-17.1 11.8-38 20.3-59.2 20.3c-16.2 0-34.7-5.7-50.9-15.1l-101-92.6c-18-16.5-11.6-46.2 11.5-53.9L96 240V112c0-26.5 21.5-48 48-48h48V32zM160 218.7l107.8-35.9c13.1-4.4 27.3-4.4 40.5 0L416 218.7V128H160v90.7zM306.5 421.9C329 437.4 356.5 448 384 448c26.9 0 55.4-10.8 77.4-26.1l0 0c11.9-8.5 28.1-7.8 39.2 1.7c14.4 11.9 32.5 21 50.6 25.2c17.2 4 27.9 21.2 23.9 38.4s-21.2 27.9-38.4 23.9c-24.5-5.7-44.9-16.5-58.2-25C449.5 501.7 417 512 384 512c-31.9 0-60.6-9.9-80.4-18.9c-5.8-2.7-11.1-5.3-15.6-7.7c-4.5 2.4-9.7 5.1-15.6 7.7c-19.8 9-48.5 18.9-80.4 18.9c-33 0-65.5-10.3-94.5-25.8c-13.4 8.4-33.7 19.3-58.2 25c-17.2 4-34.4-6.7-38.4-23.9s6.7-34.4 23.9-38.4c18.1-4.2 36.2-13.3 50.6-25.2c11.1-9.4 27.3-10.1 39.2-1.7l0 0C136.7 437.2 165.1 448 192 448c27.5 0 55-10.6 77.5-26.1c11.1-7.9 25.9-7.9 37 0z"/></svg>Vessels <span class="total">20</span></li>
@@ -60,6 +155,8 @@
         </div>
         @yield('Content')
     </main>
-    <script src="{{ asset('js/Links.js') }}"></script>
+    <script src="{{ asset('js/Links.js') }}"></script> 
+    <script src="{{ asset('js/Components/Filter/Filter.js') }}"></script> 
+    <script src="{{ asset('js/Components/Filter/Filter-2.js') }}"></script>
 </body>
 </html>

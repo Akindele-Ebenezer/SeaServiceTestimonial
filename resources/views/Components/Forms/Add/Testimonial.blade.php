@@ -10,13 +10,103 @@
                     <section>
                         <div class="input">
                             <label for="">Employee</label>
-                            <select name="Employees" id="">
-                                <option value="28133">DISI SAMUEL</option>
-                                <option value="28133">DISI SAMUEL</option>
-                                <option value="28133">DISI SAMUEL</option>
-                                <option value="28133">DISI SAMUEL</option>
-                            </select>
-                        </div>
+                            <input type="text" autocomplete="off" id="FILTER_Input" onkeyup="filterFunction()" name="Employees">
+                            <div class="filter-list-wrapper">
+                                <div class="filter-value">
+                                    <h1>John Smith</h1>
+                                    <div>
+                                        <span>351344</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Sarah Johnson</h1>
+                                    <div>
+                                        <span>23456</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Michael Brown</h1>
+                                    <div>
+                                        <span>34567</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Emily Davis</h1>
+                                    <div>
+                                        <span>45678</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>David Wilson</h1>
+                                    <div>
+                                        <span>56789</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Jennifer Taylor</h1>
+                                    <div>
+                                        <span>67890</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Christopher Clark</h1>
+                                    <div>
+                                        <span>78901</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Jessica Martinez</h1>
+                                    <div>
+                                        <span>89012</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Matthew Anderson</h1>
+                                    <div>
+                                        <span>90123</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Amanda Rodriguez</h1>
+                                    <div>
+                                        <span>01234</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Disi Samuel</h1>
+                                    <div>
+                                        <span>351344</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="filter-value">
+                                    <h1>Disi Samuel</h1>
+                                    <div>
+                                        <span>351344</span>
+                                        <span>Captain</span>
+                                    </div>
+                                </div>
+                                <div class="empty">
+                                    <center>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                                        <h1>No data available</h1>
+                                        <p>Looks like the search value you entered isn't in the list.</p>
+                                        <br>
+                                        <p>Please try again!</p>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>  
                         <div class="input">
                             <label for="">Staff number</label>
                             <input type="number" name="StaffNumber">
@@ -28,6 +118,18 @@
                                 <label for="">Date of birth</label>
                                 <input type="date" name="DateOfBirth">
                             </div> 
+                        </div>
+                    </section>
+                    <section> 
+                        <div class="input">
+                            <label for="">Area of operation</label>
+                            <input type="text" name="AreaOfOperation">
+                        </div> 
+                        <div class="input">
+                            <div class="input">
+                                <label for="">Previous Vessel</label> 
+                                <input type="text" name="PreviousVessel" readonly>
+                            </div>
                         </div>
                     </section>
                     <section class="-x2">
@@ -81,14 +183,14 @@
                     <h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z"/></svg>Template Format</h1>
                     <p>
                         <strong>Preview:</strong>
-                        <a href="{{ route('template_1') }}" target="blank">T-1</a>
-                        <a href="{{ route('template_2') }}" target="blank">T-2</a>
-                        <a href="{{ route('template_3') }}" target="blank">T-3</a> 
+                        <a href="{{ route('template_1') }}" target="blank">Deck</a>
+                        <a href="{{ route('template_2') }}" target="blank">Engine</a>
+                        <a href="{{ route('template_3') }}" target="blank">Captain</a> 
                     </p>
                     <div class="input">
                         <label for="">Theme</label>
                         <select name="TemplateFormat" id="">
-                            <option value="T-1">T-1</option>
+                            <option value="T-1">Deck</option>
                             <option value="T-2">T-2</option> 
                         </select>
                     </div>
@@ -98,6 +200,12 @@
                             <option value="LTT">LTT</option>
                             <option value="DEPASA">DEPASA</option> 
                         </select>
+                    </div>
+                    <div class="input">
+                        <div class="input">
+                            <label for="">Current Vessel</label> 
+                            <input type="text" name="CurrentVessel">
+                        </div>
                     </div>
                 </section>
             </div>

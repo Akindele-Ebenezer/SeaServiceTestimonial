@@ -2,6 +2,7 @@
 @section('Title', 'Employees - SEA SERVICE TESTIMONIAL')
 @include('Components.Forms.Add.Employee')
 @include('Components.Forms.Edit.Employee')
+@include('Components.Forms.Delete.Employee')
 
 @section('Content')
 <div class="employees-content table-1"> 
@@ -50,10 +51,12 @@
             <td>CAPTAIN</td>
             <td>51673</td>
             <td>DEPASA</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img src="{{ asset('images/write.png') }}" alt=""><img src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditEmployeeButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteEmployeeButton" src="{{ asset('images/delete.png') }}" alt=""></td>
          </tr>     
       </table>
    </div>
 </div>
 <script src="{{ asset('js/Components/Add/Employee.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/Employee.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/Employee.js') }}"></script>
 @endsection

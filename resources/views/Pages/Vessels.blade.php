@@ -1,12 +1,19 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Vessels - SEA SERVICE TESTIMONIAL')
+@include('Components.Forms.Add.Vessel')
+@include('Components.Forms.Edit.Vessel')
+@include('Components.Forms.Delete.Vessel')
 
 @section('Content')
 <div class="vessel-content"> 
     <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T COASTAL MARINE - Vessel List</h2>
     <div class="list vessel">
         <div class="inner -x">
-            <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong>  
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -15,6 +22,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -23,6 +34,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -31,6 +46,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -39,6 +58,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -47,6 +70,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -55,6 +82,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -63,6 +94,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -71,6 +106,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -79,6 +118,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -87,6 +130,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -95,6 +142,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -103,6 +154,10 @@
     <div class="list vessel">
         <div class="inner -x">
             <span class="vessel">ASAGA</span><strong>DISI SAMUEL <br> <span class="imo">3981433</span></strong> 
+            <div class="action">
+                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+            </div>
             <div class="inner">
                 tug
             </div>
@@ -304,6 +359,16 @@
                 VesselInformation.style.display = 'none';
             })
         })
-    });
+
+        Vessel.addEventListener('mouseover', () => {
+            Vessel.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.style.display = 'block';
+        })
+        Vessel.addEventListener('mouseout', () => {
+            Vessel.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.style.display = 'none';
+        })
+    }); 
 </script> 
+<script src="{{ asset('js/Components/Add/Vessel.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/Vessel.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/Vessel.js') }}"></script>
 @endsection
