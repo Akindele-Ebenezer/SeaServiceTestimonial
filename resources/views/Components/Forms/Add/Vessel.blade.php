@@ -4,45 +4,45 @@
             <span>    </span>
             <button class="cancel-button-add-vessel">✖</button>
         </div>
-        <form action="">
+        <form class="VesselForm" action="">
             <div class="inner-1"> 
                 <div class="fields">
                     <section>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">VESSEL NAME</label>
+                            <input type="text" name="VesselName">
                         </div>
                         <div class="input">
                             <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <input type="text" name="ImoNumber">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">CALL SIGN</label>
+                            <input type="text" name="CallSign">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">FLAG</label>
+                            <input type="text" name="Flag">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">PORT OF REGISTRY</label>
+                            <input type="text" name="PortOfRegistry">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">REGISTRATION (OFFICIAL) No.</label>
+                            <input type="text" name="RegistrationNumber">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">LOA</label>
+                            <input type="text" name="Loa">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">BOA</label>
+                            <input type="text" name="Boa">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">DEPTH MOULED</label>
+                            <input type="text" name="DepthMoulded">
                         </div> 
                     </section> 
                 </div>
@@ -51,40 +51,40 @@
                 <div class="fields">
                     <section>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">SUMMER LOAD DRAUGHT</label>
+                            <input type="text" name="SummerLoadDraught">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">LPP</label>
+                            <input type="text" name="Lpp">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">OWNER</label>
+                            <input type="text" name="Owner">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">BUILDER</label>
+                            <input type="text" name="Builder">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">DATE KEEL LAID</label>
+                            <input type="text" name="DateKeelLaid">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">DATE OF BUILD</label>
+                            <input type="text" name="DateOfBuild">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">PLACE OF BUILD</label>
+                            <input type="text" name="PlaceOfBuild">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">MATERIAL</label>
+                            <input type="text" name="Material">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">YARD No.</label>
+                            <input type="text" name="YardNumber">
                         </div> 
                     </section> 
                 </div>
@@ -93,40 +93,40 @@
                 <div class="fields">
                     <section>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">TYPES OF ENGINES</label>
+                            <input type="text" name="TypesOfEngines">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">NUMBER OF ENGINES</label>
+                            <input type="text" name="NumberOfEngines">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">NUMBER OF CYLINDERS</label>
+                            <input type="text" name="NumberOfCyliners">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">ENGINE OUTPUT(kW)</label>
+                            <input type="text" name="EngineOutput">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">ENGINE MAKERS</label>
+                            <input type="text" name="EngineMakers">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">YEAR OF ENGINE BUILT</label>
+                            <input type="text" name="YearOfEngineBuilt">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">PLACE ENGINES BUILT</label>
+                            <input type="text" name="PlaceEnginesBuilt">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">DIAMETER (mm)</label>
+                            <input type="text" name="Diametermm">
                         </div> 
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">LENGTH OF STROKE (mm)</label>
+                            <input type="text" name="LengthOfStrokemm">
                         </div> 
                     </section> 
                 </div>
@@ -135,45 +135,17 @@
                 <div class="fields">
                     <section>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
+                            <label for="">GROSS TONNAGE</label>
+                            <input type="text" name="GrossTonnage">
                         </div>
                         <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div> 
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div>
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div> 
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div>
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div> 
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div>
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div> 
-                        <div class="input">
-                            <label for="">IMO No.</label>
-                            <input type="number" name="ImoNumber">
-                        </div> 
+                            <label for="">NET TONNAGE</label>
+                            <input type="text" name="NetTonnage">
+                        </div>  
                     </section> 
                 </div>
             </div>
         </form>
-        <button>Create →</button>
+        <button class="CreateVesselButton">Create →</button>
     </div>
 </div>

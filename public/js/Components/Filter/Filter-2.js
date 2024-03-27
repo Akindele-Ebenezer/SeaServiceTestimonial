@@ -1,9 +1,8 @@
-function filterFunction2() {
+FilterValue2 = document.querySelectorAll(".filter-list-wrapper-2 .filter-value-2");function filterFunction2() {
     var input2, filter2;
     input2 = document.getElementById("FILTER_Input2"); 
     filter2 = input2.value.toUpperCase();
     div2 = document.querySelector(".filter-list-wrapper-2");
-    FilterValue2 = document.querySelectorAll(".filter-list-wrapper-2 .filter-value-2");
     EmptyFilter2 = document.querySelector(".filter-list-wrapper-2 .empty2");
     FilterValue_SHOW = document.querySelectorAll(".filter-list-wrapper-2 .Show");
  
@@ -33,3 +32,11 @@ document.addEventListener('click', () => {
 FilterListWrapper2.addEventListener('click', (e) => { 
     e.stopPropagation();  
 })  
+
+FilterValue2.forEach(Value => {
+  Value.addEventListener('click', () => {
+    FILTER_Input2.value = Value.firstElementChild.textContent;
+    FilterListWrapper2.classList.remove('Show'); 
+  })
+});
+ 

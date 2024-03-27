@@ -1,4 +1,4 @@
-.filter-list-wrapper, .filter-list-wrapper-2 {
+.filter-list-wrapper, .filter-list-wrapper-2, .filter-list-wrapper-3 {
     background: #fff; 
     display: none;
     height: 25em;
@@ -38,7 +38,7 @@
         }
     }
 
-    .filter-value, .filter-value-2 {
+    .filter-value, .filter-value-2, .filter-value-3 {
         border-bottom: 1px solid lighten($color: $Color-4, $amount: 5);
         cursor: pointer;
         padding: .2em;

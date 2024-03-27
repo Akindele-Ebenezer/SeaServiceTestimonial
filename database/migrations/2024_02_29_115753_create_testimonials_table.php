@@ -11,15 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->string('UserId')->nullable();
+            $table->string('DateIn')->nullable();
+            $table->string('TimeIn')->nullable();
+            $table->string('Date')->nullable();
+            $table->string('EmployeeName')->nullable();
             $table->string('EmployeeId')->nullable();
-            $table->string('FullName')->nullable();
             $table->string('DateOfBirth')->nullable();
+            $table->string('AreaOfOperation')->nullable();
             $table->string('DischargeBook')->nullable();
-            $table->string('Location')->nullable();
+            $table->string('CurrentVessel')->nullable();
             $table->string('Rank')->nullable();
-            $table->string('Company')->nullable(); 
+            $table->string('Company')->nullable();
+            $table->string('Template')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('sea_service_testimonials');
     }
 };

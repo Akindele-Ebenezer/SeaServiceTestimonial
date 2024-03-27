@@ -23,7 +23,11 @@
         }
     }
 
-    .list {
+    .empty-data {
+        color: #fff;
+    }
+
+    .list, .empty-data {
         align-items: center;
         background-color: $Color-2; 
         border-bottom: 1px solid lighten($color: $Color-2, $amount: 6);
@@ -181,6 +185,11 @@
                 padding: 0.5em;
                 margin-right: 1em;
                 width: 4em;
+            }
+
+            .vessel-name-x, .imo-number-x {
+                font-size: unset;
+                margin-right: .2em;
             }
         }
 

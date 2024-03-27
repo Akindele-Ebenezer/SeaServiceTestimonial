@@ -16,11 +16,15 @@
   background-color: #333;
 }
 
+.Hide {
+  display: none !important;
+}
+
 .Show {
   display: block !important;
 }
 
-.filter-list-wrapper, .filter-list-wrapper-2 {
+.filter-list-wrapper, .filter-list-wrapper-2, .filter-list-wrapper-3 {
   background: #fff;
   display: none;
   height: 25em;
@@ -33,20 +37,20 @@
   width: 100%;
   z-index: 10;
 }
-.filter-list-wrapper .empty, .filter-list-wrapper-2 .empty {
+.filter-list-wrapper .empty, .filter-list-wrapper-2 .empty, .filter-list-wrapper-3 .empty {
   display: none;
   padding-block: 1em;
 }
-.filter-list-wrapper .empty center h1, .filter-list-wrapper-2 .empty center h1 {
+.filter-list-wrapper .empty center h1, .filter-list-wrapper-2 .empty center h1, .filter-list-wrapper-3 .empty center h1 {
   display: block !important;
   font-size: large !important;
 }
-.filter-list-wrapper .empty center p, .filter-list-wrapper-2 .empty center p {
+.filter-list-wrapper .empty center p, .filter-list-wrapper-2 .empty center p, .filter-list-wrapper-3 .empty center p {
   color: #666;
   font-size: larger !important;
   text-align: center;
 }
-.filter-list-wrapper .empty center svg, .filter-list-wrapper-2 .empty center svg {
+.filter-list-wrapper .empty center svg, .filter-list-wrapper-2 .empty center svg, .filter-list-wrapper-3 .empty center svg {
   background: #ffeded;
   border-radius: 5em;
   fill: #ff6868;
@@ -54,22 +58,22 @@
   width: 5em;
   padding: 0.8em;
 }
-.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper-2 .filter-value, .filter-list-wrapper-2 .filter-value-2 {
+.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper .filter-value-3, .filter-list-wrapper-2 .filter-value, .filter-list-wrapper-2 .filter-value-2, .filter-list-wrapper-2 .filter-value-3, .filter-list-wrapper-3 .filter-value, .filter-list-wrapper-3 .filter-value-2, .filter-list-wrapper-3 .filter-value-3 {
   border-bottom: 1px solid #ffe8e8;
   cursor: pointer;
   padding: 0.2em;
 }
-.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper-2 .filter-value:hover h1, .filter-list-wrapper-2 .filter-value:hover div, .filter-list-wrapper-2 .filter-value-2:hover h1, .filter-list-wrapper-2 .filter-value-2:hover div {
+.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper .filter-value-3:hover h1, .filter-list-wrapper .filter-value-3:hover div, .filter-list-wrapper-2 .filter-value:hover h1, .filter-list-wrapper-2 .filter-value:hover div, .filter-list-wrapper-2 .filter-value-2:hover h1, .filter-list-wrapper-2 .filter-value-2:hover div, .filter-list-wrapper-2 .filter-value-3:hover h1, .filter-list-wrapper-2 .filter-value-3:hover div, .filter-list-wrapper-3 .filter-value:hover h1, .filter-list-wrapper-3 .filter-value:hover div, .filter-list-wrapper-3 .filter-value-2:hover h1, .filter-list-wrapper-3 .filter-value-2:hover div, .filter-list-wrapper-3 .filter-value-3:hover h1, .filter-list-wrapper-3 .filter-value-3:hover div {
   background-color: #f4f9fc !important;
 }
-.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper-2 .filter-value div, .filter-list-wrapper-2 .filter-value-2 div {
+.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper .filter-value-3 div, .filter-list-wrapper-2 .filter-value div, .filter-list-wrapper-2 .filter-value-2 div, .filter-list-wrapper-2 .filter-value-3 div, .filter-list-wrapper-3 .filter-value div, .filter-list-wrapper-3 .filter-value-2 div, .filter-list-wrapper-3 .filter-value-3 div {
   display: flex;
   justify-content: space-between;
 }
-.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper-2 .filter-value div span, .filter-list-wrapper-2 .filter-value-2 div span {
+.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper .filter-value-3 div span, .filter-list-wrapper-2 .filter-value div span, .filter-list-wrapper-2 .filter-value-2 div span, .filter-list-wrapper-2 .filter-value-3 div span, .filter-list-wrapper-3 .filter-value div span, .filter-list-wrapper-3 .filter-value-2 div span, .filter-list-wrapper-3 .filter-value-3 div span {
   font-size: smaller;
 }
-.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper-2 .filter-value h1, .filter-list-wrapper-2 .filter-value-2 h1 {
+.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper .filter-value-3 h1, .filter-list-wrapper-2 .filter-value h1, .filter-list-wrapper-2 .filter-value-2 h1, .filter-list-wrapper-2 .filter-value-3 h1, .filter-list-wrapper-3 .filter-value h1, .filter-list-wrapper-3 .filter-value-2 h1, .filter-list-wrapper-3 .filter-value-3 h1 {
   border: none !important;
   color: #225f7d !important;
   font-size: small;
@@ -136,6 +140,11 @@
   display: flex;
   justify-content: space-around;
 }
+.form-1 form.VesselForm .input label {
+  margin: 1em 1em 1em 0;
+  font-weight: 400;
+  font-size: smaller;
+}
 .form-1 form + button {
   background: #225f7d;
   border: none;
@@ -161,7 +170,7 @@
 .form-1 form .input label, .form-1 form td label {
   font-weight: 500;
   text-align: left;
-  width: 8em;
+  width: 9em;
 }
 .form-1 form .input select, .form-1 form .input input, .form-1 form td select, .form-1 form td input {
   background-color: #f0f7fb;
@@ -194,7 +203,11 @@
   width: 1.5em;
 }
 .form-1 form .inner-1 .t-f, .form-1 form .inner-2 .t-f {
-  translate: 0 7em;
+  translate: 0 1em;
+}
+.form-1 form .inner-1 .working-period, .form-1 form .inner-2 .working-period {
+  height: 11em;
+  overflow-y: scroll;
 }
 .form-1 form .inner-2 section p a {
   color: #444;
@@ -221,9 +234,15 @@
   outline: none;
   padding: 0.3em;
 }
+.form-1 form .inner-2 .working-period table tr td span:hover {
+  background-color: #000;
+}
 .form-1 form .inner-2 .working-period table tr th {
   font-weight: 500;
   text-align: left;
+}
+.form-1 form .inner-2 .working-period table tr th:nth-child(2) {
+  translate: -11em 0em;
 }
 .form-1 form h2 {
   color: #ff6868;
@@ -299,6 +318,9 @@
   font-size: 1.5em;
   padding-block: 1em;
 }
+.DeleteModal .inner center p span {
+  font-size: unset;
+}
 .DeleteModal .inner center svg {
   background: #ffeded;
   border-radius: 5em;
@@ -360,6 +382,44 @@
 .no-data {
   display: none;
   height: 70%;
+}
+
+nav[role] {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+}
+nav[role] span, nav[role] p {
+  color: #fff;
+}
+nav[role] a {
+  color: #fff;
+  border-radius: 0.2em;
+  padding: 0.2em;
+  text-decoration: none;
+  cursor: pointer;
+}
+nav[role] a[rel=prev], nav[role] a[rel=next] {
+  background-color: unset;
+  width: 1em;
+}
+nav[role] a.px-4.py-2.ml-3 {
+  background-color: #ff6868;
+}
+nav[role] span.z-0 {
+  align-items: center;
+  display: flex;
+  margin-block: 0.5em;
+}
+nav[role] span[aria-disabled] {
+  width: 1em;
+}
+nav[role] span[aria-current] {
+  background-color: #ff6868;
+  padding: 0.2em;
+}
+nav[role] span svg {
+  width: 1em;
 }
 
 .Login {
@@ -466,7 +526,7 @@ main .left-navigation-x ul li:hover svg {
   fill: #225f7d !important;
 }
 main .left-navigation-x ul li svg {
-  fill: #3b9bca !important;
+  fill: #f0f7fb !important;
   width: 1.5em !important;
 }
 main .left-navigation ul {
@@ -609,33 +669,36 @@ main .left-navigation ul li .total {
   margin-right: 1em;
   width: 2em;
 }
-.vessel-content .list {
+.vessel-content .empty-data {
+  color: #fff;
+}
+.vessel-content .list, .vessel-content .empty-data {
   align-items: center;
   background-color: #225f7d;
   border-bottom: 1px solid #297195;
   padding: 1em;
 }
-.vessel-content .list:hover {
+.vessel-content .list:hover, .vessel-content .empty-data:hover {
   background: #246585;
   cursor: pointer;
 }
-.vessel-content .list .inner {
+.vessel-content .list .inner, .vessel-content .empty-data .inner {
   align-items: center;
   color: #fff;
   display: flex;
   justify-content: space-between;
   text-align: center;
 }
-.vessel-content .list .inner.-x {
+.vessel-content .list .inner.-x, .vessel-content .empty-data .inner.-x {
   width: 100%;
 }
-.vessel-content .list .inner .action {
+.vessel-content .list .inner .action, .vessel-content .empty-data .inner .action {
   display: none;
 }
-.vessel-content .list .inner img {
+.vessel-content .list .inner img, .vessel-content .empty-data .inner img {
   width: 1.5em;
 }
-.vessel-content .list .inner strong {
+.vessel-content .list .inner strong, .vessel-content .empty-data .inner strong {
   border-radius: 0.3em;
   color: #fff;
   font-weight: 500;
@@ -644,11 +707,11 @@ main .left-navigation ul li .total {
   text-align: left;
   width: 17em;
 }
-.vessel-content .list .inner strong .imo {
+.vessel-content .list .inner strong .imo, .vessel-content .empty-data .inner strong .imo {
   color: #fff;
   font-size: 0.85em;
 }
-.vessel-content .list .inner .vessel {
+.vessel-content .list .inner .vessel, .vessel-content .empty-data .inner .vessel {
   text-align: left;
   width: 5em;
 }
@@ -744,6 +807,10 @@ main .left-navigation ul li .total {
   padding: 0.5em;
   margin-right: 1em;
   width: 4em;
+}
+.content-data .inner h1 .vessel-name-x, .content-data .inner h1 .imo-number-x {
+  font-size: unset;
+  margin-right: 0.2em;
 }
 .content-data .inner-x {
   display: flex;
@@ -859,7 +926,7 @@ main .left-navigation ul li .total {
   border-bottom: 2px solid #ff6868;
 }
 .testimonial-content .table, .table-1 .table {
-  height: 70vh;
+  height: 63vh;
   padding-block: 2em;
   margin-top: 1em;
   overflow-y: scroll;
@@ -872,6 +939,9 @@ main .left-navigation ul li .total {
   background-color: #174155;
   color: #fff;
   padding: 1em;
+}
+.testimonial-content .table table td.empty-list, .testimonial-content .table table th.empty-list, .table-1 .table table td.empty-list, .table-1 .table table th.empty-list {
+  background-color: #1a4a61 !important;
 }
 .testimonial-content .table table td:hover, .testimonial-content .table table th:hover, .table-1 .table table td:hover, .table-1 .table table th:hover {
   background-color: #1a4a61 !important;

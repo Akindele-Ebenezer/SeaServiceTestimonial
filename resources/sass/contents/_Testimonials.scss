@@ -99,7 +99,7 @@
     }
 
     .table {
-        height: 70vh;
+        height: 63vh;
         padding-block: 2em;
         margin-top: 1em;
         overflow-y: scroll;
@@ -112,6 +112,10 @@
                 background-color: darken($color: $Color-2, $amount: 10); 
                 color: #fff;
                 padding: 1em;  
+
+                &.empty-list {
+                    background-color: darken($color: $Color-2, $amount: 7) !important ;
+                }
 
                 &:hover {
                     background-color: darken($color: $Color-2, $amount: 7) !important ;

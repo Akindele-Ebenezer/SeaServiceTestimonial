@@ -35,125 +35,105 @@
       <table>
          <tr>
             <th> </th> 
-            <th>Date</th> 
+            <th>Employee</th> 
             <th>Vessel</th>
             <th>Staff number</th>
             <th>Discharge book</th>
             <th>Position</th> 
             <th>#</th> 
          </tr>
+         @unless (count($Testimonials) > 0)
+         <tr>
+            <td class="empty-list">System don't have any testimonials..</td>
+         </tr>
+         @endunless
+         @foreach ($Testimonials as $Testimonial)
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr> 
-            <th>Employee</th>
-            <th>Rank</th>
-            <th>D.O.B</th>
-            <th>Staff number</th>
-            <th>Working period</th>
-            <th>Leave</th> 
-            <th>Company</th> 
-         </tr>
-         <tr> 
-            <td>DISI SAMUEL</td>
-            <td>Captain</td>
-            <td>23/01/1990</td>
-            <td>36515</td>
-            <td>Less than 1 month</td>
-            <td> Start Date: 02-04-2024 <br> End Date: 20-04-2024 <br>(18 days) </td> 
-            <td>DEPASA</td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>536635</td>
-            <td>661</td>
-            <td>CAPTAIN</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
+            <td>{{ $Testimonial->EmployeeName }}</td>
+            <td class="data-x">{{ $Testimonial->CurrentVessel }}</td>
+            <td>{{ $Testimonial->EmployeeId }}</td>
+            <td>{{ $Testimonial->DischargeBook }}</td>
+            <td>{{ $Testimonial->Rank }}</td>
+            <td class="action">
+               <img class="TestimonialPdf" src="{{ asset('images/pdf.png') }}" alt="">
+               {{-- 0 --}}
+               <span class="Hide">{{ $Testimonial->id }}</span>
+               <span class="Hide">{{ $Testimonial->Template }}</span>
+               <img src="{{ asset('images/statistic.png') }}" alt="">
+               <img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt="">
+               <span class="Hide">{{ $Testimonial->id }}</span>
+               <span class="Hide">{{ $Testimonial->EmployeeName }}</span>
+               <span class="Hide">{{ $Testimonial->EmployeeId }}</span>
+               <span class="Hide">{{ $Testimonial->DateOfBirth }}</span>
+               <span class="Hide">{{ $Testimonial->AreaOfOperation }}</span>
+               <span class="Hide">{{ $Testimonial->DischargeBook }}</span> 
+               <span class="Hide">{{ $Testimonial->Rank }}</span>
+               <span class="Hide">{{ $Testimonial->Company }}</span>
+               {{-- 8 --}}
+               @php
+                   $WorkingPeriod = \DB::table('working_periods')
+                                    ->select([
+                                       'StartDate_1', 'EndDate_1', 
+                                       'StartDate_2', 'EndDate_2',
+                                       'StartDate_3', 'EndDate_3',
+                                       'StartDate_4', 'EndDate_4',
+                                       'StartDate_5', 'EndDate_5', 
+                                       ])
+                                    ->where('DateIn', $Testimonial->DateIn)
+                                    ->where('TimeIn', $Testimonial->TimeIn)
+                                    ->where('Vessel', $Testimonial->CurrentVessel) 
+                                    ->first();
+               @endphp
+               <span class="Hide">{{ $WorkingPeriod->StartDate_1 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->EndDate_1 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->StartDate_2 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->EndDate_2 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->StartDate_3 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->EndDate_3 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->StartDate_4 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->EndDate_4 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->StartDate_5 ?? '' }}</span>
+               <span class="Hide">{{ $WorkingPeriod->EndDate_5 ?? '' }}</span>
+               {{-- 18 --}}
+               <span class="Hide">{{ $Testimonial->Template }}</span>
+               <span class="Hide">{{ $Testimonial->CurrentVessel }}</span>
+               <img class="DeleteTestimonialButton" src="{{ asset('images/delete.png') }}" alt="">
+               <span class="Hide">{{ $Testimonial->id }}</span>
+               <span class="Hide">{{ $Testimonial->CurrentVessel }}</span>
+               <span class="Hide">{{ $Testimonial->DateIn }}</span>
+            </td>
+            <div class="testimonial-info Hide">
+               <div>
+                  <span> Date</span><span> 02-12-2023</span>
+               </div>
+               <div>   
+                  <span>Rank</span><span>Captain</span>
+               </div>
+               <div>   
+                  <span>D.O.B</span><span>23/01/1990</span>
+               </div>
+               <div>   
+                  <span>Staff number</span><span>36515</span>
+               </div>
+               <div>   
+                  <span>Working period</span><span>Less than 1 month</span>
+               </div>
+               <div>   
+                  <span>Leave</span><span>Start Date: 02-04-2024 <br> End Date: 20-04-2024 <br>(18 days) </span>
+               </div>
+               <div>   
+                  <span>Company</span><span>DEPASA</span>
+               </div>
+            </div>  
+         </tr>  
+         @endforeach
       </table>
    </div>
+   {{ $Testimonials->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Testimonial.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Testimonial.js') }}"></script>
+<script src="{{ asset('js/Pages/Testimonial.js') }}"></script>
 @endsection

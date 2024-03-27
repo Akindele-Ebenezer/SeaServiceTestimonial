@@ -1,10 +1,9 @@
+FilterValue = document.querySelectorAll(".filter-list-wrapper .filter-value"); 
 function filterFunction() {
-    var input, filter;
-    input = document.getElementById("FILTER_Input");
+    var input, filter; 
     input = document.getElementById("FILTER_Input");
     filter = input.value.toUpperCase();
     div = document.querySelector(".filter-list-wrapper");
-    FilterValue = document.querySelectorAll(".filter-list-wrapper .filter-value");
     EmptyFilter = document.querySelector(".filter-list-wrapper .empty");
     FilterValue_SHOW = document.querySelectorAll(".filter-list-wrapper .Show");
  
@@ -34,4 +33,17 @@ document.addEventListener('click', () => {
 FilterListWrapper.addEventListener('click', (e) => { 
     e.stopPropagation();  
 })  
+
+FilterValue.forEach(Value => {
+  Value.addEventListener('click', () => {
+    FILTER_Input.value = Value.firstElementChild.textContent;
+    FilterListWrapper.classList.remove('Show'); 
+    document.querySelector('.AddTestimonialForm input[name=StaffNumber]').value = Value.firstElementChild.nextElementSibling.textContent;
+    document.querySelector('.AddTestimonialForm input[name=DateOfBirth]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.AddTestimonialForm input[name=DischargeBook]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.AddTestimonialForm input[name=PreviousVessel]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.AddTestimonialForm .input select[name=Rank]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.AddTestimonialForm .input select[name=Company]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+  })
+});
  

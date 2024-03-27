@@ -42,85 +42,35 @@
             <th>Last logout</th> 
             <th> </th> 
          </tr> 
+         @foreach ($Users as $User)
          <tr>
-            <td>1</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td>{{ $User->id }}</td>
+            <td>{{ $User->FullName }}</td>
+            <td>{{ $User->Email }}</td> 
+            <td>{{ $User->Department }}</td>
+            <td>{{ $User->Position }}</td>
+            <td>{{ $User->Role }}</td>
+            <td>{{ $User->LastLogin }}</td>
+            <td>{{ $User->LastLogout }}</td>
+            <td class="action">
+               <img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt="">
+               <img class="EditUserButton" src="{{ asset('images/write.png') }}" alt="">
+               <span class="Hide">{{ $User->id }}</span>
+               <span class="Hide">{{ $User->FullName }}</span>
+               <span class="Hide">{{ $User->Email }}</span>
+               <span class="Hide">{{ $User->Password }}</span>
+               <span class="Hide">{{ $User->Department }}</span>
+               <span class="Hide">{{ $User->Position }}</span>
+               <span class="Hide">{{ $User->Role }}</span>
+               <img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt="">
+               <span class="Hide">{{ $User->id }}</span>
+               <span class="Hide">{{ $User->FullName }}</span>
+            </td>
          </tr> 
-         <tr>
-            <td>2</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
-         <tr>
-            <td>3</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
-         <tr>
-            <td>4</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
-         <tr>
-            <td>5</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
-         <tr>
-            <td>6</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
-         <tr>
-            <td>7</td> 
-            <td>Akindele Ebenezer</td> 
-            <td>ebenezer.akindele@depasamarine.com</td>
-            <td>IT Department</td>
-            <td>IT Officer</td>
-            <td>user</td>
-            <td>09-03-2024</td> 
-            <td>09-03-2024</td> 
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditUserButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt=""></td>
-         </tr> 
+         @endforeach 
       </table>
    </div>
+   {{ $Users->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/User.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/User.js') }}"></script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -11,15 +12,26 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('Pages.Users');
+        $Users = User::paginate(14);
+        return view('Pages.Users', [
+            'Users' => $Users,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $Request)
     {
-        //
+        User::insert([
+            'FullName' => $Request->FullName,
+            'Email' => $Request->Email,
+            'Password' => $Request->Password,
+            'Role' => $Request->Role,
+            'Department' => $Request->Department,
+            'Position' => $Request->Position,
+        ]);
+        return redirect()->route('Users');
     }
 
     /**
@@ -49,16 +61,26 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $Request, $Id)
     {
-        //
+        User::where('id', $Id) 
+        ->update([
+            'FullName' => $Request->FullName,
+            'Email' => $Request->Email,
+            'Password' => $Request->Password,
+            'Role' => $Request->Role,
+            'Department' => $Request->Department,
+            'Position' => $Request->Position,
+        ]);
+        return redirect()->route('Users');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    { 
+        User::find($id)->delete();
+        return redirect()->route('Users');
     }
 }

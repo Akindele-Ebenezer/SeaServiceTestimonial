@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/Styles.css') }}">
- 
+    <link rel="icon" href="{{ asset('images/icon.png') }}" type="image/png"> 
     <title>@yield('Title')</title>
 </head>
 <body>
@@ -158,5 +158,6 @@
     <script src="{{ asset('js/Links.js') }}"></script> 
     <script src="{{ asset('js/Components/Filter/Filter.js') }}"></script> 
     <script src="{{ asset('js/Components/Filter/Filter-2.js') }}"></script>
+    <script src="{{ asset('js/Components/Filter/Filter-3.js') }}"></script>
 </body>
 </html>

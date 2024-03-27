@@ -42,6 +42,10 @@
                 color: #777;
                 font-size: 1.5em;
                 padding-block: 1em;
+
+                span {
+                    font-size: unset;
+                }
             }
 
             svg {

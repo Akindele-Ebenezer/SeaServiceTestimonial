@@ -43,18 +43,40 @@
             <th>Company</th> 
             <th>#</th> 
          </tr>
+         @unless (count($Employees) > 0)
          <tr>
-            <td>23553</td>
-            <td class="data-x">DISI SAMUEL</td>
-            <td>01-01-1900</td>
-            <td>SD GUMEL</td>
-            <td>CAPTAIN</td>
-            <td>51673</td>
-            <td>DEPASA</td>
-            <td class="action"><img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""><img class="EditEmployeeButton" src="{{ asset('images/write.png') }}" alt=""><img class="DeleteEmployeeButton" src="{{ asset('images/delete.png') }}" alt=""></td>
+            <td class="empty-list">System don't have employees..</td>
+         </tr>
+         @endunless
+         @foreach ($Employees as $Employee)
+         <tr>
+            <td>{{ $Employee->EmployeeId }}</td>
+            <td class="data-x">{{ $Employee->FullName }}</td>
+            <td>{{ $Employee->DateOfBirth }}</td>
+            <td>{{ $Employee->Location }}</td>
+            <td>{{ $Employee->Rank }}</td>
+            <td>{{ $Employee->DischargeBook }}</td>
+            <td>{{ $Employee->Company }}</td>
+            <td class="action">
+               <img src="{{ asset('images/pdf.png') }}" alt="">
+               <img src="{{ asset('images/statistic.png') }}" alt="">
+               <img class="EditEmployeeButton" src="{{ asset('images/write.png') }}" alt="">
+               <span class="Hide">{{ $Employee->EmployeeId }}</span>
+               <span class="Hide">{{ $Employee->FullName }}</span>
+               <span class="Hide">{{ $Employee->DateOfBirth }}</span>
+               <span class="Hide">{{ $Employee->DischargeBook }}</span>
+               <span class="Hide">{{ $Employee->Location }}</span>
+               <span class="Hide">{{ $Employee->Rank }}</span>
+               <span class="Hide">{{ $Employee->Company }}</span>
+               <img class="DeleteEmployeeButton" src="{{ asset('images/delete.png') }}" alt="">
+               <span class="Hide">{{ $Employee->FullName }}</span>
+               <span class="Hide">{{ $Employee->EmployeeId }}</span>
+            </td>
          </tr>     
+         @endforeach
       </table>
    </div>
+   {{ $Employees->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Employee.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Employee.js') }}"></script>
