@@ -72,7 +72,8 @@ class UserController extends Controller
             'Department' => $Request->Department,
             'Position' => $Request->Position,
         ]);
-        return redirect()->route('Users');
+        
+        return back();
     }
 
     /**

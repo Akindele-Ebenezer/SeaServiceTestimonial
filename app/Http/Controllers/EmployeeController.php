@@ -98,7 +98,7 @@ class EmployeeController extends Controller
             'Rank' => $Request->EditRank,
             'Company' => $Request->EditCompany,
         ]);
-        return redirect()->route('Employees');
+        return back();
     }
 
     /**

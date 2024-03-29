@@ -33,8 +33,9 @@
                         <div class="input">
                             <label for="">Location</label>
                             <select name="EditLocation" id="">
-                                <option value="ASAGA">ASAGA</option>
-                                <option value="DAURA">DAURA</option> 
+                                @foreach ($Vessels as $Vessel)
+                                    <option value="{{ $Vessel->VesselName ?? '-' }}">{{ $Vessel->VesselName ?? '-' }}</option> 
+                                @endforeach
                             </select>
                         </div>
                     </section>

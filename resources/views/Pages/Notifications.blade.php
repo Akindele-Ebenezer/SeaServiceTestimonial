@@ -2,7 +2,7 @@
 @section('Title', 'Notifications - SEA SERVICE TESTIMONIAL')
 
 @section('Content')
-<div class="vessel-content"> 
+<div class="vessel-content notifications"> 
     <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T COASTAL MARINE - Notifications</h2>
     <div class="list">
         <div class="inner -x">

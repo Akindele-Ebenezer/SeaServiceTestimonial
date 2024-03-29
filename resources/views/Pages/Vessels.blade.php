@@ -14,7 +14,7 @@
     @endunless
     @foreach ($Vessels as $Vessel)
     @php
-        // $Vessels_EMPLOYEE = \DB::table('employees') 
+        $Vessels_EMPLOYEE = \DB::table('testimonials')->select(['EmployeeName', 'Rank', 'Company'])->where('CurrentVessel', $Vessel->VesselName)->orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->first(); 
         $Vessels_GeneralOthers = \DB::table('vessels_general_others')->where('ImoNumber', $Vessel->ImoNumber)->first();
         $Vessels_Section3 = \DB::table('vessels_section_3')->where('ImoNumber', $Vessel->ImoNumber)->first();
         $Vessels_Section4 = \DB::table('vessels_section_4')->where('ImoNumber', $Vessel->ImoNumber)->first();
@@ -50,13 +50,20 @@
         <span class="Hide">{{ $Vessels_Section4->GrossTonnage ?? '-' }}</span>
         <span class="Hide">{{ $Vessels_Section4->NetTonnage ?? '-' }}</span>
         <div class="inner -x">
-            <span class="vessel Hide">{{ $Vessel->VesselName }}</span><strong>{{ $Vessel->VesselName }}<br> <span class="imo">{{ $Vessel->ImoNumber ?? '-' }}</span></strong>  
+            <span class="vessel Hide">{{ $Vessel->VesselName }}</span>
+            <strong>
+                <span class="vessel-name-span">
+                    {{ $Vessel->VesselName }}
+                </span> 
+                <span class="imo">{{ $Vessel->ImoNumber ?? '-' }}</span>
+                <span class="employee">  {{ $Vessels_EMPLOYEE->EmployeeName ?? ''}} {{ '(' .  ($Vessels_EMPLOYEE->Rank ?? '') . ')'}}</span>
+            </strong>  
             <div class="action">
                 <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
                 <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
             </div>
-            <div class="inner">
-                tug
+            <div class="inner company">
+                {{ $Vessels_EMPLOYEE->Company ?? ''}}
             </div>
         </div>
     </div> 
@@ -204,14 +211,13 @@
         AddTestimonialWrapper.style.height = '100%';
         AddTestimonialWrapper.style.display = 'flex';
         AddTestimonialModal.style.display = 'flex';
-        NoDataSelectedModal.style.display = 'none';
-        ContentData.style.backgroundColor = '#eee';
+        NoDataSelectedModal.style.display = 'none'; 
+        ContentData.style.backgroundColor = '#225f7d'; 
         
         CancelButton.addEventListener('click', () => {
             AddTestimonialModal.style.display = 'none';
             NoDataSelectedModal.style.display = 'flex';
-            AddTestimonialWrapper.style.height = 'unset';
-            ContentData.style.backgroundColor = '#fff';
+            AddTestimonialWrapper.style.height = 'unset'; 
         })
     });
 
@@ -225,9 +231,15 @@
             NoDataSelectedModal.style.display = 'none';
             AddVesselButton.style.display = 'none';
             AddTestimonialWrapper.style.display = 'none';
-            ContentData.style.backgroundColor = '#eee';
+            ContentData.style.backgroundColor = '#fff';
             VesselInformation.style.display = 'block';
-
+            Vessels.forEach((Vessel_) => {
+                Vessel_.style.backgroundColor = '';
+                Vessel_.style.borderLeft = '8px solid #fff'; 
+            });
+            Vessel.style.backgroundColor = '#f0f7fb'; 
+            Vessel.style.borderLeft = '8px solid #225f7d'; 
+ 
             document.querySelector('.vessel-name-x').textContent = Vessel.firstElementChild.textContent;
             document.querySelector('.imo-number-x').textContent = Vessel.firstElementChild.nextElementSibling.textContent;
             document.querySelector('.vessel-name').firstElementChild.textContent = Vessel.firstElementChild.textContent;
@@ -264,7 +276,7 @@
                 NoDataSelectedModal.style.display = 'flex';
                 AddVesselButton.style.display = 'flex';
                 AddTestimonialWrapper.style.display = 'none'; 
-                ContentData.style.backgroundColor = '#fff'; 
+                ContentData.style.backgroundColor = 'unset'; 
                 VesselInformation.style.display = 'none';
             })
         })

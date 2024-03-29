@@ -133,7 +133,7 @@ class SeaServiceTestimonialController extends Controller
             'EndDate_5' => $Request->EditEndDate_5, 
         ]);      
  
-        return redirect()->route('Testimonials');
+        return back();
     }
 
     /**

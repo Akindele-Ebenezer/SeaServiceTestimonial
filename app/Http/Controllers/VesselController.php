@@ -150,7 +150,8 @@ class VesselController extends Controller
             'GrossTonnage' => $Request->EditGrossTonnage,
             'NetTonnage' => $Request->EditNetTonnage, 
         ]);
-        return redirect()->route('Vessels');
+        
+        return back();
     }
 
     /**

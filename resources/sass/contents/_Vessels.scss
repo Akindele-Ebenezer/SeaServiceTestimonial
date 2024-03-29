@@ -1,8 +1,12 @@
 .vessel-content { 
-    background: $Color-2;
-    overflow-y: scroll; 
-    padding-inline: 1em;
+    background: #fff;
+    // border-inline: 15px solid #eee;
+    overflow-y: scroll;  
     width: 25%; 
+
+    &.notifications {
+        border-right: 1px solid lighten($color: $Color-2, $amount: 55);
+    }
 
     h2 {
         align-items: center;
@@ -29,24 +33,42 @@
 
     .list, .empty-data {
         align-items: center;
-        background-color: $Color-2; 
-        border-bottom: 1px solid lighten($color: $Color-2, $amount: 6);
+        background-color: #fff; 
+        border-bottom: 1px solid lighten($color: $Color-2, $amount: 60);
+        border-left: 8px solid #fff; 
         padding: 1em;
 
         &:hover {
-            background: lighten($color: $Color-2, $amount: 2);  
+            background: lighten($color: $Color-2, $amount: 65); 
+            border-left: 8px solid $Color-2; 
             cursor: pointer;
+
+            .inner.-x {
+                strong {
+                    .vessel-name-span {
+                        background: lighten($color: $Color-2, $amount: 60); 
+                        color: $Color-2;
+                        font-weight: bolder;
+                    }
+                }
+            }
         }
 
         .inner { 
             align-items: center;
-            color: #fff;
+            color: $Color-2;
             display: flex; 
             justify-content: space-between;
             text-align: center; 
   
             &.-x {
                 width: 100%;
+
+                .company {
+                    background-color: lighten($color: $Color-2, $amount: 62);
+                    padding: .2em;
+                    text-transform: lowercase;
+                }
             }
 
             .action {
@@ -54,21 +76,34 @@
             }
 
             img {
+                margin-inline: .5em;
                 width: 1.5em;
             }
 
             strong { 
                 border-radius: 0.3em;
-                color: #fff;
+                // color: darken($color: $Color-4, $amount: 20);
                 font-weight: 500;
                 margin-right: 2em;
                 padding: 0.5em;
                 text-align: left;
                 width: 17em;
 
+                .employee {
+                    display: block;
+                    font-weight: 400; 
+                }
+
                 .imo {
-                    color: #fff;
+                    color: $Color-2;
                     font-size: .85em;
+                }
+
+                .vessel-name-span {
+                    background-color: lighten($color: $Color-4, $amount: 8.5);
+                    color: darken($color: $Color-4, $amount: 20);
+                    display: block;
+                    padding: .3em .3em .3em 0;
                 }
             }
 
@@ -81,10 +116,8 @@
 }
 
 
-.content-data {
-    background-color: #fff;
+.content-data { 
     overflow-y: scroll;
-    padding: 1em;
     padding-left: 0;
     position: relative;
     width: 58%;
@@ -152,15 +185,12 @@
         display: none;
         
         h1 {
-            align-items: center; 
-            background: $Color-2;
+            align-items: center;  
             color: #fff;
             display: flex;
             font-size: 2em;
             padding: 0.5em;
-            padding-left: 1em;
-            position: sticky;
-            top: -0.5em;
+            padding-left: 1em; 
 
             button {
                 background: #fff;
@@ -180,8 +210,7 @@
             }
 
             img {
-                border: 1px solid lighten($color: $Color-5, $amount: 25);
-                border-radius: 0.4em;
+                border: 5px solid $Color-2;
                 padding: 0.5em;
                 margin-right: 1em;
                 width: 4em;
@@ -199,39 +228,45 @@
             padding: 1em;
 
             .data {
-                background: #fff;
-                border-radius: 0.5em;
+                background: $Color-2;  
                 margin-inline: 0.4em;
                 padding: 1em;
                 width: 48.5%;
 
                 h2 { 
+                    background: $Color-2;  
                     color: darken($color: $Color-4, $amount: 20);
+                    font-size: larger;
                     font-weight: 500;
                     position: sticky;
-                    text-align: center;
-                    top: 5em;
+                    text-align: center; 
+                    top: 0;
                 }
 
                 ul {
                     li {
-                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 65);
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
                         display: flex;
                         justify-content: space-between;
                         padding-block: 1em;
 
                         span {
                             &:first-of-type {
-                                color: #777;
+                                color: #eee;
                             }
 
                             strong {
-                                color: #444;    
+                                color: #fff;   
+                                font-weight: 500; 
                             }
                         }
                     }
                 }
             } 
+        }
+
+        &.vessel-information {
+            background-color: lighten($color: $Color-2, $amount: 10);
         }
     } 
 }

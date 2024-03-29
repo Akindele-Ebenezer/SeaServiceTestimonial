@@ -332,18 +332,18 @@
 
 .no-data-selected, .no-data {
   align-items: center;
+  background-color: #225f7d;
   display: flex;
   height: 100%;
   justify-content: center;
 }
 .no-data-selected center, .no-data center {
-  border: 1px solid #c8e3f0;
   border-radius: 1em;
   padding: 3em;
 }
 .no-data-selected center button, .no-data center button {
   align-items: center;
-  background: #225f7d;
+  background: #174155;
   border: none;
   border-radius: 0.25em;
   display: flex;
@@ -373,7 +373,7 @@
   width: 60%;
 }
 .no-data-selected center p, .no-data center p {
-  color: #225f7d;
+  color: #fff;
   font-size: 1.5em;
   margin-block: 1em;
   width: 24em;
@@ -498,7 +498,7 @@ main {
 }
 main .left-navigation {
   background-color: #fff;
-  border-right: 1px solid #57a9d1;
+  border-right: 1px solid #c8e3f0;
   overflow-y: scroll;
   padding: 1.5em;
   padding-bottom: 9em;
@@ -526,8 +526,8 @@ main .left-navigation-x ul li:hover svg {
   fill: #225f7d !important;
 }
 main .left-navigation-x ul li svg {
-  fill: #f0f7fb !important;
-  width: 1.5em !important;
+  fill: #3b9bca !important;
+  width: 1.25em !important;
 }
 main .left-navigation ul {
   position: relative;
@@ -647,10 +647,12 @@ main .left-navigation ul li .total {
 }
 
 .vessel-content {
-  background: #225f7d;
+  background: #fff;
   overflow-y: scroll;
-  padding-inline: 1em;
   width: 25%;
+}
+.vessel-content.notifications {
+  border-right: 1px solid #c8e3f0;
 }
 .vessel-content h2 {
   align-items: center;
@@ -674,17 +676,24 @@ main .left-navigation ul li .total {
 }
 .vessel-content .list, .vessel-content .empty-data {
   align-items: center;
-  background-color: #225f7d;
-  border-bottom: 1px solid #297195;
+  background-color: #fff;
+  border-bottom: 1px solid #dcedf5;
+  border-left: 8px solid #fff;
   padding: 1em;
 }
 .vessel-content .list:hover, .vessel-content .empty-data:hover {
-  background: #246585;
+  background: #f0f7fb;
+  border-left: 8px solid #225f7d;
   cursor: pointer;
+}
+.vessel-content .list:hover .inner.-x strong .vessel-name-span, .vessel-content .empty-data:hover .inner.-x strong .vessel-name-span {
+  background: #dcedf5;
+  color: #225f7d;
+  font-weight: bolder;
 }
 .vessel-content .list .inner, .vessel-content .empty-data .inner {
   align-items: center;
-  color: #fff;
+  color: #225f7d;
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -692,24 +701,39 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner.-x, .vessel-content .empty-data .inner.-x {
   width: 100%;
 }
+.vessel-content .list .inner.-x .company, .vessel-content .empty-data .inner.-x .company {
+  background-color: #e4f1f8;
+  padding: 0.2em;
+  text-transform: lowercase;
+}
 .vessel-content .list .inner .action, .vessel-content .empty-data .inner .action {
   display: none;
 }
 .vessel-content .list .inner img, .vessel-content .empty-data .inner img {
+  margin-inline: 0.5em;
   width: 1.5em;
 }
 .vessel-content .list .inner strong, .vessel-content .empty-data .inner strong {
   border-radius: 0.3em;
-  color: #fff;
   font-weight: 500;
   margin-right: 2em;
   padding: 0.5em;
   text-align: left;
   width: 17em;
 }
+.vessel-content .list .inner strong .employee, .vessel-content .empty-data .inner strong .employee {
+  display: block;
+  font-weight: 400;
+}
 .vessel-content .list .inner strong .imo, .vessel-content .empty-data .inner strong .imo {
-  color: #fff;
+  color: #225f7d;
   font-size: 0.85em;
+}
+.vessel-content .list .inner strong .vessel-name-span, .vessel-content .empty-data .inner strong .vessel-name-span {
+  background-color: #fff9f9;
+  color: #ff6868;
+  display: block;
+  padding: 0.3em 0.3em 0.3em 0;
 }
 .vessel-content .list .inner .vessel, .vessel-content .empty-data .inner .vessel {
   text-align: left;
@@ -717,9 +741,7 @@ main .left-navigation ul li .total {
 }
 
 .content-data {
-  background-color: #fff;
   overflow-y: scroll;
-  padding: 1em;
   padding-left: 0;
   position: relative;
   width: 58%;
@@ -777,14 +799,11 @@ main .left-navigation ul li .total {
 }
 .content-data .inner h1 {
   align-items: center;
-  background: #225f7d;
   color: #fff;
   display: flex;
   font-size: 2em;
   padding: 0.5em;
   padding-left: 1em;
-  position: sticky;
-  top: -0.5em;
 }
 .content-data .inner h1 button {
   background: #fff;
@@ -802,8 +821,7 @@ main .left-navigation ul li .total {
   font-weight: 100;
 }
 .content-data .inner h1 img {
-  border: 1px solid #515151;
-  border-radius: 0.4em;
+  border: 5px solid #225f7d;
   padding: 0.5em;
   margin-right: 1em;
   width: 4em;
@@ -818,30 +836,35 @@ main .left-navigation ul li .total {
   padding: 1em;
 }
 .content-data .inner-x .data {
-  background: #fff;
-  border-radius: 0.5em;
+  background: #225f7d;
   margin-inline: 0.4em;
   padding: 1em;
   width: 48.5%;
 }
 .content-data .inner-x .data h2 {
+  background: #225f7d;
   color: #ff6868;
+  font-size: larger;
   font-weight: 500;
   position: sticky;
   text-align: center;
-  top: 5em;
+  top: 0;
 }
 .content-data .inner-x .data ul li {
-  border-bottom: 1px solid #f0f7fb;
+  border-bottom: 1px solid #276e91;
   display: flex;
   justify-content: space-between;
   padding-block: 1em;
 }
 .content-data .inner-x .data ul li span:first-of-type {
-  color: #777;
+  color: #eee;
 }
 .content-data .inner-x .data ul li span strong {
-  color: #444;
+  color: #fff;
+  font-weight: 500;
+}
+.content-data .inner.vessel-information {
+  background-color: #2d7da5;
 }
 
 .testimonial-content, .table-1 {
@@ -973,7 +996,7 @@ main .left-navigation ul li .total {
   padding: 0.5em;
 }
 .testimonial-content .table table tr td.action, .table-1 .table table tr td.action {
-  background-color: #163d51;
+  background-color: #123141;
 }
 .testimonial-content .table table tr td:not(.testimonial-content .table table tr td.action, .table-1 .table table tr td.action), .table-1 .table table tr td:not(.testimonial-content .table table tr td.action, .table-1 .table table tr td.action) {
   background-color: #163d51;
@@ -993,7 +1016,6 @@ main .left-navigation ul li .total {
 
 .dashboard {
   background-color: #eee;
-  padding: 1em;
 }
 .dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
   display: flex;

@@ -7,7 +7,7 @@ main {
 
     .left-navigation {  
         background-color: #fff;
-        border-right: 1px solid lighten($color: $Color-2, $amount: 27);
+        border-right: 1px solid lighten($color: $Color-2, $amount: 55);
         overflow-y: scroll;
         padding: 1.5em;
         padding-bottom: 9em;
@@ -41,8 +41,8 @@ main {
                     }
     
                     svg {
-                        fill: lighten($color: $Color-2, $amount: 65) !important;
-                        width: 1.5em !important;
+                        fill: lighten($color: $Color-2, $amount: 20) !important;
+                        width: 1.25em !important;
                     }
                 }
             }
