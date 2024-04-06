@@ -13,34 +13,42 @@ class EmployeeController extends Controller
     public function index()
     {
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
+        $Ranks = \DB::table('ranks')->orderBy('id', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
         return view('Pages.Employees', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,  
+            'Ranks' => $Ranks,  
         ]);
     }
 
     public function deck_rating()
     {
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
+        $Employees = Employee::where('Rank', 'Deck')->orderBy('EmployeeId', 'DESC')->paginate(14);
         return view('Pages.DeckRating', [
             'Vessels' => $Vessels,
+            'Employees' => $Employees,
         ]);
     }
 
     public function engineers()
     {
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
+        $Employees = Employee::where('Rank', 'Engineer')->orderBy('EmployeeId', 'DESC')->paginate(14);
         return view('Pages.Engineers', [
-            'Vessels' => $Vessels,
+             'Vessels' => $Vessels,
+            'Employees' => $Employees,
         ]);
     }
 
     public function captains()
     {
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
+        $Employees = Employee::where('Rank', 'Captain')->orderBy('EmployeeId', 'DESC')->paginate(14);
         return view('Pages.Captains', [
             'Vessels' => $Vessels,
+            'Employees' => $Employees,
         ]);
     }
     /**
@@ -107,6 +115,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee, $EmployeeId)
     { 
         Employee::where('EmployeeId', $EmployeeId)->delete();
-        return redirect()->route('Employees');
+        return back(); 
     }
 }

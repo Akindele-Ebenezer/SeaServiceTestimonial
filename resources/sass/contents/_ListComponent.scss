@@ -1,0 +1,50 @@
+.list-component { 
+    background: rgba(0, 0, 0, .6);
+    display: none;
+    justify-content: center;
+    height: 100vh;
+    position: absolute;
+    width: 100vw;
+    z-index: 100;
+    
+    .AddRankButton {
+        background: darken($color: $Color-4, $amount: 20);
+        border: none;
+        border-radius: 0.1em;
+        bottom: 1em;
+        color: #eee;
+        cursor: pointer;
+        font-size: 2em;
+        margin-block: 0.5em;
+        padding: .2em 1em;
+        position: absolute;
+        right: 1em;
+        z-index: 1;
+    }
+
+    .inner-x {
+        background: #fff;
+        overflow-y: scroll;
+        position: relative;
+        width: 50em;
+ 
+        .close-button-ranks { 
+            background: #fff;
+            border-radius: .1em;
+            padding: .4em;
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            z-index: 1;
+
+            button {
+                background-color: unset;
+                border: none;
+                color: red;
+                cursor: pointer;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+    }
+}

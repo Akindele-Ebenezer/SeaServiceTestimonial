@@ -16,11 +16,13 @@ class SeaServiceTestimonialController extends Controller
         $Testimonials = Testimonial::orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(14);
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
+        $Ranks = \DB::table('ranks')->get();
 
         return view('Pages.Testimonials', [
             'Testimonials' => $Testimonials,
             'Employees' => $Employees,
             'Vessels' => $Vessels,  
+            'Ranks' => $Ranks,
         ]);
     }
 
@@ -64,6 +66,7 @@ class SeaServiceTestimonialController extends Controller
             'EndDate_3' => $Request->EndDate_3,
             'EndDate_4' => $Request->EndDate_4,
             'EndDate_5' => $Request->EndDate_5, 
+            'EmployeeId' => $Request->StaffNumber, 
         ]);      
  
         return redirect()->route('Testimonials');
@@ -131,6 +134,7 @@ class SeaServiceTestimonialController extends Controller
             'EndDate_3' => $Request->EditEndDate_3,
             'EndDate_4' => $Request->EditEndDate_4,
             'EndDate_5' => $Request->EditEndDate_5, 
+            'EmployeeId' => $Request->EditStaffNumber, 
         ]);      
  
         return back();
@@ -142,6 +146,6 @@ class SeaServiceTestimonialController extends Controller
     public function destroy(string $Id)
     {
         Testimonial::find($Id)->delete();
-        return redirect()->route('Testimonials');
+        return back(); 
     }
 }

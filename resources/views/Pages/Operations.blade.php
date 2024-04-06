@@ -36,91 +36,130 @@
             <th>Vessel</th>
             <th>Area of operation</th>
             <th>Nature of duties performed</th>
-            <th>Working period</th> 
+            <th>Working period/leave days</th>
             <th>#</th> 
          </tr>
+         @unless (count($Operations) > 0)
          <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
+            <td class="empty-list">System have not recorded any operations..</td>
+         </tr>
+         @endunless
+         @foreach ($Operations as $Operation)
+         <tr>
+            <td class="data-x">{{ $Operation->DateIn }}</td>
+            <td class="data-x">{{ $Operation->CurrentVessel }}</td>
+            <td>{{ $Operation->AreaOfOperation }}</td>
+            <td class="data-x">
+               @switch($Operation->Template)
+                   @case('Deck')
+                        Navigational watch for not less than 12 hours out of every 24 hours whilst the vessel was engaged on operation. General maintenance of vessel.
+                       @break
+                   @case('Engine')
+                        Regular watch on auxiliary machinery. Regular watch on main
+                        propulsion machinery. Regular work in Ships processing centralized control room, full or partial Automation
+                        facilty to operate machinery in the unmanned mode for a significant proportion of each 24 hour period.
+                       @break
+                     @case('Captain')
+                        Navigational watch for not less than 12 hours out of every 24 hours
+                        whilst the vessel was engaged in harbour towage activities and limited coastal voyages. As - TIM, he has
+                        shown to be very experienced in ASD tug handling giving the highest guarantee & quality of tug assistance to
+                        the Lagos Pilotage District.
+                        He showed to have a high level of leadership skills & work ethics making him a role model for his crew.
+                        @break
+                   @default
+                       
+               @endswitch 
+            </td>
+            <td>
+               <div class="operation-working-periods">
+                  @php
+                      $WorkingPeriods = \DB::table('working_periods')->where('Vessel', $Operation->CurrentVessel)->where('DateIn', $Operation->DateIn)->get();
+                      $EmployeeName = \DB::table('testimonials')->select(['EmployeeName', 'Rank'])->where('EmployeeId', $Operation->EmployeeId)->where('DateIn', $Operation->DateIn)->where('TimeIn', $Operation->TimeIn)->first();
+                      $TotalNumberOfDays_OPERATION_Arr = []; 
+                      $LeaveDays_Arr = []; 
+                      $LeaveDays_ARR_1 = []; 
+                      $LeaveDays_ARR_2 = []; 
+                      $LeaveDays_ARR_3 = []; 
+                      $LeaveDays_ARR_4 = [];  
+                      $TotalLeaveDays = [];
+                  @endphp
+                  @foreach ($WorkingPeriods as $Period)
+                     @if (!empty($Period->StartDate_1) AND !empty($Period->EndDate_1))
+                        <h2>Period 1</h2> 
+                        From: {{ $Period->StartDate_1 }} <br> To: {{ $Period->EndDate_1 }} 
+                        @php
+                            $StartDate_1_ = \Carbon\Carbon::parse($Period->StartDate_1);
+                            $EndDate_1_ = \Carbon\Carbon::parse($Period->EndDate_1);
+                            array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_1_->diffInDays($EndDate_1_));
+                            array_push($LeaveDays_ARR_1, $Period->EndDate_1);
+                        @endphp
+                        <br> ({{ $StartDate_1_->diffInDays($EndDate_1_) }} days) <br> <span></span>
+                     @endif
+                     @if (!empty($Period->StartDate_2) AND !empty($Period->EndDate_2))
+                        <h2>Period 2</h2>
+                        From: {{ $Period->StartDate_2 }} <br> To: {{ $Period->EndDate_2 }}  
+                        @php
+                            $StartDate_2_ = \Carbon\Carbon::parse($Period->StartDate_2);
+                            $EndDate_2_ = \Carbon\Carbon::parse($Period->EndDate_2);
+                            array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_2_->diffInDays($EndDate_2_));
+                            array_push($LeaveDays_ARR_1, $Period->StartDate_2);
+                            array_push($LeaveDays_ARR_2, $Period->EndDate_2);
+                            array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_1[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_1[1])));
+                        @endphp
+                        <br> ({{ $StartDate_2_->diffInDays($EndDate_2_) }} days) <br> <span></span>
+                     @endif
+                     @if (!empty($Period->StartDate_3) AND !empty($Period->EndDate_3))
+                        <h2>Period 3</h2>
+                        From: {{ $Period->StartDate_3 }} <br> To: {{ $Period->EndDate_3 }}  
+                        @php
+                            $StartDate_3_ = \Carbon\Carbon::parse($Period->StartDate_3);
+                            $EndDate_3_ = \Carbon\Carbon::parse($Period->EndDate_3);
+                            array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_3_->diffInDays($EndDate_3_));
+                            array_push($LeaveDays_ARR_2, $Period->StartDate_3);
+                            array_push($LeaveDays_ARR_3, $Period->EndDate_3);
+                            array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_2[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_2[1])));
+                        @endphp
+                        <br> ({{ $StartDate_3_->diffInDays($EndDate_3_) }} days) <br> <span></span>
+                     @endif
+                     @if (!empty($Period->StartDate_4) AND !empty($Period->EndDate_4))
+                        <h2>Period 4</h2>
+                        From: {{ $Period->StartDate_4 }} <br> To: {{ $Period->EndDate_4 }}  
+                        @php
+                            $StartDate_4_ = \Carbon\Carbon::parse($Period->StartDate_4);
+                            $EndDate_4_ = \Carbon\Carbon::parse($Period->EndDate_4);
+                            array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_4_->diffInDays($EndDate_4_));
+                            array_push($LeaveDays_ARR_3, $Period->StartDate_4);
+                            array_push($LeaveDays_ARR_4, $Period->EndDate_4);
+                            array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_3[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_3[1])));
+                        @endphp
+                        <br> ({{ $StartDate_4_->diffInDays($EndDate_4_) }} days) <br> <span></span>
+                     @endif
+                     @if (!empty($Period->StartDate_5) AND !empty($Period->EndDate_5))
+                        <h2>Period 5</h2>
+                        From: {{ $Period->StartDate_5 }} <br> To: {{ $Period->EndDate_5 }}  
+                        @php
+                            $StartDate_5_ = \Carbon\Carbon::parse($Period->StartDate_5);
+                            $EndDate_5_ = \Carbon\Carbon::parse($Period->EndDate_5);
+                            array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_5_->diffInDays($EndDate_5_));
+                            array_push($LeaveDays_ARR_4, $Period->StartDate_5);
+                            array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_4[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_4[1])));
+                        @endphp
+                        <br> ({{ $StartDate_5_->diffInDays($EndDate_5_) }} days) <br> <span></span>
+                     @endif   
+                     @if (count($TotalLeaveDays) < 1)
+                        {{ $EmployeeName->EmployeeName }} ({{ $EmployeeName->Rank }}) <br> worked for {{ collect($TotalNumberOfDays_OPERATION_Arr)->sum() }} days and did not go <br> on leave during these period.
+                        @else
+                        {{ $EmployeeName->EmployeeName }} ({{ $EmployeeName->Rank }}) <br> worked for {{ collect($TotalNumberOfDays_OPERATION_Arr)->sum() }} days and went on <br> leave for {{ collect($TotalLeaveDays)->sum() }} days.
+                     @endif
+                  @endforeach
+               </div>
+            </td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr> 
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>
-         <tr>
-            <td>03-04-2024</td>
-            <td class="data-x">ASAGA</td>
-            <td>Sea dredging</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam minus facere fuga sapiente est vitae. Accusamus officiis ex nihil quibusdam odit voluptate possimus, ratione, similique, a dolorem quis quaerat animi.</td>
-            <td>From: 09-03-2024 <br> To: 23-03-2024 <br> (24 days)</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr> 
+         @endforeach 
       </table>
    </div>
+   {{ $Operations->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection

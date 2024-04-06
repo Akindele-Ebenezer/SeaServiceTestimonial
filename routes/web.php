@@ -7,6 +7,7 @@ use App\Http\Controllers\SeaServiceTestimonialController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SeaServiceTestimonialPdf;
+use App\Http\Controllers\RankController;
  
 Route::get('/', [LoginController::class, 'login']);
 
@@ -28,6 +29,10 @@ Route::get('/Employees', [EmployeeController::class, 'index'])->name('Employees'
 Route::get('/Add/Employee', [EmployeeController::class, 'create'])->name('AddEmployee');
 Route::get('/Edit/Employee/{Id}', [EmployeeController::class, 'update'])->name('EditEmployee');
 Route::get('/Delete/Employee/{Id}', [EmployeeController::class, 'destroy'])->name('DeleteEmployee');
+ 
+Route::get('/Add/Rank', [RankController::class, 'create'])->name('AddRank');
+Route::get('/Edit/Rank/{Id}', [RankController::class, 'update'])->name('EditRank');
+Route::get('/Delete/Rank/{Id}', [RankController::class, 'destroy'])->name('DeleteRank');
 
 Route::get('/Users', [UserController::class, 'index'])->name('Users');
 Route::get('/Add/User', [UserController::class, 'create'])->name('AddUser');

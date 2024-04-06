@@ -50,11 +50,11 @@
          @foreach ($Testimonials as $Testimonial)
          <tr>
             <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td>{{ $Testimonial->EmployeeName }}</td>
+            <td class="data-x">{{ $Testimonial->EmployeeName }}</td>
             <td class="data-x">{{ $Testimonial->CurrentVessel }}</td>
-            <td>{{ $Testimonial->EmployeeId }}</td>
+            <td class="data-x">{{ $Testimonial->EmployeeId }}</td>
             <td>{{ $Testimonial->DischargeBook }}</td>
-            <td>{{ $Testimonial->Rank }}</td>
+            <td class="data-x">{{ $Testimonial->Rank }}</td>
             <td class="action">
                <img class="TestimonialPdf" src="{{ asset('images/pdf.png') }}" alt="">
                {{-- 0 --}}

@@ -37,86 +37,29 @@
             <th>Company</th> 
             <th>#</th> 
          </tr>
+         @unless (count($Employees) > 0)
+         <tr>
+            <td class="empty-list">System don't have any deck's information..</td>
+         </tr>
+         @endunless
+         @foreach ($Employees as $Deck)
          <tr> 
             <td class="data-x">
-               DISI SAMUEL
+               {{ $Deck->FullName }}
                <br>
                <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
+                  <span class="-1">{{ $Deck->Location }}</span>
+                  <span class="-2">{{ $Deck->EmployeeId }}</span>
                </div>
             </td> 
-            <td>Deck</td>
-            <td>LTT</td>
+            <td>{{ $Deck->Rank }}</td>
+            <td>{{ $Deck->Company }}</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>   
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>Deck</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
+         @endforeach 
       </table>
    </div>
+   {{ $Employees->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection

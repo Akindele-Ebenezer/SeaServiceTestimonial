@@ -170,6 +170,17 @@
                     &:hover {
                         background-color: #444;
                     }
+
+                    .operation-working-periods {
+                        height: 5em;
+                        overflow-y: scroll;
+
+                        span {
+                            border-bottom: 1px solid $Color-2;
+                            display: block;
+                            padding: .3em;
+                        }
+                    }
                 }
             }
         }

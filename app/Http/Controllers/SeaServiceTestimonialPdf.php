@@ -9,6 +9,7 @@ class SeaServiceTestimonialPdf extends Controller
 {
     public function template_1(Fpdf $fpdf, Request $Request) { 
         $Employee = Testimonial::select('EmployeeName')->where('id', $Request->Testimonial_Id)->first();
+        // $ImoNumber = \DB::table('vessels_vessel_information')->where('VesselName', $Request->CurrentVessel)->first();
         $StaffNumber = Testimonial::select('EmployeeId')->where('id', $Request->Testimonial_Id)->first();
         $DateOfBirth = Testimonial::select('DateOfBirth')->where('id', $Request->Testimonial_Id)->first();
         $AreaOfOperation = Testimonial::select('AreaOfOperation')->where('id', $Request->Testimonial_Id)->first();

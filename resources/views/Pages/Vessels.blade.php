@@ -6,7 +6,7 @@
 
 @section('Content')
 <div class="vessel-content"> 
-    <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T COASTAL MARINE - Vessel List</h2>
+    <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T Coastal Marine - Vessel List</h2>
     @unless (count($Vessels) > 0)
     <div class="empty-data">
         No vessel in the system..
@@ -278,6 +278,8 @@
                 AddTestimonialWrapper.style.display = 'none'; 
                 ContentData.style.backgroundColor = 'unset'; 
                 VesselInformation.style.display = 'none';
+                Vessel.style.backgroundColor = '';
+                Vessel.style.borderLeft = '8px solid #fff'; 
             })
         })
 

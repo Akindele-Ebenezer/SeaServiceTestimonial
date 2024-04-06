@@ -12,7 +12,7 @@
       <div class="h-2">
          <input type="text" placeholder="Search captains & masters..">
          <span><img src="{{ asset('images/ship (1).png') }}" alt="">Vessels</span>
-         <span><img src="{{ asset('images/engineering.png') }}" alt="">Engineers rating</span>
+         <span><img src="{{ asset('images/Captain_QMing.png') }}" alt="">Captain_QMs rating</span>
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
       <div class="h-3">
@@ -37,58 +37,26 @@
             <th>Company</th> 
             <th>#</th> 
          </tr>
+         @unless (count($Employees) > 0)
+         <tr>
+            <td class="empty-list">System don't have any captain/quarter master's information..</td>
+         </tr>
+         @endunless
+         @foreach ($Employees as $Captain_QM)
          <tr> 
             <td class="data-x">
-               DISI SAMUEL
+               {{ $Captain_QM->FullName }}
                <br>
                <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
+                  <span class="-1">{{ $Captain_QM->Location }}</span>
+                  <span class="-2">{{ $Captain_QM->EmployeeId }}</span>
                </div>
             </td> 
-            <td>engineer</td>
-            <td>LTT</td>
+            <td>{{ $Captain_QM->Rank }}</td>
+            <td>{{ $Captain_QM->Company }}</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>engineer</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>engineer</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
-         <tr> 
-            <td class="data-x">
-               DISI SAMUEL
-               <br>
-               <div class="sub-x">
-                  <span class="-1">asaga</span>
-                  <span class="-2">20 days</span>
-               </div>
-            </td> 
-            <td>engineer</td>
-            <td>LTT</td>
-            <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
-         </tr>  
+         </tr>   
+         @endforeach 
       </table>
    </div>
 </div>

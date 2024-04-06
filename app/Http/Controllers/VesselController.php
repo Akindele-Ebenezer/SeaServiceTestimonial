@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vessel;
 use Illuminate\Http\Request;
+use App\Models\Testimonial;
 use App\Models\Employee;
 
 class VesselController extends Controller
@@ -14,18 +15,24 @@ class VesselController extends Controller
     public function index()
     {
         $Vessels = \DB::table('vessels_vessel_information')->get();
+        $Ranks = \DB::table('ranks')->get();
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         return view('Pages.Vessels', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,
+            'Ranks' => $Ranks,
         ]);
     }
 
     public function operations()
     {
         $Vessels = \DB::table('vessels_vessel_information')->get();
+        $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
+        $Operations = Testimonial::orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(14);
         return view('Pages.Operations', [
             'Vessels' => $Vessels,
+            'Employees' => $Employees,
+            'Operations' => $Operations,
         ]);
     }
 
@@ -163,6 +170,6 @@ class VesselController extends Controller
         \DB::table('vessels_general_others')->where('ImoNumber', $ImoNumber)->delete();
         \DB::table('vessels_section_3')->where('ImoNumber', $ImoNumber)->delete();
         \DB::table('vessels_section_4')->where('ImoNumber', $ImoNumber)->delete();
-        return redirect()->route('Vessels');
+        return back(); 
     }
 }

@@ -3,6 +3,10 @@
 @include('Components.Forms.Add.Employee')
 @include('Components.Forms.Edit.Employee')
 @include('Components.Forms.Delete.Employee')
+@include('Components.Forms.Add.Rank')
+@include('Components.Inner.Rank')
+@include('Components.Forms.Edit.Rank')
+@include('Components.Forms.Delete.Rank')
 
 @section('Content')
 <div class="employees-content table-1"> 
@@ -21,6 +25,8 @@
          <h2 class="active">All employees</h2>
          <h2 class="inactive">DEPASA</h2>
          <h2 class="inactive">LTT</h2>
+         <h2 class="inactive ShowRanks"> Ranks</h2> 
+         <h2 class="inactive">+ Add Company</h2>
       </div>
    </header> 
    <div class="no-data">
@@ -81,4 +87,8 @@
 <script src="{{ asset('js/Components/Add/Employee.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Employee.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Employee.js') }}"></script>
+<script src="{{ asset('js/Components/Add/Rank.js') }}"></script>
+<script src="{{ asset('js/Components/Inner/Rank.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/Rank.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/Rank.js') }}"></script>
 @endsection

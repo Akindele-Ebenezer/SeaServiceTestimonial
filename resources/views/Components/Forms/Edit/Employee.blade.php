@@ -43,8 +43,9 @@
                         <div class="input">
                             <label for="">Rank</label>
                             <select name="EditRank" id="">
-                                <option value="Engineer">Engineer</option>
-                                <option value="Deck">Deck</option> 
+                                @foreach ($Ranks as $Rank)
+                                <option value="{{ $Rank->Rank }}">{{ $Rank->Rank }}</option> 
+                                @endforeach
                             </select>
                         </div>
                         <div class="input">
