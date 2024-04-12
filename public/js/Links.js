@@ -120,3 +120,11 @@ Logout_ROUTE.forEach(Route => {
         window.location = '/';
     })
 });
+
+let FILTERVALUE_X = document.querySelectorAll('.filter-value-x');
+
+FILTERVALUE_X.forEach(Value => {
+    Value.addEventListener('click', () => {
+        window.location =  window.location.pathname + '?FilterValue=' + Value.textContent;
+    })
+});

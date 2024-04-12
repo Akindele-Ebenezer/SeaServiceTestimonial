@@ -10,45 +10,142 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $Request)
     {
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
+        $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
         $Ranks = \DB::table('ranks')->orderBy('id', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
+        
+        if(isset($Request->FilterValue)) {  
+            $Employees = Employee::where('Company', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Location', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('EmployeeId', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('FullName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DateOfBirth', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DischargeBook', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Rank', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(14);
+                       
+            return view('Pages.Employees', [
+                'Employees' => $Employees,
+                'Vessels' => $Vessels,  
+                'Ranks' => $Ranks,  
+                'Companies' => $Companies,  
+            ]);
+        }
+
         return view('Pages.Employees', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,  
             'Ranks' => $Ranks,  
+            'Companies' => $Companies,  
         ]);
     }
 
-    public function deck_rating()
+    public function deck_rating(Request $Request)
     {
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
         $Employees = Employee::where('Rank', 'Deck')->orderBy('EmployeeId', 'DESC')->paginate(14);
+        $Ranks = \DB::table('ranks')->get();
+        $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
+                
+        if(isset($Request->FilterValue)) {  
+            $Employees = Employee::where('Rank', 'Deck')
+                            ->where('Company', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Location', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('EmployeeId', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('FullName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DateOfBirth', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DischargeBook', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Rank', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orderBy('EmployeeId', 'DESC')
+                            ->paginate(14);
+                           
+            return view('Pages.DeckRating', [
+                'Vessels' => $Vessels,
+                'Employees' => $Employees,
+                'Ranks' => $Ranks,
+                'Companies' => $Companies,
+            ]);
+        }
+
         return view('Pages.DeckRating', [
             'Vessels' => $Vessels,
             'Employees' => $Employees,
+            'Ranks' => $Ranks,
+            'Companies' => $Companies,
         ]);
     }
 
-    public function engineers()
+    public function engineers(Request $Request)
     {
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
         $Employees = Employee::where('Rank', 'Engineer')->orderBy('EmployeeId', 'DESC')->paginate(14);
+        $Ranks = \DB::table('ranks')->get();
+        $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
+        
+        if(isset($Request->FilterValue)) {  
+            $Employees = Employee::where('Rank', 'Engineer')
+                            ->where('Company', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Location', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('EmployeeId', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('FullName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DateOfBirth', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DischargeBook', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Rank', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(14);
+                           
+            return view('Pages.Engineers', [
+                'Vessels' => $Vessels,
+                'Employees' => $Employees,
+                'Ranks' => $Ranks,
+                'Companies' => $Companies,
+            ]);
+        }
+
         return view('Pages.Engineers', [
              'Vessels' => $Vessels,
             'Employees' => $Employees,
+            'Ranks' => $Ranks,
+            'Companies' => $Companies,
         ]);
     }
 
-    public function captains()
+    public function captains(Request $Request)
     {
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
         $Employees = Employee::where('Rank', 'Captain')->orderBy('EmployeeId', 'DESC')->paginate(14);
+        $Ranks = \DB::table('ranks')->get();
+        $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
+        
+        if(isset($Request->FilterValue)) {  
+            $Employees = Employee::where('Rank', 'Captain')
+                            ->where('Company', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Location', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('EmployeeId', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('FullName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DateOfBirth', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DischargeBook', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Rank', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(14);
+                       
+            return view('Pages.Captains', [
+                'Vessels' => $Vessels,
+                'Employees' => $Employees,
+                'Ranks' => $Ranks,
+                'Companies' => $Companies,
+            ]);
+        }
+
         return view('Pages.Captains', [
             'Vessels' => $Vessels,
             'Employees' => $Employees,
+            'Ranks' => $Ranks,
+            'Companies' => $Companies,
         ]);
     }
     /**

@@ -7,6 +7,10 @@
 @include('Components.Inner.Rank')
 @include('Components.Forms.Edit.Rank')
 @include('Components.Forms.Delete.Rank')
+@include('Components.Forms.Add.Company')
+@include('Components.Inner.Company')
+@include('Components.Forms.Edit.Company')
+@include('Components.Forms.Delete.Company')
 
 @section('Content')
 <div class="employees-content table-1"> 
@@ -21,12 +25,12 @@
          <span><img src="{{ asset('images/engineering.png') }}" alt="">Employees</span>
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
-      <div class="h-3">
-         <h2 class="active">All employees</h2>
-         <h2 class="inactive">DEPASA</h2>
-         <h2 class="inactive">LTT</h2>
+      <div class="h-3"> 
+         <h2 class="{{ !(request()->has('FilterValue')) ? 'active' : 'inactive' }} employees-route">All employees</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'DEPASA' ? 'active' : 'inactive' }} filter-value-x">DEPASA</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'L.T.T' ? 'active' : 'inactive' }} filter-value-x">L.T.T</h2>
          <h2 class="inactive ShowRanks"> Ranks</h2> 
-         <h2 class="inactive">+ Add Company</h2>
+         <h2 class="inactive ShowCompanies">Companies</h2>
       </div>
    </header> 
    <div class="no-data">
@@ -57,12 +61,12 @@
          @foreach ($Employees as $Employee)
          <tr>
             <td>{{ $Employee->EmployeeId }}</td>
-            <td class="data-x">{{ $Employee->FullName }}</td>
-            <td>{{ $Employee->DateOfBirth }}</td>
-            <td>{{ $Employee->Location }}</td>
-            <td>{{ $Employee->Rank }}</td>
-            <td>{{ $Employee->DischargeBook }}</td>
-            <td>{{ $Employee->Company }}</td>
+            <td class="data-x filter-value-x">{{ $Employee->FullName }}</td>
+            <td class="filter-value-x">{{ $Employee->DateOfBirth }}</td>
+            <td class="filter-value-x">{{ $Employee->Location }}</td>
+            <td class="filter-value-x">{{ $Employee->Rank }}</td>
+            <td class="filter-value-x">{{ $Employee->DischargeBook }}</td>
+            <td class="filter-value-x">{{ $Employee->Company }}</td>
             <td class="action">
                <img src="{{ asset('images/pdf.png') }}" alt="">
                <img src="{{ asset('images/statistic.png') }}" alt="">
@@ -82,7 +86,7 @@
          @endforeach
       </table>
    </div>
-   {{ $Employees->links() }}
+   {{ $Employees->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Employee.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Employee.js') }}"></script>
@@ -91,4 +95,8 @@
 <script src="{{ asset('js/Components/Inner/Rank.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Rank.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Rank.js') }}"></script>
+<script src="{{ asset('js/Components/Add/Company.js') }}"></script>
+<script src="{{ asset('js/Components/Inner/Company.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/Company.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/Company.js') }}"></script>
 @endsection

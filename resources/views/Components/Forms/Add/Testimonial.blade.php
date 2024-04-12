@@ -7,6 +7,7 @@
         <form action="{{ route('AddTestimonial') }}" class="AddTestimonialForm">
             <div class="inner-1"> 
                 <div class="fields">
+                    <p class="error-testimonial error"></p>
                     <section>
                         <div class="input">
                             <label for="">Employee</label>
@@ -87,8 +88,9 @@
                         <div class="input">
                             <label for="">Company</label>
                             <select name="Company" id="">
-                                <option value="LTT">LTT</option>
-                                <option value="DEPASA">DEPASA</option> 
+                                @foreach ($Companies as $Company)
+                                <option value="{{ $Company->Company }}">{{ $Company->Company }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </section>

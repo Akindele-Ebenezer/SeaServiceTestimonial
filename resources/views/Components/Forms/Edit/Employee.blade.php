@@ -51,7 +51,7 @@
                         <div class="input">
                             <label for="">Company</label>
                             <select name="EditCompany" id="">
-                                <option value="LTT">LTT</option>
+                                <option value="L.T.T">L.T.T</option>
                                 <option value="DEPASA">DEPASA</option> 
                             </select>
                         </div>

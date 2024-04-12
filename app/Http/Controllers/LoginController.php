@@ -6,7 +6,35 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function login () {
+    public function login () { 
+        session()->forget('USER_ID');
         return view('Pages.Login');
+    }
+
+    public function auth(Request $Request) {
+        $Users = \DB::table('users')
+                    ->where('Email', $Request->Email)
+                    ->where('Password', $Request->Password)
+                    ->get();
+ 
+        foreach ($Users as $User) {
+            if (count($Users) > 0) { 
+                session()->put('USER_ID', $User->id);
+                session()->put('FullName', $User->FullName);
+                session()->put('Role', $User->Role); 
+                session()->forget('Error');
+                return redirect('/Vessels');
+            }  
+        }                     
+        session()->put('Error', 'Incorrect email or password..');
+        return redirect('/');
+    }
+
+    public function logout() {
+        session()->forget('USER_ID');
+        session()->forget('FullName');
+        session()->forget('Role');
+        session()->flush();
+        return redirect('/');
     }
 }

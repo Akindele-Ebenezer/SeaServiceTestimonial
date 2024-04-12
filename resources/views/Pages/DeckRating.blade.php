@@ -15,10 +15,10 @@
          <span><img src="{{ asset('images/engineering.png') }}" alt="">Deck rating</span>
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
-      <div class="h-3">
-         <h2 class="active">All deck ratings</h2>
-         <h2 class="inactive">DEPASA</h2>
-         <h2 class="inactive">LTT</h2>
+      <div class="h-3"> 
+         <h2 class="{{ !(request()->has('FilterValue')) ? 'active' : 'inactive' }} deck-rating-route">All deck ratings</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'DEPASA' ? 'active' : 'inactive' }} filter-value-x">DEPASA</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'L.T.T' ? 'active' : 'inactive' }} filter-value-x">L.T.T</h2>
       </div>
    </header> 
    <div class="no-data">
@@ -44,22 +44,22 @@
          @endunless
          @foreach ($Employees as $Deck)
          <tr> 
-            <td class="data-x">
+            <td class="data-x filter-value-x">
                {{ $Deck->FullName }}
                <br>
                <div class="sub-x">
-                  <span class="-1">{{ $Deck->Location }}</span>
-                  <span class="-2">{{ $Deck->EmployeeId }}</span>
+                  <span class="-1 filter-value-x">{{ $Deck->Location }}</span>
+                  <span class="-2 filter-value-x">{{ $Deck->EmployeeId }}</span>
                </div>
             </td> 
-            <td>{{ $Deck->Rank }}</td>
-            <td>{{ $Deck->Company }}</td>
+            <td class="filter-value-x">{{ $Deck->Rank }}</td>
+            <td class="filter-value-x">{{ $Deck->Company }}</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>   
          @endforeach 
       </table>
    </div>
-   {{ $Employees->links() }}
+   {{ $Employees->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection

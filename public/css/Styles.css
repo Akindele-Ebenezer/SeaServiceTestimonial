@@ -99,6 +99,10 @@
   width: 15em;
 }
 
+.error {
+  color: red;
+}
+
 .form-1 {
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
@@ -426,6 +430,13 @@ nav[role] span svg {
   display: flex;
   height: 100vh;
   justify-content: center;
+}
+.Login .error {
+  background: #ff4f4f;
+  border-radius: 0.25em;
+  color: #fff;
+  display: none;
+  padding: 0.5em;
 }
 .Login .inner {
   background: rgba(0, 0, 0, 0.02);
@@ -823,6 +834,16 @@ main .left-navigation ul li .total {
   font-size: 1em;
   font-weight: 100;
 }
+.content-data .inner h1 .info-x {
+  border-bottom: 2px solid #ff6868;
+  cursor: pointer;
+  display: block;
+  font-weight: 500;
+  padding: 0.2em;
+}
+.content-data .inner h1 .info-x:hover {
+  color: #ccc;
+}
 .content-data .inner h1 img {
   border: 5px solid #225f7d;
   padding: 0.5em;
@@ -934,7 +955,7 @@ main .left-navigation ul li .total {
 .testimonial-content header div.h-3 h2, .table-1 header div.h-3 h2 {
   cursor: pointer;
   font-weight: 500;
-  margin-right: 2em;
+  margin-right: 0.5em;
   padding-block: 0.5em;
   translate: 0 0.25em;
 }
@@ -1184,7 +1205,7 @@ main .left-navigation ul li .total {
   width: 100vw;
   z-index: 100;
 }
-.list-component .AddRankButton {
+.list-component .AddRankButton, .list-component .AddCompanyButton {
   background: #ff6868;
   border: none;
   border-radius: 0.1em;
@@ -1204,7 +1225,7 @@ main .left-navigation ul li .total {
   position: relative;
   width: 50em;
 }
-.list-component .inner-x .close-button-ranks {
+.list-component .inner-x .close-button-ranks, .list-component .inner-x .close-button-companies, .list-component .inner-x .close-button-testimonials {
   background: #fff;
   border-radius: 0.1em;
   padding: 0.4em;
@@ -1213,7 +1234,7 @@ main .left-navigation ul li .total {
   top: 1em;
   z-index: 1;
 }
-.list-component .inner-x .close-button-ranks button {
+.list-component .inner-x .close-button-ranks button, .list-component .inner-x .close-button-companies button, .list-component .inner-x .close-button-testimonials button {
   background-color: unset;
   border: none;
   color: red;

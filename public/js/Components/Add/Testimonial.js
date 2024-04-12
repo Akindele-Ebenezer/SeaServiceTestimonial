@@ -22,8 +22,18 @@ let AddTestimonialButton = document.querySelector('.AddTestimonialButton');
 let AddTestimonialForm = document.querySelector('.AddTestimonialForm');
 
 AddTestimonialButton.addEventListener('click', () => {
-    AddTestimonialButton.style.backgroundColor = '#1fb95e';
-    AddTestimonialButton.textContent = '+ Processing..';
-    AddTestimonialForm.submit();
+    let ErrorTestimonial = document.querySelector('.error-testimonial');
+    let EmployeeInput = document.querySelector('input[name=Employee]');
+    let StaffNumberInput = document.querySelector('input[name=StaffNumber]');
+
+    if (EmployeeInput.value.trim() == '') { 
+        ErrorTestimonial.textContent =  'Employee field cannot be empty';
+    } else if (StaffNumberInput.value.trim() == '') { 
+        ErrorTestimonial.textContent =  'Employee ID is required';
+    } else { 
+        AddTestimonialButton.style.backgroundColor = '#1fb95e';
+        AddTestimonialButton.textContent = '+ Processing..';
+        AddTestimonialForm.submit();
+    }
 })
  

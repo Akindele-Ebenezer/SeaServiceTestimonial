@@ -18,7 +18,7 @@
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
       <div class="h-3">
-         <h2 class="active">All users</h2> 
+         <h2 class="active users-route">All users</h2> 
       </div>
    </header> 
    <div class="no-data">
@@ -45,13 +45,13 @@
          @foreach ($Users as $User)
          <tr>
             <td>{{ $User->id }}</td>
-            <td>{{ $User->FullName }}</td>
-            <td>{{ $User->Email }}</td> 
-            <td>{{ $User->Department }}</td>
-            <td>{{ $User->Position }}</td>
-            <td>{{ $User->Role }}</td>
-            <td>{{ $User->LastLogin }}</td>
-            <td>{{ $User->LastLogout }}</td>
+            <td class="filter-value-x">{{ $User->FullName }}</td>
+            <td class="filter-value-x">{{ $User->Email }}</td> 
+            <td class="filter-value-x">{{ $User->Department }}</td>
+            <td class="filter-value-x">{{ $User->Position }}</td>
+            <td class="filter-value-x">{{ $User->Role }}</td>
+            <td class="filter-value-x">{{ $User->LastLogin }}</td>
+            <td class="filter-value-x">{{ $User->LastLogout }}</td>
             <td class="action">
                <img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt="">
                <img class="EditUserButton" src="{{ asset('images/write.png') }}" alt="">
@@ -70,7 +70,7 @@
          @endforeach 
       </table>
    </div>
-   {{ $Users->links() }}
+   {{ $Users->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/User.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/User.js') }}"></script>

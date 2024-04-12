@@ -11,24 +11,52 @@ class SeaServiceTestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $Request)
     {
         $Testimonials = Testimonial::orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(14);
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         $Ranks = \DB::table('ranks')->get();
+        $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
+
+        if(isset($Request->FilterValue)) {
+            $Testimonials = Testimonial::where('Date', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('EmployeeName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('EmployeeId', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DateOfBirth', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('AreaOfOperation', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('DischargeBook', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('CurrentVessel', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Rank', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Company', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Template', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')
+                            ->paginate(14);
+                                        
+            return view('Pages.Testimonials', [
+                'Testimonials' => $Testimonials,
+                'Employees' => $Employees,
+                'Vessels' => $Vessels,  
+                'Ranks' => $Ranks,
+                'Companies' => $Companies,
+            ]);
+        }
 
         return view('Pages.Testimonials', [
             'Testimonials' => $Testimonials,
             'Employees' => $Employees,
             'Vessels' => $Vessels,  
             'Ranks' => $Ranks,
+            'Companies' => $Companies,
         ]);
     }
-
+    
     public function notifications()
     {
-        return view('Pages.Notifications');
+        $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
+        return view('Pages.Notifications', [
+            'Employees' => $Employees,
+        ]);
     }
 
     /**
@@ -37,7 +65,7 @@ class SeaServiceTestimonialController extends Controller
     public function create(Request $Request)
     {  
         Testimonial::insert([
-            'UserId' => $Request->UserId,
+            'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i'),
             'EmployeeName' => $Request->Employee,
@@ -52,7 +80,7 @@ class SeaServiceTestimonialController extends Controller
         ]);
 
         \DB::table('working_periods')->insert([
-            'UserId' => $Request->UserId,
+            'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i'),
             'Vessel' => $Request->CurrentVessel,
@@ -102,7 +130,7 @@ class SeaServiceTestimonialController extends Controller
     public function update(Request $Request, string $Id)
     { 
         Testimonial::where('id', $Id)->update([
-            'UserId' => $Request->EditUserId, 
+            'UserId' => session()->get('USER_ID'), 
             'EmployeeName' => $Request->EditEmployee,
             'EmployeeId' => $Request->EditStaffNumber,
             'DateOfBirth' => $Request->EditDateOfBirth,
@@ -123,7 +151,7 @@ class SeaServiceTestimonialController extends Controller
             ->where('TimeIn', $TimeIn->TimeIn)
             ->where('Vessel', $CurrentVessel->CurrentVessel)
             ->update([
-            // 'UserId' =>  , 
+            'UserId' => session()->get('USER_ID'),
             'StartDate_1' => $Request->EditStartDate_1,
             'StartDate_2' => $Request->EditStartDate_2,
             'StartDate_3' => $Request->EditStartDate_3,

@@ -7,6 +7,7 @@
         <form class="VesselForm" action="">
             <div class="inner-1"> 
                 <div class="fields">
+                    <p class="error-vessel error"></p>
                     <section>
                         <div class="input">
                             <label for="">VESSEL NAME</label>

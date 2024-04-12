@@ -88,7 +88,7 @@ class SeaServiceTestimonialPdf extends Controller
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
         } else { 
-            if($Company->Company === 'LTT') {
+            if($Company->Company === 'L.T.T') {
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
             }  
             if($Company->Company === 'DEPASA') {
@@ -302,7 +302,7 @@ class SeaServiceTestimonialPdf extends Controller
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
         } else { 
-            if($Company->Company === 'LTT') {
+            if($Company->Company === 'L.T.T') {
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
             }  
             if($Company->Company === 'DEPASA') {
@@ -526,7 +526,7 @@ class SeaServiceTestimonialPdf extends Controller
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
         } else { 
-            if($Company->Company === 'LTT') {
+            if($Company->Company === 'L.T.T') {
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
             }  
             if($Company->Company === 'DEPASA') {

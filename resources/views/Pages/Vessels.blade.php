@@ -85,7 +85,13 @@
         </center>
     </div>
     <div class="inner vessel-information">
-        <h1><img src="{{ asset('images/cruise-ship.png') }}" alt=""> <span class="vessel-name-x"></span> ID: &nbsp; <span class="id">#<span class="imo-number-x"></span></span><button class="cancel-vessel-information-button">✖</button></h1>
+        <h1>
+            <img src="{{ asset('images/cruise-ship.png') }}" alt=""> <span class="vessel-name-x"></span> ID: &nbsp; <span class="id">#<span class="imo-number-x"></span></span>&nbsp; &nbsp; 
+            <span class="testimonial-filter info-x">TESTIMONIALS</span>&nbsp; &nbsp; 
+            <span class="vessel-name-x-x Hide"></span>
+            <span class="operation-filter info-x">OPERATIONS</span>
+            <button class="cancel-vessel-information-button">✖</button>
+        </h1>
         <div class="inner-x">
             <div class="data data-1">
                 <h2>Vessel Information</h2>
@@ -241,6 +247,7 @@
             Vessel.style.borderLeft = '8px solid #225f7d'; 
  
             document.querySelector('.vessel-name-x').textContent = Vessel.firstElementChild.textContent;
+            document.querySelector('.vessel-name-x-x').textContent = Vessel.firstElementChild.textContent;
             document.querySelector('.imo-number-x').textContent = Vessel.firstElementChild.nextElementSibling.textContent;
             document.querySelector('.vessel-name').firstElementChild.textContent = Vessel.firstElementChild.textContent;
             document.querySelector('.imo-number').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.textContent;
@@ -271,6 +278,13 @@
             document.querySelector('.length-of-stroke-mm').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
             document.querySelector('.gross-tonnage').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
             document.querySelector('.net-tonnage').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+
+            document.querySelector('.testimonial-filter').addEventListener('click', () => {
+                window.location = '/Testimonials?FilterValue=' + document.querySelector('.vessel-name-x-x').textContent;
+            })
+            document.querySelector('.operation-filter').addEventListener('click', () => {
+                window.location = '/Operations?FilterValue=' + document.querySelector('.vessel-name-x-x').textContent;
+            })
 
             CancelVesselInformationButton.addEventListener('click', () => {
                 NoDataSelectedModal.style.display = 'flex';
@@ -320,9 +334,21 @@
             default:
                 break;
         } 
-        AddTestimonialButton.style.backgroundColor = '#1fb95e';
-        AddTestimonialButton.textContent = '+ Processing..';
-        AddTestimonialForm.submit();
+
+        let ErrorTestimonial = document.querySelector('.error-testimonial');
+        let EmployeeInput = document.querySelector('input[name=Employee]');
+        let StaffNumberInput = document.querySelector('input[name=StaffNumber]');
+    
+        if (EmployeeInput.value.trim() == '') { 
+            ErrorTestimonial.textContent =  'Employee field cannot be empty';
+        } else if (StaffNumberInput.value.trim() == '') { 
+            ErrorTestimonial.textContent =  'Employee ID is required';
+        }  else {
+            AddTestimonialButton.style.backgroundColor = '#1fb95e';
+            AddTestimonialButton.textContent = '+ Processing..';
+            AddTestimonialForm.submit();
+        }
+
     })
 </script> 
 <script src="{{ asset('js/Components/Add/Vessel.js') }}"></script>

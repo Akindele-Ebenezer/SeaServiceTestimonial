@@ -213,6 +213,18 @@
                 font-weight: 100;   
             }
 
+            .info-x {
+                border-bottom: 2px solid darken($color: $Color-4, $amount: 20);
+                cursor: pointer;
+                display: block;
+                font-weight: 500;
+                padding: .2em;
+
+                &:hover {
+                    color: #ccc;
+                }
+            }
+
             img {
                 border: 5px solid $Color-2;
                 padding: 0.5em;

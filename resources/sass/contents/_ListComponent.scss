@@ -7,7 +7,7 @@
     width: 100vw;
     z-index: 100;
     
-    .AddRankButton {
+    .AddRankButton, .AddCompanyButton {
         background: darken($color: $Color-4, $amount: 20);
         border: none;
         border-radius: 0.1em;
@@ -28,7 +28,7 @@
         position: relative;
         width: 50em;
  
-        .close-button-ranks { 
+        .close-button-ranks, .close-button-companies, .close-button-testimonials { 
             background: #fff;
             border-radius: .1em;
             padding: .4em;

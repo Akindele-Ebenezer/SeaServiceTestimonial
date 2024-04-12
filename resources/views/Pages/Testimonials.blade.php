@@ -3,6 +3,7 @@
 @include('Components.Forms.Add.Testimonial') 
 @include('Components.Forms.Edit.Testimonial')
 @include('Components.Forms.Delete.Testimonial')
+@include('Components.Inner.Testimonial')
 
 @section('Content')
 <div class="table-1"> 
@@ -18,9 +19,9 @@
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
       <div class="h-3">
-         <h2 class="active">All testimonials</h2>
-         <h2 class="inactive">DEPASA</h2>
-         <h2 class="inactive">LTT</h2>
+         <h2 class="{{ !(request()->has('FilterValue')) ? 'active' : 'inactive' }} testimonials-route">All testimonials</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'DEPASA' ? 'active' : 'inactive' }} filter-value-x">DEPASA</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'L.T.T' ? 'active' : 'inactive' }} filter-value-x">L.T.T</h2>
       </div>
    </header> 
    <div class="no-data">
@@ -49,12 +50,94 @@
          @endunless
          @foreach ($Testimonials as $Testimonial)
          <tr>
-            <td class="action"><img src="{{ asset('images/testimonial.png') }}" alt=""></td>
-            <td class="data-x">{{ $Testimonial->EmployeeName }}</td>
-            <td class="data-x">{{ $Testimonial->CurrentVessel }}</td>
-            <td class="data-x">{{ $Testimonial->EmployeeId }}</td>
-            <td>{{ $Testimonial->DischargeBook }}</td>
-            <td class="data-x">{{ $Testimonial->Rank }}</td>
+            <td class="action">
+               <span class="Hide">{{ $Testimonial->EmployeeName }}</span>
+               <img class="info-button" src="{{ asset('images/testimonial.png') }}" alt="">
+               <span class="Hide">{{ $Testimonial->DateIn }}</span>
+               <span class="Hide">{{ $Testimonial->CurrentVessel }}</span>
+               <span class="Hide">{{ $Testimonial->Rank }}</span>
+               <span class="Hide">{{ $Testimonial->DateOfBirth }}</span>
+               <span class="Hide">{{ $Testimonial->EmployeeId }}</span>
+               <span class="Hide">{{ $Testimonial->Company }}</span>
+               @php
+               $WorkingPeriods = \DB::table('working_periods')->where('Vessel', $Testimonial->CurrentVessel)->where('DateIn', $Testimonial->DateIn)->get();
+               $WorkingPeriod = \DB::table('working_periods')
+                                ->select([
+                                   'StartDate_1', 'EndDate_1', 
+                                   'StartDate_2', 'EndDate_2',
+                                   'StartDate_3', 'EndDate_3',
+                                   'StartDate_4', 'EndDate_4',
+                                   'StartDate_5', 'EndDate_5', 
+                                   ])
+                                ->where('DateIn', $Testimonial->DateIn)
+                                ->where('TimeIn', $Testimonial->TimeIn)
+                                ->where('Vessel', $Testimonial->CurrentVessel) 
+                                ->first();
+                      $TotalNumberOfDays_OPERATION_Arr = []; 
+                      $LeaveDays_Arr = []; 
+                      $LeaveDays_ARR_1 = []; 
+                      $LeaveDays_ARR_2 = []; 
+                      $LeaveDays_ARR_3 = []; 
+                      $LeaveDays_ARR_4 = [];  
+                      $TotalLeaveDays = [];
+               @endphp
+                  @foreach ($WorkingPeriods as $Period)
+                     @if (!empty($Period->StartDate_1) AND !empty($Period->EndDate_1))
+                        @php
+                           $StartDate_1_ = \Carbon\Carbon::parse($Period->StartDate_1);
+                           $EndDate_1_ = \Carbon\Carbon::parse($Period->EndDate_1);
+                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_1_->diffInDays($EndDate_1_));
+                           array_push($LeaveDays_ARR_1, $Period->EndDate_1);
+                        @endphp
+                     @endif
+                     @if (!empty($Period->StartDate_2) AND !empty($Period->EndDate_2))
+                        @php
+                           $StartDate_2_ = \Carbon\Carbon::parse($Period->StartDate_2);
+                           $EndDate_2_ = \Carbon\Carbon::parse($Period->EndDate_2);
+                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_2_->diffInDays($EndDate_2_));
+                           array_push($LeaveDays_ARR_1, $Period->StartDate_2);
+                           array_push($LeaveDays_ARR_2, $Period->EndDate_2);
+                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_1[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_1[1])));
+                        @endphp
+                     @endif
+                     @if (!empty($Period->StartDate_3) AND !empty($Period->EndDate_3))
+                        @php
+                           $StartDate_3_ = \Carbon\Carbon::parse($Period->StartDate_3);
+                           $EndDate_3_ = \Carbon\Carbon::parse($Period->EndDate_3);
+                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_3_->diffInDays($EndDate_3_));
+                           array_push($LeaveDays_ARR_2, $Period->StartDate_3);
+                           array_push($LeaveDays_ARR_3, $Period->EndDate_3);
+                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_2[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_2[1])));
+                        @endphp
+                     @endif
+                     @if (!empty($Period->StartDate_4) AND !empty($Period->EndDate_4))
+                        @php
+                           $StartDate_4_ = \Carbon\Carbon::parse($Period->StartDate_4);
+                           $EndDate_4_ = \Carbon\Carbon::parse($Period->EndDate_4);
+                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_4_->diffInDays($EndDate_4_));
+                           array_push($LeaveDays_ARR_3, $Period->StartDate_4);
+                           array_push($LeaveDays_ARR_4, $Period->EndDate_4);
+                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_3[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_3[1])));
+                        @endphp
+                     @endif
+                     @if (!empty($Period->StartDate_5) AND !empty($Period->EndDate_5))
+                        @php
+                           $StartDate_5_ = \Carbon\Carbon::parse($Period->StartDate_5);
+                           $EndDate_5_ = \Carbon\Carbon::parse($Period->EndDate_5);
+                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_5_->diffInDays($EndDate_5_));
+                           array_push($LeaveDays_ARR_4, $Period->StartDate_5);
+                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_4[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_4[1])));
+                        @endphp
+                     @endif
+                     <span class="Hide">{{ collect($TotalLeaveDays)->sum() == 0 ? 'no leave' : collect($TotalLeaveDays)->sum() }} days</span> 
+                     <span class="Hide">{{ collect($TotalNumberOfDays_OPERATION_Arr)->sum() }} days</span> 
+                  @endforeach
+            </td>
+            <td class="data-x filter-value-x">{{ $Testimonial->EmployeeName }}</td>
+            <td class="data-x filter-value-x">{{ $Testimonial->CurrentVessel }}</td>
+            <td class="data-x filter-value-x">{{ $Testimonial->EmployeeId }}</td>
+            <td class="filter-value-x">{{ $Testimonial->DischargeBook }}</td>
+            <td class="data-x filter-value-x">{{ $Testimonial->Rank }}</td>
             <td class="action">
                <img class="TestimonialPdf" src="{{ asset('images/pdf.png') }}" alt="">
                {{-- 0 --}}
@@ -71,20 +154,6 @@
                <span class="Hide">{{ $Testimonial->Rank }}</span>
                <span class="Hide">{{ $Testimonial->Company }}</span>
                {{-- 8 --}}
-               @php
-                   $WorkingPeriod = \DB::table('working_periods')
-                                    ->select([
-                                       'StartDate_1', 'EndDate_1', 
-                                       'StartDate_2', 'EndDate_2',
-                                       'StartDate_3', 'EndDate_3',
-                                       'StartDate_4', 'EndDate_4',
-                                       'StartDate_5', 'EndDate_5', 
-                                       ])
-                                    ->where('DateIn', $Testimonial->DateIn)
-                                    ->where('TimeIn', $Testimonial->TimeIn)
-                                    ->where('Vessel', $Testimonial->CurrentVessel) 
-                                    ->first();
-               @endphp
                <span class="Hide">{{ $WorkingPeriod->StartDate_1 ?? '' }}</span>
                <span class="Hide">{{ $WorkingPeriod->EndDate_1 ?? '' }}</span>
                <span class="Hide">{{ $WorkingPeriod->StartDate_2 ?? '' }}</span>
@@ -102,35 +171,12 @@
                <span class="Hide">{{ $Testimonial->id }}</span>
                <span class="Hide">{{ $Testimonial->CurrentVessel }}</span>
                <span class="Hide">{{ $Testimonial->DateIn }}</span>
-            </td>
-            <div class="testimonial-info Hide">
-               <div>
-                  <span> Date</span><span> 02-12-2023</span>
-               </div>
-               <div>   
-                  <span>Rank</span><span>Captain</span>
-               </div>
-               <div>   
-                  <span>D.O.B</span><span>23/01/1990</span>
-               </div>
-               <div>   
-                  <span>Staff number</span><span>36515</span>
-               </div>
-               <div>   
-                  <span>Working period</span><span>Less than 1 month</span>
-               </div>
-               <div>   
-                  <span>Leave</span><span>Start Date: 02-04-2024 <br> End Date: 20-04-2024 <br>(18 days) </span>
-               </div>
-               <div>   
-                  <span>Company</span><span>DEPASA</span>
-               </div>
-            </div>  
+            </td> 
          </tr>  
          @endforeach
       </table>
    </div>
-   {{ $Testimonials->links() }}
+   {{ $Testimonials->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Testimonial.js') }}"></script>

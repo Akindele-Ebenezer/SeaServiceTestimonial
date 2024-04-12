@@ -8,8 +8,11 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SeaServiceTestimonialPdf;
 use App\Http\Controllers\RankController;
+use App\Http\Controllers\CompanyController;
  
 Route::get('/', [LoginController::class, 'login']);
+Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
+Route::get('/Logout', [LoginController::class, 'logout'])->name('Logout');
 
 Route::get('/Vessels', [VesselController::class, 'index'])->name('Vessels');
 Route::get('/Add/Vessel', [VesselController::class, 'create'])->name('AddVessel');
@@ -33,6 +36,10 @@ Route::get('/Delete/Employee/{Id}', [EmployeeController::class, 'destroy'])->nam
 Route::get('/Add/Rank', [RankController::class, 'create'])->name('AddRank');
 Route::get('/Edit/Rank/{Id}', [RankController::class, 'update'])->name('EditRank');
 Route::get('/Delete/Rank/{Id}', [RankController::class, 'destroy'])->name('DeleteRank');
+
+Route::get('/Add/Company', [CompanyController::class, 'create'])->name('AddCompany');
+Route::get('/Edit/Company/{Id}', [CompanyController::class, 'update'])->name('EditCompany');
+Route::get('/Delete/Company/{Id}', [CompanyController::class, 'destroy'])->name('DeleteCompany');
 
 Route::get('/Users', [UserController::class, 'index'])->name('Users');
 Route::get('/Add/User', [UserController::class, 'create'])->name('AddUser');

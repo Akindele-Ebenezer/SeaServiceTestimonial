@@ -15,10 +15,10 @@
          <span><img src="{{ asset('images/engineering.png') }}" alt="">Operations</span>
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
-      <div class="h-3">
-         <h2 class="active">All operations</h2>
-         <h2 class="inactive">DEPASA</h2>
-         <h2 class="inactive">LTT</h2>
+      <div class="h-3"> 
+         <h2 class="{{ !(request()->has('FilterValue')) ? 'active' : 'inactive' }} operations-route">All operations</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'DEPASA' ? 'active' : 'inactive' }} filter-value-x">DEPASA</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'L.T.T' ? 'active' : 'inactive' }} filter-value-x">L.T.T</h2>
       </div>
    </header> 
    <div class="no-data">
@@ -46,10 +46,10 @@
          @endunless
          @foreach ($Operations as $Operation)
          <tr>
-            <td class="data-x">{{ $Operation->DateIn }}</td>
-            <td class="data-x">{{ $Operation->CurrentVessel }}</td>
-            <td>{{ $Operation->AreaOfOperation }}</td>
-            <td class="data-x">
+            <td class="data-x filter-value-x">{{ $Operation->DateIn }}</td>
+            <td class="data-x filter-value-x">{{ $Operation->CurrentVessel }}</td>
+            <td class="filter-value-x">{{ $Operation->AreaOfOperation }}</td>
+            <td class="data-x filter-value-x">
                @switch($Operation->Template)
                    @case('Deck')
                         Navigational watch for not less than 12 hours out of every 24 hours whilst the vessel was engaged on operation. General maintenance of vessel.
@@ -159,7 +159,7 @@
          @endforeach 
       </table>
    </div>
-   {{ $Operations->links() }}
+   {{ $Operations->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection

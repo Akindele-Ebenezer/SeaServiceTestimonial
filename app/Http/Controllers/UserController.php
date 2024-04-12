@@ -4,17 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Employee;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $Request)
     {
         $Users = User::paginate(14);
+        $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
+        
+        if(isset($Request->FilterValue)) {  
+            $Users = User::where('FullName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Email', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Department', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Position', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Role', 'LIKE', '%' . $Request->FilterValue . '%') 
+                            ->orderBy('id', 'DESC')
+                            ->paginate(14);
+                      
+            return view('Pages.Users', [
+                'Users' => $Users,
+                'Employees' => $Employees,
+            ]);
+        }
+
         return view('Pages.Users', [
             'Users' => $Users,
+            'Employees' => $Employees,
         ]);
     }
 

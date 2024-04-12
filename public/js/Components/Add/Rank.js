@@ -8,10 +8,17 @@ AddRankButton.addEventListener('click', () => {
     AddRankModal.style.display = 'flex';
 
     AddRankButtonX.addEventListener('click', () => {
-        AddRankButtonX.style.backgroundColor = '#1fb95e';
-        AddRankButtonX.textContent = '+ Creating..';
-        AddRankForm.setAttribute('action', '/Add/Rank');
-        AddRankForm.submit();
+        let ErrorPosition = document.querySelector('.error-rank');
+        let PositionInput = document.querySelector('input[name=Rank]');
+    
+        if (PositionInput.value.trim() == '') { 
+            ErrorPosition.textContent =  'Rank name is required';
+        } else { 
+            AddRankButtonX.style.backgroundColor = '#1fb95e';
+            AddRankButtonX.textContent = '+ Creating..';
+            AddRankForm.setAttribute('action', '/Add/Rank');
+            AddRankForm.submit();
+        }
     })
 
     CancelButtonRank.addEventListener('click', () => {

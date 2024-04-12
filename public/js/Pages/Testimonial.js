@@ -28,3 +28,26 @@ TestimonialPdfs.forEach(Pdf => {
         } 
     })
 });
+
+let ListComponent_TESTIMONIAL = document.querySelector('.list-component.testimonials');
+let InfoButtons = document.querySelectorAll('.info-button');
+let InfoButtonX = document.querySelector('.close-button-testimonials');
+
+InfoButtons.forEach(Button => {
+    Button.addEventListener('click', () => {
+        ListComponent_TESTIMONIAL.style.display = 'flex';
+        document.querySelector('.employee-name-info').textContent = Button.previousElementSibling.textContent;
+        document.querySelector('.vessel-name-info').textContent = Button.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.date-info').textContent = Button.nextElementSibling.textContent;
+        document.querySelector('.rank-info').textContent = Button.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.date-of-birth-info').textContent = Button.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.staff-number-info').textContent = Button.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.company-info').textContent = Button.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.leave-info').textContent = Button.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.working-period-info').textContent = Button.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+
+        InfoButtonX.addEventListener('click', () => {
+            ListComponent_TESTIMONIAL.style.display = 'none';
+        })
+    })
+});

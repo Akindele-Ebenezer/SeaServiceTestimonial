@@ -4,6 +4,14 @@
     height: 100vh;
     justify-content: center;
 
+    .error {
+        background: darken($color: $Color-4, $amount:  25);
+        border-radius: .25em;
+        color: #fff;
+        display: none;
+        padding: .5em;
+    }
+
     .inner {
         background: rgba(0, 0, 0, .02);
         border: 1px solid #bbb;

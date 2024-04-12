@@ -15,10 +15,10 @@
          <span><img src="{{ asset('images/engineering.png') }}" alt="">Engineers rating</span>
          <span><img src="{{ asset('images/share.png') }}" alt="">Export</span>
       </div>
-      <div class="h-3">
-         <h2 class="active">All engineers</h2>
-         <h2 class="inactive">DEPASA</h2>
-         <h2 class="inactive">LTT</h2>
+      <div class="h-3"> 
+         <h2 class="{{ !(request()->has('FilterValue')) ? 'active' : 'inactive' }} engineers-route">All engineers</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'DEPASA' ? 'active' : 'inactive' }} filter-value-x">DEPASA</h2>
+         <h2 class="{{ request()->input('FilterValue') == 'L.T.T' ? 'active' : 'inactive' }} filter-value-x">L.T.T</h2>
       </div>
    </header> 
    <div class="no-data">
@@ -44,22 +44,22 @@
          @endunless
          @foreach ($Employees as $Engineer)
          <tr> 
-            <td class="data-x">
+            <td class="data-x filter-value-x">
                {{ $Engineer->FullName }}
                <br>
                <div class="sub-x">
-                  <span class="-1">{{ $Engineer->Location }}</span>
-                  <span class="-2">{{ $Engineer->EmployeeId }}</span>
+                  <span class="-1 filter-value-x">{{ $Engineer->Location }}</span>
+                  <span class="-2 filter-value-x">{{ $Engineer->EmployeeId }}</span>
                </div>
             </td> 
-            <td>{{ $Engineer->Rank }}</td>
-            <td>{{ $Engineer->Company }}</td>
+            <td class="filter-value-x">{{ $Engineer->Rank }}</td>
+            <td class="filter-value-x">{{ $Engineer->Company }}</td>
             <td class="action"><img src="{{ asset('images/eye.png') }}" alt=""></td>
          </tr>   
          @endforeach 
       </table>
    </div>
-   {{ $Employees->links() }}
+   {{ $Employees->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
 @endsection
