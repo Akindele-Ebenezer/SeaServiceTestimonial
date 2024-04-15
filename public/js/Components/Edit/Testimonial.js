@@ -21,6 +21,7 @@ let EditStartDate_5Input = document.querySelector('input[name=EditStartDate_5]')
 let EditEndDate_5Input = document.querySelector('input[name=EditEndDate_5]');
 let EditTemplateInput = document.querySelector('select[name=EditTemplateFormat]'); 
 let EditCurrentVesselInput = document.querySelector('select[name=EditCurrentVessel]'); 
+let EditPreviousVesselInput = document.querySelector('input[name=EditPreviousVessel]'); 
 
 EditTestimonialButtons.forEach(EditTestimonialButton => {
     EditTestimonialButton.addEventListener('click', () => {
@@ -46,6 +47,7 @@ EditTestimonialButtons.forEach(EditTestimonialButton => {
         EditEndDate_5Input.value = EditTestimonialButton.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         EditTemplateInput.value = EditTestimonialButton.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         EditCurrentVesselInput.value = EditTestimonialButton.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        EditPreviousVesselInput.value = EditTestimonialButton.previousElementSibling.textContent;
          
         if((EditStartDate_2Input.value == '') &&
             (EditEndDate_2Input.value == '')

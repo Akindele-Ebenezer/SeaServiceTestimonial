@@ -12,90 +12,26 @@
                             <label for="">Employee</label>
                             <input type="text" autocomplete="off" id="FILTER_Input3" onkeyup="filterFunction3()" name="EditEmployee">
                             <div class="filter-list-wrapper-3">
+                                @foreach ($Employees as $Employee)
+                                @php
+                                    $PreviousVessel = \DB::table('testimonials')->select('CurrentVessel')->where('EmployeeId', $Employee->EmployeeId)
+                                                            ->orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->first();
+                                @endphp
                                 <div class="filter-value-3">
-                                    <h1>John Smith</h1>
+                                    <span class="Hide">{{ $Employee->FullName }}</span>
+                                    <span class="Hide">{{ $Employee->EmployeeId }}</span>
+                                    <span class="Hide">{{ $Employee->DateOfBirth }}</span>
+                                    <span class="Hide">{{ $Employee->DischargeBook }}</span>
+                                    <span class="Hide">{{ $PreviousVessel->CurrentVessel ?? '-' }}</span>
+                                    <span class="Hide">{{ $Employee->Rank }}</span>
+                                    <span class="Hide">{{ $Employee->Company }}</span>
+                                    <h1>{{ $Employee->FullName }}</h1>
                                     <div>
-                                        <span>351344</span>
-                                        <span>Captain</span>
+                                        <span>{{ $Employee->EmployeeId }} ({{ $Employee->Company }})</span>
+                                        <span>{{ $Employee->Rank }}</span>
                                     </div>
                                 </div>
-                                <div class="filter-value-3">
-                                    <h1>Sarah Johnson</h1>
-                                    <div>
-                                        <span>23456</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Michael Brown</h1>
-                                    <div>
-                                        <span>34567</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Emily Davis</h1>
-                                    <div>
-                                        <span>45678</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>David Wilson</h1>
-                                    <div>
-                                        <span>56789</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Jennifer Taylor</h1>
-                                    <div>
-                                        <span>67890</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Christopher Clark</h1>
-                                    <div>
-                                        <span>78901</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Jessica Martinez</h1>
-                                    <div>
-                                        <span>89012</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Matthew Anderson</h1>
-                                    <div>
-                                        <span>90123</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Amanda Rodriguez</h1>
-                                    <div>
-                                        <span>01234</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Disi Samuel</h1>
-                                    <div>
-                                        <span>351344</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
-                                <div class="filter-value-3">
-                                    <h1>Disi Samuel</h1>
-                                    <div>
-                                        <span>351344</span>
-                                        <span>Captain</span>
-                                    </div>
-                                </div>
+                                @endforeach 
                                 <div class="empty empty3">
                                     <center>
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
@@ -136,7 +72,7 @@
                         </div>
                         <div class="input">
                             <label for="">Previous Vessel</label>
-                            <input type="text" readonly>
+                            <input type="text" name="EditPreviousVessel" readonly>
                         </div>
                     </section>
                     <section class="-x3">

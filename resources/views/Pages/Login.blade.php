@@ -16,8 +16,8 @@
                 <br>
                 <input type="password" name="Password">
                 <br>
+                <button class="LoginButton">Login &#8594;</button>
             </form>
-            <button class="LoginButton">Login &#8594;</button>
         </div>
     </div>
     <script src="{{ asset('/js/Pages/Login.js') }}"></script>

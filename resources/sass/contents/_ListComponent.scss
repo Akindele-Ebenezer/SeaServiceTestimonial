@@ -47,4 +47,11 @@
             }
         }
     }
+
+    &.testimonials {
+        align-items: center;
+        .inner-x {
+            height: 80vh;
+        }
+    }
 }

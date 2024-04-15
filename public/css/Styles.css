@@ -1242,5 +1242,11 @@ main .left-navigation ul li .total {
   font-size: 1.2em;
   font-weight: bold;
 }
+.list-component.testimonials {
+  align-items: center;
+}
+.list-component.testimonials .inner-x {
+  height: 80vh;
+}
 
 /*# sourceMappingURL=Styles.css.map */

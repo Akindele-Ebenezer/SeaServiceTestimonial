@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('DateOfBirth')->nullable();
             $table->string('AreaOfOperation')->nullable();
             $table->string('DischargeBook')->nullable();
+            $table->string('PreviousVessel')->nullable();
             $table->string('CurrentVessel')->nullable();
             $table->string('Rank')->nullable();
             $table->string('Company')->nullable();

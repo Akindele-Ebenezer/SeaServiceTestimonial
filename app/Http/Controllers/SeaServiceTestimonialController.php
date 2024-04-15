@@ -76,6 +76,7 @@ class SeaServiceTestimonialController extends Controller
             'Rank' => $Request->Rank,
             'Company' => $Request->Company,
             'Template' => $Request->TemplateFormat,
+            'PreviousVessel' => $Request->PreviousVessel,
             'CurrentVessel' => $Request->CurrentVessel,
         ]);
 

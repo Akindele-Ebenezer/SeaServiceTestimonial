@@ -37,6 +37,12 @@ FilterValue3.forEach(Value => {
   Value.addEventListener('click', () => {
     FILTER_Input3.value = Value.firstElementChild.textContent;
     FilterListWrapper3.classList.remove('Show'); 
+    document.querySelector('.UpdateTestimonialForm input[name=EditStaffNumber]').value = Value.firstElementChild.nextElementSibling.textContent;
+    document.querySelector('.UpdateTestimonialForm input[name=EditDateOfBirth]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.UpdateTestimonialForm input[name=EditDischargeBook]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.UpdateTestimonialForm input[name=EditPreviousVessel]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.UpdateTestimonialForm .input select[name=EditRank]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    document.querySelector('.UpdateTestimonialForm .input select[name=EditCompany]').value = Value.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
   })
 });
  

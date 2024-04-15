@@ -15,13 +15,13 @@ TestimonialPdfs.forEach(Pdf => {
     Pdf.addEventListener('click', () => {
         switch (TestimonialTemplate) {
             case 'Deck':
-                window.open('/Testimonials/Template/1?Testimonial_Id=' + TestimonialId);
+                window.open('/Testimonials/Template/1?Testimonial_Id=' + TestimonialId + '&LeaveDays=' + Pdf.previousElementSibling.textContent);
                 break;
             case 'Engine':
-                window.open('/Testimonials/Template/2?Testimonial_Id=' + TestimonialId);
+                window.open('/Testimonials/Template/2?Testimonial_Id=' + TestimonialId + '&LeaveDays=' + Pdf.previousElementSibling.textContent);
                 break;
             case 'Captain':
-                window.open('/Testimonials/Template/3?Testimonial_Id=' + TestimonialId);
+                window.open('/Testimonials/Template/3?Testimonial_Id=' + TestimonialId + '&LeaveDays=' + Pdf.previousElementSibling.textContent);
                 break;
             default:
                 break;

@@ -81,57 +81,57 @@
                       $LeaveDays_ARR_4 = [];  
                       $TotalLeaveDays = [];
                @endphp
-                  @foreach ($WorkingPeriods as $Period)
-                     @if (!empty($Period->StartDate_1) AND !empty($Period->EndDate_1))
-                        @php
-                           $StartDate_1_ = \Carbon\Carbon::parse($Period->StartDate_1);
-                           $EndDate_1_ = \Carbon\Carbon::parse($Period->EndDate_1);
-                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_1_->diffInDays($EndDate_1_));
-                           array_push($LeaveDays_ARR_1, $Period->EndDate_1);
-                        @endphp
-                     @endif
-                     @if (!empty($Period->StartDate_2) AND !empty($Period->EndDate_2))
-                        @php
-                           $StartDate_2_ = \Carbon\Carbon::parse($Period->StartDate_2);
-                           $EndDate_2_ = \Carbon\Carbon::parse($Period->EndDate_2);
-                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_2_->diffInDays($EndDate_2_));
-                           array_push($LeaveDays_ARR_1, $Period->StartDate_2);
-                           array_push($LeaveDays_ARR_2, $Period->EndDate_2);
-                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_1[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_1[1])));
-                        @endphp
-                     @endif
-                     @if (!empty($Period->StartDate_3) AND !empty($Period->EndDate_3))
-                        @php
-                           $StartDate_3_ = \Carbon\Carbon::parse($Period->StartDate_3);
-                           $EndDate_3_ = \Carbon\Carbon::parse($Period->EndDate_3);
-                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_3_->diffInDays($EndDate_3_));
-                           array_push($LeaveDays_ARR_2, $Period->StartDate_3);
-                           array_push($LeaveDays_ARR_3, $Period->EndDate_3);
-                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_2[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_2[1])));
-                        @endphp
-                     @endif
-                     @if (!empty($Period->StartDate_4) AND !empty($Period->EndDate_4))
-                        @php
-                           $StartDate_4_ = \Carbon\Carbon::parse($Period->StartDate_4);
-                           $EndDate_4_ = \Carbon\Carbon::parse($Period->EndDate_4);
-                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_4_->diffInDays($EndDate_4_));
-                           array_push($LeaveDays_ARR_3, $Period->StartDate_4);
-                           array_push($LeaveDays_ARR_4, $Period->EndDate_4);
-                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_3[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_3[1])));
-                        @endphp
-                     @endif
-                     @if (!empty($Period->StartDate_5) AND !empty($Period->EndDate_5))
-                        @php
-                           $StartDate_5_ = \Carbon\Carbon::parse($Period->StartDate_5);
-                           $EndDate_5_ = \Carbon\Carbon::parse($Period->EndDate_5);
-                           array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_5_->diffInDays($EndDate_5_));
-                           array_push($LeaveDays_ARR_4, $Period->StartDate_5);
-                           array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_4[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_4[1])));
-                        @endphp
-                     @endif
-                     <span class="Hide">{{ collect($TotalLeaveDays)->sum() == 0 ? 'no leave' : collect($TotalLeaveDays)->sum() }} days</span> 
-                     <span class="Hide">{{ collect($TotalNumberOfDays_OPERATION_Arr)->sum() }} days</span> 
-                  @endforeach
+               @foreach ($WorkingPeriods as $Period)
+                  @if (!empty($Period->StartDate_1) AND !empty($Period->EndDate_1))
+                     @php
+                        $StartDate_1_ = \Carbon\Carbon::parse($Period->StartDate_1);
+                        $EndDate_1_ = \Carbon\Carbon::parse($Period->EndDate_1);
+                        array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_1_->diffInDays($EndDate_1_));
+                        array_push($LeaveDays_ARR_1, $Period->EndDate_1);
+                     @endphp
+                  @endif
+                  @if (!empty($Period->StartDate_2) AND !empty($Period->EndDate_2))
+                     @php
+                        $StartDate_2_ = \Carbon\Carbon::parse($Period->StartDate_2);
+                        $EndDate_2_ = \Carbon\Carbon::parse($Period->EndDate_2);
+                        array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_2_->diffInDays($EndDate_2_));
+                        array_push($LeaveDays_ARR_1, $Period->StartDate_2);
+                        array_push($LeaveDays_ARR_2, $Period->EndDate_2);
+                        array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_1[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_1[1])));
+                     @endphp
+                  @endif
+                  @if (!empty($Period->StartDate_3) AND !empty($Period->EndDate_3))
+                     @php
+                        $StartDate_3_ = \Carbon\Carbon::parse($Period->StartDate_3);
+                        $EndDate_3_ = \Carbon\Carbon::parse($Period->EndDate_3);
+                        array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_3_->diffInDays($EndDate_3_));
+                        array_push($LeaveDays_ARR_2, $Period->StartDate_3);
+                        array_push($LeaveDays_ARR_3, $Period->EndDate_3);
+                        array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_2[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_2[1])));
+                     @endphp
+                  @endif
+                  @if (!empty($Period->StartDate_4) AND !empty($Period->EndDate_4))
+                     @php
+                        $StartDate_4_ = \Carbon\Carbon::parse($Period->StartDate_4);
+                        $EndDate_4_ = \Carbon\Carbon::parse($Period->EndDate_4);
+                        array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_4_->diffInDays($EndDate_4_));
+                        array_push($LeaveDays_ARR_3, $Period->StartDate_4);
+                        array_push($LeaveDays_ARR_4, $Period->EndDate_4);
+                        array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_3[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_3[1])));
+                     @endphp
+                  @endif
+                  @if (!empty($Period->StartDate_5) AND !empty($Period->EndDate_5))
+                     @php
+                        $StartDate_5_ = \Carbon\Carbon::parse($Period->StartDate_5);
+                        $EndDate_5_ = \Carbon\Carbon::parse($Period->EndDate_5);
+                        array_push($TotalNumberOfDays_OPERATION_Arr, $StartDate_5_->diffInDays($EndDate_5_));
+                        array_push($LeaveDays_ARR_4, $Period->StartDate_5);
+                        array_push($TotalLeaveDays, \Carbon\Carbon::parse($LeaveDays_ARR_4[0])->diffInDays(\Carbon\Carbon::parse($LeaveDays_ARR_4[1])));
+                     @endphp
+                  @endif
+               @endforeach
+               <span class="Hide">{{ collect($TotalLeaveDays)->sum() == 0 ? 'no leave' : collect($TotalLeaveDays)->sum() }} days</span> 
+               <span class="Hide">{{ collect($TotalNumberOfDays_OPERATION_Arr)->sum() }} days</span> 
             </td>
             <td class="data-x filter-value-x">{{ $Testimonial->EmployeeName }}</td>
             <td class="data-x filter-value-x">{{ $Testimonial->CurrentVessel }}</td>
@@ -139,11 +139,13 @@
             <td class="filter-value-x">{{ $Testimonial->DischargeBook }}</td>
             <td class="data-x filter-value-x">{{ $Testimonial->Rank }}</td>
             <td class="action">
+               <span class="Hide">{{ collect($TotalLeaveDays)->sum() }}</span> 
                <img class="TestimonialPdf" src="{{ asset('images/pdf.png') }}" alt="">
                {{-- 0 --}}
                <span class="Hide">{{ $Testimonial->id }}</span>
                <span class="Hide">{{ $Testimonial->Template }}</span>
-               <img src="{{ asset('images/statistic.png') }}" alt="">
+               <img src="{{ asset('images/statistic.png') }}" alt="">  
+               <span class="Hide">{{ $Testimonial->PreviousVessel }}</span>
                <img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt="">
                <span class="Hide">{{ $Testimonial->id }}</span>
                <span class="Hide">{{ $Testimonial->EmployeeName }}</span>

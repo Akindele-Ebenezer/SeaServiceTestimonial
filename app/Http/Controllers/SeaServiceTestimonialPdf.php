@@ -9,7 +9,6 @@ class SeaServiceTestimonialPdf extends Controller
 {
     public function template_1(Fpdf $fpdf, Request $Request) { 
         $Employee = Testimonial::select('EmployeeName')->where('id', $Request->Testimonial_Id)->first();
-        // $ImoNumber = \DB::table('vessels_vessel_information')->where('VesselName', $Request->CurrentVessel)->first();
         $StaffNumber = Testimonial::select('EmployeeId')->where('id', $Request->Testimonial_Id)->first();
         $DateOfBirth = Testimonial::select('DateOfBirth')->where('id', $Request->Testimonial_Id)->first();
         $AreaOfOperation = Testimonial::select('AreaOfOperation')->where('id', $Request->Testimonial_Id)->first();
@@ -18,6 +17,7 @@ class SeaServiceTestimonialPdf extends Controller
         $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
         $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel)->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $StartDate_1 = \DB::table('working_periods')
@@ -87,20 +87,26 @@ class SeaServiceTestimonialPdf extends Controller
 
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+            $fpdf->Ln(30);     
+            $fpdf->SetFont('Times', '', 11); 
+            $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         } else { 
             if($Company->Company === 'L.T.T') {
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
             if($Company->Company === 'DEPASA') {
                 $fpdf->Image('../public/images/depasa-letter-head.png', 10, 2, 190);  
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                $fpdf->Cell(173.2, -13, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
         }
    
         $fpdf->SetDrawColor(200, 200, 200); 
-
-        $fpdf->Ln(30);          
-        $fpdf->SetFont('Times', '', 11); 
-        $fpdf->Cell(165, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+      
         $fpdf->Ln(5);     
         $fpdf->SetFont('Times', 'BU', 17); 
         $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
@@ -138,7 +144,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(20, 13, (empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1), 1, 0, 'C'); 
         $fpdf->Cell(20, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C');  
         $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-        $fpdf->Cell(25, 13, '-', 1, 0, 'C'); 
+        $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
         $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
         $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
         $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
@@ -147,7 +153,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'C');  
             $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(25, 13, '-', 1, 0, 'C'); 
+            $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
@@ -157,7 +163,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'C');  
             $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(25, 13, '-', 1, 0, 'C'); 
+            $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
@@ -167,7 +173,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'C');  
             $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(25, 13, '-', 1, 0, 'C'); 
+            $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
@@ -177,7 +183,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'C');  
             $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(25, 13, '-', 1, 0, 'C'); 
+            $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
@@ -185,7 +191,7 @@ class SeaServiceTestimonialPdf extends Controller
  
         $fpdf->Ln(5);       
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted (nil) days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -232,6 +238,7 @@ class SeaServiceTestimonialPdf extends Controller
         $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
         $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel)->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $StartDate_1 = \DB::table('working_periods')
@@ -301,20 +308,26 @@ class SeaServiceTestimonialPdf extends Controller
  
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+            $fpdf->Ln(30);     
+            $fpdf->SetFont('Times', '', 11); 
+            $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         } else { 
             if($Company->Company === 'L.T.T') {
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
             if($Company->Company === 'DEPASA') {
                 $fpdf->Image('../public/images/depasa-letter-head.png', 10, 2, 190);  
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                $fpdf->Cell(173.2, -13, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
         }
    
         $fpdf->SetDrawColor(200, 200, 200);  
-        
-        $fpdf->Ln(30);          
-        $fpdf->SetFont('Times', '', 11); 
-        $fpdf->Cell(165, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+         
         $fpdf->Ln(7);     
         $fpdf->SetFont('Times', 'BU', 17); 
         $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
@@ -354,7 +367,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(20, 13, (empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1), 1, 0, 'C'); 
         $fpdf->Cell(20, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C'); 
         $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-        $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+        $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
         $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
         $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
         $fpdf->SetFont('Times', '', 9); 
@@ -364,7 +377,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
@@ -375,7 +388,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
@@ -386,7 +399,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
@@ -397,7 +410,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20, 13, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'C'); 
             $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
@@ -456,6 +469,7 @@ class SeaServiceTestimonialPdf extends Controller
         $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
         $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel)->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $StartDate_1 = \DB::table('working_periods')
@@ -525,20 +539,26 @@ class SeaServiceTestimonialPdf extends Controller
 
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+            $fpdf->Ln(30);     
+            $fpdf->SetFont('Times', '', 11); 
+            $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         } else { 
             if($Company->Company === 'L.T.T') {
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
             if($Company->Company === 'DEPASA') {
                 $fpdf->Image('../public/images/depasa-letter-head.png', 10, 2, 190);  
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                $fpdf->Cell(173.2, -13, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
         }
     
         $fpdf->SetDrawColor(200, 200, 200); 
-
-        $fpdf->Ln(30);          
-        $fpdf->SetFont('Times', '', 11); 
-        $fpdf->Cell(165, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+ 
         $fpdf->Ln(6);     
         $fpdf->SetFont('Times', 'BU', 17); 
         $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
@@ -586,7 +606,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->SetFont('Times', '', 9); 
         $fpdf->Cell(20, 13, '-', 1, 0, 'C'); 
         $fpdf->Cell(15, 13, '-', 1, 0, 'C'); 
-        $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+        $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
         $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
         $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
         $fpdf->SetFont('Times', '', 7); 
@@ -601,7 +621,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '-', 1, 0, 'C'); 
             $fpdf->Cell(15, 13, '-', 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
@@ -617,7 +637,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '-', 1, 0, 'C'); 
             $fpdf->Cell(15, 13, '-', 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
@@ -633,7 +653,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '-', 1, 0, 'C'); 
             $fpdf->Cell(15, 13, '-', 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
@@ -649,7 +669,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '-', 1, 0, 'C'); 
             $fpdf->Cell(15, 13, '-', 1, 0, 'C'); 
-            $fpdf->Cell(15, 13, '-', 1, 0, 'C');
+            $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
@@ -660,7 +680,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln(10);       
         $fpdf->SetFont('Times', '', 12); 
         $fpdf->Ln(6);       
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted (nil) days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(3);       
         $fpdf->MultiCell(190, 6, 'My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);    
