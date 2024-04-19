@@ -608,6 +608,7 @@ main .left-navigation ul li {
   align-items: center;
   color: #225f7d;
   display: flex;
+  margin-bottom: 0.5em;
   padding-block: 1em;
   padding-left: 1em;
   position: relative;
@@ -653,11 +654,12 @@ main .left-navigation ul li .total {
   padding: 0.2em 0.7em;
   position: absolute;
   text-align: center;
-  width: 2.5em;
+  width: fit-content;
 }
 
 .vessel-content {
   background: #fff;
+  border-right: 1px solid #c8e3f0;
   overflow-y: scroll;
   width: 25%;
 }
@@ -742,6 +744,21 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner strong .imo, .vessel-content .empty-data .inner strong .imo {
   color: #225f7d;
   font-size: 0.85em;
+}
+.vessel-content .list .inner strong .notification-bg-create, .vessel-content .empty-data .inner strong .notification-bg-create {
+  background-color: #f0f7fb;
+  color: #329bf5;
+}
+.vessel-content .list .inner strong .notification-bg-update, .vessel-content .empty-data .inner strong .notification-bg-update {
+  background-color: #f5fafe;
+  color: #3db75d;
+}
+.vessel-content .list .inner strong .notification-bg-delete, .vessel-content .empty-data .inner strong .notification-bg-delete {
+  background-color: #fff9f9;
+}
+.vessel-content .list .inner strong.notification-wrapper, .vessel-content .empty-data .inner strong.notification-wrapper {
+  color: #ff6868;
+  width: 23em;
 }
 .vessel-content .list .inner strong .vessel-name-span, .vessel-content .empty-data .inner strong .vessel-name-span {
   background-color: #fff9f9;
@@ -1056,7 +1073,6 @@ main .left-navigation ul li .total {
   margin: 1em;
 }
 .dashboard-inner .board-1 .div, .dashboard-inner .board-2 .div, .dashboard-inner .board-3 .div {
-  background: #fff;
   border: 1px solid #dcedf5;
   height: 20em;
   padding: 2em;
@@ -1103,6 +1119,7 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-1 .div h2 span:first-of-type, .dashboard-inner .board-2 .div h2 span:first-of-type, .dashboard-inner .board-3 .div h2 span:first-of-type {
   align-items: center;
+  background-color: #f7fff8;
   color: #00f21d;
   display: flex;
   font-weight: bold;
@@ -1116,13 +1133,19 @@ main .left-navigation ul li .total {
   width: 1.65em;
 }
 .dashboard-inner .board-1 .div h2 span:last-of-type, .dashboard-inner .board-2 .div h2 span:last-of-type, .dashboard-inner .board-3 .div h2 span:last-of-type {
-  background-color: #f0f7fb;
+  background-color: #225f7d;
+  color: #fff;
+  font-weight: 500;
+}
+.dashboard-inner .board-1 .div.recent-workflow, .dashboard-inner .board-2 .div.recent-workflow, .dashboard-inner .board-3 .div.recent-workflow {
+  overflow-y: scroll;
 }
 .dashboard-inner .board-1 .div strong, .dashboard-inner .board-2 .div strong, .dashboard-inner .board-3 .div strong {
   color: #333;
   font-size: 5em;
 }
 .dashboard-inner .board-1 .div .sub-heading, .dashboard-inner .board-2 .div .sub-heading, .dashboard-inner .board-3 .div .sub-heading {
+  background: #fff7f7;
   color: #ff8282;
   display: block;
   font-weight: bold;
@@ -1145,6 +1168,7 @@ main .left-navigation ul li .total {
   width: 6em;
 }
 .dashboard-inner .board-3 .div {
+  background: unset;
   height: 20em;
   overflow-y: scroll;
   width: 100%;

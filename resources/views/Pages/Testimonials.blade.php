@@ -1,11 +1,11 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Testimonials - SEA SERVICE TESTIMONIAL')
+
+@section('Content')
 @include('Components.Forms.Add.Testimonial') 
 @include('Components.Forms.Edit.Testimonial')
 @include('Components.Forms.Delete.Testimonial')
 @include('Components.Inner.Testimonial')
-
-@section('Content')
 <div class="table-1"> 
    <header>
       <div class="h-1">

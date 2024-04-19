@@ -23,6 +23,9 @@ class LoginController extends Controller
                 session()->put('FullName', $User->FullName);
                 session()->put('Role', $User->Role); 
                 session()->forget('Error');
+                \DB::table('users')->where('id', $User->id)->update([
+                    'LastLogin' => date('Y-m-d H:i A'),
+                ]);
                 return redirect('/Vessels');
             }  
         }                     
@@ -31,6 +34,9 @@ class LoginController extends Controller
     }
 
     public function logout() {
+        \DB::table('users')->where('id', session()->get('USER_ID'))->update([
+            'LastLogout' => date('Y-m-d H:i A'),
+        ]);
         session()->forget('USER_ID');
         session()->forget('FullName');
         session()->forget('Role');

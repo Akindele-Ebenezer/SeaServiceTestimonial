@@ -8,7 +8,6 @@
             margin: 1em;
 
             .div {
-                background: #fff; 
                 border: 1px solid lighten($color: $Color-2, $amount: 60);
                 height: 20em;
                 padding: 2em;
@@ -62,6 +61,7 @@
                         
                         &:first-of-type { 
                             align-items: center;
+                            background-color: lighten($color: $Color-6, $amount: 21);
                             color: darken($color: $Color-6, $amount: 30);
                             display: flex;
                             font-weight: bold;
@@ -77,10 +77,16 @@
                         }
                         
                         &:last-of-type {
-                            background-color: lighten($color: $Color-2, $amount: 65); 
+                            background-color: $Color-2;
+                            color: #fff;
+                            font-weight: 500; 
                         }
                     }
                     
+                }
+
+                &.recent-workflow {
+                    overflow-y: scroll;
                 }
 
                 strong {
@@ -89,6 +95,7 @@
                 }
  
                 .sub-heading {  
+                    background: lighten($color: $Color-4, $amount: 8);
                     color: darken($color: $Color-4, $amount: 15);
                     display: block;
                     font-weight: bold;
@@ -125,6 +132,7 @@
 
         .board-3 {
             .div {
+                background: unset;
                 height: 20em;
                 overflow-y: scroll;
                 width: 100%;

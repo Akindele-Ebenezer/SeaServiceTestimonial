@@ -10,7 +10,7 @@
                     <section> 
                         <div class="input">
                             <label for="">Staff number</label>
-                            <input type="number" name="EditStaffNumber" readonly>
+                            <input type="text" name="EditStaffNumber" readonly>
                         </div>
                         <div class="input">
                             <label for="">Full name</label>

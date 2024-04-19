@@ -1,10 +1,10 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Users - SEA SERVICE TESTIMONIAL')
+
+@section('Content')
 @include('Components.Forms.Add.User')
 @include('Components.Forms.Edit.User')
 @include('Components.Forms.Delete.User')
-
-@section('Content')
 <div class="users-content table-1"> 
    <header>
       <div class="h-1">
@@ -53,7 +53,7 @@
             <td class="filter-value-x">{{ $User->LastLogin }}</td>
             <td class="filter-value-x">{{ $User->LastLogout }}</td>
             <td class="action">
-               <img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt="">
+               {{-- <img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""> --}}
                <img class="EditUserButton" src="{{ asset('images/write.png') }}" alt="">
                <span class="Hide">{{ $User->id }}</span>
                <span class="Hide">{{ $User->FullName }}</span>

@@ -107,19 +107,9 @@ Logout_ROUTE.forEach(Route => {
             Loader.style.display = 'none';
         }, 9000);
         Loader.style.display = 'flex';
-        window.location = '/';
+        window.location = '/Logout';
     })
-});
-
-Logout_ROUTE.forEach(Route => {
-    Route.addEventListener('click', () => {
-        setTimeout(() => {
-            Loader.style.display = 'none';
-        }, 9000);
-        Loader.style.display = 'flex';
-        window.location = '/';
-    })
-});
+}); 
 
 let FILTERVALUE_X = document.querySelectorAll('.filter-value-x');
 

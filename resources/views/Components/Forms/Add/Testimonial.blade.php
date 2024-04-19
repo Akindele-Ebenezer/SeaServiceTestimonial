@@ -46,7 +46,7 @@
                         </div>  
                         <div class="input">
                             <label for="">Staff number</label>
-                            <input type="number" name="StaffNumber">
+                            <input type="text" name="StaffNumber">
                         </div> 
                     </section>
                     <section class="-x">

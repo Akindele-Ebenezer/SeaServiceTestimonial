@@ -1,5 +1,7 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Employees - SEA SERVICE TESTIMONIAL')
+
+@section('Content')
 @include('Components.Forms.Add.Employee')
 @include('Components.Forms.Edit.Employee')
 @include('Components.Forms.Delete.Employee')
@@ -11,8 +13,6 @@
 @include('Components.Inner.Company')
 @include('Components.Forms.Edit.Company')
 @include('Components.Forms.Delete.Company')
-
-@section('Content')
 <div class="employees-content table-1"> 
    <header>
       <div class="h-1">
@@ -68,8 +68,8 @@
             <td class="filter-value-x">{{ $Employee->DischargeBook }}</td>
             <td class="filter-value-x">{{ $Employee->Company }}</td>
             <td class="action">
-               <img src="{{ asset('images/pdf.png') }}" alt="">
-               <img src="{{ asset('images/statistic.png') }}" alt="">
+               {{-- <img src="{{ asset('images/pdf.png') }}" alt="">
+               <img src="{{ asset('images/statistic.png') }}" alt=""> --}}
                <img class="EditEmployeeButton" src="{{ asset('images/write.png') }}" alt="">
                <span class="Hide">{{ $Employee->EmployeeId }}</span>
                <span class="Hide">{{ $Employee->FullName }}</span>

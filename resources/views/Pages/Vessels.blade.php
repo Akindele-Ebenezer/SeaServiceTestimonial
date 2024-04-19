@@ -1,10 +1,10 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Vessels - SEA SERVICE TESTIMONIAL')
+
+@section('Content')
 @include('Components.Forms.Add.Vessel')
 @include('Components.Forms.Edit.Vessel')
 @include('Components.Forms.Delete.Vessel')
-
-@section('Content')
 <div class="vessel-content"> 
     <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T Coastal Marine - Vessel List</h2>
     @unless (count($Vessels) > 0)
@@ -56,14 +56,14 @@
                     {{ $Vessel->VesselName }}
                 </span> 
                 <span class="imo">{{ $Vessel->ImoNumber ?? '-' }}</span>
-                <span class="employee">  {{ $Vessels_EMPLOYEE->EmployeeName ?? ''}} {{ '(' .  ($Vessels_EMPLOYEE->Rank ?? '') . ')'}}</span>
+                <span class="employee">  {{ $Vessels_EMPLOYEE->EmployeeName ?? 'Employee not available. '}} <br> {{ '(' .  ($Vessels_EMPLOYEE->Rank ?? 'No recorded testimonial on this vessel') . ')'}}</span>
             </strong>  
             <div class="action">
                 <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
                 <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
             </div>
             <div class="inner company">
-                {{ $Vessels_EMPLOYEE->Company ?? ''}}
+                {{ $Vessels_EMPLOYEE->Company ?? 'TUG'}}
             </div>
         </div>
     </div> 

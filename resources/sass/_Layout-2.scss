@@ -131,6 +131,7 @@ main {
                 align-items: center;
                 color: $Color-2;
                 display: flex;
+                margin-bottom: .5em;
                 padding-block: 1em;
                 padding-left: 1em;
                 position: relative;
@@ -183,7 +184,7 @@ main {
                     padding: 0.2em .7em;
                     position: absolute;
                     text-align: center;
-                    width: 2.5em;
+                    width: fit-content;
                 }
             }
         }

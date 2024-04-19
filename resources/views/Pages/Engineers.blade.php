@@ -1,8 +1,8 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Engineers - SEA SERVICE TESTIMONIAL')
-@include('Components.Forms.Add.Testimonial')
 
 @section('Content')
+@include('Components.Forms.Add.Testimonial')
 <div class="operation-content table-1"> 
    <header>
       <div class="h-1">

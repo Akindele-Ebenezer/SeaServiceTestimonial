@@ -17,7 +17,7 @@ class SeaServiceTestimonialPdf extends Controller
         $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
         $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
-        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $StartDate_1 = \DB::table('working_periods')
@@ -141,55 +141,162 @@ class SeaServiceTestimonialPdf extends Controller
            
         //// TABLE COLUMNS 
         $fpdf->SetFont('Times', '', 9); 
-        $fpdf->Cell(20, 13, (empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1), 1, 0, 'C'); 
-        $fpdf->Cell(20, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C');  
-        $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
-        $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
-        $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
-        $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
-        $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
+        // $fpdf->Cell(20, 13, (empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1), 1, 0, 'C'); 
+        // $fpdf->Cell(20, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C');  
+        // $fpdf->SetFont('Times', '', 8); 
+        // $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 20)), 1, 0, 'C');   
+        // $fpdf->SetFont('Times', '', 9);  
+        // $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
+        // $fpdf->SetFont('Times', '', 7); 
+        // $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 0, 'C');
+        // $fpdf->SetFont('Times', '', 9);  
+        // $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
+        // $fpdf->Ln();
+        // TODAY
+
+        $data2=array(
+            array(
+                "1",
+                "Foo, overflowed text length",
+                "This is a quite long text for a cell. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Something"
+            ),
+            // array(
+            //     "1",
+            //     "Bar, normal length",
+            //     "This is normal length for a cell.",
+            //     "Something else"
+            // ),
+            // array(
+            //     "1",
+            //     "Baz, overflowed text length",
+            //     "This is also a quite long text for a cell. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            //     "Something else"
+            // ),
+        ); 
+        foreach($data2 as $item){
+            $cellWidth=80;//wrapped cell width
+            $cellHeight=5;//normal one-line cell height
+            
+            //check whether the text is overflowing
+            if($fpdf->GetStringWidth($CurrentVessel->CurrentVessel) < $cellWidth){
+                //if not, then do nothing
+                $line=1;
+            }else{
+                //if it is, then calculate the height needed for wrapped cell
+                //by splitting the text to fit the cell width
+                //then count how many lines are needed for the text to fit the cell
+                
+                $textLength=strlen($CurrentVessel->CurrentVessel);	//total text length
+                $errMargin=10;		//cell width error margin, just in case
+                $startChar=0;		//character start position for each line
+                $maxChar=0;			//maximum character in a line, to be incremented later
+                $textArray=array();	//to hold the strings for each line
+                $tmpString="";		//to hold the string for a line (temporary)
+                
+                while($startChar < $textLength){ //loop until end of text
+                    //loop until maximum character reached
+                    while( 
+                    $fpdf->GetStringWidth( $tmpString ) < ($cellWidth-$errMargin) &&
+                    ($startChar+$maxChar) < $textLength ) {
+                        $maxChar++;
+                        $tmpString=substr($CurrentVessel->CurrentVessel,$startChar,$maxChar);
+                    }
+                    //move startChar to next line
+                    $startChar=$startChar+$maxChar;
+                    //then add it into the array so we know how many line are needed
+                    array_push($textArray,$tmpString);
+                    //reset maxChar and tmpString
+                    $maxChar=0;
+                    $tmpString='';
+                    
+                }
+                //get number of line
+                $line=count($textArray);
+            }
+            
+            //write the cells
+            $fpdf->Cell(20,10,(empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1),1,0); //adapt height to number of lines
+            $fpdf->Cell(20,10,(empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1),1,0); //adapt height to number of lines
+            $yPos=$fpdf->GetY();
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 10 ? str_replace(' ', '-', $CurrentVessel->CurrentVessel) . '                                                       ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            // $fpdf->MultiCell(35,$cellHeight,(empty($CurrentVessel->CurrentVessel) ? '-' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                                                       ',1);
+            $xPos=$fpdf->GetX(); 
+            
+            //use MultiCell instead of Cell
+            //but first, because MultiCell is always treated as line ending, we need to 
+            //manually set the xy position for the next cell to be next to it.
+            //remember the x and y position before writing the multicell
+            $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
+            $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); //adapt height to number of lines
+            $yPos=$fpdf->GetY();
+            $fpdf->MultiCell(30, $cellHeight,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0); //adapt height to number of lines
+            $fpdf->SetXY(60 + $cellWidth , $yPos);
+            $yPos=$fpdf->GetY();
+            $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
+            $fpdf->SetXY(90 + $cellWidth , $yPos);
+            $yPos=$fpdf->GetY();
+            $fpdf->Cell(25,10,'-',1,0); //adapt height to number of lines
+        }
+        // TODAY 
         if(!empty($StartDate_2->StartDate_2)) {
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'C');  
-            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 20)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9);  
             $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9);  
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
         }
         if(!empty($StartDate_3->StartDate_3)) {
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'C'); 
-            $fpdf->Cell(20, 13, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'C');  
-            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'C');    
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 20)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9);  
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
         }
         if(!empty($StartDate_4->StartDate_4)) {
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'C'); 
-            $fpdf->Cell(20, 13, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'C');  
-            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'C');    
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 20)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9);  
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
         }
         if(!empty($StartDate_5->StartDate_5)) {
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'C'); 
-            $fpdf->Cell(20, 13, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'C');  
-            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'C');    
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(35, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 20)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(25, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 0, 'C');
+            $fpdf->SetFont('Times', '', 9);  
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 1, 'C');   
         }
  
-        $fpdf->Ln(5);       
+        $fpdf->ln(13);      
         $fpdf->SetFont('Times', '', 12); 
         $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);       
@@ -238,7 +345,7 @@ class SeaServiceTestimonialPdf extends Controller
         $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
         $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
-        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $StartDate_1 = \DB::table('working_periods')
@@ -365,57 +472,74 @@ class SeaServiceTestimonialPdf extends Controller
         //// TABLE COLUMNS
         $fpdf->SetFont('Times', '', 9); 
         $fpdf->Cell(20, 13, (empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1), 1, 0, 'C'); 
-        $fpdf->Cell(20, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C'); 
-        $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+        $fpdf->Cell(20, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C');   
+        $fpdf->SetFont('Times', '', 7); 
+        $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
+        $fpdf->SetFont('Times', '', 9); 
         $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
         $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
         $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
         $fpdf->SetFont('Times', '', 9); 
         $fpdf->Cell(20, 13, '389', 1, 0, 'C'); 
-        $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 1, 'C'); 
+        $fpdf->SetFont('Times', '', 7); 
+        $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 1, 'C');
+        $fpdf->SetFont('Times', '', 9);  
         if(!empty($StartDate_2->StartDate_2)) {
             $fpdf->Cell(20, 13, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '389', 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 1, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 1, 'C');
+            $fpdf->SetFont('Times', '', 9);  
         }
         if(!empty($StartDate_3->StartDate_3)) {
             $fpdf->Cell(20, 13, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '389', 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 1, 'C'); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 1, 'C');
+            $fpdf->SetFont('Times', '', 9);  
         }
         if(!empty($StartDate_4->StartDate_4)) {
             $fpdf->Cell(20, 13, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '389', 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 1, 'C'); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 1, 'C');
+            $fpdf->SetFont('Times', '', 9);  
         }
         if(!empty($StartDate_5->StartDate_5)) {
             $fpdf->Cell(20, 13, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(15, 13, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'C');
             $fpdf->Cell(30, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');  
             $fpdf->Cell(25, 13, '-', 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 9); 
             $fpdf->Cell(20, 13, '389', 1, 0, 'C'); 
-            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 1, 'C'); 
+            $fpdf->Cell(30, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 27)), 1, 1, 'C');
+            $fpdf->SetFont('Times', '', 9);  
         }
 
         $fpdf->Ln(5);   
@@ -469,7 +593,7 @@ class SeaServiceTestimonialPdf extends Controller
         $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
         $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
-        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $StartDate_1 = \DB::table('working_periods')
@@ -598,8 +722,8 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln();
            
         //// TABLE COLUMNS
-        $fpdf->SetFont('Times', '', 9); 
-        $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+        $fpdf->SetFont('Times', '', 7); 
+        $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
         $fpdf->SetFont('Times', '', 7); 
         $fpdf->Cell(15, 13, (empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1), 1, 0, 'C'); 
         $fpdf->Cell(15, 13, (empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1), 1, 0, 'C'); 
@@ -610,11 +734,11 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
         $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
         $fpdf->SetFont('Times', '', 7); 
-        $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C'); 
+        $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 12)), 1, 0, 'C'); 
         $fpdf->Cell(20, 13, '-', 1, 1, 'C'); 
         if(!empty($StartDate_2->StartDate_2)) {
-            $fpdf->SetFont('Times', '', 9); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
             $fpdf->SetFont('Times', '', 7); 
             $fpdf->Cell(15, 13, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'C'); 
             $fpdf->Cell(15, 13, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'C'); 
@@ -625,12 +749,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
-            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 12)), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, '-', 1, 1, 'C');    
         }
         if(!empty($StartDate_3->StartDate_3)) {
-            $fpdf->SetFont('Times', '', 9); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
             $fpdf->SetFont('Times', '', 7); 
             $fpdf->Cell(15, 13, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'C'); 
             $fpdf->Cell(15, 13, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'C'); 
@@ -641,12 +765,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
-            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 12)), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, '-', 1, 1, 'C');    
         }
         if(!empty($StartDate_4->StartDate_4)) {
-            $fpdf->SetFont('Times', '', 9); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
             $fpdf->SetFont('Times', '', 7); 
             $fpdf->Cell(15, 13, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'C'); 
             $fpdf->Cell(15, 13, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'C'); 
@@ -657,12 +781,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
-            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 12)), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, '-', 1, 1, 'C');    
         }
         if(!empty($StartDate_5->StartDate_5)) {
-            $fpdf->SetFont('Times', '', 9); 
-            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel), 1, 0, 'C'); 
+            $fpdf->SetFont('Times', '', 7); 
+            $fpdf->Cell(30, 13, (empty($CurrentVessel->CurrentVessel) ? '-' : substr($CurrentVessel->CurrentVessel, 0, 18)), 1, 0, 'C'); 
             $fpdf->SetFont('Times', '', 7); 
             $fpdf->Cell(15, 13, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'C'); 
             $fpdf->Cell(15, 13, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'C'); 
@@ -673,7 +797,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 13, '-', 1, 0, 'C');  
             $fpdf->Cell(20, 13, (empty($AreaOfOperation->AreaOfOperation) ? '-' : $AreaOfOperation->AreaOfOperation), 1, 0, 'C');   
             $fpdf->SetFont('Times', '', 7); 
-            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : $Rank->Rank), 1, 0, 'C'); 
+            $fpdf->Cell(20, 13, (empty($Rank->Rank) ? '-' : substr($Rank->Rank, 0, 12)), 1, 0, 'C'); 
             $fpdf->Cell(20, 13, '-', 1, 1, 'C');    
         }
 

@@ -11,7 +11,7 @@
                     <section> 
                         <div class="input">
                             <label for="">Staff number</label>
-                            <input type="number" name="StaffNumber">
+                            <input type="text" name="StaffNumber">
                         </div>
                         <div class="input">
                             <label for="">Full name</label>
