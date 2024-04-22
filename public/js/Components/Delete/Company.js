@@ -1,5 +1,5 @@
 let DeleteCompanyButtons = document.querySelectorAll('.DeleteCompanyButton');
-let CompanyName = document.querySelector('.Company-name');
+let CompanyName = document.querySelector('.company-name');
 let DeleteCompanyModal = document.querySelector('.DeleteCompany');
 let DeleteCompanyX = document.querySelector('.DeleteCompanyX');
 let CancelButtonDeleteCompanies = document.querySelectorAll('.cancel-button-delete-company');

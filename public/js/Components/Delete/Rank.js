@@ -1,5 +1,5 @@
 let DeleteRankButtons = document.querySelectorAll('.DeleteRankButton');
-let RankName = document.querySelector('.Rank-name');
+let RankName = document.querySelector('.rank-name');
 let DeleteRankModal = document.querySelector('.DeleteRank');
 let DeleteRankX = document.querySelector('.DeleteRankX');
 let CancelButtonDeleteRanks = document.querySelectorAll('.cancel-button-delete-rank');
