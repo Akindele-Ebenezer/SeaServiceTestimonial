@@ -12,7 +12,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $Request)
     {
-        $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
+        $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(40);
         $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
         $Ranks = \DB::table('ranks')->orderBy('id', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
