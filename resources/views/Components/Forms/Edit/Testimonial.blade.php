@@ -149,11 +149,12 @@
                     <div class="input">
                         <div class="input">
                             <label for="">Current Vessel</label>  
-                            <select name="EditCurrentVessel" id="">
+                            {{-- <select name="EditCurrentVessel" id="">
                             @foreach ($Vessels as $Vessel)
                                 <option value="{{ $Vessel->VesselName ?? '-' }}">{{ $Vessel->VesselName ?? '-' }}</option> 
                             @endforeach
-                            </select>
+                            </select> --}}
+                            <input type="text" name="EditCurrentVessel" readonly id="">
                         </div>
                     </div>
                 </section>

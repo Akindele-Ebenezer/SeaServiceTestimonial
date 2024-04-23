@@ -20,7 +20,7 @@ let EditEndDate_4Input = document.querySelector('input[name=EditEndDate_4]');
 let EditStartDate_5Input = document.querySelector('input[name=EditStartDate_5]');
 let EditEndDate_5Input = document.querySelector('input[name=EditEndDate_5]');
 let EditTemplateInput = document.querySelector('select[name=EditTemplateFormat]'); 
-let EditCurrentVesselInput = document.querySelector('select[name=EditCurrentVessel]'); 
+let EditCurrentVesselInput = document.querySelector('input[name=EditCurrentVessel]'); 
 let EditPreviousVesselInput = document.querySelector('input[name=EditPreviousVessel]'); 
 
 EditTestimonialButtons.forEach(EditTestimonialButton => {
