@@ -942,4 +942,220 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Output();        
         exit;
     } 
+    
+    public function template_1_(Fpdf $fpdf, Request $Request) {  
+        $fpdf->AddPage();    
+        $fpdf->SetAutoPageBreak(false);
+        $fpdf->SetTitle('Template 1 - SEA SERVICE TESTIMONIAL');   
+        
+        $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+        $fpdf->Ln(30);     
+        $fpdf->SetFont('Times', '', 11); 
+        $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R');  
+        $fpdf->SetDrawColor(200, 200, 200); 
+      
+        $fpdf->Ln(5);     
+        $fpdf->SetFont('Times', 'BU', 17); 
+        $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
+        $fpdf->SetFont('Times', '', 14); 
+        $fpdf->Cell(190, -3, 'I certify that the following record is truthful statement of a sea service performed by:', 0, 1, 'L');
+        $fpdf->SetFont('Times', 'B', 14); 
+        $fpdf->Cell(190, 20, 'Name: -', 0, 1, 'L');
+        $fpdf->Cell(190, -3, 'Date of Birth: -', 0, 1, 'L');
+        $fpdf->Cell(190, 20, 'Discharge Book No: -', 0, 1, 'L');
+        $fpdf->SetFont('Times', '', 9);         
+          
+        //// TABLE HEAD 
+        $fpdf->SetFont('Times', 'B', 9);         
+        $fpdf->Cell(40, 5, 'Period of Service & Date', 'LTR', 0, 'L');
+        $fpdf->SetFont('Times', 'B', 12);   
+        $fpdf->Cell(35, 8, 'VESSEL', 'LTR', 0, 'L');
+        $fpdf->Cell(25, 13, 'IMO NO', 'LTR', 0, 'L');
+        $fpdf->Cell(30, 13, 'RANK', 'LTR', 0, 'L'); 
+        $fpdf->Cell(30, 8, 'AREA OF', 'LTR', 0, 'L');   
+        $fpdf->Cell(25, 8, 'G.R.T', 'LTR', 0, 'L');   
+        $fpdf->Ln(5); 
+        $fpdf->SetFont('Times', 'B', 9);         
+        $fpdf->Cell(20, 8, 'From', 1, 0, 'L');
+        $fpdf->Cell(20, 8, 'To', 1, 0, 'L');
+        $fpdf->SetFont('Times', 'B', 12);         
+        $fpdf->Cell(35, 8, 'NAME', 'LR', 0, 'L'); 
+        $fpdf->Cell(25, 8, ' ', 'LR', 0, 'L'); 
+        $fpdf->Cell(30, 8, ' ', 'LR', 0, 'L'); 
+        $fpdf->Cell(30, 8, 'OPERATION', 'LR', 0, 'L');
+        $fpdf->Cell(25, 8, 'SIGN', 'LR', 0, 'L');  
+        $fpdf->Ln();
+           
+        //// TABLE COLUMNS 
+        $fpdf->SetFont('Times', '', 11);  
+       
+        $fpdf->Cell(20,10, '-',1,0);  
+        $fpdf->Cell(20,10, '-',1,0);   
+        $fpdf->Cell(35,10, '-',1); 
+         
+        $fpdf->Cell(25,10, '-',1,0); 
+        $yPos=$fpdf->GetY(); 
+        $fpdf->Cell(30, 10, '-',1);   
+        $fpdf->Cell(30,10, '-',1); 
+        $yPos=$fpdf->GetY();
+        $fpdf->Cell(25,10,'-',1,0); 
+        $fpdf->ln();
+        
+        $fpdf->Cell(20,10, '-',1,0);  
+        $fpdf->Cell(20,10, '-',1,0);   
+        $fpdf->Cell(35,10, '-',1); 
+         
+        $fpdf->Cell(25,10, '-',1,0); 
+        $yPos=$fpdf->GetY(); 
+        $fpdf->Cell(30, 10, '-',1);   
+        $fpdf->Cell(30,10, '-',1); 
+        $yPos=$fpdf->GetY();
+        $fpdf->Cell(25,10,'-',1,0); 
+        $fpdf->ln();
+         
+        $fpdf->ln(13);      
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(70, 5, '   Navigational watch for not less than 12 hours out of every 24 hours ', 0, 1, 'L'); 
+        $fpdf->MultiCell(190, 6, 'whilst the vessel was engaged on operation. General maintenance of vessel.', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Conduct:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Experience/Ability:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Behaviour/Soberiety:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+  
+        $fpdf->SetFont('Times', 'B', 12);    
+        $fpdf->Cell(60, 10, 'OFFICIAL ENDORSEMENT.', 0, 1);
+
+        $fpdf->Ln(15);    
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Cell(60, 10, '..............................................', 0, 1);
+        $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
+        $fpdf->SetFont('Times', 'B', 12);
+        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
+
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Output();        
+        exit;
+    }
+        
+    public function template_2_(Fpdf $fpdf, Request $Request) { 
+        $fpdf->AddPage();    
+        $fpdf->SetAutoPageBreak(false);
+        $fpdf->SetTitle('Template 2 - SEA SERVICE TESTIMONIAL');             
+  
+        $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+        $fpdf->Ln(30);     
+        $fpdf->SetFont('Times', '', 11); 
+        $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R');  
+        $fpdf->SetDrawColor(200, 200, 200);  
+         
+        $fpdf->Ln(7);     
+        $fpdf->SetFont('Times', 'BU', 17); 
+        $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
+        $fpdf->SetFont('Times', '', 14); 
+        $fpdf->Cell(190, -3, 'I certify that the following record is truthful statement of a sea service performed by:', 0, 1, 'L');
+        $fpdf->SetFont('Times', 'B', 14); 
+        $fpdf->Cell(190, 20, 'Name:  -', 0, 1, 'L');
+        $fpdf->Cell(190, -3, 'Date of Birth: -', 0, 1, 'L');
+        $fpdf->Cell(190, 20, 'Discharge Book No: -', 0, 1, 'L');
+        $fpdf->SetFont('Times', '', 11);  
+
+        $fpdf->Ln(5);          
+        
+        //// TABLE HEAD 
+        $fpdf->SetFont('Times', 'B', 10); 
+        $fpdf->Cell(20, 8, 'START', 'LTR', 0, 'L'); 
+        $fpdf->Cell(20, 8, 'END', 'LTR', 0, 'L');
+        $fpdf->Cell(30, 9, 'VESSEL', 'LTR', 0, 'L'); 
+        $fpdf->Cell(20, 8, 'IMO', 'LTR', 0, 'L');
+        $fpdf->Cell(25, 8, 'AREA OF', 'LTR', 0, 'L');  
+        $fpdf->Cell(30, 8, 'ENG', 'LTR', 0, 'L');   
+        $fpdf->Cell(15, 13, 'GRT', 'LTR', 0, 'L'); 
+        $fpdf->Cell(30, 13, 'RATING', 'LTR', 0, 'L');
+        $fpdf->Ln(5);
+        $fpdf->Cell(20, 8, 'DATE', 'LR', 0, 'L');  
+        $fpdf->Cell(20, 8, 'DATE', 'LR', 0, 'L'); 
+        $fpdf->Cell(30, 10, 'NAME', 'LR', 0, 'L'); 
+        $fpdf->Cell(20, 8, 'NO', 'LR', 0, 'L'); 
+        $fpdf->Cell(25, 8, 'OPERATION', 'LR', 0, 'L'); 
+        $fpdf->Cell(30, 8, '(kw)', 'LR', 0, 'L');
+        $fpdf->Cell(15, 8, ' ', 'LR', 0, 'L');  
+        $fpdf->Cell(30, 8, ' ', 'LR', 0, 'L'); 
+        $fpdf->Ln();
+           
+        //// TABLE COLUMNS
+        $fpdf->SetFont('Times', '', 10); 
+               
+        $fpdf->Cell(20, 10, '-', 1, 0, 'L'); 
+        $fpdf->Cell(20, 10, '-', 1, 0, 'L');    
+        $fpdf->Cell(30,10, '-',1);  
+        $fpdf->Cell(20, 10, '-', 1, 0, 'L');
+        $fpdf->Cell(25,10, '-',1);
+        $fpdf->Cell(30,10, '-',1);
+        $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+        $fpdf->Cell(30,10, '-',1);               
+        $fpdf->Ln();   
+        $fpdf->Cell(20, 10, '-', 1, 0, 'L'); 
+        $fpdf->Cell(20, 10, '-', 1, 0, 'L');    
+        $fpdf->Cell(30,10, '-',1);  
+        $fpdf->Cell(20, 10, '-', 1, 0, 'L');
+        $fpdf->Cell(25,10, '-',1);
+        $fpdf->Cell(30,10, '-',1);
+        $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+        $fpdf->Cell(30,10, '-',1); 
+        $fpdf->Ln(18);   
+
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted 112 days leave of absence.', 0, 'L', 0);
+        $fpdf->Ln(2);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(70, 5, '   Regular watch on auxiliary machinery. Regular watch on main ', 0, 1, 'L'); 
+        $fpdf->MultiCell(190, 6, 'propulsion machinery. Regular work in Ships processing centralized control room, full or partial Automation facilty to operate machinery in the unmanned mode for a significant proportion of each 24 hour period.', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->MultiCell(190, 6, 'My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->Ln(1);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Conduct:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Very Good', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Experience/Ability:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Very Good', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Behaviour:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+  
+        $fpdf->SetFont('Times', 'B', 12);    
+        $fpdf->Cell(60, 10, 'OFFICIAL ENDORSEMENT.', 0, 1);
+
+        $fpdf->Ln(15);    
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Cell(60, 10, '..............................................', 0, 1);
+        $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
+        $fpdf->SetFont('Times', 'B', 12);
+        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
+
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Output();        
+        exit;
+    }
 }

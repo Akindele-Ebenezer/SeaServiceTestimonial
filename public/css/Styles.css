@@ -746,6 +746,7 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner strong .imo, .vessel-content .empty-data .inner strong .imo {
   color: #225f7d;
   font-size: 0.85em;
+  text-decoration: underline;
 }
 .vessel-content .list .inner strong .notification-bg-create, .vessel-content .empty-data .inner strong .notification-bg-create {
   background-color: #f0f7fb;
