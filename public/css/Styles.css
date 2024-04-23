@@ -342,6 +342,7 @@
   justify-content: center;
 }
 .no-data-selected center, .no-data center {
+  background: #256889;
   border-radius: 1em;
   padding: 3em;
 }
