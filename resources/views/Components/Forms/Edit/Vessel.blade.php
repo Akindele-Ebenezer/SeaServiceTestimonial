@@ -10,7 +10,7 @@
                     <section>
                         <div class="input">
                             <label for="">VESSEL NAME</label>
-                            <input type="text" name="EditVesselName">
+                            <input type="text" name="EditVesselName" readonly>
                         </div>
                         <div class="input">
                             <label for="">IMO No.</label>

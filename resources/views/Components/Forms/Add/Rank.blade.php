@@ -11,7 +11,7 @@
                     <section> 
                         <div class="input">
                             <label for="">Position</label>
-                            <input type="text" name="Rank">
+                            <input type="text" name="Rank" maxlength="25">
                         </div> 
                     </section> 
                 </div>

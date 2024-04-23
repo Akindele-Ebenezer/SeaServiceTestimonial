@@ -10,7 +10,7 @@
                     <section> 
                         <div class="input">
                             <label for="">Position</label>
-                            <input type="text" name="Position">
+                            <input type="text" name="Position" maxlength="25">
                         </div> 
                     </section>  
                 </div>

@@ -11,7 +11,7 @@
                     <section>
                         <div class="input">
                             <label for="">VESSEL NAME</label>
-                            <input type="text" name="VesselName">
+                            <input type="text" name="VesselName" maxlength="25">
                         </div>
                         <div class="input">
                             <label for="">IMO No.</label>
