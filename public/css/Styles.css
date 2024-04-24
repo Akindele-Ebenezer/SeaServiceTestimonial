@@ -1260,7 +1260,7 @@ main .left-navigation ul li .total {
   position: absolute;
   right: 1em;
   top: 1em;
-  z-index: 1;
+  z-index: 22;
 }
 .list-component .inner-x .close-button-ranks button, .list-component .inner-x .close-button-companies button, .list-component .inner-x .close-button-testimonials button {
   background-color: unset;
