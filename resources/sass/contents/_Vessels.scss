@@ -7,6 +7,10 @@
 
     &.notifications {
         border-right: 1px solid lighten($color: $Color-2, $amount: 55);
+
+        .imo {
+            text-decoration: unset !important;
+        }
     }
 
     h2 {
@@ -301,7 +305,7 @@
         }
 
         &.vessel-information {
-            background-color: lighten($color: $Color-2, $amount: 10);
+            background-color: darken($color: $Color-2, $amount: 3);
         }
     } 
 }

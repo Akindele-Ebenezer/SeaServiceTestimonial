@@ -342,7 +342,6 @@
   justify-content: center;
 }
 .no-data-selected center, .no-data center {
-  background: #256889;
   border-radius: 1em;
   padding: 3em;
 }
@@ -668,6 +667,9 @@ main .left-navigation ul li .total {
 .vessel-content.notifications {
   border-right: 1px solid #c8e3f0;
 }
+.vessel-content.notifications .imo {
+  text-decoration: unset !important;
+}
 .vessel-content h2 {
   align-items: center;
   background: #1d5069;
@@ -909,7 +911,7 @@ main .left-navigation ul li .total {
   font-weight: 500;
 }
 .content-data .inner.vessel-information {
-  background-color: #2d7da5;
+  background-color: #1f5671;
 }
 
 .testimonial-content, .table-1 {
@@ -1069,31 +1071,33 @@ main .left-navigation ul li .total {
 }
 
 .dashboard {
-  background-color: #fff;
+  background-color: #1a4a61;
 }
 .dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
+  background-color: #225f7d;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   margin: 1em;
 }
 .dashboard-inner .board-1 .div, .dashboard-inner .board-2 .div, .dashboard-inner .board-3 .div {
-  border: 1px solid #dcedf5;
+  background-color: #1f5671;
   height: 20em;
   padding: 2em;
   width: 32%;
 }
 .dashboard-inner .board-1 .div h1, .dashboard-inner .board-2 .div h1, .dashboard-inner .board-3 .div h1 {
-  border-bottom: 1px solid #e8f3f9;
-  color: #225f7d;
-  font-size: 1.2em;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 500;
   justify-content: space-between;
   padding-inline: unset;
 }
 .dashboard-inner .board-1 .div h1 span select, .dashboard-inner .board-2 .div h1 span select, .dashboard-inner .board-3 .div h1 span select {
   border: none;
   border-radius: 0.1em;
-  background-color: #f0f7fb;
-  color: #225f7d;
+  background-color: #19475d;
+  color: #fff;
   outline: none;
   padding: 0.2em 0.5em;
   width: 8em;
@@ -1123,7 +1127,6 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-1 .div h2 span:first-of-type, .dashboard-inner .board-2 .div h2 span:first-of-type, .dashboard-inner .board-3 .div h2 span:first-of-type {
   align-items: center;
-  background-color: #f7fff8;
   color: #00f21d;
   display: flex;
   font-weight: bold;
@@ -1145,26 +1148,25 @@ main .left-navigation ul li .total {
   overflow-y: scroll;
 }
 .dashboard-inner .board-1 .div strong, .dashboard-inner .board-2 .div strong, .dashboard-inner .board-3 .div strong {
-  color: #333;
   font-size: 5em;
 }
 .dashboard-inner .board-1 .div .sub-heading, .dashboard-inner .board-2 .div .sub-heading, .dashboard-inner .board-3 .div .sub-heading {
-  background: #fff7f7;
-  color: #ff8282;
+  color: #eee;
   display: block;
-  font-weight: bold;
+  font-weight: 500;
   padding-block: 0.5em;
   text-align: center;
 }
 .dashboard-inner .board-1 .div svg, .dashboard-inner .board-2 .div svg, .dashboard-inner .board-3 .div svg {
-  fill: #919191;
+  fill: #eee;
   width: 2.5em;
 }
 .dashboard-inner .board-2 .div {
   width: 49%;
 }
 .dashboard-inner .board-2 .div .canvas .inner-x {
-  border-bottom: 1px solid #e8f3f9;
+  background-color: #1d5069;
+  border-bottom: 1px solid #276e91;
   justify-content: left;
 }
 .dashboard-inner .board-2 .div .canvas .inner-x span:first-of-type {
@@ -1183,17 +1185,16 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
-  border-bottom: 1px solid #e8f3f9;
   padding: 1em;
 }
-.dashboard-inner .board-3 .div table td {
-  color: #666;
+.dashboard-inner .board-3 .div table td:hover {
+  background-color: #1d5069;
 }
 .dashboard-inner .board-3 .div table th {
-  color: #ff8282;
+  font-weight: 500;
 }
 .dashboard-inner .dashboard-heading {
-  background-color: #225f7d;
+  background-color: #1f5671;
   color: #fff;
   position: sticky;
   top: -0.5em;

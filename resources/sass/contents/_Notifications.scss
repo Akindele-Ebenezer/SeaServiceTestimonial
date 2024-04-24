@@ -1,22 +1,23 @@
-.dashboard { 
-    background-color: #fff;
-
+.dashboard {  
+    background-color: darken($color: $Color-2, $amount: 7);
     &-inner {
         .board-1, .board-2, .board-3 {
+            background-color: $Color-2;
+            color: #fff;
             display: flex;
             justify-content: space-between;
             margin: 1em;
 
-            .div {
-                border: 1px solid lighten($color: $Color-2, $amount: 60);
+            .div { 
+                background-color: darken($color: $Color-2, $amount: 3);
                 height: 20em;
                 padding: 2em;
                 width: 32%;
 
-                h1 {  
-                    border-bottom: 1px solid lighten($color: $Color-2, $amount: 63);
-                    color: $Color-2;
-                    font-size: 1.2em; 
+                h1 {   
+                    color: #fff;
+                    font-size: 1.5em; 
+                    font-weight: 500;
                     justify-content: space-between;
                     padding-inline: unset; 
 
@@ -25,8 +26,8 @@
                         select {
                             border: none;
                             border-radius: .1em;
-                            background-color: lighten($color: $Color-2, $amount: 65); 
-                            color: $Color-2;
+                            background-color: darken($color: $Color-2, $amount: 8);
+                            color: #fff;
                             outline: none;
                             padding: .2em .5em;
                             width: 8em;
@@ -60,8 +61,7 @@
                         padding: .35em;
                         
                         &:first-of-type { 
-                            align-items: center;
-                            background-color: lighten($color: $Color-6, $amount: 21);
+                            align-items: center; 
                             color: darken($color: $Color-6, $amount: 30);
                             display: flex;
                             font-weight: bold;
@@ -89,22 +89,20 @@
                     overflow-y: scroll;
                 }
 
-                strong {
-                    color: #333;
+                strong { 
                     font-size: 5em; 
                 }
  
-                .sub-heading {  
-                    background: lighten($color: $Color-4, $amount: 8);
-                    color: darken($color: $Color-4, $amount: 15);
+                .sub-heading {    
+                    color: #eee;
                     display: block;
-                    font-weight: bold;
+                    font-weight: 500;
                     padding-block: 0.5em;
                     text-align: center; 
                 }
 
                 svg {
-                    fill: lighten($color: $Color-1, $amount: 10);
+                    fill: #eee;
                     width: 2.5em;
                 }
             }
@@ -115,8 +113,9 @@
                 width: 49%;
 
                 .canvas {
-                    .inner-x {
-                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 63);
+                    .inner-x { 
+                        background-color: darken($color: $Color-2, $amount: 5);
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
                         justify-content: left;
 
                         span {
@@ -143,23 +142,25 @@
                     width: 100%;
 
                     td, th {
-                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 63);
+                        // border-bottom: 1px solid lighten($color: $Color-2, $amount: 11);
                         padding: 1em;
                     }
 
-                    td { 
-                        color: #666;
+                    td {  
+                        &:hover {
+                            background-color: darken($color: $Color-2, $amount: 5);
+                        }
                     }
 
                     th { 
-                        color: darken($color: $Color-4, $amount: 15);
+                        font-weight: 500;
                     }
                 }
             }
         }
 
         .dashboard-heading {
-            background-color: $Color-2;
+            background-color: darken($color: $Color-2, $amount: 3);
             color: #fff;
             position: sticky;
             top: -0.5em;
