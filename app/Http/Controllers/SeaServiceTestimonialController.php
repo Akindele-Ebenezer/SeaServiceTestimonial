@@ -56,7 +56,7 @@ class SeaServiceTestimonialController extends Controller
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
         $NumberOfVessels = \DB::table('vessels_vessel_information')->count();
         $NumberOfOperations = \DB::table('testimonials')->whereNotNull('AreaOfOperation')->count();
-        $NumberOfWorkingPeriods = \DB::table('working_periods')->count() ?? 1;
+        $NumberOfWorkingPeriods = \DB::table('working_periods')->count();
         $FirstDayOfLastMonth = \Carbon\Carbon::now()->subMonth(1)->startOfMonth()->format('Y-m-d');  
         $FirstDayOfLast2Months = \Carbon\Carbon::now()->subMonth(2)->startOfMonth()->format('Y-m-d');  
         $FirstDayOfLast3Months = \Carbon\Carbon::now()->subMonth(3)->startOfMonth()->format('Y-m-d');  
@@ -95,10 +95,10 @@ class SeaServiceTestimonialController extends Controller
                                                 ->orWhereBetween('StartDate_5', [$FirstDayOfLast4Months, date('Y-m-d')])
                                                 ->count();
   
-        $PercentageOfTestimonials_SINCE_LAST_MONTH = $NumberOfTestimonials_SINCE_LAST_MONTH / $NumberOfWorkingPeriods * 100;
-        $PercentageOfTestimonials_SINCE_LAST_2_MONTH = $NumberOfTestimonials_SINCE_LAST_2_MONTHS / $NumberOfWorkingPeriods * 100;
-        $PercentageOfTestimonials_SINCE_LAST_3_MONTH = $NumberOfTestimonials_SINCE_LAST_3_MONTHS / $NumberOfWorkingPeriods * 100;
-        $PercentageOfTestimonials_SINCE_LAST_4_MONTH = $NumberOfTestimonials_SINCE_LAST_4_MONTHS / $NumberOfWorkingPeriods * 100;
+        $PercentageOfTestimonials_SINCE_LAST_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_MONTH / $NumberOfWorkingPeriods * 100;
+        $PercentageOfTestimonials_SINCE_LAST_2_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_2_MONTHS / $NumberOfWorkingPeriods * 100;
+        $PercentageOfTestimonials_SINCE_LAST_3_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_3_MONTHS / $NumberOfWorkingPeriods * 100;
+        $PercentageOfTestimonials_SINCE_LAST_4_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_4_MONTHS / $NumberOfWorkingPeriods * 100;
         $Testimonials = Testimonial::orderBy('DateIn', 'DESC')->orderBy('TimeIn')->limit(10)->get();
 
         $LeaveDaysArr = [];
