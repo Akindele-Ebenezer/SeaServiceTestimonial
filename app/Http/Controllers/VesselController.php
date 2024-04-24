@@ -12,12 +12,29 @@ class VesselController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $Request)
     {
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
         $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
+
+        if(isset($Request->FilterValue)) {  
+            $Vessels = \DB::table('vessels_vessel_information')->where('VesselName', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('ImoNumber', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('Flag', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('PortOfRegistry', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->orWhere('RegistrationOfficialNumber', 'LIKE', '%' . $Request->FilterValue . '%')
+                            ->paginate(14);
+                                        
+            return view('Pages.Vessels', [
+                'Employees' => $Employees,
+                'Vessels' => $Vessels,
+                'Ranks' => $Ranks,
+                'Companies' => $Companies,
+            ]);
+        }
         return view('Pages.Vessels', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,

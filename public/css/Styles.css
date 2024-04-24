@@ -690,9 +690,9 @@ main .left-navigation ul li .total {
 }
 .vessel-content .list, .vessel-content .empty-data {
   align-items: center;
-  background-color: #fff;
   border-bottom: 1px solid #dcedf5;
   border-left: 8px solid #fff;
+  color: #225f7d;
   padding: 1em;
   position: relative;
 }
