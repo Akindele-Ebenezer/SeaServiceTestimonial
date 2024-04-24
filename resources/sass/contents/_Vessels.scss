@@ -9,6 +9,7 @@
         border-right: 1px solid lighten($color: $Color-2, $amount: 55);
 
         .imo {
+            color: #888 !important;
             text-decoration: unset !important;
         }
     }
@@ -63,7 +64,7 @@
 
         .inner { 
             align-items: center;
-            color: $Color-2;
+            color: #555;
             display: flex; 
             justify-content: space-between;
             text-align: center; 
@@ -92,7 +93,7 @@
 
             strong { 
                 border-radius: 0.3em; 
-                font-weight: 500;
+                font-weight: 400;
                 margin-right: 2em;
                 padding: 0.5em;
                 text-align: left;
@@ -104,7 +105,7 @@
                 }
 
                 .imo {
-                    color: $Color-2;
+                    color: #aaa;
                     font-size: .85em;
                     text-decoration: underline;
                 }
@@ -112,13 +113,19 @@
                 .notification-bg-create {
                     background-color: lighten($color: $Color-2, $amount: 65);
                     color: #329bf5;
+                    font-weight: 500;
+                    font-size: 1.25em;
                 }
                 .notification-bg-update {
                     background-color: lighten($color: #329bf5, $amount: 40);
                     color: #3db75d;
+                    font-weight: 500;
+                    font-size: 1.25em;
                 }
                 .notification-bg-delete {
                     background-color: lighten($color: $Color-4, $amount: 8.5);
+                    font-weight: 500;
+                    font-size: 1.25em;
                 }
 
                 &.notification-wrapper {
@@ -130,6 +137,8 @@
                     background-color: lighten($color: $Color-4, $amount: 8.5);
                     color: darken($color: $Color-4, $amount: 20);
                     display: block;
+                    font-size: 1.25em;
+                    font-weight: 500;
                     padding: .3em .3em .3em 0;
                 }
             }

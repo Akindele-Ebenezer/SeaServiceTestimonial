@@ -668,6 +668,7 @@ main .left-navigation ul li .total {
   border-right: 1px solid #c8e3f0;
 }
 .vessel-content.notifications .imo {
+  color: #888 !important;
   text-decoration: unset !important;
 }
 .vessel-content h2 {
@@ -711,7 +712,7 @@ main .left-navigation ul li .total {
 }
 .vessel-content .list .inner, .vessel-content .empty-data .inner {
   align-items: center;
-  color: #225f7d;
+  color: #555;
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -736,7 +737,7 @@ main .left-navigation ul li .total {
 }
 .vessel-content .list .inner strong, .vessel-content .empty-data .inner strong {
   border-radius: 0.3em;
-  font-weight: 500;
+  font-weight: 400;
   margin-right: 2em;
   padding: 0.5em;
   text-align: left;
@@ -747,20 +748,26 @@ main .left-navigation ul li .total {
   font-weight: 400;
 }
 .vessel-content .list .inner strong .imo, .vessel-content .empty-data .inner strong .imo {
-  color: #225f7d;
+  color: #aaa;
   font-size: 0.85em;
   text-decoration: underline;
 }
 .vessel-content .list .inner strong .notification-bg-create, .vessel-content .empty-data .inner strong .notification-bg-create {
   background-color: #f0f7fb;
   color: #329bf5;
+  font-weight: 500;
+  font-size: 1.25em;
 }
 .vessel-content .list .inner strong .notification-bg-update, .vessel-content .empty-data .inner strong .notification-bg-update {
   background-color: #f5fafe;
   color: #3db75d;
+  font-weight: 500;
+  font-size: 1.25em;
 }
 .vessel-content .list .inner strong .notification-bg-delete, .vessel-content .empty-data .inner strong .notification-bg-delete {
   background-color: #fff9f9;
+  font-weight: 500;
+  font-size: 1.25em;
 }
 .vessel-content .list .inner strong.notification-wrapper, .vessel-content .empty-data .inner strong.notification-wrapper {
   color: #ff6868;
@@ -770,6 +777,8 @@ main .left-navigation ul li .total {
   background-color: #fff9f9;
   color: #ff6868;
   display: block;
+  font-size: 1.25em;
+  font-weight: 500;
   padding: 0.3em 0.3em 0.3em 0;
 }
 .vessel-content .list .inner .vessel, .vessel-content .empty-data .inner .vessel {
