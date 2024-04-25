@@ -172,11 +172,11 @@ class SeaServiceTestimonialPdf extends Controller
         
             $line=count($textArray);
         }
-            
+        $CurrentVessel->CurrentVessel = 'BLUE LATITUDE';
         $fpdf->Cell(20,10,(empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1),1,0);  
         $fpdf->Cell(20,10,(empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1),1,0);  
         $yPos=$fpdf->GetY(); 
-        $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                                      ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+        $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
         $xPos=$fpdf->GetX(); 
         
         $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
@@ -195,7 +195,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                                      ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
             $xPos=$fpdf->GetX(); 
             
             $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
@@ -214,7 +214,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                                      ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
             $xPos=$fpdf->GetX(); 
             
             $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
@@ -233,7 +233,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                                      ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
             $xPos=$fpdf->GetX(); 
             
             $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
@@ -252,7 +252,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                                      ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
             $xPos=$fpdf->GetX(); 
             
             $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
