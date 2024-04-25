@@ -172,7 +172,7 @@ class SeaServiceTestimonialPdf extends Controller
         
             $line=count($textArray);
         }
-        $CurrentVessel->CurrentVessel = 'BLUE LATITUDE';
+        
         $fpdf->Cell(20,10,(empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1),1,0);  
         $fpdf->Cell(20,10,(empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1),1,0);  
         $yPos=$fpdf->GetY(); 
