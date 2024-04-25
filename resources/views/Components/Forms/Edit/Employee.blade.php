@@ -59,6 +59,6 @@
                 </div>
             </div> 
         </form>
-        <button class="UpdateEmployeeButton">Edit →</button>
+        <button class="UpdateEmployeeButton">Update →</button>
     </div>
 </div>

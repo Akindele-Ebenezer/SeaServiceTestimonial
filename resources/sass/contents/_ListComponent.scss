@@ -6,6 +6,88 @@
     position: absolute;
     width: 100vw;
     z-index: 100;
+
+    &.users {
+        background: unset;
+        display: flex; 
+        height: unset;  
+        position: unset;  
+        width: unset;  
+        z-index: 100;
+ 
+        .inner-x {
+            height: unset;
+
+            .list { 
+                padding: unset;
+
+                &:hover { 
+                    background-color: unset;
+                    border: none !important;
+
+                    .-x { 
+                        strong span {
+                         font-weight: 500;   
+                        }
+                    }
+                }
+
+                .inner {
+                    justify-content: unset;
+                    padding: unset;
+
+                    strong {
+                        font-size: x-small;
+                        margin-right: unset;
+                        width: 12em !important;
+
+                        .action-x-add {
+                            background-color: #f0ffeb;
+                            color: #2ec100;
+                        }
+
+                        .action-x-delete {
+                            background-color: #fff4f4;
+                            color: red;
+                        }
+
+                        .action-x-update {
+                            background-color: #e9eeff;
+                            color: #1d41c3;
+                        }
+
+                        .add {
+                            fill: #2ec100;
+                        }
+
+                        .delete {
+                            fill: red;
+                        }
+
+                        .update {
+                            fill: #1d41c3;
+                        }
+
+                        .group-name {  
+                        } 
+
+                        span {
+                            padding: .2em;
+                        }
+                    }
+                }
+
+                &:hover { 
+                    border-left: 8px solid $Color-2; 
+                    cursor: pointer;
+ 
+                    .inner.-x { 
+                        background-color: unset;
+                    }
+                }
+            }
+        }
+    }
     
     .AddRankButton, .AddCompanyButton {
         background: darken($color: $Color-4, $amount: 20);

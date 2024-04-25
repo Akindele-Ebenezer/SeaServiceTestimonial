@@ -173,6 +173,11 @@
                <span class="Hide">{{ $Testimonial->id }}</span>
                <span class="Hide">{{ $Testimonial->CurrentVessel }}</span>
                <span class="Hide">{{ $Testimonial->DateIn }}</span>
+               @php
+                  $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $Testimonial->CurrentVessel)->first(); 
+                  $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber ?? 0)->first();
+               @endphp
+               <span class="Hide">{{ $GRTSign->GrossTonnage ?? '-' }}</span>
             </td> 
          </tr>  
          @endforeach

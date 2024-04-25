@@ -108,7 +108,11 @@
                 }
             }
         }
- 
+        .permissions {
+            height: 30em;
+            overflow-y: scroll;
+        }
+
         .inner-1, .inner-2 { 
             padding-inline: 1em; 
 

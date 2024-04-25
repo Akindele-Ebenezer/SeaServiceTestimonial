@@ -188,6 +188,7 @@ class SeaServiceTestimonialController extends Controller
             'EndDate_5' => $Request->EndDate_5, 
             'EmployeeId' => $Request->StaffNumber, 
         ]);      
+        $UserName = \DB::table('users')->select('FullName')->where('id', session()->get('USER_ID'))->first();
 
         \DB::table('notifications')->insert([
             'DateIn' => date('Y-m-d'),
@@ -197,7 +198,7 @@ class SeaServiceTestimonialController extends Controller
             'Company' => $Request->Company,
             'Action' => 'Create',
             'Subject' => 'New Testimonial Alert!',
-            'Notification' => 'A new testimonial has been added to ' . $Request->CurrentVessel . "'s testimonial list. The " . $Request->Rank . ' on board (' . $Request->Employee . ') worked previosuly on ' . $Request->PreviousVessel . '.',
+            'Notification' =>  $UserName->FullName . ' added a new testimonial to ' . $Request->CurrentVessel . "'s testimonial list. The " . $Request->Rank . ' on board (' . $Request->Employee . ') worked previosuly on ' . $Request->PreviousVessel . ', with discharge book (no.' . $Request->DischargeBook . ').',
         ]);
  
         return redirect()->route('Testimonials');
@@ -248,6 +249,7 @@ class SeaServiceTestimonialController extends Controller
         $DateIn = Testimonial::select('DateIn')->where('id', $Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Id)->first();
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Id)->first();
+        $UserName = \DB::table('users')->select('FullName')->where('id', session()->get('USER_ID'))->first();
  
         \DB::table('working_periods')
             ->where('DateIn', $DateIn->DateIn)
@@ -276,7 +278,7 @@ class SeaServiceTestimonialController extends Controller
             'Company' => $Request->Company,
             'Action' => 'Update',
             'Subject' => 'Testimonial Update!',
-            'Notification' => $Request->EditCurrentVessel . ' has updated their testimonial! The ' . $Request->EditRank . ' on board is ' . $Request->EditEmployee . '.',
+            'Notification' => $UserName->FullName . ' has updated testimonial for ' . $Request->EditCurrentVessel . '! The ' . $Request->EditRank . ' on board is ' . $Request->EditEmployee . ' with discharge book (no.' . $Request->EditDischargeBook . ').',
         ]);
  
         return back();

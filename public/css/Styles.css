@@ -188,6 +188,10 @@
 .form-1 form .input select:focus, .form-1 form .input input:focus, .form-1 form td select:focus, .form-1 form td input:focus {
   border-bottom: 3px solid #225f7d;
 }
+.form-1 form .permissions {
+  height: 30em;
+  overflow-y: scroll;
+}
 .form-1 form .inner-1, .form-1 form .inner-2 {
   padding-inline: 1em;
 }
@@ -1243,6 +1247,67 @@ main .left-navigation ul li .total {
   position: absolute;
   width: 100vw;
   z-index: 100;
+}
+.list-component.users {
+  background: unset;
+  display: flex;
+  height: unset;
+  position: unset;
+  width: unset;
+  z-index: 100;
+}
+.list-component.users .inner-x {
+  height: unset;
+}
+.list-component.users .inner-x .list {
+  padding: unset;
+}
+.list-component.users .inner-x .list:hover {
+  background-color: unset;
+  border: none !important;
+}
+.list-component.users .inner-x .list:hover .-x strong span {
+  font-weight: 500;
+}
+.list-component.users .inner-x .list .inner {
+  justify-content: unset;
+  padding: unset;
+}
+.list-component.users .inner-x .list .inner strong {
+  font-size: x-small;
+  margin-right: unset;
+  width: 12em !important;
+}
+.list-component.users .inner-x .list .inner strong .action-x-add {
+  background-color: #f0ffeb;
+  color: #2ec100;
+}
+.list-component.users .inner-x .list .inner strong .action-x-delete {
+  background-color: #fff4f4;
+  color: red;
+}
+.list-component.users .inner-x .list .inner strong .action-x-update {
+  background-color: #e9eeff;
+  color: #1d41c3;
+}
+.list-component.users .inner-x .list .inner strong .add {
+  fill: #2ec100;
+}
+.list-component.users .inner-x .list .inner strong .delete {
+  fill: red;
+}
+.list-component.users .inner-x .list .inner strong .update {
+  fill: #1d41c3;
+}
+.list-component.users .inner-x .list .inner strong span {
+  padding: 0.2em;
+}
+.list-component.users .inner-x .list:hover {
+  border-left: 8px solid #225f7d;
+  cursor: pointer;
+}
+.list-component.users .inner-x .list:hover .inner.-x {
+  background-color: unset;
 }
 .list-component .AddRankButton, .list-component .AddCompanyButton {
   background: #ff6868;

@@ -19,7 +19,8 @@ class SeaServiceTestimonialPdf extends Controller
         $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
         $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
-        $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
+        $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first(); 
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
@@ -188,7 +189,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
         $fpdf->SetXY(90 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY();
-        $fpdf->Cell(25,10,'-',1,0); 
+        $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
         $fpdf->ln();
         
         if(!empty($StartDate_2->StartDate_2)) {
@@ -207,7 +208,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(25,10,'-',1,0); 
+            $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln(); 
         }
         if(!empty($StartDate_3->StartDate_3)) {
@@ -226,7 +227,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(25,10,'-',1,0); 
+            $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln();
         }
         if(!empty($StartDate_4->StartDate_4)) {
@@ -245,7 +246,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(25,10,'-',1,0); 
+            $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln();
         }
         if(!empty($StartDate_5->StartDate_5)) {
@@ -264,7 +265,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(25,10,'-',1,0); 
+            $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln();
         }
  
@@ -320,6 +321,9 @@ class SeaServiceTestimonialPdf extends Controller
         $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
+        $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
+        $Enginekw = $ENGkw ?? '-';
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
@@ -553,8 +557,7 @@ class SeaServiceTestimonialPdf extends Controller
         // $Rank->Rank = 'STEWARD';
         // $Rank->Rank = 'Able Seaman/Bosun';
 
-        // TEST MULTI CELLS DATA 
-
+        // TEST MULTI CELLS DATA   
         $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
         $xPos=$fpdf->GetX(); 
         $fpdf->SetXY($xPos - 10 + $cellWidth , $yPos);
@@ -562,11 +565,11 @@ class SeaServiceTestimonialPdf extends Controller
         $yPos=$fpdf->GetY();
         $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
         $fpdf->SetXY(45 + $cellWidth , $yPos);
-        $yPos=$fpdf->GetY();
-        $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel)) . '                       ' : str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel))),1);
+        $yPos=$fpdf->GetY(); 
+        $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
         $fpdf->SetXY(75 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY();
-        $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+        $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
         $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
         if(!empty($StartDate_2->StartDate_2)) {
             $fpdf->Cell(20, 10, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'L'); 
@@ -580,10 +583,10 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel)) . '                       ' : str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel))),1);
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+            $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
             $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
         }
         if(!empty($StartDate_3->StartDate_3)) {
@@ -598,10 +601,10 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel)) . '                       ' : str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel))),1);
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+            $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
             $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
         }
         if(!empty($StartDate_4->StartDate_4)) {
@@ -616,10 +619,10 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel)) . '                       ' : str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel))),1);
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+            $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
             $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
         }
         if(!empty($StartDate_5->StartDate_5)) {
@@ -634,10 +637,10 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel)) . '                       ' : str_replace(' ', '-', strtoupper($CurrentVessel->CurrentVessel))),1);
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->Cell(15, 10, '389', 1, 0, 'L'); 
+            $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
             $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
         }
 
