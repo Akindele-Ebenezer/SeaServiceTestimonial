@@ -287,7 +287,10 @@ class SeaServiceTestimonialController extends Controller
      */
     public function destroy(string $Id)
     { 
-        $Testimonial = Testimonial::select(['CurrentVessel', 'DischargeBook', 'Company'])->where('id', $Id)->first();
+        $Testimonial = Testimonial::select(['DateIn', 'TimeIn', 'CurrentVessel', 'DischargeBook', 'Company'])->where('id', $Id)->first();
+        $TestimonialDateIn = $Testimonial->DateIn;
+        $TestimonialTimeIn = $Testimonial->TimeIn;
+        $WorkingPeriods = \DB::table('working_periods')->select(['DateIn', 'TimeIn'])->where('DateIn', $TestimonialDateIn)->where('TimeIn', $TestimonialTimeIn)->delete();
         $UserName = \DB::table('users')->select('FullName')->where('id', session()->get('USER_ID'))->first();
         \DB::table('notifications')->insert([
             'DateIn' => date('Y-m-d'),
