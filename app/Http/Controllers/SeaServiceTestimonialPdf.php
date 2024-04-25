@@ -507,7 +507,7 @@ class SeaServiceTestimonialPdf extends Controller
         // $CurrentVessel->CurrentVessel = 'GUMEL GL DRG';
         // $CurrentVessel->CurrentVessel = 'DIVERS BOAT JOY';
         // $CurrentVessel->CurrentVessel = 'CHALAWA CL DRG';
-        $CurrentVessel->CurrentVessel = 'BLUE LATITUDE DRG';
+        // $CurrentVessel->CurrentVessel = 'BLUE LATITUDE DRG';
         // $CurrentVessel->CurrentVessel = 'BULL BL';
         // $CurrentVessel->CurrentVessel = 'ASHORE';
         // $CurrentVessel->CurrentVessel = 'PC KOKO';
@@ -515,7 +515,7 @@ class SeaServiceTestimonialPdf extends Controller
         // RANK
         
         // $Rank->Rank = 'BOAT DRIVER';
-        $Rank->Rank = 'CAPTAIN';
+        // $Rank->Rank = 'CAPTAIN';
         // $Rank->Rank = 'SHORE ENGINEER';
         // $Rank->Rank = 'ABLE SEA MAN';
         // $Rank->Rank = 'PC MASTER';
