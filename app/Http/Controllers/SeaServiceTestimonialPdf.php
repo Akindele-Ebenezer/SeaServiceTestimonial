@@ -97,11 +97,11 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->SetFont('Times', '', 11); 
                 $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
-            if($Company->Company === 'DEPASA') {
-                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 2, 190);  
+            if($Company->Company === 'DEPASA') {   
+                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(173.2, -13, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
         }
    
@@ -398,10 +398,10 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
             if($Company->Company === 'DEPASA') {
-                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 2, 190);  
+                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(173.2, -13, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
         }
    
@@ -773,10 +773,10 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
             if($Company->Company === 'DEPASA') {
-                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 2, 190);  
+                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(173.2, -13, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
             }  
         }
     
