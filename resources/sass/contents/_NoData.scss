@@ -6,7 +6,8 @@
     justify-content: center;
 
     center {    
-        border-radius: 1em;
+        background-color: #fff;
+        border-radius: .15em;
         padding: 3em;
 
         button {
@@ -45,8 +46,8 @@
             width: 60%;
         }
 
-        p { 
-            color: #fff;
+        p {  
+            color: #555;
             font-size: 1.5em;
             margin-block: 1em;
             width: 24em;

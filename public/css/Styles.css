@@ -342,7 +342,8 @@
   justify-content: center;
 }
 .no-data-selected center, .no-data center {
-  border-radius: 1em;
+  background-color: #fff;
+  border-radius: 0.15em;
   padding: 3em;
 }
 .no-data-selected center button, .no-data center button {
@@ -377,7 +378,7 @@
   width: 60%;
 }
 .no-data-selected center p, .no-data center p {
-  color: #fff;
+  color: #555;
   font-size: 1.5em;
   margin-block: 1em;
   width: 24em;
