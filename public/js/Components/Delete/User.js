@@ -6,7 +6,17 @@ let CancelButtonDeleteUsers = document.querySelectorAll('.cancel-button-delete-u
  
 DeleteUserButtons.forEach(DeleteUserButton => {
     DeleteUserButton.addEventListener('click', () => {
-        DeleteUserModal.style.display = 'flex';
+        let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
+        let ERROR_X = document.querySelector('.error-x');
+        if (DeleteUserButton.classList.contains("delete-user-privilege-denied")) {
+            ERROR_X_Wrapper.style.display = 'flex';  
+            ERROR_X.textContent = 'Access denied to delete a user.. contact an administrator!';
+            setTimeout(() => {
+                ERROR_X_Wrapper.style.display = 'none';  
+            }, 3000);
+        } else {
+            DeleteUserModal.style.display = 'flex';
+        }
         let UserId = DeleteUserButton.nextElementSibling.textContent;
         UserDelete.textContent = DeleteUserButton.nextElementSibling.nextElementSibling.textContent;
 

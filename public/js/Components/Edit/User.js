@@ -6,7 +6,18 @@ let CancelButtonUpdate = document.querySelector('.close-button-update');
  
 EditUserButtons.forEach(EditUserButton => {
     EditUserButton.addEventListener('click', () => {
-        EditUserModal.style.display = 'flex';
+        let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
+        let ERROR_X = document.querySelector('.error-x');
+        if (EditUserButton.classList.contains("update-user-privilege-denied")) {
+            ERROR_X_Wrapper.style.display = 'flex';  
+            ERROR_X.textContent = 'Access denied to update a user.. contact an administrator!';
+            setTimeout(() => {
+                ERROR_X_Wrapper.style.display = 'none';  
+            }, 3000);
+        } else {
+            EditUserModal.style.display = 'flex';
+        }
+
         let UserId = EditUserButton.nextElementSibling.textContent;
         let EditFullName = document.querySelector('.UpdateUserForm input[name=FullName]');
         let EditEmail = document.querySelector('.UpdateUserForm input[name=Email]');

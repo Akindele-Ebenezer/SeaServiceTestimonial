@@ -59,8 +59,20 @@
                 <span class="employee">  {{ $Vessels_EMPLOYEE->EmployeeName ?? 'Employee not available. '}} <br> {{ '(' .  ($Vessels_EMPLOYEE->Rank ?? 'No recorded testimonial on this vessel') . ')'}}</span>
             </strong>  
             <div class="action">
-                <img class="EditVesselButton" src="{{ asset('images/write.png') }}" alt="">
-                <img class="DeleteVesselButton" src="{{ asset('images/delete.png') }}" alt="">
+                <img class="EditVesselButton
+                    {{ 
+                        (session()->get('Role') == 'HR Admin') ||
+                        (session()->get('Role') == 'HR Users/Operators') 
+                        ? 'update-vessel-privilege-denied' : ' ' 
+                    }}
+                " src="{{ asset('images/write.png') }}" alt="">
+                <img class="DeleteVesselButton
+                    {{ 
+                        (session()->get('Role') == 'HR Admin') ||
+                        (session()->get('Role') == 'HR Users/Operators') 
+                        ? 'delete-vessel-privilege-denied' : ' ' 
+                    }}
+                " src="{{ asset('images/delete.png') }}" alt="">
             </div>
             <div class="inner company">
                 {{ $Vessels_EMPLOYEE->Company ?? 'TUG'}}
@@ -70,7 +82,13 @@
     @endforeach
 </div>
 <div class="content-data">
-    <div class="AddVesselButton">
+    <div class="AddVesselButton
+        {{ 
+            (session()->get('Role') == 'HR Admin') ||
+            (session()->get('Role') == 'HR Users/Operators') || 
+            (session()->get('Role') == 'MOC Operators') 
+            ? 'add-vessel-privilege-denied' : ' ' }} 
+    ">
         <button class="AddVesselButton">+ Add Vessel</button>
     </div>
     <center class="add-testimonial-wrapper">

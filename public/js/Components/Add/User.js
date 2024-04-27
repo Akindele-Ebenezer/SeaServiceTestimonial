@@ -5,7 +5,17 @@ let AddUserModal = document.querySelector('.AddUser');
 let CancelButton = document.querySelector('.close-button');
  
 AddUserButton.addEventListener('click', () => {
-    AddUserModal.style.display = 'flex';
+    let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
+    let ERROR_X = document.querySelector('.error-x');
+    if (AddUserButton.classList.contains("add-user-privilege-denied")) {
+        ERROR_X_Wrapper.style.display = 'flex';  
+        ERROR_X.textContent = 'Access denied to add a user.. contact an administrator!';
+        setTimeout(() => {
+            ERROR_X_Wrapper.style.display = 'none';  
+        }, 3000);
+    } else {
+        AddUserModal.style.display = 'flex';
+    }
 
     AddUserButtonX.addEventListener('click', () => {
         let ErrorUser = document.querySelector('.error-user');

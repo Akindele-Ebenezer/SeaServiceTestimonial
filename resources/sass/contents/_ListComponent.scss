@@ -9,6 +9,7 @@
 
     &.users {
         background: unset;
+        border-left: 1px solid #c8e3f0;
         display: flex; 
         height: unset;  
         position: unset;  
@@ -48,17 +49,17 @@
                         width: 12em !important;
 
                         .action-x-add {
-                            background-color: #f0ffeb;
+                            background-color: #f8fdf6;
                             color: #2ec100;
                         }
 
                         .action-x-delete {
-                            background-color: #fff4f4;
-                            color: red;
+                            background-color: #fffafa;
+                            color: #ff5454;
                         }
 
                         .action-x-update {
-                            background-color: #e9eeff;
+                            background-color: #fafbff;
                             color: #1d41c3;
                         }
 
@@ -67,7 +68,7 @@
                         }
 
                         .delete {
-                            fill: red;
+                            fill: #ff5454;
                         }
 
                         .update {

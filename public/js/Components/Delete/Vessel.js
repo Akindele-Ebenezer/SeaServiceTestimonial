@@ -7,7 +7,17 @@ let CancelButtonDeleteVessels = document.querySelectorAll('.cancel-button-delete
 DeleteVesselButtons.forEach(DeleteVesselButton => {
     let VesselId = DeleteVesselButton.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.textContent;
     DeleteVesselButton.addEventListener('click', () => {
-        DeleteVesselModal.style.display = 'flex';
+        let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
+        let ERROR_X = document.querySelector('.error-x');
+        if (DeleteVesselButton.classList.contains("delete-vessel-privilege-denied")) {
+            ERROR_X_Wrapper.style.display = 'flex';  
+            ERROR_X.textContent = 'Access denied to delete a vessel.. contact an administrator!';
+            setTimeout(() => {
+                ERROR_X_Wrapper.style.display = 'none';  
+            }, 3000);
+        } else {
+            DeleteVesselModal.style.display = 'flex';
+        }
         VesselNameDelete.textContent = DeleteVesselButton.parentElement.parentElement.parentElement.firstElementChild.textContent;
         
         DeleteVesselX.addEventListener('click', () => {

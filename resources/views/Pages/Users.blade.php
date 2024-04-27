@@ -9,7 +9,13 @@
    <header>
       <div class="h-1">
          <h1>Users</h1>
-         <button class="AddUserButton">+ Add User</button>
+         <button class="AddUserButton
+            {{ 
+               (session()->get('Role') == 'HR Admin') ||
+               (session()->get('Role') == 'HR Users/Operators') 
+               ? 'add-user-privilege-denied' : ' ' 
+               }}
+         ">+ Add User</button>
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search sst users..">
@@ -54,7 +60,13 @@
             <td class="filter-value-x">{{ $User->LastLogout }}</td>
             <td class="action">
                {{-- <img src="{{ asset('images/pdf.png') }}" alt=""><img src="{{ asset('images/statistic.png') }}" alt=""> --}}
-               <img class="EditUserButton" src="{{ asset('images/write.png') }}" alt="">
+               <img class="EditUserButton
+                  {{ 
+                     (session()->get('Role') == 'HR Admin')  ||
+                     (session()->get('Role') == 'HR Users/Operators') 
+                     ? 'update-user-privilege-denied' : ' ' 
+                  }}
+               " src="{{ asset('images/write.png') }}" alt="">
                <span class="Hide">{{ $User->id }}</span>
                <span class="Hide">{{ $User->FullName }}</span>
                <span class="Hide">{{ $User->Email }}</span>
@@ -62,7 +74,13 @@
                <span class="Hide">{{ $User->Department }}</span>
                <span class="Hide">{{ $User->Position }}</span>
                <span class="Hide">{{ $User->Role }}</span>
-               <img class="DeleteUserButton" src="{{ asset('images/delete.png') }}" alt="">
+               <img class="DeleteUserButton
+                  {{ 
+                     (session()->get('Role') == 'HR Admin') ||
+                     (session()->get('Role') == 'HR Users/Operators') 
+                     ? 'delete-user-privilege-denied' : ' ' 
+                  }}
+               " src="{{ asset('images/delete.png') }}" alt="">
                <span class="Hide">{{ $User->id }}</span>
                <span class="Hide">{{ $User->FullName }}</span>
             </td>

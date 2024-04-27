@@ -46,6 +46,614 @@
                     </section>
                 </div>
             </div> 
+            <div class="inner-2 permissions">
+                <h1>User Permissions</h1>
+                <div class="vessel-content list-component users">  
+                    <div class="inner-x">
+                        <div class="list vessel"> 
+                            <div class="inner -x">
+                                <span class="vessel Hide"></span>
+                                <strong>
+                                    <span class=" ">
+                                        Group
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                         Restriction
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        Testimonial
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        Employee
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class=" ">
+                                        User
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class=" ">
+                                        Rank
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        Vessel
+                                    </span>  
+                                </strong>  
+                            </div>
+                        </div>   
+                        <div class="list vessel"> 
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class="vessel-name-span group-name">
+                                        Super admin
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-add">
+                                        Add
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-update">
+                                        Update
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x delete-row"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-delete">
+                                        Delete
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            {{--  --}}
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class="vessel-name-span group-name">
+                                        HR Admin
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-add">
+                                        Add
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-update">
+                                        Update
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x delete-row"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-delete">
+                                        Delete
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            {{--  --}}
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class="vessel-name-span group-name">
+                                        HR Users <br>/Operators
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-add">
+                                        Add
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-update">
+                                        Update
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x delete-row"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-delete">
+                                        Delete
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>  
+                            {{--  --}}
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class="vessel-name-span group-name">
+                                        MOC Admin
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-add">
+                                        Add
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                            </div>
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-update">
+                                        Update
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                    </span>  
+                                </strong>   
+                            </div>
+                            <div class="inner -x delete-row"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-delete">
+                                        Delete
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            {{--  --}}
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class="vessel-name-span group-name">
+                                        MOC Operators
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-add">
+                                        Add
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-update">
+                                        Update
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                            <div class="inner -x delete-row"> 
+                                <strong>
+                                    <span class=" ">
+                                         
+                                    </span>  
+                                </strong> 
+                                <strong>
+                                    <span class="vessel-name-span action-x-delete">
+                                        Delete
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>   
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>    
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                                <strong>
+                                    <span class=" ">
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>  
+                                </strong>  
+                            </div>
+                        </div>   
+                    </div>   
+                </div>
+            </div>
         </form>
         <button class="AddUserButtonX button-2">Add →</button>
     </div>

@@ -17,6 +17,9 @@
     <div class="loader">
         <img src="{{ asset('images/loader.gif') }}" alt="">
     </div>
+    <div class="error-x-wrapper">
+        <div class="error-x"></div>
+    </div>
     <main>
         <div class="left-navigation left-navigation-x">
             <ul>

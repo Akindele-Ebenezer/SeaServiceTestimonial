@@ -5,7 +5,18 @@ let AddVesselForm = document.querySelector('.VesselForm');
 let CancelButton_AddVessel = document.querySelector('.cancel-button-add-vessel');
  
 CreateVesselButton.addEventListener('click', () => {
-    AddVesselModal.style.display = 'flex';  
+    let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
+    let ERROR_X = document.querySelector('.error-x');
+    if (CreateVesselButton.classList.contains("add-vessel-privilege-denied")) {
+        
+        ERROR_X_Wrapper.style.display = 'flex';  
+        ERROR_X.textContent = 'Access denied to add a vessel.. contact an administrator!';
+        setTimeout(() => {
+            ERROR_X_Wrapper.style.display = 'none';  
+        }, 3000);
+    } else {
+        AddVesselModal.style.display = 'flex';  
+    }
 
     CreateNewVesselButton.addEventListener('click', () => {
         let ErrorVessel = document.querySelector('.error-vessel');

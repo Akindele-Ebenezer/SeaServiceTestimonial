@@ -6,7 +6,18 @@ let CancelButtonUpdate = document.querySelector('.cancel-button-update-vessel');
  
 EditVesselButtons.forEach(EditVesselButton => {
     EditVesselButton.addEventListener('click', () => {
-        EditVesselModal.style.display = 'flex';
+        let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
+        let ERROR_X = document.querySelector('.error-x');
+        if (EditVesselButton.classList.contains("update-vessel-privilege-denied")) {
+            
+            ERROR_X_Wrapper.style.display = 'flex';  
+            ERROR_X.textContent = 'Access denied to update a vessel.. contact an administrator!';
+            setTimeout(() => {
+                ERROR_X_Wrapper.style.display = 'none';  
+            }, 3000);
+        } else {
+            EditVesselModal.style.display = 'flex';
+        }
     
         document.querySelector('.EditVessel input[name=EditVesselName]').value = EditVesselButton.parentElement.parentElement.parentElement.firstElementChild.textContent;
         document.querySelector('.EditVessel input[name=EditImoNumber]').value = EditVesselButton.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.textContent;
