@@ -23,7 +23,7 @@
 
                 &:hover { 
                     background-color: unset;
-                    border: none !important;
+                    border-left: 8px solid #fff !important;
 
                     .-x { 
                         strong span {
@@ -32,9 +32,15 @@
                     }
                 }
 
-                .inner {
+                .inner { 
+                    border-bottom: 1px solid #eee;
+                    border-radius: unset;
                     justify-content: unset;
                     padding: unset;
+
+                    &.delete-row {
+                        border-bottom: 3px solid #eee;
+                    }
 
                     strong {
                         font-size: x-small;
@@ -73,6 +79,10 @@
 
                         span {
                             padding: .2em;
+
+                            svg {
+                                width: 1.2em;
+                            }
                         }
                     }
                 }

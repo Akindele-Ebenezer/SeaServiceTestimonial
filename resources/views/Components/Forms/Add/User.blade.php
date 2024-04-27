@@ -24,8 +24,11 @@
                         <div class="input">
                             <label for="">Role</label>
                             <select name="Role" id="">
-                                <option value="USER">USER</option>
-                                <option value="ADMIN">ADMIN</option>
+                                <option value="SuperAdmin">Super Admin</option>
+                                <option value="HRAdmin">HR Admin</option>
+                                <option value="HRUsers_Operators">HR Users/Operators</option>
+                                <option value="MOCAdmin">MOC Admin</option>
+                                <option value="MOCOperators">MOC Operators</option>
                             </select>
                         </div> 
                     </section> 
@@ -44,6 +47,6 @@
                 </div>
             </div> 
         </form>
-        <button class="AddUserButtonX">Add →</button>
+        <button class="AddUserButtonX button-2">Add →</button>
     </div>
 </div>

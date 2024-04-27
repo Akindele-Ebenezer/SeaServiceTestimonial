@@ -23,8 +23,11 @@
                         <div class="input">
                             <label for="">Role</label>
                             <select name="Role" id="">
-                                <option value="USER">USER</option>
-                                <option value="ADMIN">ADMIN</option>
+                                <option value="Super Admin">Super Admin</option>
+                                <option value="HR Admin">HR Admin</option>
+                                <option value="HR Users/Operators">HR Users/Operators</option>
+                                <option value="MOC Admin">MOC Admin</option>
+                                <option value="MOC Operators">MOC Operators</option>
                             </select>
                         </div> 
                     </section> 
@@ -161,7 +164,7 @@
                                     </span>  
                                 </strong>  
                             </div>
-                            <div class="inner -x"> 
+                            <div class="inner -x delete-row"> 
                                 <strong>
                                     <span class=" ">
                                          
@@ -217,7 +220,7 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
@@ -227,7 +230,7 @@
                                 </strong>    
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>  
                                 <strong>
@@ -249,12 +252,12 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
@@ -264,7 +267,7 @@
                                 </strong>    
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>  
                                 <strong>
@@ -273,7 +276,7 @@
                                     </span>  
                                 </strong>  
                             </div>
-                            <div class="inner -x"> 
+                            <div class="inner -x delete-row"> 
                                 <strong>
                                     <span class=" ">
                                          
@@ -291,7 +294,7 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
@@ -301,7 +304,7 @@
                                 </strong>    
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>  
                                 <strong>
@@ -329,7 +332,7 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
@@ -339,7 +342,7 @@
                                 </strong>    
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>  
                                 <strong>
@@ -361,12 +364,12 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
@@ -376,7 +379,7 @@
                                 </strong>    
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>  
                                 <strong>
@@ -385,7 +388,7 @@
                                     </span>  
                                 </strong>  
                             </div>
-                            <div class="inner -x"> 
+                            <div class="inner -x delete-row"> 
                                 <strong>
                                     <span class=" ">
                                          
@@ -403,7 +406,7 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
@@ -413,7 +416,7 @@
                                 </strong>    
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                                     </span>  
                                 </strong>  
                                 <strong>
@@ -436,13 +439,13 @@
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
                                     </span>  
                                 </strong>   
                                 <strong>
                                     <span class=" ">
-                                        <svg class="update" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
-                                    </span>  
+                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                                    </span>   
                                 </strong>   
                                 <strong>
                                     <span class=" ">
@@ -456,8 +459,8 @@
                                 </strong>  
                                 <strong>
                                     <span class=" ">
-                                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-                                    </span>  
+                                        <svg class="add" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"></path></svg>
+                                    </span>
                                 </strong>  
                             </div>
                             <div class="inner -x"> 
@@ -497,7 +500,7 @@
                                     </span>  
                                 </strong>  
                             </div>
-                            <div class="inner -x"> 
+                            <div class="inner -x delete-row"> 
                                 <strong>
                                     <span class=" ">
                                          
@@ -609,7 +612,7 @@
                                     </span>  
                                 </strong>  
                             </div>
-                            <div class="inner -x"> 
+                            <div class="inner -x delete-row"> 
                                 <strong>
                                     <span class=" ">
                                          
@@ -651,6 +654,6 @@
                 </div>
             </div>
         </form>
-        <button class="UpdateUserButton">Update →</button>
+        <button class="UpdateUserButton button-2">Update →</button>
     </div>
 </div>

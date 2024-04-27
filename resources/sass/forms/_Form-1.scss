@@ -67,6 +67,11 @@
             position: absolute;
             right: 2em;
 
+            &.button-2 {
+                left: 2em;
+                right: unset;
+            }
+
             &:hover {
                 background-color: #111;
             }

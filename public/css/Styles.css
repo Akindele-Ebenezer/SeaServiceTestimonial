@@ -161,6 +161,10 @@
   position: absolute;
   right: 2em;
 }
+.form-1 form + button.button-2 {
+  left: 2em;
+  right: unset;
+}
 .form-1 form + button:hover {
   background-color: #111;
 }
@@ -1264,14 +1268,19 @@ main .left-navigation ul li .total {
 }
 .list-component.users .inner-x .list:hover {
   background-color: unset;
-  border: none !important;
+  border-left: 8px solid #fff !important;
 }
 .list-component.users .inner-x .list:hover .-x strong span {
   font-weight: 500;
 }
 .list-component.users .inner-x .list .inner {
+  border-bottom: 1px solid #eee;
+  border-radius: unset;
   justify-content: unset;
   padding: unset;
+}
+.list-component.users .inner-x .list .inner.delete-row {
+  border-bottom: 3px solid #eee;
 }
 .list-component.users .inner-x .list .inner strong {
   font-size: x-small;
@@ -1301,6 +1310,9 @@ main .left-navigation ul li .total {
 }
 .list-component.users .inner-x .list .inner strong span {
   padding: 0.2em;
+}
+.list-component.users .inner-x .list .inner strong span svg {
+  width: 1.2em;
 }
 .list-component.users .inner-x .list:hover {
   border-left: 8px solid #225f7d;
