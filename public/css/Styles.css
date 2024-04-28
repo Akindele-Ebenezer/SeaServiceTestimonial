@@ -134,9 +134,10 @@
 .form-1 .close-button, .form-1 .close-button-update {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   padding-block: 0.5em;
   position: sticky;
+  right: 1em;
   top: 0;
   translate: 0 -1em;
   width: 100%;
@@ -209,6 +210,25 @@
 .form-1 form .permissions {
   height: 30em;
   overflow-y: scroll;
+  width: 50em;
+}
+.form-1 form .permissions .list.vessel.header {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.form-1 form .permissions .list.vessel.header .-x {
+  background: #f9f9f9;
+  color: #444;
+  display: flex;
+  padding: 0.5em 1em;
+}
+.form-1 form .permissions .list.vessel.header .-x strong {
+  font-weight: 500;
+  width: 12em !important;
 }
 .form-1 form .inner-1, .form-1 form .inner-2 {
   padding-inline: 1em;
@@ -1295,7 +1315,7 @@ main .left-navigation ul li .total {
   padding: unset;
 }
 .list-component.users .inner-x .list .inner.delete-row {
-  border-bottom: 3px solid #eee;
+  border-bottom: 2px dashed #ddd;
 }
 .list-component.users .inner-x .list .inner strong {
   font-size: x-small;
@@ -1309,6 +1329,10 @@ main .left-navigation ul li .total {
 .list-component.users .inner-x .list .inner strong .action-x-delete {
   background-color: #fffafa;
   color: #ff5454;
+}
+.list-component.users .inner-x .list .inner strong .action-x-readonly {
+  background-color: #fcffeb;
+  color: #aac900;
 }
 .list-component.users .inner-x .list .inner strong .action-x-update {
   background-color: #fafbff;

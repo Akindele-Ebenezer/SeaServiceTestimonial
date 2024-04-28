@@ -144,7 +144,7 @@
                {{-- 0 --}}
                <span class="Hide">{{ $Testimonial->id }}</span>
                <span class="Hide">{{ $Testimonial->Template }}</span>
-               <img src="{{ asset('images/statistic.png') }}" alt="">  
+               {{-- <img src="{{ asset('images/statistic.png') }}" alt="">   --}}
                <span class="Hide">{{ $Testimonial->PreviousVessel }}</span>
                <img class="EditTestimonialButton" src="{{ asset('images/write.png') }}" alt="">
                <span class="Hide">{{ $Testimonial->id }}</span>

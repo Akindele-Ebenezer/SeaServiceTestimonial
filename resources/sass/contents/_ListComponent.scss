@@ -40,7 +40,7 @@
                     padding: unset;
 
                     &.delete-row {
-                        border-bottom: 3px solid #eee;
+                        border-bottom: 2px dashed #ddd;
                     }
 
                     strong {
@@ -56,6 +56,11 @@
                         .action-x-delete {
                             background-color: #fffafa;
                             color: #ff5454;
+                        }
+
+                        .action-x-readonly {
+                            background-color: #fcffeb;
+                            color: #aac900;
                         }
 
                         .action-x-update {

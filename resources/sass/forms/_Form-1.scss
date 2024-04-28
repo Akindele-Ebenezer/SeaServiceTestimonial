@@ -18,9 +18,10 @@
     .close-button, .close-button-update {
         align-items: center; 
         display: flex;
-        justify-content: space-between;
+        justify-content: right;
         padding-block: .5em;
         position: sticky;
+        right: 1em;
         top: 0;
         translate: 0 -1em;
         width: 100%;
@@ -116,6 +117,28 @@
         .permissions {
             height: 30em;
             overflow-y: scroll;
+            width: 50em;
+
+            .list.vessel.header {
+                display: flex;
+                justify-content: center;
+                position: sticky;
+                top: 0;
+                width: 100%;
+                z-index: 100;
+
+                .-x {
+                    background: #f9f9f9;
+                    color: #444;
+                    display: flex;
+                    padding: .5em 1em;
+
+                    strong {
+                        font-weight: 500;
+                        width: 12em !important;
+                    }
+                }
+            }
         }
 
         .inner-1, .inner-2 { 
