@@ -56,3 +56,4 @@ Route::get('/Testimonials/Template/2', [SeaServiceTestimonialPdf::class, 'templa
 Route::get('/Testimonials/Template/3', [SeaServiceTestimonialPdf::class, 'template_3'])->name('template_3');
 Route::get('/Testimonials/Template/1_', [SeaServiceTestimonialPdf::class, 'template_1_'])->name('template_1_');
 Route::get('/Testimonials/Template/2_', [SeaServiceTestimonialPdf::class, 'template_2_'])->name('template_2_');
+Route::get('/Testimonials/Template/3_', [SeaServiceTestimonialPdf::class, 'template_3_'])->name('template_3_');

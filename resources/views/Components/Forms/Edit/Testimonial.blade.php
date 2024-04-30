@@ -136,7 +136,7 @@
                         <strong>Preview:</strong>
                         <a href="{{ route('template_1_') }}" target="blank">Deck</a>
                         <a href="{{ route('template_2_') }}" target="blank">Engine</a>
-                        {{-- <a href="{{ route('template_3') }}" target="blank">Captain</a>  --}}
+                        <a href="{{ route('template_3_') }}" target="blank">Cook</a> 
                     </p>
                     <div class="input">
                         <label for="">Theme</label>
@@ -144,6 +144,7 @@
                             <option value="Deck">Deck</option>
                             <option value="Engine">Engine</option> 
                             <option value="Captain">Captain</option> 
+                            <option value="Cook">Cook</option> 
                         </select>
                     </div>
                     <div class="input">

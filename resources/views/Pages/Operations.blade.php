@@ -66,6 +66,11 @@
                         the Lagos Pilotage District.
                         He showed to have a high level of leadership skills & work ethics making him a role model for his crew.
                         @break
+                     @case('Cook')
+                        Maintain high level of hygienic standards in the galley and
+                        provision stores, ensure clean working areas. Prepare food requisition to ensure sufficient groceries are on
+                        board. Preparing healthy and nutritious meals, Early Resumption to vessel.
+                        @break
                    @default
                        
                @endswitch 

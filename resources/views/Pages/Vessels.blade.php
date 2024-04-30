@@ -62,14 +62,17 @@
                 <img class="EditVesselButton
                     {{ 
                         (session()->get('Role') == 'HR Admin') ||
-                        (session()->get('Role') == 'HR Users/Operators') 
+                        (session()->get('Role') == 'HR Users/Operators') || 
+                        (session()->get('Role') == 'MOC Operators')    
                         ? 'update-vessel-privilege-denied' : ' ' 
                     }}
                 " src="{{ asset('images/write.png') }}" alt="">
                 <img class="DeleteVesselButton
                     {{ 
                         (session()->get('Role') == 'HR Admin') ||
-                        (session()->get('Role') == 'HR Users/Operators') 
+                        (session()->get('Role') == 'HR Users/Operators') ||
+                        (session()->get('Role') == 'MOC Admin') ||
+                        (session()->get('Role') == 'MOC Operators')    
                         ? 'delete-vessel-privilege-denied' : ' ' 
                     }}
                 " src="{{ asset('images/delete.png') }}" alt="">
