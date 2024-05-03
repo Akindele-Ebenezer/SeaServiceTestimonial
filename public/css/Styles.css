@@ -966,6 +966,10 @@ main .left-navigation ul li .total {
   background-color: #1f5671;
 }
 
+.availability-content .table {
+  padding: 0 !important;
+  margin: 0 !important;
+}
 .availability-content table {
   border-collapse: collapse;
 }
@@ -1018,7 +1022,7 @@ main .left-navigation ul li .total {
   width: 12em;
 }
 .availability-content table tr th:first-of-type {
-  font-weight: bold;
+  font-weight: 1000;
   padding-left: 0.25em;
   font-size: 4em;
   width: 10em;
@@ -1046,7 +1050,7 @@ main .left-navigation ul li .total {
   border: none;
   height: unset;
   padding: 0.5em 1em;
-  translate: 0 0.5em;
+  translate: 0 3.5em;
 }
 
 .testimonial-content, .table-1 {
@@ -1144,6 +1148,7 @@ main .left-navigation ul li .total {
   background-color: #174155;
   color: #fff;
   padding: 1em;
+  text-transform: uppercase;
 }
 .testimonial-content .table table td.empty-list, .testimonial-content .table table th.empty-list, .table-1 .table table td.empty-list, .table-1 .table table th.empty-list {
   background-color: #1a4a61 !important;
@@ -1162,7 +1167,6 @@ main .left-navigation ul li .total {
   border-bottom: 1px solid #040404;
 }
 .testimonial-content .table table tr td.data-x, .table-1 .table table tr td.data-x {
-  font-weight: 500;
   border-bottom: 1px solid #256889;
 }
 .testimonial-content .table table tr td.data-x .sub-x, .table-1 .table table tr td.data-x .sub-x {

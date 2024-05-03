@@ -3,17 +3,11 @@
 
 @section('Content')
 @include('Components.Forms.Add.Testimonial')
-<div class="availability-content table-1">  
-   <header>
-      <div class="h-1">
-         <h1>VESSEL AVAILABILITY</h1>
-         <button class="CreateTestimonialButton">+ Add Testimonial</button>
-      </div> 
-   </header> 
+<div class="availability-content table-1">   
    <div class="table">
       <table>
          <tr>
-            <th>VESSELS</th>
+            <th>VESSEL AVAILABILITY</th>
             <th class="period">
                <div class="th time-title">START TIME</div>
                <div class="th time-title">FINISH TIME</div>

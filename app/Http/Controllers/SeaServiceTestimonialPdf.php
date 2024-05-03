@@ -96,13 +96,21 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(159.5, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
             }  
             if($Company->Company === 'DEPASA') {   
                 $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(170, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
             }  
         }
    
@@ -173,19 +181,31 @@ class SeaServiceTestimonialPdf extends Controller
         
             $line=count($textArray);
         }
-        
+
         $fpdf->Cell(20,10,(empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1),1,0);  
         $fpdf->Cell(20,10,(empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1),1,0);  
         $yPos=$fpdf->GetY(); 
-        $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
         $xPos=$fpdf->GetX(); 
+ 
+        if(strlen($CurrentVessel->CurrentVessel) < 14) {
+            $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+            $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+        }
+        if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+        }
         
-        $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
         $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
         $yPos=$fpdf->GetY(); 
-        $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-        $fpdf->SetXY(60 + $cellWidth , $yPos);
-        $yPos=$fpdf->GetY();
+        if(strlen($Rank->Rank) < 13) {
+            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+        } 
+        if(strlen($Rank->Rank) >= 13) {
+            $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+        } 
         $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
         $fpdf->SetXY(90 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY();
@@ -196,15 +216,28 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
             $xPos=$fpdf->GetX(); 
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
             
-            $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
-            $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-            $fpdf->SetXY(60 + $cellWidth , $yPos);
-            $yPos=$fpdf->GetY();
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
@@ -215,15 +248,27 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
-            $xPos=$fpdf->GetX(); 
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
             
-            $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
-            $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-            $fpdf->SetXY(60 + $cellWidth , $yPos);
-            $yPos=$fpdf->GetY();
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
@@ -234,15 +279,27 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
-            $xPos=$fpdf->GetX(); 
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
             
-            $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
-            $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-            $fpdf->SetXY(60 + $cellWidth , $yPos);
-            $yPos=$fpdf->GetY();
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
@@ -253,15 +310,27 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(20,10,(empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5),1,0); //adapt height to number of lines
             $fpdf->Cell(20,10,(empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5),1,0); //adapt height to number of lines
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
-            $xPos=$fpdf->GetX(); 
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
             
-            $fpdf->SetXY($xPos - 5 + $cellWidth , $yPos);
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
-            $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-            $fpdf->SetXY(60 + $cellWidth , $yPos);
-            $yPos=$fpdf->GetY();
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(60 + $cellWidth , $yPos);
+            }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(90 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
@@ -323,7 +392,7 @@ class SeaServiceTestimonialPdf extends Controller
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
         $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
-        $Enginekw = $ENGkw ?? '-';
+        $Enginekw = $ENGkw->EngineOutputKw ?? '-';
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
@@ -399,13 +468,21 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(159.5, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
             }  
             if($Company->Company === 'DEPASA') {
                 $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(170, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
             }  
         }
    
@@ -558,90 +635,207 @@ class SeaServiceTestimonialPdf extends Controller
         // $Rank->Rank = 'Able Seaman/Bosun';
 
         // TEST MULTI CELLS DATA   
-        $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
         $xPos=$fpdf->GetX(); 
-        $fpdf->SetXY($xPos - 10 + $cellWidth , $yPos);
+ 
+        if(strlen($CurrentVessel->CurrentVessel) < 14) {
+            $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+        }
+        if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+        } 
         $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
         $yPos=$fpdf->GetY();
         $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
         $fpdf->SetXY(45 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY(); 
-        $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+        if(strlen($Enginekw) < 14) {
+            $fpdf->Cell(30,10, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+        }
+        if(strlen($Enginekw) >= 14) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+        }
+        
         $fpdf->SetXY(75 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY();
         $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-        $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+
+        if(strlen($Rank->Rank) < 15) {
+            $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            $fpdf->ln();
+        }
+        if(strlen($Rank->Rank) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+        }
+        
         if(!empty($StartDate_2->StartDate_2)) {
             $fpdf->Cell(20, 10, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'L'); 
             $fpdf->Cell(20, 10, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
-            $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos - 10 + $cellWidth , $yPos);
+            $xPos=$fpdf->GetX();  
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            if(strlen($Enginekw) < 14) {
+                $fpdf->Cell(30,10, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($Enginekw) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+
+            if(strlen($Rank->Rank) < 15) {
+                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+                $fpdf->ln();
+            }
+            if(strlen($Rank->Rank) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            }
         }
         if(!empty($StartDate_3->StartDate_3)) {
             $fpdf->Cell(20, 10, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'L'); 
             $fpdf->Cell(20, 10, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
-            $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos - 10 + $cellWidth , $yPos);
+            $xPos=$fpdf->GetX();  
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            if(strlen($Enginekw) < 14) {
+                $fpdf->Cell(30,10, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($Enginekw) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+
+            if(strlen($Rank->Rank) < 15) {
+                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+                $fpdf->ln();
+            }
+            if(strlen($Rank->Rank) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            }
         }
         if(!empty($StartDate_4->StartDate_4)) {
             $fpdf->Cell(20, 10, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'L'); 
             $fpdf->Cell(20, 10, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
-            $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos - 10 + $cellWidth , $yPos);
+            $xPos=$fpdf->GetX();  
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            if(strlen($Enginekw) < 14) {
+                $fpdf->Cell(30,10, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($Enginekw) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            
+            $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
+            $yPos=$fpdf->GetY(); 
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+
+            if(strlen($Rank->Rank) < 15) {
+                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+                $fpdf->ln();
+            }
+            if(strlen($Rank->Rank) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            }
         }
         if(!empty($StartDate_5->StartDate_5)) {
             $fpdf->Cell(20, 10, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'L'); 
             $fpdf->Cell(20, 10, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'L');   
+            $xPos=$fpdf->GetX();  
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
-            $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos - 10 + $cellWidth , $yPos);
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(45 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            if(strlen($Enginekw) < 14) {
+                $fpdf->Cell(30,10, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($Enginekw) >= 14) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
             $fpdf->SetXY(75 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+
+            if(strlen($Rank->Rank) < 15) {
+                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+                $fpdf->ln();
+            }
+            if(strlen($Rank->Rank) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            }
         }
 
         $fpdf->Ln(9);   
@@ -700,7 +894,7 @@ class SeaServiceTestimonialPdf extends Controller
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
         $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
         $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
-        $Enginekw = $ENGkw ?? '-';
+        $Enginekw = $ENGkw->EngineOutputKw ?? '-';
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
@@ -760,12 +954,7 @@ class SeaServiceTestimonialPdf extends Controller
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
                             ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
                             ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
-                            ->first();
-
-        $Dates = [$EndDate_1->EndDate_1, $EndDate_2->EndDate_2, $EndDate_3->EndDate_3, $EndDate_4->EndDate_4, $EndDate_5->EndDate_5];
-        $FilteredDates = array_filter($Dates, function($LastDate) {
-            return $LastDate !== null;
-        });  
+                            ->first(); 
 
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
@@ -781,13 +970,21 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
                 $fpdf->Ln(30);     
                 $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(159.5, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
             }  
             if($Company->Company === 'DEPASA') {
                 $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
                 $fpdf->Ln(30);     
-                $fpdf->SetFont('Times', '', 11); 
-                $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                $fpdf->SetFont('Times', '', 11);  
+                if(date("j") < 9) {
+                    $fpdf->Cell(170, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
             }  
         }
    
@@ -937,81 +1134,146 @@ class SeaServiceTestimonialPdf extends Controller
         // $Rank->Rank = 'STEWARD';
         // $Rank->Rank = 'Able Seaman/Bosun';
 
-        // TEST MULTI CELLS DATA   
-        $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
+        // TEST MULTI CELLS DATA  
+        
         $xPos=$fpdf->GetX(); 
-        $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+        if(strlen($CurrentVessel->CurrentVessel) < 15) {
+            $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+        }
+        if(strlen($CurrentVessel->CurrentVessel) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+        } 
         $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
         $yPos=$fpdf->GetY();
         $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
         $fpdf->SetXY(65 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY();  
         $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-        $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+        if(strlen($Rank->Rank) < 15) {
+            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            $fpdf->Ln();   
+        }
+        if(strlen($Rank->Rank) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+        } 
         if(!empty($StartDate_2->StartDate_2)) {
             $fpdf->Cell(30, 10, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'L'); 
             $fpdf->Cell(30, 10, (empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
             $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+            if(strlen($CurrentVessel->CurrentVessel) < 15) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            } 
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(65 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+        if(strlen($Rank->Rank) < 15) {
+            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            $fpdf->Ln();   
+        }
+        if(strlen($Rank->Rank) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+        } 
         }
         if(!empty($StartDate_3->StartDate_3)) {
             $fpdf->Cell(30, 10, (empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3), 1, 0, 'L'); 
             $fpdf->Cell(30, 10, (empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
             $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+            if(strlen($CurrentVessel->CurrentVessel) < 15) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }  
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(65 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+        if(strlen($Rank->Rank) < 15) {
+            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            $fpdf->Ln();   
+        }
+        if(strlen($Rank->Rank) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+        } 
         }
         if(!empty($StartDate_4->StartDate_4)) {
             $fpdf->Cell(30, 10, (empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4), 1, 0, 'L'); 
             $fpdf->Cell(30, 10, (empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
-            $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+            if(strlen($CurrentVessel->CurrentVessel) < 15) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }  
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(65 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+        if(strlen($Rank->Rank) < 15) {
+            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            $fpdf->Ln();   
+        }
+        if(strlen($Rank->Rank) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+        } 
         }
         if(!empty($StartDate_5->StartDate_5)) {
             $fpdf->Cell(30, 10, (empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5), 1, 0, 'L'); 
             $fpdf->Cell(30, 10, (empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5), 1, 0, 'L');   
             $yPos=$fpdf->GetY();
-            $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                       ' : strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel))),1);
             $xPos=$fpdf->GetX(); 
-            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+            if(strlen($CurrentVessel->CurrentVessel) < 15) {
+                $fpdf->Cell(30,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 15) {
+                $fpdf->MultiCell(30,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 15 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            }  
             $fpdf->Cell(20, 10, (empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber), 1, 0, 'L');
             $yPos=$fpdf->GetY();
             $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
             $fpdf->SetXY(65 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                       ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+        if(strlen($Rank->Rank) < 15) {
+            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
+            $fpdf->Ln();   
+        }
+        if(strlen($Rank->Rank) >= 15) {
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+        } 
         }
 
         $fpdf->Ln(9);   
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated (' . $StartDate_1->StartDate_1 . ') - (' . end($FilteredDates) . '), the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 

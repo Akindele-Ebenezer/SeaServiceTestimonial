@@ -1,4 +1,9 @@
 .availability-content {
+    .table {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
     table {
         border-collapse: collapse;
 
@@ -51,7 +56,7 @@
                 width: 12em;
 
                 &:first-of-type {
-                    font-weight: bold;
+                    font-weight: 1000;
                     padding-left: .25em;
                     font-size: 4em;
                     width: 10em;
@@ -83,7 +88,7 @@
                         border: none;
                         height: unset;
                         padding: .5em 1em;
-                        translate: 0 .5em;
+                        translate: 0 3.5em;
                     }
                 }
             }

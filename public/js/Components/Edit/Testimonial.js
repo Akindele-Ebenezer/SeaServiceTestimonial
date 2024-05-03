@@ -85,12 +85,34 @@ EditTestimonialButtons.forEach(EditTestimonialButton => {
         let UpdateTestimonialButton = document.querySelector('.UpdateTestimonialButton');
         let UpdateTestimonialForm = document.querySelector('.UpdateTestimonialForm');
         let TestimonialId = EditTestimonialButton.nextElementSibling.textContent;
-
+        let ErrorUpdateTestimonial = document.querySelector('.error-update-testimonial');
+     
         UpdateTestimonialButton.addEventListener('click', () => {
-            UpdateTestimonialButton.style.backgroundColor = '#1fb95e';
-            UpdateTestimonialButton.textContent = '+ Updating..';
-            UpdateTestimonialForm.setAttribute('action', '/Edit/Testimonial/' + TestimonialId);
-            UpdateTestimonialForm.submit();
+            if (EditStartDate_1Input.value > EditEndDate_1Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'Start date cannot be greater than End date on row 1';
+            } else if (EditStartDate_2Input.value > EditEndDate_2Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'Start date cannot be greater than End date on row 2';
+            } else if (EditStartDate_3Input.value > EditEndDate_3Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'Start date cannot be greater than End date on row 3';
+            } else if (EditStartDate_4Input.value > EditEndDate_4Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'Start date cannot be greater than End date on row 4';
+            } else if (EditStartDate_5Input.value > EditEndDate_5Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'Start date cannot be greater than End date on row 5';
+            } else if (
+                EditStartDate_1Input.value == '' || 
+                EditEndDate_1Input.value == '' 
+            ) { 
+                ErrorUpdateTestimonial.textContent =  'Date field cannot be empty';
+            } else {
+                ErrorUpdateTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
+                ErrorUpdateTestimonial.style.color =  '#fff';
+                ErrorUpdateTestimonial.style.padding =  '1em';
+                ErrorUpdateTestimonial.textContent = 'Updating testimonial..';
+                UpdateTestimonialButton.style.backgroundColor = '#1fb95e';
+                UpdateTestimonialButton.textContent = '+ Updating..';
+                UpdateTestimonialForm.setAttribute('action', '/Edit/Testimonial/' + TestimonialId);
+                UpdateTestimonialForm.submit();
+            } 
         });
 
         CancelButtonUpdate.addEventListener('click', () => {

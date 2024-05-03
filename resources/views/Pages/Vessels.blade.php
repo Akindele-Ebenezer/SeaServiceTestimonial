@@ -56,7 +56,7 @@
                     {{ $Vessel->VesselName }}
                 </span> 
                 <span class="imo">{{ $Vessel->ImoNumber ?? '-' }}</span>
-                <span class="employee">  {{ $Vessels_EMPLOYEE->EmployeeName ?? 'Employee not available. '}} <br> {{ '(' .  ($Vessels_EMPLOYEE->Rank ?? 'No recorded testimonial on this vessel') . ')'}}</span>
+                {{-- <span class="employee">  {{ $Vessels_EMPLOYEE->EmployeeName ?? 'Employee not available. '}} <br> {{ '(' .  ($Vessels_EMPLOYEE->Rank ?? 'No recorded testimonial on this vessel') . ')'}}</span> --}}
             </strong>  
             <div class="action">
                 <img class="EditVesselButton
@@ -359,12 +359,41 @@
         let ErrorTestimonial = document.querySelector('.error-testimonial');
         let EmployeeInput = document.querySelector('input[name=Employee]');
         let StaffNumberInput = document.querySelector('input[name=StaffNumber]');
+        let StartDate_1Input = document.querySelector('input[name=StartDate_1]');
+        let StartDate_2Input = document.querySelector('input[name=StartDate_2]');
+        let StartDate_3Input = document.querySelector('input[name=StartDate_3]');
+        let StartDate_4Input = document.querySelector('input[name=StartDate_4]');
+        let StartDate_5Input = document.querySelector('input[name=StartDate_5]');
+        let EndDate_1Input = document.querySelector('input[name=EndDate_1]');
+        let EndDate_2Input = document.querySelector('input[name=EndDate_2]');
+        let EndDate_3Input = document.querySelector('input[name=EndDate_3]');
+        let EndDate_4Input = document.querySelector('input[name=EndDate_4]');
+        let EndDate_5Input = document.querySelector('input[name=EndDate_5]');
     
         if (EmployeeInput.value.trim() == '') { 
             ErrorTestimonial.textContent =  'Employee field cannot be empty';
         } else if (StaffNumberInput.value.trim() == '') { 
             ErrorTestimonial.textContent =  'Employee ID is required';
-        }  else {
+        } else if (StartDate_1Input.value > EndDate_1Input.value) { 
+            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 1';
+        } else if (StartDate_2Input.value > EndDate_2Input.value) { 
+            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 2';
+        } else if (StartDate_3Input.value > EndDate_3Input.value) { 
+            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 3';
+        } else if (StartDate_4Input.value > EndDate_4Input.value) { 
+            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 4';
+        } else if (StartDate_5Input.value > EndDate_5Input.value) { 
+            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 5';
+        } else if (
+            StartDate_1Input.value == '' || 
+            EndDate_1Input.value == '' 
+        ) { 
+            ErrorTestimonial.textContent =  'Date field cannot be empty';
+        } else {
+            ErrorTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
+            ErrorTestimonial.style.color =  '#fff';
+            ErrorTestimonial.style.padding =  '1em';
+            ErrorTestimonial.textContent = 'Creating testimonial..';
             AddTestimonialButton.style.backgroundColor = '#1fb95e';
             AddTestimonialButton.textContent = '+ Processing..';
             AddTestimonialForm.submit();

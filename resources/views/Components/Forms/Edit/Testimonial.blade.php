@@ -7,6 +7,7 @@
         <form action="" class="UpdateTestimonialForm">
             <div class="inner-1"> 
                 <div class="fields">
+                    <p class="error-update-testimonial error"></p>
                     <section>
                         <div class="input">
                             <label for="">Employee</label>
@@ -45,7 +46,7 @@
                         </div>  
                         <div class="input">
                             <label for="">Staff number</label>
-                            <input type="text" name="EditStaffNumber">
+                            <input type="text" name="EditStaffNumber" readonly>
                         </div> 
                     </section>
                     <section class="-x">
