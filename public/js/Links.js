@@ -1,4 +1,5 @@
 let Vessels_ROUTE = document.querySelectorAll('.vessels-route');
+let Availability_ROUTE = document.querySelectorAll('.availability-route');
 let Testimonials_ROUTE = document.querySelectorAll('.testimonials-route');
 let Operations_ROUTE = document.querySelectorAll('.operations-route');
 let Notifications_ROUTE = document.querySelectorAll('.notifications-route');
@@ -18,6 +19,16 @@ Vessels_ROUTE.forEach(Route => {
         }, 9000);
         Loader.style.display = 'flex';
         window.location = '/Vessels';
+    })
+});
+
+Availability_ROUTE.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability';
     })
 });
 

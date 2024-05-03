@@ -19,6 +19,8 @@ Route::get('/Add/Vessel', [VesselController::class, 'create'])->name('AddVessel'
 Route::get('/Edit/Vessel/{Id}', [VesselController::class, 'update'])->name('EditVessel');
 Route::get('/Delete/Vessel/{Id}', [VesselController::class, 'destroy'])->name('DeleteVessel');
 
+Route::get('/Availability', [VesselController::class, 'availability'])->name('Availability');
+
 Route::get('/Testimonials', [SeaServiceTestimonialController::class, 'index'])->name('Testimonials');
 Route::get('/Add/Testimonial', [SeaServiceTestimonialController::class, 'create'])->name('AddTestimonial');
 Route::get('/Edit/Testimonial/{Id}', [SeaServiceTestimonialController::class, 'update'])->name('EditTestimonial');

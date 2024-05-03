@@ -1,0 +1,92 @@
+.availability-content {
+    table {
+        border-collapse: collapse;
+
+        tr {
+            border: none !important;
+
+            td {
+                &.status {
+                    background-color: #fff !important; 
+                    padding: unset;
+
+                    .status-inner {
+                        height: 5em;
+                        width: -webkit-fill-available;
+
+                        &-x {
+                            display: flex;
+                        }
+                    }
+                }
+
+                .docking { background-color: #03AED2 !important; }
+                .operation { background-color: #A87676 !important; }
+                .breakdown { background-color: #da1e28 !important; }
+                .maintenance { background-color: #24A148 !important; }
+                .inspection { background-color: #ff832b !important; }
+                .bunkery { background-color: #8a3ffc !important; }
+                // .inspection { background-color: #0E46A3 !important; }
+
+                .vessel-x {
+                    display: flex;
+                    justify-content: space-between;
+
+                    p {
+                        &:first-of-type { 
+                            border-radius: 0.3em; 
+                            margin-right: 1em;
+                            padding: 0.5em;
+                            width: 70%;
+                        }
+                    }
+                }
+            }
+
+            tr, th {
+                border: none;
+            }
+
+            th { 
+                width: 12em;
+
+                &:first-of-type {
+                    font-weight: bold;
+                    padding-left: .25em;
+                    font-size: 4em;
+                    width: 10em;
+                }
+
+                &:nth-child(2) {
+                    background: #111;
+                }
+
+                &.period {
+                    padding: unset;
+                }
+
+                .th {
+                    align-items: center;
+                    border-bottom: 1px solid $Color-2;
+                    display: flex;
+                    font-weight: 500;
+                    height: 5em;
+                    padding-left: 1em;
+
+                    &.time-title {
+                        background-color: #111;
+                        border: none;
+                    }
+
+                    &:last-of-type {
+                        background-color: #111;
+                        border: none;
+                        height: unset;
+                        padding: .5em 1em;
+                        translate: 0 .5em;
+                    }
+                }
+            }
+        }
+    }
+}

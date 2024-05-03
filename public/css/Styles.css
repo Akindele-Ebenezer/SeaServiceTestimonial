@@ -966,6 +966,89 @@ main .left-navigation ul li .total {
   background-color: #1f5671;
 }
 
+.availability-content table {
+  border-collapse: collapse;
+}
+.availability-content table tr {
+  border: none !important;
+}
+.availability-content table tr td.status {
+  background-color: #fff !important;
+  padding: unset;
+}
+.availability-content table tr td.status .status-inner {
+  height: 5em;
+  width: -webkit-fill-available;
+}
+.availability-content table tr td.status .status-inner-x {
+  display: flex;
+}
+.availability-content table tr td .docking {
+  background-color: #03AED2 !important;
+}
+.availability-content table tr td .operation {
+  background-color: #A87676 !important;
+}
+.availability-content table tr td .breakdown {
+  background-color: #da1e28 !important;
+}
+.availability-content table tr td .maintenance {
+  background-color: #24A148 !important;
+}
+.availability-content table tr td .inspection {
+  background-color: #ff832b !important;
+}
+.availability-content table tr td .bunkery {
+  background-color: #8a3ffc !important;
+}
+.availability-content table tr td .vessel-x {
+  display: flex;
+  justify-content: space-between;
+}
+.availability-content table tr td .vessel-x p:first-of-type {
+  border-radius: 0.3em;
+  margin-right: 1em;
+  padding: 0.5em;
+  width: 70%;
+}
+.availability-content table tr tr, .availability-content table tr th {
+  border: none;
+}
+.availability-content table tr th {
+  width: 12em;
+}
+.availability-content table tr th:first-of-type {
+  font-weight: bold;
+  padding-left: 0.25em;
+  font-size: 4em;
+  width: 10em;
+}
+.availability-content table tr th:nth-child(2) {
+  background: #111;
+}
+.availability-content table tr th.period {
+  padding: unset;
+}
+.availability-content table tr th .th {
+  align-items: center;
+  border-bottom: 1px solid #225f7d;
+  display: flex;
+  font-weight: 500;
+  height: 5em;
+  padding-left: 1em;
+}
+.availability-content table tr th .th.time-title {
+  background-color: #111;
+  border: none;
+}
+.availability-content table tr th .th:last-of-type {
+  background-color: #111;
+  border: none;
+  height: unset;
+  padding: 0.5em 1em;
+  translate: 0 0.5em;
+}
+
 .testimonial-content, .table-1 {
   padding: 1em 2em;
   width: 83%;
