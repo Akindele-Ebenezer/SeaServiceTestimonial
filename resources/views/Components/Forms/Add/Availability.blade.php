@@ -10,8 +10,8 @@
                     <p class="error-availability error"></p>
                     <section>
                         <div class="input">
-                            <label for="">Employee</label>
-                            <input type="text" autocomplete="off" id="FILTER_Input" onkeyup="filterFunction()" name="Employee">
+                            <label for="">Vessel</label>
+                            <input type="text" autocomplete="off" id="FILTER_Input" onkeyup="filterFunction()" name="Vessel_AVAILABILITY">
                             <div class="filter-list-wrapper">
                                 @foreach ($Employees as $Employee)
                                 @php
