@@ -133,7 +133,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->SetFont('Times', 'B', 12);   
         $fpdf->Cell(35, 8, 'VESSEL', 'LTR', 0, 'L');
         $fpdf->Cell(25, 13, 'IMO NO', 'LTR', 0, 'L');
-        $fpdf->Cell(30, 13, 'RANK', 'LTR', 0, 'L'); 
+        $fpdf->Cell(32, 13, 'RANK', 'LTR', 0, 'L'); 
         $fpdf->Cell(30, 8, 'AREA OF', 'LTR', 0, 'L');   
         $fpdf->Cell(25, 8, 'G.R.T', 'LTR', 0, 'L');   
         $fpdf->Ln(5); 
@@ -143,7 +143,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->SetFont('Times', 'B', 12);         
         $fpdf->Cell(35, 8, 'NAME', 'LR', 0, 'L'); 
         $fpdf->Cell(25, 8, ' ', 'LR', 0, 'L'); 
-        $fpdf->Cell(30, 8, ' ', 'LR', 0, 'L'); 
+        $fpdf->Cell(32, 8, ' ', 'LR', 0, 'L'); 
         $fpdf->Cell(30, 8, 'OPERATION', 'LR', 0, 'L');
         $fpdf->Cell(25, 8, 'SIGN', 'LR', 0, 'L');  
         $fpdf->Ln();
@@ -199,15 +199,15 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
         $yPos=$fpdf->GetY(); 
         if(strlen($Rank->Rank) < 13) {
-            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
-            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
         if(strlen($Rank->Rank) >= 13) {
-            $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-            $fpdf->SetXY($xPos + 10 + $cellWidth , $yPos);
+            $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+            $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
         $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
-        $fpdf->SetXY(90 + $cellWidth , $yPos);
+        $fpdf->SetXY(92 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY();
         $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
         $fpdf->ln();
@@ -231,15 +231,15 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY(); 
         
             if(strlen($Rank->Rank) < 13) {
-                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
             if(strlen($Rank->Rank) >= 13) {
-                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
-            $fpdf->SetXY(90 + $cellWidth , $yPos);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln(); 
@@ -262,15 +262,15 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY(); 
         
             if(strlen($Rank->Rank) < 13) {
-                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
             if(strlen($Rank->Rank) >= 13) {
-                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
-            $fpdf->SetXY(90 + $cellWidth , $yPos);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln();
@@ -293,15 +293,15 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY(); 
         
             if(strlen($Rank->Rank) < 13) {
-                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
             if(strlen($Rank->Rank) >= 13) {
-                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
-            $fpdf->SetXY(90 + $cellWidth , $yPos);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln();
@@ -324,15 +324,15 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY(); 
         
             if(strlen($Rank->Rank) < 13) {
-                $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
             if(strlen($Rank->Rank) >= 13) {
-                $fpdf->MultiCell(30, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
-                $fpdf->SetXY(60 + $cellWidth , $yPos);
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
             $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
-            $fpdf->SetXY(90 + $cellWidth , $yPos);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
             $yPos=$fpdf->GetY();
             $fpdf->Cell(25,10, $GRTSign->GrossTonnage ?? '-',1,0); 
             $fpdf->ln();
@@ -510,7 +510,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(25, 8, 'AREA OF', 'LTR', 0, 'L');  
         $fpdf->Cell(30, 8, 'ENG', 'LTR', 0, 'L');   
         $fpdf->Cell(15, 13, 'GRT', 'LTR', 0, 'L'); 
-        $fpdf->Cell(30, 13, 'RATING', 'LTR', 0, 'L');
+        $fpdf->Cell(32, 13, 'RATING', 'LTR', 0, 'L');
         $fpdf->Ln(5);
         $fpdf->Cell(20, 8, 'DATE', 'LR', 0, 'L');  
         $fpdf->Cell(20, 8, 'DATE', 'LR', 0, 'L'); 
@@ -519,7 +519,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(25, 8, 'OPERATION', 'LR', 0, 'L'); 
         $fpdf->Cell(30, 8, '(kw)', 'LR', 0, 'L');
         $fpdf->Cell(15, 8, ' ', 'LR', 0, 'L');  
-        $fpdf->Cell(30, 8, ' ', 'LR', 0, 'L'); 
+        $fpdf->Cell(32, 8, ' ', 'LR', 0, 'L'); 
         $fpdf->Ln();
            
         //// TABLE COLUMNS
@@ -561,22 +561,22 @@ class SeaServiceTestimonialPdf extends Controller
         $yPos=$fpdf->GetY();
         // TEST MULTI CELLS DATA 
 
-        // $CurrentVessel->CurrentVessel = 'ANTELOPE ANT DRG';
-        // $CurrentVessel->CurrentVessel = 'ASAGA AS';
-        // $CurrentVessel->CurrentVessel = 'DAURA';
-        // $CurrentVessel->CurrentVessel = 'EMEKUKU EM';
-        // $CurrentVessel->CurrentVessel = 'GUSAU GS';
-        // $CurrentVessel->CurrentVessel = 'MAJIYA';
-        // $CurrentVessel->CurrentVessel = 'UBIMA';
-        // $CurrentVessel->CurrentVessel = 'UROMI URO';
-        // $CurrentVessel->CurrentVessel = 'ZARANDA ZR';
-        // $CurrentVessel->CurrentVessel = 'WATER BARGE WB';
-        // $CurrentVessel->CurrentVessel = 'TOMBIA';
-        // $CurrentVessel->CurrentVessel = 'TIGADAM TG DRG';
-        // $CurrentVessel->CurrentVessel = 'SURVEY SRV';
-        // $CurrentVessel->CurrentVessel = 'PCM Main Site';
-        // $CurrentVessel->CurrentVessel = 'PC KOKO';
-        // $CurrentVessel->CurrentVessel = 'OREN OR DRG';
+        $CurrentVessel->CurrentVessel = 'ANTELOPE ANT DRG';
+        $CurrentVessel->CurrentVessel = 'ASAGA AS';
+        $CurrentVessel->CurrentVessel = 'DAURA';
+        $CurrentVessel->CurrentVessel = 'EMEKUKU EM';
+        $CurrentVessel->CurrentVessel = 'GUSAU GS';
+        $CurrentVessel->CurrentVessel = 'MAJIYA';
+        $CurrentVessel->CurrentVessel = 'UBIMA';
+        $CurrentVessel->CurrentVessel = 'UROMI URO';
+        $CurrentVessel->CurrentVessel = 'ZARANDA ZR';
+        $CurrentVessel->CurrentVessel = 'WATER BARGE WB';
+        $CurrentVessel->CurrentVessel = 'TOMBIA';
+        $CurrentVessel->CurrentVessel = 'TIGADAM TG DRG';
+        $CurrentVessel->CurrentVessel = 'SURVEY SRV';
+        $CurrentVessel->CurrentVessel = 'PCM MAIN SITE';
+        $CurrentVessel->CurrentVessel = 'PC KOKO';
+        $CurrentVessel->CurrentVessel = 'OREN OR DRG';
         // $CurrentVessel->CurrentVessel = 'MOORING 2';
         // $CurrentVessel->CurrentVessel = 'MOORING 1';
         // $CurrentVessel->CurrentVessel = 'LTT GENERAL';
@@ -595,22 +595,22 @@ class SeaServiceTestimonialPdf extends Controller
 
         // RANK
         
-        // $Rank->Rank = 'BOAT DRIVER';
-        // $Rank->Rank = 'CAPTAIN';
-        // $Rank->Rank = 'SHORE ENGINEER';
-        // $Rank->Rank = 'ABLE SEA MAN';
-        // $Rank->Rank = 'PC MASTER';
-        // $Rank->Rank = 'DIVER';
-        // $Rank->Rank = 'ML MASTER';
-        // $Rank->Rank = 'CHIEF ENGINEER';
-        // $Rank->Rank = 'TUG MASTER';
-        // $Rank->Rank = '3RD ENGINEER';
-        // $Rank->Rank = 'PC ENGINEER';
-        // $Rank->Rank = 'MECHANIC';
-        // $Rank->Rank = 'COOK';
-        // $Rank->Rank = 'CHIEF OFFICER';
-        // $Rank->Rank = '3RD ENGINEER ASSIST.';
-        // $Rank->Rank = 'RADIO OPERATOR';
+        $Rank->Rank = 'BOAT DRIVER';
+        $Rank->Rank = 'CAPTAIN';
+        $Rank->Rank = 'SHORE ENGINEER';
+        $Rank->Rank = 'ABLE SEA MAN';
+        $Rank->Rank = 'PC MASTER';
+        $Rank->Rank = 'DIVER';
+        $Rank->Rank = 'ML MASTER';
+        $Rank->Rank = 'CHIEF ENGINEER';
+        $Rank->Rank = 'TUG MASTER';
+        $Rank->Rank = '3RD ENGINEER';
+        $Rank->Rank = 'PC ENGINEER';
+        $Rank->Rank = 'MECHANIC';
+        $Rank->Rank = 'COOK';
+        $Rank->Rank = 'CHIEF OFFICER';
+        $Rank->Rank = '3RD ENGINEER ASSIST.';
+        $Rank->Rank = 'RADIO OPERATOR';
         // $Rank->Rank = 'ELECTRICIAN';
         // $Rank->Rank = 'OPERATION MANAGER';
         // $Rank->Rank = 'DECK HAND';
@@ -664,12 +664,12 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
 
         if(strlen($Rank->Rank) < 15) {
-            $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            $fpdf->Cell(32,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             $fpdf->ln();
         }
         if(strlen($Rank->Rank) >= 15) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+            $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
         }
         
         if(!empty($StartDate_2->StartDate_2)) {
@@ -706,12 +706,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
 
             if(strlen($Rank->Rank) < 15) {
-                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->Cell(32,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
                 $fpdf->ln();
             }
             if(strlen($Rank->Rank) >= 15) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
             }
         }
         if(!empty($StartDate_3->StartDate_3)) {
@@ -746,12 +746,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
 
             if(strlen($Rank->Rank) < 15) {
-                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->Cell(32,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
                 $fpdf->ln();
             }
             if(strlen($Rank->Rank) >= 15) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
             }
         }
         if(!empty($StartDate_4->StartDate_4)) {
@@ -789,12 +789,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
 
             if(strlen($Rank->Rank) < 15) {
-                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->Cell(32,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
                 $fpdf->ln();
             }
             if(strlen($Rank->Rank) >= 15) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
             }
         }
         if(!empty($StartDate_5->StartDate_5)) {
@@ -829,12 +829,12 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
 
             if(strlen($Rank->Rank) < 15) {
-                $fpdf->Cell(30,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->Cell(32,10, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
                 $fpdf->ln();
             }
             if(strlen($Rank->Rank) >= 15) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
+                $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? str_replace(' ', '-', strtoupper($Rank->Rank)) . '                                  ' : str_replace(' ', '-', strtoupper($Rank->Rank))),1);
             }
         }
 
@@ -1011,7 +1011,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(20, 8, 'IMO', 'LTR', 0, 'L');
         $fpdf->Cell(25, 8, 'AREA OF', 'LTR', 0, 'L');    
         $fpdf->Cell(15, 13, 'GRT', 'LTR', 0, 'L'); 
-        $fpdf->Cell(30, 13, 'RATING', 'LTR', 0, 'L');
+        $fpdf->Cell(32, 13, 'RATING', 'LTR', 0, 'L');
         $fpdf->Ln(5);
         $fpdf->Cell(30, 8, 'DATE', 'LR', 0, 'L');  
         $fpdf->Cell(30, 8, 'DATE', 'LR', 0, 'L'); 
@@ -1019,7 +1019,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(20, 8, 'NO', 'LR', 0, 'L'); 
         $fpdf->Cell(25, 8, 'OPERATION', 'LR', 0, 'L');  
         $fpdf->Cell(15, 8, ' ', 'LR', 0, 'L');  
-        $fpdf->Cell(30, 8, ' ', 'LR', 0, 'L'); 
+        $fpdf->Cell(32, 8, ' ', 'LR', 0, 'L'); 
         $fpdf->Ln();
            
         //// TABLE COLUMNS
@@ -1152,12 +1152,12 @@ class SeaServiceTestimonialPdf extends Controller
         $yPos=$fpdf->GetY();  
         $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
         if(strlen($Rank->Rank) < 15) {
-            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             $fpdf->Ln();   
         }
         if(strlen($Rank->Rank) >= 15) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+            $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
         } 
         if(!empty($StartDate_2->StartDate_2)) {
             $fpdf->Cell(30, 10, (empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2), 1, 0, 'L'); 
@@ -1179,12 +1179,12 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
         if(strlen($Rank->Rank) < 15) {
-            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             $fpdf->Ln();   
         }
         if(strlen($Rank->Rank) >= 15) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+            $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
         } 
         }
         if(!empty($StartDate_3->StartDate_3)) {
@@ -1207,12 +1207,12 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
         if(strlen($Rank->Rank) < 15) {
-            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             $fpdf->Ln();   
         }
         if(strlen($Rank->Rank) >= 15) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+            $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
         } 
         }
         if(!empty($StartDate_4->StartDate_4)) {
@@ -1234,12 +1234,12 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
         if(strlen($Rank->Rank) < 15) {
-            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             $fpdf->Ln();   
         }
         if(strlen($Rank->Rank) >= 15) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+            $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
         } 
         }
         if(!empty($StartDate_5->StartDate_5)) {
@@ -1262,12 +1262,12 @@ class SeaServiceTestimonialPdf extends Controller
             $yPos=$fpdf->GetY();
             $fpdf->Cell(15, 10,  $GRTSign->GrossTonnage ?? '-', 1, 0, 'L'); 
         if(strlen($Rank->Rank) < 15) {
-            $fpdf->Cell(30,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             $fpdf->Ln();   
         }
         if(strlen($Rank->Rank) >= 15) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
+            $fpdf->MultiCell(32,$cellHeight, (strlen($Rank->Rank) < 15 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                             ' : str_replace(' ', '-', $Rank->Rank)),1);
         } 
         }
 

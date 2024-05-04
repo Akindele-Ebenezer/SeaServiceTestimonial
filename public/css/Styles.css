@@ -13,7 +13,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #333;
+  background-color: #ddd;
 }
 
 .Hide {
@@ -740,7 +740,7 @@ main .left-navigation ul li .total {
   border-bottom: 1px solid #dcedf5;
   border-left: 8px solid #fff;
   color: #225f7d;
-  padding: 1em;
+  padding: 1em 0;
   position: relative;
 }
 .vessel-content .list:hover, .vessel-content .empty-data:hover {
@@ -835,32 +835,32 @@ main .left-navigation ul li .total {
   position: relative;
   width: 58%;
 }
-.content-data .add-testimonial-wrapper {
+.content-data .add-testimonial-wrapper, .content-data .add-availabilty-wrapper {
   align-items: center;
   display: flex;
   justify-content: center;
 }
-.content-data .add-testimonial-wrapper .AddTestimonial {
+.content-data .add-testimonial-wrapper .AddTestimonial, .content-data .add-testimonial-wrapper .AddAvailability, .content-data .add-availabilty-wrapper .AddTestimonial, .content-data .add-availabilty-wrapper .AddAvailability {
   background-color: unset;
   display: none;
   height: unset;
   position: unset;
   width: fit-content;
 }
-.content-data .add-testimonial-wrapper .AddTestimonial .inner {
+.content-data .add-testimonial-wrapper .AddTestimonial .inner, .content-data .add-testimonial-wrapper .AddAvailability .inner, .content-data .add-availabilty-wrapper .AddTestimonial .inner, .content-data .add-availabilty-wrapper .AddAvailability .inner {
   color: #333;
   display: block;
 }
-.content-data .add-testimonial-wrapper .AddTestimonial .inner form h1 {
+.content-data .add-testimonial-wrapper .AddTestimonial .inner form h1, .content-data .add-testimonial-wrapper .AddAvailability .inner form h1, .content-data .add-availabilty-wrapper .AddTestimonial .inner form h1, .content-data .add-availabilty-wrapper .AddAvailability .inner form h1 {
   background-color: #fff;
   border-bottom: 1px solid #b4d8ea;
   color: #333;
   font-size: unset;
 }
-.content-data .add-testimonial-wrapper .AddTestimonial .inner form select, .content-data .add-testimonial-wrapper .AddTestimonial .inner form input {
+.content-data .add-testimonial-wrapper .AddTestimonial .inner form select, .content-data .add-testimonial-wrapper .AddTestimonial .inner form input, .content-data .add-testimonial-wrapper .AddAvailability .inner form select, .content-data .add-testimonial-wrapper .AddAvailability .inner form input, .content-data .add-availabilty-wrapper .AddTestimonial .inner form select, .content-data .add-availabilty-wrapper .AddTestimonial .inner form input, .content-data .add-availabilty-wrapper .AddAvailability .inner form select, .content-data .add-availabilty-wrapper .AddAvailability .inner form input {
   border: none;
 }
-.content-data .add-testimonial-wrapper .AddTestimonial .inner form select:focus, .content-data .add-testimonial-wrapper .AddTestimonial .inner form input:focus {
+.content-data .add-testimonial-wrapper .AddTestimonial .inner form select:focus, .content-data .add-testimonial-wrapper .AddTestimonial .inner form input:focus, .content-data .add-testimonial-wrapper .AddAvailability .inner form select:focus, .content-data .add-testimonial-wrapper .AddAvailability .inner form input:focus, .content-data .add-availabilty-wrapper .AddTestimonial .inner form select:focus, .content-data .add-availabilty-wrapper .AddTestimonial .inner form input:focus, .content-data .add-availabilty-wrapper .AddAvailability .inner form select:focus, .content-data .add-availabilty-wrapper .AddAvailability .inner form input:focus {
   border-bottom: 3px solid #225f7d;
 }
 .content-data .AddVesselButton {

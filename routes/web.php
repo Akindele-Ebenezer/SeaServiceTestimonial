@@ -20,6 +20,7 @@ Route::get('/Edit/Vessel/{Id}', [VesselController::class, 'update'])->name('Edit
 Route::get('/Delete/Vessel/{Id}', [VesselController::class, 'destroy'])->name('DeleteVessel');
 
 Route::get('/Availability', [VesselController::class, 'availability'])->name('Availability');
+Route::get('/Add/AddAvailability', [VesselController::class, 'create'])->name('AddAvailability');
 
 Route::get('/Testimonials', [SeaServiceTestimonialController::class, 'index'])->name('Testimonials');
 Route::get('/Add/Testimonial', [SeaServiceTestimonialController::class, 'create'])->name('AddTestimonial');

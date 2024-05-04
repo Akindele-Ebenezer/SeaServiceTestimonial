@@ -145,7 +145,7 @@
                         <select name="TemplateFormat" id="">
                             <option value="Deck">Deck</option>
                             <option value="Engine">Engine</option> 
-                            <option value="Captain">Captain</option> 
+                            {{-- <option value="Captain">Captain</option>  --}}
                             <option value="Cook">Cook</option> 
                         </select>
                     </div>

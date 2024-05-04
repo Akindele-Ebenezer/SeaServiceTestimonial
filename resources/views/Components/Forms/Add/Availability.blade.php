@@ -1,24 +1,24 @@
-<div class="form-1 EditTestimonial">
+<div class="form-1 AddAvailability">
     <div class="inner">
-        <div class="close-button-update">
-            <span> </span>
-            <button>✖</button>
+        <div class="close-button">
+            <span>    </span>
+            <button class="cancel-button-availability">✖</button>
         </div>
-        <form action="" class="UpdateTestimonialForm">
+        <form action="{{ route('AddAvailability') }}" class="AddAvailabilityForm">
             <div class="inner-1"> 
                 <div class="fields">
-                    <p class="error-update-testimonial error"></p>
+                    <p class="error-availability error"></p>
                     <section>
                         <div class="input">
                             <label for="">Employee</label>
-                            <input type="text" autocomplete="off" id="FILTER_Input3" onkeyup="filterFunction3()" name="EditEmployee">
-                            <div class="filter-list-wrapper-3">
+                            <input type="text" autocomplete="off" id="FILTER_Input" onkeyup="filterFunction()" name="Employee">
+                            <div class="filter-list-wrapper">
                                 @foreach ($Employees as $Employee)
                                 @php
                                     $PreviousVessel = \DB::table('testimonials')->select('CurrentVessel')->where('EmployeeId', $Employee->EmployeeId)
                                                             ->orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->first();
                                 @endphp
-                                <div class="filter-value-3">
+                                <div class="filter-value">
                                     <span class="Hide">{{ $Employee->FullName }}</span>
                                     <span class="Hide">{{ $Employee->EmployeeId }}</span>
                                     <span class="Hide">{{ $Employee->DateOfBirth }}</span>
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 @endforeach 
-                                <div class="empty empty3">
+                                <div class="empty">
                                     <center>
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
                                         <h1>No data available</h1>
@@ -46,21 +46,21 @@
                         </div>  
                         <div class="input">
                             <label for="">Staff number</label>
-                            <input type="text" name="EditStaffNumber" readonly>
+                            <input type="text" name="StaffNumber">
                         </div> 
                     </section>
                     <section class="-x">
                         <div> 
                             <div class="input">
                                 <label for="">Date of birth</label>
-                                <input type="date" name="EditDateOfBirth">
+                                <input type="date" name="DateOfBirth">
                             </div> 
                         </div>
                     </section>
                     <section> 
                         <div class="input">
                             <label for="">Area of operation</label>
-                            <select name="EditAreaOfOperation" id="">
+                            <select name="AreaOfOperation" id="">
                                 <option value="Sea Dredging">Sea Dredging</option>
                                 <option value="N.C.V">N.C.V</option> 
                             </select> 
@@ -69,17 +69,17 @@
                     <section class="-x2">
                         <div class="input">
                             <label for="">Discharge book</label>
-                            <input type="number" name="EditDischargeBook">
+                            <input type="number" name="DischargeBook">
                         </div>
                         <div class="input">
                             <label for="">Previous Vessel</label>
-                            <input type="text" name="EditPreviousVessel" readonly>
+                            <input type="text" name="PreviousVessel" readonly>
                         </div>
                     </section>
                     <section class="-x3">
                         <div class="input">
                             <label for="">Rank</label>
-                            <select name="EditRank" id="">
+                            <select name="Rank" id="">
                                 @foreach ($Ranks as $Rank)
                                 <option value="{{ $Rank->Rank }}">{{ $Rank->Rank }}</option> 
                                 @endforeach
@@ -87,9 +87,10 @@
                         </div>
                         <div class="input">
                             <label for="">Company</label>
-                            <select name="EditCompany" id="">
-                                <option value="L.T.T">L.T.T</option>
-                                <option value="DEPASA">DEPASA</option> 
+                            <select name="Company" id="">
+                                @foreach ($Companies as $Company)
+                                <option value="{{ $Company->Company }}">{{ $Company->Company }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </section>
@@ -105,28 +106,28 @@
                             <th></th>
                         </tr>
                         <tr class="Show">
-                            <td><input type="date" name="EditStartDate_1" id=""></td>
-                            <td><input type="date" name="EditEndDate_1" id=""></td>
+                            <td><input type="date" name="StartDate_1" id=""></td>
+                            <td><input type="date" name="EndDate_1" id=""></td>
                             <td><span>+</span></td>
                         </tr>
                         <tr class="Hide">
-                            <td><input type="date" name="EditStartDate_2" id=""></td>
-                            <td><input type="date" name="EditEndDate_2" id=""></td>
+                            <td><input type="date" name="StartDate_2" id=""></td>
+                            <td><input type="date" name="EndDate_2" id=""></td>
                             <td><span>+</span></td>
                         </tr>
                         <tr class="Hide">
-                            <td><input type="date" name="EditStartDate_3" id=""></td>
-                            <td><input type="date" name="EditEndDate_3" id=""></td>
+                            <td><input type="date" name="StartDate_3" id=""></td>
+                            <td><input type="date" name="EndDate_3" id=""></td>
                             <td><span>+</span></td>
                         </tr>
                         <tr class="Hide">
-                            <td><input type="date" name="EditStartDate_4" id=""></td>
-                            <td><input type="date" name="EditEndDate_4" id=""></td>
+                            <td><input type="date" name="StartDate_4" id=""></td>
+                            <td><input type="date" name="EndDate_4" id=""></td>
                             <td><span>+</span></td>
                         </tr>
                         <tr class="Hide">
-                            <td><input type="date" name="EditStartDate_5" id=""></td>
-                            <td><input type="date" name="EditEndDate_5" id=""></td>
+                            <td><input type="date" name="StartDate_5" id=""></td>
+                            <td><input type="date" name="EndDate_5" id=""></td>
                             <td><span>+</span></td>
                         </tr>
                     </table>
@@ -141,7 +142,7 @@
                     </p>
                     <div class="input">
                         <label for="">Theme</label>
-                        <select name="EditTemplateFormat" id="">
+                        <select name="TemplateFormat" id="">
                             <option value="Deck">Deck</option>
                             <option value="Engine">Engine</option> 
                             {{-- <option value="Captain">Captain</option>  --}}
@@ -151,17 +152,16 @@
                     <div class="input">
                         <div class="input">
                             <label for="">Current Vessel</label>  
-                            {{-- <select name="EditCurrentVessel" id="">
+                            <select name="CurrentVessel" id="">
                             @foreach ($Vessels as $Vessel)
                                 <option value="{{ $Vessel->VesselName ?? '-' }}">{{ $Vessel->VesselName ?? '-' }}</option> 
                             @endforeach
-                            </select> --}}
-                            <input type="text" name="EditCurrentVessel" readonly id="">
+                            </select>
                         </div>
                     </div>
                 </section>
             </div>
         </form>
-        <button class="UpdateTestimonialButton">Update →</button>
+        <button class="AddAvailabilityButton">Create →</button>
     </div>
 </div>

@@ -94,10 +94,44 @@
     ">
         <button class="AddVesselButton">+ Add Vessel</button>
     </div>
-    <center class="add-testimonial-wrapper">
-        @include('Components.Forms.Add.Testimonial') 
-    </center>
-    <div class="no-data-selected">
+    @if (
+        (session()->get('Role') == 'Super Admin') ||  
+        (session()->get('Role') == 'MOC Admin') ||
+        (session()->get('Role') == 'MOC Operators')   
+    )
+        <center class="add-availabilty-wrapper">
+            @include('Components.Forms.Add.Availability') 
+        </center>
+    @endif
+    @if (
+        (session()->get('Role') == 'Super Admin') || 
+        (session()->get('Role') == 'HR Admin') || 
+        (session()->get('Role') == 'HR Users/Operators')   
+    )
+        <center class="add-testimonial-wrapper">
+            @include('Components.Forms.Add.Testimonial') 
+        </center>
+    @endif
+    @if (
+        (session()->get('Role') == 'Super Admin') || 
+        (session()->get('Role') == 'MOC Admin') || 
+        (session()->get('Role') == 'MOC Operators')   
+    )
+    <div class="no-data-selected moc">
+        <center>
+            <svg xmlns="http://www.w3.org/2000/svg" height="200" viewBox="0 -960 960 960" width="200"><path d="M479-418ZM158-200 82-468q-3-12 2.5-28t23.5-22l52-18v-184q0-33 23.5-56.5T240-800h120v-120h240v120h120q33 0 56.5 23.5T800-720v184l52 18q21 8 25 23.5t1 26.5l-76 268q-50 0-91-23.5T640-280q-30 33-71 56.5T480-200q-48 0-89-23.5T320-280q-30 33-71 56.5T158-200ZM80-40v-80h80q42 0 83-13t77-39q36 26 77 38t83 12q42 0 83-12t77-38q36 26 77 39t83 13h80v80h-80q-42 0-82-10t-78-30q-38 20-78.5 30T480-40q-41 0-81.5-10T320-80q-38 20-78 30t-82 10H80Zm160-522 240-78 240 78v-158H240v158Zm240 282q47 0 79.5-33t80.5-89q48 54 65 74t41 34l44-160-310-102-312 102 46 158q24-14 41-32t65-74q50 57 81.5 89.5T480-280Z"/></svg>
+            <h1>No Vessel Selected</h1>
+            <p>Make it easier to track monthly/quarterly reports by creating your saved project.</p>
+            <button class="RecordAvailabilityButton">+ Record/Schedule Availability</button>
+        </center>
+    </div>
+    @endif
+    @if (
+        (session()->get('Role') == 'Super Admin') || 
+        (session()->get('Role') == 'HR Admin') || 
+        (session()->get('Role') == 'HR Users/Operators')   
+    )
+    <div class="no-data-selected hr">
         <center>
             <svg xmlns="http://www.w3.org/2000/svg" height="200" viewBox="0 -960 960 960" width="200"><path d="M479-418ZM158-200 82-468q-3-12 2.5-28t23.5-22l52-18v-184q0-33 23.5-56.5T240-800h120v-120h240v120h120q33 0 56.5 23.5T800-720v184l52 18q21 8 25 23.5t1 26.5l-76 268q-50 0-91-23.5T640-280q-30 33-71 56.5T480-200q-48 0-89-23.5T320-280q-30 33-71 56.5T158-200ZM80-40v-80h80q42 0 83-13t77-39q36 26 77 38t83 12q42 0 83-12t77-38q36 26 77 39t83 13h80v80h-80q-42 0-82-10t-78-30q-38 20-78.5 30T480-40q-41 0-81.5-10T320-80q-38 20-78 30t-82 10H80Zm160-522 240-78 240 78v-158H240v158Zm240 282q47 0 79.5-33t80.5-89q48 54 65 74t41 34l44-160-310-102-312 102 46 158q24-14 41-32t65-74q50 57 81.5 89.5T480-280Z"/></svg>
             <h1>No Vessel Selected</h1>
@@ -105,6 +139,7 @@
             <button class="CreateTestimonialButton">+ Create a Testimonial</button>
         </center>
     </div>
+    @endif
     <div class="inner vessel-information">
         <h1>
             <img src="{{ asset('images/cruise-ship.png') }}" alt=""> <span class="vessel-name-x"></span> ID: &nbsp; <span class="id">#<span class="imo-number-x"></span></span>&nbsp; &nbsp; 
@@ -233,20 +268,24 @@
     let CancelButton = document.querySelector('.cancel-button');
     let NoDataSelectedModal = document.querySelector('.no-data-selected');
     let ContentData = document.querySelector('.content-data');
+    let NoDataSelectedModal_HR = document.querySelector('.no-data-selected.hr');
+    let AddAvailabilityWrapper = document.querySelector('.add-availabilty-wrapper');
     
-    CreateTestimonialButton.addEventListener('click', () => {
-        AddTestimonialWrapper.style.height = '100%';
-        AddTestimonialWrapper.style.display = 'flex';
-        AddTestimonialModal.style.display = 'flex';
-        NoDataSelectedModal.style.display = 'none'; 
-        ContentData.style.backgroundColor = '#225f7d'; 
-        
-        CancelButton.addEventListener('click', () => {
-            AddTestimonialModal.style.display = 'none';
-            NoDataSelectedModal.style.display = 'flex';
-            AddTestimonialWrapper.style.height = 'unset'; 
-        })
-    });
+    if (CreateTestimonialButton !== null) {
+        CreateTestimonialButton.addEventListener('click', () => {
+            AddTestimonialWrapper.style.height = '100%';
+            AddTestimonialWrapper.style.display = 'flex';
+            AddTestimonialModal.style.display = 'flex';
+            NoDataSelectedModal.style.display = 'none'; 
+            ContentData.style.backgroundColor = '#225f7d'; 
+            
+            CancelButton.addEventListener('click', () => {
+                AddTestimonialModal.style.display = 'none';
+                NoDataSelectedModal.style.display = 'flex';
+                AddTestimonialWrapper.style.height = 'unset'; 
+            })
+        });
+    }
 
     let Vessels = document.querySelectorAll('.vessel');
     let VesselInformation = document.querySelector('.vessel-information');
@@ -257,7 +296,13 @@
         Vessel.addEventListener('click', () => {
             NoDataSelectedModal.style.display = 'none';
             AddVesselButton.style.display = 'none';
-            AddTestimonialWrapper.style.display = 'none';
+            if (AddTestimonialWrapper !== null) {
+                    AddTestimonialWrapper.style.display = 'none';
+            }
+            AddAvailabilityWrapper.style.display = 'none';
+            if (NoDataSelectedModal_HR !== null) {
+                NoDataSelectedModal_HR.style.display = 'none';
+            }
             ContentData.style.backgroundColor = '#fff';
             VesselInformation.style.display = 'block';
             Vessels.forEach((Vessel_) => {
@@ -341,68 +386,71 @@
     let EmployeeInput = document.querySelector('.input[name=Employee]');
     let CurrentVesselInput = document.querySelector('.select[name=CurrentVessel]');
 
-    AddTestimonialButton.addEventListener('click', () => {
-        switch (CurrentVesselInput) {
-            case 'Deck':
-                window.open('/Testimonials/Template/1?Testimonial_Id=' + TestimonialId);
-                break;
-            case 'Engine':
-                window.open('/Testimonials/Template/2?Testimonial_Id=' + TestimonialId);
-                break;
-            case 'Captain':
-                window.open('/Testimonials/Template/3?Testimonial_Id=' + TestimonialId);
-                break;
-            default:
-                break;
-        } 
+    if (AddTestimonialButton !== null) {
+        AddTestimonialButton.addEventListener('click', () => {
+            switch (CurrentVesselInput) {
+                case 'Deck':
+                    window.open('/Testimonials/Template/1?Testimonial_Id=' + TestimonialId);
+                    break;
+                case 'Engine':
+                    window.open('/Testimonials/Template/2?Testimonial_Id=' + TestimonialId);
+                    break;
+                case 'Captain':
+                    window.open('/Testimonials/Template/3?Testimonial_Id=' + TestimonialId);
+                    break;
+                default:
+                    break;
+            } 
 
-        let ErrorTestimonial = document.querySelector('.error-testimonial');
-        let EmployeeInput = document.querySelector('input[name=Employee]');
-        let StaffNumberInput = document.querySelector('input[name=StaffNumber]');
-        let StartDate_1Input = document.querySelector('input[name=StartDate_1]');
-        let StartDate_2Input = document.querySelector('input[name=StartDate_2]');
-        let StartDate_3Input = document.querySelector('input[name=StartDate_3]');
-        let StartDate_4Input = document.querySelector('input[name=StartDate_4]');
-        let StartDate_5Input = document.querySelector('input[name=StartDate_5]');
-        let EndDate_1Input = document.querySelector('input[name=EndDate_1]');
-        let EndDate_2Input = document.querySelector('input[name=EndDate_2]');
-        let EndDate_3Input = document.querySelector('input[name=EndDate_3]');
-        let EndDate_4Input = document.querySelector('input[name=EndDate_4]');
-        let EndDate_5Input = document.querySelector('input[name=EndDate_5]');
-    
-        if (EmployeeInput.value.trim() == '') { 
-            ErrorTestimonial.textContent =  'Employee field cannot be empty';
-        } else if (StaffNumberInput.value.trim() == '') { 
-            ErrorTestimonial.textContent =  'Employee ID is required';
-        } else if (StartDate_1Input.value > EndDate_1Input.value) { 
-            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 1';
-        } else if (StartDate_2Input.value > EndDate_2Input.value) { 
-            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 2';
-        } else if (StartDate_3Input.value > EndDate_3Input.value) { 
-            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 3';
-        } else if (StartDate_4Input.value > EndDate_4Input.value) { 
-            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 4';
-        } else if (StartDate_5Input.value > EndDate_5Input.value) { 
-            ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 5';
-        } else if (
-            StartDate_1Input.value == '' || 
-            EndDate_1Input.value == '' 
-        ) { 
-            ErrorTestimonial.textContent =  'Date field cannot be empty';
-        } else {
-            ErrorTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
-            ErrorTestimonial.style.color =  '#fff';
-            ErrorTestimonial.style.padding =  '1em';
-            ErrorTestimonial.textContent = 'Creating testimonial..';
-            AddTestimonialButton.style.backgroundColor = '#1fb95e';
-            AddTestimonialButton.textContent = '+ Processing..';
-            AddTestimonialForm.submit();
-        }
+            let ErrorTestimonial = document.querySelector('.error-testimonial');
+            let EmployeeInput = document.querySelector('input[name=Employee]');
+            let StaffNumberInput = document.querySelector('input[name=StaffNumber]');
+            let StartDate_1Input = document.querySelector('input[name=StartDate_1]');
+            let StartDate_2Input = document.querySelector('input[name=StartDate_2]');
+            let StartDate_3Input = document.querySelector('input[name=StartDate_3]');
+            let StartDate_4Input = document.querySelector('input[name=StartDate_4]');
+            let StartDate_5Input = document.querySelector('input[name=StartDate_5]');
+            let EndDate_1Input = document.querySelector('input[name=EndDate_1]');
+            let EndDate_2Input = document.querySelector('input[name=EndDate_2]');
+            let EndDate_3Input = document.querySelector('input[name=EndDate_3]');
+            let EndDate_4Input = document.querySelector('input[name=EndDate_4]');
+            let EndDate_5Input = document.querySelector('input[name=EndDate_5]');
+        
+            if (EmployeeInput.value.trim() == '') { 
+                ErrorTestimonial.textContent =  'Employee field cannot be empty';
+            } else if (StaffNumberInput.value.trim() == '') { 
+                ErrorTestimonial.textContent =  'Employee ID is required';
+            } else if (StartDate_1Input.value > EndDate_1Input.value) { 
+                ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 1';
+            } else if (StartDate_2Input.value > EndDate_2Input.value) { 
+                ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 2';
+            } else if (StartDate_3Input.value > EndDate_3Input.value) { 
+                ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 3';
+            } else if (StartDate_4Input.value > EndDate_4Input.value) { 
+                ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 4';
+            } else if (StartDate_5Input.value > EndDate_5Input.value) { 
+                ErrorTestimonial.textContent =  'Start date cannot be greater than End date on row 5';
+            } else if (
+                StartDate_1Input.value == '' || 
+                EndDate_1Input.value == '' 
+            ) { 
+                ErrorTestimonial.textContent =  'Date field cannot be empty';
+            } else {
+                ErrorTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
+                ErrorTestimonial.style.color =  '#fff';
+                ErrorTestimonial.style.padding =  '1em';
+                ErrorTestimonial.textContent = 'Creating testimonial..';
+                AddTestimonialButton.style.backgroundColor = '#1fb95e';
+                AddTestimonialButton.textContent = '+ Processing..';
+                AddTestimonialForm.submit();
+            }
 
-    })
+        })
+    }
 </script> 
 <script src="{{ asset('js/Components/Add/Vessel.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Vessel.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Vessel.js') }}"></script>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
+<script src="{{ asset('js/Components/Add/Availability.js') }}"></script>
 @endsection
