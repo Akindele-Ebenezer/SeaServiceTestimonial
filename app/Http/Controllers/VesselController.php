@@ -233,7 +233,7 @@ class VesselController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Vessel $Vessel, $ImoNumber)
-    { 
+    {  
         \DB::table('vessels_vessel_information')->where('ImoNumber', $ImoNumber)->delete();
         \DB::table('vessels_general_others')->where('ImoNumber', $ImoNumber)->delete();
         \DB::table('vessels_section_3')->where('ImoNumber', $ImoNumber)->delete();

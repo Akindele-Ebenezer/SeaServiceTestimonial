@@ -38,7 +38,10 @@
   padding: 1em;
 }
 
-.filter-list-wrapper, .filter-list-wrapper-2, .filter-list-wrapper-3 {
+.filter-list-wrapper,
+.filter-list-wrapper-2,
+.filter-list-wrapper-3,
+.filter-list-wrapper-4 {
   background: #fff;
   display: none;
   height: 25em;
@@ -51,20 +54,32 @@
   width: 100%;
   z-index: 10;
 }
-.filter-list-wrapper .empty, .filter-list-wrapper-2 .empty, .filter-list-wrapper-3 .empty {
+.filter-list-wrapper .empty,
+.filter-list-wrapper-2 .empty,
+.filter-list-wrapper-3 .empty,
+.filter-list-wrapper-4 .empty {
   display: none;
   padding-block: 1em;
 }
-.filter-list-wrapper .empty center h1, .filter-list-wrapper-2 .empty center h1, .filter-list-wrapper-3 .empty center h1 {
+.filter-list-wrapper .empty center h1,
+.filter-list-wrapper-2 .empty center h1,
+.filter-list-wrapper-3 .empty center h1,
+.filter-list-wrapper-4 .empty center h1 {
   display: block !important;
   font-size: large !important;
 }
-.filter-list-wrapper .empty center p, .filter-list-wrapper-2 .empty center p, .filter-list-wrapper-3 .empty center p {
+.filter-list-wrapper .empty center p,
+.filter-list-wrapper-2 .empty center p,
+.filter-list-wrapper-3 .empty center p,
+.filter-list-wrapper-4 .empty center p {
   color: #666;
   font-size: larger !important;
   text-align: center;
 }
-.filter-list-wrapper .empty center svg, .filter-list-wrapper-2 .empty center svg, .filter-list-wrapper-3 .empty center svg {
+.filter-list-wrapper .empty center svg,
+.filter-list-wrapper-2 .empty center svg,
+.filter-list-wrapper-3 .empty center svg,
+.filter-list-wrapper-4 .empty center svg {
   background: #ffeded;
   border-radius: 5em;
   fill: #ff6868;
@@ -72,22 +87,76 @@
   width: 5em;
   padding: 0.8em;
 }
-.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper .filter-value-3, .filter-list-wrapper-2 .filter-value, .filter-list-wrapper-2 .filter-value-2, .filter-list-wrapper-2 .filter-value-3, .filter-list-wrapper-3 .filter-value, .filter-list-wrapper-3 .filter-value-2, .filter-list-wrapper-3 .filter-value-3 {
+.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper .filter-value-3,
+.filter-list-wrapper-2 .filter-value,
+.filter-list-wrapper-2 .filter-value-2,
+.filter-list-wrapper-2 .filter-value-3,
+.filter-list-wrapper-3 .filter-value,
+.filter-list-wrapper-3 .filter-value-2,
+.filter-list-wrapper-3 .filter-value-3,
+.filter-list-wrapper-4 .filter-value,
+.filter-list-wrapper-4 .filter-value-2,
+.filter-list-wrapper-4 .filter-value-3 {
   border-bottom: 1px solid #ffe8e8;
   cursor: pointer;
   padding: 0.2em;
 }
-.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper .filter-value-3:hover h1, .filter-list-wrapper .filter-value-3:hover div, .filter-list-wrapper-2 .filter-value:hover h1, .filter-list-wrapper-2 .filter-value:hover div, .filter-list-wrapper-2 .filter-value-2:hover h1, .filter-list-wrapper-2 .filter-value-2:hover div, .filter-list-wrapper-2 .filter-value-3:hover h1, .filter-list-wrapper-2 .filter-value-3:hover div, .filter-list-wrapper-3 .filter-value:hover h1, .filter-list-wrapper-3 .filter-value:hover div, .filter-list-wrapper-3 .filter-value-2:hover h1, .filter-list-wrapper-3 .filter-value-2:hover div, .filter-list-wrapper-3 .filter-value-3:hover h1, .filter-list-wrapper-3 .filter-value-3:hover div {
+.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper .filter-value-3:hover h1, .filter-list-wrapper .filter-value-3:hover div,
+.filter-list-wrapper-2 .filter-value:hover h1,
+.filter-list-wrapper-2 .filter-value:hover div,
+.filter-list-wrapper-2 .filter-value-2:hover h1,
+.filter-list-wrapper-2 .filter-value-2:hover div,
+.filter-list-wrapper-2 .filter-value-3:hover h1,
+.filter-list-wrapper-2 .filter-value-3:hover div,
+.filter-list-wrapper-3 .filter-value:hover h1,
+.filter-list-wrapper-3 .filter-value:hover div,
+.filter-list-wrapper-3 .filter-value-2:hover h1,
+.filter-list-wrapper-3 .filter-value-2:hover div,
+.filter-list-wrapper-3 .filter-value-3:hover h1,
+.filter-list-wrapper-3 .filter-value-3:hover div,
+.filter-list-wrapper-4 .filter-value:hover h1,
+.filter-list-wrapper-4 .filter-value:hover div,
+.filter-list-wrapper-4 .filter-value-2:hover h1,
+.filter-list-wrapper-4 .filter-value-2:hover div,
+.filter-list-wrapper-4 .filter-value-3:hover h1,
+.filter-list-wrapper-4 .filter-value-3:hover div {
   background-color: #f4f9fc !important;
 }
-.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper .filter-value-3 div, .filter-list-wrapper-2 .filter-value div, .filter-list-wrapper-2 .filter-value-2 div, .filter-list-wrapper-2 .filter-value-3 div, .filter-list-wrapper-3 .filter-value div, .filter-list-wrapper-3 .filter-value-2 div, .filter-list-wrapper-3 .filter-value-3 div {
+.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper .filter-value-3 div,
+.filter-list-wrapper-2 .filter-value div,
+.filter-list-wrapper-2 .filter-value-2 div,
+.filter-list-wrapper-2 .filter-value-3 div,
+.filter-list-wrapper-3 .filter-value div,
+.filter-list-wrapper-3 .filter-value-2 div,
+.filter-list-wrapper-3 .filter-value-3 div,
+.filter-list-wrapper-4 .filter-value div,
+.filter-list-wrapper-4 .filter-value-2 div,
+.filter-list-wrapper-4 .filter-value-3 div {
   display: flex;
   justify-content: space-between;
 }
-.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper .filter-value-3 div span, .filter-list-wrapper-2 .filter-value div span, .filter-list-wrapper-2 .filter-value-2 div span, .filter-list-wrapper-2 .filter-value-3 div span, .filter-list-wrapper-3 .filter-value div span, .filter-list-wrapper-3 .filter-value-2 div span, .filter-list-wrapper-3 .filter-value-3 div span {
+.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper .filter-value-3 div span,
+.filter-list-wrapper-2 .filter-value div span,
+.filter-list-wrapper-2 .filter-value-2 div span,
+.filter-list-wrapper-2 .filter-value-3 div span,
+.filter-list-wrapper-3 .filter-value div span,
+.filter-list-wrapper-3 .filter-value-2 div span,
+.filter-list-wrapper-3 .filter-value-3 div span,
+.filter-list-wrapper-4 .filter-value div span,
+.filter-list-wrapper-4 .filter-value-2 div span,
+.filter-list-wrapper-4 .filter-value-3 div span {
   font-size: smaller;
 }
-.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper .filter-value-3 h1, .filter-list-wrapper-2 .filter-value h1, .filter-list-wrapper-2 .filter-value-2 h1, .filter-list-wrapper-2 .filter-value-3 h1, .filter-list-wrapper-3 .filter-value h1, .filter-list-wrapper-3 .filter-value-2 h1, .filter-list-wrapper-3 .filter-value-3 h1 {
+.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper .filter-value-3 h1,
+.filter-list-wrapper-2 .filter-value h1,
+.filter-list-wrapper-2 .filter-value-2 h1,
+.filter-list-wrapper-2 .filter-value-3 h1,
+.filter-list-wrapper-3 .filter-value h1,
+.filter-list-wrapper-3 .filter-value-2 h1,
+.filter-list-wrapper-3 .filter-value-3 h1,
+.filter-list-wrapper-4 .filter-value h1,
+.filter-list-wrapper-4 .filter-value-2 h1,
+.filter-list-wrapper-4 .filter-value-3 h1 {
   border: none !important;
   color: #225f7d !important;
   font-size: small;
@@ -202,6 +271,7 @@
   color: #225f7d;
   outline: none;
   padding: 0.5em;
+  text-transform: uppercase;
   width: 65%;
 }
 .form-1 form .input select:focus, .form-1 form .input input:focus, .form-1 form td select:focus, .form-1 form td input:focus {
