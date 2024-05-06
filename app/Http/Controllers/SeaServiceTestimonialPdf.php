@@ -650,12 +650,13 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->MultiCell(25,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
         $fpdf->SetXY(45 + $cellWidth , $yPos);
         $yPos=$fpdf->GetY(); 
+        $Enginekw = '1380KW@1800RPM';
         if(strlen($Enginekw) < 14) {
             $fpdf->Cell(30,10, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
         }
         if(strlen($Enginekw) >= 14) {
-            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+            $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                      ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
             $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
         }
         
@@ -697,7 +698,7 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             if(strlen($Enginekw) >= 14) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                      ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             
@@ -738,7 +739,7 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             if(strlen($Enginekw) >= 14) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                      ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             $fpdf->SetXY(75 + $cellWidth , $yPos);
@@ -778,7 +779,7 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             if(strlen($Enginekw) >= 14) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                      ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             
@@ -821,7 +822,7 @@ class SeaServiceTestimonialPdf extends Controller
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             if(strlen($Enginekw) >= 14) {
-                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                                  ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
+                $fpdf->MultiCell(30,$cellHeight, (strlen($Enginekw) < 15 ? str_replace(' ', '-', strtoupper($Enginekw)) . '                      ' : str_replace(' ', '-', strtoupper($Enginekw))),1);
                 $fpdf->SetXY($xPos - 50 + $cellWidth , $yPos);
             }
             $fpdf->SetXY(75 + $cellWidth , $yPos);
