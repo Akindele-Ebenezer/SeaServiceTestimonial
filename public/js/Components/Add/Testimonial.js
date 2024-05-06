@@ -55,6 +55,14 @@ AddTestimonialButton.addEventListener('click', () => {
         EndDate_1Input.value == '' 
     ) { 
         ErrorTestimonial.textContent =  'Date field cannot be empty';
+    } else if (StartDate_2Input.value && EndDate_1Input.value > StartDate_2Input.value) { 
+        ErrorTestimonial.textContent =  'End date on row 1 cannot be greater than Start date on row 2';
+    } else if (StartDate_3Input.value && EndDate_2Input.value > StartDate_3Input.value) { 
+        ErrorTestimonial.textContent =  'End date on row 1 cannot be greater than Start date on row 2';
+    } else if (StartDate_4Input.value && EndDate_3Input.value > StartDate_4Input.value) { 
+        ErrorTestimonial.textContent =  'End date on row 1 cannot be greater than Start date on row 2';
+    } else if (StartDate_5Input.value && EndDate_4Input.value > StartDate_5Input.value) { 
+        ErrorTestimonial.textContent =  'End date on row 1 cannot be greater than Start date on row 2';
     } else { 
         ErrorTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
         ErrorTestimonial.style.color =  '#fff';

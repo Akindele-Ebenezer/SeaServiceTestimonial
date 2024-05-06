@@ -383,8 +383,7 @@
     let WorkingPeriod_AddButton = document.querySelectorAll('.form-1 form .inner-2 .working-period table tr td span');
 
     WorkingPeriod_AddButton.forEach(Button => {
-        Button.addEventListener('click', () => {
-            console.log(Button.parentElement)
+        Button.addEventListener('click', () => { 
             Button.parentElement.parentElement.nextElementSibling.classList.toggle('Show');
         })
     });
@@ -444,6 +443,14 @@
                 EndDate_1Input.value == '' 
             ) { 
                 ErrorTestimonial.textContent =  'Date field cannot be empty';
+            } else if (StartDate_2Input.value && EndDate_1Input.value > StartDate_2Input.value) { 
+                ErrorTestimonial.textContent =  'End date on row 1 cannot be greater than Start date on row 2';
+            } else if (StartDate_3Input.value && EndDate_2Input.value > StartDate_3Input.value) { 
+                ErrorTestimonial.textContent =  'End date on row 2 cannot be greater than Start date on row 3';
+            } else if (StartDate_4Input.value && EndDate_3Input.value > StartDate_4Input.value) { 
+                ErrorTestimonial.textContent =  'End date on row 3 cannot be greater than Start date on row 4';
+            } else if (StartDate_5Input.value && EndDate_4Input.value > StartDate_5Input.value) { 
+                ErrorTestimonial.textContent =  'End date on row 4 cannot be greater than Start date on row 5';
             } else {
                 ErrorTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorTestimonial.style.color =  '#fff';
