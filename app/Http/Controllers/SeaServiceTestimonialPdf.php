@@ -958,7 +958,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
-        $fpdf->SetTitle('Template 2 - SEA SERVICE TESTIMONIAL');             
+        $fpdf->SetTitle('Template 3 - SEA SERVICE TESTIMONIAL');             
  
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
