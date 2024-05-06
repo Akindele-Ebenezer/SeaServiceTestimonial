@@ -103,6 +103,22 @@ EditTestimonialButtons.forEach(EditTestimonialButton => {
                 EditEndDate_1Input.value == '' 
             ) { 
                 ErrorUpdateTestimonial.textContent =  'Date field cannot be empty';
+            } else if (EditStartDate_2Input.value && EditEndDate_1Input.value > EditStartDate_2Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'End date on row 1 cannot be greater than Start date on row 2';
+            } else if (EditStartDate_3Input.value && EditEndDate_2Input.value > EditStartDate_3Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'End date on row 2 cannot be greater than Start date on row 3';
+            } else if (EditStartDate_4Input.value && EditEndDate_3Input.value > EditStartDate_4Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'End date on row 3 cannot be greater than Start date on row 4';
+            } else if (EditStartDate_5Input.value && EditEndDate_4Input.value > EditStartDate_5Input.value) { 
+                ErrorUpdateTestimonial.textContent =  'End date on row 4 cannot be greater than Start date on row 5';
+            } else if (EditEndDate_2Input.value && EditStartDate_2Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 2';
+            } else if (EditEndDate_3Input.value && EditStartDate_3Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 3';
+            } else if (EditEndDate_4Input.value && EditStartDate_4Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 4';
+            } else if (EditEndDate_5Input.value && EditStartDate_5Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 5';
             } else {
                 ErrorUpdateTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorUpdateTestimonial.style.color =  '#fff';

@@ -451,6 +451,14 @@
                 ErrorTestimonial.textContent =  'End date on row 3 cannot be greater than Start date on row 4';
             } else if (StartDate_5Input.value && EndDate_4Input.value > StartDate_5Input.value) { 
                 ErrorTestimonial.textContent =  'End date on row 4 cannot be greater than Start date on row 5';
+            } else if (EndDate_2Input.value && StartDate_2Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 2';
+            } else if (EndDate_3Input.value && StartDate_3Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 3';
+            } else if (EndDate_4Input.value && StartDate_4Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 4';
+            } else if (EndDate_5Input.value && StartDate_5Input.value == '') {
+                ErrorTestimonial.textContent =  'Start date field cannot be empty on row 5';
             } else {
                 ErrorTestimonial.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorTestimonial.style.color =  '#fff';
