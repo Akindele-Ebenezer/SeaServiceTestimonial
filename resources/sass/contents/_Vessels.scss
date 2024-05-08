@@ -108,6 +108,20 @@
                     color: #aaa;
                     font-size: .85em;
                     text-decoration: underline;
+
+                    &.availability-status {
+                        border-radius: .3em;
+                        padding: .15em .4em;
+                        position: absolute;
+                        right: 1em; 
+                        top: 2em;
+                        translate: 0 -.3em;
+
+                        &.status-1 {
+                            background: #e8ffeb;
+                            color: #00ab14 !important;
+                        }
+                    }
                 }
 
                 .notification-bg-create {

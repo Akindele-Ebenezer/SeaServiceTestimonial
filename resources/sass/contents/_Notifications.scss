@@ -12,7 +12,12 @@
                 background-color: darken($color: $Color-2, $amount: 3);
                 height: 20em;
                 padding: 2em;
+                position: relative;
                 width: 32%;
+
+                br {
+                    clear: both;
+                }
 
                 h1 {   
                     color: #fff;
@@ -85,11 +90,40 @@
                     
                 }
 
+                .indicators-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .indicators {
+                        &-inner {
+                            width: 44%;
+
+                            &-x {
+                                align-items: center;
+                                border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
+                                display: flex;
+                                justify-content: space-between;
+                                padding-block: .5em;
+
+                                span {
+                                    &:first-of-type {
+                                        background-color: red;
+                                        height: 2em;
+                                        width: 2em;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
                 &.recent-workflow {
                     overflow-y: scroll;
                 }
 
                 strong { 
+                    float: left;
                     font-size: 5em; 
                 }
  
@@ -104,6 +138,49 @@
                 svg {
                     fill: #eee;
                     width: 2.5em;
+                }
+
+                table {
+                    position: absolute;
+                    top: 10em;
+                    right: .5em;
+
+                    td, th {
+                        padding-inline: .5em;
+                    }
+                }
+
+                &.tracking {
+                    width: 66%;
+
+                    table {
+                        border-collapse: collapse;
+                        position: unset;
+                        width: 100%;
+
+                        .docking { background-color: #03AED2; }
+                        .operation { background-color: #A87676; }
+                        .breakdown { background-color: #da1e28; }
+                        .maintenance { background-color: #52f781; }
+                        .inspection { background-color: #ff832b; }
+                        .bunkery { background-color: #8a3ffc; }
+
+                        .status {
+                            height: 1.3em;
+                            width: 2em;
+                        }
+
+                        td, th {
+                            font-size: smaller;
+                            font-weight: 500;
+                            padding-block: .52em;
+                            text-align: left;
+                        }
+
+                        tr {
+                            border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
+                        }
+                    }
                 }
             }
         }
@@ -162,6 +239,7 @@
         .dashboard-heading {
             background-color: darken($color: $Color-2, $amount: 3);
             color: #fff;
+            font-weight: 900;
             position: sticky;
             top: -0.5em;
             z-index: 100;

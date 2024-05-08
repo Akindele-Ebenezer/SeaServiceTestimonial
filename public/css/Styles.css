@@ -865,6 +865,18 @@ main .left-navigation ul li .total {
   font-size: 0.85em;
   text-decoration: underline;
 }
+.vessel-content .list .inner strong .imo.availability-status, .vessel-content .empty-data .inner strong .imo.availability-status {
+  border-radius: 0.3em;
+  padding: 0.15em 0.4em;
+  position: absolute;
+  right: 1em;
+  top: 2em;
+  translate: 0 -0.3em;
+}
+.vessel-content .list .inner strong .imo.availability-status.status-1, .vessel-content .empty-data .inner strong .imo.availability-status.status-1 {
+  background: #e8ffeb;
+  color: #00ab14 !important;
+}
 .vessel-content .list .inner strong .notification-bg-create, .vessel-content .empty-data .inner strong .notification-bg-create {
   background-color: #f0f7fb;
   color: #329bf5;
@@ -1034,93 +1046,6 @@ main .left-navigation ul li .total {
 }
 .content-data .inner.vessel-information {
   background-color: #1f5671;
-}
-
-.availability-content .table {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-.availability-content table {
-  border-collapse: collapse;
-}
-.availability-content table tr {
-  border: none !important;
-}
-.availability-content table tr td.status {
-  background-color: #fff !important;
-  padding: unset;
-}
-.availability-content table tr td.status .status-inner {
-  height: 5em;
-  width: -webkit-fill-available;
-}
-.availability-content table tr td.status .status-inner-x {
-  display: flex;
-}
-.availability-content table tr td .docking {
-  background-color: #03AED2 !important;
-}
-.availability-content table tr td .operation {
-  background-color: #A87676 !important;
-}
-.availability-content table tr td .breakdown {
-  background-color: #da1e28 !important;
-}
-.availability-content table tr td .maintenance {
-  background-color: #24A148 !important;
-}
-.availability-content table tr td .inspection {
-  background-color: #ff832b !important;
-}
-.availability-content table tr td .bunkery {
-  background-color: #8a3ffc !important;
-}
-.availability-content table tr td .vessel-x {
-  display: flex;
-  justify-content: space-between;
-}
-.availability-content table tr td .vessel-x p:first-of-type {
-  border-radius: 0.3em;
-  margin-right: 1em;
-  padding: 0.5em;
-  width: 70%;
-}
-.availability-content table tr tr, .availability-content table tr th {
-  border: none;
-}
-.availability-content table tr th {
-  width: 12em;
-}
-.availability-content table tr th:first-of-type {
-  font-weight: 1000;
-  padding-left: 0.25em;
-  font-size: 4em;
-  width: 10em;
-}
-.availability-content table tr th:nth-child(2) {
-  background: #111;
-}
-.availability-content table tr th.period {
-  padding: unset;
-}
-.availability-content table tr th .th {
-  align-items: center;
-  border-bottom: 1px solid #225f7d;
-  display: flex;
-  font-weight: 500;
-  height: 5em;
-  padding-left: 1em;
-}
-.availability-content table tr th .th.time-title {
-  background-color: #111;
-  border: none;
-}
-.availability-content table tr th .th:last-of-type {
-  background-color: #111;
-  border: none;
-  height: unset;
-  padding: 0.5em 1em;
-  translate: 0 3.5em;
 }
 
 .testimonial-content, .table-1 {
@@ -1293,7 +1218,11 @@ main .left-navigation ul li .total {
   background-color: #1f5671;
   height: 20em;
   padding: 2em;
+  position: relative;
   width: 32%;
+}
+.dashboard-inner .board-1 .div br, .dashboard-inner .board-2 .div br, .dashboard-inner .board-3 .div br {
+  clear: both;
 }
 .dashboard-inner .board-1 .div h1, .dashboard-inner .board-2 .div h1, .dashboard-inner .board-3 .div h1 {
   color: #fff;
@@ -1353,10 +1282,30 @@ main .left-navigation ul li .total {
   color: #fff;
   font-weight: 500;
 }
+.dashboard-inner .board-1 .div .indicators-wrapper, .dashboard-inner .board-2 .div .indicators-wrapper, .dashboard-inner .board-3 .div .indicators-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner {
+  width: 44%;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x {
+  align-items: center;
+  border-bottom: 1px solid #276e91;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.5em;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span:first-of-type, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span:first-of-type, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span:first-of-type {
+  background-color: red;
+  height: 2em;
+  width: 2em;
+}
 .dashboard-inner .board-1 .div.recent-workflow, .dashboard-inner .board-2 .div.recent-workflow, .dashboard-inner .board-3 .div.recent-workflow {
   overflow-y: scroll;
 }
 .dashboard-inner .board-1 .div strong, .dashboard-inner .board-2 .div strong, .dashboard-inner .board-3 .div strong {
+  float: left;
   font-size: 5em;
 }
 .dashboard-inner .board-1 .div .sub-heading, .dashboard-inner .board-2 .div .sub-heading, .dashboard-inner .board-3 .div .sub-heading {
@@ -1369,6 +1318,53 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-1 .div svg, .dashboard-inner .board-2 .div svg, .dashboard-inner .board-3 .div svg {
   fill: #eee;
   width: 2.5em;
+}
+.dashboard-inner .board-1 .div table, .dashboard-inner .board-2 .div table, .dashboard-inner .board-3 .div table {
+  position: absolute;
+  top: 10em;
+  right: 0.5em;
+}
+.dashboard-inner .board-1 .div table td, .dashboard-inner .board-1 .div table th, .dashboard-inner .board-2 .div table td, .dashboard-inner .board-2 .div table th, .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
+  padding-inline: 0.5em;
+}
+.dashboard-inner .board-1 .div.tracking, .dashboard-inner .board-2 .div.tracking, .dashboard-inner .board-3 .div.tracking {
+  width: 66%;
+}
+.dashboard-inner .board-1 .div.tracking table, .dashboard-inner .board-2 .div.tracking table, .dashboard-inner .board-3 .div.tracking table {
+  border-collapse: collapse;
+  position: unset;
+  width: 100%;
+}
+.dashboard-inner .board-1 .div.tracking table .docking, .dashboard-inner .board-2 .div.tracking table .docking, .dashboard-inner .board-3 .div.tracking table .docking {
+  background-color: #03AED2;
+}
+.dashboard-inner .board-1 .div.tracking table .operation, .dashboard-inner .board-2 .div.tracking table .operation, .dashboard-inner .board-3 .div.tracking table .operation {
+  background-color: #A87676;
+}
+.dashboard-inner .board-1 .div.tracking table .breakdown, .dashboard-inner .board-2 .div.tracking table .breakdown, .dashboard-inner .board-3 .div.tracking table .breakdown {
+  background-color: #da1e28;
+}
+.dashboard-inner .board-1 .div.tracking table .maintenance, .dashboard-inner .board-2 .div.tracking table .maintenance, .dashboard-inner .board-3 .div.tracking table .maintenance {
+  background-color: #52f781;
+}
+.dashboard-inner .board-1 .div.tracking table .inspection, .dashboard-inner .board-2 .div.tracking table .inspection, .dashboard-inner .board-3 .div.tracking table .inspection {
+  background-color: #ff832b;
+}
+.dashboard-inner .board-1 .div.tracking table .bunkery, .dashboard-inner .board-2 .div.tracking table .bunkery, .dashboard-inner .board-3 .div.tracking table .bunkery {
+  background-color: #8a3ffc;
+}
+.dashboard-inner .board-1 .div.tracking table .status, .dashboard-inner .board-2 .div.tracking table .status, .dashboard-inner .board-3 .div.tracking table .status {
+  height: 1.3em;
+  width: 2em;
+}
+.dashboard-inner .board-1 .div.tracking table td, .dashboard-inner .board-1 .div.tracking table th, .dashboard-inner .board-2 .div.tracking table td, .dashboard-inner .board-2 .div.tracking table th, .dashboard-inner .board-3 .div.tracking table td, .dashboard-inner .board-3 .div.tracking table th {
+  font-size: smaller;
+  font-weight: 500;
+  padding-block: 0.52em;
+  text-align: left;
+}
+.dashboard-inner .board-1 .div.tracking table tr, .dashboard-inner .board-2 .div.tracking table tr, .dashboard-inner .board-3 .div.tracking table tr {
+  border-bottom: 1px solid #276e91;
 }
 .dashboard-inner .board-2 .div {
   width: 49%;
@@ -1405,6 +1401,7 @@ main .left-navigation ul li .total {
 .dashboard-inner .dashboard-heading {
   background-color: #1f5671;
   color: #fff;
+  font-weight: 900;
   position: sticky;
   top: -0.5em;
   z-index: 100;
