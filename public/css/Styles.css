@@ -1452,6 +1452,9 @@ main .left-navigation ul li .total {
   position: unset;
   width: 100%;
 }
+.dashboard-inner .board-1 .div.tracking table .idle, .dashboard-inner .board-2 .div.tracking table .idle, .dashboard-inner .board-3 .div.tracking table .idle {
+  background-color: #fff;
+}
 .dashboard-inner .board-1 .div.tracking table .docking, .dashboard-inner .board-2 .div.tracking table .docking, .dashboard-inner .board-3 .div.tracking table .docking {
   background-color: #03AED2;
 }

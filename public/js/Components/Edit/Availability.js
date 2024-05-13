@@ -43,8 +43,9 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 UpdateAvailabilityButton.style.backgroundColor = '#1fb95e';
                 UpdateAvailabilityButton.textContent = '+ Processing..';
                 UpdateAvailabilityForm.setAttribute('action', '/Edit/Availability/' + AvailabilityId)
+                UpdateAvailabilityForm.setAttribute('method', 'POST')
                 UpdateAvailabilityForm.submit();
-            }
+            } 
         })
 
         CancelButtonUpdateAvailability.addEventListener('click', () => {

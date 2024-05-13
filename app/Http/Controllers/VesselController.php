@@ -90,7 +90,7 @@ class VesselController extends Controller
         \DB::table('vessels_vessel_information')->insert([
             'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i'),
+            'TimeIn' => date('H:i a'),
             'ImoNumber' => $Request->ImoNumber,
             'VesselName' => $Request->VesselName,
             'CallSign' => $Request->CallSign,
@@ -105,7 +105,7 @@ class VesselController extends Controller
             'UserId' => session()->get('USER_ID'), 
             'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i'),
+            'TimeIn' => date('H:i a'),
             'ImoNumber' => $Request->ImoNumber,
             'SummerLoadDraught' => $Request->SummerLoadDraught,
             'Lpp' => $Request->Lpp,
@@ -120,7 +120,7 @@ class VesselController extends Controller
         \DB::table('vessels_section_3')->insert([
             'UserId' => session()->get('USER_ID'),  
             'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i'),
+            'TimeIn' => date('H:i a'),
             'ImoNumber' => $Request->ImoNumber,
             'TypesOfEngines' => $Request->TypesOfEngines,
             'NumberOfEngines' => $Request->NumberOfEngines,
@@ -135,7 +135,7 @@ class VesselController extends Controller
         \DB::table('vessels_section_4')->insert([  
             'UserId' => session()->get('USER_ID'),  
             'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i'),
+            'TimeIn' => date('H:i a'),
             'ImoNumber' => $Request->ImoNumber,
             'GrossTonnage' => $Request->GrossTonnage,
             'NetTonnage' => $Request->NetTonnage, 

@@ -5,6 +5,7 @@
             <button class="close-button-update-availability">✖</button>
         </div>
         <form action="" class="UpdateAvailabilityForm"> 
+            @csrf
             <div class="inner-1"> 
                 <div class="fields">
                     <p class="error-availability error"></p>

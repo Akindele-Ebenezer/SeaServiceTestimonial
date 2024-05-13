@@ -158,7 +158,7 @@ class SeaServiceTestimonialController extends Controller
         Testimonial::insert([
             'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i'),
+            'TimeIn' => date('H:i a'),
             'EmployeeName' => $Request->Employee,
             'EmployeeId' => $Request->StaffNumber,
             'DateOfBirth' => $Request->DateOfBirth,
@@ -174,7 +174,7 @@ class SeaServiceTestimonialController extends Controller
         \DB::table('working_periods')->insert([
             'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i'),
+            'TimeIn' => date('H:i a'),
             'Vessel' => $Request->CurrentVessel,
             'StartDate_1' => $Request->StartDate_1,
             'StartDate_2' => $Request->StartDate_2,

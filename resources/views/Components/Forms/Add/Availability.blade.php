@@ -4,7 +4,8 @@
             <span>    </span>
             <button class="cancel-button-availability">✖</button>
         </div>
-        <form action="{{ route('AddAvailability') }}" class="AddAvailabilityForm"> 
+        <form action="" class="AddAvailabilityForm"> 
+            @csrf
             <div class="inner-1"> 
                 <div class="fields">
                     <p class="error-availability error"></p>
@@ -16,13 +17,13 @@
                         <div class="input">
                             <label for="">Status</label>
                             <select name="Status" id="">
-                                <option value="Docking">Docking</option>
-                                <option value="Operation">Operation</option> 
-                                <option value="Maintenance">Maintenance</option> 
-                                <option value="Breakdown">Breakdown</option> 
-                                <option value="Inspection">Inspection</option> 
-                                <option value="Bunkery">Bunkery</option> 
-                                <option value="Idle">Idle</option> 
+                                <option value="DOCKING">DOCKING</option>
+                                <option value="OPERATION">OPERATION</option> 
+                                <option value="MAINTENANCE">MAINTENANCE</option> 
+                                <option value="BREAKDOWN">BREAKDOWN</option> 
+                                <option value="INSPECTION">INSPECTION</option> 
+                                <option value="BUNKERY">BUNKERY</option> 
+                                <option value="IDLE">IDLE</option> 
                             </select>
                         </div> 
                         <div class="input">

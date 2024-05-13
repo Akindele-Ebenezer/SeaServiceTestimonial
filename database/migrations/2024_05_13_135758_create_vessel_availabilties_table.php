@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Attachment')->nullable();
             $table->string('StartTime')->nullable();
             $table->string('EndTime')->nullable();
+            $table->string('DateIn')->nullable();
+            $table->string('TimeIn')->nullable();
             $table->timestamps();
         });
     }

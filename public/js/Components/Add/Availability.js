@@ -58,6 +58,8 @@ if (AddAvailabilityButton !== null) {
             ErrorAvailability.textContent = 'Creating availability..';
             AddAvailabilityButton.style.backgroundColor = '#1fb95e';
             AddAvailabilityButton.textContent = '+ Processing..';
+            AddAvailabilityForm.setAttribute('method', 'POST');
+            AddAvailabilityForm.setAttribute('action', '/Add/Availability');
             AddAvailabilityForm.submit();
         }
     })
