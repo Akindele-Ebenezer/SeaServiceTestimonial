@@ -13,7 +13,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ddd;
+  background-color: #4d78a5;
 }
 
 .Hide {
@@ -224,6 +224,17 @@
   color: #fff;
   padding: 0.5em;
 }
+.form-1.FilterByDate .inner {
+  padding-bottom: 0;
+}
+.form-1.FilterByDate .inner .FilterByDateForm .input {
+  align-items: unset;
+  flex-direction: column;
+}
+.form-1.FilterByDate .inner .FilterByDateForm .input input {
+  margin-top: 0.5em;
+  width: unset;
+}
 .form-1 form {
   display: flex;
   justify-content: space-around;
@@ -393,6 +404,33 @@
 }
 .form-1 .inner::-webkit-scrollbar-thumb {
   background-color: #ffc4c4;
+}
+.form-1 .inner section .footer {
+  align-items: center;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  padding: 1em;
+}
+.form-1 .inner section .footer button {
+  background: #225f7d;
+  border: none;
+  border-radius: 0.3em;
+  bottom: 0.2em;
+  color: #eee;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
+}
+.form-1 .inner section .footer div {
+  align-items: center;
+  color: #777;
+  display: flex;
+  font-size: larger;
+}
+.form-1 .inner section .footer svg {
+  margin-right: 0.5em;
 }
 
 .DeleteModal {
@@ -870,7 +908,7 @@ main .left-navigation ul li .total {
   padding: 0.15em 0.4em;
   position: absolute;
   right: 1em;
-  top: 2em;
+  top: 1.5em;
   translate: 0 -0.3em;
 }
 .vessel-content .list .inner strong .imo.availability-status.status-1, .vessel-content .empty-data .inner strong .imo.availability-status.status-1 {
@@ -897,6 +935,16 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner strong.notification-wrapper, .vessel-content .empty-data .inner strong.notification-wrapper {
   color: #ff6868;
   width: 23em;
+}
+.vessel-content .list .inner strong.notification-wrapper img, .vessel-content .empty-data .inner strong.notification-wrapper img {
+  display: none;
+  margin-inline: unset;
+  translate: 0 0.5em;
+  width: 1.3em;
+}
+.vessel-content .list .inner strong.notification-wrapper span:first-of-type, .vessel-content .empty-data .inner strong.notification-wrapper span:first-of-type {
+  display: block;
+  width: 15em;
 }
 .vessel-content .list .inner strong .vessel-name-span, .vessel-content .empty-data .inner strong .vessel-name-span {
   background-color: #fff9f9;
@@ -1048,6 +1096,49 @@ main .left-navigation ul li .total {
   background-color: #1f5671;
 }
 
+.availability .dashboard-inner .FilterByDateButton {
+  background-color: #ff6868;
+  color: #fff;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+  margin-block: 0.5em;
+  padding: 1em 2em;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 100;
+}
+.availability .list .-x .notification-wrapper {
+  color: #888 !important;
+  padding: 0 0.5em;
+}
+
+@media (max-width: 1785px) {
+  .availability.dashboard .board-1 .div {
+    width: 49%;
+  }
+  .availability.dashboard .board-1 .div:nth-child(3) {
+    display: none;
+  }
+  .availability.dashboard .board-1 .div .indicators-wrapper {
+    display: unset;
+  }
+  .availability.dashboard .board-1 .div .indicators-wrapper .indicators-inner {
+    width: 100%;
+  }
+  .availability.dashboard .board-1 .div .indicators-wrapper .indicators-inner-x span:first-of-type {
+    height: 1em;
+    width: 1em;
+  }
+  .availability.dashboard .board-1 .div .status {
+    height: 1em !important;
+    width: 1em !important;
+  }
+  .availability.dashboard .board-1 .div table tr .operation-responsive {
+    display: block !important;
+  }
+}
 .testimonial-content, .table-1 {
   padding: 1em 2em;
   width: 83%;
@@ -1221,6 +1312,10 @@ main .left-navigation ul li .total {
   position: relative;
   width: 32%;
 }
+.dashboard-inner .board-1 .div.indicators, .dashboard-inner .board-2 .div.indicators, .dashboard-inner .board-3 .div.indicators {
+  overflow-y: scroll;
+  width: 32%;
+}
 .dashboard-inner .board-1 .div br, .dashboard-inner .board-2 .div br, .dashboard-inner .board-3 .div br {
   clear: both;
 }
@@ -1297,9 +1392,29 @@ main .left-navigation ul li .total {
   padding-block: 0.5em;
 }
 .dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span:first-of-type, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span:first-of-type, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span:first-of-type {
-  background-color: red;
   height: 2em;
   width: 2em;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.docking, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.docking, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.docking {
+  background-color: #03AED2;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.operation, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.operation, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.operation {
+  background-color: #A87676;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.breakdown, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.breakdown, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.breakdown {
+  background-color: #da1e28;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.maintenance, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.maintenance, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.maintenance {
+  background-color: #52f781;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.inspection, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.inspection, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.inspection {
+  background-color: #ff832b;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.bunkery, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.bunkery, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.bunkery {
+  background-color: #8a3ffc;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.idle, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.idle, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.idle {
+  background-color: #fff;
 }
 .dashboard-inner .board-1 .div.recent-workflow, .dashboard-inner .board-2 .div.recent-workflow, .dashboard-inner .board-3 .div.recent-workflow {
   overflow-y: scroll;
@@ -1328,6 +1443,8 @@ main .left-navigation ul li .total {
   padding-inline: 0.5em;
 }
 .dashboard-inner .board-1 .div.tracking, .dashboard-inner .board-2 .div.tracking, .dashboard-inner .board-3 .div.tracking {
+  padding-top: 0;
+  overflow-y: scroll;
   width: 66%;
 }
 .dashboard-inner .board-1 .div.tracking table, .dashboard-inner .board-2 .div.tracking table, .dashboard-inner .board-3 .div.tracking table {
@@ -1363,8 +1480,16 @@ main .left-navigation ul li .total {
   padding-block: 0.52em;
   text-align: left;
 }
+.dashboard-inner .board-1 .div.tracking table th, .dashboard-inner .board-2 .div.tracking table th, .dashboard-inner .board-3 .div.tracking table th {
+  background-color: #1f5671;
+  position: sticky;
+  top: -0.5em;
+}
 .dashboard-inner .board-1 .div.tracking table tr, .dashboard-inner .board-2 .div.tracking table tr, .dashboard-inner .board-3 .div.tracking table tr {
   border-bottom: 1px solid #276e91;
+}
+.dashboard-inner .board-1 .div.tracking table tr:hover, .dashboard-inner .board-2 .div.tracking table tr:hover, .dashboard-inner .board-3 .div.tracking table tr:hover {
+  background-color: #276e91;
 }
 .dashboard-inner .board-2 .div {
   width: 49%;
@@ -1376,7 +1501,7 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-2 .div .canvas .inner-x span:first-of-type {
   margin-right: 1em;
-  width: 6em;
+  width: 9em;
 }
 .dashboard-inner .board-3 .div {
   background: unset;
@@ -1394,6 +1519,14 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-3 .div table td:hover {
   background-color: #1d5069;
+}
+.dashboard-inner .board-3 .div table td.action {
+  background-color: #123141;
+}
+.dashboard-inner .board-3 .div table td img {
+  cursor: pointer;
+  margin-right: 1em;
+  width: 1.65em;
 }
 .dashboard-inner .board-3 .div table th {
   font-weight: 500;

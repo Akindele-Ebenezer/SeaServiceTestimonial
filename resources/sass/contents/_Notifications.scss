@@ -15,6 +15,11 @@
                 position: relative;
                 width: 32%;
 
+                &.indicators {
+                    overflow-y: scroll;
+                    width: 32%;
+                }
+
                 br {
                     clear: both;
                 }
@@ -106,11 +111,18 @@
                                 padding-block: .5em;
 
                                 span {
-                                    &:first-of-type {
-                                        background-color: red;
+                                    &:first-of-type { 
                                         height: 2em;
                                         width: 2em;
                                     }
+                    
+                                    &.docking { background-color: #03AED2; }
+                                    &.operation { background-color: #A87676; }
+                                    &.breakdown { background-color: #da1e28; }
+                                    &.maintenance { background-color: #52f781; }
+                                    &.inspection { background-color: #ff832b; }
+                                    &.bunkery { background-color: #8a3ffc; }
+                                    &.idle { background-color: #fff; }
                                 }
 
                             }
@@ -151,6 +163,8 @@
                 }
 
                 &.tracking {
+                    padding-top: 0;
+                    overflow-y: scroll;
                     width: 66%;
 
                     table {
@@ -177,8 +191,18 @@
                             text-align: left;
                         }
 
+                        th {
+                            background-color: darken($color: $Color-2, $amount: 3);
+                            position: sticky;
+                            top: -0.5em; 
+                        }
+
                         tr {
                             border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
+
+                            &:hover {
+                                background-color: lighten($color: $Color-2, $amount: 5);
+                            }
                         }
                     }
                 }
@@ -198,7 +222,7 @@
                         span {
                             &:first-of-type { 
                                 margin-right: 1em;
-                                width: 6em;
+                                width: 9em;
                             }
                         }
                     }
@@ -226,6 +250,16 @@
                     td {  
                         &:hover {
                             background-color: darken($color: $Color-2, $amount: 5);
+                        }
+
+                        &.action {
+                            background-color: darken($color: $Color-2, $amount: 15);
+                        }
+
+                        img {
+                            cursor: pointer;
+                            margin-right: 1em;
+                            width: 1.65em;
                         }
                     }
 

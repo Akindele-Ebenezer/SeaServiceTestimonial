@@ -41,20 +41,7 @@ class VesselController extends Controller
             'Ranks' => $Ranks,
             'Companies' => $Companies,
         ]);
-    }
-
-    public function availability() {
-        $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
-        $Vessels = \DB::table('vessels_vessel_information')->get();
-        $Ranks = \DB::table('ranks')->get();
-        $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
-        return view('Pages.Availability', [
-            'Employees' => $Employees,
-            'Vessels' => $Vessels,
-            'Ranks' => $Ranks,
-            'Companies' => $Companies,
-        ]);
-    }
+    } 
 
     public function operations(Request $Request)
     {

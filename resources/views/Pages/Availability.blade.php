@@ -2,26 +2,29 @@
 @section('Title', 'Availability - SEA SERVICE TESTIMONIAL')
 
 @section('Content')
-<div class="vessel-content notifications"> 
+@include('Components.Forms.Edit.Availability')
+@include('Components.Forms.Delete.Availability')
+@include('Components.Inner.FilterByDate')
+<div class="vessel-content notifications availability"> 
     <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T COASTAL MARINE - Status</h2>
     {{-- @unless (count(DB::table('notifications')->get()) > 0)
         <p class="empty-data">There's no recent activities in the system..</p>
     @endunless --}}
-    @foreach (DB::table('notifications')->orderBy('id', 'DESC')->get() as $Notification)
-    <div class="list">
+    @foreach (DB::table('notifications')->orderBy('id', 'DESC')->paginate(15) as $Notification)
+    <div class="list"> 
         <div class="inner -x">
-            <strong class="notification-wrapper"> 
-                <span class="">{{ $Notification->Vessel }}</span> <br>
-                <span class="imo">{{ $Notification->DateIn }}, {{ $Notification->TimeIn }}</span> <br>
+            <strong class="notification-wrapper">   
+                <span class="">{{ $Notification->Vessel }}</span>  
                 <span class="imo availability-status status-1">MAINTENANCE</span>
             </strong>  
         </div>
     </div> 
     @endforeach
 </div>
-<div class="content-data dashboard"> 
+<div class="content-data availability dashboard"> 
     <div class="dashboard-inner"> 
         <h1 class="dashboard-heading"><svg class="-x" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>VESSEL AVAILABILITY</h1>
+        <button class="FilterByDateButton">+ Filter</button>
         <div class="board-1">
             <div class="div">
                 <h1>
@@ -57,17 +60,19 @@
                 <strong>41</strong>
                 <table>
                     <tr>
+                        <th class="operation-responsive Hide">Operation</th>
                         <th>Docking</th>
                         <th>Breakdown</th> 
                     </tr>
                     <tr> 
+                        <td class="operation-responsive Hide">23</td>
                         <td>23</td>
                         <td>6</td>
                     </tr>
                 </table> <br>
                 <h2>
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg> L.T.T 
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg> SEA DREDGING
                     </span> 
                     <span>TODAY</span>
                 </h2>
@@ -87,40 +92,40 @@
             </div>  
         </div>  
         <div class="board-1">
-            <div class="div">
+            <div class="div indicators">
                 <h1>
                     Indicators <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M352 124.5l-51.9-13c-6.5-1.6-11.3-7.1-12-13.8s2.8-13.1 8.7-16.1l40.8-20.4L294.4 28.8c-5.5-4.1-7.8-11.3-5.6-17.9S297.1 0 304 0H416h32 16c30.2 0 58.7 14.2 76.8 38.4l57.6 76.8c6.2 8.3 9.6 18.4 9.6 28.8c0 26.5-21.5 48-48 48H538.5c-17 0-33.3-6.7-45.3-18.7L480 160H448v21.5c0 24.8 12.8 47.9 33.8 61.1l106.6 66.6c32.1 20.1 51.6 55.2 51.6 93.1C640 462.9 590.9 512 530.2 512H496 432 32.3c-3.3 0-6.6-.4-9.6-1.4C13.5 507.8 6 501 2.4 492.1C1 488.7 .2 485.2 0 481.4c-.2-3.7 .3-7.3 1.3-10.7c2.8-9.2 9.6-16.7 18.6-20.4c3-1.2 6.2-2 9.5-2.2L433.3 412c8.3-.7 14.7-7.7 14.7-16.1c0-4.3-1.7-8.4-4.7-11.4l-44.4-44.4c-30-30-46.9-70.7-46.9-113.1V181.5v-57zM512 72.3c0-.1 0-.2 0-.3s0-.2 0-.3v.6zm-1.3 7.4L464.3 68.1c-.2 1.3-.3 2.6-.3 3.9c0 13.3 10.7 24 24 24c10.6 0 19.5-6.8 22.7-16.3zM130.9 116.5c16.3-14.5 40.4-16.2 58.5-4.1l130.6 87V227c0 32.8 8.4 64.8 24 93H112c-6.7 0-12.7-4.2-15-10.4s-.5-13.3 4.6-17.7L171 232.3 18.4 255.8c-7 1.1-13.9-2.6-16.9-9s-1.5-14.1 3.8-18.8L130.9 116.5z"></path></svg>
                 </h1> 
                 <div class="indicators-wrapper">
                     <div class="indicators-inner">
                         <div class="indicators-inner-x">
-                            <span></span> 
-                            <span>IDLE</span>
+                            <span class="docking"></span> 
+                            <span>DOCKING</span>
                         </div>
                         <div class="indicators-inner-x">
-                            <span></span> 
-                            <span>BUNKERY</span>
-                        </div>
-                        <div class="indicators-inner-x">
-                            <span></span> 
+                            <span class="inspection"></span> 
                             <span>INSPECTION</span>
                         </div>
                         <div class="indicators-inner-x">
-                            <span></span> 
+                            <span class="bunkery"></span> 
+                            <span>BUNKERY</span>
+                        </div>
+                        <div class="indicators-inner-x">
+                            <span class="maintenance"></span> 
                             <span>MAINTENANCE</span>
                         </div>
                     </div>
                     <div class="indicators-inner">
                         <div class="indicators-inner-x">
-                            <span></span> 
-                            <span>DOCKING</span>
-                        </div>
-                        <div class="indicators-inner-x">
-                            <span></span> 
+                            <span class="breakdown"></span> 
                             <span>BREAKDOWN</span>
                         </div>
                         <div class="indicators-inner-x">
-                            <span></span> 
+                            <span class="idle"></span> 
+                            <span>IDLE</span>
+                        </div>
+                        <div class="indicators-inner-x">
+                            <span class="operation"></span> 
                             <span>OPERATION</span>
                         </div> 
                     </div>
@@ -277,6 +282,114 @@
                             <div class="docking status"></div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>ASAGA</td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="operation status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="docking status"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ASAGA</td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="operation status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="docking status"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ASAGA</td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="operation status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="docking status"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ASAGA</td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="operation status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="maintenance status"></div>
+                        </td>
+                        <td>
+                            <div class="docking status"></div>
+                        </td>
+                    </tr>
                 </table>
             </div>  
         </div>  
@@ -285,38 +398,80 @@
                 <h1>Recent Workflow</h1>  
                 <div class="canvas"> 
                     <div class="inner-x">
-                        <span>Last month {{ round(53) }}%</span><span style="height: 1em; width: {{ round(23) }}%; background: rgb(138, 18, 18)"></span>
+                        <span>Last month </span>
+                        <span style="height: 1.5em; width: {{ round(50/2) }}%; background: #03AED2"></span>
+                        <span style="height: 1.5em; width: {{ round(3/2) }}%; background: #A87676"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #da1e28"></span>
+                        <span style="height: 1.5em; width: {{ round(33/2) }}%; background: #52f781"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #ff832b"></span>
+                        <span style="height: 1.5em; width: {{ round(12/2) }}%; background: #8a3ffc"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #fff"></span>
                     </div>
                     <div class="inner-x">
-                        <span>2 months {{ round(53) }}%</span><span style="height: 1em; width: {{ round(42) }}%; background: rgb(71, 125, 58)"></span>
+                        <span>- 2 months </span>
+                        <span style="height: 1.5em; width: {{ round(12/2) }}%; background: #03AED2"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #A87676"></span>
+                        <span style="height: 1.5em; width: {{ round(13/2) }}%; background: #da1e28"></span>
+                        <span style="height: 1.5em; width: {{ round(3/2) }}%; background: #52f781"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #ff832b"></span>
+                        <span style="height: 1.5em; width: {{ round(6/2) }}%; background: #8a3ffc"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #fff"></span>
                     </div>
                     <div class="inner-x">
-                        <span>3 months {{ round(round(42)) }}%</span><span style="height: 1em; width: {{ round(42) }}%; background: rgb(75, 54, 121)"></span>
+                        <span>- 3 months </span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #03AED2"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #A87676"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #da1e28"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #52f781"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #ff832b"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #8a3ffc"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #fff"></span>
                     </div>
                     <div class="inner-x">
-                        <span>4 months {{ round(round(42)) }}%</span><span style="height: 1em; width: {{ round(42) }}%; background: rgb(51, 117, 137)"></span>
+                        <span>- 4 months </span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #03AED2"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #A87676"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #da1e28"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #52f781"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #ff832b"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #8a3ffc"></span>
+                        <span style="height: 1.5em; width: {{ round(23/2) }}%; background: #fff"></span>
                     </div>
                 </div>
             </div> 
-        </div>
+        </div> 
         <div class="board-3">
             <div class="div">
-                <h1>Document</h1>
+                <h1>Availability logs</h1>
                 <table>
                     <tr>
                         <th>Vessel</th>
-                        <th>Employee</th>
-                        <th>Rank</th>
-                        <th>Company</th>
-                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Done by</th>
+                        <th>Attachment</th>
+                        <th>Start time</th>
+                        <th>End time</th>
+                        <th>#</th>
                     </tr>
                     {{-- @foreach ($Testimonials as $Testimonial) --}}
                     <tr> 
-                        <td>{{ '$Testimonial->CurrentVessel' }}</td>
-                        <td>{{ '$Testimonial->EmployeeName' }}</td>
-                        <td>{{ '$Testimonial->Rank' }}</td>
-                        <td>{{ '$Testimonial->Company' }}</td>
-                        <td>{{ '$Testimonial->DateIn' }}</td>
+                        <td class="Hide">id</td> 
+                        <td class="Hide"> Vessel</td> 
+                        <td class="Hide">DOCKING</td> 
+                        <td class="Hide">{{ Session::get('FullName') }}</td> 
+                        <td class="Hide">Attachment</td> 
+                        <td class="Hide">11:45</td> 
+                        <td class="Hide">01:47</td> 
+                        <td>Vessel</td>
+                        <td>Status</td>
+                        <td>Done by</td>
+                        <td>Attachment</td>
+                        <td>Start time</td>
+                        <td>End time</td>
+                        <td class="action"> 
+                            <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 
+                            <img class="DeleteAvailabilityButton" src="{{ asset('images/delete.png') }}" alt="">
+                        </td>
                     </tr>
                     {{-- @endforeach --}}
                 </table>
@@ -324,4 +479,8 @@
         </div>
     </div>
 </div>   
+{{-- <script src="{{ asset('js/Components/Add/Availability.js') }}"></script> --}}
+<script src="{{ asset('js/Components/Edit/Availability.js') }}"></script>
+<script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>
+<script src="{{ asset('js/Components/Inner/FilterByDate.js') }}"></script>
 @endsection

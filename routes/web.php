@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SeaServiceTestimonialPdf;
 use App\Http\Controllers\RankController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\AvailabilityController;
  
 Route::get('/', [LoginController::class, 'login']);
 Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
@@ -19,8 +20,10 @@ Route::get('/Add/Vessel', [VesselController::class, 'create'])->name('AddVessel'
 Route::get('/Edit/Vessel/{Id}', [VesselController::class, 'update'])->name('EditVessel');
 Route::get('/Delete/Vessel/{Id}', [VesselController::class, 'destroy'])->name('DeleteVessel');
 
-Route::get('/Availability', [VesselController::class, 'availability'])->name('Availability');
-Route::get('/Add/AddAvailability', [VesselController::class, 'create'])->name('AddAvailability');
+Route::get('/Availability', [AvailabilityController::class, 'index'])->name('Availability');
+Route::get('/Add/Availability', [AvailabilityController::class, 'create'])->name('AddAvailability');
+Route::get('/Edit/AddAvailability/{Id}', [AvailabilityController::class, 'update'])->name('EditAvailability');
+Route::get('/Delete/AddAvailability/{Id}', [AvailabilityController::class, 'destroy'])->name('DeleteAvailability');
 
 Route::get('/Testimonials', [SeaServiceTestimonialController::class, 'index'])->name('Testimonials');
 Route::get('/Add/Testimonial', [SeaServiceTestimonialController::class, 'create'])->name('AddTestimonial');

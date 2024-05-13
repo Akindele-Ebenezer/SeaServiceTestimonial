@@ -1,0 +1,70 @@
+.availability {
+    .dashboard-inner {
+        .FilterByDateButton {
+            background-color: #ff6868;
+            color: #fff;
+            border: none;
+            border-radius: 0.3em;
+            cursor: pointer;
+            margin-block: 0.5em;
+            padding: 1em 2em;
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            z-index: 100;
+        }
+    }
+
+    .list {
+        .-x {
+            .notification-wrapper {
+                color: #888 !important;
+                padding: 0 .5em;
+            }
+        }
+    }
+}
+
+@media (max-width: 1785px) {
+    .availability.dashboard {
+        .board-1 {
+            .div {
+                width: 49%;
+
+                &:nth-child(3) {
+                    display: none;
+                }
+
+                .indicators-wrapper {
+                    display: unset;
+
+                    .indicators-inner {
+                        width: 100%;
+
+                        &-x {
+                            span {
+                                &:first-of-type { 
+                                    height: 1em;
+                                    width: 1em;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .status {
+                    height: 1em !important;
+                    width: 1em !important;
+                }
+
+                table {
+                    tr {
+                        .operation-responsive {
+                            display: block !important;
+                        }
+                    }
+                }
+            }
+        } 
+    }
+  }
