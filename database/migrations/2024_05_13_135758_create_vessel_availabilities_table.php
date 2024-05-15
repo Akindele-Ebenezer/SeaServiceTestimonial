@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vessel_availabilties', function (Blueprint $table) {
+        Schema::create('vessel_availabilities', function (Blueprint $table) {
             $table->id();
             $table->string('Vessel')->nullable();
             $table->string('Status')->nullable();
@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Attachment')->nullable();
             $table->string('StartTime')->nullable();
             $table->string('EndTime')->nullable();
+            $table->string('StartDate')->nullable();
+            $table->string('EndDate')->nullable();
             $table->string('DateIn')->nullable();
             $table->string('TimeIn')->nullable();
             $table->timestamps();
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vessel_availabilties');
+        Schema::dropIfExists('vessel_availabilities');
     }
 };

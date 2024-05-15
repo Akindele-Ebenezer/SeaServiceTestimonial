@@ -138,295 +138,247 @@
                 <table>
                     <tr>
                         <th>VESSEL</th>
+                        <th>12AM - 3AM</th>
+                        <th>3AM - 6AM</th>
                         <th>6AM - 9AM</th>
                         <th>9AM - 12PM</th>
                         <th>12PM - 3PM</th>
                         <th>3PM - 6PM</th>
                         <th>6PM - 9PM</th>
-                        <th>9PM - 12AM</th>
-                        <th>12AM - 3AM</th>
-                        <th>3AM - 6AM</th>
+                        <th>9PM - 11:59PM</th>
                     </tr>
-                    @foreach ($VesselAvailabilty as $Vessel)
+                    @foreach ($Vessels as $Vessel)
                     @php 
-                        $StartTime_ = $Vessel->StartTime;
+                        $Vessel_ = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->first();
+                        $Vessel_STARTIME = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('StartDate', $STARDATE)->get();
                     @endphp
                     <tr>
-                        <td>ASAGA</td>
+                        <td>{{ $Vessel_->Vessel ?? '-' }}</td>
                         <td> 
-                            @if ($Vessel->StartTime == '06:00' || $Vessel->StartTime <= '09:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
+                            <div class="flex"> 
+                                @foreach ($Vessel_STARTIME as $Vessel)  
+                                    {{-- <div class="idle status"></div>    --}}
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('00:00') && $StartTime <= \Carbon\Carbon::parse('03:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime >= \Carbon\Carbon::parse('03:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('00:00') && $EndTime <= \Carbon\Carbon::parse('03:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime >= \Carbon\Carbon::parse('03:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif  
+                                @endforeach 
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif
+                            </div>
+                        </td>
+                        <td>  
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('03:00') && $StartTime <= \Carbon\Carbon::parse('06:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime >= \Carbon\Carbon::parse('06:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('03:00') && $EndTime <= \Carbon\Carbon::parse('06:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime >= \Carbon\Carbon::parse('06:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach 
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('06:00') && $StartTime <= \Carbon\Carbon::parse('09:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime >= \Carbon\Carbon::parse('09:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('06:00') && $EndTime <= \Carbon\Carbon::parse('09:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime >= \Carbon\Carbon::parse('09:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif 
+                            </div> 
                         </td>
                         <td>
-                            @if ($StartTime_ == '09:00' || $StartTime_ <= '12:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('09:00') && $StartTime <= \Carbon\Carbon::parse('12:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime >= \Carbon\Carbon::parse('12:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('09:00') && $EndTime <= \Carbon\Carbon::parse('12:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime >= \Carbon\Carbon::parse('12:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif 
+                            </div>  
                         </td>
                         <td>
-                            @if ($StartTime_ == '12:00' || $StartTime_ <= '15:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('12:00') && $StartTime <= \Carbon\Carbon::parse('15:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime >= \Carbon\Carbon::parse('15:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('12:00') && $EndTime <= \Carbon\Carbon::parse('15:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime >= \Carbon\Carbon::parse('15:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif 
+                            </div>   
                         </td>
                         <td>
-                            @if ($StartTime_ == '15:00' || $StartTime_ <= '18:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('15:00') && $StartTime <= \Carbon\Carbon::parse('18:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime >= \Carbon\Carbon::parse('18:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('15:00') && $EndTime <= \Carbon\Carbon::parse('18:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime >= \Carbon\Carbon::parse('18:00'))  
+                                        <div class="{{ $Status }} status"></div> 
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif 
+                            </div>    
                         </td>
                         <td>
-                            @if ($StartTime_ == '18:00' || $StartTime_ <= '21:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('18:00') && $StartTime <= \Carbon\Carbon::parse('21:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime >= \Carbon\Carbon::parse('21:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('18:00') && $EndTime <= \Carbon\Carbon::parse('21:00')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime >= \Carbon\Carbon::parse('21:00'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif 
+                            </div>     
                         </td>
                         <td>
-                            @if ($StartTime_ == '21:00' || $StartTime_ <= '00:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($StartTime_ == '00:00' || $StartTime_ <= '03:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($StartTime_ == '03:00' || $StartTime_ <= '06:00')  
-                            <div class="{{ strtolower($Vessel->Status) }} status"></div>
-                            @else
-                            <div class="idle status"></div>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                    {{-- <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="bunkery status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="bunkery status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="bunkery status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="bunkery status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="breakdown status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
+                            <div class="flex">
+                                @foreach ($Vessel_STARTIME as $Vessel) 
+                                    @php 
+                                        $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                                        $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                                        $Status = strtolower($Vessel->Status);
+                                    @endphp   
+                                    @if ($StartTime >= \Carbon\Carbon::parse('21:00') && $StartTime <= \Carbon\Carbon::parse('23:59'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse('23:59') && $EndTime >= \Carbon\Carbon::parse('23:59'))  
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>
+                                    @endif 
+                                    @if ($EndTime >= \Carbon\Carbon::parse('21:00') && $EndTime <= \Carbon\Carbon::parse('23:59')) 
+                                        <div class="{{ $Status }} status"></div>
+                                    @else
+                                        <div class="idle status"></div>   
+                                    @endif   
+                                @endforeach
+                                @if (count($Vessel_STARTIME) < 1)
+                                    <div class="idle status"></div>   
+                                @endif 
+                            </div>      
                         </td>
                     </tr>
-                    <tr>
-                        <td>ASAGA</td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="operation status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="maintenance status"></div>
-                        </td>
-                        <td>
-                            <div class="docking status"></div>
-                        </td>
-                    </tr> --}}
+                    @endforeach 
                 </table>
             </div>  
         </div>  
@@ -486,16 +438,18 @@
                         <th>Status</th>
                         <th>Done by</th>
                         <th>Attachment</th>
+                        <th>Start date</th>
                         <th>Start time</th>
+                        <th>End date</th>
                         <th>End time</th>
                         <th>#</th>
                     </tr>
-                    @unless (count($VesselAvailabilty) > 0)
+                    @unless (count($VesselAvailability) > 0)
                     <tr>
                         <td class="action">System don't have any records yet..</td>
                     </tr>
                     @endunless
-                    @foreach ($VesselAvailabilty as $Availabilty)
+                    @foreach ($VesselAvailability as $Availabilty)
                     <tr> 
                         <td class="Hide">{{ $Availabilty->id }}</td> 
                         <td class="Hide"> {{ $Availabilty->Vessel }}</td> 
@@ -504,11 +458,15 @@
                         <td class="Hide">{{ $Availabilty->Attachment }}</td> 
                         <td class="Hide">{{ $Availabilty->StartTime }}</td> 
                         <td class="Hide">{{ $Availabilty->EndTime }}</td> 
+                        <td class="Hide">{{ $Availabilty->StartDate }}</td> 
+                        <td class="Hide">{{ $Availabilty->EndDate }}</td> 
                         <td>{{ $Availabilty->Vessel }}</td>
                         <td>{{ $Availabilty->Status }}</td>
                         <td>{{ $Availabilty->DoneBy }}</td>
                         <td>{{ $Availabilty->Attachment }}</td>
+                        <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ $Availabilty->StartTime }}</td>
+                        <td>{{ $Availabilty->EndDate }}</td>
                         <td>{{ $Availabilty->EndTime }}</td>
                         <td class="action"> 
                             <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 

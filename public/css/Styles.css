@@ -1477,6 +1477,9 @@ main .left-navigation ul li .total {
   height: 1.3em;
   width: 2em;
 }
+.dashboard-inner .board-1 .div.tracking table td .flex, .dashboard-inner .board-2 .div.tracking table td .flex, .dashboard-inner .board-3 .div.tracking table td .flex {
+  display: flex;
+}
 .dashboard-inner .board-1 .div.tracking table td, .dashboard-inner .board-1 .div.tracking table th, .dashboard-inner .board-2 .div.tracking table td, .dashboard-inner .board-2 .div.tracking table th, .dashboard-inner .board-3 .div.tracking table td, .dashboard-inner .board-3 .div.tracking table th {
   font-size: smaller;
   font-weight: 500;
@@ -1519,7 +1522,7 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
-  padding: 1em;
+  padding: 0.2em;
 }
 .dashboard-inner .board-3 .div table td:hover {
   background-color: #1d5069;
@@ -1530,7 +1533,7 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-3 .div table td img {
   cursor: pointer;
   margin-right: 1em;
-  width: 1.65em;
+  width: 1.2em;
 }
 .dashboard-inner .board-3 .div table th {
   font-weight: 500;

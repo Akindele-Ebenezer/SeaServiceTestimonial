@@ -51,6 +51,18 @@
                         </tr> 
                     </table>
                 </div>
+                <section class="t-f">
+                    <h1>Date</h1>
+                    <div class="input">
+                        <label for="">Start date</label>
+                        <input type="date" name="EditStartDate">
+                    </div>  
+                    <div class="input">
+                        <label for="">End date</label>
+                        <input type="date" name="EditEndDate">
+                    </div>  
+                </section>
+                <br><br>
             </div>
         </form>
         <button class="UpdateAvailabilityButton">Update →</button>

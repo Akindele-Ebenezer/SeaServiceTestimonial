@@ -35,6 +35,8 @@ if (AddAvailabilityButton !== null) {
         let AttachmentInput = document.querySelector('input[name=Attachment]');
         let StartTimeInput = document.querySelector('input[name=StartTime]');
         let EndTimeInput = document.querySelector('input[name=EndTime]');
+        let StartDateInput = document.querySelector('input[name=StartDate]');
+        let EndDateInput = document.querySelector('input[name=EndDate]');
 
         if (VesselInput.value.trim() == '') { 
             ErrorAvailability.textContent =  'Vessel field cannot be empty';
@@ -44,11 +46,16 @@ if (AddAvailabilityButton !== null) {
             ErrorAvailability.textContent =  'Done by field is required';
         } else if (AttachmentInput.value.trim() == '') { 
             ErrorAvailability.textContent =  'Attachment is required';
-        } else if (StartTimeInput.value > EndTimeInput.value) { 
-            ErrorAvailability.textContent =  'Start time cannot be greater than End time';
-        } else if (
+        }else if (
             StartTimeInput.value == '' || 
             EndTimeInput.value == '' 
+        ) { 
+            ErrorAvailability.textContent =  'Start time cannot be empty';
+        } else if (StartDateInput.value > EndDateInput.value) { 
+            ErrorAvailability.textContent =  'Start date cannot be greater than End date';
+        } else if (
+            StartDateInput.value == '' || 
+            EndDateInput.value == '' 
         ) { 
             ErrorAvailability.textContent =  'Start date cannot be empty';
         } else { 

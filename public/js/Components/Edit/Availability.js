@@ -14,6 +14,8 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         document.querySelector('.UpdateAvailabilityForm input[name=EditDoneBy]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditStartTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.UpdateAvailabilityForm input[name=EditStartDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.UpdateAvailabilityForm input[name=EditEndDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
  
         UpdateAvailabilityButton.addEventListener('click', () => {
             let ErrorAvailability = document.querySelector('.error-availability');
@@ -23,6 +25,8 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
             let EditAttachmentInput = document.querySelector('input[name=EditAttachment]');
             let EditStartTimeInput = document.querySelector('input[name=EditStartTime]');
             let EditEndTimeInput = document.querySelector('input[name=EditEndTime]');
+            let EditStartDateInput = document.querySelector('input[name=EditStartDate]');
+            let EditEndDateInput = document.querySelector('input[name=EditEndDate]');
 
             if (EditVesselInput.value.trim() == '') { 
                 ErrorAvailability.textContent =  'Vessel field cannot be empty';
@@ -32,11 +36,16 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 ErrorAvailability.textContent =  'Done by field is required';
             } else if (EditAttachmentInput.value.trim() == '') { 
                 ErrorAvailability.textContent =  'Attachment is required';
-            } else if (EditStartTimeInput.value > EditEndTimeInput.value) { 
-                ErrorAvailability.textContent =  'Start time cannot be greater than End time';
             } else if (
                 EditStartTimeInput.value == '' || 
                 EditEndTimeInput.value == '' 
+            ) { 
+                ErrorAvailability.textContent =  'Start time cannot be empty';
+            } else if (EditStartDateInput.value > EditEndDateInput.value) { 
+                ErrorAvailability.textContent =  'Start date cannot be greater than End date';
+            } else if (
+                EditStartDateInput.value == '' || 
+                EditEndDateInput.value == '' 
             ) { 
                 ErrorAvailability.textContent =  'Start date cannot be empty';
             } else {  

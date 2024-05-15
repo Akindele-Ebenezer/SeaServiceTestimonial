@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VesselAvailabilty;
+use App\Models\VesselAvailability;
 use Illuminate\Http\Request;
 use App\Models\Employee; 
 
-class VesselAvailabiltyController extends Controller
+class VesselAvailabilityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +17,20 @@ class VesselAvailabiltyController extends Controller
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
         $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
-        $VesselAvailabilty = VesselAvailabilty::paginate(20); 
+        $VesselAvailability = VesselAvailability::paginate(20); 
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->whereNotNull('ImoNumber')->get();
         $NumberOfVessels = \DB::table('vessels_vessel_information')->whereNotNull('ImoNumber')->count();
+        $STARDATE = date('Y-m-d');
 
         return view('Pages.Availability', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,
             'Ranks' => $Ranks,
             'Companies' => $Companies,
-            'VesselAvailabilty' => $VesselAvailabilty,
+            'VesselAvailability' => $VesselAvailability,
             'Vessels' => $Vessels,
             'NumberOfVessels' => $NumberOfVessels,
+            'STARDATE' => $STARDATE,
         ]);
     }
 
@@ -45,13 +47,15 @@ class VesselAvailabiltyController extends Controller
      */
     public function store(Request $Request)
     {
-        VesselAvailabilty::insert([
+        VesselAvailability::insert([
             'Vessel' => $Request->Vessel,
             'Status' => $Request->Status,
             'DoneBy' => $Request->DoneBy,
             'Attachment' => $Request->Attachment,
             'StartTime' => $Request->StartTime,
             'EndTime' => $Request->EndTime,
+            'StartDate' => $Request->StartDate,
+            'EndDate' => $Request->EndDate,
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
         ]);
@@ -61,7 +65,7 @@ class VesselAvailabiltyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(VesselAvailabilty $vesselAvailabilty)
+    public function show(VesselAvailability $VesselAvailability)
     {
         //
     }
@@ -69,7 +73,7 @@ class VesselAvailabiltyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(VesselAvailabilty $vesselAvailabilty)
+    public function edit(VesselAvailability $VesselAvailability)
     {
         //
     }
@@ -79,13 +83,15 @@ class VesselAvailabiltyController extends Controller
      */
     public function update(Request $Request, $Id)
     { 
-        VesselAvailabilty::where('id', $Id)->update([
+        VesselAvailability::where('id', $Id)->update([
             'Vessel' => $Request->EditVessel,
             'Status' => $Request->EditStatus,
             'DoneBy' => $Request->EditDoneBy,
             'Attachment' => $Request->EditAttachment,
             'StartTime' => $Request->EditStartTime,
             'EndTime' => $Request->EditEndTime,
+            'StartDate' => $Request->EditStartDate,
+            'EndDate' => $Request->EditEndDate,
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
         ]);
@@ -95,9 +101,9 @@ class VesselAvailabiltyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VesselAvailabilty $VesselAvailabilty, $Id)
+    public function destroy(VesselAvailability $VesselAvailability, $Id)
     { 
-        VesselAvailabilty::where('id', $Id)->delete();
+        VesselAvailability::where('id', $Id)->delete();
         return redirect()->route('Availability');
     }
 }

@@ -47,6 +47,18 @@
                     <label for="">End time</label>
                     <input type="time" name="EndTime">
                 </div>  
+                <section class="t-f">
+                    <h1>Date</h1>
+                    <div class="input">
+                        <label for="">Start date</label>
+                        <input type="date" name="StartDate">
+                    </div>  
+                    <div class="input">
+                        <label for="">End date</label>
+                        <input type="date" name="EndDate">
+                    </div>  
+                </section>
+                <br><br>
             </div>
         </form>
         <button class="AddAvailabilityButton">Create →</button>
