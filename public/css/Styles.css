@@ -840,6 +840,13 @@ main .left-navigation ul li .total {
   margin-right: 1em;
   width: 2em;
 }
+.vessel-content h3 {
+  background: red;
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5em;
+  width: fit-content;
+}
 .vessel-content .empty-data {
   color: #fff;
 }
@@ -912,8 +919,14 @@ main .left-navigation ul li .total {
   translate: 0 -0.3em;
 }
 .vessel-content .list .inner strong .imo.availability-status.status-1, .vessel-content .empty-data .inner strong .imo.availability-status.status-1 {
-  background: #e8ffeb;
-  color: #00ab14 !important;
+  color: #fff !important;
+}
+.vessel-content .list .inner strong .imo.availability-status.status-1.idle, .vessel-content .empty-data .inner strong .imo.availability-status.status-1.idle {
+  background-color: #eee;
+  color: #555 !important;
+}
+.vessel-content .list .inner strong .imo.availability-status.status-1.maintenance, .vessel-content .empty-data .inner strong .imo.availability-status.status-1.maintenance {
+  background-color: #35cd60;
 }
 .vessel-content .list .inner strong .notification-bg-create, .vessel-content .empty-data .inner strong .notification-bg-create {
   background-color: #f0f7fb;
@@ -1096,6 +1109,33 @@ main .left-navigation ul li .total {
   background-color: #1f5671;
 }
 
+.availability {
+  width: 20%;
+}
+.availability .docking {
+  background-color: #03AED2;
+}
+.availability .operation {
+  background-color: #A87676;
+}
+.availability .breakdown {
+  background-color: #da1e28;
+}
+.availability .maintenance {
+  background-color: #52f781;
+}
+.availability .inspection {
+  background-color: #ff832b;
+}
+.availability .bunkery {
+  background-color: #8a3ffc;
+}
+.availability .idle {
+  background-color: #fff;
+}
+.availability.dashboard {
+  width: 70%;
+}
 .availability .dashboard-inner .FilterByDateButton {
   background-color: #ff6868;
   color: #fff;
@@ -1133,7 +1173,7 @@ main .left-navigation ul li .total {
   }
   .availability.dashboard .board-1 .div .status {
     height: 1em !important;
-    width: 1em !important;
+    width: 100% !important;
   }
   .availability.dashboard .board-1 .div table tr .operation-responsive {
     display: block !important;
@@ -1475,7 +1515,8 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-1 .div.tracking table .status, .dashboard-inner .board-2 .div.tracking table .status, .dashboard-inner .board-3 .div.tracking table .status {
   height: 1.3em;
-  width: 2em;
+  margin-right: 0.2em;
+  width: 100%;
 }
 .dashboard-inner .board-1 .div.tracking table td .flex, .dashboard-inner .board-2 .div.tracking table td .flex, .dashboard-inner .board-3 .div.tracking table td .flex {
   display: flex;
@@ -1513,6 +1554,7 @@ main .left-navigation ul li .total {
   background: unset;
   height: 20em;
   overflow-y: scroll;
+  padding-top: 0;
   width: 100%;
 }
 .dashboard-inner .board-3 .div table {
@@ -1524,8 +1566,10 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
   padding: 0.2em;
 }
-.dashboard-inner .board-3 .div table td:hover {
-  background-color: #1d5069;
+.dashboard-inner .board-3 .div table td {
+  border-bottom: 1px solid #2e81a9;
+  padding-block: 0.5em;
+  color: #eee;
 }
 .dashboard-inner .board-3 .div table td.action {
   background-color: #123141;
@@ -1536,7 +1580,14 @@ main .left-navigation ul li .total {
   width: 1.2em;
 }
 .dashboard-inner .board-3 .div table th {
+  background-color: #225f7d;
   font-weight: 500;
+  position: sticky;
+  text-transform: uppercase;
+  top: 0;
+}
+.dashboard-inner .board-3 .div table tr:hover {
+  background-color: #1d5069;
 }
 .dashboard-inner .dashboard-heading {
   background-color: #1f5671;

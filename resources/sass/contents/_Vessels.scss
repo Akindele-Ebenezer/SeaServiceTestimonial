@@ -34,6 +34,14 @@
         }
     }
 
+    h3 {
+        background: red;
+        color: #fff;
+        font-weight: 500;
+        padding: .5em;
+        width: fit-content;
+    }
+
     .empty-data {
         color: #fff;
     }
@@ -117,9 +125,16 @@
                         top: 1.5em;
                         translate: 0 -.3em;
 
-                        &.status-1 {
-                            background: #e8ffeb;
-                            color: #00ab14 !important;
+                        &.status-1 { 
+                            color: #fff !important;
+
+                            &.idle {
+                                background-color: #eee;
+                                color: #555 !important;
+                            }
+                            &.maintenance {
+                                background-color: #35cd60;
+                            }
                         }
                     }
                 }

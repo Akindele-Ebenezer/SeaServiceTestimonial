@@ -19,9 +19,16 @@ class VesselAvailabilityController extends Controller
         $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
         $VesselAvailability = VesselAvailability::paginate(20); 
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->whereNotNull('ImoNumber')->get();
+        $STARTDATE = date('Y-m-d');
         $NumberOfVessels = \DB::table('vessels_vessel_information')->whereNotNull('ImoNumber')->count();
-        $STARDATE = date('Y-m-d');
-
+        $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        $NumberOfVessels_MAINTENANCE = VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+ 
         return view('Pages.Availability', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,
@@ -30,7 +37,14 @@ class VesselAvailabilityController extends Controller
             'VesselAvailability' => $VesselAvailability,
             'Vessels' => $Vessels,
             'NumberOfVessels' => $NumberOfVessels,
-            'STARDATE' => $STARDATE,
+            'STARTDATE' => $STARTDATE,
+            'NumberOfVessels_IDLE' => count($NumberOfVessels_BUNKERY),
+            'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
+            'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
+            'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),
+            'NumberOfVessels_OPERATION' => count($NumberOfVessels_OPERATION),
+            'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
+            'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING,) 
         ]);
     }
 

@@ -182,7 +182,8 @@
 
                         .status {
                             height: 1.3em;
-                            width: 2em;
+                            margin-right: .2em; 
+                            width: 100%; 
                         }
 
                         td {
@@ -242,6 +243,7 @@
                 background: unset;
                 height: 20em;
                 overflow-y: scroll;
+                padding-top: 0;
                 width: 100%;
 
                 table {
@@ -254,11 +256,12 @@
                         // border-bottom: 1px solid lighten($color: $Color-2, $amount: 11);
                         padding: .2em;
                     }
-
+ 
                     td {  
-                        &:hover {
-                            background-color: darken($color: $Color-2, $amount: 5);
-                        }
+                        border-bottom: 1px solid lighten($color: $Color-2, $amount: 11);
+                        padding-block: .5em;
+                        color: #eee;
+
 
                         &.action {
                             background-color: darken($color: $Color-2, $amount: 15);
@@ -272,8 +275,18 @@
                     }
 
                     th { 
+                        background-color: $Color-2;
                         font-weight: 500;
+                        position: sticky;
+                        text-transform: uppercase;
+                        top: 0;
                     }
+
+                    tr {
+                        &:hover {
+                            background-color: darken($color: $Color-2, $amount: 5);
+                        }
+                    } 
                 }
             }
         }
