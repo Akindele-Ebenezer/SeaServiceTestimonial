@@ -32,63 +32,113 @@
     <div class="list"> 
         <div class="inner -x">  
             <strong class="notification-wrapper">   
+                <span class="status-x  
+                    @if ($EndDate > $StartDate)
+                        @switch($Availability_STATUS->Status ?? 'IDLE') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    @if ($EndDate === $StartDate)
+                        @switch($Availability_STATUS_2->Status ?? 'IDLE') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
                 <span class="imo availability-status 
-                @if ($EndDate > $StartDate)
-                    @switch($Availability_STATUS->Status ?? 'IDLE') 
-                        @case('DOCKING')
-                            docking
-                            @break 
-                        @case('OPERATION')
-                            operation
-                            @break
-                        @case('BREAKDOWN')
-                            breakdown
-                            @break
-                        @case('MAINTENANCE')
-                            maintenance
-                            @break
-                        @case('INSPECTION')
-                            inspection
-                            @break
-                        @case('BUNKERY')
-                            bunkery
-                            @break 
-                        @default
-                            idle
-                    @endswitch
-                @endif
-                @if ($EndDate === $StartDate)
-                    @switch($Availability_STATUS_2->Status ?? 'IDLE') 
-                        @case('DOCKING')
-                            docking
-                            @break 
-                        @case('OPERATION')
-                            operation
-                            @break
-                        @case('BREAKDOWN')
-                            breakdown
-                            @break
-                        @case('MAINTENANCE')
-                            maintenance
-                            @break
-                        @case('INSPECTION')
-                            inspection
-                            @break
-                        @case('BUNKERY')
-                            bunkery
-                            @break 
-                        @default
-                            idle
-                    @endswitch
-                @endif
-                status-1">
-                @if ($EndDate === $StartDate)
-                {{ $Availability_STATUS_2->Status ?? 'IDLE' }} 
-                @else
-                {{ $Availability_STATUS->Status ?? 'IDLE' }} 
-                @endif
-            </span>
+                    @if ($EndDate > $StartDate)
+                        @switch($Availability_STATUS->Status ?? 'IDLE') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    @if ($EndDate === $StartDate)
+                        @switch($Availability_STATUS_2->Status ?? 'IDLE') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    status-1">
+                    @if ($EndDate === $StartDate)
+                    {{ $Availability_STATUS_2->Status ?? 'IDLE' }} 
+                    @else
+                    {{ $Availability_STATUS->Status ?? 'IDLE' }} 
+                    @endif
+                </span>
             </strong>  
         </div>
     </div> 

@@ -42,7 +42,75 @@ $Color-6: #8cff9a;
         padding: 1em; 
     }
 }
+// ///////////////////
+$size: 15px;
+$border: 10px;
+$green: #72ff7d;
+$red: #ff4242;
+$yellow: #ffda72;
+$blue: #42e5ff;
 
+.status-x {
+  position: relative;
+  display: inline-block;
+  width: $size !important;
+  height: $size;
+  border-radius: 50%;
+  margin: $border;
+
+  &.docking, &.docking:before {
+    background: #03AED2;
+  }
+
+  &.operation, &.operation:before {
+    background: #A87676;
+  }
+
+  &.breakdown, &.breakdown:before {
+    background: #da1e28;
+  }
+
+  &.maintenance, &.maintenance:before {
+    background: #52f781;
+  }
+  
+  &.inspection, &.inspection:before {
+    background: #ff832b;
+  }
+  
+  &.bunkery, &.bunkery:before {
+    background: #8a3ffc;
+  }
+  
+  &.idle, &.idle:before {
+    background: #eee;
+  }
+  
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -($border / 2);
+    top: -($border / 2);
+    width: $size + $border;
+    height: $size + $border;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in;
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+// ///////////////////
 @import 'forms/_Filter';
 @import 'contents/_Loader';
 @import 'forms/_Form-1';

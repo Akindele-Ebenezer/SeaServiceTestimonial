@@ -30,10 +30,20 @@
     }
 
     .list {
+        // padding: unset;
+
         .-x {
             .notification-wrapper {
+                align-items: center;
                 color: #888 !important;
+                display: flex;
                 padding: 0 .5em;
+
+                span {
+                    &:nth-child(2) {
+                        width: 7em;
+                    }
+                }
             }
         }
     }
