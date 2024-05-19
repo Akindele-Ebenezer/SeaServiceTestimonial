@@ -160,6 +160,7 @@
     <script src="{{ asset('js/Components/Filter/Filter.js') }}"></script> 
     <script src="{{ asset('js/Components/Filter/Filter-2.js') }}"></script>
     <script src="{{ asset('js/Components/Filter/Filter-3.js') }}"></script>
+    <script src="{{ asset('js/Components/History/History.js') }}"></script>
 </body>
 </html>
 @else  

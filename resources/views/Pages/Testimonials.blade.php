@@ -49,6 +49,33 @@
          </tr>
          @endunless
          @foreach ($Testimonials as $Testimonial)
+         @php
+            $Today_COUNT = \App\Models\Testimonial::where('DateIn', date('Y-m-d'))->get();
+            $ThisWeek_COUNT = \App\Models\Testimonial::where('DateIn', '>=', date('Y-m-d', strtotime('last Sunday')))->get();
+            $LastWeek_COUNT = \App\Models\Testimonial::where('DateIn', '>=', date('Y-m-d', strtotime('last week Monday')))->where('DateIn', '<', date('Y-m-d', strtotime('last Sunday')))->get();
+            $Older_COUNT = \App\Models\Testimonial::where('DateIn', '<', date('Y-m-d', strtotime('last week Monday')))->get();
+         @endphp
+
+         @if ($Testimonial->DateIn === date('Y-m-d'))
+         <tr class="today history Hide">
+            <td>Today :: {{ count($Today_COUNT) }}</td> 
+         </tr>
+         @elseif ($Testimonial->DateIn >= date('Y-m-d', strtotime('last Sunday')))
+         <tr class="this-week history Hide">
+            <td>This week :: {{ count($ThisWeek_COUNT) }}</td> 
+         </tr>
+         @elseif (
+            $Testimonial->DateIn >= date('Y-m-d', strtotime('last week Monday')) AND
+            $Testimonial->DateIn < date('Y-m-d', strtotime('last Sunday'))
+         )
+         <tr class="last-week history Hide">
+            <td>Last week :: {{ count($LastWeek_COUNT) }}</td> 
+         </tr>
+         @elseif ($Testimonial->DateIn < date('Y-m-d', strtotime('last week Monday')))
+         <tr class="older history Hide">
+            <td>Older :: {{ count($Older_COUNT) }}</td> 
+         </tr>
+         @endif
          <tr>
             <td class="action">
                <span class="Hide">{{ $Testimonial->EmployeeName }}</span>

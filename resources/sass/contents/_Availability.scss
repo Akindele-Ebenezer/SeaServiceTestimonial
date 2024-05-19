@@ -41,6 +41,7 @@
 
                 span {
                     &:nth-child(2) {
+                        margin-left: 1em;
                         width: 7em;
                     }
                 }
@@ -50,6 +51,12 @@
 }
 
 @media (max-width: 1785px) {
+    .availability {
+        .list {
+            padding: .5em 0;
+        }
+    }
+
     .availability.dashboard {
         .board-1 {
             .div {
@@ -90,5 +97,17 @@
                 }
             }
         } 
+    }
+
+    .availability.notifications {
+        .list {
+            .inner.-x {
+                .notification-wrapper {
+                    span {
+                        font-size: .75em;
+                    }
+                }
+            }
+        }
     }
   }

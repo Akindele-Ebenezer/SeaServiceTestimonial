@@ -99,7 +99,7 @@ class SeaServiceTestimonialController extends Controller
         $PercentageOfTestimonials_SINCE_LAST_2_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_2_MONTHS / $NumberOfWorkingPeriods * 100;
         $PercentageOfTestimonials_SINCE_LAST_3_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_3_MONTHS / $NumberOfWorkingPeriods * 100;
         $PercentageOfTestimonials_SINCE_LAST_4_MONTH = $NumberOfWorkingPeriods == 0 ? 0 : $NumberOfTestimonials_SINCE_LAST_4_MONTHS / $NumberOfWorkingPeriods * 100;
-        $Testimonials = Testimonial::orderBy('DateIn', 'DESC')->orderBy('TimeIn')->limit(10)->get();
+        $Testimonials = Testimonial::orderBy('DateIn', 'DESC')->orderBy('TimeIn')->paginate(40);
 
         $LeaveDaysArr = [];
         $LeaveDays_SINCE_LAST_MONTHS = \DB::table('working_periods') 

@@ -130,6 +130,7 @@
                     </tr>
                     @endforeach
                 </table>
+                {{ $Testimonials->appends(request()->query())->links() }}
             </div> 
         </div>
     </div>

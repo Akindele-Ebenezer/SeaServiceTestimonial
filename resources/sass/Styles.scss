@@ -43,7 +43,7 @@ $Color-6: #8cff9a;
     }
 }
 // ///////////////////
-$size: 15px;
+$size: 8px;
 $border: 10px;
 $green: #72ff7d;
 $red: #ff4242;
@@ -125,3 +125,4 @@ $blue: #42e5ff;
 @import 'contents/_Operations';
 @import 'contents/_Notifications';
 @import 'contents/_ListComponent';
+@import 'history/_History';

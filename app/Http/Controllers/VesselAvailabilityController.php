@@ -17,7 +17,7 @@ class VesselAvailabilityController extends Controller
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
         $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
-        $VesselAvailability = VesselAvailability::paginate(20); 
+        $VesselAvailability = VesselAvailability::orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
         $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->whereNotNull('ImoNumber')->get();
         $STARTDATE = date('Y-m-d');
         $NumberOfVessels = \DB::table('vessels_vessel_information')->whereNotNull('ImoNumber')->count();
@@ -28,7 +28,7 @@ class VesselAvailabilityController extends Controller
         $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
         $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
         $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
- 
+        
         return view('Pages.Availability', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,

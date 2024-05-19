@@ -329,3 +329,35 @@
         }
     }
 }
+
+@media (max-width: 1785px) {
+    .dashboard {
+        .board-3, .board-x {
+            table {
+                tr {
+                    td, th {
+                        font-size: .75em !important;
+    
+                        &.action {
+                            width: 7em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    nav[role] span[aria-current] {
+        margin-left: 1.5em;
+    }
+
+    .notifications {
+        .list {
+            .-x {
+                .notification-wrapper {
+                    width: 18em !important;
+                }
+            }
+        }
+    }
+}

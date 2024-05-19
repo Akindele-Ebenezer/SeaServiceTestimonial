@@ -595,22 +595,22 @@ class SeaServiceTestimonialPdf extends Controller
 
         // RANK
         
-        $Rank->Rank = 'BOAT DRIVER';
-        $Rank->Rank = 'CAPTAIN';
-        $Rank->Rank = 'SHORE ENGINEER';
-        $Rank->Rank = 'ABLE SEA MAN';
-        $Rank->Rank = 'PC MASTER';
-        $Rank->Rank = 'DIVER';
-        $Rank->Rank = 'ML MASTER';
-        $Rank->Rank = 'CHIEF ENGINEER';
-        $Rank->Rank = 'TUG MASTER';
-        $Rank->Rank = '3RD ENGINEER';
-        $Rank->Rank = 'PC ENGINEER';
-        $Rank->Rank = 'MECHANIC';
-        $Rank->Rank = 'COOK';
-        $Rank->Rank = 'CHIEF OFFICER';
-        $Rank->Rank = '3RD ENGINEER ASSIST.';
-        $Rank->Rank = 'RADIO OPERATOR';
+        // $Rank->Rank = 'BOAT DRIVER';
+        // $Rank->Rank = 'CAPTAIN';
+        // $Rank->Rank = 'SHORE ENGINEER';
+        // $Rank->Rank = 'ABLE SEA MAN';
+        // $Rank->Rank = 'PC MASTER';
+        // $Rank->Rank = 'DIVER';
+        // $Rank->Rank = 'ML MASTER';
+        // $Rank->Rank = 'CHIEF ENGINEER';
+        // $Rank->Rank = 'TUG MASTER';
+        // $Rank->Rank = '3RD ENGINEER';
+        // $Rank->Rank = 'PC ENGINEER';
+        // $Rank->Rank = 'MECHANIC';
+        // $Rank->Rank = 'COOK';
+        // $Rank->Rank = 'CHIEF OFFICER';
+        // $Rank->Rank = '3RD ENGINEER ASSIST.';
+        // $Rank->Rank = 'RADIO OPERATOR';
         // $Rank->Rank = 'ELECTRICIAN';
         // $Rank->Rank = 'OPERATION MANAGER';
         // $Rank->Rank = 'DECK HAND';
