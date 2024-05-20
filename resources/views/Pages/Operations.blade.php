@@ -45,6 +45,14 @@
          </tr>
          @endunless
          @foreach ($Operations as $Operation)
+         @php
+            $Date = $Operation->DateIn;
+            $Today_COUNT = \App\Models\Testimonial::where('DateIn', date('Y-m-d'))->get();
+            $ThisWeek_COUNT = \App\Models\Testimonial::where('DateIn', '>=', date('Y-m-d', strtotime('last Sunday')))->get();
+            $LastWeek_COUNT = \App\Models\Testimonial::where('DateIn', '>=', date('Y-m-d', strtotime('last week Monday')))->where('DateIn', '<', date('Y-m-d', strtotime('last Sunday')))->get();
+            $Older_COUNT = \App\Models\Testimonial::where('DateIn', '<', date('Y-m-d', strtotime('last week Monday')))->get();
+         @endphp
+         @include('Components.History.History') 
          <tr>
             <td class="data-x filter-value-x">{{ $Operation->DateIn }}</td>
             <td class="data-x filter-value-x">{{ $Operation->CurrentVessel }}</td>

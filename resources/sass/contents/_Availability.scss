@@ -14,7 +14,7 @@
     }
 
     .dashboard-inner {
-        .FilterByDateButton {
+        .FilterByDateButton, .RecordAvailabilityButton {
             background-color: #ff6868;
             color: #fff;
             border: none;
@@ -26,6 +26,10 @@
             right: 1em;
             top: 1em;
             z-index: 100;
+        }
+
+        .RecordAvailabilityButton {
+            right: 9em;
         }
     }
 

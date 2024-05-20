@@ -17,8 +17,8 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         document.querySelector('.UpdateAvailabilityForm input[name=EditStartDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
  
-        UpdateAvailabilityButton.addEventListener('click', () => {
-            let ErrorAvailability = document.querySelector('.error-availability');
+        UpdateAvailabilityButton.addEventListener('click', () => { 
+            let ErrorAvailability_Update = document.querySelector('.error-availability.update');
             let EditVesselInput = document.querySelector('input[name=EditVessel]');
             let EditStatusInput = document.querySelector('select[name=EditStatus]');
             let EditDoneByInput = document.querySelector('input[name=EditDoneBy]');
@@ -27,27 +27,27 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
             let EditEndTimeInput = document.querySelector('input[name=EditEndTime]');
             let EditStartDateInput = document.querySelector('input[name=EditStartDate]');
             let EditEndDateInput = document.querySelector('input[name=EditEndDate]');
-
+            
             if (EditVesselInput.value.trim() == '') { 
-                ErrorAvailability.textContent =  'Vessel field cannot be empty';
+                ErrorAvailability_Update.textContent =  'Vessel field cannot be empty';
             } else if (EditStatusInput.value.trim() == '') { 
-                ErrorAvailability.textContent =  'Status is required';
+                ErrorAvailability_Update.textContent =  'Status is required';
             } else if (EditDoneByInput.value.trim() == '') { 
-                ErrorAvailability.textContent =  'Done by field is required';
+                ErrorAvailability_Update.textContent =  'Done by field is required';
             } else if (EditAttachmentInput.value.trim() == '') { 
-                ErrorAvailability.textContent =  'Attachment is required';
+                ErrorAvailability_Update.textContent =  'Attachment is required';
             } else if (
                 EditStartTimeInput.value == '' || 
                 EditEndTimeInput.value == '' 
             ) { 
-                ErrorAvailability.textContent =  'Start time cannot be empty';
+                ErrorAvailability_Update.textContent =  'Start time cannot be empty';
             } else if (EditStartDateInput.value > EditEndDateInput.value) { 
-                ErrorAvailability.textContent =  'Start date cannot be greater than End date';
+                ErrorAvailability_Update.textContent =  'Start date cannot be greater than End date';
             } else if (
                 EditStartDateInput.value == '' || 
                 EditEndDateInput.value == '' 
             ) { 
-                ErrorAvailability.textContent =  'Start date cannot be empty';
+                ErrorAvailability_Update.textContent =  'Start date cannot be empty';
             } else {  
                 UpdateAvailabilityButton.style.backgroundColor = '#1fb95e';
                 UpdateAvailabilityButton.textContent = '+ Processing..';

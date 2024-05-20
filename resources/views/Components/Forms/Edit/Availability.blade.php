@@ -8,11 +8,11 @@
             @csrf
             <div class="inner-1"> 
                 <div class="fields">
-                    <p class="error-availability error"></p>
+                    <p class="error-availability update error"></p>
                     <section>
                         <div class="input">
                             <label for="">Vessel</label>
-                            <input type="text" name="EditVessel">
+                            <input type="text" name="EditVessel" readonly>
                         </div> 
                         <div class="input">
                             <label for="">Status</label>

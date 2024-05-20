@@ -138,76 +138,94 @@
   width: 5em;
   padding: 0.8em;
 }
-.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper .filter-value-3,
+.filter-list-wrapper .filter-value, .filter-list-wrapper .filter-value-2, .filter-list-wrapper .filter-value-3, .filter-list-wrapper .filter-value-4,
 .filter-list-wrapper-2 .filter-value,
 .filter-list-wrapper-2 .filter-value-2,
 .filter-list-wrapper-2 .filter-value-3,
+.filter-list-wrapper-2 .filter-value-4,
 .filter-list-wrapper-3 .filter-value,
 .filter-list-wrapper-3 .filter-value-2,
 .filter-list-wrapper-3 .filter-value-3,
+.filter-list-wrapper-3 .filter-value-4,
 .filter-list-wrapper-4 .filter-value,
 .filter-list-wrapper-4 .filter-value-2,
-.filter-list-wrapper-4 .filter-value-3 {
+.filter-list-wrapper-4 .filter-value-3,
+.filter-list-wrapper-4 .filter-value-4 {
   border-bottom: 1px solid #ffe8e8;
   cursor: pointer;
   padding: 0.2em;
 }
-.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper .filter-value-3:hover h1, .filter-list-wrapper .filter-value-3:hover div,
+.filter-list-wrapper .filter-value:hover h1, .filter-list-wrapper .filter-value:hover div, .filter-list-wrapper .filter-value-2:hover h1, .filter-list-wrapper .filter-value-2:hover div, .filter-list-wrapper .filter-value-3:hover h1, .filter-list-wrapper .filter-value-3:hover div, .filter-list-wrapper .filter-value-4:hover h1, .filter-list-wrapper .filter-value-4:hover div,
 .filter-list-wrapper-2 .filter-value:hover h1,
 .filter-list-wrapper-2 .filter-value:hover div,
 .filter-list-wrapper-2 .filter-value-2:hover h1,
 .filter-list-wrapper-2 .filter-value-2:hover div,
 .filter-list-wrapper-2 .filter-value-3:hover h1,
 .filter-list-wrapper-2 .filter-value-3:hover div,
+.filter-list-wrapper-2 .filter-value-4:hover h1,
+.filter-list-wrapper-2 .filter-value-4:hover div,
 .filter-list-wrapper-3 .filter-value:hover h1,
 .filter-list-wrapper-3 .filter-value:hover div,
 .filter-list-wrapper-3 .filter-value-2:hover h1,
 .filter-list-wrapper-3 .filter-value-2:hover div,
 .filter-list-wrapper-3 .filter-value-3:hover h1,
 .filter-list-wrapper-3 .filter-value-3:hover div,
+.filter-list-wrapper-3 .filter-value-4:hover h1,
+.filter-list-wrapper-3 .filter-value-4:hover div,
 .filter-list-wrapper-4 .filter-value:hover h1,
 .filter-list-wrapper-4 .filter-value:hover div,
 .filter-list-wrapper-4 .filter-value-2:hover h1,
 .filter-list-wrapper-4 .filter-value-2:hover div,
 .filter-list-wrapper-4 .filter-value-3:hover h1,
-.filter-list-wrapper-4 .filter-value-3:hover div {
+.filter-list-wrapper-4 .filter-value-3:hover div,
+.filter-list-wrapper-4 .filter-value-4:hover h1,
+.filter-list-wrapper-4 .filter-value-4:hover div {
   background-color: #f4f9fc !important;
 }
-.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper .filter-value-3 div,
+.filter-list-wrapper .filter-value div, .filter-list-wrapper .filter-value-2 div, .filter-list-wrapper .filter-value-3 div, .filter-list-wrapper .filter-value-4 div,
 .filter-list-wrapper-2 .filter-value div,
 .filter-list-wrapper-2 .filter-value-2 div,
 .filter-list-wrapper-2 .filter-value-3 div,
+.filter-list-wrapper-2 .filter-value-4 div,
 .filter-list-wrapper-3 .filter-value div,
 .filter-list-wrapper-3 .filter-value-2 div,
 .filter-list-wrapper-3 .filter-value-3 div,
+.filter-list-wrapper-3 .filter-value-4 div,
 .filter-list-wrapper-4 .filter-value div,
 .filter-list-wrapper-4 .filter-value-2 div,
-.filter-list-wrapper-4 .filter-value-3 div {
+.filter-list-wrapper-4 .filter-value-3 div,
+.filter-list-wrapper-4 .filter-value-4 div {
   display: flex;
   justify-content: space-between;
 }
-.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper .filter-value-3 div span,
+.filter-list-wrapper .filter-value div span, .filter-list-wrapper .filter-value-2 div span, .filter-list-wrapper .filter-value-3 div span, .filter-list-wrapper .filter-value-4 div span,
 .filter-list-wrapper-2 .filter-value div span,
 .filter-list-wrapper-2 .filter-value-2 div span,
 .filter-list-wrapper-2 .filter-value-3 div span,
+.filter-list-wrapper-2 .filter-value-4 div span,
 .filter-list-wrapper-3 .filter-value div span,
 .filter-list-wrapper-3 .filter-value-2 div span,
 .filter-list-wrapper-3 .filter-value-3 div span,
+.filter-list-wrapper-3 .filter-value-4 div span,
 .filter-list-wrapper-4 .filter-value div span,
 .filter-list-wrapper-4 .filter-value-2 div span,
-.filter-list-wrapper-4 .filter-value-3 div span {
+.filter-list-wrapper-4 .filter-value-3 div span,
+.filter-list-wrapper-4 .filter-value-4 div span {
   font-size: smaller;
 }
-.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper .filter-value-3 h1,
+.filter-list-wrapper .filter-value h1, .filter-list-wrapper .filter-value-2 h1, .filter-list-wrapper .filter-value-3 h1, .filter-list-wrapper .filter-value-4 h1,
 .filter-list-wrapper-2 .filter-value h1,
 .filter-list-wrapper-2 .filter-value-2 h1,
 .filter-list-wrapper-2 .filter-value-3 h1,
+.filter-list-wrapper-2 .filter-value-4 h1,
 .filter-list-wrapper-3 .filter-value h1,
 .filter-list-wrapper-3 .filter-value-2 h1,
 .filter-list-wrapper-3 .filter-value-3 h1,
+.filter-list-wrapper-3 .filter-value-4 h1,
 .filter-list-wrapper-4 .filter-value h1,
 .filter-list-wrapper-4 .filter-value-2 h1,
-.filter-list-wrapper-4 .filter-value-3 h1 {
+.filter-list-wrapper-4 .filter-value-3 h1,
+.filter-list-wrapper-4 .filter-value-4 h1 {
   border: none !important;
   color: #225f7d !important;
   font-size: small;
@@ -1188,7 +1206,7 @@ main .left-navigation ul li .total {
 .availability.dashboard {
   width: 70%;
 }
-.availability .dashboard-inner .FilterByDateButton {
+.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .RecordAvailabilityButton {
   background-color: #ff6868;
   color: #fff;
   border: none;
@@ -1200,6 +1218,9 @@ main .left-navigation ul li .total {
   right: 1em;
   top: 1em;
   z-index: 100;
+}
+.availability .dashboard-inner .RecordAvailabilityButton {
+  right: 9em;
 }
 .availability .list .-x .notification-wrapper {
   align-items: center;
@@ -1395,6 +1416,11 @@ main .left-navigation ul li .total {
   padding: 0.3em;
 }
 
+@media (max-width: 1785px) {
+  .table table td, .table table th {
+    padding: 0.5em !important;
+  }
+}
 .operation-content .table table tr th:nth-child(4) {
   width: 35%;
 }
@@ -1647,7 +1673,7 @@ main .left-navigation ul li .total {
   font-weight: 500;
   position: sticky;
   text-transform: uppercase;
-  top: 0;
+  top: -0.2em;
 }
 .dashboard-inner .board-3 .div table tr:hover {
   background-color: #1d5069;
@@ -1827,6 +1853,7 @@ main .left-navigation ul li .total {
 }
 
 .history {
+  background-color: #225f7d;
   border: none !important;
   border-bottom: 2px solid #ff4f4f !important;
   position: sticky;

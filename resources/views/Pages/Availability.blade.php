@@ -2,6 +2,7 @@
 @section('Title', 'Availability - SEA SERVICE TESTIMONIAL')
 
 @section('Content')
+@include('Components.Forms.Add.Availability')
 @include('Components.Forms.Edit.Availability')
 @include('Components.Forms.Delete.Availability')
 @include('Components.Inner.FilterByDate')
@@ -147,6 +148,7 @@
 <div class="content-data availability dashboard"> 
     <div class="dashboard-inner"> 
         <h1 class="dashboard-heading"><svg class="-x" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>VESSEL AVAILABILITY</h1>
+        <button class="RecordAvailabilityButton">+ Record/Schedule Availability</button>
         <button class="FilterByDateButton">+ Filter</button>
         <div class="board-1">
             <div class="div">
@@ -499,6 +501,30 @@
                     </tr>
                     @endunless
                     @foreach ($VesselAvailability as $Availabilty)
+                    @php
+                       $StartTime = $Availabilty->StartTime;
+                       $EndDate = $Availabilty->EndDate;
+                       $Date = $Availabilty->StartDate;
+                       $Scheduled_COUNT = \App\Models\VesselAvailability::where('StartDate', '>', date('Y-m-d'))
+                                                                            ->orWhere(function($query) {
+                                                                                $query->where('StartDate', date('Y-m-d'))
+                                                                                        ->where('StartTime', '>', \Carbon\Carbon::now());
+                                                                            })->get();
+                       $Today_COUNT = \App\Models\VesselAvailability::where('StartDate', date('Y-m-d'))->get();
+                       $ThisWeek_COUNT = \App\Models\VesselAvailability::where('StartDate', '>=', date('Y-m-d', strtotime('last Sunday')))->get();
+                       $LastWeek_COUNT = \App\Models\VesselAvailability::where('StartDate', '>=', date('Y-m-d', strtotime('last week Monday')))->where('StartDate', '<', date('Y-m-d', strtotime('last Sunday')))->get();
+                       $Older_COUNT = \App\Models\VesselAvailability::where('StartDate', '<', date('Y-m-d', strtotime('last week Monday')))->get();
+                    @endphp
+                    @if (
+                            $StartTime > \Carbon\Carbon::now() ||
+                            $StartDate > date('Y-m-d') ||
+                            $EndDate > date('Y-m-d')
+                        )
+                    <tr class="scheduled history Hide">
+                        <td>Scheduled :: {{ count($Scheduled_COUNT) }}</td> 
+                    </tr>
+                    @endif
+                    @include('Components.History.History') 
                     <tr> 
                         <td class="Hide">{{ $Availabilty->id }}</td> 
                         <td class="Hide"> {{ $Availabilty->Vessel }}</td> 
@@ -529,22 +555,92 @@
         </div>
         <div class="board-2">
             @php 
-                $NumberOfVessels_IDLE_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'IDLE')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
-                $NumberOfVessels_BUNKERY_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
-                $NumberOfVessels_INSPECTION_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
-                $NumberOfVessels_MAINTENANCE_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
-                $NumberOfVessels_OPERATION_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
-                $NumberOfVessels_BREAKDOWN_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
-                $NumberOfVessels_DOCKING_LASTMONTH = App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])->groupBy('Vessel')->get();
+                $NumberOfVessels_IDLE_LASTMONTH = App\Models\VesselAvailability::select('Vessel')
+                                                    ->where('Status', 'IDLE')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get();
+                $NumberOfVessels_BUNKERY_LASTMONTH = App\Models\VesselAvailability::select('Vessel')
+                                                    ->where('Status', 'BUNKERY')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get();
+                $NumberOfVessels_INSPECTION_LASTMONTH = App\Models\VesselAvailability::select('Vessel')  
+                                                    ->where('Status', 'INSPECTION')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get(); 
+                $NumberOfVessels_MAINTENANCE_LASTMONTH = App\Models\VesselAvailability::select('Vessel')   
+                                                    ->where('Status', 'MAINTENANCE')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get(); 
+                $NumberOfVessels_OPERATION_LASTMONTH = App\Models\VesselAvailability::select('Vessel') 
+                                                    ->where('Status', 'OPERATION')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get(); 
+                $NumberOfVessels_BREAKDOWN_LASTMONTH = App\Models\VesselAvailability::select('Vessel') 
+                                                    ->where('Status', 'BREAKDOWN')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get();  
+                $NumberOfVessels_DOCKING_LASTMONTH = App\Models\VesselAvailability::select('Vessel')  
+                                                    ->where('Status', 'DOCKING')
+                                                    ->where(function($query) {
+                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))])
+                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('last month')), date('Y-m-t', strtotime('last month'))]);
+                                                    })->groupBy('Vessel')->get(); 
       
                 for ($i=2; $i <= 4; $i++) { 
-                    ${'NumberOfVessels_IDLE_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')->where('Status', 'IDLE')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy('Vessel')->get();
-                    ${'NumberOfVessels_BUNKERY_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy('Vessel')->get();
-                    ${'NumberOfVessels_INSPECTION_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy('Vessel')->get();
-                    ${'NumberOfVessels_MAINTENANCE_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy('Vessel')->get();
-                    ${'NumberOfVessels_OPERATION_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy('Vessel')->get();
-                    ${'NumberOfVessels_BREAKDOWN_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy('Vessel')->get();
-                    ${'NumberOfVessels_DOCKING_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select(['Vessel'])->where('Status', 'DOCKING')->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . 'months')), date('Y-m-t', strtotime('-' . $i . 'months'))])->groupBy(['Vessel'])->get();
+                    ${'NumberOfVessels_IDLE_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')  
+                                                                    ->where('Status', 'IDLE')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
+                    ${'NumberOfVessels_BUNKERY_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')  
+                                                                    ->where('Status', 'BUNKERY')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
+                    ${'NumberOfVessels_INSPECTION_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')  
+                                                                    ->where('Status', 'INSPECTION')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
+                    ${'NumberOfVessels_MAINTENANCE_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')  
+                                                                    ->where('Status', 'MAINTENANCE')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
+                    ${'NumberOfVessels_OPERATION_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')  
+                                                                    ->where('Status', 'OPERATION')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
+                    ${'NumberOfVessels_BREAKDOWN_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select('Vessel')  
+                                                                    ->where('Status', 'BREAKDOWN')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
+                    ${'NumberOfVessels_DOCKING_LAST' . $i . 'MONTHS'} = App\Models\VesselAvailability::select(['Vessel'])  
+                                                                    ->where('Status', 'DOCKING')
+                                                                    ->where(function($query) use ($i) {
+                                                                        $query->whereBetween('StartDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))])
+                                                                                ->orWhereBetween('EndDate', [date('Y-m-01', strtotime('-' . $i . ' months')), date('Y-m-t', strtotime('-' . $i . ' months'))]);
+                                                                    })->groupBy('Vessel')->get();
                 } 
             @endphp
             <div class="div recent-workflow" style="width: 100%">
@@ -552,7 +648,7 @@
                 <div class="canvas"> 
                     <div class="inner-x">
                         <span>Last month </span>
-                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_DOCKING_LASTMONTH) }}%; {{date('Y-m-t', strtotime('last month'))}} background: #03AED2"></span>
+                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_DOCKING_LASTMONTH) }}%; background: #03AED2"></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_OPERATION_LASTMONTH) }}%; background: #A87676"></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_BREAKDOWN_LASTMONTH) }}%; background: #da1e28"></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_MAINTENANCE_LASTMONTH) }}%; background: #52f781"></span>
@@ -595,7 +691,7 @@
         </div> 
     </div>
 </div>   
-{{-- <script src="{{ asset('js/Components/Add/Availability.js') }}"></script> --}}
+<script src="{{ asset('js/Components/Add/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Inner/FilterByDate.js') }}"></script>

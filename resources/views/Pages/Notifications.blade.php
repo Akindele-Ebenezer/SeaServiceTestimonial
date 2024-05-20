@@ -121,6 +121,14 @@
                         <th>Date</th>
                     </tr>
                     @foreach ($Testimonials as $Testimonial)
+                    @php
+                       $Date = $Testimonial->DateIn;
+                       $Today_COUNT = \App\Models\Testimonial::where('DateIn', date('Y-m-d'))->get();
+                       $ThisWeek_COUNT = \App\Models\Testimonial::where('DateIn', '>=', date('Y-m-d', strtotime('last Sunday')))->get();
+                       $LastWeek_COUNT = \App\Models\Testimonial::where('DateIn', '>=', date('Y-m-d', strtotime('last week Monday')))->where('DateIn', '<', date('Y-m-d', strtotime('last Sunday')))->get();
+                       $Older_COUNT = \App\Models\Testimonial::where('DateIn', '<', date('Y-m-d', strtotime('last week Monday')))->get();
+                    @endphp
+                    @include('Components.History.History') 
                     <tr> 
                         <td>{{ $Testimonial->CurrentVessel }}</td>
                         <td>{{ $Testimonial->EmployeeName }}</td>

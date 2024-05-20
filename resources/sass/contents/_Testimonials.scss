@@ -186,3 +186,13 @@
         }
     }
 }
+
+@media (max-width: 1785px) {
+    .table {
+        table {
+            td, th { 
+                padding: .5em !important;
+            }
+        }
+    }
+}
