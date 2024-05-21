@@ -10,6 +10,7 @@ use App\Http\Controllers\SeaServiceTestimonialPdf;
 use App\Http\Controllers\RankController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\VesselAvailabilityController;
+use App\Http\Controllers\PriorityExcelImportController;
  
 Route::get('/', [LoginController::class, 'login']);
 Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
@@ -21,7 +22,8 @@ Route::get('/Edit/Vessel/{Id}', [VesselController::class, 'update'])->name('Edit
 Route::get('/Delete/Vessel/{Id}', [VesselController::class, 'destroy'])->name('DeleteVessel');
 
 Route::get('/Availability', [VesselAvailabilityController::class, 'index'])->name('Availability');
-Route::post('/Add/Availability', [VesselAvailabilityController::class, 'store'])->name('AddAvailability');
+Route::post('/Add/Availability', [PriorityExcelImportController::class, 'import'])->name('AddAvailability');
+// Route::post('/Add/Availability', [VesselAvailabilityController::class, 'store'])->name('AddAvailability');
 Route::post('/Edit/Availability/{Id}', [VesselAvailabilityController::class, 'update'])->name('EditAvailability');
 Route::get('/Delete/Availability/{Id}', [VesselAvailabilityController::class, 'destroy'])->name('DeleteAvailability');
 

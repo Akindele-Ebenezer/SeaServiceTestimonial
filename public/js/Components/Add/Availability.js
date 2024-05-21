@@ -53,36 +53,45 @@ if (AddAvailabilityButton !== null) {
         let StartDateInput = document.querySelector('input[name=StartDate]');
         let EndDateInput = document.querySelector('input[name=EndDate]');
 
-        if (VesselInput.value.trim() == '') { 
-            ErrorAvailability.textContent =  'Vessel field cannot be empty';
-        } else if (StatusInput.value.trim() == '') { 
-            ErrorAvailability.textContent =  'Status is required';
-        } else if (DoneByInput.value.trim() == '') { 
-            ErrorAvailability.textContent =  'Done by field is required';
-        } else if (AttachmentInput.value.trim() == '') { 
-            ErrorAvailability.textContent =  'Attachment is required';
-        }else if (
-            StartTimeInput.value == '' || 
-            EndTimeInput.value == '' 
-        ) { 
-            ErrorAvailability.textContent =  'Start time cannot be empty';
-        } else if (StartDateInput.value > EndDateInput.value) { 
-            ErrorAvailability.textContent =  'Start date cannot be greater than End date';
-        } else if (
-            StartDateInput.value == '' || 
-            EndDateInput.value == '' 
-        ) { 
-            ErrorAvailability.textContent =  'Start date cannot be empty';
-        } else { 
-            ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
-            ErrorAvailability.style.color =  '#fff';
-            ErrorAvailability.style.padding =  '1em';
-            ErrorAvailability.textContent = 'Creating availability..';
-            AddAvailabilityButton.style.backgroundColor = '#1fb95e';
-            AddAvailabilityButton.textContent = '+ Processing..';
-            AddAvailabilityForm.setAttribute('method', 'POST');
-            AddAvailabilityForm.setAttribute('action', '/Add/Availability');
-            AddAvailabilityForm.submit();
-        }
+        ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
+        ErrorAvailability.style.color =  '#fff';
+        ErrorAvailability.style.padding =  '1em';
+        ErrorAvailability.textContent = 'Creating availability..';
+        AddAvailabilityButton.style.backgroundColor = '#1fb95e';
+        AddAvailabilityButton.textContent = '+ Processing..';
+        AddAvailabilityForm.setAttribute('method', 'POST');
+        AddAvailabilityForm.setAttribute('action', '/Add/Availability');
+        AddAvailabilityForm.submit();
+        // if (VesselInput.value.trim() == '') { 
+        //     ErrorAvailability.textContent =  'Vessel field cannot be empty';
+        // } else if (StatusInput.value.trim() == '') { 
+        //     ErrorAvailability.textContent =  'Status is required';
+        // } else if (DoneByInput.value.trim() == '') { 
+        //     ErrorAvailability.textContent =  'Done by field is required';
+        // } else if (AttachmentInput.value.trim() == '') { 
+        //     ErrorAvailability.textContent =  'Attachment is required';
+        // }else if (
+        //     StartTimeInput.value == '' || 
+        //     EndTimeInput.value == '' 
+        // ) { 
+        //     ErrorAvailability.textContent =  'Start time cannot be empty';
+        // } else if (StartDateInput.value > EndDateInput.value) { 
+        //     ErrorAvailability.textContent =  'Start date cannot be greater than End date';
+        // } else if (
+        //     StartDateInput.value == '' || 
+        //     EndDateInput.value == '' 
+        // ) { 
+        //     ErrorAvailability.textContent =  'Start date cannot be empty';
+        // } else { 
+        //     ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
+        //     ErrorAvailability.style.color =  '#fff';
+        //     ErrorAvailability.style.padding =  '1em';
+        //     ErrorAvailability.textContent = 'Creating availability..';
+        //     AddAvailabilityButton.style.backgroundColor = '#1fb95e';
+        //     AddAvailabilityButton.textContent = '+ Processing..';
+        //     AddAvailabilityForm.setAttribute('method', 'POST');
+        //     AddAvailabilityForm.setAttribute('action', '/Add/Availability');
+        //     AddAvailabilityForm.submit();
+        // }
     })
 }   
