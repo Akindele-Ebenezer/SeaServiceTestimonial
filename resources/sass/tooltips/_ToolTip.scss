@@ -1,0 +1,23 @@
+.tooltip-x { 
+    position: relative; 
+
+    &-div {
+        border-radius: 50%;
+        display: inline-block;
+        height: .5em;
+        width: .5em;
+    }
+
+    &-span {
+        background: #111;
+        border-radius: .4em;
+        color: #fff;
+        display: block;
+        font-size: x-small;
+        padding: .3em;
+        position: absolute;
+        top: -5em;
+        width: 11em;
+        z-index: 10;
+    }
+}

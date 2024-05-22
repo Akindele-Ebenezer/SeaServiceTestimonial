@@ -30,7 +30,7 @@
                             <label for="">Done By</label>
                             <input type="text" name="EditDoneBy">
                         </div> 
-                        <div class="input">
+                        <div class="input Hide">
                             <label for="">Attachment</label>
                             <input type="file" name="EditAttachment">
                         </div> 

@@ -12,7 +12,7 @@ class VesselAvailability extends Model
         'Vessel',
         'Status',
         'DoneBy',
-        'Attachment',
+        'Source',
         'StartTime',
         'EndTime',
         'StartDate',

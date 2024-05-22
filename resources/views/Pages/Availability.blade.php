@@ -30,9 +30,14 @@
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
     @endphp
-    <div class="list"> 
+    <div class="list tooltip-x"> 
+        @if ($EndDate === $StartDate)  
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'IDLE') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'IDLE' }} <br> {{ $Availability_STATUS_2->StartTime ?? 'IDLE' }} - {{ $Availability_STATUS_2->EndTime ?? 'IDLE' }}</span>
+        @else
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? 'IDLE') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'IDLE' }} <br> {{ $Availability_STATUS->StartTime ?? 'IDLE' }} - {{ $Availability_STATUS->EndTime ?? 'IDLE' }}</span>
+        @endif
         <div class="inner -x">  
-            <strong class="notification-wrapper">   
+            <strong class="notification-wrapper">  
                 <span class="status-x  
                     @if ($EndDate > $StartDate)
                         @switch($Availability_STATUS->Status ?? 'IDLE') 
@@ -288,18 +293,28 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('00:00') && $StartTime <= \Carbon\Carbon::parse('03:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime <= \Carbon\Carbon::parse('03:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('03:00'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime >= \Carbon\Carbon::parse('03:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('00:00') && $EndTime <= \Carbon\Carbon::parse('03:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime >= \Carbon\Carbon::parse('03:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif  
                                 @endforeach 
                             </div>
@@ -313,18 +328,28 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('03:00') && $StartTime <= \Carbon\Carbon::parse('06:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime <= \Carbon\Carbon::parse('06:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('06:00'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime >= \Carbon\Carbon::parse('06:00'))  
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('03:00') && $EndTime <= \Carbon\Carbon::parse('06:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime >= \Carbon\Carbon::parse('06:00'))  
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif   
                                 @endforeach 
                             </div>
@@ -338,18 +363,28 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('06:00') && $StartTime <= \Carbon\Carbon::parse('09:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime <= \Carbon\Carbon::parse('09:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('09:00'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime >= \Carbon\Carbon::parse('09:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('06:00') && $EndTime <= \Carbon\Carbon::parse('09:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime >= \Carbon\Carbon::parse('09:00'))  
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif   
                                 @endforeach
                             </div> 
@@ -363,16 +398,24 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('09:00') && $StartTime <= \Carbon\Carbon::parse('12:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime <= \Carbon\Carbon::parse('12:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime >= \Carbon\Carbon::parse('12:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('09:00') && $EndTime <= \Carbon\Carbon::parse('12:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime >= \Carbon\Carbon::parse('12:00'))  
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif   
                                 @endforeach
                             </div>  
@@ -386,18 +429,28 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('12:00') && $StartTime <= \Carbon\Carbon::parse('15:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime <= \Carbon\Carbon::parse('15:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('15:00'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime >= \Carbon\Carbon::parse('15:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('12:00') && $EndTime <= \Carbon\Carbon::parse('15:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime >= \Carbon\Carbon::parse('15:00'))  
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif   
                                 @endforeach
                             </div>   
@@ -411,18 +464,28 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('15:00') && $StartTime <= \Carbon\Carbon::parse('18:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime <= \Carbon\Carbon::parse('18:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('18:00'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime >= \Carbon\Carbon::parse('18:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('15:00') && $EndTime <= \Carbon\Carbon::parse('18:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime >= \Carbon\Carbon::parse('18:00'))  
-                                        <div class="{{ $Status }} status"></div>  
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>  
                                     @endif   
                                 @endforeach
                             </div>    
@@ -436,18 +499,28 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('18:00') && $StartTime <= \Carbon\Carbon::parse('21:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime <= \Carbon\Carbon::parse('21:00'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('21:00'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime >= \Carbon\Carbon::parse('21:00'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('18:00') && $EndTime <= \Carbon\Carbon::parse('21:00')) 
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime >= \Carbon\Carbon::parse('21:00'))  
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif   
                                 @endforeach
                             </div>     
@@ -461,16 +534,24 @@
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
                                     @if ($StartTime >= \Carbon\Carbon::parse('21:00') && $StartTime <= \Carbon\Carbon::parse('23:59'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('23:59') && $EndTime <= \Carbon\Carbon::parse('23:59'))  
                                         <div class=""></div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('23:59'))
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @elseif ($StartTime <= \Carbon\Carbon::parse('23:59') && $EndTime >= \Carbon\Carbon::parse('23:59'))  
-                                        <div class="{{ $Status }} status"></div>
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div>
                                     @endif 
                                     @if ($EndTime >= \Carbon\Carbon::parse('21:00') && $EndTime <= \Carbon\Carbon::parse('23:59')) 
-                                        <div class="{{ $Status }} status"></div> 
+                                        <div class="{{ $Status }} status tooltip-x">
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                        </div> 
                                     @endif   
                                 @endforeach
                             </div>      
@@ -488,11 +569,12 @@
                         <th>Vessel</th>
                         <th>Status</th>
                         <th>Done by</th>
-                        <th>Attachment</th>
+                        {{-- <th>Attachment</th> --}}
                         <th>Start date</th>
                         <th>Start time</th>
                         <th>End date</th>
                         <th>End time</th>
+                        <th>Source</th>
                         <th>#</th>
                     </tr>
                     @unless (count($VesselAvailability) > 0)
@@ -538,11 +620,12 @@
                         <td>{{ $Availabilty->Vessel }}</td>
                         <td>{{ $Availabilty->Status }}</td>
                         <td>{{ $Availabilty->DoneBy }}</td>
-                        <td>{{ $Availabilty->Attachment }}</td>
+                        {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ $Availabilty->StartTime }}</td>
                         <td>{{ $Availabilty->EndDate }}</td>
                         <td>{{ $Availabilty->EndTime }}</td>
+                        <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
                             <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 
                             <img class="DeleteAvailabilityButton" src="{{ asset('images/delete.png') }}" alt="">

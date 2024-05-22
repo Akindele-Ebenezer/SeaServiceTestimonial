@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('Status')->nullable();
             $table->string('DoneBy')->nullable();
             $table->string('Attachment')->nullable();
+            $table->string('Source')->nullable();
             $table->string('StartTime')->nullable();
             $table->string('EndTime')->nullable();
             $table->string('StartDate')->nullable();

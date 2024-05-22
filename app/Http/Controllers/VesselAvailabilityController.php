@@ -60,20 +60,8 @@ class VesselAvailabilityController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $Request)
-    {
-        VesselAvailability::insert([
-            'Vessel' => $Request->Vessel,
-            'Status' => $Request->Status,
-            'DoneBy' => $Request->DoneBy,
-            'Attachment' => $Request->Attachment,
-            'StartTime' => $Request->StartTime,
-            'EndTime' => $Request->EndTime,
-            'StartDate' => $Request->StartDate,
-            'EndDate' => $Request->EndDate,
-            'DateIn' => date('Y-m-d'),
-            'TimeIn' => date('H:i a'),
-        ]);
-        return redirect()->route('Availability');
+    { 
+        
     }
 
     /**

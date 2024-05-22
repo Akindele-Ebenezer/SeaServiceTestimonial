@@ -89,6 +89,34 @@
     opacity: 0;
   }
 }
+.idle {
+  background-color: #fff;
+}
+
+.docking {
+  background-color: #03AED2;
+}
+
+.operation {
+  background-color: #A87676;
+}
+
+.breakdown {
+  background-color: #da1e28;
+}
+
+.maintenance {
+  background-color: #52f781;
+}
+
+.inspection {
+  background-color: #ff832b;
+}
+
+.bunkery {
+  background-color: #8a3ffc;
+}
+
 .filter-list-wrapper,
 .filter-list-wrapper-2,
 .filter-list-wrapper-3,
@@ -1182,27 +1210,6 @@ main .left-navigation ul li .total {
 .availability {
   width: 20%;
 }
-.availability .docking {
-  background-color: #03AED2;
-}
-.availability .operation {
-  background-color: #A87676;
-}
-.availability .breakdown {
-  background-color: #da1e28;
-}
-.availability .maintenance {
-  background-color: #52f781;
-}
-.availability .inspection {
-  background-color: #ff832b;
-}
-.availability .bunkery {
-  background-color: #8a3ffc;
-}
-.availability .idle {
-  background-color: #fff;
-}
 .availability.dashboard {
   width: 70%;
 }
@@ -1525,27 +1532,6 @@ main .left-navigation ul li .total {
   height: 2em;
   width: 2em;
 }
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.docking, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.docking, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.docking {
-  background-color: #03AED2;
-}
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.operation, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.operation, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.operation {
-  background-color: #A87676;
-}
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.breakdown, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.breakdown, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.breakdown {
-  background-color: #da1e28;
-}
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.maintenance, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.maintenance, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.maintenance {
-  background-color: #52f781;
-}
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.inspection, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.inspection, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.inspection {
-  background-color: #ff832b;
-}
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.bunkery, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.bunkery, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.bunkery {
-  background-color: #8a3ffc;
-}
-.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span.idle, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span.idle, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span.idle {
-  background-color: #fff;
-}
 .dashboard-inner .board-1 .div.recent-workflow, .dashboard-inner .board-2 .div.recent-workflow, .dashboard-inner .board-3 .div.recent-workflow {
   overflow-y: scroll;
 }
@@ -1582,29 +1568,9 @@ main .left-navigation ul li .total {
   position: unset;
   width: 100%;
 }
-.dashboard-inner .board-1 .div.tracking table .idle, .dashboard-inner .board-2 .div.tracking table .idle, .dashboard-inner .board-3 .div.tracking table .idle {
-  background-color: #fff;
-}
-.dashboard-inner .board-1 .div.tracking table .docking, .dashboard-inner .board-2 .div.tracking table .docking, .dashboard-inner .board-3 .div.tracking table .docking {
-  background-color: #03AED2;
-}
-.dashboard-inner .board-1 .div.tracking table .operation, .dashboard-inner .board-2 .div.tracking table .operation, .dashboard-inner .board-3 .div.tracking table .operation {
-  background-color: #A87676;
-}
-.dashboard-inner .board-1 .div.tracking table .breakdown, .dashboard-inner .board-2 .div.tracking table .breakdown, .dashboard-inner .board-3 .div.tracking table .breakdown {
-  background-color: #da1e28;
-}
-.dashboard-inner .board-1 .div.tracking table .maintenance, .dashboard-inner .board-2 .div.tracking table .maintenance, .dashboard-inner .board-3 .div.tracking table .maintenance {
-  background-color: #52f781;
-}
-.dashboard-inner .board-1 .div.tracking table .inspection, .dashboard-inner .board-2 .div.tracking table .inspection, .dashboard-inner .board-3 .div.tracking table .inspection {
-  background-color: #ff832b;
-}
-.dashboard-inner .board-1 .div.tracking table .bunkery, .dashboard-inner .board-2 .div.tracking table .bunkery, .dashboard-inner .board-3 .div.tracking table .bunkery {
-  background-color: #8a3ffc;
-}
 .dashboard-inner .board-1 .div.tracking table .status, .dashboard-inner .board-2 .div.tracking table .status, .dashboard-inner .board-3 .div.tracking table .status {
   height: 1.3em;
+  position: relative;
   width: 100%;
 }
 .dashboard-inner .board-1 .div.tracking table td .flex, .dashboard-inner .board-2 .div.tracking table td .flex, .dashboard-inner .board-3 .div.tracking table td .flex {
@@ -1862,6 +1828,28 @@ main .left-navigation ul li .total {
 .history td {
   display: block;
   font-size: 0.8em;
+}
+
+.tooltip-x {
+  position: relative;
+}
+.tooltip-x-div {
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.5em;
+  width: 0.5em;
+}
+.tooltip-x-span {
+  background: #111;
+  border-radius: 0.4em;
+  color: #fff;
+  display: block;
+  font-size: x-small;
+  padding: 0.3em;
+  position: absolute;
+  top: -5em;
+  width: 11em;
+  z-index: 10;
 }
 
 /*# sourceMappingURL=Styles.css.map */

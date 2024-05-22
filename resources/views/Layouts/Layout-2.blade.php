@@ -157,6 +157,7 @@
         @yield('Content')
     </main>
     <script src="{{ asset('js/Links.js') }}"></script> 
+    <script src="{{ asset('js/Components/Tooltips/Tooltip.js') }}"></script> 
     <script src="{{ asset('js/Components/Filter/Filter.js') }}"></script> 
     <script src="{{ asset('js/Components/Filter/Filter-2.js') }}"></script>
     <script src="{{ asset('js/Components/Filter/Filter-3.js') }}"></script>

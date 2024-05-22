@@ -1,14 +1,6 @@
 .availability {
     width: 20%;
-                    
-    .docking { background-color: #03AED2; }
-    .operation { background-color: #A87676; }
-    .breakdown { background-color: #da1e28; }
-    .maintenance { background-color: #52f781; }
-    .inspection { background-color: #ff832b; }
-    .bunkery { background-color: #8a3ffc; }
-    .idle { background-color: #fff; }
-
+             
     &.dashboard {
         width: 70%;
     }

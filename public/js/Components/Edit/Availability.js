@@ -22,7 +22,6 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
             let EditVesselInput = document.querySelector('input[name=EditVessel]');
             let EditStatusInput = document.querySelector('select[name=EditStatus]');
             let EditDoneByInput = document.querySelector('input[name=EditDoneBy]');
-            let EditAttachmentInput = document.querySelector('input[name=EditAttachment]');
             let EditStartTimeInput = document.querySelector('input[name=EditStartTime]');
             let EditEndTimeInput = document.querySelector('input[name=EditEndTime]');
             let EditStartDateInput = document.querySelector('input[name=EditStartDate]');
@@ -34,8 +33,6 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 ErrorAvailability_Update.textContent =  'Status is required';
             } else if (EditDoneByInput.value.trim() == '') { 
                 ErrorAvailability_Update.textContent =  'Done by field is required';
-            } else if (EditAttachmentInput.value.trim() == '') { 
-                ErrorAvailability_Update.textContent =  'Attachment is required';
             } else if (
                 EditStartTimeInput.value == '' || 
                 EditEndTimeInput.value == '' 

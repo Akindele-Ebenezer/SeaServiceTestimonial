@@ -3,16 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\VesselAvailability;
 use App\Imports\PriorityImportClass; 
 use Maatwebsite\Excel\Writer; 
 use Maatwebsite\Excel\Facades\Excel;
 
 class PriorityExcelImportController extends Controller
 {
-    public function import(Request $request)
+    public function import(Request $Request)
     {
-        Excel::import(new PriorityImportClass, 
-        $request->file('Attachment')->store('files'));
-        return redirect()->back();
+        if (empty($_GET['Attachment'])) {
+            VesselAvailability::insert([
+                'Vessel' => $Request->Vessel,
+                'Status' => $Request->Status,
+                'DoneBy' => $Request->DoneBy, 
+                'Source' => 'SEA_SERVICE', 
+                'StartTime' => $Request->StartTime,
+                'EndTime' => $Request->EndTime,
+                'StartDate' => $Request->StartDate,
+                'EndDate' => $Request->EndDate,
+                'DateIn' => date('Y-m-d'),
+                'TimeIn' => date('H:i a'),
+            ]);
+            return redirect()->route('Availability');
+        } else {
+            VesselAvailability::where('Source', 'PRIORITY')->delete();
+            Excel::import(new PriorityImportClass, 
+            $Request->file('Attachment')->store('files'));
+            return redirect()->back();
+        }
     }
 }
