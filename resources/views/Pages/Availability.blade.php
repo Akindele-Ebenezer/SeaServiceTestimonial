@@ -29,12 +29,16 @@
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('h:i A'); 
+        $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('h:i A'); 
+        $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('h:i A'); 
+        $EndTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->EndTime ?? '00:00')->format('h:i A'); 
     @endphp
     <div class="list tooltip-x"> 
         @if ($EndDate === $StartDate)  
-            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'IDLE') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'IDLE' }} <br> {{ $Availability_STATUS_2->StartTime ?? 'IDLE' }} - {{ $Availability_STATUS_2->EndTime ?? 'IDLE' }}</span>
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'IDLE') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'IDLE' }} <br> {{ $StartTime_2 }} - {{ $EndTime_2 }}</span>
         @else
-            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? 'IDLE') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'IDLE' }} <br> {{ $Availability_STATUS->StartTime ?? 'IDLE' }} - {{ $Availability_STATUS->EndTime ?? 'IDLE' }}</span>
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'IDLE' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
         @endif
         <div class="inner -x">  
             <strong class="notification-wrapper">  

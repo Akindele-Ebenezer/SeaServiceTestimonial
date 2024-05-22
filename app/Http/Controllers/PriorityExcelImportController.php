@@ -25,6 +25,15 @@ class PriorityExcelImportController extends Controller
                 'DateIn' => date('Y-m-d'),
                 'TimeIn' => date('H:i a'),
             ]);
+            \DB::table('notifications')->insert([
+                'DateIn' => date('Y-m-d'),
+                'TimeIn' => date('H:i A'),
+                'UserId' => session()->get('USER_ID'),
+                'Vessel' => $Request->Vessel, 
+                'Action' => 'Create',
+                'Subject' => 'New Availability Alert!',
+                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . $Request->StartTime . ' to ' . $Request->EndTime . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+            ]);
             return redirect()->route('Availability');
         } else {
             VesselAvailability::where('Source', 'PRIORITY')->delete();

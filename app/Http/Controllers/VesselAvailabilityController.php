@@ -61,7 +61,7 @@ class VesselAvailabilityController extends Controller
      */
     public function store(Request $Request)
     { 
-        
+
     }
 
     /**
@@ -97,6 +97,15 @@ class VesselAvailabilityController extends Controller
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
         ]);
+        \DB::table('notifications')->insert([
+            'DateIn' => date('Y-m-d'),
+            'TimeIn' => date('H:i A'),
+            'UserId' => session()->get('USER_ID'),
+            'Vessel' => $Request->EditVessel, 
+            'Action' => 'Update',
+            'Subject' => 'Availability Update!',
+            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . $Request->EditStartTime . ' till ' . $Request->EditEndTime . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
+        ]);
         return redirect()->route('Availability');
     }
 
@@ -105,6 +114,16 @@ class VesselAvailabilityController extends Controller
      */
     public function destroy(VesselAvailability $VesselAvailability, $Id)
     { 
+        $Availability = VesselAvailability::where('id', $Id)->first();
+        \DB::table('notifications')->insert([
+        'DateIn' => date('Y-m-d'),
+        'TimeIn' => date('H:i A'),
+        'UserId' => session()->get('USER_ID'),
+        'Vessel' => $Availability->Vessel, 
+        'Action' => 'Delete',
+        'Subject' => 'Availability Removed!',
+        'Notification' => $Availability->DoneBy . ' has deleted the availability for ' . $Availability->Vessel . ' which was on ' . $Availability->Status . ' from ' . $Availability->StartTime . ' - ' . $Availability->EndTime . ' (' . $Availability->StartDate . ' - ' . $Availability->EndDate . ') . The tracking status is no longer available.',
+    ]);
         VesselAvailability::where('id', $Id)->delete();
         return redirect()->route('Availability');
     }
