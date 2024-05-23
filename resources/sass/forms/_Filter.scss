@@ -14,6 +14,10 @@
     width: 100%;
     z-index: 10;
 
+    &.wrap-x {
+        height: 19em;
+    }
+
     .empty {
         display: none;
         padding-block: 1em;

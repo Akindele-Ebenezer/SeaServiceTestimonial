@@ -182,12 +182,21 @@
                             font-weight: 500;
                             padding-block: .52em;
                             text-align: left;
+
+                            &:first-of-type {
+                                border-right: 1px solid lighten($color: $Color-2, $amount: 5);
+                            }
                         }
 
                         th {
                             background-color: darken($color: $Color-2, $amount: 3);
                             position: sticky;
-                            top: -0.5em; 
+                            top: -0.25em; 
+                            z-index: 2;
+
+                            &:first-of-type {
+                                background-color: lighten($color: $Color-2, $amount: 5);
+                            }
                         }
 
                         tr {

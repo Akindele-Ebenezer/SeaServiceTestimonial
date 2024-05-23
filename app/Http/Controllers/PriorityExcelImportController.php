@@ -32,13 +32,21 @@ class PriorityExcelImportController extends Controller
                 'Vessel' => $Request->Vessel, 
                 'Action' => 'Create',
                 'Subject' => 'New Availability Alert!',
-                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . $Request->StartTime . ' to ' . $Request->EndTime . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('h:i A', strtotime($Request->StartTime)) . ' to ' . date('h:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
             ]);
             return redirect()->route('Availability');
         } else {
-            VesselAvailability::where('Source', 'PRIORITY')->delete();
+            VesselAvailability::where('Source', 'PRIORITY')->whereNull('Status')->delete();
             Excel::import(new PriorityImportClass, 
             $Request->file('Attachment')->store('files'));
+            \DB::table('notifications')->insert([
+                'DateIn' => date('Y-m-d'),
+                'TimeIn' => date('H:i A'), 
+                'Vessel' => 'Vessels', 
+                'Action' => 'Create',
+                'Subject' => 'New Availability Alert!',
+                'Notification' =>  session()->get('FullName') . ' uploaded data from PRIORITY.',
+            ]); 
             return redirect()->back();
         }
     }

@@ -11,7 +11,7 @@ class VesselAvailabilityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $Request)
     {
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->get();
@@ -29,6 +29,37 @@ class VesselAvailabilityController extends Controller
         $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
         $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
         
+        if(isset($Request->FilterValue)) {
+            $VesselAvailability = VesselAvailability::where('Vessel', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('Status', 'LIKE', '%' . $Request->FilterValue . '%') 
+                                    ->paginate(14);
+            $Vessels = \DB::table('vessels_vessel_information')
+                                    ->select(['VesselName', 'ImoNumber', 'CallSign'])
+                                    ->where('VesselName', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('ImoNumber', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->get();
+                                    // $StartDate = date('Y-m-d');
+            return view('Pages.Availability', [ 
+                // 'StartDate' => $StartDate,
+                'Employees' => $Employees,
+                'Vessels' => $Vessels,
+                'Ranks' => $Ranks,
+                'Companies' => $Companies,
+                'VesselAvailability' => $VesselAvailability,
+                'Vessels' => $Vessels,
+                'NumberOfVessels' => $NumberOfVessels,
+                'STARTDATE' => $STARTDATE,
+                'NumberOfVessels_IDLE' => count($NumberOfVessels_BUNKERY),
+                'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
+                'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
+                'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),
+                'NumberOfVessels_OPERATION' => count($NumberOfVessels_OPERATION),
+                'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
+                'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING),
+            ]);
+        }
+
         return view('Pages.Availability', [
             'Employees' => $Employees,
             'Vessels' => $Vessels,
@@ -44,7 +75,7 @@ class VesselAvailabilityController extends Controller
             'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),
             'NumberOfVessels_OPERATION' => count($NumberOfVessels_OPERATION),
             'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
-            'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING,) 
+            'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING),
         ]);
     }
 
@@ -104,7 +135,7 @@ class VesselAvailabilityController extends Controller
             'Vessel' => $Request->EditVessel, 
             'Action' => 'Update',
             'Subject' => 'Availability Update!',
-            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . $Request->EditStartTime . ' till ' . $Request->EditEndTime . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
+            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . date('h:i A', strtotime($Request->EditStartTime)) . ' till ' . date('h:i A', strtotime($Request->EditEndTime)) . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
         ]);
         return redirect()->route('Availability');
     }
@@ -122,7 +153,7 @@ class VesselAvailabilityController extends Controller
         'Vessel' => $Availability->Vessel, 
         'Action' => 'Delete',
         'Subject' => 'Availability Removed!',
-        'Notification' => $Availability->DoneBy . ' has deleted the availability for ' . $Availability->Vessel . ' which was on ' . $Availability->Status . ' from ' . $Availability->StartTime . ' - ' . $Availability->EndTime . ' (' . $Availability->StartDate . ' - ' . $Availability->EndDate . ') . The tracking status is no longer available.',
+        'Notification' => $Availability->DoneBy . ' has deleted the availability for ' . $Availability->Vessel . ' which was on ' . $Availability->Status . ' from ' . date('h:i A', strtotime($Availability->StartTime)) . ' - ' . date('h:i A', strtotime($Availability->EndTime)) . ' (' . $Availability->StartDate . ' - ' . $Availability->EndDate . ') . The tracking status is no longer available.',
     ]);
         VesselAvailability::where('id', $Id)->delete();
         return redirect()->route('Availability');

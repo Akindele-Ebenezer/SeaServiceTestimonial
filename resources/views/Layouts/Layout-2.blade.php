@@ -69,8 +69,26 @@
             <ul>
                 <img src="{{ asset('images/dots.png') }}" alt="">
                 <h1>
-                    <img src="{{ asset('images/ltt-logo(1).png') }}" alt="">
-                    Sea Service Testimonial
+                    <img src="{{ asset('images/ltt-logo(1).png') }}" alt=""> 
+                    @switch(session()->get('Role'))
+                        @case('Super Admin')
+                        Sea Service Testimonial 
+                            @break
+                        @case('HR Admin')
+                        Sea Service Testimonial 
+                            @break
+                        @case('HR Users/Operators')
+                        Sea Service Testimonial 
+                            @break
+                        @case('MOC Admin')
+                        Vessel Availability 
+                            @break
+                        @case('MOC Operators')
+                        Vessel Availability 
+                            @break
+                        @default
+                            
+                    @endswitch
                 </h1> 
                 <form action="">
                     <input name="FilterValue" type="text" placeholder="Marine Search.." autocomplete="off" id="FILTER_Input2" onkeyup="filterFunction2()" name="Employees">

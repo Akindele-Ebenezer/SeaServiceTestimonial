@@ -626,9 +626,9 @@
                         <td>{{ $Availabilty->DoneBy }}</td>
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
-                        <td>{{ $Availabilty->StartTime }}</td>
+                        <td>{{ date('h:i A', strtotime($Availabilty->StartTime)) }}</td>
                         <td>{{ $Availabilty->EndDate }}</td>
-                        <td>{{ $Availabilty->EndTime }}</td>
+                        <td>{{ date('h:i A', strtotime($Availabilty->EndTime)) }}</td>
                         <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
                             <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 

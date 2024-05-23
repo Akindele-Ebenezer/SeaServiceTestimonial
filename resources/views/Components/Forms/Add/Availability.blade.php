@@ -13,7 +13,7 @@
                         <div class="input">
                             <label for="">Vessel</label> 
                             <input type="text" autocomplete="off" id="FILTER_Input4" onkeyup="filterFunction4()" name="Vessel">
-                            <div class="filter-list-wrapper-4">
+                            <div class="filter-list-wrapper-4 wrap-x">
                                 @foreach ($Vessels as $Vessel) 
                                 <div class="filter-value-4"> 
                                     <h1>{{ $Vessel->VesselName }}</h1>

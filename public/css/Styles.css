@@ -133,6 +133,12 @@
   width: 100%;
   z-index: 10;
 }
+.filter-list-wrapper.wrap-x,
+.filter-list-wrapper-2.wrap-x,
+.filter-list-wrapper-3.wrap-x,
+.filter-list-wrapper-4.wrap-x {
+  height: 19em;
+}
 .filter-list-wrapper .empty,
 .filter-list-wrapper-2 .empty,
 .filter-list-wrapper-3 .empty,
@@ -1582,10 +1588,17 @@ main .left-navigation ul li .total {
   padding-block: 0.52em;
   text-align: left;
 }
+.dashboard-inner .board-1 .div.tracking table td:first-of-type, .dashboard-inner .board-1 .div.tracking table th:first-of-type, .dashboard-inner .board-2 .div.tracking table td:first-of-type, .dashboard-inner .board-2 .div.tracking table th:first-of-type, .dashboard-inner .board-3 .div.tracking table td:first-of-type, .dashboard-inner .board-3 .div.tracking table th:first-of-type {
+  border-right: 1px solid #276e91;
+}
 .dashboard-inner .board-1 .div.tracking table th, .dashboard-inner .board-2 .div.tracking table th, .dashboard-inner .board-3 .div.tracking table th {
   background-color: #1f5671;
   position: sticky;
-  top: -0.5em;
+  top: -0.25em;
+  z-index: 2;
+}
+.dashboard-inner .board-1 .div.tracking table th:first-of-type, .dashboard-inner .board-2 .div.tracking table th:first-of-type, .dashboard-inner .board-3 .div.tracking table th:first-of-type {
+  background-color: #276e91;
 }
 .dashboard-inner .board-1 .div.tracking table tr, .dashboard-inner .board-2 .div.tracking table tr, .dashboard-inner .board-3 .div.tracking table tr {
   border-bottom: 1px solid #276e91;
@@ -1847,7 +1860,7 @@ main .left-navigation ul li .total {
   font-size: x-small;
   padding: 0.3em;
   position: absolute;
-  top: -5em;
+  top: -3em;
   width: 11em;
   z-index: 10;
 }
