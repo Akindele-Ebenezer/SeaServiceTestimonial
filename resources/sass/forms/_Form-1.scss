@@ -47,9 +47,11 @@
             padding-bottom: 0;
 
             .FilterByDateForm {
+                flex-wrap: wrap;
+                width: 20em;
+
                 .input {
                     align-items: unset;
-                    flex-direction: column; 
 
                     input {
                         margin-top: .5em;

@@ -1,13 +1,18 @@
 @extends('Layouts.Layout-2')
-@section('Title', 'Operations - SEA SERVICE TESTIMONIAL')
+@section('Title', 'Operations - ' . session()->get('APP_NAME'))
 
 @section('Content')
 @include('Components.Forms.Add.Testimonial')
+@include('Components.Forms.Add.Availability')
 <div class="operation-content table-1"> 
    <header>
       <div class="h-1">
          <h1>Operations</h1>
+         @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+         <button class="RecordAvailabilityButton">+ Record/Schedule Availability</button>
+         @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
          <button class="CreateTestimonialButton">+ Add Testimonial</button>
+         @endif
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search operations..">
@@ -175,4 +180,5 @@
    {{ $Operations->appends(request()->query())->links() }}
 </div>
 <script src="{{ asset('js/Components/Add/Testimonial.js') }}"></script>
+<script src="{{ asset('js/Components/Add/Availability.js') }}"></script>
 @endsection

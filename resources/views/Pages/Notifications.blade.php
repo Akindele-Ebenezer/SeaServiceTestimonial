@@ -1,5 +1,5 @@
 @extends('Layouts.Layout-2')
-@section('Title', 'Notifications - SEA SERVICE TESTIMONIAL')
+@section('Title', 'Notifications - ' . session()->get('APP_NAME'))
 
 @section('Content')
 <div class="vessel-content notifications"> 

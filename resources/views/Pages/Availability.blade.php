@@ -1,5 +1,5 @@
 @extends('Layouts.Layout-2')
-@section('Title', 'Availability - SEA SERVICE TESTIMONIAL')
+@section('Title', 'Availability - ' . session()->get('APP_NAME'))
 
 @section('Content')
 @include('Components.Forms.Add.Availability')
@@ -14,6 +14,33 @@
     @endunless
     @foreach ($Vessels as $Vessel)
     @php 
+        if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
+            $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName)
+                                    ->whereColumn('EndDate', '>', 'StartDate') 
+                                    ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                    ->whereNotNull('Status') 
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first(); 
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName) 
+                                    ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                    ->whereNotNull('Status') 
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first();
+        } elseif (!(empty($_GET['SpecificDay']))) {
+            $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName)
+                                    ->whereColumn('EndDate', '>', 'StartDate') 
+                                    ->where('StartDate', $_GET['SpecificDay'])
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first(); 
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName) 
+                                    ->where('StartDate', $_GET['SpecificDay'])
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first();
+        } else {
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                 ->where('Vessel', $Vessel->VesselName)
                                 ->whereColumn('EndDate', '>', 'StartDate') 
@@ -25,6 +52,7 @@
                                 ->where('StartDate', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
+        }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
@@ -199,7 +227,7 @@
                         <th>Breakdown</th> 
                     </tr>
                     <tr> 
-                        <td class="operation-responsive Hide">23</td>
+                        <td class="operation-responsive Hide">{{ $NumberOfVessels_OPERATION }}</td>
                         <td>{{ $NumberOfVessels_DOCKING }}</td>
                         <td>{{ $NumberOfVessels_BREAKDOWN }}</td>
                     </tr>
@@ -208,7 +236,17 @@
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg> SEA DREDGING
                     </span> 
-                    <span>TODAY</span>
+                    <span>
+                        @if ($STARTDATE == date('Y-m-d'))
+                        TODAY
+                        @elseif ($STARTDATE == date('Y-m-d', strtotime('yesterday')))
+                        YESTERDAY 
+                        @elseif (isset($_GET['SpecificDay']) AND !(empty($_GET['SpecificDay'])))
+                        {{ $_GET['SpecificDay'] }} 
+                        @elseif (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay']))
+                        {{ $_GET['FromDate_FILTERBYDATE'] }} to {{ $_GET['EndDate_FILTERBYDATE'] }}
+                        @endif 
+                    </span>
                 </h2>
             </div> 
             <div class="div">
@@ -284,40 +322,101 @@
                     @foreach ($Vessels as $Vessel)
                     @php 
                         $Vessel_ = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->first();
-                        $Vessel_STARTIME = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('StartDate', $STARTDATE)->orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(30);
+                        if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
+                            $Vessel_STARTIME = \DB::table('vessel_availabilities') 
+                                                ->where('Vessel', $Vessel->VesselName)
+                                                ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                                ->orderBy('DateIn', 'DESC')
+                                                ->orderBy('TimeIn', 'DESC')
+                                                ->get();
+                        } elseif (!(empty($_GET['SpecificDay']))) {
+                            $Vessel_STARTIME = \DB::table('vessel_availabilities') 
+                                                ->where('Vessel', $Vessel->VesselName)
+                                                ->where('StartDate', $_GET['SpecificDay'])
+                                                ->orderBy('DateIn', 'DESC')
+                                                ->orderBy('TimeIn', 'DESC')
+                                                ->get();
+                        } else {
+                            $Vessel_STARTIME = \DB::table('vessel_availabilities') 
+                                            ->where('Vessel', $Vessel->VesselName)
+                                            ->where('StartDate', $STARTDATE)
+                                            ->orderBy('DateIn', 'DESC')
+                                            ->orderBy('TimeIn', 'DESC')
+                                            ->paginate(30);
+                        }
                     @endphp
                     <tr>
                         <td>{{ $Vessel_->Vessel ?? '-' }}</td>
                         <td> 
-                            <div class="flex"> 
-                                @foreach ($Vessel_STARTIME as $Vessel)   
+                            <div class="flex">  
+                                @foreach ($Vessel_STARTIME as $Vessel)    
                                     @php 
                                         $StartTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
-                                    @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('00:00') && $StartTime <= \Carbon\Carbon::parse('03:00'))  
+                                    @endphp    
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '00:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                         </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime <= \Carbon\Carbon::parse('03:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('03:00'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime >= \Carbon\Carbon::parse('03:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '03:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('00:00') && $EndTime <= \Carbon\Carbon::parse('03:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '00:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('03:00') && $EndTime >= \Carbon\Carbon::parse('03:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '03:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '03:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif  
                                 @endforeach 
@@ -331,28 +430,68 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('03:00') && $StartTime <= \Carbon\Carbon::parse('06:00'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '03:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime <= \Carbon\Carbon::parse('06:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('06:00'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime >= \Carbon\Carbon::parse('06:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '06:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('03:00') && $EndTime <= \Carbon\Carbon::parse('06:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '03:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('06:00') && $EndTime >= \Carbon\Carbon::parse('06:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '06:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '06:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif   
                                 @endforeach 
@@ -366,28 +505,68 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('06:00') && $StartTime <= \Carbon\Carbon::parse('09:00'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '06:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime <= \Carbon\Carbon::parse('09:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('09:00'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime >= \Carbon\Carbon::parse('09:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '09:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('06:00') && $EndTime <= \Carbon\Carbon::parse('09:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '06:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('09:00') && $EndTime >= \Carbon\Carbon::parse('09:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '09:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '09:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif   
                                 @endforeach
@@ -401,24 +580,56 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('09:00') && $StartTime <= \Carbon\Carbon::parse('12:00'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '09:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '12:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime <= \Carbon\Carbon::parse('12:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '12:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '12:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime >= \Carbon\Carbon::parse('12:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '12:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '12:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('09:00') && $EndTime <= \Carbon\Carbon::parse('12:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '09:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '12:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('12:00') && $EndTime >= \Carbon\Carbon::parse('12:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '12:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '12:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif   
                                 @endforeach
@@ -432,28 +643,68 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('12:00') && $StartTime <= \Carbon\Carbon::parse('15:00'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '12:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime <= \Carbon\Carbon::parse('15:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('15:00'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime >= \Carbon\Carbon::parse('15:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '15:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('12:00') && $EndTime <= \Carbon\Carbon::parse('15:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '12:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('15:00') && $EndTime >= \Carbon\Carbon::parse('15:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '15:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '15:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif   
                                 @endforeach
@@ -467,28 +718,68 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('15:00') && $StartTime <= \Carbon\Carbon::parse('18:00'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '15:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime <= \Carbon\Carbon::parse('18:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('18:00'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime >= \Carbon\Carbon::parse('18:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '18:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('15:00') && $EndTime <= \Carbon\Carbon::parse('18:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '15:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('18:00') && $EndTime >= \Carbon\Carbon::parse('18:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '18:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '18:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>  
                                     @endif   
                                 @endforeach
@@ -502,28 +793,68 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('18:00') && $StartTime <= \Carbon\Carbon::parse('21:00'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '18:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime <= \Carbon\Carbon::parse('21:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('21:00'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime >= \Carbon\Carbon::parse('21:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '21:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('18:00') && $EndTime <= \Carbon\Carbon::parse('21:00')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '18:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('21:00') && $EndTime >= \Carbon\Carbon::parse('21:00'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '21:00') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '21:00'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif   
                                 @endforeach
@@ -537,24 +868,56 @@
                                         $EndTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                                         $Status = strtolower($Vessel->Status);
                                     @endphp   
-                                    @if ($StartTime >= \Carbon\Carbon::parse('21:00') && $StartTime <= \Carbon\Carbon::parse('23:59'))  
+                                    @if ($StartTime >= \Carbon\Carbon::parse($Vessel->StartDate . '21:00') && $StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '23:59'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('23:59') && $EndTime <= \Carbon\Carbon::parse('23:59'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '23:59') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '23:59'))  
                                         <div class=""></div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('23:59'))
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '23:59'))
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
-                                    @elseif ($StartTime <= \Carbon\Carbon::parse('23:59') && $EndTime >= \Carbon\Carbon::parse('23:59'))  
+                                    @elseif ($StartTime <= \Carbon\Carbon::parse($Vessel->StartDate . '23:59') && $EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '23:59'))  
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div>
                                     @endif 
-                                    @if ($EndTime >= \Carbon\Carbon::parse('21:00') && $EndTime <= \Carbon\Carbon::parse('23:59')) 
+                                    @if ($EndTime >= \Carbon\Carbon::parse($Vessel->StartDate . '21:00') && $EndTime <= \Carbon\Carbon::parse($Vessel->StartDate . '23:59')) 
                                         <div class="{{ $Status }} status tooltip-x">
-                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}</span>
+                                            <span class="Hide tooltip-x-span"><div class="{{ $Status }} tooltip-x-div"></div> On {{ $Status }} <br> {{ $StartTime->format('h:i A') }} - {{ $EndTime->format('h:i A') }}
+                                            @if (isset($_GET['FromDate_FILTERBYDATE']))
+                                                <br>
+                                                @ {{ $Vessel->StartDate }} 
+                                                @if ($Vessel->EndDate > $Vessel->StartDate)
+                                                    <br> &nbsp;&nbsp;&nbsp; {{ $Vessel->EndDate }}
+                                                @endif
+                                            @endif
+                                        </span>
                                         </div> 
                                     @endif   
                                 @endforeach

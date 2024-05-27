@@ -9,17 +9,16 @@ main {
         background-color: #fff;
         border-right: 1px solid lighten($color: $Color-2, $amount: 55);
         overflow-y: scroll;
+        scrollbar-width: none;
         padding: 1.5em;
         padding-bottom: 9em;
         width: 20em;
 
         &-x {
-            background: $Color-2;
-            display: flex;
-            justify-content: center;
+            background: $Color-2; 
             margin-right: unset;
             overflow: hidden;
-            padding: 0.1em;
+            padding: 0em;
             padding-top: 1em;
             width: 5em;
 
@@ -148,8 +147,9 @@ main {
                 }
 
                 &.active-x {
-                    background: lighten($color: $Color-2, $amount: 20) !important;
-                    border-radius: 0.7em;
+                    background: lighten($color: $Color-2, $amount: 20) !important; 
+                    border-left: 8px solid darken($color: $Color-4, $amount: 27);
+                    justify-content: center;
 
                     svg {
                         fill: $Color-2 !important;
@@ -157,8 +157,8 @@ main {
                 }
 
                 &:hover {
-                    background: lighten($color: $Color-2, $amount: 20);
-                    border-radius: 0.7em;
+                    background: lighten($color: $Color-2, $amount: 20); 
+                    border-left: 8px solid darken($color: $Color-4, $amount: 27);
                     color: #fff;
                     cursor: pointer;
                     font-weight: bold;

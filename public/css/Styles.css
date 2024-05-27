@@ -330,9 +330,12 @@
 .form-1.FilterByDate .inner {
   padding-bottom: 0;
 }
+.form-1.FilterByDate .inner .FilterByDateForm {
+  flex-wrap: wrap;
+  width: 20em;
+}
 .form-1.FilterByDate .inner .FilterByDateForm .input {
   align-items: unset;
-  flex-direction: column;
 }
 .form-1.FilterByDate .inner .FilterByDateForm .input input {
   margin-top: 0.5em;
@@ -765,17 +768,16 @@ main .left-navigation {
   background-color: #fff;
   border-right: 1px solid #c8e3f0;
   overflow-y: scroll;
+  scrollbar-width: none;
   padding: 1.5em;
   padding-bottom: 9em;
   width: 20em;
 }
 main .left-navigation-x {
   background: #225f7d;
-  display: flex;
-  justify-content: center;
   margin-right: unset;
   overflow: hidden;
-  padding: 0.1em;
+  padding: 0em;
   padding-top: 1em;
   width: 5em;
 }
@@ -879,14 +881,15 @@ main .left-navigation ul li.active svg {
 }
 main .left-navigation ul li.active-x {
   background: #3b9bca !important;
-  border-radius: 0.7em;
+  border-left: 8px solid #ff4444;
+  justify-content: center;
 }
 main .left-navigation ul li.active-x svg {
   fill: #225f7d !important;
 }
 main .left-navigation ul li:hover {
   background: #3b9bca;
-  border-radius: 0.7em;
+  border-left: 8px solid #ff4444;
   color: #fff;
   cursor: pointer;
   font-weight: bold;
@@ -1861,6 +1864,7 @@ main .left-navigation ul li .total {
   padding: 0.3em;
   position: absolute;
   top: -3em;
+  translate: 2em;
   width: 11em;
   z-index: 10;
 }

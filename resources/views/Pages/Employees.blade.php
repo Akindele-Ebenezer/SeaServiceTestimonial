@@ -1,5 +1,5 @@
 @extends('Layouts.Layout-2')
-@section('Title', 'Employees - SEA SERVICE TESTIMONIAL')
+@section('Title', 'Employees - ' . session()->get('APP_NAME'))
 
 @section('Content')
 @include('Components.Forms.Add.Employee')

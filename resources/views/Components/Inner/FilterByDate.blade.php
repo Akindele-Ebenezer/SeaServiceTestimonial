@@ -11,7 +11,7 @@
                     <section>
                         <div class="input">
                             <label for="">From date</label>
-                            <input type="date" name="FromDate">
+                            <input type="date" name="FromDate_FILTERBYDATE">
                         </div>  
                     </section> 
                 </div>
@@ -20,7 +20,15 @@
                 <section>
                     <div class="input">
                         <label for="">End date</label>
-                        <input type="date" name="EndDate">
+                        <input type="date" name="EndDate_FILTERBYDATE">
+                    </div>  
+                </section> 
+            </div>
+            <div class="inner-2">  
+                <section>
+                    <div class="input">
+                        <label for="">Specific day</label>
+                        <input type="date" name="SpecificDay">
                     </div>  
                 </section> 
             </div>

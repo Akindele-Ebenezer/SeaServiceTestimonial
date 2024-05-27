@@ -1,5 +1,5 @@
 @extends('Layouts.Layout-2')
-@section('Title', 'Engineers - SEA SERVICE TESTIMONIAL')
+@section('Title', 'Engineers - ' . session()->get('APP_NAME'))
 
 @section('Content')
 @include('Components.Forms.Add.Testimonial')
@@ -7,7 +7,11 @@
    <header>
       <div class="h-1">
          <h1>Engineers</h1>
+         @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+         <button class="availability-route">+ Record/Schedule Availability</button>
+         @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
          <button class="CreateTestimonialButton">+ Add Testimonial</button>
+         @endif 
       </div>
       <div class="h-2">
          <input type="text" placeholder="Search engineers..">
