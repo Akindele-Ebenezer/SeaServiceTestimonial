@@ -13,7 +13,9 @@ if (window.location.pathname === '/Availability' || window.location.pathname ===
             CancelButton_Availability.addEventListener('click', () => {
                 AddAvailabilityModal.style.display = 'none';
                 NoDataSelectedModal_Availability.style.display = 'flex';
-                NoDataSelectedModal_HR.style.display = 'flex'; 
+                if (NoDataSelectedModal_HR !== null) {
+                    NoDataSelectedModal_HR.style.display = 'flex'; 
+                }
                 if (window.location.pathname === '/Availability' || window.location.pathname === '/Vessels') { 
                     AddAvailabilityWrapper.style.height = 'unset'; 
                 }
@@ -31,16 +33,20 @@ if (CreateAvailabilityButton !== null) {
         AddAvailabilityModal.style.display = 'flex';  
         if (window.location.pathname === '/Availability' || window.location.pathname === '/Vessels') { 
             NoDataSelectedModal_Availability.style.display = 'none'; 
-            NoDataSelectedModal_HR.style.display = 'none';  
             ContentData_Availability.style.backgroundColor = '#225f7d'; 
         }
-    
+        if (NoDataSelectedModal_HR !== null) {
+            NoDataSelectedModal_HR.style.display = 'none';  
+        }
+        
         CancelButton_Availability.addEventListener('click', () => {
             AddAvailabilityModal.style.display = 'none';
             if (window.location.pathname === '/Availability' || window.location.pathname === '/Vessels') { 
                 NoDataSelectedModal_Availability.style.display = 'flex';
-                NoDataSelectedModal_HR.style.display = 'flex'; 
                 AddAvailabilityWrapper.style.height = 'unset'; 
+            }
+            if (NoDataSelectedModal_HR !== null) {
+                NoDataSelectedModal_HR.style.display = 'flex';   
             }
         }) 
     }); 

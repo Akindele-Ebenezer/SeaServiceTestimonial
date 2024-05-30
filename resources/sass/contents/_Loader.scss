@@ -9,6 +9,34 @@
     width: 100vw;
     z-index: 300;
 
+    &-2 {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+
+        div {
+            &:last-of-type {
+                border-left: 1px solid #aaa;
+                padding-left: 1em;
+            }
+
+            h3 {
+                color: #777;
+                font-weight: 300;
+            }
+
+            p {
+                color: red;
+                font-size: xx-large;
+                font-weight: 800;
+            } 
+        }
+        .x {
+            transition-duration: 2s;
+        }
+    }
+
     img {
         border-radius: 15em;
         height: 15em;

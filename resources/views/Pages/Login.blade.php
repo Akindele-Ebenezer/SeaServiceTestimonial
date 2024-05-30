@@ -8,11 +8,21 @@
 @endif
 
 @section('Content')
-    <div class="Login" style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover;">
+    <div class="loader-2">
+        <div class="x">
+            <img src="{{ asset('images/loader-2.gif') }}" alt="">
+        </div>
+        <div>
+            <p></p>
+            <h2>MARINE SERVICE</h2>
+            <h3>software solutions</h3>
+        </div>
+    </div>
+    <div class="Login" style="background-image: url('@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com'){{ asset('images/bg-2.jpg') }}@elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com'){{ asset('images/bg.jpg') }}@endif'); background-size: cover; background-position: center">
         <div class="inner"> 
             <form class="LoginForm" action="{{ route('Auth') }}">
                 @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
-                <h1>VESSEL <br> AVAILABILITY</h1>
+                <h1 style="color: #225f7d">VESSEL <br> AVAILABILITY</h1>
                 @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
                 <h1>SEA SERVICE <br> TESTIMONIAL</h1>
                 @endif

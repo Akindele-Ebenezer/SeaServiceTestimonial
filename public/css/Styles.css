@@ -279,6 +279,28 @@
   width: 100vw;
   z-index: 300;
 }
+.loader-2 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+.loader-2 div:last-of-type {
+  border-left: 1px solid #aaa;
+  padding-left: 1em;
+}
+.loader-2 div h3 {
+  color: #777;
+  font-weight: 300;
+}
+.loader-2 div p {
+  color: red;
+  font-size: xx-large;
+  font-weight: 800;
+}
+.loader-2 .x {
+  transition-duration: 2s;
+}
 .loader img {
   border-radius: 15em;
   height: 15em;
@@ -333,9 +355,6 @@
 .form-1.FilterByDate .inner .FilterByDateForm {
   flex-wrap: wrap;
   width: 20em;
-}
-.form-1.FilterByDate .inner .FilterByDateForm .input {
-  align-items: unset;
 }
 .form-1.FilterByDate .inner .FilterByDateForm .input input {
   margin-top: 0.5em;
@@ -686,6 +705,7 @@ nav[role] span svg {
 .Login {
   align-items: center;
   display: flex;
+  display: none;
   height: 100vh;
   justify-content: center;
 }
@@ -789,6 +809,13 @@ main .left-navigation-x ul h1 {
   margin-bottom: 2.5em;
   text-align: center;
 }
+main .left-navigation-x ul li {
+  border-radius: 0 !important;
+  justify-content: center;
+}
+main .left-navigation-x ul li:hover {
+  border-left: 8px solid #ff6868;
+}
 main .left-navigation-x ul li:hover svg {
   fill: #225f7d !important;
 }
@@ -863,6 +890,7 @@ main .left-navigation ul input::placeholder {
 }
 main .left-navigation ul li {
   align-items: center;
+  border-radius: 0.7em;
   color: #225f7d;
   display: flex;
   margin-bottom: 0.5em;
@@ -872,7 +900,6 @@ main .left-navigation ul li {
 }
 main .left-navigation ul li.active {
   background: #225f7d;
-  border-radius: 0.7em;
   color: #fff;
   font-weight: bold;
 }
@@ -881,7 +908,7 @@ main .left-navigation ul li.active svg {
 }
 main .left-navigation ul li.active-x {
   background: #3b9bca !important;
-  border-left: 8px solid #ff4444;
+  border-left: 8px solid #ff6868;
   justify-content: center;
 }
 main .left-navigation ul li.active-x svg {
@@ -889,7 +916,6 @@ main .left-navigation ul li.active-x svg {
 }
 main .left-navigation ul li:hover {
   background: #3b9bca;
-  border-left: 8px solid #ff4444;
   color: #fff;
   cursor: pointer;
   font-weight: bold;
@@ -1270,7 +1296,6 @@ main .left-navigation ul li .total {
     width: 1em;
   }
   .availability.dashboard .board-1 .div .status {
-    height: 1em !important;
     width: 100% !important;
   }
   .availability.dashboard .board-1 .div table tr .operation-responsive {
@@ -1444,6 +1469,9 @@ main .left-navigation ul li .total {
 .dashboard {
   background-color: #1a4a61;
 }
+.dashboard-inner .board-1:first-of-type table td, .dashboard-inner .board-1:first-of-type table th {
+  padding-inline: 0.75em;
+}
 .dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
   background-color: #225f7d;
   color: #fff;
@@ -1565,7 +1593,7 @@ main .left-navigation ul li .total {
   right: 0.5em;
 }
 .dashboard-inner .board-1 .div table td, .dashboard-inner .board-1 .div table th, .dashboard-inner .board-2 .div table td, .dashboard-inner .board-2 .div table th, .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
-  padding-inline: 0.5em;
+  border-right: 1px solid #225f7d;
 }
 .dashboard-inner .board-1 .div.tracking, .dashboard-inner .board-2 .div.tracking, .dashboard-inner .board-3 .div.tracking {
   padding-top: 0;

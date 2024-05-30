@@ -1,6 +1,14 @@
 .dashboard {  
     background-color: darken($color: $Color-2, $amount: 7);
     &-inner {
+        .board-1:first-of-type {
+            table {
+                td, th {
+                    padding-inline: .75em;
+                }
+            }
+        }
+
         .board-1, .board-2, .board-3 {
             background-color: $Color-2;
             color: #fff;
@@ -150,7 +158,8 @@
                     right: .5em;
 
                     td, th {
-                        padding-inline: .5em;
+                        border-right: 1px solid $Color-2;
+                        // padding-inline: .5em;
                     }
                 }
 
