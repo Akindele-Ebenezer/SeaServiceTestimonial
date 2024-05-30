@@ -10,7 +10,11 @@
 @section('Content')
     <div class="loader-2">
         <div class="x">
+            @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
             <img src="{{ asset('images/loader-2.gif') }}" alt="">
+            @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
+            <img src="{{ asset('images/loader-3.gif') }}" alt="">
+            @endif
         </div>
         <div>
             <p></p>
