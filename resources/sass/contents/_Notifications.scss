@@ -157,6 +157,17 @@
                     top: 10em;
                     right: .5em;
 
+                    &.user-logins {
+                        border-collapse: collapse;
+                        text-align: left;
+                        position: unset;
+                        width: 100%;
+
+                        tr {
+                            border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
+                        }
+                    }
+
                     td, th {
                         border-right: 1px solid $Color-2;
                         // padding-inline: .5em;
@@ -174,8 +185,7 @@
                         width: 100%;
 
                         .status {
-                            height: 1.3em;
-                            // margin-right: .2em; 
+                            height: 2em; 
                             position: relative;
                             width: 100%;   
                         }

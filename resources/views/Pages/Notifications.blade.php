@@ -85,28 +85,41 @@
                 </div>
             </div>
             <div class="div">
-                <h1>Working Period 
-                    <span>
-                        <select name="">
-                            <option value="2024">2024</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                        </select>
-                        <button>GO</button>
-                    </span>
-                </h1>
-                <h2 class="sub-heading">Leave days</h2>
-                <div class="canvas">  
-                    <div class="inner-x">
-                        <span>1 month</span><span style="height: 1em; width: 20%; background: rgb(71, 125, 58)"></span>
-                    </div>
-                    <div class="inner-x">
-                        <span>3 months</span><span style="height: 1em; width: 75%; background: rgb(75, 54, 121)"></span>
-                    </div>
-                    <div class="inner-x">
-                        <span>6 months</span><span style="height: 1em; width: 55%; background: rgb(51, 117, 137)"></span>
-                    </div>
-                </div>
+                <h1>User Logins  </h1>
+                <table class="user-logins">
+                    <tr> 
+                        <th>Name</th>
+                        <th>Time</th> 
+                        <th>Date</th> 
+                        <th>Action</th> 
+                    </tr>
+                @if (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
+                    @foreach (\DB::table('user_logins')->where('Source', 'SEA_SERVICE_TESTIMONIAL')->paginate(30) as $User)
+                    <tr> 
+                        <td>{{ $User->Name }}</td>
+                        <td>{{ $User->Time }}</td> 
+                        <td>{{ $User->Date }}</td> 
+                        <td>{{ $User->Action }}</td> 
+                    </tr>
+                    @endforeach
+                @endif
+                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+                    @foreach (\DB::table('user_logins')->where('Source', 'VESSEL_TRACKER')->paginate(30) as $User)
+                    <tr> 
+                        <td>{{ $User->Name }}</td>
+                        <td>{{ $User->Time }}</td> 
+                        <td>{{ $User->Date }}</td> 
+                        <td>{{ $User->Action }}</td> 
+                    </tr>
+                    @endforeach
+                @endif
+                </table>
+                @if (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
+                {{ \DB::table('user_logins')->where('Source', 'SEA_SERVICE_TESTIMONIAL')->paginate(30)->appends(request()->query())->links() }}
+                @endif
+                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+                {{ \DB::table('user_logins')->where('Source', 'VESSEL_TRACKER')->paginate(30)->appends(request()->query())->links() }}
+                @endif
             </div>
         </div>
         <div class="board-3">

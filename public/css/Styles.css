@@ -1592,6 +1592,15 @@ main .left-navigation ul li .total {
   top: 10em;
   right: 0.5em;
 }
+.dashboard-inner .board-1 .div table.user-logins, .dashboard-inner .board-2 .div table.user-logins, .dashboard-inner .board-3 .div table.user-logins {
+  border-collapse: collapse;
+  text-align: left;
+  position: unset;
+  width: 100%;
+}
+.dashboard-inner .board-1 .div table.user-logins tr, .dashboard-inner .board-2 .div table.user-logins tr, .dashboard-inner .board-3 .div table.user-logins tr {
+  border-bottom: 1px solid #276e91;
+}
 .dashboard-inner .board-1 .div table td, .dashboard-inner .board-1 .div table th, .dashboard-inner .board-2 .div table td, .dashboard-inner .board-2 .div table th, .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
   border-right: 1px solid #225f7d;
 }
@@ -1606,7 +1615,7 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .dashboard-inner .board-1 .div.tracking table .status, .dashboard-inner .board-2 .div.tracking table .status, .dashboard-inner .board-3 .div.tracking table .status {
-  height: 1.3em;
+  height: 2em;
   position: relative;
   width: 100%;
 }
