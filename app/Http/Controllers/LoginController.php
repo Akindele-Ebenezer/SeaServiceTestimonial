@@ -34,6 +34,7 @@ class LoginController extends Controller
                         'Action' => 'LOGGED IN', 
                         'Source' => 'SEA_SERVICE_TESTIMONIAL', 
                     ]);
+                    return redirect('/Vessels');
                 }
                 if(parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com') {
                     \DB::table('user_logins')->insert([
@@ -43,8 +44,8 @@ class LoginController extends Controller
                         'Action' => 'LOGGED IN', 
                         'Source' => 'VESSEL_TRACKER', 
                     ]);
+                    return redirect('/Availability');
                 }
-                return redirect('/Vessels');
             }  
         }                     
         session()->put('Error', 'Incorrect email or password..');
