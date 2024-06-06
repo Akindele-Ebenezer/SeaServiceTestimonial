@@ -1482,6 +1482,7 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-1 .div, .dashboard-inner .board-2 .div, .dashboard-inner .board-3 .div {
   background-color: #1f5671;
   height: 20em;
+  overflow-y: scroll;
   padding: 2em;
   position: relative;
   width: 32%;
@@ -1600,6 +1601,9 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-1 .div table.user-logins tr, .dashboard-inner .board-2 .div table.user-logins tr, .dashboard-inner .board-3 .div table.user-logins tr {
   border-bottom: 1px solid #276e91;
+}
+.dashboard-inner .board-1 .div table.user-logins tr td, .dashboard-inner .board-1 .div table.user-logins tr th, .dashboard-inner .board-2 .div table.user-logins tr td, .dashboard-inner .board-2 .div table.user-logins tr th, .dashboard-inner .board-3 .div table.user-logins tr td, .dashboard-inner .board-3 .div table.user-logins tr th {
+  padding: 0.5em;
 }
 .dashboard-inner .board-1 .div table td, .dashboard-inner .board-1 .div table th, .dashboard-inner .board-2 .div table td, .dashboard-inner .board-2 .div table th, .dashboard-inner .board-3 .div table td, .dashboard-inner .board-3 .div table th {
   border-right: 1px solid #225f7d;

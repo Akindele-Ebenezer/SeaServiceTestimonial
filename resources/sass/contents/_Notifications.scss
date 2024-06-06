@@ -19,6 +19,7 @@
             .div { 
                 background-color: darken($color: $Color-2, $amount: 3);
                 height: 20em;
+                overflow-y: scroll;
                 padding: 2em;
                 position: relative;
                 width: 32%;
@@ -165,6 +166,10 @@
 
                         tr {
                             border-bottom: 1px solid lighten($color: $Color-2, $amount: 5);
+
+                            td, th {
+                                padding: .5em;
+                            }
                         }
                     }
 
