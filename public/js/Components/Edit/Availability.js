@@ -20,35 +20,33 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         let EditStartTimeInput = document.querySelector('input[name=EditStartTime]');
         let EditEndTimeInput = document.querySelector('input[name=EditEndTime]');
         EditStartTimeInput.addEventListener('keyup', () => {
-            if (EditStartTimeInput.value.length == 2) { 
-                EditStartTimeInput.value += ':';  
-                if (EditStartTimeInput.value.substring(0, 2) > 24) { 
-                    EditStartTimeInput.value = '';  
-                }
-            } 
-            if (EditStartTimeInput.value.length == 5) { 
-                EditStartTimeInput.value += ' '; 
-                if (EditStartTimeInput.value.substring(0, 2) > 12) { 
-                    EditStartTimeInput.value += ' PM';  
-                } else {
-                    EditStartTimeInput.value += ' AM';  
+            if (!isNaN(parseFloat(EditStartTimeInput.value))) {
+                if (EditStartTimeInput.value.length == 2) { 
+                    EditStartTimeInput.value += ':';  
+                    if (EditStartTimeInput.value.substring(0, 2) > 24) { 
+                        EditStartTimeInput.value = '';  
+                    }
                 } 
+                if (EditStartTimeInput.value.length == 5) { 
+                    EditStartTimeInput.value += ' HRS';  
+                }
+            } else {
+                EditStartTimeInput.value = '';  
             }
         });
         EditEndTimeInput.addEventListener('keyup', () => {
-            if (EditEndTimeInput.value.length == 2) { 
-                EditEndTimeInput.value += ':';
-                if (EditEndTimeInput.value.substring(0, 2) > 24) {
-                    EditEndTimeInput.value = '';  
-                }  
-            } 
-            if (EditEndTimeInput.value.length == 5) { 
-                EditEndTimeInput.value += ' '; 
-                if (EditEndTimeInput.value.substring(0, 2) > 12) { 
-                    EditEndTimeInput.value += ' PM';  
-                } else {
-                    EditEndTimeInput.value += ' AM';  
+            if (!isNaN(parseFloat(EditStartTimeInput.value))) {
+                if (EditEndTimeInput.value.length == 2) { 
+                    EditEndTimeInput.value += ':';
+                    if (EditEndTimeInput.value.substring(0, 2) > 24) {
+                        EditEndTimeInput.value = '';  
+                    }  
                 } 
+                if (EditEndTimeInput.value.length == 5) { 
+                    EditEndTimeInput.value += ' HRS';  
+                }
+            } else {
+                EditEndTimeInput.value = '';  
             }
         });
 
@@ -73,7 +71,9 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 EditEndTimeInput.value == '' 
             ) { 
                 ErrorAvailability_Update.textContent =  'Start time cannot be empty';
-            } else if (EditStartDateInput.value > EditEndDateInput.value) { 
+            } else if (EditStartTimeInput.value.substring(0, 2) > EditEndTimeInput.value.substring(0, 2)) { 
+                ErrorAvailability_Update.textContent =  'Start time cannot be greater than end time';
+            }  else if (EditStartDateInput.value > EditEndDateInput.value) { 
                 ErrorAvailability_Update.textContent =  'Start date cannot be greater than End date';
             } else if (
                 EditStartDateInput.value == '' || 

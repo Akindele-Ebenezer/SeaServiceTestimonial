@@ -13,37 +13,35 @@ if (window.location.pathname === '/Availability' || window.location.pathname ===
             let StartTimeInput = document.querySelector('input[name=StartTime]');
             let EndTimeInput = document.querySelector('input[name=EndTime]');
             StartTimeInput.addEventListener('keyup', () => {
-                if (StartTimeInput.value.length == 2) { 
-                    StartTimeInput.value += ':';  
-                    if (StartTimeInput.value.substring(0, 2) > 24) { 
-                        StartTimeInput.value = '';  
-                    } else if (StartTimeInput.value.substring(4, 2) > 59) { 
-                        StartTimeInput.value = '';  
-                    }
-                } 
-                if (StartTimeInput.value.length == 5) { 
-                    StartTimeInput.value += ' '; 
-                    if (StartTimeInput.value.substring(0, 2) > 12) { 
-                        StartTimeInput.value += ' PM';  
-                    } else {
-                        StartTimeInput.value += ' AM';  
+                if (!isNaN(parseFloat(StartTimeInput.value))) {
+                    if (StartTimeInput.value.length == 2) { 
+                        StartTimeInput.value += ':';  
+                        if (StartTimeInput.value.substring(0, 2) > 24) { 
+                            StartTimeInput.value = '';  
+                        } else if (StartTimeInput.value.substring(4, 2) > 59) { 
+                            StartTimeInput.value = '';  
+                        }
                     } 
+                    if (StartTimeInput.value.length == 5) { 
+                        StartTimeInput.value += ' HRS';   
+                    }
+                } else {
+                    StartTimeInput.value = '';   
                 }
             });
             EndTimeInput.addEventListener('keyup', () => {
-                if (EndTimeInput.value.length == 2) { 
-                    EndTimeInput.value += ':';
-                    if (EndTimeInput.value.substring(0, 2) > 24) {
-                        EndTimeInput.value = '';  
-                    }  
-                } 
-                if (EndTimeInput.value.length == 5) { 
-                    EndTimeInput.value += ' '; 
-                    if (EndTimeInput.value.substring(0, 2) > 12) { 
-                        EndTimeInput.value += ' PM';  
-                    } else {
-                        EndTimeInput.value += ' AM';  
+                if (!isNaN(parseFloat(EndTimeInput.value))) {
+                    if (EndTimeInput.value.length == 2) { 
+                        EndTimeInput.value += ':';
+                        if (EndTimeInput.value.substring(0, 2) > 24) {
+                            EndTimeInput.value = '';  
+                        }  
                     } 
+                    if (EndTimeInput.value.length == 5) { 
+                        EndTimeInput.value += ' HRS';
+                    }
+                } else {
+                    EndTimeInput.value = '';  
                 }
             });
 
@@ -125,7 +123,7 @@ if (AddAvailabilityButton !== null) {
                 ErrorAvailability.textContent =  'Start date cannot be empty';
             } else if (EndDateInput.value == '') { 
                 ErrorAvailability.textContent =  'End date cannot be empty';
-            }  else { 
+            } else { 
                 ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorAvailability.style.color =  '#fff';
                 ErrorAvailability.style.padding =  '1em';
