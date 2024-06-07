@@ -803,11 +803,14 @@ main .left-navigation-x {
 }
 main .left-navigation-x ul h1 {
   background: #ff4f4f;
-  border-radius: 0.5em;
+  border-radius: 50%;
   color: #fff !important;
-  display: block !important;
+  height: 2em;
+  justify-content: center;
   margin-bottom: 2.5em;
   text-align: center;
+  translate: 0.45em 0;
+  width: 2em;
 }
 main .left-navigation-x ul li {
   border-radius: 0 !important;

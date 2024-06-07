@@ -178,8 +178,8 @@ class VesselAvailabilityController extends Controller
             'Status' => $Request->EditStatus,
             'DoneBy' => $Request->EditDoneBy,
             'Attachment' => $Request->EditAttachment,
-            'StartTime' => $Request->EditStartTime,
-            'EndTime' => $Request->EditEndTime,
+            'StartTime' => substr($Request->EditStartTime, 0, 5),
+            'EndTime' => substr($Request->EditEndTime, 0, 5),
             'StartDate' => $Request->EditStartDate,
             'EndDate' => $Request->EditEndDate,
             'DateIn' => date('Y-m-d'),
@@ -192,7 +192,7 @@ class VesselAvailabilityController extends Controller
             'Vessel' => $Request->EditVessel, 
             'Action' => 'Update',
             'Subject' => 'Availability Update!',
-            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . date('h:i A', strtotime($Request->EditStartTime)) . ' till ' . date('h:i A', strtotime($Request->EditEndTime)) . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
+            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . date('H:i A', strtotime($Request->EditStartTime)) . ' till ' . date('H:i A', strtotime($Request->EditEndTime)) . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
         ]);
         return redirect()->route('Availability');
     }
@@ -210,7 +210,7 @@ class VesselAvailabilityController extends Controller
         'Vessel' => $Availability->Vessel, 
         'Action' => 'Delete',
         'Subject' => 'Availability Removed!',
-        'Notification' => $Availability->DoneBy . ' has deleted the availability for ' . $Availability->Vessel . ' which was on ' . $Availability->Status . ' from ' . date('h:i A', strtotime($Availability->StartTime)) . ' - ' . date('h:i A', strtotime($Availability->EndTime)) . ' (' . $Availability->StartDate . ' - ' . $Availability->EndDate . ') . The tracking status is no longer available.',
+        'Notification' => $Availability->DoneBy . ' has deleted the availability for ' . $Availability->Vessel . ' which was on ' . $Availability->Status . ' from ' . date('H:i A', strtotime($Availability->StartTime)) . ' - ' . date('H:i A', strtotime($Availability->EndTime)) . ' (' . $Availability->StartDate . ' - ' . $Availability->EndDate . ') . The tracking status is no longer available.',
     ]);
         VesselAvailability::where('id', $Id)->delete();
         return redirect()->route('Availability');

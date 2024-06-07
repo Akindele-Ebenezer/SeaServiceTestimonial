@@ -25,11 +25,14 @@ main {
             ul {
                 h1 {
                     background: darken($color: $Color-4, $amount: 25);
-                    border-radius: .5em;
-                    color: #fff !important;
-                    display: block !important;
+                    border-radius: 50%;
+                    color: #fff !important; 
+                    height: 2em;
+                    justify-content: center;
                     margin-bottom: 2.5em;
                     text-align: center;
+                    translate: .45em 0;
+                    width: 2em;
                 }
 
                 li {    

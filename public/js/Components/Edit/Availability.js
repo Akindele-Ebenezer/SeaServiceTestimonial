@@ -17,6 +17,41 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         document.querySelector('.UpdateAvailabilityForm input[name=EditStartDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
  
+        let EditStartTimeInput = document.querySelector('input[name=EditStartTime]');
+        let EditEndTimeInput = document.querySelector('input[name=EditEndTime]');
+        EditStartTimeInput.addEventListener('keyup', () => {
+            if (EditStartTimeInput.value.length == 2) { 
+                EditStartTimeInput.value += ':';  
+                if (EditStartTimeInput.value.substring(0, 2) > 24) { 
+                    EditStartTimeInput.value = '';  
+                }
+            } 
+            if (EditStartTimeInput.value.length == 5) { 
+                EditStartTimeInput.value += ' '; 
+                if (EditStartTimeInput.value.substring(0, 2) > 12) { 
+                    EditStartTimeInput.value += ' PM';  
+                } else {
+                    EditStartTimeInput.value += ' AM';  
+                } 
+            }
+        });
+        EditEndTimeInput.addEventListener('keyup', () => {
+            if (EditEndTimeInput.value.length == 2) { 
+                EditEndTimeInput.value += ':';
+                if (EditEndTimeInput.value.substring(0, 2) > 24) {
+                    EditEndTimeInput.value = '';  
+                }  
+            } 
+            if (EditEndTimeInput.value.length == 5) { 
+                EditEndTimeInput.value += ' '; 
+                if (EditEndTimeInput.value.substring(0, 2) > 12) { 
+                    EditEndTimeInput.value += ' PM';  
+                } else {
+                    EditEndTimeInput.value += ' AM';  
+                } 
+            }
+        });
+
         UpdateAvailabilityButton.addEventListener('click', () => { 
             let ErrorAvailability_Update = document.querySelector('.error-availability.update');
             let EditVesselInput = document.querySelector('input[name=EditVessel]');

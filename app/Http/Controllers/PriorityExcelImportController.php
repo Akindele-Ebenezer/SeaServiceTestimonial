@@ -18,8 +18,8 @@ class PriorityExcelImportController extends Controller
                 'Status' => $Request->Status,
                 'DoneBy' => $Request->DoneBy, 
                 'Source' => 'SEA_SERVICE', 
-                'StartTime' => $Request->StartTime,
-                'EndTime' => $Request->EndTime,
+                'StartTime' => substr($Request->StartTime, 0, 5),
+                'EndTime' => substr($Request->EndTime, 0, 5),
                 'StartDate' => $Request->StartDate,
                 'EndDate' => $Request->EndDate,
                 'DateIn' => date('Y-m-d'),
@@ -32,7 +32,7 @@ class PriorityExcelImportController extends Controller
                 'Vessel' => $Request->Vessel, 
                 'Action' => 'Create',
                 'Subject' => 'New Availability Alert!',
-                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('h:i A', strtotime($Request->StartTime)) . ' to ' . date('h:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
             ]);
             return redirect()->route('Availability');
         } else {

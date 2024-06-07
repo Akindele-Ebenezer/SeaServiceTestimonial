@@ -10,6 +10,41 @@ if (window.location.pathname === '/Availability' || window.location.pathname ===
             AddAvailabilityModal.style.display = 'flex';  
             ContentData_Availability.style.backgroundColor = '#225f7d'; 
         
+            let StartTimeInput = document.querySelector('input[name=StartTime]');
+            let EndTimeInput = document.querySelector('input[name=EndTime]');
+            StartTimeInput.addEventListener('keyup', () => {
+                if (StartTimeInput.value.length == 2) { 
+                    StartTimeInput.value += ':';  
+                    if (StartTimeInput.value.substring(0, 2) > 24) { 
+                        StartTimeInput.value = '';  
+                    }
+                } 
+                if (StartTimeInput.value.length == 5) { 
+                    StartTimeInput.value += ' '; 
+                    if (StartTimeInput.value.substring(0, 2) > 12) { 
+                        StartTimeInput.value += ' PM';  
+                    } else {
+                        StartTimeInput.value += ' AM';  
+                    } 
+                }
+            });
+            EndTimeInput.addEventListener('keyup', () => {
+                if (EndTimeInput.value.length == 2) { 
+                    EndTimeInput.value += ':';
+                    if (EndTimeInput.value.substring(0, 2) > 24) {
+                        EndTimeInput.value = '';  
+                    }  
+                } 
+                if (EndTimeInput.value.length == 5) { 
+                    EndTimeInput.value += ' '; 
+                    if (EndTimeInput.value.substring(0, 2) > 12) { 
+                        EndTimeInput.value += ' PM';  
+                    } else {
+                        EndTimeInput.value += ' AM';  
+                    } 
+                }
+            });
+
             CancelButton_Availability.addEventListener('click', () => {
                 AddAvailabilityModal.style.display = 'none';
                 NoDataSelectedModal_Availability.style.display = 'flex';
