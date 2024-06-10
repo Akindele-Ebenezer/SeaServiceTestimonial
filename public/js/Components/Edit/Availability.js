@@ -12,8 +12,8 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         document.querySelector('.UpdateAvailabilityForm input[name=EditVessel]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm select[name=EditStatus]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditDoneBy]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
-        document.querySelector('.UpdateAvailabilityForm input[name=EditStartTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
-        document.querySelector('.UpdateAvailabilityForm input[name=EditEndTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.UpdateAvailabilityForm input[name=EditStartTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' HRS';
+        document.querySelector('.UpdateAvailabilityForm input[name=EditEndTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' HRS';
         document.querySelector('.UpdateAvailabilityForm input[name=EditStartDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
  
@@ -23,12 +23,16 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
             if (!isNaN(parseFloat(EditStartTimeInput.value))) {
                 if (EditStartTimeInput.value.length == 2) { 
                     EditStartTimeInput.value += ':';  
-                    if (EditStartTimeInput.value.substring(0, 2) > 24) { 
+                    if (EditStartTimeInput.value.substring(0, 2) > 23) { 
                         EditStartTimeInput.value = '';  
                     }
                 } 
                 if (EditStartTimeInput.value.length == 5) { 
-                    EditStartTimeInput.value += ' HRS';  
+                    if (EditStartTimeInput.value.substring(3, 5) > 59) { 
+                        EditStartTimeInput.value = '';  
+                    } else {
+                        EditStartTimeInput.value += ' HRS';  
+                    }
                 }
             } else {
                 EditStartTimeInput.value = '';  
@@ -38,12 +42,16 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
             if (!isNaN(parseFloat(EditStartTimeInput.value))) {
                 if (EditEndTimeInput.value.length == 2) { 
                     EditEndTimeInput.value += ':';
-                    if (EditEndTimeInput.value.substring(0, 2) > 24) {
+                    if (EditEndTimeInput.value.substring(0, 2) > 23) {
                         EditEndTimeInput.value = '';  
                     }  
                 } 
                 if (EditEndTimeInput.value.length == 5) { 
-                    EditEndTimeInput.value += ' HRS';  
+                    if (EditEndTimeInput.value.substring(3, 5) > 59) { 
+                        EditEndTimeInput.value = '';  
+                    } else {
+                        EditEndTimeInput.value += ' HRS';
+                    }  
                 }
             } else {
                 EditEndTimeInput.value = '';  
@@ -80,7 +88,12 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 EditEndDateInput.value == '' 
             ) { 
                 ErrorAvailability_Update.textContent =  'Start date cannot be empty';
-            } else {  
+            } else if (
+                /[a-zA-Z]/.test(EditStartTimeInput.value.substring(0, 6)) ||
+                /[a-zA-Z]/.test(EditEndTimeInput.value.substring(0, 6))
+            ) {
+                ErrorAvailability_Update.textContent =  'Time cannot include alphabets';
+            }  else {  
                 UpdateAvailabilityButton.style.backgroundColor = '#1fb95e';
                 UpdateAvailabilityButton.textContent = '+ Processing..';
                 UpdateAvailabilityForm.setAttribute('action', '/Edit/Availability/' + AvailabilityId)

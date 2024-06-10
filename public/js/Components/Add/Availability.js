@@ -16,14 +16,16 @@ if (window.location.pathname === '/Availability' || window.location.pathname ===
                 if (!isNaN(parseFloat(StartTimeInput.value))) {
                     if (StartTimeInput.value.length == 2) { 
                         StartTimeInput.value += ':';  
-                        if (StartTimeInput.value.substring(0, 2) > 24) { 
-                            StartTimeInput.value = '';  
-                        } else if (StartTimeInput.value.substring(4, 2) > 59) { 
+                        if (StartTimeInput.value.substring(0, 2) > 23) { 
                             StartTimeInput.value = '';  
                         }
                     } 
                     if (StartTimeInput.value.length == 5) { 
-                        StartTimeInput.value += ' HRS';   
+                        if (StartTimeInput.value.substring(3, 5) > 59) { 
+                            StartTimeInput.value = '';  
+                        } else {
+                            StartTimeInput.value += ' HRS';   
+                        }
                     }
                 } else {
                     StartTimeInput.value = '';   
@@ -33,12 +35,16 @@ if (window.location.pathname === '/Availability' || window.location.pathname ===
                 if (!isNaN(parseFloat(EndTimeInput.value))) {
                     if (EndTimeInput.value.length == 2) { 
                         EndTimeInput.value += ':';
-                        if (EndTimeInput.value.substring(0, 2) > 24) {
+                        if (EndTimeInput.value.substring(0, 2) > 23) {
                             EndTimeInput.value = '';  
                         }  
                     } 
                     if (EndTimeInput.value.length == 5) { 
-                        EndTimeInput.value += ' HRS';
+                        if (EndTimeInput.value.substring(3, 5) > 59) { 
+                            EndTimeInput.value = '';  
+                        } else {
+                            EndTimeInput.value += ' HRS';
+                        }
                     }
                 } else {
                     EndTimeInput.value = '';  
@@ -123,6 +129,11 @@ if (AddAvailabilityButton !== null) {
                 ErrorAvailability.textContent =  'Start date cannot be empty';
             } else if (EndDateInput.value == '') { 
                 ErrorAvailability.textContent =  'End date cannot be empty';
+            } else if (
+                /[a-zA-Z]/.test(StartTimeInput.value.substring(0, 6)) ||
+                /[a-zA-Z]/.test(EndTimeInput.value.substring(0, 6))
+            ) {
+                ErrorAvailability.textContent =  'Time cannot include alphabets';
             } else { 
                 ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorAvailability.style.color =  '#fff';

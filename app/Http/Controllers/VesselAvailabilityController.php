@@ -97,7 +97,7 @@ class VesselAvailabilityController extends Controller
                                     ->where('VesselName', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->orWhere('ImoNumber', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
-                                    ->get();
+                                    ->get(); 
             return view('Pages.Availability', [ 
                 'Employees' => $Employees,
                 'Vessels' => $Vessels,
@@ -107,6 +107,7 @@ class VesselAvailabilityController extends Controller
                 'Vessels' => $Vessels,
                 'NumberOfVessels' => $NumberOfVessels,
                 'STARTDATE' => $STARTDATE,
+                'StartDate' => $STARTDATE,
                 'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
                 'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
                 'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
