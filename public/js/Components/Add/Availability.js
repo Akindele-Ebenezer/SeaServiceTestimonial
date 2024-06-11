@@ -8,7 +8,7 @@ if (window.location.pathname === '/Availability' || window.location.pathname ===
     if (CreateAvailabilityButton !== null) {
         CreateAvailabilityButton.addEventListener('click', () => { 
             AddAvailabilityModal.style.display = 'flex';  
-            ContentData_Availability.style.backgroundColor = '#225f7d'; 
+            // ContentData_Availability.style.background = 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)'; 
         
             let StartTimeInput = document.querySelector('input[name=StartTime]');
             let EndTimeInput = document.querySelector('input[name=EndTime]');
@@ -74,7 +74,7 @@ if (CreateAvailabilityButton !== null) {
         AddAvailabilityModal.style.display = 'flex';  
         if (window.location.pathname === '/Availability' || window.location.pathname === '/Vessels') { 
             NoDataSelectedModal_Availability.style.display = 'none'; 
-            ContentData_Availability.style.backgroundColor = '#225f7d'; 
+            ContentData_Availability.style.background = 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)'; 
         }
         if (NoDataSelectedModal_HR !== null) {
             NoDataSelectedModal_HR.style.display = 'none';  

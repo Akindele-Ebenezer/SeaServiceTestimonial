@@ -13,7 +13,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4d78a5;
+  background-color: #2d7da5;
 }
 
 .Hide {
@@ -611,7 +611,7 @@
 
 .no-data-selected, .no-data {
   align-items: center;
-  background-color: #225f7d;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   display: flex;
   height: 100%;
   justify-content: center;
@@ -1471,13 +1471,13 @@ main .left-navigation ul li .total {
 }
 
 .dashboard {
-  background-color: #1a4a61;
+  background-color: #215d7b;
 }
 .dashboard-inner .board-1:first-of-type table td, .dashboard-inner .board-1:first-of-type table th {
   padding-inline: 0.75em;
 }
 .dashboard-inner .board-1, .dashboard-inner .board-2, .dashboard-inner .board-3 {
-  background-color: #225f7d;
+  background-color: #246483;
   color: #fff;
   display: flex;
   justify-content: space-between;

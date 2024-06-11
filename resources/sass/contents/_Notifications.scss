@@ -1,5 +1,5 @@
 .dashboard {  
-    background-color: darken($color: $Color-2, $amount: 7);
+    background-color: darken($color: $Color-2, $amount: .5);
     &-inner {
         .board-1:first-of-type {
             table {
@@ -10,7 +10,7 @@
         }
 
         .board-1, .board-2, .board-3 {
-            background-color: $Color-2;
+            background-color: lighten($color: $Color-2, $amount: 1.5);
             color: #fff;
             display: flex;
             justify-content: space-between;

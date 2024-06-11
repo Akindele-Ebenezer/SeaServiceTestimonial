@@ -21,7 +21,7 @@ $Color-6: #8cff9a;
     width: .75em;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #4d78a5; 
+    background-color: lighten($color: $Color-2, $amount: 10); 
 }
 
 .Hide { display: none !important }

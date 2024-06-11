@@ -297,7 +297,7 @@
                 Vessel_.style.borderLeft = '8px solid #fff'; 
             });
             Vessel.style.backgroundColor = '#f0f7fb'; 
-            Vessel.style.borderLeft = '8px solid #225f7d'; 
+            Vessel.style.borderLeft = '8px solid #ff6868'; 
  
             document.querySelector('.vessel-name-x').textContent = Vessel.firstElementChild.textContent;
             document.querySelector('.vessel-name-x-x').textContent = Vessel.firstElementChild.textContent;
