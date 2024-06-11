@@ -16,7 +16,7 @@
 
     h2 {
         align-items: center;
-        background: darken($color: $Color-2, $amount: 5); 
+        background: darken($Color-2, 15); 
         color: #fff;
         display: flex;
         font-weight: 100;
@@ -82,6 +82,7 @@
 
                 .company {
                     background-color: lighten($color: $Color-2, $amount: 62);
+                    display: none;
                     padding: .2em;
                     text-transform: lowercase;
                 }

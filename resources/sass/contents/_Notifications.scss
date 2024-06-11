@@ -310,7 +310,7 @@
         }
 
         .dashboard-heading {
-            background-color: darken($color: $Color-2, $amount: 3);
+            background-color: darken($Color-2, 15);
             color: #fff;
             font-weight: 900;
             position: sticky;

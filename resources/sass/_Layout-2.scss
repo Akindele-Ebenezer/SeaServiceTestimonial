@@ -15,7 +15,7 @@ main {
         width: 20em;
 
         &-x {
-            background: $Color-2; 
+            background: darken($Color-2, 15); 
             margin-right: unset;
             overflow: hidden;
             padding: 0em;
