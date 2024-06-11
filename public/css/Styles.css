@@ -643,6 +643,7 @@
 .no-data-selected center h1, .no-data center h1 {
   color: #ff8282;
   font-size: 2em;
+  font-weight: 900;
 }
 .no-data-selected center svg, .no-data center svg {
   background: #f4f9fc;
@@ -795,6 +796,7 @@ main .left-navigation {
 }
 main .left-navigation-x {
   background: #1d5069;
+  border-right: 10px solid #c8e3f0;
   margin-right: unset;
   overflow: hidden;
   padding: 0em;
@@ -809,7 +811,7 @@ main .left-navigation-x ul h1 {
   justify-content: center;
   margin-bottom: 2.5em;
   text-align: center;
-  translate: 0.45em 0;
+  translate: 0.25em 0;
   width: 2em;
 }
 main .left-navigation-x ul li {
@@ -861,6 +863,7 @@ main .left-navigation ul h1 {
   color: #225f7d;
   display: flex;
   font-size: 1.5em;
+  font-weight: 900;
 }
 main .left-navigation ul h2 {
   color: #225f7d;
@@ -958,22 +961,16 @@ main .left-navigation ul li .total {
   text-decoration: unset !important;
 }
 .vessel-content h2 {
-  align-items: center;
   background: #1d5069;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   color: #fff;
-  display: flex;
-  font-weight: 100;
-  justify-content: center;
-  padding-block: 1em;
+  font-size: xx-large;
+  font-weight: 900;
+  padding-block: 0.3em;
   padding-left: 1em;
   position: sticky;
   top: 0em;
   z-index: 2;
-}
-.vessel-content h2 img {
-  border-radius: 0.3em;
-  margin-right: 1em;
-  width: 2em;
 }
 .vessel-content h3 {
   background: red;
@@ -1336,7 +1333,6 @@ main .left-navigation ul li .total {
   font-size: 5em;
   font-weight: 800;
   padding-bottom: 0.075em;
-  text-transform: uppercase;
 }
 .testimonial-content header div.h-2, .table-1 header div.h-2 {
   background: #090909;
@@ -1720,11 +1716,12 @@ main .left-navigation ul li .total {
   align-items: center;
   color: #222;
   display: flex;
-  font-size: 2em;
+  font-size: xx-large;
   padding: 0.5em;
   padding-left: 1em;
 }
 .dashboard-inner h1 svg {
+  background-color: #276e91;
   border-radius: 0.4em;
   fill: #111;
   padding: 0.5em;

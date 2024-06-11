@@ -6,7 +6,7 @@
 @include('Components.Forms.Edit.Vessel')
 @include('Components.Forms.Delete.Vessel')
 <div class="vessel-content"> 
-    <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T Coastal Marine - Vessel List</h2>
+    <h2>Vessel List</h2>
     @unless (count($Vessels) > 0)
     <div class="empty-data">
         No vessel in the system..

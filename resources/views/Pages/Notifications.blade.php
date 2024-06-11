@@ -3,7 +3,7 @@
 
 @section('Content')
 <div class="vessel-content notifications"> 
-    <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T COASTAL MARINE - Notifications</h2>
+    <h2>Notifications</h2>
     @unless (count(DB::table('notifications')->get()) > 0)
         <p class="empty-data">There's no recent activities in the system..</p>
     @endunless

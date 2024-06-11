@@ -14,24 +14,17 @@
         }
     }
 
-    h2 {
-        align-items: center;
+    h2 { 
         background: darken($Color-2, 5); 
-        color: #fff;
-        display: flex;
-        font-weight: 100;
-        justify-content: center;
-        padding-block: 1em;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        color: #fff; 
+        font-size: xx-large;
+        font-weight: 900; 
+        padding-block: .3em;
         padding-left: 1em;
         position: sticky; 
         top: 0em;
-        z-index: 2;
-
-        img {
-            border-radius: 0.3em;
-            margin-right: 1em;
-            width: 2em;
-        }
+        z-index: 2; 
     }
 
     h3 {

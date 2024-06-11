@@ -7,7 +7,7 @@
 @include('Components.Forms.Delete.Availability')
 @include('Components.Inner.FilterByDate')
 <div class="vessel-content notifications availability"> 
-    <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T COASTAL MARINE - Status</h2>
+    <h2>Vessel Status</h2>
     <h3>LIVE</h3>
     @unless (count($Vessels) > 0)
         <p class="empty-data">There's no vessel in the system..</p>
@@ -184,7 +184,7 @@
 </div>
 <div class="content-data availability dashboard"> 
     <div class="dashboard-inner"> 
-        <h1 class="dashboard-heading"><svg class="-x" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>VESSEL AVAILABILITY</h1>
+        <h1 class="dashboard-heading"><svg class="-x" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>Availability Dashboard</h1>
         <button class="RecordAvailabilityButton">+ Record/Schedule Availability</button>
         <button class="FilterByDateButton">+ Filter</button>
         <div class="board-1">
