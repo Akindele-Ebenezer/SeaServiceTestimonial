@@ -15,7 +15,7 @@ main {
         width: 20em;
 
         &-x {
-            background: darken($Color-2, 15); 
+            background: darken($Color-2, 5); 
             margin-right: unset;
             overflow: hidden;
             padding: 0em;
@@ -155,7 +155,7 @@ main {
                 }
 
                 &.active-x {
-                    background: lighten($color: $Color-2, $amount: 20) !important; 
+                    background: lighten($color: $Color-2, $amount: 15) !important; 
                     border-left: 8px solid darken($color: $Color-4, $amount: 20);
                     justify-content: center;
 
@@ -165,7 +165,7 @@ main {
                 }
 
                 &:hover {
-                    background: lighten($color: $Color-2, $amount: 20); 
+                    background: lighten($color: $Color-2, $amount: 15); 
                     color: #fff;
                     cursor: pointer;
                     font-weight: bold;
