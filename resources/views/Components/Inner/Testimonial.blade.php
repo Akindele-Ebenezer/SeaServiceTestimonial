@@ -5,7 +5,7 @@
         </div>
         <h2>
             <img src="{{ asset('images/logoo.png') }}" alt="">
-            <span class="vessel-name-info"></span> - Testimonial Info
+            <span class="vessel-name-info"></span> | Testimonial Info
         </h2>  
         <div class="list vessel"> 
             <div class="inner -x">

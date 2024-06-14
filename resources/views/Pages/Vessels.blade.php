@@ -259,7 +259,8 @@
             AddTestimonialWrapper.style.display = 'flex';
             AddTestimonialModal.style.display = 'flex';
             NoDataSelectedModal.style.display = 'none'; 
-            ContentData.style.backgroundColor = '#225f7d'; 
+            // ContentData.style.backgroundColor = '#225f7d'; 
+            ContentData.style.background = 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)'; 
             
             CancelButton.addEventListener('click', () => {
                 AddTestimonialModal.style.display = 'none';
@@ -343,6 +344,7 @@
                 NoDataSelectedModal.style.display = 'flex';
                 if (NoDataSelectedModal_MOC !== null) {
                     NoDataSelectedModal_MOC.style.display = 'flex';
+                    VesselInformation.style.display = 'none';
                 }
                 AddVesselButton.style.display = 'flex';
                 AddTestimonialWrapper.style.display = 'none'; 

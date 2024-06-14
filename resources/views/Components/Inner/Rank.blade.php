@@ -4,7 +4,7 @@
         <div class="close-button-ranks">
             <button>✖</button>
         </div>
-        <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T Coastal Marine - Rank List</h2>
+        <h2><img src="{{ asset('images/logoo.png') }}" alt=""> Rank List</h2>
         @foreach ($Ranks as $Rank)  
         <div class="list vessel"> 
             <div class="inner -x">

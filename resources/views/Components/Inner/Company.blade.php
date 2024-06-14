@@ -4,7 +4,7 @@
         <div class="close-button-companies">
             <button>✖</button>
         </div>
-        <h2><img src="{{ asset('images/logoo.png') }}" alt="">L.T.T Coastal Marine - Company List</h2>
+        <h2><img src="{{ asset('images/logoo.png') }}" alt=""> Company List</h2>
         @foreach ($Companies as $Company)  
         <div class="company-list list vessel"> 
             <div class="inner -x">

@@ -1204,6 +1204,7 @@ main .left-navigation ul li .total {
 }
 .content-data .inner h1 .vessel-name-x, .content-data .inner h1 .imo-number-x {
   font-size: unset;
+  font-weight: 900;
   margin-right: 0.2em;
 }
 .content-data .inner-x {
@@ -1851,6 +1852,14 @@ main .left-navigation ul li .total {
   overflow-y: scroll;
   position: relative;
   width: 50em;
+}
+.list-component .inner-x h2 {
+  padding-left: 2em;
+}
+.list-component .inner-x h2 img {
+  left: 1em;
+  position: absolute;
+  width: 3em;
 }
 .list-component .inner-x .close-button-ranks, .list-component .inner-x .close-button-companies, .list-component .inner-x .close-button-testimonials {
   background: #fff;

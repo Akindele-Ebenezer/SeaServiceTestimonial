@@ -125,6 +125,15 @@
         overflow-y: scroll;
         position: relative;
         width: 50em;
+
+        h2 {
+            padding-left: 2em;
+            img {
+                left: 1em;
+                position: absolute;
+                width: 3em;
+            }
+        }
  
         .close-button-ranks, .close-button-companies, .close-button-testimonials { 
             background: #fff;
