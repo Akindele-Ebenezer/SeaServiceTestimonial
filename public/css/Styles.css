@@ -810,6 +810,7 @@ main .left-navigation-x ul h1 {
   height: 2em;
   justify-content: center;
   margin-bottom: 2.5em;
+  padding-bottom: 0.2em;
   text-align: center;
   translate: 0.25em 0;
   width: 2em;
@@ -967,7 +968,7 @@ main .left-navigation ul li .total {
   font-size: xx-large;
   font-weight: 900;
   padding-block: 0.3em;
-  padding-left: 1em;
+  padding-left: 0.35em;
   position: sticky;
   top: 0em;
   z-index: 2;
@@ -1278,8 +1279,16 @@ main .left-navigation ul li .total {
 }
 
 @media (max-width: 1785px) {
+  .availability.vessel-content h2 {
+    font-size: 2em;
+    padding: 0.15em;
+    text-align: center;
+  }
   .availability .list {
     padding: 0.5em 0;
+  }
+  .availability .RecordAvailabilityButton, .availability .FilterByDateButton {
+    top: 0.2em !important;
   }
   .availability.dashboard .board-1 .div {
     width: 49%;
@@ -1705,7 +1714,8 @@ main .left-navigation ul li .total {
 .dashboard-inner .dashboard-heading {
   background-color: #1d5069;
   color: #fff;
-  font-weight: 900;
+  font-size: 2em;
+  font-weight: unset;
   position: sticky;
   top: -0.5em;
   z-index: 100;
@@ -1742,6 +1752,10 @@ main .left-navigation ul li .total {
   }
   .dashboard .board-3 table tr td.action, .dashboard .board-3 table tr th.action, .dashboard .board-x table tr td.action, .dashboard .board-x table tr th.action {
     width: 7em;
+  }
+  .dashboard-inner h1 svg.-x {
+    height: 2em;
+    width: 3em;
   }
   nav[role] span[aria-current] {
     margin-left: 1.5em;

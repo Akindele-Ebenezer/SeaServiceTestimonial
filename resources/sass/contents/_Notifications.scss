@@ -312,7 +312,8 @@
         .dashboard-heading {
             background-color: darken($Color-2, 5);
             color: #fff;
-            font-weight: 900;
+            font-size: 2em;
+            font-weight: unset; 
             position: sticky;
             top: -0.5em;
             z-index: 100;
@@ -362,6 +363,15 @@
                         }
                     }
                 }
+            }
+        }
+
+        &-inner {
+            h1 {
+                svg.-x {
+                    height: 2em;
+                    width: 3em;
+                } 
             }
         }
     }

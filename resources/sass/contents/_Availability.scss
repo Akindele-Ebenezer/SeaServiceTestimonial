@@ -48,8 +48,19 @@
 
 @media (max-width: 1785px) {
     .availability {
+        &.vessel-content {
+            h2 {
+                font-size: 2em;
+                padding: 0.15em;
+                text-align: center;
+            }
+        }
         .list {
             padding: .5em 0;
+        }
+
+        .RecordAvailabilityButton, .FilterByDateButton {
+            top: 0.2em !important;
         }
     }
 
