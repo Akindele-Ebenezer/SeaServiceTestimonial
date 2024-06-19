@@ -1547,7 +1547,7 @@ main .left-navigation ul li .total {
   align-items: center;
   color: #00f21d;
   display: flex;
-  font-weight: bold;
+  font-weight: 500;
   margin-right: 2em;
   padding: 0.5em 1em 1em 1em;
 }
@@ -1611,6 +1611,14 @@ main .left-navigation ul li .total {
 }
 .dashboard-inner .board-1 .div table.user-logins tr, .dashboard-inner .board-2 .div table.user-logins tr, .dashboard-inner .board-3 .div table.user-logins tr {
   border-bottom: 1px solid #276e91;
+}
+.dashboard-inner .board-1 .div table.user-logins tr.history, .dashboard-inner .board-2 .div table.user-logins tr.history, .dashboard-inner .board-3 .div table.user-logins tr.history {
+  top: 0.2em;
+}
+.dashboard-inner .board-1 .div table.user-logins tr th, .dashboard-inner .board-2 .div table.user-logins tr th, .dashboard-inner .board-3 .div table.user-logins tr th {
+  background: #225f7d;
+  position: sticky;
+  top: -2.1em;
 }
 .dashboard-inner .board-1 .div table.user-logins tr td, .dashboard-inner .board-1 .div table.user-logins tr th, .dashboard-inner .board-2 .div table.user-logins tr td, .dashboard-inner .board-2 .div table.user-logins tr th, .dashboard-inner .board-3 .div table.user-logins tr td, .dashboard-inner .board-3 .div table.user-logins tr th {
   padding: 0.5em;
@@ -1704,6 +1712,7 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-3 .div table th {
   background-color: #225f7d;
   font-weight: 500;
+  padding: 0.5em 0;
   position: sticky;
   text-transform: uppercase;
   top: -0.2em;
