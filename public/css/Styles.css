@@ -1751,7 +1751,7 @@ main .left-navigation ul li .total {
 .dashboard-inner h1 svg.-x {
   fill: #222;
   height: 4em;
-  padding: unset;
+  padding: 1em;
   width: 5em;
 }
 

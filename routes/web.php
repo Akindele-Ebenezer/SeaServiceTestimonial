@@ -11,6 +11,7 @@ use App\Http\Controllers\RankController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\VesselAvailabilityController;
 use App\Http\Controllers\PriorityExcelImportController;
+use App\Http\Controllers\VesselAvailabilityPdf;
  
 Route::get('/', [LoginController::class, 'login']);
 Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
@@ -65,3 +66,5 @@ Route::get('/Testimonials/Template/3', [SeaServiceTestimonialPdf::class, 'templa
 Route::get('/Testimonials/Template/1_', [SeaServiceTestimonialPdf::class, 'template_1_'])->name('template_1_');
 Route::get('/Testimonials/Template/2_', [SeaServiceTestimonialPdf::class, 'template_2_'])->name('template_2_');
 Route::get('/Testimonials/Template/3_', [SeaServiceTestimonialPdf::class, 'template_3_'])->name('template_3_');
+
+Route::get('/Availability/Report', [VesselAvailabilityPdf::class, 'vessel_availability_report'])->name('vessel_availability_report');
