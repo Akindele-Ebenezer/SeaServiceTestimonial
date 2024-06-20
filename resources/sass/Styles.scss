@@ -70,7 +70,7 @@ $blue: #42e5ff;
   }
 
   &.maintenance, &.maintenance:before {
-    background: #52f781;
+    background: #eee;
   }
   
   &.inspection, &.inspection:before {
@@ -82,7 +82,7 @@ $blue: #42e5ff;
   }
   
   &.idle, &.idle:before {
-    background: #eee;
+    background: #52f781;
   }
   
   &:before {

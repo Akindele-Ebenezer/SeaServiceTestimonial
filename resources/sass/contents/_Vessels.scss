@@ -124,11 +124,11 @@
                             font-size: small;
 
                             &.idle {
-                                background-color: #eee;
-                                color: #555 !important;
+                                background-color: #35cd60; 
                             }
                             &.maintenance {
-                                background-color: #35cd60;
+                                background-color: #eee;
+                                color: #aaa !important;
                             }
                         }
                     }

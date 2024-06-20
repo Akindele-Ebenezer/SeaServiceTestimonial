@@ -56,7 +56,7 @@
   background: #da1e28;
 }
 .status-x.maintenance, .status-x.maintenance:before {
-  background: #52f781;
+  background: #eee;
 }
 .status-x.inspection, .status-x.inspection:before {
   background: #ff832b;
@@ -65,7 +65,7 @@
   background: #8a3ffc;
 }
 .status-x.idle, .status-x.idle:before {
-  background: #eee;
+  background: #52f781;
 }
 .status-x:before {
   content: "";
@@ -90,7 +90,7 @@
   }
 }
 .idle {
-  background-color: #fff;
+  background-color: #52f781;
 }
 
 .docking {
@@ -106,7 +106,7 @@
 }
 
 .maintenance {
-  background-color: #52f781;
+  background-color: #fff;
 }
 
 .inspection {
@@ -1057,11 +1057,11 @@ main .left-navigation ul li .total {
   font-size: small;
 }
 .vessel-content .list .inner strong .imo.availability-status.status-1.idle, .vessel-content .empty-data .inner strong .imo.availability-status.status-1.idle {
-  background-color: #eee;
-  color: #555 !important;
+  background-color: #35cd60;
 }
 .vessel-content .list .inner strong .imo.availability-status.status-1.maintenance, .vessel-content .empty-data .inner strong .imo.availability-status.status-1.maintenance {
-  background-color: #35cd60;
+  background-color: #eee;
+  color: #aaa !important;
 }
 .vessel-content .list .inner strong .notification-bg-create, .vessel-content .empty-data .inner strong .notification-bg-create {
   background-color: #f0f7fb;
