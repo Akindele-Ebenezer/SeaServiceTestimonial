@@ -1443,6 +1443,9 @@ main .left-navigation ul li .total {
   margin-right: 1em;
   padding: 0.5em;
 }
+.testimonial-content .table table tr td.data-x .sub-x .\-2, .table-1 .table table tr td.data-x .sub-x .\-2 {
+  translate: 0 -0.6em;
+}
 .testimonial-content .table table tr td.action, .table-1 .table table tr td.action {
   background-color: #123141;
 }
