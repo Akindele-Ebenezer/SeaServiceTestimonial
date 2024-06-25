@@ -24,9 +24,10 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->Cell(162, -7, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         $fpdf->Ln(9);     
         
-        $fpdf->SetFont('Arial', 'B', 15);  
-        $fpdf->Cell(0, 10, 'VESSEL AVAILABILITY REPORT', 0, 1, 'C');
-        $fpdf->SetFont('Arial', '', 10);  
+        $fpdf->SetFont('Arial', 'B', 15); 
+        $fpdf->SetFillColor(217, 242, 255);  
+        $fpdf->Cell(190, 10, 'VESSEL AVAILABILITY REPORT', 0, 1, 1, 'L');
+        $fpdf->SetFont('Arial', '', 10);   
 
         $fpdf->Ln(6);     
 
@@ -184,10 +185,12 @@ class VesselAvailabilityPdf extends Controller
         
         // VESSEL DATA
         $Index = 1;
+        $TOTALHoursWorked = [];
+        $TOTALDaysWorked = [];
         foreach ($Vessels as $Vessel) {
             $VesselImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $Vessel->Vessel)->orderBy('id', 'DESC')->first();
             $VesselGRT_NET = \DB::table('vessels_section_4')->select(['GrossTonnage', 'NetTonnage'])->where('ImoNumber', $VesselImoNumber->ImoNumber ?? 0)->orderBy('id', 'DESC')->first();
-            $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Vessel->Vessel)->where('StartDate', $Request->DateFrom)->where('EndDate', $Request->DateTo)->get(); 
+            $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Vessel->Vessel)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
             foreach ($HoursWorked as $Hour) { 
                 $StartTimeHour_ = substr($Hour->StartTime, 0, 1) == 0 ? substr($Hour->StartTime, 1, 1) : substr($Hour->StartTime, 0, 2);
                 $StartTimeMinute_ = substr($Hour->StartTime, 3, 4) == 0 ? substr($Hour->StartTime, 3, 3) : substr($Hour->StartTime, 3, 4);
@@ -195,17 +198,20 @@ class VesselAvailabilityPdf extends Controller
                 $EndTimeMinute_ = substr($Hour->EndTime, 3, 4) == 0 ? substr($Hour->EndTime, 3, 3) : substr($Hour->EndTime, 3, 4);
                 $HoursBetween = \Carbon\Carbon::createFromTime($EndTimeHour_, $EndTimeMinute_)->diffInHours(\Carbon\Carbon::createFromTime($StartTimeHour_, $StartTimeMinute_));
             }  
+            $DaysWorked = \DB::table('vessel_availabilities')->select(['StartDate', 'EndDate'])->where('Vessel', $Vessel->Vessel)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
+            array_push($TOTALHoursWorked, $HoursBetween);
+            array_push($TOTALDaysWorked, count($DaysWorked));
             $fpdf->Cell(10, 6.5, $Index, 1); 
             $fpdf->Cell(50, 6.5, $VesselImoNumber->ImoNumber ?? '-', 1); 
             $fpdf->Cell(26, 6.5, $VesselGRT_NET->GrossTonnage ?? '-', 1);   
             $fpdf->Cell(26, 6.5, $VesselGRT_NET->NetTonnage ?? '-', 1); 
             $fpdf->Cell(26, 6.5, $HoursBetween . ($HoursBetween < 2 ? ' HOUR' : ' HOURS'), 1);
-            $fpdf->Cell(26, 6.5, '6', 1); 
+            $fpdf->Cell(26, 6.5, count($DaysWorked), 1); 
             $fpdf->Cell(26, 6.5, '6', 1); 
 
             $fpdf->Ln(); 
             $Index++;
-        }
+        } 
         // VESSEL DATA
 
         $fpdf->SetFont('Arial', 'B', 7);  
@@ -216,8 +222,8 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFillColor(217, 242, 255); 
         $fpdf->Cell(26, 6.5, 'TOTAL', '', 0, 1, 1);
         $fpdf->SetFillColor(255, 255, 255); 
-        $fpdf->Cell(26, 6.5, '32', 1);
-        $fpdf->Cell(26, 6.5, '6', 1); 
+        $fpdf->Cell(26, 6.5, collect($TOTALHoursWorked)->sum(), 1);
+        $fpdf->Cell(26, 6.5, collect($TOTALDaysWorked)->sum(), 1); 
         $fpdf->Ln(20);    
         
 
