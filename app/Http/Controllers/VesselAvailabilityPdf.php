@@ -19,8 +19,8 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetTitle('Vessel Availabilty Report - June 2024');
         $fpdf->SetFont('Arial', '', 10);  
 
-        $fpdf->Image('../public/images/ltt-letter-head.png', 10, 2, 190);    
-        $fpdf->Ln(30);     
+        $fpdf->Image('../public/images/ltt-letter-head.png', 10, 7, 190);    
+        $fpdf->Ln(35);     
         $fpdf->Cell(162, -7, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         $fpdf->Ln(9);     
         
@@ -187,12 +187,19 @@ class VesselAvailabilityPdf extends Controller
         foreach ($Vessels as $Vessel) {
             $VesselImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $Vessel->Vessel)->orderBy('id', 'DESC')->first();
             $VesselGRT_NET = \DB::table('vessels_section_4')->select(['GrossTonnage', 'NetTonnage'])->where('ImoNumber', $VesselImoNumber->ImoNumber ?? 0)->orderBy('id', 'DESC')->first();
-
+            $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Vessel->Vessel)->where('StartDate', $Request->DateFrom)->where('EndDate', $Request->DateTo)->get(); 
+            foreach ($HoursWorked as $Hour) { 
+                $StartTimeHour_ = substr($Hour->StartTime, 0, 1) == 0 ? substr($Hour->StartTime, 1, 1) : substr($Hour->StartTime, 0, 2);
+                $StartTimeMinute_ = substr($Hour->StartTime, 3, 4) == 0 ? substr($Hour->StartTime, 3, 3) : substr($Hour->StartTime, 3, 4);
+                $EndTimeHour_ = substr($Hour->EndTime, 0, 1) == 0 ? substr($Hour->EndTime, 1, 1) : substr($Hour->EndTime, 0, 2);
+                $EndTimeMinute_ = substr($Hour->EndTime, 3, 4) == 0 ? substr($Hour->EndTime, 3, 3) : substr($Hour->EndTime, 3, 4);
+                $HoursBetween = \Carbon\Carbon::createFromTime($EndTimeHour_, $EndTimeMinute_)->diffInHours(\Carbon\Carbon::createFromTime($StartTimeHour_, $StartTimeMinute_));
+            }  
             $fpdf->Cell(10, 6.5, $Index, 1); 
             $fpdf->Cell(50, 6.5, $VesselImoNumber->ImoNumber ?? '-', 1); 
             $fpdf->Cell(26, 6.5, $VesselGRT_NET->GrossTonnage ?? '-', 1);   
             $fpdf->Cell(26, 6.5, $VesselGRT_NET->NetTonnage ?? '-', 1); 
-            $fpdf->Cell(26, 6.5, '32', 1);
+            $fpdf->Cell(26, 6.5, $HoursBetween . ($HoursBetween < 2 ? ' HOUR' : ' HOURS'), 1);
             $fpdf->Cell(26, 6.5, '6', 1); 
             $fpdf->Cell(26, 6.5, '6', 1); 
 
