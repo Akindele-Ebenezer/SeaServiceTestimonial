@@ -6,6 +6,7 @@
 @include('Components.Forms.Edit.Availability')
 @include('Components.Forms.Delete.Availability')
 @include('Components.Inner.FilterByDate')
+@include('Components.Inner.FilterReportByDate')
 <div class="vessel-content notifications availability"> 
     <h2>Vessel Status</h2>
     <h3>LIVE</h3>
@@ -178,6 +179,8 @@
                     @endif
                 </span>
             </strong>  
+            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
     @endforeach
@@ -1145,4 +1148,5 @@
 <script src="{{ asset('js/Components/Edit/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Inner/FilterByDate.js') }}"></script>
+<script src="{{ asset('js/Components/Inner/FilterReportByDate.js') }}"></script>
 @endsection

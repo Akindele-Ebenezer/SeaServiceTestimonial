@@ -165,4 +165,4 @@ if (AddAvailabilityButton !== null) {
             }
         } 
     })
-}   
+}    

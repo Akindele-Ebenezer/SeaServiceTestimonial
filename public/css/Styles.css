@@ -325,7 +325,7 @@
 .form-1.AddVessel {
   z-index: 300;
 }
-.form-1 .close-button, .form-1 .close-button-update {
+.form-1 .close-button, .form-1 .close-button-report, .form-1 .close-button-update {
   align-items: center;
   display: flex;
   justify-content: right;
@@ -336,7 +336,7 @@
   translate: 0 -1em;
   width: 100%;
 }
-.form-1 .close-button button, .form-1 .close-button-update button {
+.form-1 .close-button button, .form-1 .close-button-report button, .form-1 .close-button-update button {
   background-color: unset;
   border: none;
   color: red;
@@ -344,19 +344,19 @@
   font-size: 1.2em;
   font-weight: bold;
 }
-.form-1 .close-button h1, .form-1 .close-button-update h1 {
+.form-1 .close-button h1, .form-1 .close-button-report h1, .form-1 .close-button-update h1 {
   background-color: #000;
   color: #fff;
   padding: 0.5em;
 }
-.form-1.FilterByDate .inner {
+.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner {
   padding-bottom: 0;
 }
-.form-1.FilterByDate .inner .FilterByDateForm {
+.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm {
   flex-wrap: wrap;
   width: 20em;
 }
-.form-1.FilterByDate .inner .FilterByDateForm .input input {
+.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input {
   margin-top: 0.5em;
   width: unset;
 }
@@ -1055,6 +1055,7 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner strong .imo.availability-status.status-1, .vessel-content .empty-data .inner strong .imo.availability-status.status-1 {
   color: #fff !important;
   font-size: small;
+  translate: -2.5em -0.3em;
 }
 .vessel-content .list .inner strong .imo.availability-status.status-1.idle, .vessel-content .empty-data .inner strong .imo.availability-status.status-1.idle {
   background-color: #35cd60;
@@ -1251,7 +1252,7 @@ main .left-navigation ul li .total {
 .availability.dashboard {
   width: 70%;
 }
-.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .RecordAvailabilityButton {
+.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .RecordAvailabilityButton {
   background-color: #ff6868;
   color: #fff;
   border: none;

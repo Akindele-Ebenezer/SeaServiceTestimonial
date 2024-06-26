@@ -15,7 +15,7 @@
 
     &.AddVessel { z-index: 300; }
 
-    .close-button, .close-button-update {
+    .close-button, .close-button-report, .close-button-update {
         align-items: center; 
         display: flex;
         justify-content: right;
@@ -42,11 +42,11 @@
         }
     }
 
-    &.FilterByDate {
+    &.FilterByDate, &.FilterReportByDate {
         .inner {
             padding-bottom: 0;
 
-            .FilterByDateForm {
+            .FilterByDateForm, .FilterReportByDateForm {
                 flex-wrap: wrap;
                 width: 20em;
 

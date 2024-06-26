@@ -38,7 +38,7 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', 'B', 7); 
         $fpdf->Cell(20, 0, 'Month: ');
         $fpdf->SetFont('Arial', '', 7); 
-        $fpdf->Cell(20, 0, strtoupper(date("F", mktime(0, 0, 0, date('m'), 1))) . ' ' . date('Y'));
+        $fpdf->Cell(20, 0, strtoupper(\Carbon\Carbon::parse($Request->DateFrom)->monthName) . ' ' . date('Y'));
         $fpdf->Ln(6);     
 
         $fpdf->SetFont('Arial', 'B', 7); 
@@ -53,7 +53,9 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetDrawColor(200, 200, 200);
         $fpdf->SetTextColor(50, 50, 50);
 
-        $fpdf->Ln(10);     
+        $fpdf->Ln(10);    
+        $fpdf->SetFont('Arial', 'B', 14);  
+        $fpdf->Cell(190, 10, 'SUMMARY', 0, 1, 1, 'L');
 
         $fpdf->SetFont('Arial', 'B', 7); 
         $fpdf->Cell(10, 10, 'S/N ', 1);
@@ -154,7 +156,6 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->Cell(50, 6.5, ''); 
         $fpdf->SetFillColor(217, 242, 255); 
         $fpdf->Cell(20, 6.5, 'TOTAL', '', 0, 1, 1);
-        $fpdf->SetFillColor(255, 255, 255); 
         $fpdf->Cell(15, 6.5, collect($TotalBunkery)->sum(), 1);
         $fpdf->Cell(15, 6.5, collect($TotalInspection)->sum(), 1);
         $fpdf->Cell(15, 6.5, collect($TotalOperation)->sum(), 1);
@@ -163,7 +164,9 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->Cell(16.7, 6.5, collect($TotalDocking)->sum(), 1);
         $fpdf->Cell(16.7, 6.5, collect($TotalBreakdown)->sum(), 1); 
         $fpdf->Ln(20);     
-
+        
+        $fpdf->SetFont('Arial', 'B', 14); 
+        $fpdf->Cell(190, 10, 'VESSEL DETAILS', 0, 1, 1, 'L');
         $fpdf->SetFont('Arial', 'B', 7); 
         $fpdf->Cell(10, 10, 'S/N ', 1);
         $fpdf->SetFont('Arial', 'B', 10); 
@@ -198,6 +201,9 @@ class VesselAvailabilityPdf extends Controller
                 $EndTimeMinute_ = substr($Hour->EndTime, 3, 4) == 0 ? substr($Hour->EndTime, 3, 3) : substr($Hour->EndTime, 3, 4);
                 $HoursBetween = \Carbon\Carbon::createFromTime($EndTimeHour_, $EndTimeMinute_)->diffInHours(\Carbon\Carbon::createFromTime($StartTimeHour_, $StartTimeMinute_));
             }  
+            if ($HoursWorked->isEmpty()) {
+                $HoursBetween = '0'; 
+            }
             $DaysWorked = \DB::table('vessel_availabilities')->select(['StartDate', 'EndDate'])->where('Vessel', $Vessel->Vessel)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
             array_push($TOTALHoursWorked, $HoursBetween);
             array_push($TOTALDaysWorked, count($DaysWorked));
