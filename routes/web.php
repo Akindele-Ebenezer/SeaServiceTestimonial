@@ -19,7 +19,7 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('Logout');
 
 Route::get('/Vessels', [VesselController::class, 'index'])->name('Vessels');
 Route::get('/Add/Vessel', [VesselController::class, 'create'])->name('AddVessel');
-Route::get('/Edit/Vessel/{Id}', [VesselController::class, 'update'])->name('EditVessel');
+Route::get('/Edit/Vessel/{Id?}', [VesselController::class, 'update'])->name('EditVessel');
 Route::get('/Delete/Vessel/{Id}', [VesselController::class, 'destroy'])->name('DeleteVessel');
 
 Route::get('/Availability', [VesselAvailabilityController::class, 'index'])->name('Availability');

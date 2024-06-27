@@ -108,6 +108,7 @@ class VesselController extends Controller
             'UserId' => session()->get('USER_ID'),
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
+            'VesselName' => $Request->VesselName,
             'ImoNumber' => $Request->ImoNumber,
             'SummerLoadDraught' => $Request->SummerLoadDraught,
             'Lpp' => $Request->Lpp,
@@ -123,6 +124,7 @@ class VesselController extends Controller
             'UserId' => session()->get('USER_ID'),  
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
+            'VesselName' => $Request->VesselName,
             'ImoNumber' => $Request->ImoNumber,
             'TypesOfEngines' => $Request->TypesOfEngines,
             'NumberOfEngines' => $Request->NumberOfEngines,
@@ -138,6 +140,7 @@ class VesselController extends Controller
             'UserId' => session()->get('USER_ID'),  
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
+            'VesselName' => $Request->VesselName,
             'ImoNumber' => $Request->ImoNumber,
             'GrossTonnage' => $Request->GrossTonnage,
             'NetTonnage' => $Request->NetTonnage, 
@@ -173,8 +176,8 @@ class VesselController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $Request, Vessel $vessel)
-    {
-        \DB::table('vessels_vessel_information')->where('ImoNumber', $Request->EditImoNumber)->update([ 
+    { 
+        \DB::table('vessels_vessel_information')->where('ImoNumber', $Request->EditImoNumber)->orWhere('VesselName', $Request->EditVesselName)->update([ 
             'UserId' => session()->get('USER_ID'),
             'VesselName' => $Request->EditVesselName,
             'VesselType' => $Request->EditVesselType,
@@ -187,8 +190,9 @@ class VesselController extends Controller
             'Boa' => $Request->EditBoa,
             'DepthMouled' => $Request->EditDepthMoulded, 
         ]);
-        \DB::table('vessels_general_others')->where('ImoNumber', $Request->EditImoNumber)->update([  
+        \DB::table('vessels_general_others')->where('ImoNumber', $Request->EditImoNumber)->orWhere('VesselName', $Request->EditVesselName)->update([  
             'UserId' => session()->get('USER_ID'),
+            'VesselName' => $Request->EditVesselName,
             'SummerLoadDraught' => $Request->EditSummerLoadDraught,
             'Lpp' => $Request->EditLpp,
             'Owner' => $Request->EditOwner,
@@ -199,8 +203,9 @@ class VesselController extends Controller
             'Material' => $Request->EditMaterial,
             'YardNumber' => $Request->EditYardNumber, 
         ]);
-        \DB::table('vessels_section_3')->where('ImoNumber', $Request->EditImoNumber)->update([ 
+        \DB::table('vessels_section_3')->where('ImoNumber', $Request->EditImoNumber)->orWhere('VesselName', $Request->EditVesselName)->update([ 
             'UserId' => session()->get('USER_ID'),  
+            'VesselName' => $Request->EditVesselName,
             'TypesOfEngines' => $Request->EditTypesOfEngines,
             'NumberOfEngines' => $Request->EditNumberOfEngines,
             'NumberOfCylinder' => $Request->EditNumberOfCyliners,
@@ -211,8 +216,9 @@ class VesselController extends Controller
             'Diametermm' => $Request->EditDiametermm,
             'LengthOfStrokemm' => $Request->EditLengthOfStrokemm, 
         ]);
-        \DB::table('vessels_section_4')->where('ImoNumber', $Request->EditImoNumber)->update([  
+        \DB::table('vessels_section_4')->where('ImoNumber', $Request->EditImoNumber)->orWhere('VesselName', $Request->EditVesselName)->update([  
             'UserId' => session()->get('USER_ID'),   
+            'VesselName' => $Request->EditVesselName,
             'GrossTonnage' => $Request->EditGrossTonnage,
             'NetTonnage' => $Request->EditNetTonnage, 
         ]);
