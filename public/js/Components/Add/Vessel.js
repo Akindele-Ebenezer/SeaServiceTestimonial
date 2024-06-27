@@ -20,7 +20,7 @@ CreateVesselButton.addEventListener('click', () => {
 
     CreateNewVesselButton.addEventListener('click', () => {
         let ErrorVessel = document.querySelector('.error-vessel');
-        let VesselNameInput = document.querySelector('input[name=VesselName]');
+        let VesselNameInput = document.querySelector('input[name=VesselName]'); 
         let ImoNumberInput = document.querySelector('input[name=ImoNumber]');
     
         if (VesselNameInput.value.trim() == '') { 
