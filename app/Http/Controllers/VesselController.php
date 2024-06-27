@@ -229,12 +229,12 @@ class VesselController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vessel $Vessel, $ImoNumber)
+    public function destroy(Vessel $Vessel, $VesselName)
     {  
-        \DB::table('vessels_vessel_information')->where('ImoNumber', $ImoNumber)->delete();
-        \DB::table('vessels_general_others')->where('ImoNumber', $ImoNumber)->delete();
-        \DB::table('vessels_section_3')->where('ImoNumber', $ImoNumber)->delete();
-        \DB::table('vessels_section_4')->where('ImoNumber', $ImoNumber)->delete();
+        \DB::table('vessels_vessel_information')->where('VesselName', $VesselName)->delete();
+        \DB::table('vessels_general_others')->where('VesselName', $VesselName)->delete();
+        \DB::table('vessels_section_3')->where('VesselName', $VesselName)->delete();
+        \DB::table('vessels_section_4')->where('VesselName', $VesselName)->delete();
         return back(); 
     }
 }

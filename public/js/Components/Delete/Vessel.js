@@ -5,7 +5,7 @@ let DeleteVesselX = document.querySelector('.delete-vessel-x');
 let CancelButtonDeleteVessels = document.querySelectorAll('.cancel-button-delete-vessel');
  
 DeleteVesselButtons.forEach(DeleteVesselButton => {
-    let VesselId = DeleteVesselButton.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.textContent;
+    let VesselId = DeleteVesselButton.parentElement.parentElement.parentElement.firstElementChild.textContent;
     DeleteVesselButton.addEventListener('click', () => {
         let ERROR_X_Wrapper = document.querySelector('.error-x-wrapper');
         let ERROR_X = document.querySelector('.error-x');
