@@ -231,6 +231,7 @@ class VesselController extends Controller
      */
     public function destroy(Vessel $Vessel, $VesselName)
     {  
+        // dd($VesselName);
         \DB::table('vessels_vessel_information')->where('VesselName', $VesselName)->delete();
         \DB::table('vessels_general_others')->where('VesselName', $VesselName)->delete();
         \DB::table('vessels_section_3')->where('VesselName', $VesselName)->delete();
