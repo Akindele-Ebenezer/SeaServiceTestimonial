@@ -25,8 +25,6 @@ CreateVesselButton.addEventListener('click', () => {
     
         if (VesselNameInput.value.trim() == '') { 
             ErrorVessel.textContent =  'Vessel name field cannot be empty';
-        } else if (ImoNumberInput.value.trim() == '') { 
-            ErrorVessel.textContent =  'Vessel ID is required';
         } else {
             CreateNewVesselButton.style.backgroundColor = '#1fb95e';
             CreateNewVesselButton.textContent = '+ Creating..';
