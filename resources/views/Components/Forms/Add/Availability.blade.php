@@ -43,7 +43,7 @@
                                 <option value="BREAKDOWN">BREAKDOWN</option> 
                                 <option value="INSPECTION">INSPECTION</option> 
                                 <option value="BUNKERY">BUNKERY</option> 
-                                <option value="IDLE">IDLE</option> 
+                                <option value="IDLE">READY TO GO</option> 
                             </select>
                         </div> 
                         <div class="input">

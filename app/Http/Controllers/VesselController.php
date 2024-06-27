@@ -92,6 +92,8 @@ class VesselController extends Controller
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
             'ImoNumber' => $Request->ImoNumber,
+            'VesselType' => $Request->VesselType,
+            'Company' => $Request->Company,
             'VesselName' => $Request->VesselName,
             'CallSign' => $Request->CallSign,
             'Flag' => $Request->Flag,
@@ -175,6 +177,8 @@ class VesselController extends Controller
         \DB::table('vessels_vessel_information')->where('ImoNumber', $Request->EditImoNumber)->update([ 
             'UserId' => session()->get('USER_ID'),
             'VesselName' => $Request->EditVesselName,
+            'VesselType' => $Request->EditVesselType,
+            'Company' => $Request->EditCompany,
             'CallSign' => $Request->EditCallSign,
             'Flag' => $Request->EditFlag,
             'PortOfRegistry' => $Request->EditPortOfRegistry,

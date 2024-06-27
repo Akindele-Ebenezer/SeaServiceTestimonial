@@ -44,7 +44,7 @@
         border-bottom: 1px solid lighten($color: $Color-2, $amount: 60);
         border-left: 8px solid #fff; 
         color: $Color-2;
-        padding: 1em 0;
+        padding: .5em 0;
         position: relative;
 
         &:hover {
@@ -89,6 +89,11 @@
             }
 
             img {
+                &:first-of-type {
+                    margin: unset !important;
+                    width: 3em;
+                }
+
                 margin-inline: .5em;
                 width: 1.5em;
             }

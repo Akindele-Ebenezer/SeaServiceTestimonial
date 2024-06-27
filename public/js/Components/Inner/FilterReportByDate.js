@@ -25,17 +25,16 @@ FilterReportByDate_GoButton.addEventListener('click', () => {
     if (REPORT_SpecificDay.value) {  
         FilterReportByDate_GoButton.style.backgroundColor = '#1fb95e';
         FilterReportByDate_GoButton.textContent = '+ Processing..';
-        FilterReportByDateForm.submit();
+        window.open('/Availability/Report/?DateFrom=' + REPORT_SpecificDay.value  + '&DateTo=' + REPORT_SpecificDay.value + '&REPORT_SpecificDay=');
     } else if (REPORT_FromDate.value == '') { 
         ErrorFilterReportByDate.textContent =  'From Date can\'t be empty';
     } else if (REPORT_EndDate.value == '') {  
         ErrorFilterReportByDate.textContent =  'End Date is required';
     } else if (REPORT_FromDate.value > REPORT_EndDate.value) {  
         ErrorFilterReportByDate.textContent =  'From Date cannot be greater than End date';
-    } else { 
+    } else {
         FilterReportByDate_GoButton.style.backgroundColor = '#1fb95e';
         FilterReportByDate_GoButton.textContent = '+ Processing..';
-        FilterReportByDateForm.submit();
         window.open('/Availability/Report/?DateFrom=' + REPORT_FromDate.value  + '&DateTo=' + REPORT_EndDate.value);
     }
 })

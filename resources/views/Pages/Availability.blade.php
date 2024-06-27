@@ -65,15 +65,16 @@
     @endphp
     <div class="list tooltip-x"> 
         @if ($EndDate === $StartDate)  
-            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'IDLE') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'IDLE' }} <br> {{ $StartTime_2 }} - {{ $EndTime_2 }}</span>
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'READY TO GO') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} <br> {{ $StartTime_2 }} - {{ $EndTime_2 }}</span>
         @else
-            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'IDLE' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
         @endif
         <div class="inner -x">  
+            <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
                 <span class="status-x  
                     @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'IDLE') 
+                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
                             @case('DOCKING')
                                 docking
                                 @break 
@@ -97,7 +98,7 @@
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'IDLE') 
+                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
                             @case('DOCKING')
                                 docking
                                 @break 
@@ -124,7 +125,7 @@
                 <span class="">{{ $Vessel->VesselName }}</span>  
                 <span class="imo availability-status 
                     @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'IDLE') 
+                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
                             @case('DOCKING')
                                 docking
                                 @break 
@@ -148,7 +149,7 @@
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'IDLE') 
+                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
                             @case('DOCKING')
                                 docking
                                 @break 
@@ -173,9 +174,9 @@
                     @endif
                     status-1">
                     @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'IDLE' }} 
+                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
-                    {{ $Availability_STATUS->Status ?? 'IDLE' }} 
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
                     @endif
                 </span>
             </strong>  
@@ -285,10 +286,6 @@
                             <span class="bunkery"></span> 
                             <span>BUNKERY</span>
                         </div>
-                        <div class="indicators-inner-x">
-                            <span class="maintenance"></span> 
-                            <span>MAINTENANCE</span>
-                        </div>
                     </div>
                     <div class="indicators-inner">
                         <div class="indicators-inner-x">
@@ -297,12 +294,12 @@
                         </div>
                         <div class="indicators-inner-x">
                             <span class="idle"></span> 
-                            <span>IDLE</span>
-                        </div>
-                        <div class="indicators-inner-x">
-                            <span class="operation"></span> 
-                            <span>OPERATION</span>
+                            <span>READY TO GO</span>
                         </div> 
+                        <div class="indicators-inner-x">
+                            <span class="maintenance"></span> 
+                            <span>MAINTENANCE</span>
+                        </div>
                     </div>
                 </div>
             </div> 

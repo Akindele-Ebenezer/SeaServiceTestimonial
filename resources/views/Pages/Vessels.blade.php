@@ -49,6 +49,8 @@
         <span class="Hide">{{ $Vessels_Section3->LengthOfStrokemm ?? '-' }}</span>
         <span class="Hide">{{ $Vessels_Section4->GrossTonnage ?? '-' }}</span>
         <span class="Hide">{{ $Vessels_Section4->NetTonnage ?? '-' }}</span>
+        <span class="Hide">{{ $Vessel->Company ?? '-' }}</span>
+        <span class="Hide">{{ $Vessel->VesselType ?? '-' }}</span>
         <div class="inner -x">
             <span class="vessel Hide">{{ $Vessel->VesselName }}</span>
             <strong>
@@ -137,7 +139,13 @@
                         <span>VESSEL NAME</span><span class="vessel-name"><strong></strong></span>
                     </li>
                     <li>
+                        <span>VESSEL TYPE</span><span class="vessel-type"><strong></strong></span>
+                    </li>
+                    <li>
                         <span>IMO No.</span><span class="imo-number"><strong></strong></span>
+                    </li>
+                    <li>
+                        <span>COMPANY</span><span class="company-x"><strong></strong></span>
                     </li>
                     <li>
                         <span>CALL SIGN</span><span class="call-sign"><strong></strong></span>
@@ -304,7 +312,9 @@
             document.querySelector('.vessel-name-x-x').textContent = Vessel.firstElementChild.textContent;
             document.querySelector('.imo-number-x').textContent = Vessel.firstElementChild.nextElementSibling.textContent;
             document.querySelector('.vessel-name').firstElementChild.textContent = Vessel.firstElementChild.textContent;
+            document.querySelector('.vessel-type').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
             document.querySelector('.imo-number').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.textContent;
+            document.querySelector('.company-x').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
             document.querySelector('.call-sign').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.textContent;
             document.querySelector('.flag').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
             document.querySelector('.port-of-registry').firstElementChild.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;

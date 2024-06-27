@@ -988,7 +988,7 @@ main .left-navigation ul li .total {
   border-bottom: 1px solid #dcedf5;
   border-left: 8px solid #fff;
   color: #225f7d;
-  padding: 1em 0;
+  padding: 0.5em 0;
   position: relative;
 }
 .vessel-content .list:hover, .vessel-content .empty-data:hover {
@@ -1026,6 +1026,10 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner img, .vessel-content .empty-data .inner img {
   margin-inline: 0.5em;
   width: 1.5em;
+}
+.vessel-content .list .inner img:first-of-type, .vessel-content .empty-data .inner img:first-of-type {
+  margin: unset !important;
+  width: 3em;
 }
 .vessel-content .list .inner strong, .vessel-content .empty-data .inner strong {
   border-radius: 0.3em;

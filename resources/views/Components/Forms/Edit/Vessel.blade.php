@@ -13,8 +13,32 @@
                             <input type="text" name="EditVesselName" readonly>
                         </div>
                         <div class="input">
+                            <label for="">VESSEL TYPE</label>
+                            <select name="EditVesselType"> 
+                                <option value="DREDGER">DREDGER</option>
+                                <option value="TUG BOAT">TUG BOAT</option>
+                                <option value="PILOT CUTTERS">PILOT CUTTERS</option>
+                                <option value="MOORING">MOORING</option>
+                                <option value="MULTICAT">MULTICAT</option>
+                                <option value="SPEED BOAT">SPEED BOAT</option>
+                                <option value="PLOUGHING">PLOUGHING</option>
+                                <option value="SPEED BOAT">SPEED BOAT</option>
+                            </select>  
+                        </div>
+                        <div class="input">
                             <label for="">IMO No.</label>
                             <input type="number" name="EditImoNumber" readonly>
+                        </div> 
+                        <div class="input">
+                            @php
+                                $Companies = \DB::table('companies')->select('Company')->get();
+                            @endphp
+                            <label for="">COMPANY</label>
+                            <select name="EditCompany"> 
+                                @foreach ($Companies as $Company)
+                                <option value="{{ $Company->Company }}">{{ $Company->Company }}</option>
+                                @endforeach
+                            </select>   
                         </div> 
                         <div class="input">
                             <label for="">CALL SIGN</label>
