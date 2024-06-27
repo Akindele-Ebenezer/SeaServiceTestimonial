@@ -22,12 +22,13 @@
                                 <option value="MULTICAT">MULTICAT</option>
                                 <option value="SPEED BOAT">SPEED BOAT</option>
                                 <option value="PLOUGHING">PLOUGHING</option>
+                                <option value="SURVEY">SURVEY</option>
                                 <option value="OTHERS">OTHERS</option>
                             </select>  
                         </div>
                         <div class="input">
                             <label for="">IMO No.</label>
-                            <input type="number" name="EditImoNumber" readonly>
+                            <input type="number" name="EditImoNumber">
                         </div> 
                         <div class="input">
                             @php
