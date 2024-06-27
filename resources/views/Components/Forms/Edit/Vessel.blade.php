@@ -22,7 +22,7 @@
                                 <option value="MULTICAT">MULTICAT</option>
                                 <option value="SPEED BOAT">SPEED BOAT</option>
                                 <option value="PLOUGHING">PLOUGHING</option>
-                                <option value="SPEED BOAT">SPEED BOAT</option>
+                                <option value="OHTERS">OHTERS</option>
                             </select>  
                         </div>
                         <div class="input">
