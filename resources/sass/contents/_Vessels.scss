@@ -37,7 +37,10 @@
         &.company-heading {
             background: $Color-2;
             padding-block: 0em;
+            position: sticky;
+            top: 4.85em;
             width: 100%;
+            z-index: 20;
 
             span {
                 background: lighten($color: $Color-2, $amount: 10); 

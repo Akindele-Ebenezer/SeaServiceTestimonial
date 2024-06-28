@@ -983,7 +983,10 @@ main .left-navigation ul li .total {
 .vessel-content h3.company-heading {
   background: #225f7d;
   padding-block: 0em;
+  position: sticky;
+  top: 4.85em;
   width: 100%;
+  z-index: 20;
 }
 .vessel-content h3.company-heading span {
   background: #2d7da5;
