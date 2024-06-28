@@ -19,7 +19,7 @@
         </span>
     </h3>
     @php
-        $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
+        $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
     @foreach ($Dredgers as $Vessel)
@@ -1256,7 +1256,7 @@
         </span>
     </h3>
     @php
-        $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'DREDGER')->get();
+        $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'DREDGER')->get();
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
     @foreach ($Dredgers as $Vessel)
