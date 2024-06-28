@@ -982,7 +982,14 @@ main .left-navigation ul li .total {
 }
 .vessel-content h3.company-heading {
   background: #225f7d;
+  padding-block: 0em;
   width: 100%;
+}
+.vessel-content h3.company-heading span {
+  background: #2d7da5;
+  border-left: 7px solid #ff6868;
+  display: block;
+  padding: 0.5em;
 }
 .vessel-content .empty-data {
   color: #fff;

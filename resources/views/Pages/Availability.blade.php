@@ -13,7 +13,11 @@
     @unless (count($Vessels) > 0)
         <p class="empty-data">There's no vessel in the system..</p>
     @endunless
-    <h3 class="company-heading">L.T.T</h3>
+    <h3 class="company-heading">
+        <span>
+            L.T.T        
+        </span>
+    </h3>
     @php
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
     @endphp
@@ -1246,7 +1250,11 @@
         </div>
     </div> 
     @endforeach  
-    <h3 class="company-heading">DEPASA</h3>
+    <h3 class="company-heading">
+        <span>
+            DEPASA        
+        </span>
+    </h3>
     @php
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'DREDGER')->get();
     @endphp

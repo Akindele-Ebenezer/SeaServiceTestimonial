@@ -36,7 +36,15 @@
 
         &.company-heading {
             background: $Color-2;
+            padding-block: 0em;
             width: 100%;
+
+            span {
+                background: lighten($color: $Color-2, $amount: 10); 
+                border-left: 7px solid darken($Color-4, 20);
+                display: block; 
+                padding: .5em;
+            }
         }
     }
 
