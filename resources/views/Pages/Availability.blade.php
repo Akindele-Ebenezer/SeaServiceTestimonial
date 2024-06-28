@@ -22,6 +22,9 @@
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
+    @unless (count($Dredgers) > 0)
+        No data available..
+    @endunless
     @foreach ($Dredgers as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -198,6 +201,9 @@
         $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS</h3>
+    @unless (count($TugBoats) > 0)
+        No data available..
+    @endunless
     @foreach ($TugBoats as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -374,6 +380,9 @@
         $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
+    @unless (count($PilotCutters) > 0)
+        No data available..
+    @endunless
     @foreach ($PilotCutters as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -550,6 +559,9 @@
         $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MOORING')->get();
     @endphp
     <h3 class="vessel-type-heading">MOORINGS</h3>
+    @unless (count($Mooring) > 0)
+        No data available..
+    @endunless
     @foreach ($Mooring as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -726,6 +738,9 @@
         $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MULTICAT')->get();
     @endphp
     <h3 class="vessel-type-heading">MULTICATS</h3>
+    @unless (count($Multicat) > 0)
+        No data available..
+    @endunless
     @foreach ($Multicat as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -902,6 +917,9 @@
         $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS</h3>
+    @unless (count($SpeedBoats) > 0)
+        No data available..
+    @endunless
     @foreach ($SpeedBoats as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -1078,6 +1096,9 @@
         $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PLOUGHING')->get();
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING</h3>
+    @unless (count($Ploughing) > 0)
+        No data available..
+    @endunless
     @foreach ($Ploughing as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -1259,6 +1280,9 @@
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'DREDGER')->get();
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
+    @unless (count($Dredgers) > 0)
+        No data available..
+    @endunless
     @foreach ($Dredgers as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -1435,6 +1459,9 @@
         $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'TUG BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS</h3>
+    @unless (count($TugBoats) > 0)
+        No data available..
+    @endunless
     @foreach ($TugBoats as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -1611,6 +1638,9 @@
         $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
+    @unless (count($PilotCutters) > 0)
+        No data available..
+    @endunless
     @foreach ($PilotCutters as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -1787,6 +1817,9 @@
         $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MOORING')->get();
     @endphp
     <h3 class="vessel-type-heading">MOORINGS</h3>
+    @unless (count($Mooring) > 0)
+        No data available..
+    @endunless
     @foreach ($Mooring as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -1963,6 +1996,9 @@
         $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MULTICAT')->get();
     @endphp
     <h3 class="vessel-type-heading">MULTICATS</h3>
+    @unless (count($Multicat) > 0)
+        No data available..
+    @endunless
     @foreach ($Multicat as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -2139,6 +2175,9 @@
         $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS</h3>
+    @unless (count($SpeedBoats) > 0)
+        No data available..
+    @endunless
     @foreach ($SpeedBoats as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
@@ -2315,6 +2354,9 @@
         $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PLOUGHING')->get();
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING</h3>
+    @unless (count($Ploughing) > 0)
+        No data available..
+    @endunless
     @foreach ($Ploughing as $Vessel)
     @php 
         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
