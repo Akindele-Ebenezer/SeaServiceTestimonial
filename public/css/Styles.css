@@ -980,6 +980,12 @@ main .left-navigation ul li .total {
   padding: 0.5em;
   width: fit-content;
 }
+.vessel-content h3 + span {
+  border-bottom: 1px solid #eee;
+  display: block;
+  padding: 0.3em;
+  width: 100%;
+}
 .vessel-content h3.company-heading {
   background: #225f7d;
   padding-block: 0em;

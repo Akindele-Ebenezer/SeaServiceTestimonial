@@ -34,6 +34,13 @@
         padding: .5em;
         width: fit-content;
 
+        & + span {
+            border-bottom: 1px solid #eee;
+            display: block;
+            padding: .3em;
+            width: 100%;
+        }
+
         &.company-heading {
             background: $Color-2;
             padding-block: 0em;

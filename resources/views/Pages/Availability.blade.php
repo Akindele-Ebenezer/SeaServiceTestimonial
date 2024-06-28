@@ -23,7 +23,9 @@
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
     @unless (count($Dredgers) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Dredgers as $Vessel)
     @php 
@@ -202,7 +204,9 @@
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS</h3>
     @unless (count($TugBoats) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($TugBoats as $Vessel)
     @php 
@@ -381,7 +385,9 @@
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
     @unless (count($PilotCutters) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($PilotCutters as $Vessel)
     @php 
@@ -560,7 +566,9 @@
     @endphp
     <h3 class="vessel-type-heading">MOORINGS</h3>
     @unless (count($Mooring) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Mooring as $Vessel)
     @php 
@@ -739,7 +747,9 @@
     @endphp
     <h3 class="vessel-type-heading">MULTICATS</h3>
     @unless (count($Multicat) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Multicat as $Vessel)
     @php 
@@ -918,7 +928,9 @@
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS</h3>
     @unless (count($SpeedBoats) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($SpeedBoats as $Vessel)
     @php 
@@ -1097,7 +1109,9 @@
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING</h3>
     @unless (count($Ploughing) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Ploughing as $Vessel)
     @php 
@@ -1281,7 +1295,9 @@
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
     @unless (count($Dredgers) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Dredgers as $Vessel)
     @php 
@@ -1460,7 +1476,9 @@
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS</h3>
     @unless (count($TugBoats) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($TugBoats as $Vessel)
     @php 
@@ -1639,7 +1657,9 @@
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
     @unless (count($PilotCutters) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($PilotCutters as $Vessel)
     @php 
@@ -1818,7 +1838,9 @@
     @endphp
     <h3 class="vessel-type-heading">MOORINGS</h3>
     @unless (count($Mooring) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Mooring as $Vessel)
     @php 
@@ -1997,7 +2019,9 @@
     @endphp
     <h3 class="vessel-type-heading">MULTICATS</h3>
     @unless (count($Multicat) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Multicat as $Vessel)
     @php 
@@ -2176,7 +2200,9 @@
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS</h3>
     @unless (count($SpeedBoats) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($SpeedBoats as $Vessel)
     @php 
@@ -2355,7 +2381,9 @@
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING</h3>
     @unless (count($Ploughing) > 0)
-        No data available..
+        <span>
+            No data available..
+        </span>
     @endunless
     @foreach ($Ploughing as $Vessel)
     @php 
