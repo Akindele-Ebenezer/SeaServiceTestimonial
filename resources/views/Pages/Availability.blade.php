@@ -1248,7 +1248,7 @@
     @endforeach  
     <h3 class="company-heading">DEPASA</h3>
     @php
-        $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
+        $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'DREDGER')->get();
     @endphp
     <h3 class="vessel-type-heading">DREDGERS</h3>
     @foreach ($Dredgers as $Vessel)
@@ -1424,7 +1424,7 @@
     </div> 
     @endforeach 
     @php
-        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->get();
+        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'TUG BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS</h3>
     @foreach ($TugBoats as $Vessel)
@@ -1600,7 +1600,7 @@
     </div> 
     @endforeach
     @php
-        $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PILOT CUTTERS')->get();
+        $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
     @foreach ($PilotCutters as $Vessel)
@@ -1776,7 +1776,7 @@
     </div> 
     @endforeach
     @php
-        $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MOORING')->get();
+        $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MOORING')->get();
     @endphp
     <h3 class="vessel-type-heading">MOORINGS</h3>
     @foreach ($Mooring as $Vessel)
@@ -1952,7 +1952,7 @@
     </div> 
     @endforeach
     @php
-        $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MULTICAT')->get();
+        $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MULTICAT')->get();
     @endphp
     <h3 class="vessel-type-heading">MULTICATS</h3>
     @foreach ($Multicat as $Vessel)
@@ -2128,7 +2128,7 @@
     </div> 
     @endforeach
     @php
-        $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'SPEED BOAT')->get();
+        $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS</h3>
     @foreach ($SpeedBoats as $Vessel)
@@ -2304,7 +2304,7 @@
     </div> 
     @endforeach
     @php
-        $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PLOUGHING')->get();
+        $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PLOUGHING')->get();
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING</h3>
     @foreach ($Ploughing as $Vessel)
