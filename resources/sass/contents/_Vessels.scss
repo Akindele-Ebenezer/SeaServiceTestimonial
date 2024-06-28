@@ -36,6 +36,7 @@
 
         & + span {
             border-bottom: 1px solid #eee;
+            color: #333;
             display: block;
             padding: .3em;
             width: 100%;
@@ -386,4 +387,27 @@
             background-color: darken($color: $Color-2, $amount: 3);
         }
     } 
+}
+
+@media (max-width: 1785px) {
+    .availability {
+        .company-heading {
+            top: 2.85em !important;
+        }
+
+        .tooltip-x {
+            .inner.-x {
+                .notification-wrapper {
+                    .status-1 {
+                        font-size: .6em !important;
+                        translate: -9.5em 2.95em !important;
+                    }
+                }
+            }
+        }
+
+        .vessel-type-heading {
+            font-size: xx-small;
+        }
+    }
 }

@@ -15,7 +15,7 @@
     @endunless
     <h3 class="company-heading">
         <span>
-            L.T.T        
+            L.T.T Coastal Marine        
         </span>
     </h3>
     @php
@@ -1287,7 +1287,7 @@
     @endforeach  
     <h3 class="company-heading">
         <span>
-            DEPASA        
+            Depasa Marine International        
         </span>
     </h3>
     @php

@@ -982,6 +982,7 @@ main .left-navigation ul li .total {
 }
 .vessel-content h3 + span {
   border-bottom: 1px solid #eee;
+  color: #333;
   display: block;
   padding: 0.3em;
   width: 100%;
@@ -1271,6 +1272,18 @@ main .left-navigation ul li .total {
   background-color: #1f5671;
 }
 
+@media (max-width: 1785px) {
+  .availability .company-heading {
+    top: 2.85em !important;
+  }
+  .availability .tooltip-x .inner.-x .notification-wrapper .status-1 {
+    font-size: 0.6em !important;
+    translate: -9.5em 2.95em !important;
+  }
+  .availability .vessel-type-heading {
+    font-size: xx-small;
+  }
+}
 .availability {
   width: 20%;
 }
@@ -1792,7 +1805,7 @@ main .left-navigation ul li .total {
     width: 7em;
   }
   .dashboard-inner h1 svg.-x {
-    height: 2em;
+    height: 3em;
     width: 3em;
   }
   nav[role] span[aria-current] {
