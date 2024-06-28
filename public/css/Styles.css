@@ -980,6 +980,10 @@ main .left-navigation ul li .total {
   padding: 0.5em;
   width: fit-content;
 }
+.vessel-content h3.company-heading {
+  background: #225f7d;
+  width: 100%;
+}
 .vessel-content .empty-data {
   color: #fff;
 }

@@ -33,6 +33,11 @@
         font-weight: 500;
         padding: .5em;
         width: fit-content;
+
+        &.company-heading {
+            background: $Color-2;
+            width: 100%;
+        }
     }
 
     .empty-data {
