@@ -2624,6 +2624,12 @@
                     @foreach ($Vessels as $Vessel)
                     @php 
                         $Vessel_ = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->first();
+                        $Vessel_ = \DB::table('vessels_vessel_information')
+                                    ->select('VesselName')
+                                    ->join('vessel_availabilities', 'vessel_availabilities.Vessel', '=', 'vessels_vessel_information.VesselName')
+                                    ->where('vessels_vessel_information.VesselName', $Vessel->VesselName)
+                                    ->first();
+                                    print_r($Vessel_);
                         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
                             $Vessel_STARTIME = \DB::table('vessel_availabilities') 
                                                 ->where('Vessel', $Vessel->VesselName)
@@ -2648,7 +2654,7 @@
                         }
                     @endphp
                     <tr>
-                        <td>{{ $Vessel_->Vessel ?? '-' }}</td>
+                        <td>{{ $Vessel_->VesselName ?? '-' }}</td>
                         <td> 
                             <div class="flex">  
                                 @foreach ($Vessel_STARTIME as $Vessel)    
