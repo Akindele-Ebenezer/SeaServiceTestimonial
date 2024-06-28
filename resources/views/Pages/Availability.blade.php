@@ -9,7 +9,7 @@
 @include('Components.Inner.FilterReportByDate')
 <div class="vessel-content notifications availability"> 
     <h2>Vessel Status</h2>
-    {{-- <h3>LIVE</h3> --}}
+    {{-- <h3>LIVE</h3> :: {{ count($Vessels) }} --}} 
     @unless (count($Vessels) > 0)
         <p class="empty-data">There's no vessel in the system..</p>
     @endunless
@@ -21,7 +21,7 @@
     @php
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
     @endphp
-    <h3 class="vessel-type-heading">DREDGERS</h3>
+    <h3 class="vessel-type-heading">DREDGERS :: {{ count($Dredgers) }}</h3> 
     @unless (count($Dredgers) > 0)
         <span>
             No data available..
@@ -202,7 +202,7 @@
     @php
         $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->get();
     @endphp
-    <h3 class="vessel-type-heading">TUG BOATS</h3>
+    <h3 class="vessel-type-heading">TUG BOATS :: {{ count($TugBoats) }}</h3> 
     @unless (count($TugBoats) > 0)
         <span>
             No data available..
@@ -383,7 +383,7 @@
     @php
         $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
-    <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
+    <h3 class="vessel-type-heading">PILOT CUTTERS :: {{ count($PilotCutters) }}</h3> 
     @unless (count($PilotCutters) > 0)
         <span>
             No data available..
@@ -564,7 +564,7 @@
     @php
         $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MOORING')->get();
     @endphp
-    <h3 class="vessel-type-heading">MOORINGS</h3>
+    <h3 class="vessel-type-heading">MOORINGS :: {{ count($Mooring) }}</h3> 
     @unless (count($Mooring) > 0)
         <span>
             No data available..
@@ -745,7 +745,7 @@
     @php
         $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MULTICAT')->get();
     @endphp
-    <h3 class="vessel-type-heading">MULTICATS</h3>
+    <h3 class="vessel-type-heading">MULTICATS :: {{ count($Multicat) }}</h3> 
     @unless (count($Multicat) > 0)
         <span>
             No data available..
@@ -926,7 +926,7 @@
     @php
         $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
-    <h3 class="vessel-type-heading">SPEED BOATS</h3>
+    <h3 class="vessel-type-heading">SPEED BOATS :: {{ count($SpeedBoats) }}</h3> 
     @unless (count($SpeedBoats) > 0)
         <span>
             No data available..
@@ -1107,7 +1107,7 @@
     @php
         $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PLOUGHING')->get();
     @endphp
-    <h3 class="vessel-type-heading">PLOUGHING</h3>
+    <h3 class="vessel-type-heading">PLOUGHING :: {{ count($Ploughing) }}</h3> 
     @unless (count($Ploughing) > 0)
         <span>
             No data available..
@@ -1293,7 +1293,7 @@
     @php
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'DREDGER')->get();
     @endphp
-    <h3 class="vessel-type-heading">DREDGERS</h3>
+    <h3 class="vessel-type-heading">DREDGERS :: {{ count($Dredgers) }}</h3> 
     @unless (count($Dredgers) > 0)
         <span>
             No data available..
@@ -1474,7 +1474,7 @@
     @php
         $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'TUG BOAT')->get();
     @endphp
-    <h3 class="vessel-type-heading">TUG BOATS</h3>
+    <h3 class="vessel-type-heading">TUG BOATS :: {{ count($TugBoats) }}</h3> 
     @unless (count($TugBoats) > 0)
         <span>
             No data available..
@@ -1655,7 +1655,7 @@
     @php
         $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
-    <h3 class="vessel-type-heading">PILOT CUTTERS</h3>
+    <h3 class="vessel-type-heading">PILOT CUTTERS :: {{ count($PilotCutters) }}</h3> 
     @unless (count($PilotCutters) > 0)
         <span>
             No data available..
@@ -1836,7 +1836,7 @@
     @php
         $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MOORING')->get();
     @endphp
-    <h3 class="vessel-type-heading">MOORINGS</h3>
+    <h3 class="vessel-type-heading">MOORINGS :: {{ count($Mooring) }}</h3> 
     @unless (count($Mooring) > 0)
         <span>
             No data available..
@@ -2017,7 +2017,7 @@
     @php
         $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MULTICAT')->get();
     @endphp
-    <h3 class="vessel-type-heading">MULTICATS</h3>
+    <h3 class="vessel-type-heading">MULTICATS :: {{ count($Multicat) }}</h3> 
     @unless (count($Multicat) > 0)
         <span>
             No data available..
@@ -2198,7 +2198,7 @@
     @php
         $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
-    <h3 class="vessel-type-heading">SPEED BOATS</h3>
+    <h3 class="vessel-type-heading">SPEED BOATS :: {{ count($SpeedBoats) }}</h3> 
     @unless (count($SpeedBoats) > 0)
         <span>
             No data available..
@@ -2379,7 +2379,7 @@
     @php
         $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PLOUGHING')->get();
     @endphp
-    <h3 class="vessel-type-heading">PLOUGHING</h3>
+    <h3 class="vessel-type-heading">PLOUGHING :: {{ count($Ploughing) }}</h3> 
     @unless (count($Ploughing) > 0)
         <span>
             No data available..
@@ -3315,7 +3315,7 @@
                         <th>End time</th>
                         <th>Source</th>
                         <th>#</th>
-                    </tr>
+                     :: {{ count($VesselAvailability) }}</tr> 
                     @unless (count($VesselAvailability) > 0)
                     <tr>
                         <td class="action">System don't have any records yet..</td>

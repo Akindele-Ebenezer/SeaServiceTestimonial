@@ -28,8 +28,8 @@
     }
 
     h3 {
-        background: red;
-        color: #fff;
+        background-color: lighten($color: $Color-4, $amount: 8.5);
+        color: darken($color: $Color-4, $amount: 20);
         font-weight: 500;
         padding: .5em;
         width: fit-content;
@@ -41,8 +41,8 @@
             width: 100%;
         }
 
-        &.company-heading {
-            background: $Color-2;
+        &.company-heading { 
+            border-block: 1px solid darken($Color-4, 0);
             padding-block: 0em;
             position: sticky;
             top: 4.85em;
@@ -50,7 +50,8 @@
             z-index: 20;
 
             span {
-                background: lighten($color: $Color-2, $amount: 10); 
+                background: lighten($color: #eee, $amount: 5); 
+                color: #aaa;
                 border-left: 7px solid darken($Color-4, 20);
                 display: block; 
                 padding: .5em;

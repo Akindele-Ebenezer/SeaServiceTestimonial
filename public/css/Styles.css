@@ -974,8 +974,8 @@ main .left-navigation ul li .total {
   z-index: 2;
 }
 .vessel-content h3 {
-  background: red;
-  color: #fff;
+  background-color: #fff9f9;
+  color: #ff6868;
   font-weight: 500;
   padding: 0.5em;
   width: fit-content;
@@ -987,7 +987,7 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .vessel-content h3.company-heading {
-  background: #225f7d;
+  border-block: 1px solid #ffcece;
   padding-block: 0em;
   position: sticky;
   top: 4.85em;
@@ -995,7 +995,8 @@ main .left-navigation ul li .total {
   z-index: 20;
 }
 .vessel-content h3.company-heading span {
-  background: #2d7da5;
+  background: #fbfbfb;
+  color: #aaa;
   border-left: 7px solid #ff6868;
   display: block;
   padding: 0.5em;
