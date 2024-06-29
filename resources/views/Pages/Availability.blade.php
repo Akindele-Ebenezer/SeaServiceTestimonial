@@ -2572,7 +2572,7 @@
                 <strong>{{ $NumberOfVessels }}</strong> 
                 <table>
                     <tr>
-                        <th>Idle</th>
+                        <th>Ready to go</th>
                         <th>Bunkery</th>
                         <th>Inspection</th>
                     </tr>

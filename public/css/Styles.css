@@ -89,16 +89,12 @@
     opacity: 0;
   }
 }
-.idle {
+.idle, .ready {
   background-color: #52f781;
 }
 
 .docking {
   background-color: #03AED2;
-}
-
-.operation {
-  background-color: #A87676;
 }
 
 .breakdown {
@@ -1982,7 +1978,7 @@ main .left-navigation ul li .total {
   top: -3em;
   translate: 2em;
   width: 11em;
-  z-index: 10;
+  z-index: 30;
 }
 
 /*# sourceMappingURL=Styles.css.map */

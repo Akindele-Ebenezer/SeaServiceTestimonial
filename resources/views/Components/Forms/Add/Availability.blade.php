@@ -38,7 +38,7 @@
                             <label for="">Status</label>
                             <select name="Status" id="">
                                 <option value="DOCKING">DOCKING</option>
-                                <option value="OPERATION">OPERATION</option> 
+                                {{-- <option value="OPERATION">OPERATION</option>  --}}
                                 <option value="MAINTENANCE">MAINTENANCE</option> 
                                 <option value="BREAKDOWN">BREAKDOWN</option> 
                                 <option value="INSPECTION">INSPECTION</option> 
