@@ -7,6 +7,7 @@
 @include('Components.Forms.Delete.Availability')
 @include('Components.Inner.FilterByDate')
 @include('Components.Inner.FilterReportByDate')
+@include('Components.Charts.Chart1')
 <div class="vessel-content notifications availability"> 
     <h2>Vessel Status</h2>
     {{-- <h3>LIVE</h3> :: {{ count($Vessels) }} --}} 
