@@ -1367,6 +1367,15 @@ main .left-navigation ul li .total {
   top: 1em;
 }
 
+.chart-2 {
+  width: 50%;
+  min-height: 250px;
+}
+
+.row {
+  margin: 0 !important;
+}
+
 .availability {
   width: 20%;
 }
