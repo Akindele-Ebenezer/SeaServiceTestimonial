@@ -201,7 +201,7 @@
     </div> 
     @endforeach 
     @php
-        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->get();
+        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS :: {{ count($TugBoats) }}</h3> 
     @unless (count($TugBoats) > 0)
@@ -382,7 +382,7 @@
     </div> 
     @endforeach
     @php
-        $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PILOT CUTTERS')->get();
+        $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS :: {{ count($PilotCutters) }}</h3> 
     @unless (count($PilotCutters) > 0)
@@ -563,7 +563,7 @@
     </div> 
     @endforeach
     @php
-        $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MOORING')->get();
+        $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'MOORING')->get();
     @endphp
     <h3 class="vessel-type-heading">MOORINGS :: {{ count($Mooring) }}</h3> 
     @unless (count($Mooring) > 0)
@@ -744,7 +744,7 @@
     </div> 
     @endforeach
     @php
-        $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'MULTICAT')->get();
+        $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'MULTICAT')->get();
     @endphp
     <h3 class="vessel-type-heading">MULTICATS :: {{ count($Multicat) }}</h3> 
     @unless (count($Multicat) > 0)
@@ -925,7 +925,7 @@
     </div> 
     @endforeach
     @php
-        $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'SPEED BOAT')->get();
+        $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS :: {{ count($SpeedBoats) }}</h3> 
     @unless (count($SpeedBoats) > 0)
@@ -1106,7 +1106,7 @@
     </div> 
     @endforeach
     @php
-        $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'L.T.T')->where('VesselType', 'PLOUGHING')->get();
+        $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'PLOUGHING')->get();
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING :: {{ count($Ploughing) }}</h3> 
     @unless (count($Ploughing) > 0)
@@ -1473,7 +1473,7 @@
     </div> 
     @endforeach 
     @php
-        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'TUG BOAT')->get();
+        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'TUG BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS :: {{ count($TugBoats) }}</h3> 
     @unless (count($TugBoats) > 0)
@@ -1654,7 +1654,7 @@
     </div> 
     @endforeach
     @php
-        $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PILOT CUTTERS')->get();
+        $PilotCutters = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'PILOT CUTTERS')->get();
     @endphp
     <h3 class="vessel-type-heading">PILOT CUTTERS :: {{ count($PilotCutters) }}</h3> 
     @unless (count($PilotCutters) > 0)
@@ -1835,7 +1835,7 @@
     </div> 
     @endforeach
     @php
-        $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MOORING')->get();
+        $Mooring = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'MOORING')->get();
     @endphp
     <h3 class="vessel-type-heading">MOORINGS :: {{ count($Mooring) }}</h3> 
     @unless (count($Mooring) > 0)
@@ -2016,7 +2016,7 @@
     </div> 
     @endforeach
     @php
-        $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'MULTICAT')->get();
+        $Multicat = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'MULTICAT')->get();
     @endphp
     <h3 class="vessel-type-heading">MULTICATS :: {{ count($Multicat) }}</h3> 
     @unless (count($Multicat) > 0)
@@ -2197,7 +2197,7 @@
     </div> 
     @endforeach
     @php
-        $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'SPEED BOAT')->get();
+        $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS :: {{ count($SpeedBoats) }}</h3> 
     @unless (count($SpeedBoats) > 0)
@@ -2378,7 +2378,7 @@
     </div> 
     @endforeach
     @php
-        $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->whereNotNull('ImoNumber')->where('Company', 'DEPASA')->where('VesselType', 'PLOUGHING')->get();
+        $Ploughing = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'PLOUGHING')->get();
     @endphp
     <h3 class="vessel-type-heading">PLOUGHING :: {{ count($Ploughing) }}</h3> 
     @unless (count($Ploughing) > 0)
