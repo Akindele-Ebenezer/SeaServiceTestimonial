@@ -1415,6 +1415,9 @@ main .left-navigation ul li .total {
     padding: 0.15em;
     text-align: center;
   }
+  .availability #chart_div1 {
+    display: none;
+  }
   .availability .list {
     padding: 0.5em 0;
   }
