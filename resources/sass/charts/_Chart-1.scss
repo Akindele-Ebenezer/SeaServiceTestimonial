@@ -1,4 +1,5 @@
 .chart-1 { 
+    display: flex;
     width: 100%;
 
     #chart-wrap {
@@ -74,5 +75,24 @@
                 }
             }
         }  
+    }
+
+    .chart-header {
+        position: absolute;
+        color: #fff;
+        background: red;
+        padding: 1em;
+        top: 0.5em;
+        z-index: 200;
+    }
+
+    .Close {
+        color: red;
+        cursor: pointer;
+        font-size: 1.3em;
+        font-weight: bold;
+        position: absolute;
+        right: 1.5em;
+        top: 1em;
     }
 }
