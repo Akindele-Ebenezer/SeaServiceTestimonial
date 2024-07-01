@@ -6,8 +6,8 @@
 @include('Components.Forms.Edit.Availability')
 @include('Components.Forms.Delete.Availability')
 @include('Components.Inner.FilterByDate')
-@include('Components.Inner.FilterReportByDate')
-@include('Components.Charts.Chart1')
+@include('Components.Inner.FilterReportByDate')  
+@include('Components.Charts.Chart1') 
 <div class="vessel-content notifications availability"> 
     <h2>Vessel Status</h2>
     {{-- <h3>LIVE</h3> :: {{ count($Vessels) }} --}} 
@@ -3519,4 +3519,10 @@
 <script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Inner/FilterByDate.js') }}"></script>
 <script src="{{ asset('js/Components/Inner/FilterReportByDate.js') }}"></script>
+<script> 
+    let DisplayChartButton = document.querySelector('.availability .dashboard-inner .dashboard-heading svg.-x');
+    DisplayChartButton.addEventListener('click', () => { 
+        Chart1.style.display = 'flex !important'; 
+    });
+</script> 
 @endsection

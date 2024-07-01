@@ -1874,6 +1874,7 @@ main .left-navigation ul li .total {
   width: 4em;
 }
 .dashboard-inner h1 svg.-x {
+  cursor: pointer;
   fill: #222;
   height: 4em;
   padding: 1em;

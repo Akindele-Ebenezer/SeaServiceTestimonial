@@ -119,8 +119,7 @@
 
     // Create chart
     async function createDonut() {
-    // const data = await d3.csv(src);    
-    console.log({{ $NumberOfVessels_INSPECTION }});
+    // const data = await d3.csv(src);     
     const data = [ 
         { value: {{ $NumberOfVessels_IDLE }} },
         { value: {{ $NumberOfVessels_DOCKING }} },
@@ -136,15 +135,32 @@
     total = d3.sum(data, (d) => { return d.value; });
     
     // Pie slices
+    const legendLabels = {
+        "#52f781" : "Ready", 
+        "#03AED2" : "Docking", 
+        "#da1e28" : "Breakdown", 
+        "#aaa" : "Maintenance", 
+        "#ff832b" : "Inspection", 
+        "#8a3ffc" : "Bunkery"
+    };
     const slices = g.selectAll('.arc')
         .data(pie(data))
         .enter()
         .append('path')
-        .attr('class', 'slices')
+        .attr('class', 'slices') 
         .attr('fill', (d,i) => { return colorsArray[i]; })
         .on('mouseover', (event, d) => {
         const f = d;
         tooltipMouseMove(f);
+        })
+        .on('click', function(d, i) {
+            let Loader = document.querySelector('.loader');
+            this.classList.add(this.getAttribute('fill')); 
+            window.location = '/Availability?FilterValue=' + legendLabels[this.getAttribute('fill')];
+            setTimeout(() => {
+                Loader.style.display = 'none';
+            }, 9000);
+            Loader.style.display = 'flex';
         })
         .on('mouseout', () => {
         tooltipMouseOut();
@@ -152,8 +168,7 @@
         .transition()
         .duration(1000)
         .delay(100)
-        .attrTween('d', animate);
-        
+        .attrTween('d', animate); 
     // Text values in slices
     const text = g.selectAll('.text')
         .data(pie(data))
@@ -212,7 +227,7 @@
         arc = d3.arc()
         .outerRadius(pieRadius)
         .innerRadius(pieRadius / 2);
-    
+ 
         d3.selectAll('.slices')
         .attr('d', arc)
         .on('mouseover', (event, d) => {
@@ -225,6 +240,8 @@
     
         d3.selectAll('.text')
         .attr('transform', (d) => { return `translate(${arc.centroid(d)})`; })
+
+        
     }
 
     d3.select(window).on('resize', resize);
@@ -242,5 +259,12 @@
     const Chart1 = document.querySelector('.chart-1');
     Close.addEventListener('click', () => {
         Chart1.style.display = 'none';
+    });
+
+    let Data = document.querySelectorAll('.slices');
+    Data.forEach(Value => {
+        Value.addEventListener('click', () => {
+            console.log(1)
+        })
     });
 </script>
