@@ -8,8 +8,7 @@
 <script>
     const wrap = d3.select('#chart-wrap');
     let wrapWidth = parseInt(wrap.style('width'));
-    let wrapHeight;
-    const src = 'https://assets.codepen.io/1329727/data-demo.csv';
+    let wrapHeight; 
     const colorsArray = [
         @if (!empty($NumberOfVessels_IDLE))
         '#52f781', 
@@ -126,10 +125,9 @@
     .attr('height', height)
     .attr('class','group')
     .style('transform', `translate(${width / 2}px, ${height / 2}px)`);
-
+console.log({{ $NumberOfVessels_DOCKING }});
     // Create chart
-    async function createDonut() {
-    // const data = await d3.csv(src);     
+    async function createDonut() { 
     const data = [ 
         { value: {{ $NumberOfVessels_IDLE }} },
         { value: {{ $NumberOfVessels_DOCKING }} },
