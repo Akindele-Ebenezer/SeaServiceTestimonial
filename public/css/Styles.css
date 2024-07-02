@@ -345,14 +345,14 @@
   color: #fff;
   padding: 0.5em;
 }
-.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner {
+.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner, .form-1.FilterReportForVesselByDate .inner {
   padding-bottom: 0;
 }
-.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm {
+.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm {
   flex-wrap: wrap;
   width: 20em;
 }
-.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input {
+.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm .input input {
   margin-top: 0.5em;
   width: unset;
 }
@@ -1382,7 +1382,7 @@ main .left-navigation ul li .total {
 .availability.dashboard {
   width: 70%;
 }
-.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .RecordAvailabilityButton {
+.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .RecordAvailabilityButton {
   background-color: #ff6868;
   color: #fff;
   border: none;

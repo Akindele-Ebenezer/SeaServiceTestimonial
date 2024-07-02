@@ -7,6 +7,7 @@
 @include('Components.Forms.Delete.Availability')
 @include('Components.Inner.FilterByDate')
 @include('Components.Inner.FilterReportByDate')  
+@include('Components.Inner.FilterReportForVesselByDate')  
 @include('Components.Charts.Chart1') 
 <div class="vessel-content notifications availability"> 
     <h2>Vessel Status</h2>
@@ -195,7 +196,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -376,7 +377,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -557,7 +558,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -738,7 +739,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -919,7 +920,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -1100,7 +1101,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -1281,7 +1282,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -1462,7 +1463,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -1648,7 +1649,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -1829,7 +1830,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -2010,7 +2011,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -2191,7 +2192,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -2372,7 +2373,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -2553,7 +2554,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -2734,7 +2735,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
@@ -2915,7 +2916,7 @@
                     @endif
                 </span>
             </strong>  
-            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 

@@ -42,11 +42,11 @@
         }
     }
 
-    &.FilterByDate, &.FilterReportByDate {
+    &.FilterByDate, &.FilterReportByDate, &.FilterReportForVesselByDate {
         .inner {
             padding-bottom: 0;
 
-            .FilterByDateForm, .FilterReportByDateForm {
+            .FilterByDateForm, .FilterReportByDateForm, .FilterReportForVesselByDateForm {
                 flex-wrap: wrap;
                 width: 20em;
 
