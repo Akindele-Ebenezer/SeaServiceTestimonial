@@ -128,7 +128,7 @@
 console.log({{ $NumberOfVessels_DOCKING }});
     // Create chart
     async function createDonut() { 
-    const data = [ 
+    const data = [  
         { value: {{ $NumberOfVessels_IDLE }} },
         { value: {{ $NumberOfVessels_DOCKING }} },
         { value: {{ $NumberOfVessels_BREAKDOWN }} },
@@ -145,11 +145,7 @@ console.log({{ $NumberOfVessels_DOCKING }});
         )
             { value: {{ $NumberOfVessels }} },
         @endif
-    ];
-    // Descending data
-    data.sort((a, b) => {
-        return d3.descending(+a.value, +b.value);
-    });
+    ]; 
     total = d3.sum(data, (d) => { return d.value; });
     
     // Pie slices
