@@ -925,6 +925,187 @@
     </div> 
     @endforeach
     @php
+        $Survey = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'SURVEY')->get();
+    @endphp
+    <h3 class="vessel-type-heading">SURVEY :: {{ count($Survey) }}</h3> 
+    @unless (count($Survey) > 0)
+        <span>
+            No data available..
+        </span>
+    @endunless
+    @foreach ($Survey as $Vessel)
+    @php 
+        if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
+            $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName)
+                                    ->whereColumn('EndDate', '>', 'StartDate') 
+                                    ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                    ->whereNotNull('Status') 
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first(); 
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName) 
+                                    ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                    ->whereNotNull('Status') 
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first();
+        } elseif (!(empty($_GET['SpecificDay']))) {
+            $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName)
+                                    ->whereColumn('EndDate', '>', 'StartDate') 
+                                    ->where('StartDate', $_GET['SpecificDay'])
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first(); 
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName) 
+                                    ->where('StartDate', $_GET['SpecificDay'])
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first();
+        } else {
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                ->where('Vessel', $Vessel->VesselName)
+                                ->whereColumn('EndDate', '>', 'StartDate') 
+                                ->where('StartDate', $STARTDATE) 
+                                ->orderBy('EndTime', 'DESC') 
+                                ->first(); 
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                ->where('Vessel', $Vessel->VesselName) 
+                                ->where('StartDate', $STARTDATE) 
+                                ->orderBy('EndTime', 'DESC') 
+                                ->first();
+        }
+        $StartDate = $Availability_STATUS->StartDate ?? '00:00';
+        $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
+        $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
+        $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
+        $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
+        $EndTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->EndTime ?? '00:00')->format('H:i').' HRS'; 
+    @endphp
+    <div class="list tooltip-x"> 
+        @if ($EndDate === $StartDate)  
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'READY TO GO') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} <br> {{ $StartTime_2 }} - {{ $EndTime_2 }}</span>
+        @else
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
+        @endif
+        <div class="inner -x">  
+            <img src="{{ asset('images/ship (2).png') }}" alt="">
+            <strong class="notification-wrapper">  
+                <span class="status-x  
+                    @if ($EndDate > $StartDate)
+                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    @if ($EndDate === $StartDate)
+                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                "></span>
+                <span class="">{{ $Vessel->VesselName }}</span>  
+                <span class="imo availability-status 
+                    @if ($EndDate > $StartDate)
+                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    @if ($EndDate === $StartDate)
+                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    status-1">
+                    @if ($EndDate === $StartDate)
+                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
+                    @else
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
+                    @endif
+                </span>
+            </strong>  
+            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <span class="Hide">{{ $Vessel->VesselName }}</span>
+        </div>
+    </div> 
+    @endforeach 
+    @php
         $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
     <h3 class="vessel-type-heading">SPEED BOATS :: {{ count($SpeedBoats) }}</h3> 
@@ -2196,6 +2377,187 @@
         </div>
     </div> 
     @endforeach
+    @php
+        $Survey = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'SURVEY')->get();
+    @endphp
+    <h3 class="vessel-type-heading">SURVEY :: {{ count($Survey) }}</h3> 
+    @unless (count($Survey) > 0)
+        <span>
+            No data available..
+        </span>
+    @endunless
+    @foreach ($Survey as $Vessel)
+    @php 
+        if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
+            $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName)
+                                    ->whereColumn('EndDate', '>', 'StartDate') 
+                                    ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                    ->whereNotNull('Status') 
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first(); 
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName) 
+                                    ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                    ->whereNotNull('Status') 
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first();
+        } elseif (!(empty($_GET['SpecificDay']))) {
+            $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName)
+                                    ->whereColumn('EndDate', '>', 'StartDate') 
+                                    ->where('StartDate', $_GET['SpecificDay'])
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first(); 
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                    ->where('Vessel', $Vessel->VesselName) 
+                                    ->where('StartDate', $_GET['SpecificDay'])
+                                    ->orderBy('EndTime', 'DESC') 
+                                    ->first();
+        } else {
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                ->where('Vessel', $Vessel->VesselName)
+                                ->whereColumn('EndDate', '>', 'StartDate') 
+                                ->where('StartDate', $STARTDATE) 
+                                ->orderBy('EndTime', 'DESC') 
+                                ->first(); 
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+                                ->where('Vessel', $Vessel->VesselName) 
+                                ->where('StartDate', $STARTDATE) 
+                                ->orderBy('EndTime', 'DESC') 
+                                ->first();
+        }
+        $StartDate = $Availability_STATUS->StartDate ?? '00:00';
+        $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
+        $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
+        $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
+        $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
+        $EndTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->EndTime ?? '00:00')->format('H:i').' HRS'; 
+    @endphp
+    <div class="list tooltip-x"> 
+        @if ($EndDate === $StartDate)  
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'READY TO GO') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} <br> {{ $StartTime_2 }} - {{ $EndTime_2 }}</span>
+        @else
+            <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
+        @endif
+        <div class="inner -x">  
+            <img src="{{ asset('images/ship (2).png') }}" alt="">
+            <strong class="notification-wrapper">  
+                <span class="status-x  
+                    @if ($EndDate > $StartDate)
+                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    @if ($EndDate === $StartDate)
+                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                "></span>
+                <span class="">{{ $Vessel->VesselName }}</span>  
+                <span class="imo availability-status 
+                    @if ($EndDate > $StartDate)
+                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    @if ($EndDate === $StartDate)
+                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
+                            @case('DOCKING')
+                                docking
+                                @break 
+                            @case('OPERATION')
+                                operation
+                                @break
+                            @case('BREAKDOWN')
+                                breakdown
+                                @break
+                            @case('MAINTENANCE')
+                                maintenance
+                                @break
+                            @case('INSPECTION')
+                                inspection
+                                @break
+                            @case('BUNKERY')
+                                bunkery
+                                @break 
+                            @default
+                                idle
+                        @endswitch
+                    @endif
+                    status-1">
+                    @if ($EndDate === $StartDate)
+                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
+                    @else
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
+                    @endif
+                </span>
+            </strong>  
+            <img class="ReportPdfButton" src="{{ asset('images/pdf.png') }}">
+            <span class="Hide">{{ $Vessel->VesselName }}</span>
+        </div>
+    </div> 
+    @endforeach 
     @php
         $SpeedBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'SPEED BOAT')->get();
     @endphp
