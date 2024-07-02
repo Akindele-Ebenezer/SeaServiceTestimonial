@@ -29,6 +29,16 @@
         @if (!empty($NumberOfVessels_BUNKERY))
         '#8a3ffc'
         @endif
+        @if (
+            ($NumberOfVessels_IDLE == 0) AND
+            ($NumberOfVessels_DOCKING == 0) AND
+            ($NumberOfVessels_BREAKDOWN == 0) AND
+            ($NumberOfVessels_MAINTENANCE == 0) AND
+            ($NumberOfVessels_INSPECTION == 0) AND
+            ($NumberOfVessels_BUNKERY == 0) 
+        )
+            '#52f781',
+        @endif
     ];
     const formatPerc = d3.format('.0%');
     let width;
@@ -127,6 +137,16 @@
         { value: {{ $NumberOfVessels_MAINTENANCE }} },
         { value: {{ $NumberOfVessels_INSPECTION }} },
         { value: {{ $NumberOfVessels_BUNKERY }} }, 
+        @if (
+            ($NumberOfVessels_IDLE == 0) AND
+            ($NumberOfVessels_DOCKING == 0) AND
+            ($NumberOfVessels_BREAKDOWN == 0) AND
+            ($NumberOfVessels_MAINTENANCE == 0) AND
+            ($NumberOfVessels_INSPECTION == 0) AND
+            ($NumberOfVessels_BUNKERY == 0) 
+        )
+            { value: {{ $NumberOfVessels }} },
+        @endif
     ];
     // Descending data
     data.sort((a, b) => {
