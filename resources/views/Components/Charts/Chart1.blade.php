@@ -145,7 +145,20 @@ console.log({{ $NumberOfVessels_DOCKING }});
         )
             { value: {{ $NumberOfVessels }} },
         @endif
-    ]; 
+    ];
+    // Descending data
+    @if (
+        ($NumberOfVessels_IDLE == 0) AND
+        ($NumberOfVessels_DOCKING == 0) AND
+        ($NumberOfVessels_BREAKDOWN == 0) AND
+        ($NumberOfVessels_MAINTENANCE == 0) AND
+        ($NumberOfVessels_INSPECTION == 0) AND
+        ($NumberOfVessels_BUNKERY == 0) 
+    )
+        data.sort((a, b) => {
+            return d3.descending(+a.value, +b.value);
+        });
+    @endif
     total = d3.sum(data, (d) => { return d.value; });
     
     // Pie slices
