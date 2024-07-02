@@ -201,7 +201,7 @@
     </div> 
     @endforeach 
     @php
-        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->get();
+        $TugBoats = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'TUG BOAT')->orderByRaw("FIELD(VesselName, 'MAJIYA', 'UBIMA', 'UROMI', 'DAURA', 'ZARANDA', 'ASAGA', 'EMEKUKU', 'GUSAU')")->get();
     @endphp
     <h3 class="vessel-type-heading">TUG BOATS :: {{ count($TugBoats) }}</h3> 
     @unless (count($TugBoats) > 0)
