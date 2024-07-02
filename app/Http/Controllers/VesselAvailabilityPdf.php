@@ -90,7 +90,7 @@ class VesselAvailabilityPdf extends Controller
         $TotalBreakdown = [];
         foreach ($Vessels as $Vessel) {
             $VesselStatus = VesselAvailability::select('Status')->where('Vessel', $Vessel->Vessel)->orderBy('id', 'DESC')->first();
-            $VesselStatus = $VesselStatus->Status == 'IDLE' ? 'READY' : 'ENGAGED';
+            $VesselStatus = $VesselStatus->Status == 'IDLE' ? 'READY' : $VesselStatus->Status;
             $BunkeryStatus = VesselAvailability::select('id')
             ->where('Vessel', $Vessel->Vessel)
             ->where('Status', 'BUNKERY')

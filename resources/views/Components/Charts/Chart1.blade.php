@@ -108,7 +108,7 @@
     // SVG aria tags
     svg.append('title')
     .attr('id','chart-title')
-    .html('Donut chart');
+    .html('Vessels');
 
     svg.append('desc')
     .attr('id','chart-desc')
@@ -125,7 +125,7 @@
     .attr('height', height)
     .attr('class','group')
     .style('transform', `translate(${width / 2}px, ${height / 2}px)`);
-console.log({{ $NumberOfVessels_DOCKING }});
+ 
     // Create chart
     async function createDonut() { 
     const data = [  
