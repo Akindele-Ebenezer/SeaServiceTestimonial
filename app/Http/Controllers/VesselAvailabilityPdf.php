@@ -116,7 +116,7 @@ class VesselAvailabilityPdf extends Controller
             array_push($TOTALDaysWorked, count($DaysWorked)); 
             $VesselStatus = VesselAvailability::select('Status')->where('Vessel', $Request->VesselReportFor)->orderBy('id', 'DESC')->first();
             if($VesselStatus == null) {
-                $VesselStatus->Status == 'READY';
+                $VesselStatus = 'READY';
             } else {
                 $VesselStatus = $VesselStatus->Status == 'IDLE' ? 'READY' : $VesselStatus->Status;
             }
