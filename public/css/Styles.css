@@ -976,6 +976,12 @@ main .left-navigation ul li .total {
   padding: 0.5em;
   width: fit-content;
 }
+.vessel-content h3 .report-summary {
+  cursor: pointer;
+  margin-left: 1em;
+  translate: 0 0.5em;
+  width: 1.5em;
+}
 .vessel-content h3 + span {
   border-bottom: 1px solid #eee;
   color: #333;

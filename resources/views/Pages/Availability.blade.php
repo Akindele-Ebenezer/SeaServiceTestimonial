@@ -20,10 +20,12 @@
             L.T.T Coastal Marine        
         </span>
     </h3>
+    <h3>Report summary <img class="report-summary ReportPdfButton" src="{{ asset('images/pdf.png') }}" alt=""></h3>
     @php
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
     @endphp
-    <h3 class="vessel-type-heading">DREDGERS :: {{ count($Dredgers) }}</h3> 
+    <h3 class="vessel-type-heading">DREDGERS :: {{ count($Dredgers) }}
+    </h3> 
     @unless (count($Dredgers) > 0)
         <span>
             No data available..
