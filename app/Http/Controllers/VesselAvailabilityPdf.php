@@ -115,7 +115,11 @@ class VesselAvailabilityPdf extends Controller
             $DaysWorked = \DB::table('vessel_availabilities')->select(['StartDate', 'EndDate'])->where('Vessel', $Request->VesselReportFor)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
             array_push($TOTALDaysWorked, count($DaysWorked)); 
             $VesselStatus = VesselAvailability::select('Status')->where('Vessel', $Request->VesselReportFor)->orderBy('id', 'DESC')->first();
-            $VesselStatus = $VesselStatus->Status == 'IDLE' ? 'READY' : $VesselStatus->Status;
+            if($VesselStatus == null) {
+                $VesselStatus->Status == 'READY';
+            } else {
+                $VesselStatus = $VesselStatus->Status == 'IDLE' ? 'READY' : $VesselStatus->Status;
+            }
             $BunkeryStatus = VesselAvailability::select('id')
             ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'BUNKERY')
