@@ -18,8 +18,17 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetAutoPageBreak(false);
         $fpdf->SetTitle('Vessel Availabilty Report - June 2024');
         $fpdf->SetFont('Arial', '', 10);  
+ 
+        $Company = \DB::table('vessels_vessel_information')->select('Company')->where('VesselName', $Request->VesselReportFor)->first(); 
+        
+        if($Company == null) {
+            $fpdf->Image('../public/images/ltt-letter-head.png', 10, 7, 190);   
+        } else if ($Company->Company == 'L.T.T') {
+            $fpdf->Image('../public/images/ltt-letter-head.png', 10, 7, 190);    
+        } else if ($Company->Company == 'DEPASA') {  
+            $fpdf->Image('../public/images/depasa-letter-head.png', 10, 7, 190);    
+        } 
 
-        $fpdf->Image('../public/images/ltt-letter-head.png', 10, 7, 190);    
         $fpdf->Ln(35);     
         $fpdf->Cell(162, -7, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
         $fpdf->Ln(9);     
