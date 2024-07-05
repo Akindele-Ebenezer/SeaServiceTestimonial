@@ -9,7 +9,6 @@
     const wrap = d3.select('#chart-wrap');
     let wrapWidth = parseInt(wrap.style('width'));
     let wrapHeight; 
-    console.log({{$NumberOfVessels_BREAKDOWN}})
     const colorsArray = [
         @if (!empty($NumberOfVessels_IDLE))
         '#52f781', 
@@ -39,17 +38,17 @@
         )
             '#52f781',
         @endif
-        @if (
-            ($NumberOfVessels_IDLE == 0) ||
-            ($NumberOfVessels_DOCKING == 0) ||
-            ($NumberOfVessels_BREAKDOWN == 0) ||
-            ($NumberOfVessels_MAINTENANCE == 0) ||
-            ($NumberOfVessels_INSPECTION == 0) ||
-            ($NumberOfVessels_BUNKERY == 0) 
-        )
-            '#52f781',
-        @endif
     ];
+    if (colorsArray.length == 1) {
+        colorsArray.push(colorsArray[0]);
+        colorsArray.push(colorsArray[0]);
+        colorsArray.push(colorsArray[0]);
+        colorsArray.push(colorsArray[0]);
+        colorsArray.push(colorsArray[0]);
+        colorsArray.push(colorsArray[0]);
+    }
+    console.log(colorsArray)
+    console.log(colorsArray.length)
     const formatPerc = d3.format('.0%');
     let width;
     let height;
