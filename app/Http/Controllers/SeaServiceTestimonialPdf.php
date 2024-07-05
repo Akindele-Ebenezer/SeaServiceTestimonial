@@ -20,7 +20,7 @@ class SeaServiceTestimonialPdf extends Controller
         $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first(); 
-        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
@@ -390,8 +390,8 @@ class SeaServiceTestimonialPdf extends Controller
         $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
-        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
-        $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
+        $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
         $Enginekw = $ENGkw->EngineOutputKw ?? '-';
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
@@ -840,7 +840,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->Ln(9);   
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -892,8 +892,8 @@ class SeaServiceTestimonialPdf extends Controller
         $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first();
-        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
-        $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first();
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
+        $ENGkw = \DB::table('vessels_section_3')->select('EngineOutputKw')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
         $Enginekw = $ENGkw->EngineOutputKw ?? '-';
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
@@ -1273,7 +1273,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->Ln(9);   
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -1381,7 +1381,7 @@ class SeaServiceTestimonialPdf extends Controller
          
         $fpdf->ln(13);      
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -1486,7 +1486,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln(18);   
 
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -1589,7 +1589,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln(18);   
 
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
