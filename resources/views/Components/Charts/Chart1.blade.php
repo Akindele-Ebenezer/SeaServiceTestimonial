@@ -12,21 +12,33 @@
     const colorsArray = [
         @if (!empty($NumberOfVessels_IDLE))
         '#52f781', 
+        @else
+        '#fff', 
         @endif
         @if (!empty($NumberOfVessels_DOCKING))
         '#03AED2', 
+        @else
+        '#fff', 
         @endif
         @if (!empty($NumberOfVessels_BREAKDOWN))
         '#da1e28',  
+        @else
+        '#fff', 
         @endif
         @if (!empty($NumberOfVessels_MAINTENANCE))
         '#aaa', 
+        @else
+        '#fff', 
         @endif
         @if (!empty($NumberOfVessels_INSPECTION))
         '#ff832b', 
+        @else
+        '#fff', 
         @endif
         @if (!empty($NumberOfVessels_BUNKERY))
         '#8a3ffc',
+        @else
+        '#fff', 
         @endif
         @if (
             ($NumberOfVessels_IDLE == 0) AND
@@ -38,17 +50,7 @@
         )
             '#52f781',
         @endif
-    ];
-    if (colorsArray.length == 1) {
-        colorsArray.push(colorsArray[0]);
-        colorsArray.push(colorsArray[0]);
-        colorsArray.push(colorsArray[0]);
-        colorsArray.push(colorsArray[0]);
-        colorsArray.push(colorsArray[0]);
-        colorsArray.push(colorsArray[0]);
-    }
-    console.log(colorsArray)
-    console.log(colorsArray.length)
+    ];  
     const formatPerc = d3.format('.0%');
     let width;
     let height;
