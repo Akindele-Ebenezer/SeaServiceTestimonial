@@ -840,7 +840,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->Ln(9);   
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -1381,7 +1381,7 @@ class SeaServiceTestimonialPdf extends Controller
          
         $fpdf->ln(13);      
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name officer, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
@@ -1589,7 +1589,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Ln(18);   
 
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named officer was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence.', 0, 'L', 0);
         $fpdf->Ln(2);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
