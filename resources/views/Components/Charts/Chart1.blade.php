@@ -9,6 +9,7 @@
     const wrap = d3.select('#chart-wrap');
     let wrapWidth = parseInt(wrap.style('width'));
     let wrapHeight; 
+    console.log({{$NumberOfVessels_BREAKDOWN}})
     const colorsArray = [
         @if (!empty($NumberOfVessels_IDLE))
         '#52f781', 
@@ -17,7 +18,7 @@
         '#03AED2', 
         @endif
         @if (!empty($NumberOfVessels_BREAKDOWN))
-        '#da1e28', 
+        '#da1e28',  
         @endif
         @if (!empty($NumberOfVessels_MAINTENANCE))
         '#aaa', 
@@ -26,7 +27,7 @@
         '#ff832b', 
         @endif
         @if (!empty($NumberOfVessels_BUNKERY))
-        '#8a3ffc'
+        '#8a3ffc',
         @endif
         @if (
             ($NumberOfVessels_IDLE == 0) AND
@@ -34,6 +35,16 @@
             ($NumberOfVessels_BREAKDOWN == 0) AND
             ($NumberOfVessels_MAINTENANCE == 0) AND
             ($NumberOfVessels_INSPECTION == 0) AND
+            ($NumberOfVessels_BUNKERY == 0) 
+        )
+            '#52f781',
+        @endif
+        @if (
+            ($NumberOfVessels_IDLE == 0) ||
+            ($NumberOfVessels_DOCKING == 0) ||
+            ($NumberOfVessels_BREAKDOWN == 0) ||
+            ($NumberOfVessels_MAINTENANCE == 0) ||
+            ($NumberOfVessels_INSPECTION == 0) ||
             ($NumberOfVessels_BUNKERY == 0) 
         )
             '#52f781',
