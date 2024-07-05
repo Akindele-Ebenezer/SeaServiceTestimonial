@@ -79,10 +79,10 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 EditEndTimeInput.value == '' 
             ) { 
                 ErrorAvailability_Update.textContent =  'Start time cannot be empty';
-            } else if (EditStartTimeInput.value.substring(0, 2) > EditEndTimeInput.value.substring(0, 2)) { 
-                ErrorAvailability_Update.textContent =  'Start time cannot be greater than end time';
-            }  else if (EditStartDateInput.value > EditEndDateInput.value) { 
-                ErrorAvailability_Update.textContent =  'Start date cannot be greater than End date';
+            // } else if (EditStartTimeInput.value.substring(0, 2) > EditEndTimeInput.value.substring(0, 2)) { 
+            //     ErrorAvailability_Update.textContent =  'Start time cannot be greater than end time';
+            // }  else if (EditStartDateInput.value > EditEndDateInput.value) { 
+            //     ErrorAvailability_Update.textContent =  'Start date cannot be greater than End date';
             } else if (
                 EditStartDateInput.value == '' || 
                 EditEndDateInput.value == '' 
