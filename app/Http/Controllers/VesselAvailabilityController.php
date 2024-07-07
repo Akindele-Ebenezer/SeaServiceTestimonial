@@ -21,14 +21,20 @@ class VesselAvailabilityController extends Controller
         $Vessels = \DB::table('vessels_vessel_information')->select(['VesselName', 'ImoNumber', 'CallSign'])->get();
         $STARTDATE = date('Y-m-d'); 
         $NumberOfVessels = \DB::table('vessels_vessel_information')->count();
-        $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
+        $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')
+        ->orWhere(function($query) {
+            $query->where('StartDate', '<', date('Y-m-d'))
+                    ->where('EndDate', '<', date('Y-m-d'));
+        })
+        ->groupBy('Vessel')->get();
+        // dd($NumberOfVessels_IDLE);
         $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_MAINTENANCE = VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get(); 
-        //  dd($NumberOfVessels_BREAKDOWN);
+         
         if (isset($Request->FromDate_FILTERBYDATE) AND isset($Request->EndDate_FILTERBYDATE)) {
             $STARTDATE = $Request->FromDate_FILTERBYDATE;
             $ENDDATE = $Request->EndDate_FILTERBYDATE;
@@ -98,6 +104,9 @@ class VesselAvailabilityController extends Controller
                                     ->orWhere('ImoNumber', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->get(); 
+                if ($Request->FilterValue == 'Ready') {
+                    $VesselAvailability = VesselAvailability::where('Status', 'IDLE')->orWhere('EndDate', '<', date('Y-m-d'))->paginate(20);  
+                }
             return view('Pages.Availability', [ 
                 'Employees' => $Employees,
                 'Vessels' => $Vessels,
@@ -127,7 +136,7 @@ class VesselAvailabilityController extends Controller
             'Vessels' => $Vessels,
             'NumberOfVessels' => $NumberOfVessels,
             'STARTDATE' => $STARTDATE,
-            'NumberOfVessels_IDLE' => count($NumberOfVessels_BUNKERY),
+            'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
             'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
             'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
             'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),

@@ -158,7 +158,7 @@
         )
             { value: {{ $NumberOfVessels }} },
         @endif
-    ];
+    ];  console.log(data)
     // Descending data
     @if (
         ($NumberOfVessels_IDLE == 0) AND
