@@ -58,12 +58,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -71,6 +71,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -236,19 +246,29 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE)  
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
-        $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        $EndDate = $Availability_STATUS->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -414,12 +434,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('StartDate', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -427,6 +447,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -592,12 +622,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -605,6 +635,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -770,12 +810,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -783,6 +823,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -948,12 +998,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -961,6 +1011,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1126,12 +1186,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -1139,6 +1199,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1304,12 +1374,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -1317,6 +1387,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1487,12 +1567,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE)  
                                 ->orderBy('EndTime', 'DESC') 
@@ -1504,6 +1584,16 @@
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->EndTime ?? '00:00')->format('H:i').' HRS'; 
     @endphp
@@ -1665,12 +1755,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -1678,6 +1768,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1843,12 +1943,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -1856,6 +1956,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2021,12 +2131,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -2034,6 +2144,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2199,12 +2319,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -2212,6 +2332,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2377,12 +2507,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -2390,6 +2520,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2555,12 +2695,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -2568,6 +2708,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2733,12 +2883,12 @@
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orderBy('EndTime', 'DESC') 
@@ -2746,6 +2896,16 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        }
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
