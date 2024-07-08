@@ -141,31 +141,9 @@
         { value: {{ $NumberOfVessels_BREAKDOWN }} },
         { value: {{ $NumberOfVessels_MAINTENANCE }} },
         { value: {{ $NumberOfVessels_INSPECTION }} },
-        { value: {{ $NumberOfVessels_BUNKERY }} }, 
-        @if (
-            ($NumberOfVessels_IDLE == 0) AND
-            ($NumberOfVessels_DOCKING == 0) AND
-            ($NumberOfVessels_BREAKDOWN == 0) AND
-            ($NumberOfVessels_MAINTENANCE == 0) AND
-            ($NumberOfVessels_INSPECTION == 0) AND
-            ($NumberOfVessels_BUNKERY == 0) 
-        )
-            { value: {{ $NumberOfVessels }} },
-        @endif
+        { value: {{ $NumberOfVessels_BUNKERY }} },  
     ];   
-    // Descending data
-    @if (
-        ($NumberOfVessels_IDLE == 0) AND
-        ($NumberOfVessels_DOCKING == 0) AND
-        ($NumberOfVessels_BREAKDOWN == 0) AND
-        ($NumberOfVessels_MAINTENANCE == 0) AND
-        ($NumberOfVessels_INSPECTION == 0) AND
-        ($NumberOfVessels_BUNKERY == 0) 
-    )
-        data.sort((a, b) => {
-            return d3.descending(+a.value, +b.value);
-        });
-    @endif
+    // Descending data 
     total = d3.sum(data, (d) => { return d.value; });
     
     // Pie slices
