@@ -26,6 +26,9 @@ TestimonialPdfs.forEach(Pdf => {
             case 'Cook':
                 window.open('/Testimonials/Template/3?Testimonial_Id=' + TestimonialId + '&LeaveDays=' + Pdf.previousElementSibling.textContent);
                 break;
+            case 'Electrician':
+                window.open('/Testimonials/Template/4?Testimonial_Id=' + TestimonialId + '&LeaveDays=' + Pdf.previousElementSibling.textContent);
+                break;
             default:
                 break;
         } 

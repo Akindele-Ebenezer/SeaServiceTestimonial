@@ -1309,6 +1309,362 @@ class SeaServiceTestimonialPdf extends Controller
         exit;
     }
     
+    public function template_4(Fpdf $fpdf, Request $Request) { 
+        $Employee = Testimonial::select('EmployeeName')->where('id', $Request->Testimonial_Id)->first();
+        $StaffNumber = Testimonial::select('EmployeeId')->where('id', $Request->Testimonial_Id)->first();
+        $DateOfBirth = Testimonial::select('DateOfBirth')->where('id', $Request->Testimonial_Id)->first();
+        $AreaOfOperation = Testimonial::select('AreaOfOperation')->where('id', $Request->Testimonial_Id)->first();
+        $DischargeBook = Testimonial::select('DischargeBook')->where('id', $Request->Testimonial_Id)->first();
+        $Rank = Testimonial::select('Rank')->where('id', $Request->Testimonial_Id)->first();
+        $Company = Testimonial::select('Company')->where('id', $Request->Testimonial_Id)->first();
+        $TemplateFormat = Testimonial::select('Template')->where('id', $Request->Testimonial_Id)->first();
+        $CurrentVessel = Testimonial::select('CurrentVessel')->where('id', $Request->Testimonial_Id)->first();
+        $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
+        $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
+        $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first(); 
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
+        $StartDate_1 = \DB::table('working_periods')
+                            ->select('StartDate_1')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $StartDate_2 = \DB::table('working_periods')
+                            ->select('StartDate_2')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $StartDate_3 = \DB::table('working_periods')
+                            ->select('StartDate_3')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $StartDate_4 = \DB::table('working_periods')
+                            ->select('StartDate_4')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $StartDate_5 = \DB::table('working_periods')
+                            ->select('StartDate_5')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $EndDate_1 = \DB::table('working_periods')
+                            ->select('EndDate_1')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $EndDate_2 = \DB::table('working_periods')
+                            ->select('EndDate_2')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $EndDate_3 = \DB::table('working_periods')
+                            ->select('EndDate_3')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $EndDate_4 = \DB::table('working_periods')
+                            ->select('EndDate_4')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+        $EndDate_5 = \DB::table('working_periods')
+                            ->select('EndDate_5')
+                            ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
+                            ->where('TimeIn', (empty($TimeIn->TimeIn) ? '-' : $TimeIn->TimeIn))
+                            ->where('Vessel', (empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel))
+                            ->first();
+
+        $fpdf->AddPage();    
+        $fpdf->SetAutoPageBreak(false);
+        $fpdf->SetTitle('Template 4 - ' . session()->get('APP_NAME'));         
+
+        if(empty($Company)) {
+            $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+            $fpdf->Ln(30);     
+            $fpdf->SetFont('Times', '', 11); 
+            $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+        } else { 
+            if($Company->Company === 'L.T.T') {
+                $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(159.5, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
+            }  
+            if($Company->Company === 'DEPASA') {   
+                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(170, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
+            }  
+        }
+   
+        $fpdf->SetDrawColor(200, 200, 200); 
+      
+        $fpdf->Ln(5);     
+        $fpdf->SetFont('Times', 'BU', 17); 
+        $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
+        $fpdf->SetFont('Times', '', 14); 
+        $fpdf->Cell(190, -3, 'I certify that the following record is truthful statement of a sea service performed by:', 0, 1, 'L');
+        $fpdf->SetFont('Times', 'B', 14); 
+        $fpdf->Cell(190, 20, 'Name: ' . (empty($Employee->EmployeeName) ? '-' : $Employee->EmployeeName), 0, 1, 'L');
+        $fpdf->Cell(190, -3, 'Date of Birth: ' . (empty($DateOfBirth->DateOfBirth) ? '-' : $DateOfBirth->DateOfBirth), 0, 1, 'L');
+        $fpdf->Cell(190, 20, 'Discharge Book No: ' . (empty($DischargeBook->DischargeBook) ? '-' : $DischargeBook->DischargeBook), 0, 1, 'L');
+        $fpdf->SetFont('Times', '', 9);         
+          
+        //// TABLE HEAD 
+        $fpdf->SetFont('Times', 'B', 9);         
+        $fpdf->Cell(40, 5, 'Period of Service & Date', 'LTR', 0, 'L');
+        $fpdf->SetFont('Times', 'B', 12);   
+        $fpdf->Cell(35, 8, 'VESSEL', 'LTR', 0, 'L'); 
+        $fpdf->Cell(32, 13, 'RANK', 'LTR', 0, 'L'); 
+        $fpdf->Cell(30, 8, 'AREA OF', 'LTR', 0, 'L');     
+        $fpdf->Ln(5); 
+        $fpdf->SetFont('Times', 'B', 9);         
+        $fpdf->Cell(20, 8, 'From', 1, 0, 'L');
+        $fpdf->Cell(20, 8, 'To', 1, 0, 'L');
+        $fpdf->SetFont('Times', 'B', 12);         
+        $fpdf->Cell(35, 8, 'NAME', 'LR', 0, 'L'); 
+        $fpdf->Cell(32, 8, ' ', 'LR', 0, 'L');  
+        $fpdf->Cell(30, 8, 'OPERATION', 'LR', 0, 'L'); 
+        $fpdf->Ln();
+           
+        //// TABLE COLUMNS 
+        $fpdf->SetFont('Times', '', 11);  
+      
+        $cellWidth=80;//wrapped cell width
+        $cellHeight=5;//normal one-line cell height
+        
+        if($fpdf->GetStringWidth($CurrentVessel->CurrentVessel) < $cellWidth){
+            $line=1;
+        }else{
+            $textLength=strlen($CurrentVessel->CurrentVessel);	 
+            $errMargin=10;		 
+            $startChar=0;		 
+            $maxChar=0;			 
+            $textArray=array();	 
+            $tmpString="";		 
+            
+            while($startChar < $textLength){  
+                while( 
+                $fpdf->GetStringWidth( $tmpString ) < ($cellWidth-$errMargin) &&
+                ($startChar+$maxChar) < $textLength ) {
+                    $maxChar++;
+                    $tmpString=substr($CurrentVessel->CurrentVessel,$startChar,$maxChar);
+                }
+                $startChar=$startChar+$maxChar;
+                array_push($textArray,$tmpString);
+                    
+                $maxChar=0;
+                $tmpString='';
+                
+            }
+        
+            $line=count($textArray);
+        }
+
+        $fpdf->Cell(20,10,(empty($StartDate_1->StartDate_1) ? '-' : $StartDate_1->StartDate_1),1,0);  
+        $fpdf->Cell(20,10,(empty($EndDate_1->EndDate_1) ? '-' : $EndDate_1->EndDate_1),1,0);  
+        $yPos=$fpdf->GetY(); 
+        $xPos=$fpdf->GetX(); 
+ 
+        if(strlen($CurrentVessel->CurrentVessel) < 14) {
+            $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+            $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+        }
+        if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+            $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+            $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+        }
+        
+        $yPos=$fpdf->GetY(); 
+        if(strlen($Rank->Rank) < 13) {
+            $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+            $fpdf->SetXY($xPos - 13 + $cellWidth , $yPos);
+        } 
+        if(strlen($Rank->Rank) >= 13) {
+            $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+            $fpdf->SetXY($xPos - 13 + $cellWidth , $yPos);
+        } 
+        $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
+        $fpdf->SetXY(92 + $cellWidth , $yPos);
+        $yPos=$fpdf->GetY();
+        $fpdf->ln();
+        
+        if(!empty($StartDate_2->StartDate_2)) {
+            $fpdf->Cell(20,10,(empty($StartDate_2->StartDate_2) ? '-' : $StartDate_2->StartDate_2),1,0); //adapt height to number of lines
+            $fpdf->Cell(20,10,(empty($EndDate_2->EndDate_2) ? '-' : $EndDate_2->EndDate_2),1,0); //adapt height to number of lines
+            $yPos=$fpdf->GetY();
+            $xPos=$fpdf->GetX(); 
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            
+            $yPos=$fpdf->GetY(); 
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            }  
+            $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
+            $yPos=$fpdf->GetY();
+            $fpdf->ln(); 
+        }
+        if(!empty($StartDate_3->StartDate_3)) {
+            $fpdf->Cell(20,10,(empty($StartDate_3->StartDate_3) ? '-' : $StartDate_3->StartDate_3),1,0); //adapt height to number of lines
+            $fpdf->Cell(20,10,(empty($EndDate_3->EndDate_3) ? '-' : $EndDate_3->EndDate_3),1,0); //adapt height to number of lines
+            $yPos=$fpdf->GetY();
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            
+            $yPos=$fpdf->GetY(); 
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            }  
+            $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
+            $yPos=$fpdf->GetY();
+            $fpdf->ln();
+        }
+        if(!empty($StartDate_4->StartDate_4)) {
+            $fpdf->Cell(20,10,(empty($StartDate_4->StartDate_4) ? '-' : $StartDate_4->StartDate_4),1,0); //adapt height to number of lines
+            $fpdf->Cell(20,10,(empty($EndDate_4->EndDate_4) ? '-' : $EndDate_4->EndDate_4),1,0); //adapt height to number of lines
+            $yPos=$fpdf->GetY();
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            
+            $yPos=$fpdf->GetY(); 
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            }  
+            $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
+            $yPos=$fpdf->GetY();
+            $fpdf->ln();
+        }
+        if(!empty($StartDate_5->StartDate_5)) {
+            $fpdf->Cell(20,10,(empty($StartDate_5->StartDate_5) ? '-' : $StartDate_5->StartDate_5),1,0); //adapt height to number of lines
+            $fpdf->Cell(20,10,(empty($EndDate_5->EndDate_5) ? '-' : $EndDate_5->EndDate_5),1,0); //adapt height to number of lines
+            $yPos=$fpdf->GetY();
+ 
+            if(strlen($CurrentVessel->CurrentVessel) < 14) {
+                $fpdf->Cell(35,10,(empty($CurrentVessel->CurrentVessel) ? '-' : $CurrentVessel->CurrentVessel),1,0);  
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            if(strlen($CurrentVessel->CurrentVessel) >= 14) {
+                $fpdf->MultiCell(35,$cellHeight, (strlen($CurrentVessel->CurrentVessel) < 14 ? strtoupper(str_replace(' ', '-', $CurrentVessel->CurrentVessel)) . '                             ' : str_replace(' ', '-', $CurrentVessel->CurrentVessel)),1);
+                $fpdf->SetXY($xPos - 45 + $cellWidth , $yPos);
+            }
+            
+            $yPos=$fpdf->GetY(); 
+        
+            if(strlen($Rank->Rank) < 13) {
+                $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            } 
+            if(strlen($Rank->Rank) >= 13) {
+                $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
+                $fpdf->SetXY(37 + $cellWidth , $yPos);
+            }  
+            $fpdf->MultiCell(30,10,(empty($AreaOfOperation->AreaOfOperation) ? '-' : str_replace(' ', '-', $AreaOfOperation->AreaOfOperation)),1);
+            $fpdf->SetXY(92 + $cellWidth , $yPos);
+            $yPos=$fpdf->GetY();
+            $fpdf->ln();
+        }
+ 
+        $fpdf->ln(13);      
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name crew, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(70, 5, '   Navigational watch for not less than 12 hours out of every 24 hours ', 0, 1, 'L'); 
+        $fpdf->MultiCell(190, 6, 'whilst the vessel was engaged on operation. General maintenance of vessel.', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Conduct:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Experience/Ability:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Behaviour/Soberiety:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+  
+        $fpdf->SetFont('Times', 'B', 12);    
+        $fpdf->Cell(60, 10, 'OFFICIAL ENDORSEMENT.', 0, 1);
+
+        $fpdf->Ln(15);    
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Cell(60, 10, '..............................................', 0, 1);
+        $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
+        $fpdf->SetFont('Times', 'B', 12);
+        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
+
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Output();        
+        exit;
+    }
+
     public function template_1_(Fpdf $fpdf, Request $Request) {  
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
@@ -1609,6 +1965,117 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 8, 'Very Good', 0, 1);
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(45, 8, 'Behaviour:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+  
+        $fpdf->SetFont('Times', 'B', 12);    
+        $fpdf->Cell(60, 10, 'OFFICIAL ENDORSEMENT.', 0, 1);
+
+        $fpdf->Ln(15);    
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Cell(60, 10, '..............................................', 0, 1);
+        $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
+        $fpdf->SetFont('Times', 'B', 12);
+        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
+
+        $fpdf->SetFont('Times', '', 12);
+        $fpdf->Output();        
+        exit;
+    }
+    
+    public function template_4_(Fpdf $fpdf, Request $Request) {  
+        $fpdf->AddPage();    
+        $fpdf->SetAutoPageBreak(false);
+        $fpdf->SetTitle('Template 4 - ' . session()->get('APP_NAME'));         
+
+        if(empty($Company)) {
+            $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+            $fpdf->Ln(30);     
+            $fpdf->SetFont('Times', '', 11); 
+            $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+        } else { 
+            if($Company->Company === 'L.T.T') {
+                $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(159.5, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(162.7, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
+            }  
+            if($Company->Company === 'DEPASA') {   
+                $fpdf->Image('../public/images/depasa-letter-head.png', 10, 5, 190);  
+                $fpdf->Ln(30);     
+                $fpdf->SetFont('Times', '', 11); 
+                if(date("j") < 9) {
+                    $fpdf->Cell(170, -10, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                } else {
+                    $fpdf->Cell(173.2, -8, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
+                }
+            }  
+        }
+   
+        $fpdf->SetDrawColor(200, 200, 200); 
+      
+        $fpdf->Ln(5);     
+        $fpdf->SetFont('Times', 'BU', 17); 
+        $fpdf->Cell(190, 25, 'SEA SERVICE TESTIMONIAL', 0, 1, 'C');
+        $fpdf->SetFont('Times', '', 14); 
+        $fpdf->Cell(190, -3, 'I certify that the following record is truthful statement of a sea service performed by:', 0, 1, 'L');
+        $fpdf->SetFont('Times', 'B', 14); 
+        $fpdf->Cell(190, 20, 'Name: -', 0, 1, 'L');
+        $fpdf->Cell(190, -3, 'Date of Birth: -', 0, 1, 'L');
+        $fpdf->Cell(190, 20, 'Discharge Book No: -', 0, 1, 'L');
+        $fpdf->SetFont('Times', '', 9);         
+          
+        //// TABLE HEAD 
+        $fpdf->SetFont('Times', 'B', 9);         
+        $fpdf->Cell(40, 5, 'Period of Service & Date', 'LTR', 0, 'L');
+        $fpdf->SetFont('Times', 'B', 12);   
+        $fpdf->Cell(35, 8, 'VESSEL', 'LTR', 0, 'L'); 
+        $fpdf->Cell(32, 13, 'RANK', 'LTR', 0, 'L'); 
+        $fpdf->Cell(30, 8, 'AREA OF', 'LTR', 0, 'L');     
+        $fpdf->Ln(5); 
+        $fpdf->SetFont('Times', 'B', 9);         
+        $fpdf->Cell(20, 8, 'From', 1, 0, 'L');
+        $fpdf->Cell(20, 8, 'To', 1, 0, 'L');
+        $fpdf->SetFont('Times', 'B', 12);         
+        $fpdf->Cell(35, 8, 'NAME', 'LR', 0, 'L'); 
+        $fpdf->Cell(32, 8, ' ', 'LR', 0, 'L');  
+        $fpdf->Cell(30, 8, 'OPERATION', 'LR', 0, 'L'); 
+        $fpdf->Ln();
+           
+        //// TABLE COLUMNS 
+        $fpdf->SetFont('Times', '', 11);  
+       
+        $fpdf->Cell(20,10,'-',1,0);  
+        $fpdf->Cell(20,10,'-',1,0);   
+        $fpdf->Cell(35,10,'-',1,0);   
+        $fpdf->Cell(32,10,'-',1,0);   
+        $fpdf->Cell(30,10,'-',1,0);   
+ 
+        $fpdf->ln(13);      
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name crew, during the period stated is as follows:', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(70, 5, '   Navigational watch for not less than 12 hours out of every 24 hours ', 0, 1, 'L'); 
+        $fpdf->MultiCell(190, 6, 'whilst the vessel was engaged on operation. General maintenance of vessel.', 0, 'L', 0);
+        $fpdf->Ln(5);       
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Conduct:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Experience/Ability:', 0);
+        $fpdf->SetFont('Times', '', 12); 
+        $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
+        $fpdf->SetFont('Times', 'B', 12); 
+        $fpdf->Cell(45, 8, 'Behaviour/Soberiety:', 0);
         $fpdf->SetFont('Times', '', 12); 
         $fpdf->Cell(60, 8, 'Satisfactory', 0, 1);
   

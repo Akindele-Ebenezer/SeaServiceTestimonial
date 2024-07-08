@@ -146,6 +146,7 @@
                             <option value="Engine">Engine</option> 
                             {{-- <option value="Captain">Captain</option>  --}}
                             <option value="Cook">Cook</option> 
+                            <option value="Electrician">Electrician</option> 
                         </select>
                     </div>
                     <div class="input">

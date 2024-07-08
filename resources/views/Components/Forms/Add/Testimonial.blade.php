@@ -139,7 +139,8 @@
                         <a href="{{ route('template_1_') }}" target="blank">Deck</a>
                         <a href="{{ route('template_2_') }}" target="blank">Engine</a>
                         <a href="{{ route('template_3_') }}" target="blank">Cook</a> 
-                    </p>
+                        <a href="{{ route('template_4_') }}" target="blank">Electrician</a> 
+                    </p>    
                     <div class="input">
                         <label for="">Theme</label>
                         <select name="TemplateFormat" id="">
@@ -147,6 +148,7 @@
                             <option value="Engine">Engine</option> 
                             {{-- <option value="Captain">Captain</option>  --}}
                             <option value="Cook">Cook</option> 
+                            <option value="Electrician">Electrician</option> 
                         </select>
                     </div>
                     <div class="input">

@@ -63,8 +63,10 @@ Route::get('/Captains', [EmployeeController::class, 'captains'])->name('Captains
 Route::get('/Testimonials/Template/1', [SeaServiceTestimonialPdf::class, 'template_1'])->name('template_1');
 Route::get('/Testimonials/Template/2', [SeaServiceTestimonialPdf::class, 'template_2'])->name('template_2');
 Route::get('/Testimonials/Template/3', [SeaServiceTestimonialPdf::class, 'template_3'])->name('template_3');
+Route::get('/Testimonials/Template/4', [SeaServiceTestimonialPdf::class, 'template_4'])->name('template_4');
 Route::get('/Testimonials/Template/1_', [SeaServiceTestimonialPdf::class, 'template_1_'])->name('template_1_');
 Route::get('/Testimonials/Template/2_', [SeaServiceTestimonialPdf::class, 'template_2_'])->name('template_2_');
 Route::get('/Testimonials/Template/3_', [SeaServiceTestimonialPdf::class, 'template_3_'])->name('template_3_');
+Route::get('/Testimonials/Template/4_', [SeaServiceTestimonialPdf::class, 'template_4_'])->name('template_4_');
 
 Route::get('/Availability/Report', [VesselAvailabilityPdf::class, 'vessel_availability_report'])->name('vessel_availability_report');
