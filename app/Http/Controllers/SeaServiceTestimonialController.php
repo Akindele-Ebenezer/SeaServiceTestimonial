@@ -54,7 +54,7 @@ class SeaServiceTestimonialController extends Controller
     public function notifications()
     {
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->paginate(14);
-        $NumberOfVessels = \DB::table('vessels_vessel_information')->count();
+        $NumberOfVessels = \DB::table('vessels_vessel_information')->get();
         $NumberOfOperations = \DB::table('testimonials')->whereNotNull('AreaOfOperation')->count();
         $NumberOfWorkingPeriods = \DB::table('working_periods')->count();
         $FirstDayOfLastMonth = \Carbon\Carbon::now()->subMonth(1)->startOfMonth()->format('Y-m-d');  
@@ -141,7 +141,7 @@ class SeaServiceTestimonialController extends Controller
             'Employees' => $Employees,
             'NumberOfOperations' => $NumberOfOperations,
             'NumberOfWorkingPeriods' => $NumberOfWorkingPeriods,
-            'NumberOfVessels' => $NumberOfVessels,
+            'NumberOfVessels' => count($NumberOfVessels),
             'Testimonials' => $Testimonials,
             'PercentageOfTestimonials_SINCE_LAST_MONTH' => $PercentageOfTestimonials_SINCE_LAST_MONTH,
             'PercentageOfTestimonials_SINCE_LAST_2_MONTH' => $PercentageOfTestimonials_SINCE_LAST_2_MONTH,

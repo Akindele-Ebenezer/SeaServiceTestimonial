@@ -1,6 +1,7 @@
 @if (Session::has('USER_ID')) 
 @php
-    $NumberOfVessels = \DB::table('vessels_vessel_information')->whereNotNull('ImoNumber')->count();
+    $NumberOfVessels = \DB::table('vessels_vessel_information')->whereNotNull('ImoNumber')->get();
+    $NumberOfVessels = count($NumberOfVessels);
     $NumberOfEmployees = \DB::table('employees')->count();
     $NumberOfNotifications = \DB::table('notifications')->count();
 @endphp

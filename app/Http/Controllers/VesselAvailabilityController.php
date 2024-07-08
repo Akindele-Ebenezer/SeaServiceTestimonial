@@ -20,14 +20,13 @@ class VesselAvailabilityController extends Controller
         $VesselAvailability = VesselAvailability::orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
         $Vessels = \DB::table('vessels_vessel_information')->select(['VesselName', 'ImoNumber', 'CallSign'])->get();
         $STARTDATE = date('Y-m-d'); 
-        $NumberOfVessels = \DB::table('vessels_vessel_information')->count();
+        $NumberOfVessels = \DB::table('vessels_vessel_information')->get();
         $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')
-        ->orWhere(function($query) {
-            $query->where('StartDate', '<', date('Y-m-d'))
-                    ->where('EndDate', '<', date('Y-m-d'));
-        })
-        ->groupBy('Vessel')->get();
-        // dd($NumberOfVessels_IDLE);
+                                ->where(function($query) {
+                                    $query->where('StartDate', '>=', date('Y-m-d'))
+                                            ->orWhere('EndDate', '>=', date('Y-m-d'));
+                                }) 
+                                ->groupBy('Vessel')->get(); 
         $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_MAINTENANCE = VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
@@ -53,7 +52,7 @@ class VesselAvailabilityController extends Controller
                 'Companies' => $Companies,
                 'VesselAvailability' => $VesselAvailability,
                 'Vessels' => $Vessels,
-                'NumberOfVessels' => $NumberOfVessels,
+                'NumberOfVessels' => count($NumberOfVessels),
                 'STARTDATE' => $STARTDATE,
                 'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
                 'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
@@ -82,7 +81,7 @@ class VesselAvailabilityController extends Controller
                 'Companies' => $Companies,
                 'VesselAvailability' => $VesselAvailability,
                 'Vessels' => $Vessels,
-                'NumberOfVessels' => $NumberOfVessels,
+                'NumberOfVessels' => count($NumberOfVessels),
                 'STARTDATE' => $STARTDATE,
                 'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
                 'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
@@ -114,7 +113,7 @@ class VesselAvailabilityController extends Controller
                 'Companies' => $Companies,
                 'VesselAvailability' => $VesselAvailability,
                 'Vessels' => $Vessels,
-                'NumberOfVessels' => $NumberOfVessels,
+                'NumberOfVessels' => count($NumberOfVessels),
                 'STARTDATE' => $STARTDATE,
                 'StartDate' => $STARTDATE,
                 'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
@@ -134,7 +133,7 @@ class VesselAvailabilityController extends Controller
             'Companies' => $Companies,
             'VesselAvailability' => $VesselAvailability,
             'Vessels' => $Vessels,
-            'NumberOfVessels' => $NumberOfVessels,
+            'NumberOfVessels' => count($NumberOfVessels),
             'STARTDATE' => $STARTDATE,
             'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
             'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),

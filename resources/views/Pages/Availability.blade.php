@@ -3016,7 +3016,8 @@
                         if (isset($_GET['FromDate_FILTERBYDATE']) AND isset($_GET['EndDate_FILTERBYDATE']) AND empty($_GET['SpecificDay'])) {
                             $Vessel_STARTIME = \DB::table('vessel_availabilities') 
                                                 ->where('Vessel', $Vessel->VesselName)
-                                                ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                                // ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
+                                                ->whereBetween('EndDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                                 ->orderBy('DateIn', 'DESC')
                                                 ->orderBy('TimeIn', 'DESC')
                                                 ->get();
