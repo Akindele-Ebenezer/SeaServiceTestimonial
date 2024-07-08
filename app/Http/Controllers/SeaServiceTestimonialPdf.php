@@ -1427,7 +1427,10 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(190, 20, 'Name: ' . (empty($Employee->EmployeeName) ? '-' : $Employee->EmployeeName), 0, 1, 'L');
         $fpdf->Cell(190, -3, 'Date of Birth: ' . (empty($DateOfBirth->DateOfBirth) ? '-' : $DateOfBirth->DateOfBirth), 0, 1, 'L');
         $fpdf->Cell(190, 20, 'Discharge Book No: ' . (empty($DischargeBook->DischargeBook) ? '-' : $DischargeBook->DischargeBook), 0, 1, 'L');
-        $fpdf->SetFont('Times', '', 9);         
+        $fpdf->SetFont('Times', '', 14);    
+        $fpdf->Ln(-5);          
+        $fpdf->MultiCell(190, 7, 'Under my supervision on board ' . $CurrentVessel->CurrentVessel . ' with Official number ' . $ImoNumber->ImoNumber . ' and Gross Tonnage of 2761.');
+        $fpdf->Ln(4);          
           
         //// TABLE HEAD 
         $fpdf->SetFont('Times', 'B', 9);         
@@ -1626,7 +1629,7 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->ln();
         }
  
-        $fpdf->ln(13);      
+        $fpdf->ln(5);      
         $fpdf->SetFont('Times', '', 12); 
         $fpdf->MultiCell(190, 6, 'During the whole period stated above, the above-named crew was granted ' . $Request->LeaveDays . ' days leave of absence. My report on the service of the above-name crew, during the period stated is as follows:', 0, 'L', 0);
         $fpdf->Ln(5);       
@@ -2028,7 +2031,10 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(190, 20, 'Name: -', 0, 1, 'L');
         $fpdf->Cell(190, -3, 'Date of Birth: -', 0, 1, 'L');
         $fpdf->Cell(190, 20, 'Discharge Book No: -', 0, 1, 'L');
-        $fpdf->SetFont('Times', '', 9);         
+        $fpdf->Ln(-5);  
+        $fpdf->SetFont('Times', '', 14);         
+        $fpdf->MultiCell(190, 7, 'Under my supervision on board - with Official number 9151735 and Gross Tonnage of 2761.');
+        $fpdf->Ln(4);  
           
         //// TABLE HEAD 
         $fpdf->SetFont('Times', 'B', 9);         

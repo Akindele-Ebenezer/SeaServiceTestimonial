@@ -138,6 +138,7 @@
                         <a href="{{ route('template_1_') }}" target="blank">Deck</a>
                         <a href="{{ route('template_2_') }}" target="blank">Engine</a>
                         <a href="{{ route('template_3_') }}" target="blank">Cook</a> 
+                        <a href="{{ route('template_4_') }}" target="blank">Electrician</a> 
                     </p>
                     <div class="input">
                         <label for="">Theme</label>
