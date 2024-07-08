@@ -26,7 +26,7 @@ class VesselAvailabilityController extends Controller
                                     $query->where('StartDate', '>=', date('Y-m-d'))
                                             ->orWhere('EndDate', '>=', date('Y-m-d'));
                                 })
-                                ->orWhere('EndDate', '<', date('Y-m-d'))
+                                // ->orWhere('EndDate', '<', date('Y-m-d'))
                                 ->groupBy('Vessel')->get(); 
         $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
