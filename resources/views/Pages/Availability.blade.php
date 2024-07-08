@@ -109,7 +109,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -133,7 +133,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -160,7 +160,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -184,7 +184,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -287,7 +287,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -311,7 +311,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -338,7 +338,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -362,7 +362,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -465,7 +465,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -489,7 +489,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -516,7 +516,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -540,7 +540,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -643,7 +643,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -667,7 +667,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -694,7 +694,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -718,7 +718,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -821,7 +821,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -845,7 +845,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -872,7 +872,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -896,7 +896,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -999,7 +999,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1023,7 +1023,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -1050,7 +1050,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1074,7 +1074,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -1177,7 +1177,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1201,7 +1201,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -1228,7 +1228,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1252,7 +1252,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -1355,7 +1355,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1379,7 +1379,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -1406,7 +1406,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1430,7 +1430,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -1538,7 +1538,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1562,7 +1562,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -1589,7 +1589,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1613,7 +1613,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -1716,7 +1716,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1740,7 +1740,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -1767,7 +1767,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1791,7 +1791,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -1894,7 +1894,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1918,7 +1918,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -1945,7 +1945,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -1969,7 +1969,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -2072,7 +2072,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2096,7 +2096,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -2123,7 +2123,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2147,7 +2147,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -2250,7 +2250,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2274,7 +2274,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -2301,7 +2301,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2325,7 +2325,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -2428,7 +2428,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2452,7 +2452,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -2479,7 +2479,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2503,7 +2503,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -2606,7 +2606,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2630,7 +2630,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -2657,7 +2657,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2681,7 +2681,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
@@ -2784,7 +2784,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2808,7 +2808,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                 "></span>
@@ -2835,7 +2835,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     @if ($EndDate === $StartDate)
@@ -2859,7 +2859,7 @@
                                 bunkery
                                 @break 
                             @default
-                                idle
+                                ready
                         @endswitch
                     @endif
                     status-1">
