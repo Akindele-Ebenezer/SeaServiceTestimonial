@@ -3517,4 +3517,5 @@
         Chart1.style.display = 'flex !important'; 
     });
 </script> 
+@include('Components.Charts.Chart1-JS') 
 @endsection
