@@ -28,7 +28,7 @@ class VesselAvailabilityController extends Controller
                                 })
                                 // ->orWhere('EndDate', '<', date('Y-m-d'))
                                 ->groupBy('Vessel')->get(); 
-        $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->join('vessels_vessel_information', 'vessels_vessel_information.VesselName', '=', 'vessel_availabilities.Vessel')->where('EndDate', '<', date('Y-m-d'))->orWhere('Status', 'IDLE')->groupBy('Vessel')->get();
+        // $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->join('vessels_vessel_information', 'vessels_vessel_information.VesselName', '=', 'vessel_availabilities.Vessel')->where('EndDate', '<', date('Y-m-d'))->orWhere('Status', 'IDLE')->groupBy('Vessel')->get();
 
         $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
         $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('EndDate', '>=', date('Y-m-d'))->groupBy('Vessel')->get();
