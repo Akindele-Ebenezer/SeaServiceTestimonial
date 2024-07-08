@@ -78,6 +78,15 @@
                         <input type="date" name="EndDate">
                     </div>  
                 </section>
+                <section class="t-f"> 
+                    <div class="input">
+                        <label for="">Till now</label>
+                        <select name="TillNow" id=""> 
+                            <option value="NO">NO</option> 
+                            <option value="YES">YES</option> 
+                        </select>
+                    </div>   
+                </section>
                 <br><br>
             </div>
         </form>

@@ -121,10 +121,8 @@ if (AddAvailabilityButton !== null) {
                 ErrorAvailability.textContent =  'Start time cannot be empty';
             } else if (EndTimeInput.value == '') { 
                 ErrorAvailability.textContent =  'End time cannot be empty';
-            // } else if (StartTimeInput.value.substring(0, 2) > EndTimeInput.value.substring(0, 2)) { 
-            //     ErrorAvailability.textContent =  'Start time cannot be greater than end time';
-            // } else if (StartDateInput.value > EndDateInput.value) { 
-            //     ErrorAvailability.textContent =  'Start date cannot be greater than End date';
+            } else if (StartDateInput.value > EndDateInput.value) { 
+                ErrorAvailability.textContent =  'Start date cannot be greater than End date';
             } else if (StartDateInput.value == '') { 
                 ErrorAvailability.textContent =  'Start date cannot be empty';
             } else if (EndDateInput.value == '') { 

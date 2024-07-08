@@ -64,7 +64,7 @@
 .status-x.bunkery, .status-x.bunkery:before {
   background: #8a3ffc;
 }
-.status-x.idle, .status-x.idle:before {
+.status-x.idle, .status-x.idle:before, .status-x.ready, .status-x.ready:before {
   background: #52f781;
 }
 .status-x:before {

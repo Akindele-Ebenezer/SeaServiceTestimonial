@@ -194,6 +194,7 @@ class VesselAvailabilityController extends Controller
             'EndTime' => substr($Request->EditEndTime, 0, 5),
             'StartDate' => $Request->EditStartDate,
             'EndDate' => $Request->EditEndDate,
+            'TillNow' => $Request->EditTillNow,
             'DateIn' => date('Y-m-d'),
             'TimeIn' => date('H:i a'),
         ]);

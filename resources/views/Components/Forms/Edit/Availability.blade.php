@@ -59,6 +59,15 @@
                         <input type="date" name="EditEndDate">
                     </div>  
                 </section>
+                <section class="t-f"> 
+                    <div class="input">
+                        <label for="">Till now</label>
+                        <select name="EditTillNow" id=""> 
+                            <option value="NO">NO</option> 
+                            <option value="YES">YES</option> 
+                        </select>
+                    </div>   
+                </section>
                 <br><br>
             </div>
         </form>

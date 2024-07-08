@@ -22,6 +22,7 @@ class PriorityExcelImportController extends Controller
                 'EndTime' => substr($Request->EndTime, 0, 5),
                 'StartDate' => $Request->StartDate,
                 'EndDate' => $Request->EndDate,
+                'TillNow' => $Request->TillNow,
                 'DateIn' => date('Y-m-d'),
                 'TimeIn' => date('H:i a'),
             ]);

@@ -81,7 +81,7 @@ $blue: #42e5ff;
     background: #8a3ffc;
   }
   
-  &.idle, &.idle:before {
+  &.idle, &.idle:before, &.ready, &.ready:before {
     background: #52f781;
   }
   

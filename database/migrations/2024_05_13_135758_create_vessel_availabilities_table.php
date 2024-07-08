@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('EndTime')->nullable();
             $table->string('StartDate')->nullable();
             $table->string('EndDate')->nullable();
+            $table->string('TillNow')->nullable();
             $table->string('DateIn')->nullable();
             $table->string('TimeIn')->nullable();
             $table->timestamps();

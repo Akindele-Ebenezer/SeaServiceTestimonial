@@ -3355,7 +3355,7 @@
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ date('H:i', strtotime($Availabilty->StartTime)).' HRS' }}</td>
-                        <td>{{ $Availabilty->EndDate }}</td>
+                        <td>{{ $Availabilty->TillNow == 'YES' ? date('Y-m-d') : $Availabilty->EndDate }}</td>
                         <td>{{ date('H:i', strtotime($Availabilty->EndTime)).' HRS' }}</td>
                         <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
