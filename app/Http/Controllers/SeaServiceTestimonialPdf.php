@@ -1647,8 +1647,8 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(70, 5, 'NATURE OF DUTIES PERFORMED; ', 0, 0, 'L'); 
         $fpdf->SetFont('Times', '', 12); 
-        $fpdf->Cell(70, 5, '   Navigational watch for not less than 12 hours out of every 24 hours ', 0, 1, 'L'); 
-        $fpdf->MultiCell(190, 6, 'whilst the vessel was engaged on operation. General maintenance of vessel.', 0, 'L', 0);
+        $fpdf->Cell(70, 5, '   Repair electrical systems on ships. They keep electrical power ', 0, 1, 'L'); 
+        $fpdf->MultiCell(190, 6, 'plants, wiring, and machinery in working order; maintain and repair shipboard elevator systems; and interpret electrical sketched, diagrams, and blueprints.', 0, 'L', 0);
         $fpdf->Ln(5);       
         $fpdf->SetFont('Times', 'B', 12); 
         $fpdf->Cell(45, 8, 'Conduct:', 0);
