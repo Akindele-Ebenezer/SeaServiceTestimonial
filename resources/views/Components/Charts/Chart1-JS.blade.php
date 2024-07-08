@@ -33,8 +33,7 @@
         @else
         '#52f781', 
         @endif
-        @if (
-            ($NumberOfVessels_IDLE == 0) AND
+        @if ( 
             ($NumberOfVessels_DOCKING == 0) AND
             ($NumberOfVessels_BREAKDOWN == 0) AND
             ($NumberOfVessels_MAINTENANCE == 0) AND
@@ -133,6 +132,7 @@
     .style('transform', `translate(${width / 2}px, ${height / 2}px)`);
    
     let NumberOfVessels_READY = document.querySelectorAll('.availability-status.ready');
+    document.querySelector('.ready-x').textContent = NumberOfVessels_READY.length;
     // Create chart
     async function createDonut() { 
     const data = [  

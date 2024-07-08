@@ -2895,7 +2895,7 @@
                         <th>Inspection</th>
                     </tr>
                     <tr>
-                        <td>{{ $NumberOfVessels_IDLE }}</td>
+                        <td class="ready-x"></td>
                         <td>{{ $NumberOfVessels_BUNKERY }}</td>
                         <td>{{ $NumberOfVessels_INSPECTION }}</td>
                     </tr>
