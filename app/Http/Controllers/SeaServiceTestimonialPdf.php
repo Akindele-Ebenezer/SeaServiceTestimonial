@@ -1386,7 +1386,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
-        $fpdf->SetTitle('Template 1 - ' . session()->get('APP_NAME'));         
+        $fpdf->SetTitle('Template 4 - ' . session()->get('APP_NAME'));         
 
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
@@ -1682,7 +1682,7 @@ class SeaServiceTestimonialPdf extends Controller
     public function template_1_(Fpdf $fpdf, Request $Request) {  
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
-        $fpdf->SetTitle('Template 1 - ' . session()->get('APP_NAME'));   
+        $fpdf->SetTitle('Template 4 - ' . session()->get('APP_NAME'));   
         
         $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
         $fpdf->Ln(30);     
@@ -2075,7 +2075,7 @@ class SeaServiceTestimonialPdf extends Controller
 
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
-        $fpdf->SetTitle('Template 1 - ' . session()->get('APP_NAME'));         
+        $fpdf->SetTitle('Template 4 - ' . session()->get('APP_NAME'));         
 
         if(empty($Company)) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 0, 190);    
