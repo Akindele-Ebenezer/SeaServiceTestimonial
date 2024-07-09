@@ -14,11 +14,11 @@ class PriorityExcelImportController extends Controller
     {
         if (empty($_GET['Attachment'])) {
             $ReportFile = $Request->file('Report'); 
-            $ReportFileName = $ReportFile->getClientOriginalName(); 
+            $ReportFileName = $ReportFile->getClientOriginalName() ?? '-'; 
             $ReportFile->move(public_path('Documents/Availability/Vessels/' . $Request->Vessel), $ReportFileName); 
 
             $PictureFile = $Request->file('Picture'); 
-            $PictureFileName = $PictureFile->getClientOriginalName();  
+            $PictureFileName = $PictureFile->getClientOriginalName() ?? '-';  
             $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $PictureFileName); 
 
             VesselAvailability::insert([
