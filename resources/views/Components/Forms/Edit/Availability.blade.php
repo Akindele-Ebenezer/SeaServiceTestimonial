@@ -45,14 +45,14 @@
                     <h1>Attachment</h1>
                     <div class="input">
                         <label for="">Report</label>
-                        <input type="file" name="EditReport">
-                        file here
+                        <input type="file" name="EditReport"> 
                     </div>   
+                    <a class="report-file-link"><div class="report-file"></div></a>
                     <div class="input">
                         <label for="">Picture</label>
-                        <input type="file" name="EditPicture">
-                        file here
+                        <input type="file" name="EditPicture"> 
                     </div>   
+                    <a class="picture-file-link"><div class="picture-file"></div></a>
                 </section> 
                 <br><br>
                 <section class="t-f">

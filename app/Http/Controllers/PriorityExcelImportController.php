@@ -18,16 +18,16 @@ class PriorityExcelImportController extends Controller
             $ReportFile->move(public_path('Documents/Availability/Vessels/' . $Request->Vessel), $ReportFileName); 
 
             $PictureFile = $Request->file('Picture'); 
-            $PictureFileName = $PictureFile->getClientOriginalName(); 
-            $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $ReportFileName); 
+            $PictureFileName = $PictureFile->getClientOriginalName();  
+            $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $PictureFileName); 
 
             VesselAvailability::insert([
                 'Vessel' => $Request->Vessel,
                 'Status' => $Request->Status,
                 'DoneBy' => $Request->DoneBy, 
                 'Comment' => $Request->Comment, 
-                'Report' => $Request->Report, 
-                'Picture' => $Request->Picture, 
+                'Report' => $ReportFileName, 
+                'Picture' => $PictureFileName, 
                 'Location' => $Request->Location, 
                 'Source' => 'SEA_SERVICE', 
                 'StartTime' => substr($Request->StartTime, 0, 5),
