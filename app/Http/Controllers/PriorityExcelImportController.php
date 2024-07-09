@@ -13,41 +13,121 @@ class PriorityExcelImportController extends Controller
     public function import(Request $Request)
     {
         if (empty($_GET['Attachment'])) {
-            $ReportFile = $Request->file('Report'); 
-            $ReportFileName = $ReportFile->getClientOriginalName() ?? '-'; 
-            $ReportFile->move(public_path('Documents/Availability/Vessels/' . $Request->Vessel), $ReportFileName); 
+            if ($Request->hasFile('Report')) {
+                $ReportFile = $Request->file('Report'); 
+                $ReportFileName = $ReportFile->getClientOriginalName() ?? '-'; 
+                $ReportFile->move(public_path('Documents/Availability/Vessels/' . $Request->Vessel), $ReportFileName); 
+                VesselAvailability::insert([
+                    'Vessel' => $Request->Vessel,
+                    'Status' => $Request->Status,
+                    'DoneBy' => $Request->DoneBy, 
+                    'Comment' => $Request->Comment, 
+                    'Report' => $ReportFileName,  
+                    'Location' => $Request->Location, 
+                    'Source' => 'SEA_SERVICE', 
+                    'StartTime' => substr($Request->StartTime, 0, 5),
+                    'EndTime' => substr($Request->EndTime, 0, 5),
+                    'StartDate' => $Request->StartDate,
+                    'EndDate' => $Request->EndDate,
+                    'TillNow' => $Request->TillNow,
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i a'),
+                ]);
+                \DB::table('notifications')->insert([
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i A'),
+                    'UserId' => session()->get('USER_ID'),
+                    'Vessel' => $Request->Vessel, 
+                    'Action' => 'Create',
+                    'Subject' => 'New Availability Alert!',
+                    'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                ]);
+                return redirect()->route('Availability');
+            } else { 
+                VesselAvailability::insert([
+                    'Vessel' => $Request->Vessel,
+                    'Status' => $Request->Status,
+                    'DoneBy' => $Request->DoneBy, 
+                    'Comment' => $Request->Comment,  
+                    'Location' => $Request->Location, 
+                    'Source' => 'SEA_SERVICE', 
+                    'StartTime' => substr($Request->StartTime, 0, 5),
+                    'EndTime' => substr($Request->EndTime, 0, 5),
+                    'StartDate' => $Request->StartDate,
+                    'EndDate' => $Request->EndDate,
+                    'TillNow' => $Request->TillNow,
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i a'),
+                ]);
+                \DB::table('notifications')->insert([
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i A'),
+                    'UserId' => session()->get('USER_ID'),
+                    'Vessel' => $Request->Vessel, 
+                    'Action' => 'Create',
+                    'Subject' => 'New Availability Alert!',
+                    'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                ]);
+                return redirect()->route('Availability');
+            }
+            if ($Request->hasFile('Report')) {
+                $PictureFile = $Request->file('Picture'); 
+                $PictureFileName = $PictureFile->getClientOriginalName() ?? '-';  
+                $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $PictureFileName); 
+                VesselAvailability::insert([
+                    'Vessel' => $Request->Vessel,
+                    'Status' => $Request->Status,
+                    'DoneBy' => $Request->DoneBy,  
+                    'Picture' => $PictureFileName,
+                    'Comment' => $Request->Comment,  
+                    'Location' => $Request->Location, 
+                    'Source' => 'SEA_SERVICE', 
+                    'StartTime' => substr($Request->StartTime, 0, 5),
+                    'EndTime' => substr($Request->EndTime, 0, 5),
+                    'StartDate' => $Request->StartDate,
+                    'EndDate' => $Request->EndDate,
+                    'TillNow' => $Request->TillNow,
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i a'),
+                ]);
+                \DB::table('notifications')->insert([
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i A'),
+                    'UserId' => session()->get('USER_ID'),
+                    'Vessel' => $Request->Vessel, 
+                    'Action' => 'Create',
+                    'Subject' => 'New Availability Alert!',
+                    'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                ]);
+                return redirect()->route('Availability');
+            } else { 
+                VesselAvailability::insert([
+                    'Vessel' => $Request->Vessel,
+                    'Status' => $Request->Status,
+                    'DoneBy' => $Request->DoneBy, 
+                    'Comment' => $Request->Comment,  
+                    'Location' => $Request->Location, 
+                    'Source' => 'SEA_SERVICE', 
+                    'StartTime' => substr($Request->StartTime, 0, 5),
+                    'EndTime' => substr($Request->EndTime, 0, 5),
+                    'StartDate' => $Request->StartDate,
+                    'EndDate' => $Request->EndDate,
+                    'TillNow' => $Request->TillNow,
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i a'),
+                ]);
+                \DB::table('notifications')->insert([
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i A'),
+                    'UserId' => session()->get('USER_ID'),
+                    'Vessel' => $Request->Vessel, 
+                    'Action' => 'Create',
+                    'Subject' => 'New Availability Alert!',
+                    'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                ]);
+                return redirect()->route('Availability');
+            }
 
-            $PictureFile = $Request->file('Picture'); 
-            $PictureFileName = $PictureFile->getClientOriginalName() ?? '-';  
-            $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $PictureFileName); 
-
-            VesselAvailability::insert([
-                'Vessel' => $Request->Vessel,
-                'Status' => $Request->Status,
-                'DoneBy' => $Request->DoneBy, 
-                'Comment' => $Request->Comment, 
-                'Report' => $ReportFileName, 
-                'Picture' => $PictureFileName, 
-                'Location' => $Request->Location, 
-                'Source' => 'SEA_SERVICE', 
-                'StartTime' => substr($Request->StartTime, 0, 5),
-                'EndTime' => substr($Request->EndTime, 0, 5),
-                'StartDate' => $Request->StartDate,
-                'EndDate' => $Request->EndDate,
-                'TillNow' => $Request->TillNow,
-                'DateIn' => date('Y-m-d'),
-                'TimeIn' => date('H:i a'),
-            ]);
-            \DB::table('notifications')->insert([
-                'DateIn' => date('Y-m-d'),
-                'TimeIn' => date('H:i A'),
-                'UserId' => session()->get('USER_ID'),
-                'Vessel' => $Request->Vessel, 
-                'Action' => 'Create',
-                'Subject' => 'New Availability Alert!',
-                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
-            ]);
-            return redirect()->route('Availability');
         } else {
             VesselAvailability::where('Source', 'PRIORITY')->whereNull('Status')->delete();
             Excel::import(new PriorityImportClass, 
