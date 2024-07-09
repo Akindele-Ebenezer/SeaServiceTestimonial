@@ -42,7 +42,7 @@
                                 <option value="MAINTENANCE">MAINTENANCE</option> 
                                 <option value="BREAKDOWN">BREAKDOWN</option> 
                                 <option value="INSPECTION">INSPECTION</option> 
-                                <option value="BUNKERY">BUNKERY</option> 
+                                <option value="BUNKERY">BUNKERING</option> 
                                 <option value="IDLE">READY TO GO</option> 
                             </select>
                         </div> 
@@ -50,12 +50,36 @@
                             <label for="">Done By</label>
                             <input type="text" name="DoneBy">
                         </div> 
-                        <div class="input">
+                        <div class="input Hide">
                             <label for="">Attachment</label>
                             <input type="file" name="Attachment">
                         </div> 
+                        {{-- <div class="input">
+                            <label for="">Comment</label>
+                            <input type="text" name="Comment">
+                        </div>    --}}
                     </section> 
                 </div>
+                {{-- <br>
+                <section class="t-f">
+                    <h1>Attachment</h1>
+                    <div class="input">
+                        <label for="">Report</label>
+                        <input type="file" name="Report">
+                    </div>   
+                    <div class="input">
+                        <label for="">Picture</label>
+                        <input type="file" name="Picture">
+                    </div>   
+                </section> 
+                <br><br>
+                <section class="t-f">
+                    <h1>Dredging/Working area</h1>
+                    <div class="input">
+                        <label for="">Location</label>
+                        <input type="text" name="Location">
+                    </div>   
+                </section>  --}}
             </div>
             <div class="inner-2"> 
                 <h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>Time Period/Total Hours</h1>
@@ -80,7 +104,7 @@
                 </section>
                 <section class="t-f"> 
                     <div class="input">
-                        <label for="">Till now</label>
+                        <label for="">Till date</label>
                         <select name="TillNow" id=""> 
                             <option value="NO">NO</option> 
                             <option value="YES">YES</option> 

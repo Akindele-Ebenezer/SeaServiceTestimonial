@@ -16,6 +16,7 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' HRS';
         document.querySelector('.UpdateAvailabilityForm input[name=EditStartDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndDate]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.UpdateAvailabilityForm select[name=EditTillNow]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
  
         let EditStartTimeInput = document.querySelector('input[name=EditStartTime]');
         let EditEndTimeInput = document.querySelector('input[name=EditEndTime]');

@@ -3509,6 +3509,7 @@
                         <td class="Hide">{{ $Availabilty->EndTime }}</td> 
                         <td class="Hide">{{ $Availabilty->StartDate }}</td> 
                         <td class="Hide">{{ $Availabilty->EndDate }}</td> 
+                        <td class="Hide">{{ $Availabilty->TillNow }}</td> 
                         <td>{{ $Availabilty->Vessel }}</td>
                         <td>{{ $Availabilty->Status }}</td>
                         <td>{{ $Availabilty->DoneBy }}</td>
