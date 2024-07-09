@@ -181,6 +181,7 @@ class VesselController extends Controller
             'UserId' => session()->get('USER_ID'),
             'VesselName' => $Request->EditVesselName,
             'VesselType' => $Request->EditVesselType,
+            'ImoNumber' => $Request->EditImoNumber,
             'Company' => $Request->EditCompany,
             'CallSign' => $Request->EditCallSign,
             'Flag' => $Request->EditFlag,
@@ -193,6 +194,7 @@ class VesselController extends Controller
         \DB::table('vessels_general_others')->where('VesselName', $Request->EditVesselName)->update([  
             'UserId' => session()->get('USER_ID'),
             'VesselName' => $Request->EditVesselName,
+            'ImoNumber' => $Request->EditImoNumber,
             'SummerLoadDraught' => $Request->EditSummerLoadDraught,
             'Lpp' => $Request->EditLpp,
             'Owner' => $Request->EditOwner,
@@ -206,6 +208,7 @@ class VesselController extends Controller
         \DB::table('vessels_section_3')->where('VesselName', $Request->EditVesselName)->update([ 
             'UserId' => session()->get('USER_ID'),  
             'VesselName' => $Request->EditVesselName,
+            'ImoNumber' => $Request->EditImoNumber,
             'TypesOfEngines' => $Request->EditTypesOfEngines,
             'NumberOfEngines' => $Request->EditNumberOfEngines,
             'NumberOfCylinder' => $Request->EditNumberOfCyliners,
@@ -219,6 +222,7 @@ class VesselController extends Controller
         \DB::table('vessels_section_4')->where('VesselName', $Request->EditVesselName)->update([  
             'UserId' => session()->get('USER_ID'),   
             'VesselName' => $Request->EditVesselName,
+            'ImoNumber' => $Request->EditImoNumber,
             'GrossTonnage' => $Request->EditGrossTonnage,
             'NetTonnage' => $Request->EditNetTonnage, 
         ]);
