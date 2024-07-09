@@ -198,11 +198,11 @@ class SeaServiceTestimonialPdf extends Controller
         
         $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
         $yPos=$fpdf->GetY(); 
-        if(strlen($Rank->Rank) < 13) {
+        if(strlen($Rank->Rank) <= 14) {
             $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
-        if(strlen($Rank->Rank) >= 13) {
+        if(strlen($Rank->Rank) >= 15) {
             $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
             $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
@@ -230,11 +230,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -261,11 +261,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -292,11 +292,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -1500,11 +1500,11 @@ class SeaServiceTestimonialPdf extends Controller
         
         $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
         $yPos=$fpdf->GetY(); 
-        if(strlen($Rank->Rank) < 13) {
+        if(strlen($Rank->Rank) <= 14) {
             $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
-        if(strlen($Rank->Rank) >= 13) {
+        if(strlen($Rank->Rank) >= 15) {
             $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
             $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
@@ -1532,11 +1532,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -1563,11 +1563,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -1594,11 +1594,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -1625,11 +1625,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -2189,11 +2189,11 @@ class SeaServiceTestimonialPdf extends Controller
         
         $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
         $yPos=$fpdf->GetY(); 
-        if(strlen($Rank->Rank) < 13) {
+        if(strlen($Rank->Rank) <= 14) {
             $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
             $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
-        if(strlen($Rank->Rank) >= 13) {
+        if(strlen($Rank->Rank) >= 15) {
             $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
             $fpdf->SetXY($xPos + 12 + $cellWidth , $yPos);
         } 
@@ -2221,11 +2221,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -2252,11 +2252,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -2283,11 +2283,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
@@ -2314,11 +2314,11 @@ class SeaServiceTestimonialPdf extends Controller
             $fpdf->Cell(25,10,(empty($ImoNumber->ImoNumber) ? '-' : $ImoNumber->ImoNumber),1,0); 
             $yPos=$fpdf->GetY(); 
         
-            if(strlen($Rank->Rank) < 13) {
+            if(strlen($Rank->Rank) <= 14) {
                 $fpdf->Cell(32,10,(empty($Rank->Rank) ? '-' : $Rank->Rank),1,0);  
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             } 
-            if(strlen($Rank->Rank) >= 13) {
+            if(strlen($Rank->Rank) >= 15) {
                 $fpdf->MultiCell(32, $cellHeight,(strlen($Rank->Rank) < 13 ? strtoupper(str_replace(' ', '-', $Rank->Rank)) . '                       ' : strtoupper(str_replace(' ', '-', $Rank->Rank))),1); //adapt height to number of lines
                 $fpdf->SetXY(62 + $cellWidth , $yPos);
             }  
