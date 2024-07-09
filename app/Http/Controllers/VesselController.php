@@ -222,7 +222,6 @@ class VesselController extends Controller
             'GrossTonnage' => $Request->EditGrossTonnage,
             'NetTonnage' => $Request->EditNetTonnage, 
         ]);
-        // dd($Request->EditVesselName);
         return back();
     }
 

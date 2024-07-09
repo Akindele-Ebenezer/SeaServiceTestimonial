@@ -15,11 +15,11 @@
     @foreach ($Vessels as $Vessel)
     @php
         $Vessels_EMPLOYEE = \DB::table('testimonials')->select(['EmployeeName', 'Rank', 'Company'])->where('CurrentVessel', $Vessel->VesselName)->orderBy('DateIn', 'DESC')->orderBy('TimeIn', 'DESC')->first(); 
-        $Vessels_GeneralOthers = \DB::table('vessels_general_others')->where('ImoNumber', $Vessel->ImoNumber)->first();
-        $Vessels_Section3 = \DB::table('vessels_section_3')->where('ImoNumber', $Vessel->ImoNumber)->first();
-        $Vessels_Section4 = \DB::table('vessels_section_4')->where('ImoNumber', $Vessel->ImoNumber)->first();
+        $Vessels_GeneralOthers = \DB::table('vessels_general_others')->where('VesselName', $Vessel->VesselName)->first();
+        $Vessels_Section3 = \DB::table('vessels_section_3')->where('VesselName', $Vessel->VesselName)->first();
+        $Vessels_Section4 = \DB::table('vessels_section_4')->where('VesselName', $Vessel->VesselName)->first();
     @endphp
-    <div class="list vessel">
+    <div class="list vessel">  
         <span class="Hide">{{ $Vessel->VesselName ?? '-' }}</span>
         <span class="Hide">{{ $Vessel->ImoNumber ?? '-' }}</span>
         <span class="Hide">{{ $Vessel->CallSign ?? '-' }}</span>
