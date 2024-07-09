@@ -111,9 +111,25 @@ if (AddAvailabilityButton !== null) {
         if (AttachmentInput.value.trim() == '') { 
             ErrorAvailability.textContent =  'Attachment is required/Fill other fields manually';
         }
-
-        if (VesselInput.value.trim()) {  
-            if (StatusInput.value.trim() == '') { 
+ 
+        if (VesselInput.value.trim()) {   
+            if (StatusInput.value.trim() == 'IDLE') {
+                if (StartTimeInput.value && StartDateInput.value) {
+                    ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
+                    ErrorAvailability.style.color =  '#fff';
+                    ErrorAvailability.style.padding =  '1em';
+                    ErrorAvailability.textContent = 'Creating availability..';
+                    AddAvailabilityButton.style.backgroundColor = '#1fb95e';
+                    AddAvailabilityButton.textContent = '+ Processing..';
+                    AddAvailabilityForm.setAttribute('method', 'POST');
+                    AddAvailabilityForm.setAttribute('action', '/Add/Availability?Vessel=' + VesselInput.value + '&Status=' + StatusInput.value + '&DoneBy=' + DoneByInput.value + '&StartTime=' + StartTimeInput.value + '&EndTime=' + EndTimeInput.value + '&StartDate=' + StartDateInput.value + '&EndDate=' + EndDateInput.value + '&Attachment=' + AttachmentInput.value);
+                    AddAvailabilityForm.submit();
+                } else if (DoneByInput.value.trim() == '') { 
+                    ErrorAvailability.textContent =  'Done by field is required';
+                } else {
+                    ErrorAvailability.textContent =  'Start time/Start date is required';
+                }
+            } else if (StatusInput.value.trim() == '') { 
                 ErrorAvailability.textContent =  'Status is required';
             } else if (DoneByInput.value.trim() == '') { 
                 ErrorAvailability.textContent =  'Done by field is required';
@@ -161,7 +177,7 @@ if (AddAvailabilityButton !== null) {
             } else {
                 ErrorAvailability.textContent = 'File format is not EXCEL type..';
             }
-        } 
+        }
     })
 }    
     

@@ -49,7 +49,7 @@
                     </div>   
                     <a class="report-file-link"><div class="report-file"></div></a>
                     <div class="input">
-                        <label for="">Picture</label>
+                        <label for="">Picture</label>   
                         <input type="file" name="EditPicture"> 
                     </div>   
                     <a class="picture-file-link"><div class="picture-file"></div></a>
