@@ -3878,7 +3878,7 @@
                     <tr> 
                         <td class="Hide">{{ $Availabilty->id }}</td> 
                         <td class="Hide"> {{ $Availabilty->Vessel }}</td> 
-                        <td class="Hide">{{ $Availabilty->Status == 'IDLE' ? 'READY' : $Availabilty->Status }}</td> 
+                        <td class="Hide">{{ $Availabilty->Status }}</td> 
                         <td class="Hide">{{ $Availabilty->DoneBy }}</td> 
                         <td class="Hide">{{ $Availabilty->Attachment }}</td> 
                         <td class="Hide">{{ $Availabilty->StartTime }}</td> 
@@ -3891,7 +3891,7 @@
                         <td class="Hide">{{ $Availabilty->Picture }}</td> 
                         <td class="Hide">{{ $Availabilty->Location }}</td>  
                         <td>{{ $Availabilty->Vessel }}</td> 
-                        <td>{{ $Availabilty->Status }}</td>
+                        <td>{{ $Availabilty->Status == 'IDLE' ? 'READY' : $Availabilty->Status }}</td>
                         <td>{{ $Availabilty->DoneBy }}</td>
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
