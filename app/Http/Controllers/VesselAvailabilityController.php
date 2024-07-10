@@ -107,7 +107,7 @@ class VesselAvailabilityController extends Controller
                                     ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->get(); 
                 if ($Request->FilterValue == 'Ready') {
-                    $VesselAvailability = VesselAvailability::where('Status', 'IDLE')->orWhere('EndDate', '<', date('Y-m-d'))->paginate(20);  
+                    $VesselAvailability = VesselAvailability::where('Status', 'IDLE')->paginate(20);  
                 }
             return view('Pages.Availability', [ 
                 'Employees' => $Employees,
