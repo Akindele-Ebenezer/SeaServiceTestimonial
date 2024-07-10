@@ -3222,7 +3222,7 @@
             <span class="Hide">{{ $Vessel->VesselName }}</span>
         </div>
     </div> 
-    @endforeach 
+    @endforeach  
     @php
         $Others = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'DEPASA')->where('VesselType', 'OTHERS')->get();
     @endphp
@@ -3878,7 +3878,7 @@
                     <tr> 
                         <td class="Hide">{{ $Availabilty->id }}</td> 
                         <td class="Hide"> {{ $Availabilty->Vessel }}</td> 
-                        <td class="Hide">{{ $Availabilty->Status }}</td> 
+                        <td class="Hide">{{ $Availabilty->Status == 'IDLE' ? 'READY' : $Availabilty->Status }}</td> 
                         <td class="Hide">{{ $Availabilty->DoneBy }}</td> 
                         <td class="Hide">{{ $Availabilty->Attachment }}</td> 
                         <td class="Hide">{{ $Availabilty->StartTime }}</td> 
