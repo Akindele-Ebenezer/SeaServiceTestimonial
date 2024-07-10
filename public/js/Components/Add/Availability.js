@@ -115,6 +115,8 @@ if (AddAvailabilityButton !== null) {
         if (VesselInput.value.trim()) {   
             if (StatusInput.value.trim() == 'IDLE') {
                 if (StartTimeInput.value && StartDateInput.value) {
+                    EndTimeInput.value = StartTimeInput.value;
+                    EndDateInput.value = StartDateInput.value;
                     ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
                     ErrorAvailability.style.color =  '#fff';
                     ErrorAvailability.style.padding =  '1em';

@@ -74,7 +74,7 @@
         if (!empty($Availability_STATUS->TillNow)) {
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
-            }
+            }   
         }
         if (!empty($Availability_STATUS_2->TillNow)) {
             if ($Availability_STATUS_2->TillNow == 'YES') {

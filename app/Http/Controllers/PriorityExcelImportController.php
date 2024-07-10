@@ -27,7 +27,7 @@ class PriorityExcelImportController extends Controller
                 $FileName_Picture = $PictureFileName; 
                 $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $PictureFileName);  
             }
-            VesselAvailability::insert([
+            $CurrentRow = VesselAvailability::create([    
                 'Vessel' => $Request->Vessel,
                 'Status' => $Request->Status,
                 'DoneBy' => $Request->DoneBy, 
@@ -53,6 +53,17 @@ class PriorityExcelImportController extends Controller
                 'Subject' => 'New Availability Alert!',
                 'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
             ]);   
+            if ($Request->Status == 'IDLE') {
+                $PreviousRow = VesselAvailability::select('id')->where('id', '<', $CurrentRow->id)
+                                                    ->where('Vessel', $Request->Vessel)
+                                                    ->where('Status', '!=', 'IDLE')
+                                                    ->orderBy('StartDate', 'DESC')->first(); 
+                VesselAvailability::where('id', $PreviousRow->id)->update([
+                    'EndDate' => date('Y-m-d'),
+                    'EndTime' => substr($Request->StartTime, 0, 5), 
+                    'TillNow' => 'NO',
+                ]); 
+            }
             return redirect()->route('Availability');
         } else {
             VesselAvailability::where('Source', 'PRIORITY')->whereNull('Status')->delete();
