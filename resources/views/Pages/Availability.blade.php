@@ -157,10 +157,11 @@
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
-        $EndDate = $Availability_STATUS->EndDate ?? '00:00'; 
         if (!empty($Availability_STATUS->TillNow)) {
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
+            } else {
+                $EndDate = $Availability_STATUS->EndDate ?? '00:00'; 
             }
         } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
