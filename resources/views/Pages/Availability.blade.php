@@ -61,12 +61,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -163,7 +173,6 @@
                                             ->where('TillNow', 'YES');
                                 })
                                 ->orderBy('EndDate', 'DESC') 
-                                ->orderBy('EndTime', 'DESC')
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -247,11 +256,21 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
-                                ->where('StartDate', $STARTDATE) 
+                                ->where('StartDate', $STARTDATE)
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -335,12 +354,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -423,12 +452,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -511,12 +550,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
-                                ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->where('EndDate', '>=', $STARTDATE)
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -599,12 +648,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -687,12 +746,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -775,12 +844,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -868,7 +947,12 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
@@ -878,7 +962,6 @@
                                             ->where('TillNow', 'YES');
                                 })
                                 ->orderBy('EndDate', 'DESC') 
-                                ->orderBy('EndTime', 'DESC')
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -972,12 +1055,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1060,12 +1153,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1148,12 +1251,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1236,12 +1349,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1324,12 +1447,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1412,12 +1545,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1500,12 +1643,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
@@ -1588,12 +1741,22 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
-                                ->where('EndDate', '>=', $STARTDATE) 
-                                ->orderBy('EndTime', 'DESC') 
+                                ->where('EndDate', '>=', $STARTDATE)
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
