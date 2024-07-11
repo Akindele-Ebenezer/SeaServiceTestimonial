@@ -193,7 +193,8 @@
                         @if ($Availability_STATUS->TillNow == 'YES')
                             
                         @endif
-                    @endif --}}{{ !empty($Availability_STATUS->TillNow) == 'YES' ? $Availability_STATUS->TillNow : '' }}
+                    @endif --}}
+                    {{$EndDate}}
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }} 
                 </span>
             </strong>  
