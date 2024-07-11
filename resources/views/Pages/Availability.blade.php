@@ -189,7 +189,12 @@
                 <span class="">{{ $Vessel->VesselName }}</span>  
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1"> 
-                    {{ $Availability_STATUS->EndDate ?? 'READY TO GO' }}  
+                    {{-- @if (!empty($Availability_STATUS->TillNow))
+                        @if ($Availability_STATUS->TillNow == 'YES')
+                            
+                        @endif
+                    @endif --}}
+                    {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }} 
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
