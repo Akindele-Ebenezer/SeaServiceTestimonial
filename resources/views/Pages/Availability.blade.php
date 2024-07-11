@@ -88,7 +88,7 @@
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->EndTime ?? '00:00')->format('H:i').' HRS'; 
     @endphp
-    <div class="list tooltip-x"> 
+    <div class="list tooltip-x">
         @if ($EndDate === $StartDate)  
             <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS_2->Status ?? 'READY TO GO') }} tooltip-x-div"></div> On {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} <br> {{ $StartTime_2 }} - {{ $EndTime_2 }}</span>
         @else
@@ -97,112 +97,11 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} status-1">
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -285,112 +184,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                    status-1"> 
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}  
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -473,112 +272,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -661,112 +360,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -849,112 +448,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1037,112 +536,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1225,112 +624,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1413,112 +712,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1601,112 +800,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1804,112 +903,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1992,112 +991,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -2180,112 +1079,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -2368,112 +1167,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -2556,112 +1255,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -2744,112 +1343,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -2932,112 +1431,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -3120,112 +1519,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -3308,112 +1607,12 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
-                <span class="status-x  
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status 
-                    @if ($EndDate > $StartDate)
-                        @switch($Availability_STATUS->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
-                    @if ($EndDate === $StartDate)
-                        @switch($Availability_STATUS_2->Status ?? 'READY TO GO') 
-                            @case('DOCKING')
-                                docking
-                                @break 
-                            @case('OPERATION')
-                                operation
-                                @break
-                            @case('BREAKDOWN')
-                                breakdown
-                                @break
-                            @case('MAINTENANCE')
-                                maintenance
-                                @break
-                            @case('INSPECTION')
-                                inspection
-                                @break
-                            @case('BUNKERY')
-                                bunkery
-                                @break 
-                            @default
-                                ready
-                        @endswitch
-                    @endif
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     status-1">
-                    @if ($EndDate === $StartDate)
-                    {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
-                    @else
-                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
-                    @endif
+                    {{ $Availability_STATUS->Status ?? 'READY TO GO' }}
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
