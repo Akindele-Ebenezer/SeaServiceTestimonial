@@ -150,7 +150,7 @@
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
                                     $query->where('Vessel', $Vessel->VesselName)
-                                            ->where('EndDate', '>=', date('Y-m-d')) 
+                                            // ->where('EndDate', '>=', date('Y-m-d')) 
                                             ->where('TillNow', 'YES');
                                 })
                                 ->orderBy('EndDate', 'DESC') 
@@ -200,8 +200,8 @@
                             
                         @endif
                     @endif --}}
-                    {{-- {{print_r($Availability_STATUS)}}
-                    {{$Availability_STATUS->TillNow ?? '-'}} --}}
+                    {{print_r($Availability_STATUS)}}
+                    {{$Availability_STATUS->TillNow ?? '-'}}
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }} 
                 </span>
             </strong>  
