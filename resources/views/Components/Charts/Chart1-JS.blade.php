@@ -131,8 +131,10 @@
     .attr('class','group')
     .style('transform', `translate(${width / 2}px, ${height / 2}px)`);
    
-    let NumberOfVessels_READY = document.querySelectorAll('.availability-status.ready');
-    document.querySelector('.ready-x').textContent = NumberOfVessels_READY.length;
+    let NumberOfVessels_READY1 = document.querySelectorAll('.availability-status.ready.to.go');
+    let NumberOfVessels_READY2 = document.querySelectorAll('.availability-status.ready.idle');
+    let NumberOfVessels_READY = NumberOfVessels_READY1.length + NumberOfVessels_READY2 + length;
+    document.querySelector('.ready-x').textContent = NumberOfVessels_READY;
     let NumberOfVessels_MAINTENANCE = document.querySelectorAll('.availability-status.maintenance');
     let NumberOfVessels_BREAKDOWN = document.querySelectorAll('.availability-status.breakdown');
     let NumberOfVessels_DOCKING = document.querySelectorAll('.availability-status.docking');
@@ -142,7 +144,7 @@
     console.log(NumberOfVessels_READY)
     async function createDonut() { 
     const data = [  
-        { value: NumberOfVessels_READY.length },
+        { value: NumberOfVessels_READY },
         { value: NumberOfVessels_DOCKING.length },
         { value: NumberOfVessels_BREAKDOWN.length },
         { value: NumberOfVessels_MAINTENANCE.length },
