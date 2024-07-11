@@ -138,7 +138,8 @@
     let NumberOfVessels_DOCKING = document.querySelectorAll('.availability-status.docking');
     let NumberOfVessels_INSPECTION = document.querySelectorAll('.availability-status.inspection');
     let NumberOfVessels_BUNKERY = document.querySelectorAll('.availability-status.bunkery');
-    // Create chart
+    // Create chart 
+    console.log(NumberOfVessels_READY)
     async function createDonut() { 
     const data = [  
         { value: NumberOfVessels_READY.length },
