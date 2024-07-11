@@ -133,15 +133,20 @@
    
     let NumberOfVessels_READY = document.querySelectorAll('.availability-status.ready');
     document.querySelector('.ready-x').textContent = NumberOfVessels_READY.length;
+    let NumberOfVessels_MAINTENANCE = document.querySelectorAll('.availability-status.maintenance');
+    let NumberOfVessels_BREAKDOWN = document.querySelectorAll('.availability-status.breakdown');
+    let NumberOfVessels_DOCKING = document.querySelectorAll('.availability-status.docking');
+    let NumberOfVessels_INSPECTION = document.querySelectorAll('.availability-status.inspection');
+    let NumberOfVessels_BUNKERY = document.querySelectorAll('.availability-status.bunkery');
     // Create chart
     async function createDonut() { 
     const data = [  
         { value: NumberOfVessels_READY.length },
-        { value: {{ $NumberOfVessels_DOCKING }} },
-        { value: {{ $NumberOfVessels_BREAKDOWN }} },
-        { value: {{ $NumberOfVessels_MAINTENANCE }} },
-        { value: {{ $NumberOfVessels_INSPECTION }} },
-        { value: {{ $NumberOfVessels_BUNKERY }} },  
+        { value: NumberOfVessels_DOCKING.length },
+        { value: NumberOfVessels_BREAKDOWN.length },
+        { value: NumberOfVessels_MAINTENANCE.length },
+        { value: NumberOfVessels_INSPECTION.length },
+        { value: NumberOfVessels_BUNKERY.length },  
     ];   
     // Descending data 
     total = d3.sum(data, (d) => { return d.value; });
