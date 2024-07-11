@@ -200,7 +200,7 @@
                             
                         @endif
                     @endif --}}
-                    {{print_r($Availability_STATUS)}}
+                    {{-- {{print_r($Availability_STATUS)}} --}}
                     {{$Availability_STATUS->TillNow ?? '-'}}
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }} 
                 </span>
