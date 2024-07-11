@@ -160,9 +160,9 @@
         if (!empty($Availability_STATUS->TillNow)) {
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
-            } else {
-                $EndDate = $Availability_STATUS->EndDate ?? '00:00'; 
             }
+        } else {
+                $EndDate = $Availability_STATUS->EndDate ?? '00:00'; 
         } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
