@@ -193,8 +193,8 @@
                         @if ($Availability_STATUS->TillNow == 'YES')
                             
                         @endif
-                    @endif --}}
-                    {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }}SS 
+                    @endif --}}{{ !empty($Availability_STATUS->TillNow) == 'YES' ? $Availability_STATUS->TillNow : '' }}
+                    {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }} 
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
