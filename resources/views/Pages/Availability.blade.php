@@ -198,7 +198,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -386,7 +386,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -574,7 +574,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -762,7 +762,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -950,7 +950,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -1138,7 +1138,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -1326,7 +1326,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -1514,7 +1514,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -1702,7 +1702,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -1905,7 +1905,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -2093,7 +2093,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -2281,7 +2281,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -2469,7 +2469,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -2657,7 +2657,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -2845,7 +2845,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -3033,7 +3033,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -3221,7 +3221,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
@@ -3409,7 +3409,7 @@
                         @endswitch
                     @endif
                     status-1">
-                    @if ($EndDate === date('Y-m-d'))
+                    @if ($EndDate === $StartDate)
                     {{ $Availability_STATUS_2->Status ?? 'READY TO GO' }} 
                     @else
                     {{ $Availability_STATUS->Status ?? 'READY TO GO' }} 
