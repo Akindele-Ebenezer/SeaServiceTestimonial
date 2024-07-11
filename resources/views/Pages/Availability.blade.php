@@ -76,13 +76,13 @@
                 $EndDate = date('Y-m-d');
             }   
         }
+        $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
+        $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00';
         if (!empty($Availability_STATUS_2->TillNow)) {
             if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
+                $EndDate_2 = date('Y-m-d');
             }
         }
-        $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
-        $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -263,14 +263,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -451,14 +451,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -639,14 +639,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -827,14 +827,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1015,14 +1015,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1203,14 +1203,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1391,14 +1391,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
+        } 
+        $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
+        $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00';
         if (!empty($Availability_STATUS_2->TillNow)) {
             if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
+                $EndDate_2 = date('Y-m-d');
             }
-        }
-        $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
-        $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        } 
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1579,14 +1579,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -1768,8 +1768,18 @@
         }
         $StartDate = $Availability_STATUS->StartDate ?? '00:00';
         $EndDate = $Availability_STATUS->EndDate ?? '00:00';
+        if (!empty($Availability_STATUS->TillNow)) {
+            if ($Availability_STATUS->TillNow == 'YES') {
+                $EndDate = date('Y-m-d');
+            }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         if (!empty($Availability_STATUS->TillNow)) {
@@ -1960,14 +1970,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2148,14 +2158,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2336,14 +2346,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2524,14 +2534,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2712,14 +2722,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -2900,14 +2910,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -3088,14 +3098,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
@@ -3276,14 +3286,14 @@
             if ($Availability_STATUS->TillNow == 'YES') {
                 $EndDate = date('Y-m-d');
             }
-        }
-        if (!empty($Availability_STATUS_2->TillNow)) {
-            if ($Availability_STATUS_2->TillNow == 'YES') {
-                $EndDate = date('Y-m-d');
-            }
-        }
+        } 
         $StartDate_2 = $Availability_STATUS_2->StartDate ?? '00:00';
         $EndDate_2 = $Availability_STATUS_2->EndDate ?? '00:00'; 
+        if (!empty($Availability_STATUS_2->TillNow)) {
+            if ($Availability_STATUS_2->TillNow == 'YES') {
+                $EndDate_2 = date('Y-m-d');
+            }
+        }
         $StartTime = \Carbon\Carbon::parse($Availability_STATUS->StartTime ?? '00:00')->format('H:i').' HRS'; 
         $EndTime = \Carbon\Carbon::parse($Availability_STATUS->EndTime ?? '00:00')->format('H:i').' HRS'; 
         $StartTime_2 = \Carbon\Carbon::parse($Availability_STATUS_2->StartTime ?? '00:00')->format('H:i').' HRS'; 
