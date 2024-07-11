@@ -112,6 +112,11 @@
                 <span class="">{{ $Vessel->VesselName }}</span>   {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }} 
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -213,8 +218,7 @@
                         {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
                     @else
                         {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
-                    @endif
-                    {{-- {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}  --}}
+                    @endif 
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -313,6 +317,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -411,6 +420,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -509,6 +523,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -607,6 +626,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -705,6 +729,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -803,6 +832,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -901,6 +935,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1014,6 +1053,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1112,6 +1156,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1210,6 +1259,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1308,6 +1362,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1406,6 +1465,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1504,6 +1568,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1602,6 +1671,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1700,6 +1774,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
@@ -1798,6 +1877,11 @@
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
+                    @if (!empty($Availability_STATUS->TillNow) == 'YES')
+                        {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @else
+                        {{ (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}
+                    @endif
                 </span>
             </strong>  
             <img class="ReportPdfButtonForVessels" src="{{ asset('images/pdf.png') }}">
