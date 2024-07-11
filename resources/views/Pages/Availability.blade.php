@@ -148,7 +148,8 @@
         $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
-                                // ->orderBy('EndTime', 'DESC') 
+                                ->orWhere('TillNow', 'YES') 
+                                ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
