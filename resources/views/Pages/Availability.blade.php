@@ -149,8 +149,7 @@
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
-                                    $query->where('Vessel', $Vessel->VesselName)
-                                            // ->where('EndDate', '>=', date('Y-m-d')) 
+                                    $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
                                 ->orderBy('EndDate', 'DESC') 
@@ -159,6 +158,12 @@
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE)  
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -194,14 +199,7 @@
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
-                    status-1"> 
-                    {{-- @if (!empty($Availability_STATUS->TillNow))
-                        @if ($Availability_STATUS->TillNow == 'YES')
-                            
-                        @endif
-                    @endif --}}
-                    {{-- {{print_r($Availability_STATUS)}} --}}
-                    {{$Availability_STATUS->TillNow ?? '-'}}
+                    status-1">   
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status : $Availability_STATUS->Status ?? 'READY TO GO' }} 
                 </span>
             </strong>  
@@ -875,6 +873,12 @@
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE)  
+                                ->orWhere(function($query) use ($Vessel) {
+                                    $query->where('Vessel', $Vessel->VesselName) 
+                                            ->where('TillNow', 'YES');
+                                })
+                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('EndTime', 'DESC')
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
