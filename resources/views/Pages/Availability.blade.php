@@ -109,7 +109,7 @@
             <strong class="notification-wrapper">  
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                 "></span>
-                <span class="">{{ $Vessel->VesselName }}</span>  
+                <span class="">{{ $Vessel->VesselName }}</span>   {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                 <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }} 
                 </span>
@@ -207,7 +207,7 @@
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">   
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }} 
                 </span>
@@ -305,7 +305,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -403,7 +403,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -501,7 +501,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -599,7 +599,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -697,7 +697,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -795,7 +795,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -893,7 +893,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1006,7 +1006,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1104,7 +1104,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1202,7 +1202,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1300,7 +1300,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1398,7 +1398,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1496,7 +1496,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1594,7 +1594,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1692,7 +1692,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
@@ -1790,7 +1790,7 @@
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
-                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
+                <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'READY' == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY' }}
                     status-1">
                     {{ (!empty($Availability_STATUS->TillNow) == 'YES') ? $Availability_STATUS->Status ?? 'READY' : (($Availability_STATUS->Status ?? 'READY TO GO') == 'IDLE' ? 'READY' : $Availability_STATUS->Status ?? 'READY') ?? 'READY TO GO' }}   
                 </span>
