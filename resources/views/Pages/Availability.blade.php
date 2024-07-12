@@ -2050,10 +2050,10 @@
                                         $Status = strtolower($Vessel->Status); 
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
-                                    @endphp   
+                                    @endphp 
                                     @if (
                                         ($StartTime >= \Carbon\Carbon::parse($STARTDATE . ' 00:00') AND 
                                         $StartTime < \Carbon\Carbon::parse($STARTDATE . ' 03:00')) ||
@@ -2086,7 +2086,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp  
@@ -2122,7 +2122,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp  
@@ -2158,7 +2158,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp
@@ -2194,7 +2194,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp   
@@ -2230,7 +2230,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp  
@@ -2266,7 +2266,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp   
@@ -2302,7 +2302,7 @@
                                         $Status = strtolower($Vessel->Status);
                                         if (!empty($Vessel->TillNow)) {
                                             if ($Vessel->TillNow == 'YES') {
-                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . $Vessel->EndTime);
+                                                $EndTime = \Carbon\Carbon::parse(date('Y-m-d') . ' ' . date('H:i'));
                                             }   
                                         }
                                     @endphp   
