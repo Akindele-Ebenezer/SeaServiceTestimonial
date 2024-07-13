@@ -17,6 +17,7 @@ class VesselAvailability extends Model
         'EndTime',
         'StartDate',
         'EndDate',
+        'TillNow',
         'DateIn',
         'TimeIn',
     ];   

@@ -12,7 +12,7 @@ class VesselAvailabilityPdf extends Controller
     public function vessel_availability_report(Fpdf $fpdf, Request $Request) {
         $Vessels = VesselAvailability::select(['Vessel'])->groupBy('Vessel')->get();
         $DateFrom = $Request->DateFrom;
-        $DateTo = $Request->DateTo;
+        $DateTo = $Request->DateTo; 
 
         $fpdf->AddPage();    
         $fpdf->SetAutoPageBreak(false);
@@ -100,6 +100,14 @@ class VesselAvailabilityPdf extends Controller
         $TotalBreakdown = [];
         $TOTALHoursWorked = [];
         $TOTALDaysWorked = [];
+        
+        $VesselS = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->first();
+        if (!empty($Vessels->TillNow)) {
+            if ($Vessels->TillNow == 'YES') {
+                $DateTo = date('Y-m-d'); 
+                dd($DateTo);
+            }
+        }
         if (isset($Request->VesselReportFor)) {
             $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Request->VesselReportFor)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
             foreach ($HoursWorked as $Hour) { 
