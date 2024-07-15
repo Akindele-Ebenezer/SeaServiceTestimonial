@@ -1895,7 +1895,7 @@
                 <strong>{{ $NumberOfVessels }}</strong> 
                 <table>
                     <tr>
-                        <th>Ready to go</th>
+                        <th>Ready</th>
                         <th>Bunkery</th>
                         <th>Inspection</th>
                     </tr>
