@@ -107,6 +107,7 @@ if (AddAvailabilityButton !== null) {
         let EndTimeInput = document.querySelector('input[name=EndTime]');
         let StartDateInput = document.querySelector('input[name=StartDate]');
         let EndDateInput = document.querySelector('input[name=EndDate]');
+        let TillNowInput = document.querySelector('select[name=TillNow]');
         
         if (AttachmentInput.value.trim() == '') { 
             ErrorAvailability.textContent =  'Attachment is required/Fill other fields manually';
@@ -117,6 +118,7 @@ if (AddAvailabilityButton !== null) {
                 if (StartTimeInput.value && StartDateInput.value) {
                     EndTimeInput.value = StartTimeInput.value;
                     EndDateInput.value = StartDateInput.value;
+                    TillNowInput.value = 'YES';
                     ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
                     ErrorAvailability.style.color =  '#fff';
                     ErrorAvailability.style.padding =  '1em';
