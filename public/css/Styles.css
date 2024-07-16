@@ -1772,6 +1772,7 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-1 .div.tracking, .dashboard-inner .board-2 .div.tracking, .dashboard-inner .board-3 .div.tracking {
   padding-top: 0;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   width: 66%;
 }
 .dashboard-inner .board-1 .div.tracking table, .dashboard-inner .board-2 .div.tracking table, .dashboard-inner .board-3 .div.tracking table {
