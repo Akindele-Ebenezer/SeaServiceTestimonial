@@ -122,7 +122,8 @@ class VesselAvailabilityController extends Controller
 
         if(isset($Request->FilterValue)) {
             $VesselAvailability = VesselAvailability::where('Vessel', 'LIKE', '%' . $Request->FilterValue . '%')
-                                    ->orWhere('Status', 'LIKE', '%' . $Request->FilterValue . '%') 
+                                    ->orWhere('Status', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC') 
                                     ->paginate(14);
             $Vessels = \DB::table('vessels_vessel_information')
                                     ->select(['VesselName', 'ImoNumber', 'CallSign'])
@@ -131,7 +132,7 @@ class VesselAvailabilityController extends Controller
                                     ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->get(); 
                 if ($Request->FilterValue == 'Ready') {
-                    $VesselAvailability = VesselAvailability::where('Status', 'IDLE')->paginate(20);  
+                    $VesselAvailability = VesselAvailability::where('Status', 'IDLE')->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20);  
                 }
             return view('Pages.Availability', [ 
                 'Employees' => $Employees,
