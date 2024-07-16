@@ -26,7 +26,7 @@
         <div class="inner"> 
             <form class="LoginForm" action="{{ route('Auth') }}">
                 @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
-                <h1 style="color: #225f7d">VESSEL <br> AVAILABILITY</h1>
+                <h1 style="color: #225f7d">ORI MARINE <br> AVAILABILITY</h1>
                 @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
                 <h1>SEA SERVICE <br> TESTIMONIAL</h1>
                 @endif

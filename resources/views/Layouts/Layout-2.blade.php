@@ -66,7 +66,7 @@
                 <h1>
                     <img src="{{ asset('images/ltt-logo(1).png') }}" alt=""> 
                     @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
-                    Vessel Availability
+                    ORI Marine Availability
                     @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
                     Sea Service Testimonial
                     @endif
