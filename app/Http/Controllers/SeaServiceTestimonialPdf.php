@@ -2011,7 +2011,7 @@ class SeaServiceTestimonialPdf extends Controller
         $ImoNumber = \DB::table('vessels_vessel_information')->select('ImoNumber')->where('VesselName', $CurrentVessel->CurrentVessel ?? '-')->first();
         $DateIn = Testimonial::select('DateIn')->where('id', $Request->Testimonial_Id)->first();
         $TimeIn = Testimonial::select('TimeIn')->where('id', $Request->Testimonial_Id)->first(); 
-        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->where('ImoNumber', $ImoNumber->ImoNumber)->first() ?? 0;
+        $GRTSign = \DB::table('vessels_section_4')->select('GrossTonnage')->first() ?? 0;
         $StartDate_1 = \DB::table('working_periods')
                             ->select('StartDate_1')
                             ->where('DateIn', (empty($DateIn->DateIn) ? '-' : $DateIn->DateIn))
