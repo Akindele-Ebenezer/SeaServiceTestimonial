@@ -369,7 +369,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -871,7 +871,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -1301,7 +1301,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -1671,7 +1671,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -1780,7 +1780,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -1887,7 +1887,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -1990,7 +1990,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
@@ -2125,7 +2125,7 @@ class SeaServiceTestimonialPdf extends Controller
         $fpdf->Cell(60, 10, '..............................................', 0, 1);
         $fpdf->Cell(190, -10, '................................................', 0, 1, 'R');
         $fpdf->SetFont('Times', 'B', 12);
-        $fpdf->Cell(60, 25, 'Signature of Supretendent', 0, 1);  
+        $fpdf->Cell(60, 25, 'Signature of Superintendent', 0, 1);  
         $fpdf->Cell(190, -25, 'Signature of Crew Manager',  0, 1, 'R');
 
         $fpdf->SetFont('Times', '', 12);
