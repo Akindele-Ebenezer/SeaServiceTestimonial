@@ -191,8 +191,7 @@ setInterval(function() {
     TrackingContainer.scrollTop += 33; 
 }, 2000); 
 setInterval(function() { 
-    if (TrackingContainer.scrollTop + TrackingContainer.clientHeight >= TrackingContainer.scrollHeight) {
-      // Scroll back to the top
+    if (TrackingContainer.scrollTop + TrackingContainer.clientHeight >= TrackingContainer.scrollHeight) { 
       TrackingContainer.scrollTop = 0;
     }
   }, 2000);

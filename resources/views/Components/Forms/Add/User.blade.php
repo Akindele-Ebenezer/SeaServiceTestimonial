@@ -24,11 +24,11 @@
                         <div class="input">
                             <label for="">Role</label>
                             <select name="Role" id="">
-                                <option value="SuperAdmin">Super Admin</option>
-                                <option value="HRAdmin">HR Admin</option>
-                                <option value="HRUsers_Operators">HR Users/Operators</option>
-                                <option value="MOCAdmin">MOC Admin</option>
-                                <option value="MOCOperators">MOC Operators</option>
+                                <option value="Super Admin">Super Admin</option>
+                                <option value="HR Admin">HR Admin</option>
+                                <option value="HR Users/Operators">HR Users/Operators</option>
+                                <option value="MOC Admin">MOC Admin</option>
+                                <option value="MOC Operators">MOC Operators</option>
                             </select>
                         </div> 
                     </section> 
