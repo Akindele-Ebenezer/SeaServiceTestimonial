@@ -67,7 +67,7 @@ FilterReportForVesselByDate_GoButton.addEventListener('click', () => {
     if (VESSELREPORT_SpecificDay.value) {  
         FilterReportForVesselByDate_GoButton.style.backgroundColor = '#1fb95e';
         FilterReportForVesselByDate_GoButton.textContent = '+ Processing..';
-        window.open('/Availability/Report/?DateFrom=' + VESSELREPORT_FromDate.value  + '&DateTo=' + VESSELREPORT_EndDate.value + '&REPORT_SpecificDay=' + '&VesselReportFor=' + FilterReportForVesselByDate_GoButton.nextElementSibling.textContent);
+        window.open('/Availability/Report/?DateFrom=' + VESSELREPORT_FromDate.value  + '&VESSELREPORT_SpecificDay=' + VESSELREPORT_SpecificDay.value  + '&DateTo=' + VESSELREPORT_EndDate.value + '&REPORT_SpecificDay=' + '&VesselReportFor=' + FilterReportForVesselByDate_GoButton.nextElementSibling.textContent);
     }else if (VESSELREPORT_FromDate.value == '') { 
         ErrorFilterReportForVesselByDate.textContent =  'From Date can\'t be empty';
     } else if (VESSELREPORT_EndDate.value == '') {  

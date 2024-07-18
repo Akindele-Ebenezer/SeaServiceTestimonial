@@ -104,12 +104,13 @@ class VesselAvailabilityPdf extends Controller
         $VesselS = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->first();
         if (!empty($Vessels->TillNow)) {
             if ($Vessels->TillNow == 'YES') {
-                $DateTo = date('Y-m-d'); 
-                dd($DateTo);
+                $DateTo = date('Y-m-d');  
             }
         }
         if (isset($Request->VesselReportFor)) {
-            $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Request->VesselReportFor)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
+            $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Request->VesselReportFor)
+                            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+                            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)->get(); 
             foreach ($HoursWorked as $Hour) { 
                 $StartTimeHour_ = substr($Hour->StartTime, 0, 1) == 0 ? substr($Hour->StartTime, 1, 1) : substr($Hour->StartTime, 0, 2);
                 $StartTimeMinute_ = substr($Hour->StartTime, 3, 4) == 0 ? substr($Hour->StartTime, 3, 3) : substr($Hour->StartTime, 3, 4);
@@ -120,7 +121,9 @@ class VesselAvailabilityPdf extends Controller
             if ($HoursWorked->isEmpty()) {
                 $HoursBetween = '0'; 
             }
-            $DaysWorked = \DB::table('vessel_availabilities')->select(['StartDate', 'EndDate'])->where('Vessel', $Request->VesselReportFor)->whereBetween('StartDate', [$Request->DateFrom, $Request->DateTo])->whereBetween('EndDate', [$Request->DateFrom, $Request->DateTo])->get(); 
+            $DaysWorked = \DB::table('vessel_availabilities')->select(['StartDate', 'EndDate'])->where('Vessel', $Request->VesselReportFor)
+                            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+                            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)->get(); 
             array_push($TOTALDaysWorked, count($DaysWorked)); 
             $VesselStatus = VesselAvailability::select('Status')->where('Vessel', $Request->VesselReportFor)->orderBy('id', 'DESC')->first();
             if($VesselStatus == null) {
@@ -129,40 +132,48 @@ class VesselAvailabilityPdf extends Controller
                 $VesselStatus = $VesselStatus->Status == 'IDLE' ? 'READY' : $VesselStatus->Status;
             }
             $BunkeryStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'BUNKERY')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
             ->get();
             $InspectionStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'INSPECTION')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
             ->get();
             $OperationStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'OPERATION')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
             ->get();
             $IdleStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'IDLE')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
             ->get();
             $MaintenanceStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'MAINTENANCE')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
             ->get();
             $DockingStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'DOCKING')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
             ->get();
             $BreakdownStatus = VesselAvailability::select('id')
-            ->where('Vessel', $Request->VesselReportFor)
             ->where('Status', 'BREAKDOWN')
-            ->whereBetween('StartDate', [$DateFrom, $DateTo])
-            ->get();
+            ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
+            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)
+            ->where('Vessel', $Request->VesselReportFor)
+            ->get(); 
+            // dd($BreakdownStatus);
 
             $fpdf->Cell(10, 6.5, $Index, 1); 
             $fpdf->Cell(40, 6.5, $Request->VesselReportFor, 'B', 0, 1); 
@@ -206,37 +217,51 @@ class VesselAvailabilityPdf extends Controller
                 $BunkeryStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'BUNKERY')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
                 $InspectionStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'INSPECTION')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
                 $OperationStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'OPERATION')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
                 $IdleStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'IDLE')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
                 $MaintenanceStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'MAINTENANCE')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
                 $DockingStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'DOCKING')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
                 $BreakdownStatus = VesselAvailability::select('id')
                 ->where('Vessel', $Vessel->Vessel)
                 ->where('Status', 'BREAKDOWN')
-                ->whereBetween('StartDate', [$DateFrom, $DateTo])
+                ->where('StartDate', '>=', $DateFrom)
+                ->where('EndDate', '<=', $DateTo)
+                // ->whereBetween('StartDate', [$DateFrom, $DateTo])
                 ->get();
 
                 $fpdf->Cell(10, 6.5, $Index, 1); 
