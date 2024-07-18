@@ -110,7 +110,7 @@ class VesselAvailabilityPdf extends Controller
         if (isset($Request->VesselReportFor)) {
             $HoursWorked = \DB::table('vessel_availabilities')->select(['StartTime', 'EndTime'])->where('Vessel', $Request->VesselReportFor)
                             ->where('StartDate', '<=', $Request->VESSELREPORT_SpecificDay)
-                            ->where('EndDate', '>=', $Request->VESSELREPORT_SpecificDay)->get(); 
+                            ->where('EndDate', '<=', $Request->VESSELREPORT_SpecificDay)->get(); 
             foreach ($HoursWorked as $Hour) { 
                 $StartTimeHour_ = substr($Hour->StartTime, 0, 1) == 0 ? substr($Hour->StartTime, 1, 1) : substr($Hour->StartTime, 0, 2);
                 $StartTimeMinute_ = substr($Hour->StartTime, 3, 4) == 0 ? substr($Hour->StartTime, 3, 3) : substr($Hour->StartTime, 3, 4);
