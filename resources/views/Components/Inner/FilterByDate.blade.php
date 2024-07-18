@@ -10,6 +10,16 @@
                     <p class="error-filter-by-date error"></p>
                     <section>
                         <div class="input">
+                            <label for="">Vessel</label>
+                            <select name="Vessel_FILTER">
+                                @foreach ($Vessels as $Vessel)
+                                    <option value="{{ $Vessel->VesselName }}">{{ $Vessel->VesselName }}</option>
+                                @endforeach
+                            </select> 
+                        </div>  
+                    </section> 
+                    <section>
+                        <div class="input">
                             <label for="">From date</label>
                             <input type="date" name="FromDate_FILTERBYDATE">
                         </div>  

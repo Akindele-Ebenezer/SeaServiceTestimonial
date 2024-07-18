@@ -774,6 +774,16 @@ nav[role] span svg {
   width: 2em;
 }
 
+.company-logo {
+  left: 1em;
+  position: absolute;
+  top: 1em;
+}
+.company-logo img {
+  border-radius: 0.5em;
+  width: 20em;
+}
+
 main {
   background-color: #163d51;
   display: flex;

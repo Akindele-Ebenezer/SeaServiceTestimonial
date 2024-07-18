@@ -84,3 +84,14 @@
         }
     }
 }
+
+.company-logo {
+    left: 1em;
+    position: absolute;
+    top: 1em;
+
+    img {
+        border-radius: .5em;
+        width: 20em;
+    }
+}

@@ -8,6 +8,9 @@
 @endif
 
 @section('Content')
+    <div class="company-logo">
+        <img src="{{ asset('Images/LTT -DEPASA Logo.png') }}" alt="">
+    </div>
     <div class="loader-2">
         <div class="x">
             @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
