@@ -140,8 +140,12 @@
     let NumberOfVessels_DOCKING = document.querySelectorAll('.availability-status.docking');
     let NumberOfVessels_INSPECTION = document.querySelectorAll('.availability-status.inspection');
     let NumberOfVessels_BUNKERY = document.querySelectorAll('.availability-status.bunkery');
-    // Create chart 
-    console.log(NumberOfVessels_READY)
+    document.querySelector('.maintenance-x').textContent = NumberOfVessels_MAINTENANCE.length;
+    document.querySelector('.breakdown-x').textContent = NumberOfVessels_BREAKDOWN.length;
+    document.querySelector('.docking-x').textContent = NumberOfVessels_DOCKING.length;
+    document.querySelector('.inspection-x').textContent = NumberOfVessels_INSPECTION.length;
+    document.querySelector('.bunkery-x').textContent = NumberOfVessels_BUNKERY.length;
+    // Create chart  
     async function createDonut() { 
     const data = [  
         { value: NumberOfVessels_READY },
