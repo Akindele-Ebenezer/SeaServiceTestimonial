@@ -61,7 +61,7 @@ class PriorityExcelImportController extends Controller
             ->where('Vessel', $Request->Vessel)->update([ 
                 'TillNow' => 'NO',
             ]); 
-            VesselAvailability::where('id', $PreviousRow->id)
+            VesselAvailability::where('id', $PreviousRow->id ?? 0)
             ->where('Vessel', $Request->Vessel)->update([ 
                 'EndTime' => substr($Request->StartTime, 0, 5), 
                 'EndDate' => $Request->StartDate, 
