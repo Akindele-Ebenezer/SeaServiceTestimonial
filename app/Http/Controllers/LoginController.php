@@ -36,7 +36,7 @@ class LoginController extends Controller
                     ]);
                     return redirect('/Vessels');
                 }
-                if(parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com') {
+                if(parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252') {
                     \DB::table('user_logins')->insert([
                         'Name' => $User->FullName,
                         'Time' => date('H:i A'),
@@ -65,7 +65,7 @@ class LoginController extends Controller
                 'Source' => 'SEA_SERVICE_TESTIMONIAL', 
             ]);
         }
-        if(parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com') {
+        if(parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252') {
             \DB::table('user_logins')->insert([
                 'Name' => session()->get('FullName'),
                 'Time' => date('H:i A'),

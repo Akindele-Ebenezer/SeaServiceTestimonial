@@ -7,7 +7,7 @@
    <header>
       <div class="h-1">
          <h1>Engineers</h1>
-         @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+         @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
          <button class="availability-route">+ Record/Schedule Availability</button>
          @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
          <button class="CreateTestimonialButton">+ Add Testimonial</button>

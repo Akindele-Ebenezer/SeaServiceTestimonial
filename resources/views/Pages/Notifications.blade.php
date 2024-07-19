@@ -111,7 +111,7 @@
                     </tr>
                     @endforeach
                 @endif
-                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
                     @foreach (\DB::table('user_logins')->where('Source', 'VESSEL_TRACKER')->orderBy('Date', 'DESC')->orderBy('Time', 'DESC')->paginate(30) as $User)
                     @php
                         $Today_COUNT = \DB::table('user_logins')->where('Date', date('Y-m-d'))->where('Source', 'VESSEL_TRACKER')->get();
@@ -133,7 +133,7 @@
                 @if (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
                 {{ \DB::table('user_logins')->where('Source', 'SEA_SERVICE_TESTIMONIAL')->paginate(30)->appends(request()->query())->links() }}
                 @endif
-                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
                 {{ \DB::table('user_logins')->where('Source', 'VESSEL_TRACKER')->paginate(30)->appends(request()->query())->links() }}
                 @endif
             </div>
