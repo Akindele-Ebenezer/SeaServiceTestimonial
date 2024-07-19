@@ -1,5 +1,5 @@
 @extends('Layouts.Layout-1')
-@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
     @php session()->put('APP_NAME', 'VESSEL AVAILABILITY') @endphp
     @section('Title', 'Login - ' . session()->get('APP_NAME'))
 @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
@@ -13,7 +13,7 @@
     </div>
     <div class="loader-2">
         <div class="x">
-            @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+            @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
             <img src="{{ asset('images/loader-2.gif') }}" alt="">
             @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
             <img src="{{ asset('images/loader-3.gif') }}" alt="">
@@ -25,10 +25,10 @@
             <h3>software solutions</h3>
         </div>
     </div>
-    <div class="Login" style="background-image: url('@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com'){{ asset('images/bg-2.jpg') }}@elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com'){{ asset('images/bg.jpg') }}@endif'); background-size: cover; background-position: center">
+    <div class="Login" style="background-image: url('@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252'){{ asset('images/bg-2.jpg') }}@elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com'){{ asset('images/bg.jpg') }}@endif'); background-size: cover; background-position: center">
         <div class="inner"> 
             <form class="LoginForm" action="{{ route('Auth') }}">
-                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com')
+                @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
                 <h1 style="color: #225f7d">ORI MARINE <br> AVAILABILITY</h1>
                 @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
                 <h1>SEA SERVICE <br> TESTIMONIAL</h1>
