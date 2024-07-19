@@ -138,6 +138,12 @@
                 strong { 
                     float: left;
                     font-size: 5em; 
+
+                    &.total {
+                        background: lighten($color: $Color-2, $amount: 5);
+                        border-radius: .1em;
+                        padding-inline: 0.3em;
+                    }
                 }
  
                 .sub-heading {    
