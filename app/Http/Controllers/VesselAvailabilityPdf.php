@@ -20,7 +20,9 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', '', 10);  
  
         $Company = \DB::table('vessels_vessel_information')->select('Company')->where('VesselName', $Request->VesselReportFor)->first(); 
-        
+        $Month = strtoupper(\Carbon\Carbon::create()->month($Request->Month)->format('F'));
+        $Year = $Request->Year;
+
         if($Company == null) {
             $fpdf->Image('../public/images/ltt-letter-head.png', 10, 7, 190);   
         } else if ($Company->Company == 'L.T.T') {
@@ -29,9 +31,7 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Image('../public/images/depasa-letter-head.png', 10, 7, 190);    
         } 
 
-        $fpdf->Ln(35);     
-        $fpdf->Cell(162, -7, 'Date: ' . date("j F, Y"), 0, 1, 'R'); 
-        $fpdf->Ln(9);     
+        $fpdf->Ln(35);      
         
         $fpdf->SetFont('Arial', 'B', 15); 
         $fpdf->SetFillColor(217, 242, 255);  
@@ -47,7 +47,7 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', 'B', 7); 
         $fpdf->Cell(10, 0, 'Month: ');
         $fpdf->SetFont('Arial', '', 7); 
-        $fpdf->Cell(20, 0, strtoupper(\Carbon\Carbon::parse($Request->DateFrom)->monthName) . ' ' . date('Y'));
+        $fpdf->Cell(20, 0, $Month . ' ' . $Year);
         $fpdf->Ln(6);     
 
         $fpdf->SetFont('Arial', 'B', 7); 
@@ -75,50 +75,57 @@ class VesselAvailabilityPdf extends Controller
         }
 
         if (isset($Request->Month) AND isset($Request->Vessel)) { 
-            $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
-                                        ->orWhere(function($query) use ($Request) {
+            $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->orderBy('StartDate')->get();                           
-            $TotalDocking = \DB::table('vessel_availabilities')->select(['id', 'Vessel', 'Status'])->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalDocking = \DB::table('vessel_availabilities')->select(['id', 'Vessel', 'Status'])->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'DOCKING')
-                                        ->orWhere(function($query) use ($Request) {
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->where('Status', 'DOCKING')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get(); 
-            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'BREAKDOWN')
-                                        ->orWhere(function($query) use ($Request) {
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->where('Status', 'BREAKDOWN')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'INSPECTION')
-                                        ->orWhere(function($query) use ($Request) {
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->where('Status', 'INSPECTION')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'BUNKERY')
-                                        ->orWhere(function($query) use ($Request) {
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->where('Status', 'BUNKERY')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'MAINTENANCE')
-                                        ->orWhere(function($query) use ($Request) {
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->where('Status', 'MAINTENANCE')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'IDLE')
-                                        ->orWhere(function($query) use ($Request) {
+                                        ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
                                             ->where('Status', 'IDLE')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
@@ -127,7 +134,7 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
             $fpdf->Ln(3);
             $fpdf->SetFont('Arial', 'B', 14);  
-            $fpdf->Cell(190.4, 10, 'JULY', 0, 1, 1, 'L');
+            $fpdf->Cell(190.4, 10, 'IN ' . strtoupper(\Carbon\Carbon::create()->month($Request->Month)->format('F')) . ' ' . $Request->Year, 0, 1, 1, 'L');
             $fpdf->SetFont('Arial', 'B', 9);  
             $fpdf->Cell(31.7, 5, 'Status ', 1);
             $fpdf->Cell(31.7, 5, 'Start Date ', 1);
@@ -171,7 +178,7 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Ln(5);
             $fpdf->Cell(25.7, 5, 'TOTAL ACTIVITIES = ' . count($TotalMaintenance)+count($TotalInspection)+count($TotalBreakdown)+count($TotalBunkery)+count($TotalDocking)+count($TotalReady), 0);
         } else {
-            // $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->get();
+            // $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereYear('StartDate', $Year)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->get();
             // $fpdf->SetFont('Arial', '', 9);  
             // $fpdf->Ln(3);
             // $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');

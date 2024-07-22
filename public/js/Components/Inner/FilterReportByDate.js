@@ -7,6 +7,7 @@ let CancelButtonFilterReportForVesselByDate = document.querySelectorAll('.cancel
 let FilterReportForVesselByMonth_GoButton = document.querySelector('.FilterReportForVesselByMonth_GoButton');
 let VesselName_REPORT = document.querySelector('select[name=VesselName_REPORT]');
 let Month_REPORT = document.querySelector('select[name=Month_REPORT]');
+let Year_REPORT = document.querySelector('select[name=Year_REPORT]');
 
 FilterReportByDatePdfButtons.forEach(Button => {
     Button.addEventListener('click', () => {
@@ -18,6 +19,7 @@ FilterReportForVesselByDatePdfButtons.forEach(Button => {
         FilterReportForVesselByMonth_GoButton.nextElementSibling.textContent = Button.nextElementSibling.textContent;
         VesselName_REPORT.value = Button.nextElementSibling.textContent;
         Month_REPORT.value = new Date().getMonth() + 1;
+        Year_REPORT.value = new Date().getFullYear();
         FilterReportForVesselByDateModal.style.display = 'flex';
     })
 });
@@ -67,5 +69,5 @@ let ErrorFilterReportForVesselByDate = document.querySelector('.error-filter-rep
 FilterReportForVesselByMonth_GoButton.addEventListener('click', () => { 
         FilterReportForVesselByMonth_GoButton.style.backgroundColor = '#1fb95e';
         FilterReportForVesselByMonth_GoButton.textContent = '+ Processing..';
-        window.open('/Availability/Report/?Month=' + Month_REPORT.value + '&Vessel=' + VesselName_REPORT.value);
+        window.open('/Availability/Report/?Month=' + Month_REPORT.value + '&Year=' + Year_REPORT.value + '&Vessel=' + VesselName_REPORT.value);
 });

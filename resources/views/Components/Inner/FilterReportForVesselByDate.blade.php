@@ -8,16 +8,16 @@
             <div class="inner-1"> 
                 <div class="fields">
                     <p class="error-filter-report-for-vessel-by-date error"></p> 
-                        <section>
-                            <div class="input">
-                                <label for="">Vessel</label>
-                                <select name="VesselName_REPORT" id="">
-                                    @foreach ($Vessels as $Vessel)
-                                        <option value="{{ $Vessel->VesselName }}">{{ $Vessel->VesselName }}</option>
-                                    @endforeach
-                                </select>
-                            </div>  
-                        </section> 
+                    <section>
+                        <div class="input">
+                            <label for="">Vessel</label>
+                            <select name="VesselName_REPORT" id="">
+                                @foreach ($Vessels as $Vessel)
+                                    <option value="{{ $Vessel->VesselName }}">{{ $Vessel->VesselName }}</option>
+                                @endforeach
+                            </select>
+                        </div>  
+                    </section> 
                     <section>
                         <div class="input">
                             <label for="">Month</label>
@@ -42,6 +42,16 @@
                                     <option value="{{ $loop->iteration }}">{{ $Month }}</option>
                                 @endforeach
                             </select> 
+                        </div>  
+                    </section> 
+                    <section>
+                        <div class="input">
+                            <label for="">Year</label>
+                            <select name="Year_REPORT" id="">
+                                @for ($Year = 2023; $Year <= date('Y'); $Year++)
+                                    <option value="{{ $Year }}">{{ $Year }}</option>
+                                @endfor
+                            </select>
                         </div>  
                     </section> 
                 </div>
