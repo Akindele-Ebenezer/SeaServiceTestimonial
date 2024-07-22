@@ -2395,7 +2395,7 @@
                         <td class="Hide">{{ $Availabilty->DoneBy }}</td> 
                         <td class="Hide">{{ $Availabilty->Attachment }}</td> 
                         <td class="Hide">{{ $Availabilty->StartTime }}</td> 
-                        <td class="Hide">{{ $Availabilty->EndTime }}</td> 
+                        <td class="Hide">{{ $Availabilty->TillNow == 'YES' ? date('H:i') : date('H:i', strtotime($Availabilty->EndTime)) }}</td> 
                         <td class="Hide">{{ $Availabilty->StartDate }}</td> 
                         <td class="Hide">{{ $Availabilty->EndDate }}</td> 
                         <td class="Hide">{{ $Availabilty->TillNow }}</td>
