@@ -152,8 +152,13 @@ class VesselAvailabilityPdf extends Controller
                 $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
                 $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime); 
                 $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+                if ($Vessel->Status == 'IDLE') {
+                    $Status = 'READY';
+                } else if ($Vessel->Status == 'BUNKERY') {
+                    $Status = 'BUNKERING';
+                }
 
-                $fpdf->Cell(31.7, 5, $Vessel->Status == 'IDLE' ? 'READY' : $Vessel->Status, 1);
+                $fpdf->Cell(31.7, 5, $Status ?? $Vessel->Status, 1);
                 $fpdf->Cell(31.7, 5, $Vessel->StartDate, 1);
                 $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
                 $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
