@@ -57,7 +57,7 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', 'B', 7); 
         $fpdf->Cell(10, 0, 'Vessel: ');
         $fpdf->SetFont('Arial', '', 7); 
-        $fpdf->Cell(20, 0, $Request->VesselReportFor);
+        $fpdf->Cell(20, 0, $Request->Vessel);
 
         $fpdf->SetDrawColor(200, 200, 200);
         $fpdf->SetTextColor(50, 50, 50);
@@ -165,9 +165,11 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Cell(33.7, 5, 'MAINTENANCE = ' . count($TotalMaintenance) . ',', 0);
             $fpdf->Cell(29.7, 5, 'INSPECTION = ' . count($TotalInspection) . ',', 0);
             $fpdf->Cell(30.7, 5, 'BREAKDOWN = ' . count($TotalBreakdown) . ',', 0);
-            $fpdf->Cell(25.7, 5, 'BUNKERING = ' . count($TotalBunkery) . ',', 0);
+            $fpdf->Cell(28.7, 5, 'BUNKERING = ' . count($TotalBunkery) . ',', 0);
             $fpdf->Cell(25.7, 5, 'DOCKING = ' . count($TotalDocking) . ',', 0);
-            $fpdf->Cell(25.7, 5, 'READY = ' . count($TotalReady) , 0);
+            $fpdf->Cell(25.7, 5, 'READY = ' . count($TotalReady) . ',', 0);
+            $fpdf->Ln(5);
+            $fpdf->Cell(25.7, 5, 'TOTAL ACTIVITIES = ' . count($TotalMaintenance)+count($TotalInspection)+count($TotalBreakdown)+count($TotalBunkery)+count($TotalDocking)+count($TotalReady), 0);
         } else {
             // $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->get();
             // $fpdf->SetFont('Arial', '', 9);  
