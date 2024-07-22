@@ -163,7 +163,7 @@ class VesselAvailabilityPdf extends Controller
                 $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
                 $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
                 $fpdf->Cell(31.7, 5, $Vessel->EndTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, $HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween . ' hours : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
+                $fpdf->Cell(31.7, 5, $HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
                 $fpdf->Ln();
             } 
             $fpdf->Ln();
