@@ -80,36 +80,48 @@ class VesselAvailabilityPdf extends Controller
                                             $query->where('Vessel', $Request->Vessel)
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->orderBy('StartDate')->get();                           
-            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+            $TotalDocking = \DB::table('vessel_availabilities')->select(['id', 'Vessel', 'Status'])->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->where('Status', 'DOCKING')
                                         ->orWhere(function($query) use ($Request) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->where('Status', 'DOCKING')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->where('Status', 'DOCKING')->get();
+                                        })->get(); 
             $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->where('Status', 'BREAKDOWN')
                                         ->orWhere(function($query) use ($Request) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->where('Status', 'BREAKDOWN')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->where('Status', 'BREAKDOWN')->get();
+                                        })->get();
             $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->where('Status', 'INSPECTION')
                                         ->orWhere(function($query) use ($Request) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->where('Status', 'INSPECTION')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->where('Status', 'INSPECTION')->get();
+                                        })->get();
             $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->where('Status', 'BUNKERY')
                                         ->orWhere(function($query) use ($Request) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->where('Status', 'BUNKERY')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->where('Status', 'BUNKERY')->get();
+                                        })->get();
             $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->where('Status', 'MAINTENANCE')
                                         ->orWhere(function($query) use ($Request) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->where('Status', 'MAINTENANCE')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->where('Status', 'MAINTENANCE')->get();
+                                        })->get();
             $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->where('Status', 'IDLE')
                                         ->orWhere(function($query) use ($Request) {
                                             $query->where('Vessel', $Request->Vessel)
+                                            ->where('Status', 'IDLE')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->where('Status', 'IDLE')->get();
+                                        })->get();
             $fpdf->SetFont('Arial', '', 9);  
             $fpdf->Ln(3);
             $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
