@@ -165,7 +165,7 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Cell(33.7, 5, 'MAINTENANCE = ' . count($TotalMaintenance) . ',', 0);
             $fpdf->Cell(29.7, 5, 'INSPECTION = ' . count($TotalInspection) . ',', 0);
             $fpdf->Cell(30.7, 5, 'BREAKDOWN = ' . count($TotalBreakdown) . ',', 0);
-            $fpdf->Cell(25.7, 5, 'BUNKERY = ' . count($TotalBunkery) . ',', 0);
+            $fpdf->Cell(25.7, 5, 'BUNKERING = ' . count($TotalBunkery) . ',', 0);
             $fpdf->Cell(25.7, 5, 'DOCKING = ' . count($TotalDocking) . ',', 0);
             $fpdf->Cell(25.7, 5, 'READY = ' . count($TotalReady) , 0);
         } else {
