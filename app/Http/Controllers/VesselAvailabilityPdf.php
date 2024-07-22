@@ -147,6 +147,7 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->SetFont('Arial', '', 7);  
             $fpdf->Ln(0.1);
             $TotalHoursWorked = [];
+            $TotalMinutesWorked = [];
             $TotalDaysWorked = [];
             foreach ($VesselAvailability as $Vessel) {
                 $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
@@ -171,6 +172,7 @@ class VesselAvailabilityPdf extends Controller
                     array_push($TotalDaysWorked, 1);
                 }
                 array_push($TotalHoursWorked, $HoursBetween);
+                array_push($TotalMinutesWorked, $MinutesBetween);
                 array_push($TotalDaysWorked, $TotalDays);
             } 
             $fpdf->Cell(158.5, 5, '', 0);
