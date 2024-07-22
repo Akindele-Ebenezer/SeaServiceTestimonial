@@ -45,7 +45,7 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', '', 7); 
         $fpdf->Cell(108.5, 0, session()->get('FullName'));
         $fpdf->SetFont('Arial', 'B', 7); 
-        $fpdf->Cell(20, 0, 'Month: ');
+        $fpdf->Cell(10, 0, 'Month: ');
         $fpdf->SetFont('Arial', '', 7); 
         $fpdf->Cell(20, 0, strtoupper(\Carbon\Carbon::parse($Request->DateFrom)->monthName) . ' ' . date('Y'));
         $fpdf->Ln(6);     
@@ -55,9 +55,9 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', '', 7); 
         $fpdf->Cell(108.5, 0, date('Y-m-d'));
         $fpdf->SetFont('Arial', 'B', 7); 
-        $fpdf->Cell(20, 0, 'Week starting: ');
+        $fpdf->Cell(10, 0, 'Vessel: ');
         $fpdf->SetFont('Arial', '', 7); 
-        $fpdf->Cell(20, 0, $DateFrom);
+        $fpdf->Cell(20, 0, $Request->VesselReportFor);
 
         $fpdf->SetDrawColor(200, 200, 200);
         $fpdf->SetTextColor(50, 50, 50);
@@ -76,6 +76,12 @@ class VesselAvailabilityPdf extends Controller
 
         if (isset($Request->VesselReportFor)) {
             $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->get();
+            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'DOCKING')->get();
+            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'BREAKDOWN')->get();
+            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'INSPECTION')->get();
+            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'BUNKERY')->get();
+            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'MAINTENANCE')->get();
+            $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'IDLE')->get();
             $fpdf->SetFont('Arial', '', 9);  
             $fpdf->Ln(3);
             $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
@@ -91,7 +97,7 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Cell(31.7, 5, 'Duration ', 1);
 
             $fpdf->Ln();
-            $fpdf->SetFont('Arial', '', 9);  
+            $fpdf->SetFont('Arial', '', 7);  
             $fpdf->Ln(0.1);
             foreach ($VesselAvailability as $Vessel) {
                 $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
@@ -110,14 +116,18 @@ class VesselAvailabilityPdf extends Controller
             } 
             $fpdf->Ln();
             $fpdf->SetFont('Arial', 'B', 14);  
-            $fpdf->Cell(190.4, 10, 'EVALUATION', 0, 1, 1, 'L');
+            $fpdf->Cell(190.4, 10, 'OVERVIEW', 0, 1, 1, 'L');
+            $fpdf->SetFont('Arial', '', 9); 
+            $fpdf->Ln(3);
+            $fpdf->MultiCell(190, 5, 'Comprehensive evaluation of the vessel\'s status, including maintenance, inspection, breakdown, bunkering, docking, and readiness. This report ensures a thorough overview of the vessel\'s operational efficiency and highlights any issues that may impact its availability for service..');
+            $fpdf->Ln(3);
             $fpdf->SetFont('Arial', '', 9);  
-            $fpdf->Cell(31.7, 5, 'BREAKDOWN = ' . 23 . ',', 0);
-            $fpdf->Cell(31.7, 5, 'DOCKING = ' . 23 . ',', 0);
-            $fpdf->Cell(31.7, 5, 'BUNKERY = ' . 23 . ',', 0);
-            $fpdf->Cell(31.7, 5, 'MAINTENANCE = ' . 23 . ',', 0);
-            $fpdf->Cell(31.7, 5, 'INSPECTION = ' . 23 . ',', 0);
-            $fpdf->Cell(31.7, 5, 'READY = ' . 23 , 0);
+            $fpdf->Cell(33.7, 5, 'MAINTENANCE = ' . count($TotalMaintenance) . ',', 0);
+            $fpdf->Cell(29.7, 5, 'INSPECTION = ' . count($TotalInspection) . ',', 0);
+            $fpdf->Cell(30.7, 5, 'BREAKDOWN = ' . count($TotalBreakdown) . ',', 0);
+            $fpdf->Cell(25.7, 5, 'BUNKERY = ' . count($TotalBunkery) . ',', 0);
+            $fpdf->Cell(25.7, 5, 'DOCKING = ' . count($TotalDocking) . ',', 0);
+            $fpdf->Cell(25.7, 5, 'READY = ' . count($TotalReady) , 0);
         } else {
             $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->get();
             $fpdf->SetFont('Arial', '', 9);  

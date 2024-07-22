@@ -4,7 +4,7 @@ let CancelButtonFilterReportByDate = document.querySelectorAll('.cancel-button-f
 let FilterReportForVesselByDatePdfButtons = document.querySelectorAll('.ReportPdfButtonForVessels');
 let FilterReportForVesselByDateModal = document.querySelector('.FilterReportForVesselByDate');
 let CancelButtonFilterReportForVesselByDate = document.querySelectorAll('.cancel-button-filter-report-for-vessel-by-date');
-let FilterReportForVesselByDate_GoButton = document.querySelector('.FilterReportForVesselByDate_GoButton');
+let FilterReportForVesselByMonth_GoButton = document.querySelector('.FilterReportForVesselByMonth_GoButton');
 
 FilterReportByDatePdfButtons.forEach(Button => {
     Button.addEventListener('click', () => {
@@ -13,7 +13,7 @@ FilterReportByDatePdfButtons.forEach(Button => {
 });
 FilterReportForVesselByDatePdfButtons.forEach(Button => {
     Button.addEventListener('click', () => {
-        FilterReportForVesselByDate_GoButton.nextElementSibling.textContent = Button.nextElementSibling.textContent;
+        FilterReportForVesselByMonth_GoButton.nextElementSibling.textContent = Button.nextElementSibling.textContent;
         FilterReportForVesselByDateModal.style.display = 'flex';
     })
 });
@@ -59,24 +59,9 @@ var urlParams = new URLSearchParams(window.location.search);
  
 let FilterReportForVesselByDateForm = document.querySelector('.FilterReportForVesselByDateForm');
 let ErrorFilterReportForVesselByDate = document.querySelector('.error-filter-report-for-vessel-by-date');
-let VESSELREPORT_FromDate = document.querySelector('input[name=FromDate_FILTERREPORTFORVESSELBYDATE]');
-let VESSELREPORT_EndDate = document.querySelector('input[name=EndDate_FILTERREPORTFORVESSELBYDATE]');
-let VESSELREPORT_SpecificDay = document.querySelector('input[name=VESSELREPORT_SpecificDay]');
 
-FilterReportForVesselByDate_GoButton.addEventListener('click', () => {
-    if (VESSELREPORT_SpecificDay.value) {  
-        FilterReportForVesselByDate_GoButton.style.backgroundColor = '#1fb95e';
-        FilterReportForVesselByDate_GoButton.textContent = '+ Processing..';
-        window.open('/Availability/Report/?DateFrom=' + VESSELREPORT_FromDate.value  + '&VESSELREPORT_SpecificDay=' + VESSELREPORT_SpecificDay.value  + '&DateTo=' + VESSELREPORT_EndDate.value + '&REPORT_SpecificDay=' + '&VesselReportFor=' + FilterReportForVesselByDate_GoButton.nextElementSibling.textContent);
-    }else if (VESSELREPORT_FromDate.value == '') { 
-        ErrorFilterReportForVesselByDate.textContent =  'From Date can\'t be empty';
-    } else if (VESSELREPORT_EndDate.value == '') {  
-        ErrorFilterReportForVesselByDate.textContent =  'End Date is required';
-    } else if (VESSELREPORT_FromDate.value > VESSELREPORT_EndDate.value) {  
-        ErrorFilterReportForVesselByDate.textContent =  'From Date cannot be greater than End date';
-    } else {
-        FilterReportForVesselByDate_GoButton.style.backgroundColor = '#1fb95e';
-        FilterReportForVesselByDate_GoButton.textContent = '+ Processing..';
-        window.open('/Availability/Report/?DateFrom=' + VESSELREPORT_FromDate.value  + '&DateTo=' + VESSELREPORT_EndDate.value + '&REPORT_SpecificDay=' + '&VesselReportFor=' + FilterReportForVesselByDate_GoButton.nextElementSibling.textContent);
-    } 
+FilterReportForVesselByMonth_GoButton.addEventListener('click', () => { 
+        FilterReportForVesselByMonth_GoButton.style.backgroundColor = '#1fb95e';
+        FilterReportForVesselByMonth_GoButton.textContent = '+ Processing..';
+        window.open('/Availability/Report/?');
 });
