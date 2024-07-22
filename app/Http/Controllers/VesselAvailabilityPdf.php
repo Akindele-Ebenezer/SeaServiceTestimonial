@@ -146,6 +146,8 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Ln();
             $fpdf->SetFont('Arial', '', 7);  
             $fpdf->Ln(0.1);
+            $TotalHoursWorked = [];
+            $TotalDaysWorked = [];
             foreach ($VesselAvailability as $Vessel) {
                 $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
                 $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
@@ -163,10 +165,17 @@ class VesselAvailabilityPdf extends Controller
                 $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
                 $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
                 $fpdf->Cell(31.7, 5, $Vessel->EndTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, $HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
+                $fpdf->Cell(31.7, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
                 $fpdf->Ln();
+                if($TotalDays == 0) {
+                    array_push($TotalDaysWorked, 1);
+                }
+                array_push($TotalHoursWorked, $HoursBetween);
+                array_push($TotalDaysWorked, $TotalDays);
             } 
-            $fpdf->Ln();
+            $fpdf->Cell(158.5, 5, '', 0);
+            $fpdf->Cell(31.7, 5, 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
+            $fpdf->Ln(15);
             $fpdf->SetFont('Arial', 'B', 14);  
             $fpdf->Cell(190.4, 10, 'OVERVIEW', 0, 1, 1, 'L');
             $fpdf->SetFont('Arial', '', 9); 
