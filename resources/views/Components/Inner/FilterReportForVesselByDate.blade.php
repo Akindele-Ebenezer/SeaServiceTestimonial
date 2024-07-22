@@ -7,7 +7,17 @@
         <form action="" class="FilterReportForVesselByDateForm"> 
             <div class="inner-1"> 
                 <div class="fields">
-                    <p class="error-filter-report-for-vessel-by-date error"></p>
+                    <p class="error-filter-report-for-vessel-by-date error"></p> 
+                        <section>
+                            <div class="input">
+                                <label for="">Vessel</label>
+                                <select name="VesselName_REPORT" id="">
+                                    @foreach ($Vessels as $Vessel)
+                                        <option value="{{ $Vessel->VesselName }}">{{ $Vessel->VesselName }}</option>
+                                    @endforeach
+                                </select>
+                            </div>  
+                        </section> 
                     <section>
                         <div class="input">
                             <label for="">Month</label>
@@ -27,7 +37,7 @@
                                     'December',
                                 ];
                             @endphp
-                            <select name="">
+                            <select name="Month_REPORT">
                                 @foreach ($Months as $Month)
                                     <option value="{{ $loop->iteration }}">{{ $Month }}</option>
                                 @endforeach
@@ -35,22 +45,6 @@
                         </div>  
                     </section> 
                 </div>
-            </div>
-            <div class="inner-2">  
-                <section>
-                    <div class="input">
-                        <label for="">End date</label>
-                        <input type="date" name="EndDate_FILTERREPORTFORVESSELBYDATE">
-                    </div>  
-                </section> 
-            </div>
-            <div class="inner-2">  
-                <section>
-                    <div class="input">
-                        <label for="">Specific day</label>
-                        <input type="date" name="VESSELREPORT_SpecificDay">
-                    </div>  
-                </section> 
             </div>
         </form>
         <section class="">

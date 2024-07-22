@@ -74,14 +74,42 @@ class VesselAvailabilityPdf extends Controller
             }
         }
 
-        if (isset($Request->VesselReportFor)) {
-            $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->get();
-            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'DOCKING')->get();
-            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'BREAKDOWN')->get();
-            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'INSPECTION')->get();
-            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'BUNKERY')->get();
-            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'MAINTENANCE')->get();
-            $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->orderBy('StartDate')->where('Status', 'IDLE')->get();
+        if (isset($Request->Month) AND isset($Request->Vessel)) { 
+            $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->orderBy('StartDate')->get();                           
+            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->where('Status', 'DOCKING')->get();
+            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->where('Status', 'BREAKDOWN')->get();
+            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->where('Status', 'INSPECTION')->get();
+            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->where('Status', 'BUNKERY')->get();
+            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->where('Status', 'MAINTENANCE')->get();
+            $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereMonth('StartDate', $Request->Month)
+                                        ->orWhere(function($query) use ($Request) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereMonth('EndDate', $Request->Month);
+                                        })->where('Status', 'IDLE')->get();
             $fpdf->SetFont('Arial', '', 9);  
             $fpdf->Ln(3);
             $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
@@ -129,38 +157,38 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Cell(25.7, 5, 'DOCKING = ' . count($TotalDocking) . ',', 0);
             $fpdf->Cell(25.7, 5, 'READY = ' . count($TotalReady) , 0);
         } else {
-            $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->get();
-            $fpdf->SetFont('Arial', '', 9);  
-            $fpdf->Ln(3);
-            $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
-            $fpdf->Ln(3);
-            $fpdf->SetFont('Arial', 'B', 14);  
-            $fpdf->Cell(190.4, 10, 'JULY', 0, 1, 1, 'L');
-            $fpdf->SetFont('Arial', 'B', 9);  
-            $fpdf->Cell(31.7, 5, 'Status ', 1);
-            $fpdf->Cell(31.7, 5, 'Start Date ', 1);
-            $fpdf->Cell(31.7, 5, 'Start Time ', 1);
-            $fpdf->Cell(31.7, 5, 'End Date', 1);
-            $fpdf->Cell(31.7, 5, 'End Time ', 1);
-            $fpdf->Cell(31.7, 5, 'Duration ', 1);
+            // $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->VesselReportFor)->whereMonth('StartDate', 7)->orWhereMonth('EndDate', 7)->get();
+            // $fpdf->SetFont('Arial', '', 9);  
+            // $fpdf->Ln(3);
+            // $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
+            // $fpdf->Ln(3);
+            // $fpdf->SetFont('Arial', 'B', 14);  
+            // $fpdf->Cell(190.4, 10, 'JULY', 0, 1, 1, 'L');
+            // $fpdf->SetFont('Arial', 'B', 9);  
+            // $fpdf->Cell(31.7, 5, 'Status ', 1);
+            // $fpdf->Cell(31.7, 5, 'Start Date ', 1);
+            // $fpdf->Cell(31.7, 5, 'Start Time ', 1);
+            // $fpdf->Cell(31.7, 5, 'End Date', 1);
+            // $fpdf->Cell(31.7, 5, 'End Time ', 1);
+            // $fpdf->Cell(31.7, 5, 'Duration ', 1);
 
-            $fpdf->Ln();
-            $fpdf->SetFont('Arial', '', 9);  
-            $fpdf->Ln(0.1);
-            foreach ($VesselAvailability as $Vessel) {
-                $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
-                $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
-                $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+            // $fpdf->Ln();
+            // $fpdf->SetFont('Arial', '', 9);  
+            // $fpdf->Ln(0.1);
+            // foreach ($VesselAvailability as $Vessel) {
+            //     $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+            //     $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+            //     $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
+            //     $TotalDays = $EndDateTime->diffInDays($StartDateTime);
 
-                $fpdf->Cell(31.7, 5, $Vessel->Status, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->StartDate, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->EndTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, $HoursBetween . ' hours : ' . $TotalDays . ' day(s)', 1);
-                $fpdf->Ln();
-            } 
+            //     $fpdf->Cell(31.7, 5, $Vessel->Status, 1);
+            //     $fpdf->Cell(31.7, 5, $Vessel->StartDate, 1);
+            //     $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
+            //     $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
+            //     $fpdf->Cell(31.7, 5, $Vessel->EndTime . ' HRS', 1);
+            //     $fpdf->Cell(31.7, 5, $HoursBetween . ' hours : ' . $TotalDays . ' day(s)', 1);
+            //     $fpdf->Ln();
+            // } 
         }
         $fpdf->SetFont('Arial', 'B', 7); 
   
