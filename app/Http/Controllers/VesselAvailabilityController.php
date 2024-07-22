@@ -17,7 +17,7 @@ class VesselAvailabilityController extends Controller
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
         $Companies = \DB::table('companies')->orderBy('id', 'DESC')->get();
-        $VesselAvailability = VesselAvailability::orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
+        $VesselAvailability = VesselAvailability::orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
         $Vessels = \DB::table('vessels_vessel_information')->select(['VesselName', 'ImoNumber', 'CallSign'])->get();
         $STARTDATE = date('Y-m-d'); 
         $NumberOfVessels = \DB::table('vessels_vessel_information')->get();
@@ -25,8 +25,7 @@ class VesselAvailabilityController extends Controller
                                 ->where(function($query) {
                                     $query->where('StartDate', '>=', date('Y-m-d'))
                                             ->orWhere('EndDate', '>=', date('Y-m-d'));
-                                })
-                                // ->orWhere('EndDate', '<', date('Y-m-d'))
+                                }) 
                                 ->groupBy('Vessel')->get(); 
         // $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->join('vessels_vessel_information', 'vessels_vessel_information.VesselName', '=', 'vessel_availabilities.Vessel')->where('EndDate', '<', date('Y-m-d'))->orWhere('Status', 'IDLE')->groupBy('Vessel')->get();
 
