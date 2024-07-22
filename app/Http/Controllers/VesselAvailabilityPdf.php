@@ -81,7 +81,7 @@ class VesselAvailabilityPdf extends Controller
                                             ->whereYear('EndDate', $Year)
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->orderBy('StartDate')->get();                           
-            $TotalDocking = \DB::table('vessel_availabilities')->select(['id', 'Vessel', 'Status'])->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'DOCKING')
                                         ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
@@ -128,7 +128,7 @@ class VesselAvailabilityPdf extends Controller
                                             ->whereYear('EndDate', $Year)
                                             ->where('Status', 'IDLE')
                                             ->whereMonth('EndDate', $Request->Month);
-                                        })->get();
+                                        })->get(); 
             $fpdf->SetFont('Arial', '', 9);  
             $fpdf->Ln(3);
             $fpdf->MultiCell(190, 5, 'This report summarizes vessel availability for each month, detailing vessel usage, downtime, and availability for efficient fleet management and planning. The analysis provides a comprehensive overview of vessel availability, including operational status, utilization rates, and downtime analysis, crucial for effective maritime operations planning and optimization.');
@@ -159,9 +159,11 @@ class VesselAvailabilityPdf extends Controller
                     $Status = 'READY';
                 } else if ($Vessel->Status == 'BUNKERY') {
                     $Status = 'BUNKERING';
+                } else {
+                    $Status = $Vessel->Status;
                 }
 
-                $fpdf->Cell(31.7, 5, $Status ?? $Vessel->Status, 1);
+                $fpdf->Cell(31.7, 5, $Status, 1);
                 $fpdf->Cell(31.7, 5, $Vessel->StartDate, 1);
                 $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
                 $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
