@@ -13,6 +13,7 @@ class VesselAvailability extends Model
         'Status',
         'DoneBy',
         'Source',
+        'Comment',
         'StartTime',
         'EndTime',
         'StartDate',
