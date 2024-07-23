@@ -2405,7 +2405,7 @@
                         <td class="Hide">{{ $Availabilty->Location }}</td>  
                         <td>{{ $Availabilty->Vessel }}</td> 
                         <td>{{ $Availabilty->Status == 'IDLE' ? 'READY' : $Availabilty->Status }}</td>
-                        <td>{{ $Availabilty->DoneBy }}</td>
+                        <td>{{ strtoupper($Availabilty->DoneBy) }}</td>
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ date('H:i', strtotime($Availabilty->StartTime)).' HRS' }}</td>
