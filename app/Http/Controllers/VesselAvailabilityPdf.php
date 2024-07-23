@@ -53,7 +53,7 @@ class VesselAvailabilityPdf extends Controller
         $fpdf->SetFont('Arial', 'B', 7); 
         $fpdf->Cell(10, 0, 'Vessel: ');
         $fpdf->SetFont('Arial', '', 7); 
-        $fpdf->Cell(20, 0, $Request->Vessel);
+        $fpdf->Cell(20, 0, $Request->Vessel ?? '*');
 
         $fpdf->SetDrawColor(200, 200, 200);
         $fpdf->SetTextColor(50, 50, 50);
@@ -192,57 +192,50 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->Ln(5);
             $fpdf->Cell(25.7, 5, 'TOTAL ACTIVITIES = ' . count($TotalMaintenance)+count($TotalInspection)+count($TotalBreakdown)+count($TotalBunkery)+count($TotalDocking)+count($TotalReady), 0);
         } else { 
-            $VesselAvailability = \DB::table('vessel_availabilities')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $VesselAvailability = \DB::table('vessel_availabilities')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->orderBy('StartDate')->get();                           
-            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalDocking = \DB::table('vessel_availabilities')->select('id')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'DOCKING')
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->where('Status', 'DOCKING')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get(); 
-            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalBreakdown = \DB::table('vessel_availabilities')->select('id')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'BREAKDOWN')
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->where('Status', 'BREAKDOWN')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalInspection = \DB::table('vessel_availabilities')->select('id')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'INSPECTION')
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->where('Status', 'INSPECTION')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalBunkery = \DB::table('vessel_availabilities')->select('id')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'BUNKERY')
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->where('Status', 'BUNKERY')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'MAINTENANCE')
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->where('Status', 'MAINTENANCE')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get();
-            $TotalReady = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
+            $TotalReady = \DB::table('vessel_availabilities')->select('id')->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'IDLE')
                                         ->orWhere(function($query) use ($Request, $Year) {
-                                            $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
+                                            $query->whereYear('EndDate', $Year)
                                             ->where('Status', 'IDLE')
                                             ->whereMonth('EndDate', $Request->Month);
                                         })->get(); 
@@ -253,12 +246,13 @@ class VesselAvailabilityPdf extends Controller
             $fpdf->SetFont('Arial', 'B', 14);  
             $fpdf->Cell(190.4, 10, 'IN ' . strtoupper(\Carbon\Carbon::create()->month($Request->Month)->format('F')) . ' ' . $Request->Year, 0, 1, 1, 'L');
             $fpdf->SetFont('Arial', 'B', 9);  
-            $fpdf->Cell(31.7, 5, 'Status ', 1);
-            $fpdf->Cell(31.7, 5, 'Start Date ', 1);
-            $fpdf->Cell(31.7, 5, 'Start Time ', 1);
-            $fpdf->Cell(31.7, 5, 'End Date', 1);
-            $fpdf->Cell(31.7, 5, 'End Time ', 1);
-            $fpdf->Cell(31.7, 5, 'Duration ', 1);
+            $fpdf->Cell(31.7, 5, 'Vessel ', 1);
+            $fpdf->Cell(26.4, 5, 'Status ', 1);
+            $fpdf->Cell(26.4, 5, 'Start Date ', 1);
+            $fpdf->Cell(26.4, 5, 'Start Time ', 1);
+            $fpdf->Cell(26.4, 5, 'End Date', 1);
+            $fpdf->Cell(26.4, 5, 'End Time ', 1);
+            $fpdf->Cell(26.4, 5, 'Duration ', 1);
 
             $fpdf->Ln();
             $fpdf->SetFont('Arial', '', 7);  
@@ -280,12 +274,13 @@ class VesselAvailabilityPdf extends Controller
                     $Status = $Vessel->Status;
                 }
 
-                $fpdf->Cell(31.7, 5, $Status, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->StartDate, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->EndTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
+                $fpdf->Cell(31.7, 5, $Vessel->Vessel, 1);
+                $fpdf->Cell(26.4, 5, $Status, 1);
+                $fpdf->Cell(26.4, 5, $Vessel->StartDate, 1);
+                $fpdf->Cell(26.4, 5, $Vessel->StartTime . ' HRS', 1);
+                $fpdf->Cell(26.4, 5, $Vessel->EndDate, 1);
+                $fpdf->Cell(26.4, 5, $Vessel->EndTime . ' HRS', 1);
+                $fpdf->Cell(26.4, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
                 $fpdf->Ln();
                 if($TotalDays == 0) {
                     array_push($TotalDaysWorked, 1);
