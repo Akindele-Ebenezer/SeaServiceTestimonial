@@ -174,7 +174,7 @@ class VesselAvailabilityPdf extends Controller
                 array_push($TotalDaysWorked, $TotalDays);
             } 
             $fpdf->Cell(158.5, 5, '', 0);
-            $fpdf->Cell(31.7, 5, collect($TotalHoursWorked)->sum() == 0 ? 'T: ' . collect($TotalMinutesWorked)->sum() . ' min(s) : ' : 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
+            $fpdf->Cell(31.7, 5, collect($TotalHoursWorked)->sum() == 0 ? 'T: ' . collect($TotalMinutesWorked)->sum() . ' min(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)' : 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
             $fpdf->Ln(15);
             $fpdf->SetFont('Arial', 'B', 14);  
             $fpdf->Cell(190.4, 10, 'OVERVIEW', 0, 1, 1, 'L');
