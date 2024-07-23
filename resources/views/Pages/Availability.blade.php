@@ -1980,7 +1980,7 @@
                         </div>
                         <div class="indicators-inner-x">
                             <span class="bunkery"></span> 
-                            <span>BUNKERY</span>
+                            <span>BUNKERING</span>
                         </div>
                     </div>
                     <div class="indicators-inner">
