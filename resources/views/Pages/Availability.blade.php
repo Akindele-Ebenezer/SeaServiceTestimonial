@@ -2065,7 +2065,8 @@
                         } elseif (!(empty($_GET['SpecificDay']))) {
                             $Vessel_STARTIME = \DB::table('vessel_availabilities') 
                                                 ->where('Vessel', $Vessel->VesselName)
-                                                ->where('StartDate', $_GET['SpecificDay'])
+                                                ->where('StartDate', '<=', $_GET['SpecificDay'])
+                                                ->where('EndDate', '>=', $_GET['SpecificDay']) 
                                                 ->orderBy('DateIn', 'DESC')
                                                 ->orderBy('TimeIn', 'DESC')
                                                 ->get();
