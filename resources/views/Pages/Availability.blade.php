@@ -65,7 +65,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -75,7 +76,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -167,7 +169,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -177,7 +180,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -270,7 +274,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -280,7 +285,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -373,7 +379,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -383,7 +390,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -476,7 +484,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -486,7 +495,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -579,7 +589,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -589,7 +600,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -682,7 +694,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -692,7 +705,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -785,7 +799,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -795,7 +810,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -888,7 +904,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -898,7 +915,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -996,7 +1014,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1006,7 +1025,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first();
         }
@@ -1099,7 +1119,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1109,7 +1130,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1202,7 +1224,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1212,7 +1235,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1305,7 +1329,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1315,7 +1340,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1408,7 +1434,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1418,7 +1445,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1511,7 +1539,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1521,7 +1550,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1614,7 +1644,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1624,7 +1655,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1717,7 +1749,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1727,7 +1760,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
@@ -1820,7 +1854,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
         $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
@@ -1830,7 +1865,8 @@
                                     $query->where('Vessel', $Vessel->VesselName) 
                                             ->where('TillNow', 'YES');
                                 })
-                                ->orderBy('EndDate', 'DESC') 
+                                ->orderBy('StartDate', 'DESC') 
+                                ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first();
         }
