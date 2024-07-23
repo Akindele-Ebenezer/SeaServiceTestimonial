@@ -149,7 +149,7 @@ class VesselAvailabilityPdf extends Controller
                 $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
                 $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                 $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime); 
+                $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
                 $TotalDays = $EndDateTime->diffInDays($StartDateTime);
                 if ($Vessel->Status == 'IDLE') {
                     $Status = 'READY';
@@ -174,7 +174,7 @@ class VesselAvailabilityPdf extends Controller
                 array_push($TotalDaysWorked, $TotalDays);
             } 
             $fpdf->Cell(158.5, 5, '', 0);
-            $fpdf->Cell(31.7, 5, 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
+            $fpdf->Cell(31.7, 5, 'T: ' . collect($TotalHoursWorked)->sum() == 0 ? collect($TotalMinutesWorked)->sum() . ' min(s) : ' : collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
             $fpdf->Ln(15);
             $fpdf->SetFont('Arial', 'B', 14);  
             $fpdf->Cell(190.4, 10, 'OVERVIEW', 0, 1, 1, 'L');
@@ -270,7 +270,7 @@ class VesselAvailabilityPdf extends Controller
                 $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
                 $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
                 $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime); 
+                $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
                 $TotalDays = $EndDateTime->diffInDays($StartDateTime);
                 if ($Vessel->Status == 'IDLE') {
                     $Status = 'READY';
