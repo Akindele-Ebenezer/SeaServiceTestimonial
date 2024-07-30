@@ -140,6 +140,7 @@
                         <a href="{{ route('template_2_') }}" target="blank">Engine</a>
                         <a href="{{ route('template_3_') }}" target="blank">Cook</a> 
                         <a href="{{ route('template_4_') }}" target="blank">Electrician</a> 
+                        <a href="{{ route('template_5_') }}" target="blank">Welder</a> 
                     </p>    
                     <div class="input">
                         <label for="">Theme</label>
@@ -149,6 +150,7 @@
                             {{-- <option value="Captain">Captain</option>  --}}
                             <option value="Cook">Cook</option> 
                             <option value="Electrician">Electrician</option> 
+                            <option value="Welder">Welder</option> 
                         </select>
                     </div>
                     <div class="input">

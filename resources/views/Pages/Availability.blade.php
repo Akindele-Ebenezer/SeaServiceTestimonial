@@ -8,6 +8,7 @@
 @include('Components.Inner.FilterByDate')
 @include('Components.Inner.FilterReportByDate')  
 @include('Components.Inner.FilterReportForVesselByDate')  
+@include('Components.Inner.ChartReport')  
 @include('Components.Charts.Chart1') 
 @include('Components.Charts.Chart3') 
 <div class="vessel-content notifications availability"> 
@@ -2603,6 +2604,7 @@
 <script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Inner/FilterByDate.js') }}"></script>
 <script src="{{ asset('js/Components/Inner/FilterReportByDate.js') }}"></script>
+<script src="{{ asset('js/Components/Inner/ChartReport.js') }}"></script>
 <script> 
     let DisplayChartButton = document.querySelector('.availability .dashboard-inner .dashboard-heading svg.-x');
     DisplayChartButton.addEventListener('click', () => { 

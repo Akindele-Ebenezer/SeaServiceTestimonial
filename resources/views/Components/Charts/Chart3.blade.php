@@ -2,8 +2,8 @@
 <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
 
 <div class="form-1 chart-3">
-    <h1>SingleDivUI</h1>
     <div class="row">
+        <h1>BREAKDOWN</h1>
         <div class="cell">
             @foreach ($Vessels as $Vessel)
             <span>{{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', 'BREAKDOWN')->get()) / count(\DB::table('vessel_availabilities')->where('Status', 'BREAKDOWN')->get())) * 100) }} %</span>
