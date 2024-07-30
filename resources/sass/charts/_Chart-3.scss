@@ -1,0 +1,27 @@
+.chart-3 {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    display: flex;
+    width: 100%;  
+}
+  .row {    
+      background: #fff;
+      display: flex;
+      height: 100vh;
+      flex-wrap: wrap; 
+      overflow-y: scroll;
+      padding: 6em;
+}
+.cell {
+    background-color: #fff;
+    padding: 4em;
+
+    span {
+      // border: 1px solid;
+      display: inline-block;
+      padding-bottom: 1em;
+      margin: -2.5px;
+      text-align: center;
+      width: 6.5em;
+    }
+}

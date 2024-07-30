@@ -9,6 +9,7 @@
 @include('Components.Inner.FilterReportByDate')  
 @include('Components.Inner.FilterReportForVesselByDate')  
 @include('Components.Charts.Chart1') 
+@include('Components.Charts.Chart3') 
 <div class="vessel-content notifications availability"> 
     <h2>Vessel Status</h2>
     {{-- <h3>LIVE</h3> :: {{ count($Vessels) }} --}} 
@@ -2609,4 +2610,5 @@
     });
 </script> 
 @include('Components.Charts.Chart1-JS') 
+@include('Components.Charts.Chart3-JS') 
 @endsection
