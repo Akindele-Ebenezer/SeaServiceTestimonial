@@ -26,7 +26,10 @@
     document.querySelector('.chart-report-percentage').textContent = Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) > 100 ? 100 + ' %' : Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) + ' %'; 
     const { Chart } = SingleDivUI;
 
-    @php $Vessels = collect($Vessels)->chunk(12); @endphp
+    @php 
+        $Vessels = collect($Vessels)->chunk(12); 
+        $Vessel_ = $Vessels[0];    
+    @endphp
     const options = {
     data: { 
         labels: [
@@ -59,7 +62,7 @@
             @endswitch
         ],
         points: [
-            @foreach($Vessels->first() as $Vessel)
+            @foreach($Vessel1 as $Vessel)
                 @switch($Period)
                     @case('1ST QUARTER')
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
@@ -104,6 +107,7 @@
     width: 1000
     };  
     @if (isset($Vessels[2]))
+    @php $Vessel_ = $Vessels[1]  @endphp
     const options2 = {
         data: {
             ...options.data,
@@ -116,6 +120,7 @@
     }
     @endif
     @if (isset($Vessels[2]))
+    @php $Vessel_ = $Vessels[2]  @endphp
     const options3 = {
         data: {
             ...options.data,
