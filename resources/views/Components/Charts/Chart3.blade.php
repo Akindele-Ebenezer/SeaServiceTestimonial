@@ -140,7 +140,7 @@
                         @break      
                     @default
                     {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get())))) * 100, 1) }} 
-                @endswitch {{(count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()))))}} --
+                @endswitch 
             %</span>
             @endforeach
             <div id="chart3"></div>
