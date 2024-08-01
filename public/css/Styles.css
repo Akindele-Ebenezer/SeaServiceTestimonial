@@ -1428,6 +1428,7 @@ main .left-navigation ul li .total {
 .row img {
   cursor: pointer;
   margin-right: 1em;
+  translate: 0 -0.25em;
   width: 2em;
 }
 

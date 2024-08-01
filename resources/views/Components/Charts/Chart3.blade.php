@@ -5,7 +5,7 @@
     <div class="row">
         <p class="Close">✖</p>
         <img class="OpenChartFilterButton" src="{{ asset('images/bar-chart.png') }}" alt=""> 
-        <h1>BREAKDOWN</h1>
+        <h1><span class="chart-report-title"></span> <span class="chart-report-year">2024</span></h1> &nbsp; - &nbsp; <span class="chart-report-period">1ST QUARTER</span> 
         <div class="cell">
             @foreach ($Vessels as $Vessel)
             <span>{{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', 'BREAKDOWN')->get()) / count(\DB::table('vessel_availabilities')->where('Status', 'BREAKDOWN')->get())) * 100) }} %</span>

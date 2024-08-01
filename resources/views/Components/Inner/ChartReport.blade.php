@@ -39,6 +39,13 @@
                                 <option value="2ND QUARTER">2ND QUARTER</option>
                                 <option value="3RD QUARTER">3RD QUARTER</option>
                                 <option value="4TH QUARTER">4TH QUARTER</option>
+                                <option value="1/2">1/2</option>
+                                <option value="1/3">1/3</option>
+                                <option value="1/4">1/4</option>  
+                                <option value="2/3">2/3</option>
+                                <option value="2/4">2/4</option>  
+                                <option value="3/4">3/4</option>  
+                                <option value="*">(*) ALL</option>  
                             </select>
                         </div>  
                     </section>  
