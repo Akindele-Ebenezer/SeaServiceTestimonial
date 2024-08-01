@@ -112,7 +112,7 @@
         data: {
             ...options.data,
             labels: [
-                @foreach($Vessels[1] as $Vessel)
+                @foreach($Vessel_ as $Vessel)
                     "{{ substr($Vessel->VesselName, 0, 3) }}", 
                 @endforeach 
             ], 
@@ -125,7 +125,7 @@
         data: {
             ...options.data,
             labels: [
-                @foreach($Vessels[2] as $Vessel)
+                @foreach($Vessel_ as $Vessel)
                     "{{ substr($Vessel->VesselName, 0, 3) }}", 
                 @endforeach 
             ], 
