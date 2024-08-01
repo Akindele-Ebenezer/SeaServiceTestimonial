@@ -106,7 +106,7 @@
         @if (isset($Vessels[2]))
         <div class="cell"> 
             @foreach ($Vessels[2] ?? $Vessels[0] as $Vessel)
-            <span class="percents">
+            <span class="percents"> {{$Vessel->VesselName}}
                 @switch($Period)
                     @case('1ST QUARTER')
                         {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $_GET['ChartReportStatus'] ?? 'BREAKDOWN')->whereYear('EndDate', $_GET['ChartReportYear'])->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $_GET['ChartReportStatus'] ?? 'BREAKDOWN')->whereYear('EndDate', $_GET['ChartReportYear'])->get())))) * 100) }}
