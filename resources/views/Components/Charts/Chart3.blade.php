@@ -96,7 +96,7 @@
                         {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $_GET['ChartReportStatus'] ?? 'BREAKDOWN')->whereYear('EndDate', $_GET['ChartReportYear'])->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $_GET['ChartReportStatus'] ?? 'BREAKDOWN')->whereYear('EndDate', $_GET['ChartReportYear'])->get())))) * 100) }}
                         @break      
                     @default
-                    {{-- {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get())))) * 100, 1) }}  --}}
+                    {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get())))) * 100, 1) }} 
                 @endswitch 
             %</span>
             @endforeach
@@ -139,7 +139,7 @@
                         {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $_GET['ChartReportStatus'] ?? 'BREAKDOWN')->whereYear('EndDate', $_GET['ChartReportYear'])->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $_GET['ChartReportStatus'] ?? 'BREAKDOWN')->whereYear('EndDate', $_GET['ChartReportYear'])->get())))) * 100) }}
                         @break      
                     @default
-                    {{-- {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get())))) * 100, 1) }}  --}}
+                    {{ round((count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) / (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get()) == 0 ? 1 : (count(\DB::table('vessel_availabilities')->where('Status', $Status)->whereYear('EndDate', $Year)->get())))) * 100, 1) }} 
                 @endswitch 
             %</span>
             @endforeach
