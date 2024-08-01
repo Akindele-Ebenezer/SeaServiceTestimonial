@@ -12,7 +12,7 @@ class VesselAvailabilityController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $Request)
-    {
+    { 
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
