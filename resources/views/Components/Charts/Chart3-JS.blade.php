@@ -144,7 +144,7 @@
     new Chart('#chart3',  {
         type: '{{ strtolower($ChartType) }}',
         points: [
-            @foreach($Vessel[2] as $Vessel)
+            @foreach($Vessels[2] as $Vessel)
                 @switch($Period)
                     @case('1ST QUARTER')
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
