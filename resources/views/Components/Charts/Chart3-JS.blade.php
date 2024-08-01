@@ -106,7 +106,7 @@
     height: 300,
     width: 1000
     };  
-    @if (isset($Vessels[2]))
+    @if (isset($Vessels[1]))
     @php $Vessel_ = $Vessels[1];  @endphp
     const options2 = {
         data: {
