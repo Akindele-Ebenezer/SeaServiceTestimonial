@@ -107,7 +107,7 @@
     width: 1000
     };  
     @if (isset($Vessels[2]))
-    @php $Vessel_ = $Vessels[1]  @endphp
+    @php $Vessel_ = $Vessels[1];  @endphp
     const options2 = {
         data: {
             ...options.data,
@@ -120,7 +120,7 @@
     }
     @endif
     @if (isset($Vessels[2]))
-    @php $Vessel_ = $Vessels[2]  @endphp
+    @php $Vessel_ = $Vessels[2];  @endphp
     const options3 = {
         data: {
             ...options.data,
