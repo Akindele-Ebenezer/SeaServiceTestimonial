@@ -3,6 +3,8 @@
 
 <div class="form-1 chart-3">
     <div class="row">
+        <p class="Close">✖</p>
+        <img class="OpenChartFilterButton" src="{{ asset('images/bar-chart.png') }}" alt=""> 
         <h1>BREAKDOWN</h1>
         <div class="cell">
             @foreach ($Vessels as $Vessel)
@@ -10,11 +12,11 @@
             @endforeach
             <div id="chart2"></div>
         </div>
-        <div class="cell">
+        <div class="cell Hide">
             <h2>Line Chart</h2>
             <div id="chart1"></div>
         </div>
-        <div class="cell">
+        <div class="cell Hide">
             <h2>Area Chart</h2>
             <div id="chart3"></div>
         </div>

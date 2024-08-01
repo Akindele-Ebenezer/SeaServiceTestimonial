@@ -1,6 +1,6 @@
 <div class="form-1 ChartReport">
     <div class="inner">
-        <div class="close-button--chart-report">
+        <div class="close-button">
             <span>    </span>
             <button class="cancel-button-chart-report">✖</button>
         </div>
@@ -12,15 +12,33 @@
                         <div class="input">
                             <label for="">Status</label>
                             <select name="Status_ChartREPORT" id="">
-                                <option value=""></option>
+                                <option value="DOCKING">DOCKING</option>
+                                <option value="MAINTENANCE">MAINTENANCE</option> 
+                                <option value="BREAKDOWN">BREAKDOWN</option> 
+                                <option value="INSPECTION">INSPECTION</option> 
+                                <option value="BUNKERY">BUNKERING</option> 
+                                <option value="IDLE">READY</option> 
                             </select>
                         </div>  
                     </section>
                     <section>
                         <div class="input">
+                            <label for="">Year</label>
+                            <select name="Year_ChartREPORT" id="">
+                                @for ($Year = 2023; $Year <= date('Y'); $Year++)
+                                    <option value="{{ $Year }}">{{ $Year }}</option>
+                                @endfor
+                            </select>
+                        </div>  
+                    </section> 
+                    <section>
+                        <div class="input">
                             <label for="">Period</label>
                             <select name="Period_ChartREPORT" id="">
-                                <option value=""></option>
+                                <option value="1ST QUARTER">1ST QUARTER</option>
+                                <option value="2ND QUARTER">2ND QUARTER</option>
+                                <option value="3RD QUARTER">3RD QUARTER</option>
+                                <option value="4TH QUARTER">4TH QUARTER</option>
                             </select>
                         </div>  
                     </section>  
@@ -44,6 +62,7 @@
                                 ];
                             @endphp
                             <select name="Month_ChartREPORT">
+                                <option value="NULL">NULL</option>
                                 @foreach ($Months as $Month)
                                     <option value="{{ $loop->iteration }}">{{ $Month }}</option>
                                 @endforeach
@@ -52,14 +71,14 @@
                     </section> 
                     <section>
                         <div class="input">
-                            <label for="">Year</label>
-                            <select name="Year_ChartREPORT" id="">
-                                @for ($Year = 2023; $Year <= date('Y'); $Year++)
-                                    <option value="{{ $Year }}">{{ $Year }}</option>
-                                @endfor
+                            <label for="">Chart Type</label>
+                            <select name="ChartType_ChartREPORT" id="">
+                                <option value="BAR">BAR</option>
+                                <option value="AREA">AREA</option>
+                                <option value="LINE">LINE</option>
                             </select>
                         </div>  
-                    </section> 
+                    </section>
                 </div>
             </div>
         </form>

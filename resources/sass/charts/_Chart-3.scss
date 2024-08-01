@@ -3,14 +3,34 @@
     display: none;
     display: flex;
     width: 100%;  
+
+    .Close {
+        color: red;
+        cursor: pointer;
+        font-size: 1.3em;
+        font-weight: bold;
+        position: absolute;
+        right: 1.5em;
+        top: 1em;
+    }
 }
   .row {    
+      align-items: center;
       background: #fff;
-      display: flex;
-      height: 100vh;
+      border-radius: .5em;
+      display: flex; 
       flex-wrap: wrap; 
+      justify-content: center;
       overflow-y: scroll;
       padding: 6em;
+      position: relative;
+      width: 67%;
+
+      img {
+        cursor: pointer;
+        margin-right: 1em; 
+        width: 2em;
+      }
 }
 .cell {
     background-color: #fff;

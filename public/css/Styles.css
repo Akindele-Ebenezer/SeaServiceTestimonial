@@ -345,14 +345,14 @@
   color: #fff;
   padding: 0.5em;
 }
-.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner, .form-1.FilterReportForVesselByDate .inner {
+.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner, .form-1.FilterReportForVesselByDate .inner, .form-1.ChartReport .inner {
   padding-bottom: 0;
 }
-.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm {
+.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm, .form-1.ChartReport .inner .FilterByDateForm, .form-1.ChartReport .inner .FilterReportByDateForm, .form-1.ChartReport .inner .FilterReportForVesselByDateForm {
   flex-wrap: wrap;
   width: 20em;
 }
-.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm .input input {
+.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.ChartReport .inner .FilterByDateForm .input input, .form-1.ChartReport .inner .FilterReportByDateForm .input input, .form-1.ChartReport .inner .FilterReportForVesselByDateForm .input input {
   margin-top: 0.5em;
   width: unset;
 }
@@ -603,6 +603,11 @@
   height: 5em;
   width: 5em;
   padding: 0.8em;
+}
+
+.ChartReport {
+  display: none;
+  z-index: 300;
 }
 
 .no-data-selected, .no-data {
@@ -1398,14 +1403,32 @@ main .left-navigation ul li .total {
   display: flex;
   width: 100%;
 }
+.chart-3 .Close {
+  color: red;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: bold;
+  position: absolute;
+  right: 1.5em;
+  top: 1em;
+}
 
 .row {
+  align-items: center;
   background: #fff;
+  border-radius: 0.5em;
   display: flex;
-  height: 100vh;
   flex-wrap: wrap;
+  justify-content: center;
   overflow-y: scroll;
   padding: 6em;
+  position: relative;
+  width: 67%;
+}
+.row img {
+  cursor: pointer;
+  margin-right: 1em;
+  width: 2em;
 }
 
 .cell {
