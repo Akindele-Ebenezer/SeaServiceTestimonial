@@ -26,10 +26,11 @@
     document.querySelector('.chart-report-percentage').textContent = Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) > 100 ? 100 + ' %' : Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) + ' %'; 
     const { Chart } = SingleDivUI;
 
+    @php $Vessels = collect($Vessels)->chunk(12); @endphp
     const options = {
     data: { 
         labels: [
-            @foreach($Vessels as $Vessel)
+            @foreach($Vessels[0] as $Vessel)
                 "{{ substr($Vessel->VesselName, 0, 3) }}", 
             @endforeach 
         ], 
@@ -58,7 +59,7 @@
             @endswitch
         ],
         points: [
-            @foreach($Vessels as $Vessel)
+            @foreach($Vessels->first() as $Vessel)
                 @switch($Period)
                     @case('1ST QUARTER')
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
@@ -102,8 +103,40 @@
     height: 300,
     width: 1000
     };  
+    @if (isset($Vessels[2]))
+    const options2 = {
+        data: {
+            ...options.data,
+            labels: [
+                @foreach($Vessels[1] as $Vessel)
+                    "{{ substr($Vessel->VesselName, 0, 3) }}", 
+                @endforeach 
+            ], 
+        }
+    }
+    @endif
+    @if (isset($Vessels[2]))
+    const options3 = {
+        data: {
+            ...options.data,
+            labels: [
+                @foreach($Vessels[2] as $Vessel)
+                    "{{ substr($Vessel->VesselName, 0, 3) }}", 
+                @endforeach 
+            ], 
+        }
+    }
+    @endif
     new Chart('#chart2',  {
         type: '{{ strtolower($ChartType) }}',
         ...options
+    }); 
+    new Chart('#chart1',  {
+        type: '{{ strtolower($ChartType) }}',
+        ...options2
+    }); 
+    new Chart('#chart3',  {
+        type: '{{ strtolower($ChartType) }}',
+        ...options3
     }); 
 </script> 
