@@ -1423,7 +1423,7 @@ main .left-navigation ul li .total {
   justify-content: center;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: 6em;
+  padding: 2em;
   position: relative;
   width: 67%;
 }
