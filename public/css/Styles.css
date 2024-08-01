@@ -1400,7 +1400,6 @@ main .left-navigation ul li .total {
 .chart-3 {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  display: flex;
   width: 100%;
 }
 .chart-3 .Close {
@@ -1419,7 +1418,7 @@ main .left-navigation ul li .total {
   border-radius: 0.5em;
   display: flex;
   flex-wrap: wrap;
-  height: 60%;
+  height: 58%;
   justify-content: center;
   overflow-x: hidden;
   overflow-y: scroll;
