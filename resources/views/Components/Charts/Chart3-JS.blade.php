@@ -108,7 +108,7 @@
     };  
     @if (isset($Vessels[1]))
     @php $Vessel_ = $Vessels[1];  @endphp
-
+    
     const options2 = {
         data: {
             ...options.data,
@@ -143,43 +143,6 @@
     }); 
     new Chart('#chart3',  {
         type: '{{ strtolower($ChartType) }}',
-        points: [
-            @foreach($Vessels[2] as $Vessel)
-                @switch($Period)
-                    @case('1ST QUARTER')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
-                        @break 
-                    @case('2ND QUARTER')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->get()) }}",
-                        @break  
-                    @case('3RD QUARTER')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
-                        @break  
-                    @case('4TH QUARTER')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
-                        @break 
-                    @case('1/2')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->get()) }}",
-                        @break
-                    @case('1/3')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
-                        @break   
-                    @case('1/4')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
-                        @break   
-                    @case('2/3')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
-                        @break   
-                    @case('2/4')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
-                        @break   
-                    @case('3/4')
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
-                        @break      
-                    @default
-                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) }}", 
-                @endswitch
-            @endforeach 
-        ],
+        ...options3
     }); 
 </script> 
