@@ -112,6 +112,7 @@
     const options2 = {
         ...options, 
     }
+    {{$Vessel_}}
     @endif
     @if (isset($Vessels[2]))
     @php $Vessel_ = $Vessels[2];  @endphp
