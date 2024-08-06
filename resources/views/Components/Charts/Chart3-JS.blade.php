@@ -112,7 +112,7 @@
     const options2 = {
     data: { 
         labels: [
-            @foreach($Vessel_ as $Vessel)
+            @foreach($Vessels[1] as $Vessel)
                 "{{ substr($Vessel->VesselName, 0, 3) }}", 
             @endforeach 
         ], 
