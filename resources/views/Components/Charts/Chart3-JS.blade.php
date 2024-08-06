@@ -141,7 +141,7 @@
             @endswitch
         ],
         points: [
-            @foreach($Vessel_ as $Vessel)
+            @foreach($Vessels[1] as $Vessel)
                 @switch($Period)
                     @case('1ST QUARTER')
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
@@ -220,7 +220,7 @@
             @endswitch
         ],
         points: [
-            @foreach($Vessel_ as $Vessel)
+            @foreach($Vessels[2] as $Vessel)
                 @switch($Period)
                     @case('1ST QUARTER')
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
