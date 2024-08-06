@@ -13,7 +13,8 @@
         $Year = $_GET['ChartReportYear'] ?? date('Y');
         $Period = $_GET['ChartReportPeriod'] ?? '(*) ALL';
         $Month = $_GET['ChartReportMonth'] ?? 'NULL';
-        $ChartType = $_GET['ChartReportChartType'] ?? 'BAR';
+        // $ChartType = $_GET['ChartReportChartType'] ?? 'BAR';
+        $ChartType = $_GET['ChartReportChartType'] ?? 'LINE';
     @endphp
     document.querySelector('.chart-report-title').textContent = "{{ $Status == 'IDLE' ? 'READY' : $Status }}";
     document.querySelector('.chart-report-year').textContent = "{{ $Year }}";
