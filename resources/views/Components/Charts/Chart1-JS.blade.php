@@ -210,7 +210,7 @@
     // Legend
     const colorsArray1 = ['#52f781', '#03AED2', '#da1e28', '#aaa', '#ff832b', '#8a3ffc'];
     const createLegend = (parent, data, cat, color) => {
-        const legendLabels = ["Ready", "Docking", "Breakdown", "Maintenance", "Inspection", "Bunkery"];
+        const legendLabels = ["Ready", "Docking", "Breakdown", "Maintenance", "Inspection", "Bunkering"];
         parent.append('div')
             .attr('class', 'legend')
             .selectAll('div')
