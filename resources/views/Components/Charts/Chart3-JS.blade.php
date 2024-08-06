@@ -27,7 +27,7 @@
     const { Chart } = SingleDivUI;
 
     @php 
-        $Vessels = collect($Vessels)->chunk(12); 
+        $Vessels = collect($Vessels)->chunk(12);  
         $Vessel_ = $Vessels[0];    
     @endphp
     const options = {
@@ -71,6 +71,12 @@
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->get()) }}",
                         @break  
                     @case('3RD QUARTER')
+                        @php
+                            // $AvailabilityQuery = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->first();
+                            // $StartDateTime = \Carbon\Carbon::parse($AvailabilityQuery->StartDate . ' ' . $AvailabilityQuery->StartTime);
+                            // $EndDateTime = \Carbon\Carbon::parse($AvailabilityQuery->EndDate . ' ' . $AvailabilityQuery->EndTime);
+                            // $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+                        @endphp
                         "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
                         @break  
                     @case('4TH QUARTER')
