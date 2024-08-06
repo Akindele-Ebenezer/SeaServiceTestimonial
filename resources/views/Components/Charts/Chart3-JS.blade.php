@@ -110,7 +110,7 @@
     @php $Vessel_ = $Vessels[1];  @endphp
     
     const options2 = {
-        ...options.data, 
+        ...options, 
     }
     @endif
     @if (isset($Vessels[2]))
