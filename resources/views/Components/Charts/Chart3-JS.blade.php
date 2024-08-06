@@ -110,14 +110,7 @@
     @php $Vessel_ = $Vessels[1];  @endphp
     
     const options2 = {
-        data: {
-            ...options.data,
-            labels: [
-                @foreach($Vessel_ as $Vessel)
-                    "{{ substr($Vessel->VesselName, 0, 3) }}", 
-                @endforeach 
-            ], 
-        }
+        ...options.data, 
     }
     @endif
     @if (isset($Vessels[2]))
