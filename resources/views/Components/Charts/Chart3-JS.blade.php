@@ -110,13 +110,81 @@
     @php $Vessel_ = $Vessels[1];  @endphp
     
     const options2 = {
+    data: { 
         labels: [
             @foreach($Vessel_ as $Vessel)
                 "{{ substr($Vessel->VesselName, 0, 3) }}", 
             @endforeach 
         ], 
-        ...options, 
-    } 
+        series: {
+        barSize: "80%",
+        barColor: [
+            @switch($Status)
+                @case('DOCKING')
+                    '#03AED2, blue'
+                    @break
+                @case('BREAKDOWN')
+                    '#ed5f7d, red'
+                    @break 
+                @case('INSPECTION')
+                    '#ff832b, orange'
+                    @break 
+                @case('IDLE')
+                    '#52f781, lightgreen'
+                    @break 
+                @case('BUNKERY')
+                    '#8a3ffc, purple'
+                    @break 
+                @case('MAINTENANCE')
+                    '#ddd, white'
+                    @break  
+            @endswitch
+        ],
+        points: [
+            @foreach($Vessel_ as $Vessel)
+                @switch($Period)
+                    @case('1ST QUARTER')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->get()) }}",
+                        @break 
+                    @case('2ND QUARTER')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->get()) }}",
+                        @break  
+                    @case('3RD QUARTER')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
+                        @break  
+                    @case('4TH QUARTER')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
+                        @break 
+                    @case('1/2')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->get()) }}",
+                        @break
+                    @case('1/3')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
+                        @break   
+                    @case('1/4')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$FirstQuarterStart, $FirstQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
+                        @break   
+                    @case('2/3')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->get()) }}",
+                        @break   
+                    @case('2/4')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$SecondQuarterStart, $SecondQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
+                        @break   
+                    @case('3/4')
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->whereBetween('EndDate', [$ThirdQuarterStart, $ThirdQuarterEnd])->whereBetween('EndDate', [$FourthQuarterStart, $FourthQuarterEnd])->get()) }}",
+                        @break      
+                    @default
+                        "{{ count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereYear('EndDate', $Year)->get()) }}", 
+                @endswitch
+            @endforeach 
+        ],
+        responsive: true,
+        width: '100%'
+        }
+    },
+    height: 300,
+    width: 1000
+    };  
     @endif
     @if (isset($Vessels[2]))
     @php $Vessel_ = $Vessels[2];  @endphp
