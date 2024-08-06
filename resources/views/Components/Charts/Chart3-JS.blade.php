@@ -33,7 +33,7 @@
     const options = {
     data: { 
         labels: [
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessel_ as $Vessel)
                 "{{ substr($Vessel->VesselName, 0, 3) }}", 
             @endforeach 
         ], 
@@ -116,14 +116,7 @@
     @if (isset($Vessels[2]))
     @php $Vessel_ = $Vessels[2];  @endphp
     const options3 = {
-        data: {
-            ...options.data,
-            labels: [
-                @foreach($Vessel_ as $Vessel)
-                    "{{ substr($Vessel->VesselName, 0, 3) }}", 
-                @endforeach 
-            ], 
-        }
+        ...options, 
     }
     @endif
     new Chart('#chart2',  {
