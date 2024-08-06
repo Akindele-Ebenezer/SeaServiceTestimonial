@@ -7,16 +7,15 @@ let ChartReport = document.querySelector('.ChartReport');
 
 OpenChartFilterButton.addEventListener('click', () => {
     ChartReport.style.display = 'flex';
-    let Status = document.querySelector('.ChartReportForm select[name=Status_ChartREPORT]');
-    let Year = document.querySelector('.ChartReportForm select[name=Year_ChartREPORT]');
-    let Period = document.querySelector('.ChartReportForm select[name=Period_ChartREPORT]');
-    let Month = document.querySelector('.ChartReportForm select[name=Month_ChartREPORT]');
+    let Status = document.querySelector('.ChartReportForm select[name=Status_ChartREPORT]'); 
     let ChartType = document.querySelector('.ChartReportForm select[name=ChartType_ChartREPORT]');
+    let StartDate = document.querySelector('.ChartReportForm input[name=StartDate_ChartREPORT]');
+    let EndDate = document.querySelector('.ChartReportForm input[name=EndDate_ChartREPORT]');
     
     ChartReportGoButton.addEventListener('click', () => {
         ChartReportGoButton.textContent = 'Processing..';
         ChartReportGoButton.style.backgroundColor = '#1fb95e';
-        window.location = '/Availability?ChartReportStatus=' + Status.value + '&ChartReportYear=' + Year.value + '&ChartReportPeriod=' + Period.value + '&ChartReportMonth=' + Month.value + '&ChartReportChartType=' + ChartType.value;
+        window.location = '/Availability?ChartReportStatus=' + Status.value + '&ChartReportChartType=' + ChartType.value + '&StartDate_ChartREPORT=' + StartDate.value + '&EndDate_ChartREPORT=' + EndDate.value;
     })
 
     ChartFilterCloseButton.addEventListener('click', () => {
