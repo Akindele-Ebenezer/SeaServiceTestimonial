@@ -110,9 +110,13 @@
     @php $Vessel_ = $Vessels[1];  @endphp
     
     const options2 = {
+        labels: [
+            @foreach($Vessel_ as $Vessel)
+                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+            @endforeach 
+        ], 
         ...options, 
-    }
-    {{$Vessel_}}
+    } 
     @endif
     @if (isset($Vessels[2]))
     @php $Vessel_ = $Vessels[2];  @endphp
