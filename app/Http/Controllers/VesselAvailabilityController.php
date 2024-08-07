@@ -13,6 +13,11 @@ class VesselAvailabilityController extends Controller
      */
     public function index(Request $Request)
     { 
+        VesselAvailability::where('TillNow', 'YES')->update([
+            'EndTime' => date('H:i'),
+            'EndDate' => date('Y-m-d'),
+        ]);
+
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
