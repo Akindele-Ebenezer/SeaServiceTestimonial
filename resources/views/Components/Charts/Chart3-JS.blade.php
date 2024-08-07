@@ -56,6 +56,9 @@
             @foreach($Vessel_ as $Vessel)
                 @php 
                     $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->orderBy('StartDate')->first();
+                    if (empty($Period_Start)) {
+                        $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $StartDate_)->orderBy('StartDate')->first();
+                    }
                     $Period_End = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('EndDate', '<=', $EndDate_)->orderBy('EndDate', 'DESC')->first();
                     $StartDateTime = \Carbon\Carbon::parse(($Period_Start->StartDate ?? date('Y-m-d')) . ' ' . ($Period_Start->StartTime ?? '00:00'));
                     $EndDateTime = \Carbon\Carbon::parse(($Period_End->EndDate ?? date('Y-m-d')) . ' ' . ($Period_End->EndTime ?? '00:00'));
@@ -65,11 +68,7 @@
                         $TotalDays = 1;
                     } else {
                         $TotalDays = $EndDateTime->diffInDays($StartDateTime); 
-                    }
-                    // echo '------------------------';
-                    // print_r(($Period_Start->Vessel ?? 'no start date') . ' - -- - ' . ($Period_Start->StartDate ?? 'no start date') . ' - -- - ' . ($Period_End->EndDate ?? 'no end date'));
-                    // echo ' = ' . $TotalDays;
-                    // echo '------------------------';
+                    } 
                 @endphp
                 "{{ $TotalDays }}", 
             @endforeach 
@@ -135,6 +134,9 @@
             @foreach($Vessels[1] as $Vessel)
                 @php 
                     $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->orderBy('StartDate')->first();
+                    if (empty($Period_Start)) {
+                        $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $StartDate_)->orderBy('StartDate')->first();
+                    }
                     $Period_End = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('EndDate', '<=', $EndDate_)->orderBy('EndDate', 'DESC')->first();
                     $StartDateTime = \Carbon\Carbon::parse(($Period_Start->StartDate ?? date('Y-m-d')) . ' ' . ($Period_Start->StartTime ?? '00:00'));
                     $EndDateTime = \Carbon\Carbon::parse(($Period_End->EndDate ?? date('Y-m-d')) . ' ' . ($Period_End->EndTime ?? '00:00'));
@@ -210,6 +212,9 @@
             @foreach($Vessels[2] as $Vessel)
                 @php 
                     $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->orderBy('StartDate')->first();
+                    if (empty($Period_Start)) {
+                        $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $StartDate_)->orderBy('StartDate')->first();
+                    }
                     $Period_End = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('EndDate', '<=', $EndDate_)->orderBy('EndDate', 'DESC')->first();
                     $StartDateTime = \Carbon\Carbon::parse(($Period_Start->StartDate ?? date('Y-m-d')) . ' ' . ($Period_Start->StartTime ?? '00:00'));
                     $EndDateTime = \Carbon\Carbon::parse(($Period_End->EndDate ?? date('Y-m-d')) . ' ' . ($Period_End->EndTime ?? '00:00'));
