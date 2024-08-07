@@ -93,7 +93,7 @@
         yAxis: {
             startFromZero: true,
             // gridLineSize: 0,
-            // axisLineSize: 0,
+            axisLineSize: 0,
             labelFormatter: function(e) {
                 return Math.ceil(e * 10) / 10
             }
@@ -177,7 +177,7 @@
         yAxis: {
             startFromZero: true,
             // gridLineSize: 0,
-            // axisLineSize: 0,
+            axisLineSize: 0,
             labelFormatter: function(e) {
                 return Math.ceil(e * 10) / 10
             }
@@ -261,7 +261,7 @@
         yAxis: {
             startFromZero: true,
             // gridLineSize: 0,
-            // axisLineSize: 0,
+            axisLineSize: 0,
             labelFormatter: function(e) {
                 return Math.ceil(e * 10) / 10
             }
