@@ -23,6 +23,7 @@
         </div>
         @if (isset($Vessels[1]))
         <div class="cell">
+            <span class="days">Days</span>
             @foreach ($Vessels[1] as $Vessel)
             <span class="percents">
                 @include('Components.Includes.PercentageCalculation')
@@ -33,6 +34,7 @@
         @endif
         @if (isset($Vessels[2]))
         <div class="cell"> 
+            <span class="days">Days</span>
             @foreach ($Vessels[2] ?? $Vessels[0] as $Vessel)
             <span class="percents">
                 @include('Components.Includes.PercentageCalculation')
