@@ -52,6 +52,12 @@
                     @break  
             @endswitch
         ],
+            lineSize: 1,
+            lineColor: "#00a899",
+            pointColor: "inherit",
+            pointRadius: 10,
+            pointStyle: "circle-dot",
+            pointInnerColor: "white",
         points: [
             @foreach($Vessel_ as $Vessel)
                 @php 
@@ -130,6 +136,12 @@
                     @break  
             @endswitch
         ],
+            lineSize: 1,
+            lineColor: "#00a899",
+            pointColor: "inherit",
+            pointRadius: 10,
+            pointStyle: "circle-dot",
+            pointInnerColor: "white",
         points: [
             @foreach($Vessels[1] as $Vessel)
                 @php 
@@ -208,6 +220,12 @@
                     @break  
             @endswitch
         ],
+            lineSize: 1,
+            lineColor: "#00a899",
+            pointColor: "inherit",
+            pointRadius: 10,
+            pointStyle: "circle-dot",
+            pointInnerColor: "white",
         points: [
             @foreach($Vessels[2] as $Vessel)
                 @php 
