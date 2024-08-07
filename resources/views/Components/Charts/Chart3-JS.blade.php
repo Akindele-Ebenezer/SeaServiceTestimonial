@@ -1,14 +1,14 @@
 <script> 
     @php  
         $Status = $_GET['ChartReportStatus'] ?? 'BREAKDOWN';
-        $Year = $_GET['ChartReportYear'] ?? date('Y');   
         $ChartType = $_GET['ChartReportChartType'] ?? 'LINE';
         $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
         $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
+        $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
     @endphp
     document.querySelector('.chart-report-title').textContent = "{{ $Status == 'IDLE' ? 'READY' : $Status }}";
     document.querySelector('.chart-report-year').textContent = "{{ $Year }}";
-    document.querySelector('.chart-report-period').textContent = " { period }"; 
+    document.querySelector('.chart-report-period').textContent = "({{ $StartDate_ }}) to ({{ $EndDate_ }})"; 
     let ChartReportPercentages = document.querySelectorAll('.chart-3 .row .cell .percents');
     let PercentagesArr = [];
     ChartReportPercentages.forEach(Percentage => {
