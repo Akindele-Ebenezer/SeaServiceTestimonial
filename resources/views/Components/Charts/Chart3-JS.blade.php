@@ -11,8 +11,14 @@
     document.querySelector('.chart-report-period').textContent = "({{ $StartDate_ }}) to ({{ $EndDate_ }})"; 
     let ChartReportPercentages = document.querySelectorAll('.chart-3 .row .cell .percents');
     let PercentagesArr = [];
+    let PercentagesArr2 = [];
     ChartReportPercentages.forEach(Percentage => {
         PercentagesArr.push((parseFloat(Percentage.textContent.replace("%", "").trim())));
+        PercentagesArr2.push((parseFloat(Percentage.textContent.replace("%", "").trim())));
+    });  
+    let OverallDays = Math.ceil(PercentagesArr2.reduce((total, current) => total + current, 0));
+    ChartReportPercentages.forEach(Percentage => { 
+        Percentage.textContent =  parseFloat(Percentage.textContent.replace("%", "").trim()) + ' (' + Math.ceil((parseFloat(Percentage.textContent.replace("%", "").trim()) / OverallDays) * 100, 0) + ' %)';
     });  
     document.querySelector('.chart-report-percentage').textContent = Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) > 100 ? 100 + ' %' : Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) + ' %'; 
     const { Chart } = SingleDivUI;
@@ -58,14 +64,14 @@
             pointRadius: 10,
             pointStyle: "circle-dot",
             pointInnerColor: "white",
-        points: [
+        points: [ 
             @foreach($Vessel_ as $Vessel)
-                @php 
-                    $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->orderBy('StartDate')->first();
-                    if (empty($Period_Start)) {
-                        $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->orderBy('StartDate')->first();
+                @php  
+                    $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->where('StartDate', '<=', $EndDate_)->orderBy('StartDate', 'DESC')->first();  
+                    if ((empty($Period_Start)) || ($StartDate_ > ($Period_Start->StartDate ?? 'null'))) {
+                        $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $StartDate_)->where('EndDate', '>=', $StartDate_)->orderBy('StartDate', 'DESC')->first(); 
                     }
-                    $Period_End = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('EndDate', '<=', $EndDate_)->orderBy('EndDate', 'DESC')->first();
+                    $Period_End = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('EndDate', '>=', $StartDate_)->where('EndDate', '<=', $EndDate_)->orderBy('EndDate', 'DESC')->first(); 
                     $StartDateTime = \Carbon\Carbon::parse(($Period_Start->StartDate ?? date('Y-m-d')) . ' ' . ($Period_Start->StartTime ?? '00:00'));
                     $EndDateTime = \Carbon\Carbon::parse(($Period_End->EndDate ?? date('Y-m-d')) . ' ' . ($Period_End->EndTime ?? '00:00'));
                     if (empty($Period_Start) || empty($Period_End)) {
@@ -77,7 +83,7 @@
                     } 
                 @endphp
                 "{{ $TotalDays }}", 
-            @endforeach 
+            @endforeach  
         ],
         responsive: true,
         width: '100%'

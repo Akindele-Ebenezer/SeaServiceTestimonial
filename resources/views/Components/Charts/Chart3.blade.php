@@ -13,12 +13,14 @@
         <h1><span class="chart-report-title"></span> <span class="chart-report-year"></span></h1> &nbsp; - &nbsp; <span class="chart-report-period"></span> &nbsp; :: &nbsp; <span class="chart-report-percentage"></span> 
         <div class="cell">
             <span class="days">Days</span>
-            @php $Vessels = collect($Vessels)->chunk(12); @endphp
+            @php 
+                $Vessels = collect($Vessels)->chunk(12); 
+            @endphp
             @foreach ($Vessels[0] as $Vessel)
-            <span class="percents">
+            <span class="percents"> 
                 @include('Components.Includes.PercentageCalculation')
-            %</span>
-            @endforeach
+            %</span> 
+            @endforeach  
             <div id="chart2"></div>
         </div>
         @if (isset($Vessels[1]))
