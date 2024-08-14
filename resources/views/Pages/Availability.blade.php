@@ -11,8 +11,8 @@
 @include('Components.Inner.ChartReport')  
 @include('Components.Charts.Chart1') 
 @include('Components.Charts.Chart3') 
-<div class="vessel-content notifications availability"> 
-    <h2>Vessel Status</h2>
+<div class="vessel-content notifications availability">  
+    <h3 class="company-logo"><img src="{{ asset('Images/LTT -DEPASA Logo.png') }}" alt=""></h3>
     {{-- <h3>LIVE</h3> :: {{ count($Vessels) }} --}} 
     @unless (count($Vessels) > 0)
         <p class="empty-data">There's no vessel in the system..</p>
@@ -22,7 +22,7 @@
             L.T.T Coastal Marine        
         </span>
     </h3>
-    <h3>Report summary <img class="report-summary ReportPdfButton" src="{{ asset('images/pdf.png') }}" alt=""></h3>
+    <h3 class="report-summary">Report summary <img class="report-summary ReportPdfButton" src="{{ asset('images/pdf.png') }}" alt=""></h3>
     @php
         $Dredgers = \DB::table('vessels_vessel_information')->select(['VesselName', 'VesselType', 'Company', 'ImoNumber', 'CallSign'])->where('Company', 'L.T.T')->where('VesselType', 'DREDGER')->get();
     @endphp

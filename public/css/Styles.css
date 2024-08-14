@@ -1008,7 +1008,7 @@ main .left-navigation ul li .total {
   border-block: 1px solid #ffcece;
   padding-block: 0em;
   position: sticky;
-  top: 4.85em;
+  top: 6.85em;
   width: 100%;
   z-index: 20;
 }
@@ -1453,7 +1453,15 @@ main .left-navigation ul li .total {
 }
 
 .availability {
+  position: relative;
   width: 20%;
+}
+.availability .company-logo {
+  background-color: #fff;
+  position: sticky;
+  translate: 0 -1em;
+  width: 100%;
+  z-index: 100;
 }
 .availability.dashboard {
   width: 70%;
