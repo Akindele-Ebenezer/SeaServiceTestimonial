@@ -1951,7 +1951,7 @@ main .left-navigation ul li .total {
   background-color: #1d5069;
   color: #fff;
   font-size: 2em;
-  font-weight: unset;
+  font-weight: 700;
   position: sticky;
   top: -0.5em;
   z-index: 100;
