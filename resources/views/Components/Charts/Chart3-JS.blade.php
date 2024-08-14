@@ -1,7 +1,7 @@
 <script> 
     @php  
         $Status = $_GET['ChartReportStatus'] ?? 'BREAKDOWN';
-        $ChartType = $_GET['ChartReportChartType'] ?? 'LINE';
+        $ChartType = $_GET['ChartReportChartType'] ?? 'BAR';
         $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
         $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
         $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
