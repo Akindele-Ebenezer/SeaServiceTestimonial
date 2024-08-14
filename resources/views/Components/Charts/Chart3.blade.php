@@ -36,6 +36,12 @@
             <span class="percents">
                 @include('Components.Includes.PercentageCalculation')
             %</span>
+            @php  
+                $NumberOfStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
+                $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('StartDate', '>=', $StartDate_)->where('EndDate', '<=', $EndDate_)->get());
+            @endphp
+            <span class="status-percentage Hide">{{ round(($NumberOfTotalStatusForCurrentVessel == 0 ? ($NumberOfStatusForCurrentVessel / 1) : ($NumberOfStatusForCurrentVessel / $NumberOfTotalStatusForCurrentVessel)) * 100, 0) }} %</span>
+            <span class="Hide">{{ $NumberOfStatusForCurrentVessel }}</span>
             @endforeach
             <div id="chart1"></div>
         </div>
@@ -47,6 +53,12 @@
             <span class="percents">
                 @include('Components.Includes.PercentageCalculation')
             %</span>
+            @php  
+                $NumberOfStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
+                $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('StartDate', '>=', $StartDate_)->where('EndDate', '<=', $EndDate_)->get());
+            @endphp
+            <span class="status-percentage Hide">{{ round(($NumberOfTotalStatusForCurrentVessel == 0 ? ($NumberOfStatusForCurrentVessel / 1) : ($NumberOfStatusForCurrentVessel / $NumberOfTotalStatusForCurrentVessel)) * 100, 0) }} %</span>
+            <span class="Hide">{{ $NumberOfStatusForCurrentVessel }}</span>
             @endforeach
             <div id="chart3"></div>
         </div>

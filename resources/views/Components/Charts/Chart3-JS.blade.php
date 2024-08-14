@@ -17,8 +17,7 @@
         PercentagesArr2.push((parseFloat(Percentage.textContent.replace("%", "").trim())));
     });  
     let OverallDays = Math.ceil(PercentagesArr2.reduce((total, current) => total + current, 0));
-    ChartReportPercentages.forEach(Percentage => { 
-        // Percentage.textContent = parseFloat(Percentage.textContent.replace("%", "").trim()) + ' (' + Math.ceil((parseFloat(Percentage.textContent.replace("%", "").trim()) / OverallDays) * 100, 0) + ' %)';
+    ChartReportPercentages.forEach(Percentage => {  
         Percentage.textContent = parseFloat(Percentage.textContent.replace("%", "").trim()) + ' (' + Percentage.nextElementSibling.textContent  + ')';
     });  
     document.querySelector('.chart-report-percentage').textContent = Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) > 100 ? 100 + ' %' : Math.ceil(PercentagesArr.reduce((total, current) => total + current, 0)) + ' %'; 
