@@ -1005,7 +1005,6 @@ main .left-navigation ul li .total {
   width: 100%;
 }
 .vessel-content h3.company-heading {
-  border-block: 1px solid #ffcece;
   padding-block: 0em;
   position: sticky;
   top: 6.85em;
