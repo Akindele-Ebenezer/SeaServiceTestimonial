@@ -31,7 +31,7 @@
     data: { 
         labels: [
             @foreach($Vessel_ as $Vessel)
-                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+                "{{ $Vessel->VesselName }}", 
             @endforeach 
         ], 
         series: {
@@ -91,11 +91,12 @@
     },
     graphSettings: {
         labelDistance: 15,
-        // xAxis: {
-        //     labelFormatter: function(e) {
-        //         return e.toUpperCase()
-        //     }
-        // },
+        xAxis: {
+            labelFontSize: 8,
+            labelFormatter: function(e) {
+                return e.toUpperCase()
+            }
+        },
         yAxis: {
             startFromZero: true,
             // gridLineSize: 0,
@@ -115,7 +116,7 @@
     data: { 
         labels: [
             @foreach($Vessels[1] as $Vessel)
-                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+                "{{ $Vessel->VesselName }}", 
             @endforeach 
         ], 
         series: {
@@ -175,11 +176,12 @@
     },
     graphSettings: {
         labelDistance: 15,
-        // xAxis: {
-        //     labelFormatter: function(e) {
-        //         return e.toUpperCase()
-        //     }
-        // },
+        xAxis: {
+            labelFontSize: 8,
+            labelFormatter: function(e) {
+                return e.toUpperCase()
+            }
+        },
         yAxis: {
             startFromZero: true,
             // gridLineSize: 0,
@@ -199,7 +201,7 @@
     data: { 
         labels: [
             @foreach($Vessels[2] as $Vessel)
-                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+                "{{ $Vessel->VesselName }}", 
             @endforeach 
         ], 
         series: {
@@ -259,11 +261,12 @@
     },
     graphSettings: {
         labelDistance: 15,
-        // xAxis: {
-        //     labelFormatter: function(e) {
-        //         return e.toUpperCase()
-        //     }
-        // },
+        xAxis: {
+            labelFontSize: 8,
+            labelFormatter: function(e) {
+                return e.toUpperCase()
+            }
+        },
         yAxis: {
             startFromZero: true,
             // gridLineSize: 0,
