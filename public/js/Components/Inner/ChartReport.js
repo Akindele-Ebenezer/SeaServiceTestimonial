@@ -23,7 +23,6 @@ OpenChartFilterButton.addEventListener('click', () => {
     })
 })
 ChartReportCloseButton.addEventListener('click', () => { 
-    // ChartReportModal.style.display = 'none'; 
     ChartReportModal.style.visibility = 'hidden'; 
 })
  
