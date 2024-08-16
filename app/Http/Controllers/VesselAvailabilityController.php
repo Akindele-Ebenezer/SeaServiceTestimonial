@@ -66,6 +66,9 @@ class VesselAvailabilityController extends Controller
                                 })->groupBy('Vessel')->get(); 
          
         
+        if (isset($Request->SpecificDay)) {
+            $VesselAvailability = VesselAvailability::where('Vessel', $Request->Vessel_FILTER)->where('StartDate', $Request->SpecificDay)->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
+        }
 
         if (isset($Request->FromDate_FILTERBYDATE) AND isset($Request->EndDate_FILTERBYDATE)) {
             $STARTDATE = $Request->FromDate_FILTERBYDATE;
@@ -78,9 +81,9 @@ class VesselAvailabilityController extends Controller
             $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
             $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
             $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
-            $VesselAvailability = VesselAvailability::whereBetween('StartDate', [$STARTDATE, $ENDDATE])->orWhereBetween('EndDate', [$STARTDATE, $ENDDATE])->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
+            $VesselAvailability = VesselAvailability::whereBetween('EndDate', [$STARTDATE, $ENDDATE])->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
             
-            if (isset($Request->Vessel_FILTER)) {
+            if (isset($Request->Vessel_FILTER)) { 
                 $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Vessel', $Request->Vessel_FILTER)->where('Status', 'IDLE')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
                 $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Vessel', $Request->Vessel_FILTER)->where('Status', 'BUNKERY')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
                 $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Vessel', $Request->Vessel_FILTER)->where('Status', 'INSPECTION')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
@@ -88,7 +91,7 @@ class VesselAvailabilityController extends Controller
                 $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Vessel', $Request->Vessel_FILTER)->where('Status', 'OPERATION')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
                 $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Vessel', $Request->Vessel_FILTER)->where('Status', 'BREAKDOWN')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
                 $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Vessel', $Request->Vessel_FILTER)->where('Status', 'DOCKING')->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->groupBy('Vessel')->get();
-                $VesselAvailability = VesselAvailability::where('Vessel', $Request->Vessel_FILTER)->whereBetween('StartDate', [$STARTDATE, $ENDDATE])->orWhereBetween('EndDate', [$STARTDATE, $ENDDATE])->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
+                $VesselAvailability = VesselAvailability::where('Vessel', $Request->Vessel_FILTER)->whereBetween('EndDate', [$STARTDATE, $ENDDATE])->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
             }
             
             return view('Pages.Availability', [ 
@@ -110,34 +113,34 @@ class VesselAvailabilityController extends Controller
             ]);
         }
 
-        if (isset($Request->SpecificDay)) {
-            $STARTDATE = $Request->SpecificDay;
-            $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $NumberOfVessels_MAINTENANCE = VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-            $VesselAvailability = VesselAvailability::where('StartDate', $STARTDATE)->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
-            return view('Pages.Availability', [ 
-                'Employees' => $Employees,
-                'Vessels' => $Vessels,
-                'Ranks' => $Ranks,
-                'Companies' => $Companies,
-                'VesselAvailability' => $VesselAvailability,
-                'Vessels' => $Vessels,
-                'NumberOfVessels' => count($NumberOfVessels),
-                'STARTDATE' => $STARTDATE,
-                'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
-                'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
-                'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
-                'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),
-                'NumberOfVessels_OPERATION' => count($NumberOfVessels_OPERATION),
-                'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
-                'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING),
-            ]);
-        }
+        // if (isset($Request->SpecificDay)) {
+        //     $STARTDATE = $Request->SpecificDay;
+        //     $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $NumberOfVessels_MAINTENANCE = VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
+        //     $VesselAvailability = VesselAvailability::where('StartDate', $STARTDATE)->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
+        //     return view('Pages.Availability', [ 
+        //         'Employees' => $Employees,
+        //         'Vessels' => $Vessels,
+        //         'Ranks' => $Ranks,
+        //         'Companies' => $Companies,
+        //         'VesselAvailability' => $VesselAvailability,
+        //         'Vessels' => $Vessels,
+        //         'NumberOfVessels' => count($NumberOfVessels),
+        //         'STARTDATE' => $STARTDATE,
+        //         'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
+        //         'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
+        //         'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
+        //         'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),
+        //         'NumberOfVessels_OPERATION' => count($NumberOfVessels_OPERATION),
+        //         'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
+        //         'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING),
+        //     ]);
+        // }
 
         if(isset($Request->FilterValue)) {
             $VesselAvailability = VesselAvailability::where('Vessel', 'LIKE', '%' . $Request->FilterValue . '%')
@@ -150,6 +153,7 @@ class VesselAvailabilityController extends Controller
                                     ->orWhere('ImoNumber', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->orWhere('CallSign', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->get(); 
+                                    
                 if ($Request->FilterValue == 'Ready') {
                     $VesselAvailability = VesselAvailability::where('Status', 'IDLE')->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20);  
                 }
