@@ -6,7 +6,7 @@
     $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
     $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
 @endphp
-<div class="form-1 chart-3">
+<div class="form-1 chart-3" style="visibility: hidden">
     <div class="row">
         <p class="Close">✖</p>
         <img class="OpenChartFilterButton" src="{{ asset('images/bar-chart.png') }}" alt=""> 

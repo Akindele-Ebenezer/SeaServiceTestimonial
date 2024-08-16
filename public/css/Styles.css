@@ -24,6 +24,10 @@
   display: block !important;
 }
 
+.Flex {
+  display: flex !important;
+}
+
 .error-x-wrapper {
   display: none;
   justify-content: center;
@@ -1466,7 +1470,7 @@ main .left-navigation ul li .total {
 .availability.dashboard {
   width: 70%;
 }
-.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .RecordAvailabilityButton {
+.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .RecordAvailabilityButton, .availability .dashboard-inner .DisplayChart3Button {
   background-color: #ff6868;
   color: #fff;
   border: none;
@@ -1534,6 +1538,22 @@ main .left-navigation ul li .total {
     font-size: 0.75em;
   }
 }
+.DisplayChart3Button {
+  cursor: pointer;
+  position: absolute;
+  top: unset;
+  bottom: 0.5em;
+  right: 1em;
+  z-index: 200;
+  background-color: #ff6868;
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.3em;
+}
+.DisplayChart3Button svg {
+  fill: #fff;
+}
+
 .testimonial-content, .table-1 {
   padding: 1em 2em;
   width: 83%;

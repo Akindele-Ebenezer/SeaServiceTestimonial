@@ -16,7 +16,7 @@
     } 
 
     .dashboard-inner {
-        .FilterByDateButton, .FilterReportByDateButton,.FilterReportForVesselByDate, .RecordAvailabilityButton {
+        .FilterByDateButton, .FilterReportByDateButton,.FilterReportForVesselByDate, .RecordAvailabilityButton, .DisplayChart3Button {
             background-color: #ff6868;
             color: #fff;
             border: none;
@@ -28,7 +28,7 @@
             right: 1em;
             top: 1em;
             z-index: 100;
-        }
+        } 
 
         .RecordAvailabilityButton {
             right: 9em;
@@ -131,5 +131,22 @@
                 }
             }
         }
+    }
+  }
+
+  .DisplayChart3Button {
+    cursor: pointer;
+    position: absolute;
+    top: unset;
+    bottom: .5em;
+    right: 1em;
+    z-index: 200;
+    background-color: #ff6868;
+    border: none;
+    border-radius: .3em;
+    padding: .3em;
+
+    svg {
+        fill: #fff;
     }
   }
