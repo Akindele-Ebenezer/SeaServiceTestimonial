@@ -111,40 +111,19 @@ class VesselAvailabilityController extends Controller
                 'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
                 'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING),
             ]);
-        }
-
-        // if (isset($Request->SpecificDay)) {
-        //     $STARTDATE = $Request->SpecificDay;
-        //     $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->where('Status', 'IDLE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $NumberOfVessels_INSPECTION = VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $NumberOfVessels_MAINTENANCE = VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $NumberOfVessels_OPERATION = VesselAvailability::select('Vessel')->where('Status', 'OPERATION')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $NumberOfVessels_BREAKDOWN = VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $NumberOfVessels_DOCKING = VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('StartDate', $STARTDATE)->groupBy('Vessel')->get();
-        //     $VesselAvailability = VesselAvailability::where('StartDate', $STARTDATE)->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
-        //     return view('Pages.Availability', [ 
-        //         'Employees' => $Employees,
-        //         'Vessels' => $Vessels,
-        //         'Ranks' => $Ranks,
-        //         'Companies' => $Companies,
-        //         'VesselAvailability' => $VesselAvailability,
-        //         'Vessels' => $Vessels,
-        //         'NumberOfVessels' => count($NumberOfVessels),
-        //         'STARTDATE' => $STARTDATE,
-        //         'NumberOfVessels_IDLE' => count($NumberOfVessels_IDLE),
-        //         'NumberOfVessels_BUNKERY' => count($NumberOfVessels_BUNKERY),
-        //         'NumberOfVessels_INSPECTION' => count($NumberOfVessels_INSPECTION),
-        //         'NumberOfVessels_MAINTENANCE' => count($NumberOfVessels_MAINTENANCE),
-        //         'NumberOfVessels_OPERATION' => count($NumberOfVessels_OPERATION),
-        //         'NumberOfVessels_BREAKDOWN' => count($NumberOfVessels_BREAKDOWN),
-        //         'NumberOfVessels_DOCKING' => count($NumberOfVessels_DOCKING),
-        //     ]);
-        // }
+        } 
 
         if(isset($Request->FilterValue)) {
             $VesselAvailability = VesselAvailability::where('Vessel', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->orWhere('Status', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('DoneBy', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('Comment', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('Location', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('StartTime', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('EndTime', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('StartDate', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('EndDate', 'LIKE', '%' . $Request->FilterValue . '%')
+                                    ->orWhere('TillNow', 'LIKE', '%' . $Request->FilterValue . '%')
                                     ->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC') 
                                     ->paginate(14);
             $Vessels = \DB::table('vessels_vessel_information')

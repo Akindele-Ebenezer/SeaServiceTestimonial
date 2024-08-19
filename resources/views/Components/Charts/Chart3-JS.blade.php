@@ -24,7 +24,10 @@
     const { Chart } = SingleDivUI;
 
     @php 
-        $Vessels = collect($Vessels)->chunk(12);  
+        $Vessels = collect($Vessels)->chunk(12);   
+    @endphp
+    @if (isset($Vessels[0]))
+    @php  
         $Vessel_ = $Vessels[0];  
     @endphp
     const options = {
@@ -33,7 +36,7 @@
             @foreach($Vessel_ as $Vessel)
                 "{{ $Vessel->VesselName }}", 
             @endforeach 
-        ], 
+        ],
         series: {
         barSize: "80%",
         barColor: [
@@ -107,8 +110,9 @@
         }
     },
     height: 300,
-    width: 1000
-    };  
+    width: 1000,
+    };   
+    @endif 
     @if (isset($Vessels[1]))
     @php $Vessel_ = $Vessels[1];  @endphp
     
