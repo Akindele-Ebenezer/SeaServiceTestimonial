@@ -2439,7 +2439,7 @@
                         <td class="Hide">{{ $Availabilty->DoneBy }}</td> 
                         <td class="Hide">{{ $Availabilty->Attachment }}</td> 
                         <td class="Hide">{{ $Availabilty->StartTime }}</td> 
-                        <td class="Hide">{{ $Availabilty->TillNow == 'YES' ? date('H:i') : date('H:i', strtotime($Availabilty->EndTime)) }}</td> 
+                        <td class="Hide">{{ $Availabilty->EndTime }}</td> 
                         <td class="Hide">{{ $Availabilty->StartDate }}</td> 
                         <td class="Hide">{{ $Availabilty->EndDate }}</td> 
                         <td class="Hide">{{ $Availabilty->TillNow }}</td>
@@ -2453,8 +2453,8 @@
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ date('H:i', strtotime($Availabilty->StartTime)).' HRS' }}</td>
-                        <td>{{ $Availabilty->TillNow == 'YES' ? date('Y-m-d') : $Availabilty->EndDate }}</td>
-                        <td>{{ $Availabilty->TillNow == 'YES' ? date('H:i') : date('H:i', strtotime($Availabilty->EndTime)) }} HRS</td>
+                        <td class="Hide">{{ $Availabilty->EndDate }}</td> 
+                        <td>{{ $Availabilty->EndTime }}</td> 
                         <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
                             <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 
