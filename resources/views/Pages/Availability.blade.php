@@ -2453,7 +2453,7 @@
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ date('H:i', strtotime($Availabilty->StartTime)).' HRS' }}</td>
-                        <td class="Hide">{{ $Availabilty->EndDate }}</td> 
+                        <td>{{ $Availabilty->EndDate }}</td> 
                         <td>{{ $Availabilty->EndTime }}</td> 
                         <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
