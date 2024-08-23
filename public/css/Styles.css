@@ -1831,7 +1831,7 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-1 .div strong.total, .dashboard-inner .board-2 .div strong.total, .dashboard-inner .board-3 .div strong.total {
   background: #276e91;
   border-radius: 0.1em;
-  padding-inline: 0.3em;
+  padding-inline: 0.2em;
 }
 .dashboard-inner .board-1 .div .sub-heading, .dashboard-inner .board-2 .div .sub-heading, .dashboard-inner .board-3 .div .sub-heading {
   color: #eee;
