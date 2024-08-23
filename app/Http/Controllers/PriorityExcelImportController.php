@@ -56,7 +56,9 @@ class PriorityExcelImportController extends Controller
             $PreviousRow = VesselAvailability::select('id')->where('id', '<', $CurrentRow->id)
                                                 ->where('Vessel', $Request->Vessel)
                                                 ->where('Status', '!=', 'IDLE')
-                                                ->orderBy('StartDate', 'DESC')->first(); 
+                                                ->orderBy('StartDate', 'DESC')
+                                                ->orderBy('StartTime', 'DESC')
+                                                ->first(); 
             VesselAvailability::where('id', '<', $CurrentRow->id)
             ->where('Vessel', $Request->Vessel)->update([ 
                 'TillNow' => 'NO',

@@ -1937,7 +1937,7 @@
                 <table>
                     <tr>
                         <th>Ready</th>
-                        <th>Bunkery</th>
+                        <th>Bunkering</th>
                         <th>Inspection</th>
                     </tr>
                     <tr>
@@ -2454,7 +2454,7 @@
                         <td>{{ $Availabilty->StartDate }}</td>
                         <td>{{ date('H:i', strtotime($Availabilty->StartTime)).' HRS' }}</td>
                         <td>{{ $Availabilty->EndDate }}</td> 
-                        <td>{{ $Availabilty->EndTime }}</td> 
+                        <td>{{ date('H:i', strtotime($Availabilty->EndTime)).' HRS' }}</td> 
                         <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
                             <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 
@@ -2566,7 +2566,7 @@
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_BREAKDOWN_LASTMONTH) * 10 }}%; background: #da1e28" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="breakdown tooltip-x-div"></div> On breakdown ({{ count($NumberOfVessels_BREAKDOWN_LASTMONTH) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_MAINTENANCE_LASTMONTH) * 10 }}%; background: #52f781" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="maintenance tooltip-x-div"></div> On maintenance ({{ count($NumberOfVessels_MAINTENANCE_LASTMONTH) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_INSPECTION_LASTMONTH) * 10 }}%; background: #ff832b" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="inspection tooltip-x-div"></div> On inspection ({{ count($NumberOfVessels_INSPECTION_LASTMONTH) }})</span></span>
-                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LASTMONTH) * 10 }}%; background: #8a3ffc" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkery ({{ count($NumberOfVessels_BUNKERY_LASTMONTH) }})</span></span>
+                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LASTMONTH) * 10 }}%; background: #8a3ffc" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkering ({{ count($NumberOfVessels_BUNKERY_LASTMONTH) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_IDLE_LASTMONTH) * 10 }}%; background: #fff" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="idle tooltip-x-div"></div> On ready to go ({{ count($NumberOfVessels_IDLE_LASTMONTH) }})</span></span>
                     </div>
                     <div class="inner-x">
@@ -2576,7 +2576,7 @@
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_BREAKDOWN_LAST2MONTHS) * 10 }}%; background: #da1e28"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="breakdown tooltip-x-div"></div> On breakdown ({{ count($NumberOfVessels_BREAKDOWN_LAST2MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_MAINTENANCE_LAST2MONTHS) * 10 }}%; background: #52f781"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="maintenance tooltip-x-div"></div> On maintenance ({{ count($NumberOfVessels_MAINTENANCE_LAST2MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_INSPECTION_LAST2MONTHS) * 10 }}%; background: #ff832b"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="inspection tooltip-x-div"></div> On inspection ({{ count($NumberOfVessels_INSPECTION_LAST2MONTHS) }})</span></span>
-                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LAST2MONTHS) * 10 }}%; background: #8a3ffc"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkery ({{ count($NumberOfVessels_BUNKERY_LAST2MONTHS) }})</span></span>
+                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LAST2MONTHS) * 10 }}%; background: #8a3ffc"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkering ({{ count($NumberOfVessels_BUNKERY_LAST2MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_IDLE_LAST2MONTHS) * 10 }}%; background: #fff"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="idle tooltip-x-div"></div> On ready to go ({{ count($NumberOfVessels_IDLE_LAST2MONTHS) }})</span></span>
                     </div>
                     <div class="inner-x">
@@ -2586,7 +2586,7 @@
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_BREAKDOWN_LAST3MONTHS) * 10 }}%; background: #da1e28"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="breakdown tooltip-x-div"></div> On breakdown ({{ count($NumberOfVessels_BREAKDOWN_LAST3MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_MAINTENANCE_LAST3MONTHS) * 10 }}%; background: #52f781"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="maintenance tooltip-x-div"></div> On maintenance ({{ count($NumberOfVessels_MAINTENANCE_LAST3MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_INSPECTION_LAST3MONTHS) * 10 }}%; background: #ff832b"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="inspection tooltip-x-div"></div> On inspection ({{ count($NumberOfVessels_INSPECTION_LAST3MONTHS) }})</span></span>
-                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LAST3MONTHS) * 10 }}%; background: #8a3ffc"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkery ({{ count($NumberOfVessels_BUNKERY_LAST3MONTHS) }})</span></span>
+                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LAST3MONTHS) * 10 }}%; background: #8a3ffc"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkering ({{ count($NumberOfVessels_BUNKERY_LAST3MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_IDLE_LAST3MONTHS) * 10 }}%; background: #fff"  class="tooltip-x"><span class="Hide tooltip-x-span"><div class="idle tooltip-x-div"></div> On ready to go ({{ count($NumberOfVessels_IDLE_LAST3MONTHS) }})</span></span>
                     </div>
                     <div class="inner-x">
@@ -2596,7 +2596,7 @@
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_BREAKDOWN_LAST4MONTHS) * 10 }}%; background: #da1e28" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="breakdown tooltip-x-div"></div> On breakdown ({{ count($NumberOfVessels_BREAKDOWN_LAST4MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_MAINTENANCE_LAST4MONTHS) * 10 }}%; background: #52f781" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="maintenance tooltip-x-div"></div> On maintenance ({{ count($NumberOfVessels_MAINTENANCE_LAST4MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_INSPECTION_LAST4MONTHS) * 10 }}%; background: #ff832b" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="inspection tooltip-x-div"></div> On inspection ({{ count($NumberOfVessels_INSPECTION_LAST4MONTHS) }})</span></span>
-                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LAST4MONTHS) * 10 }}%; background: #8a3ffc" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkery ({{ count($NumberOfVessels_BUNKERY_LAST4MONTHS) }})</span></span>
+                        <span style="height: 1.5em; width: {{ count($NumberOfVessels_BUNKERY_LAST4MONTHS) * 10 }}%; background: #8a3ffc" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="bunkery tooltip-x-div"></div> On bunkering ({{ count($NumberOfVessels_BUNKERY_LAST4MONTHS) }})</span></span>
                         <span style="height: 1.5em; width: {{ count($NumberOfVessels_IDLE_LAST4MONTHS) * 10 }}%; background: #fff" class="tooltip-x"><span class="Hide tooltip-x-span"><div class="idle tooltip-x-div"></div> On ready to go ({{ count($NumberOfVessels_IDLE_LAST4MONTHS) }})</span></span>
                     </div>
                 </div>
