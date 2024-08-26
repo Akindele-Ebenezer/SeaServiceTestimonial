@@ -73,7 +73,7 @@
                     $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->where('StartDate', '<=', $EndDate_)->orderBy('StartDate')->first();  
                     $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->orderBy('EndDate', 'DESC')->get();
                     // ////////////////////////////// 
-                    // echo '---'.count($Periods).'---';
+                    echo '---'.count($Periods).'---';
                     // print_r($Periods);
                     // echo '--------------------'; 
                     $TotalDaysArr = [];
