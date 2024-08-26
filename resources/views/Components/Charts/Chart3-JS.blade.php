@@ -72,39 +72,29 @@
                 @php  
                     $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '>=', $StartDate_)->where('StartDate', '<=', $EndDate_)->orderBy('StartDate')->first();  
                     $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->orderBy('EndDate', 'DESC')->get();
-                    // //////////////////////////////
-                    // if ((empty($Periods)) || ($StartDate_ > ($Period->StartDate ?? 'null'))) {
-                    //     echo 'test';
-                    //     // $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $StartDate_)->where('EndDate', '>=', $StartDate_)->orderBy('StartDate')->first(); 
-                    // }
+                    // ////////////////////////////// 
+                    // echo '---'.count($Periods).'---';
+                    // print_r($Periods);
                     // echo '--------------------'; 
-                    // foreach($Periods as $Period) {
-                    //     echo '--------------------START: ';
-                    //     echo 'VESSEL: '.$Period->Vessel.', ';
-                    //     echo $Period->StartDate . ' - ' . $Period->EndDate;
-                    //     $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-                    //     $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-                    //     $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                    //     echo ' DAYS: '.$TotalDays;
-                    //     echo ' :END--------------------';
-                    // }
-                    // echo '--------------------';
-                    // //////////////////////////////
-                    if ((empty($Period_Start)) || ($StartDate_ > ($Period_Start->StartDate ?? 'null'))) {
-                        $Period_Start = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $StartDate_)->where('EndDate', '>=', $StartDate_)->orderBy('StartDate')->first(); 
+                    $TotalDaysArr = [];
+                    foreach($Periods as $Period) {
+                        // echo '--------------------START: ';
+                        // echo 'VESSEL: '.$Period->Vessel.', ';
+                        // echo $Period->StartDate . ' - ' . $Period->EndDate;
+                        $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
+                        $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
+                        $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+                        // echo ' DAYS: '.$TotalDays;
+                        array_push($TotalDaysArr, $TotalDays);
+                        // echo ' :END--------------------';
                     }
-                    $Period_End = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('EndDate', '>=', $StartDate_)->where('EndDate', '<=', $EndDate_)->orderBy('EndDate', 'DESC')->first();  
-                    $StartDateTime = \Carbon\Carbon::parse(($Period_Start->StartDate ?? date('Y-m-d')) . ' ' . ($Period_Start->StartTime ?? '00:00'));
-                    $EndDateTime = \Carbon\Carbon::parse(($Period_End->EndDate ?? date('Y-m-d')) . ' ' . ($Period_End->EndTime ?? '00:00'));
-                    if (empty($Period_Start) || empty($Period_End)) {
-                        $TotalDays = 0;
-                    } else if($Period_Start->StartDate == $Period_End->EndDate) {
-                        $TotalDays = 1;
-                    } else {
-                        $TotalDays = $EndDateTime->diffInDays($StartDateTime); 
-                    } 
-                @endphp
-                "{{ $TotalDays }}", 
+                    // echo ' :TOTAL DAYS: ';
+                    // print_r($TotalDaysArr);
+                    // echo 'Sum: '.array_sum($TotalDaysArr);
+                    // echo $Period->Vessel.' --------------------';
+                    // ////////////////////////////// 
+                @endphp 
+                "{{ array_sum($TotalDaysArr) }}", 
             @endforeach  
         ],
         responsive: true,
