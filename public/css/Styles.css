@@ -1297,8 +1297,9 @@ main .left-navigation ul li .total {
     top: 2.85em !important;
   }
   .availability .tooltip-x .inner.-x .notification-wrapper .status-1 {
-    font-size: 0.6em !important;
+    font-size: 0.8em !important;
     translate: -9.5em 2.95em !important;
+    translate: -2.5em -0.01em !important;
   }
   .availability .vessel-type-heading {
     font-size: xx-small;
@@ -1498,6 +1499,9 @@ main .left-navigation ul li .total {
 }
 
 @media (max-width: 1785px) {
+  .availability {
+    width: 25%;
+  }
   .availability.vessel-content h2 {
     font-size: 2em;
     padding: 0.15em;
@@ -1532,7 +1536,7 @@ main .left-navigation ul li .total {
     width: 100% !important;
   }
   .availability.dashboard .board-1 .div table tr .operation-responsive {
-    display: block !important;
+    display: none;
   }
   .availability.notifications .list .inner.-x .notification-wrapper span {
     font-size: 0.75em;

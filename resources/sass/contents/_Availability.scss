@@ -58,6 +58,8 @@
 
 @media (max-width: 1785px) {
     .availability {
+        width: 25%;
+
         &.vessel-content {
             h2 {
                 font-size: 2em;
@@ -113,7 +115,8 @@
                 table {
                     tr {
                         .operation-responsive {
-                            display: block !important;
+                            // display: block !important;
+                            display: none;
                         }
                     }
                 }
