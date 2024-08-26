@@ -54,11 +54,10 @@ class PriorityExcelImportController extends Controller
                 'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
             ]);   
             $PreviousRow = VesselAvailability::select('id')->where('id', '<', $CurrentRow->id)
-                                                ->where('Vessel', $Request->Vessel)
-                                                ->where('Status', '!=', 'IDLE')
-                                                ->orderBy('StartDate', 'DESC')
-                                                ->orderBy('StartTime', 'DESC')
+                                                ->where('Vessel', $Request->Vessel) 
+                                                ->latest()
                                                 ->first(); 
+                                                
             VesselAvailability::where('id', '<', $CurrentRow->id)
             ->where('Vessel', $Request->Vessel)->update([ 
                 'TillNow' => 'NO',
