@@ -237,8 +237,8 @@ class VesselAvailabilityController extends Controller
             'Action' => 'Update',
             'Subject' => 'Availability Update!',
             'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . date('H:i A', strtotime($Request->EditStartTime)) . ' till ' . date('H:i A', strtotime($Request->EditEndTime)) . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
-        ]);
-        return redirect()->route('Availability');
+        ]); 
+        return back();
     }
 
     /**
