@@ -195,3 +195,28 @@ setInterval(function() {
       TrackingContainer.scrollTop = 0;
     }
   }, 2000);
+
+  let Chart4Modal = document.querySelector('.chart-4');
+  let Chart4Modal_CloseButton = document.querySelector('.chart-4 .Close');
+  let Chart4Modal_Title = document.querySelector('.chart-4 .chart-4-wrapper h2');
+  let Chart4Modal_DockingCount = document.querySelector('.chart-4 .chart-4-wrapper .DockingCount');
+  let Chart4Modal_BunkeringCount = document.querySelector('.chart-4 .chart-4-wrapper .BunkeringCount');
+  let Chart4Modal_InspectionCount = document.querySelector('.chart-4 .chart-4-wrapper .InspectionCount');
+  let Chart4Modal_MaintenanceCount = document.querySelector('.chart-4 .chart-4-wrapper .MaintenanceCount');
+  let Chart4Modal_BreakdownCount = document.querySelector('.chart-4 .chart-4-wrapper .BreakdownCount');
+  let __Vessels__ = document.querySelectorAll('.availability .notification-wrapper');
+
+  __Vessels__.forEach(Vessel => {
+    Vessel.addEventListener('click', () => {
+        Chart4Modal.style.display = 'flex';
+        Chart4Modal_Title.textContent = Vessel.firstElementChild.textContent;
+        Chart4Modal_DockingCount.textContent = Vessel.firstElementChild.nextElementSibling.textContent;
+        Chart4Modal_BunkeringCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.textContent;
+        Chart4Modal_InspectionCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        Chart4Modal_MaintenanceCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        Chart4Modal_BreakdownCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+    })
+    Chart4Modal_CloseButton.addEventListener('click', () => {
+        Chart4Modal.style.display = 'none';
+    })
+  });

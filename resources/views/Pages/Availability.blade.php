@@ -11,6 +11,7 @@
 @include('Components.Inner.ChartReport')  
 @include('Components.Charts.Chart1') 
 @include('Components.Charts.Chart3') 
+@include('Components.Charts.Chart4') 
 <button class="DisplayChart3Button">
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>
 </button>
@@ -114,7 +115,20 @@
         @endif
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
-            <strong class="notification-wrapper">  
+            <strong class="notification-wrapper"> 
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span> 
@@ -219,6 +233,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -324,6 +351,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -429,6 +469,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -534,6 +587,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -639,6 +705,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -744,6 +823,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -849,6 +941,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -954,6 +1059,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1064,6 +1182,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1169,6 +1300,19 @@
         <div class="inner -x"> 
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1274,6 +1418,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1379,6 +1536,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1484,6 +1654,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1589,6 +1772,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1694,6 +1890,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1799,6 +2008,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1904,6 +2126,19 @@
         <div class="inner -x">  
             <img src="{{ asset('images/ship (2).png') }}" alt="">
             <strong class="notification-wrapper">  
+                @php
+                    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->groupBy('Vessel')->get();
+                @endphp
+                <span class="Hide">{{ $Vessel->VesselName }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_DOCKING) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BUNKERY) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_INSPECTION) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_MAINTENANCE) }}</span>
+                <span class="Hide">{{ count($_NumberOfVessels_BREAKDOWN) }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -2618,4 +2853,5 @@
 </script> 
 @include('Components.Charts.Chart1-JS') 
 @include('Components.Charts.Chart3-JS') 
+@include('Components.Charts.Chart4-JS') 
 @endsection
