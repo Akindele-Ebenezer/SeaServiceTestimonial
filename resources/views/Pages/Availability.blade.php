@@ -2015,29 +2015,29 @@
                     <div class="indicators-inner">
                         <div class="indicators-inner-x">
                             <span class="docking"></span> 
-                            <span>DOCKING</span>
+                            <span class="FilterDocking">DOCKING</span>
                         </div>
                         <div class="indicators-inner-x">
                             <span class="inspection"></span> 
-                            <span>INSPECTION</span>
+                            <span class="FilterInspection">INSPECTION</span>
                         </div>
                         <div class="indicators-inner-x">
                             <span class="bunkery"></span> 
-                            <span>BUNKERING</span>
+                            <span class="FilterBunkering">BUNKERING</span>
                         </div>
                     </div>
                     <div class="indicators-inner">
                         <div class="indicators-inner-x">
                             <span class="breakdown"></span> 
-                            <span>BREAKDOWN</span>
+                            <span class="FilterBreakdown">BREAKDOWN</span>
                         </div>
                         <div class="indicators-inner-x">
                             <span class="idle"></span> 
-                            <span>READY TO GO</span>
+                            <span class="FilterReady">READY TO GO</span>
                         </div> 
                         <div class="indicators-inner-x">
                             <span class="maintenance"></span> 
-                            <span>MAINTENANCE</span>
+                            <span class="FilterMaintenance">MAINTENANCE</span>
                         </div>
                     </div>
                 </div>

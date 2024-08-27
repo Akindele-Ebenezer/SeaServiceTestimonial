@@ -122,6 +122,68 @@ Logout_ROUTE.forEach(Route => {
     })
 }); 
 
+let FilterDocking = document.querySelectorAll('.FilterDocking');
+let FilterInspection = document.querySelectorAll('.FilterInspection');
+let FilterBunkering = document.querySelectorAll('.FilterBunkering');
+let FilterBreakdown = document.querySelectorAll('.FilterBreakdown');
+let FilterReady = document.querySelectorAll('.FilterReady');
+let FilterMaintenance = document.querySelectorAll('.FilterMaintenance');
+
+FilterDocking.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?FilterValue=Docking';
+    })
+}); 
+FilterReady.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?FilterValue=Ready';
+    })
+}); 
+FilterBunkering.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?FilterValue=Bunkery';
+    })
+}); 
+FilterInspection.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?FilterValue=Inspection';
+    })
+}); 
+FilterMaintenance.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?FilterValue=Maintenance';
+    })
+}); 
+FilterBreakdown.forEach(Route => {
+    Route.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?FilterValue=Breakdown';
+    })
+}); 
+
 let FILTERVALUE_X = document.querySelectorAll('.filter-value-x');
 
 FILTERVALUE_X.forEach(Value => {

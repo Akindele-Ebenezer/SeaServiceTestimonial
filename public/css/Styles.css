@@ -1817,9 +1817,14 @@ main .left-navigation ul li .total {
 .dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x {
   align-items: center;
   border-bottom: 1px solid #276e91;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   padding-block: 0.5em;
+}
+.dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x:hover, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x:hover, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x:hover {
+  background: #276e91;
+  color: #ddd;
 }
 .dashboard-inner .board-1 .div .indicators-wrapper .indicators-inner-x span:first-of-type, .dashboard-inner .board-2 .div .indicators-wrapper .indicators-inner-x span:first-of-type, .dashboard-inner .board-3 .div .indicators-wrapper .indicators-inner-x span:first-of-type {
   height: 2em;
