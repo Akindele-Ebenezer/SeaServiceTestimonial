@@ -62,17 +62,21 @@ class PriorityExcelImportController extends Controller
             ->where('Vessel', $Request->Vessel)->update([ 
                 'TillNow' => 'NO',
             ]); 
-            VesselAvailability::where('id', $PreviousRow->id ?? 0)
-            ->where('Vessel', $Request->Vessel)->update([ 
-                'EndTime' => substr($Request->StartTime, 0, 5), 
-                'EndDate' => $Request->StartDate, 
-            ]); 
-            if ($Request->Status == 'IDLE') {
-                VesselAvailability::where('id', $PreviousRow->id)->update([
-                    'EndDate' => date('Y-m-d'),
+            if (!(($CurrentRow->StartDate < date('Y-m-d')) AND
+                ($CurrentRow->DateIn == date('Y-m-d')))
+            ) {  
+                VesselAvailability::where('id', $PreviousRow->id ?? 0)
+                ->where('Vessel', $Request->Vessel)->update([ 
                     'EndTime' => substr($Request->StartTime, 0, 5), 
-                    'TillNow' => 'NO',
-                ]);  
+                    'EndDate' => $Request->StartDate, 
+                ]); 
+                if ($Request->Status == 'IDLE') {
+                    VesselAvailability::where('id', $PreviousRow->id)->update([
+                        'EndDate' => date('Y-m-d'),
+                        'EndTime' => substr($Request->StartTime, 0, 5), 
+                        'TillNow' => 'NO',
+                    ]);  
+                }
             }
             return redirect()->route('Availability');
         } else {

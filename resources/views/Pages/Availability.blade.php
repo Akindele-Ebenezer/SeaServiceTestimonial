@@ -135,6 +135,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span> 
@@ -258,6 +259,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -382,6 +384,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -506,6 +509,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -630,6 +634,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -754,6 +759,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -878,6 +884,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1002,6 +1009,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1126,6 +1134,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1255,6 +1264,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1379,6 +1389,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1503,6 +1514,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1627,6 +1639,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1751,6 +1764,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1875,6 +1889,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1999,6 +2014,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -2123,6 +2139,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -2247,6 +2264,7 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
+                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
