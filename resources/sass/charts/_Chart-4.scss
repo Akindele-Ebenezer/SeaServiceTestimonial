@@ -3,6 +3,10 @@
     justify-content: center;
     width: 100%;
 
+    .Comment {
+      text-align: center;
+    }
+
     &-wrapper {
         background: #fff;
         border-radius: .5em;
@@ -17,6 +21,12 @@
             position: absolute;
             right: .75em;
             top: .25em;
+        }
+
+        h1 {
+          left: 1em;
+          position: absolute;
+          top: 2.655em;
         }
 
         h2 {
@@ -35,6 +45,14 @@
 .pieID {
   display: inline-block;
   vertical-align: top;
+
+  li {
+    cursor: pointer;
+
+    &:hover {
+      background: #eee;
+    }
+  }
 }
 .pie {
   height: 200px;

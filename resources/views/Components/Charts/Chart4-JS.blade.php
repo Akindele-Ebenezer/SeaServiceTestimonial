@@ -36,12 +36,12 @@
     }
     var offset = 0;
     var color = [
-        "cornflowerblue", 
-        "olivedrab", 
-        "orange", 
-        "tomato", 
-        "crimson", 
-        "purple", 
+        "#03AED2", 
+        "#8a3ffc", 
+        "#ff832b", 
+        "#eee", 
+        "#da1e28", 
+        "#52f781", 
         "turquoise", 
         "forestgreen", 
         "navy", 
@@ -55,5 +55,4 @@
     }
     }
     createPie(".pieID.legend", ".pieID.pie");
-
 </script>

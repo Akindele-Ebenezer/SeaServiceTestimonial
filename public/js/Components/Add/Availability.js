@@ -204,7 +204,8 @@ setInterval(function() {
   let Chart4Modal_InspectionCount = document.querySelector('.chart-4 .chart-4-wrapper .InspectionCount');
   let Chart4Modal_MaintenanceCount = document.querySelector('.chart-4 .chart-4-wrapper .MaintenanceCount');
   let Chart4Modal_BreakdownCount = document.querySelector('.chart-4 .chart-4-wrapper .BreakdownCount');
-  let Chart4Modal_Comment = document.querySelector('.chart-4 .chart-4-wrapper .Comment');
+  let Chart4Modal_Comment = document.querySelector('.chart-4 .Comment');
+  let Chart4Modal_Indicator = document.querySelector('.chart-4 .indicator');
   let __Vessels__ = document.querySelectorAll('.availability .notification-wrapper');
 
   __Vessels__.forEach(Vessel => {
@@ -216,9 +217,12 @@ setInterval(function() {
         Chart4Modal_InspectionCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';
         Chart4Modal_MaintenanceCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';
         Chart4Modal_BreakdownCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';
-        Chart4Modal_Comment.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';
+        Chart4Modal_Comment.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
+        Chart4Modal_Indicator.firstElementChild.classList.add('status-x');
+        Chart4Modal_Indicator.firstElementChild.classList.add(Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent);
     })
     Chart4Modal_CloseButton.addEventListener('click', () => {
         Chart4Modal.style.display = 'none';
+        Chart4Modal_Indicator.firstElementChild.className = '';
     })
   });

@@ -46,7 +46,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -58,13 +58,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -75,7 +75,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -135,7 +135,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span> 
@@ -170,7 +174,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -182,13 +186,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -199,7 +203,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC') 
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE)  
                                 ->orWhere(function($query) use ($Vessel) {
@@ -259,7 +263,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -295,7 +303,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -307,13 +315,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -324,7 +332,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('StartDate', $STARTDATE)
                                 ->orWhere(function($query) use ($Vessel) {
@@ -384,7 +392,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -420,7 +432,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -432,13 +444,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -449,7 +461,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -509,7 +521,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -545,7 +561,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -557,13 +573,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -574,7 +590,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -634,7 +650,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -670,7 +690,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -682,13 +702,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -699,7 +719,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE)
                                 ->orWhere(function($query) use ($Vessel) {
@@ -759,7 +779,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -795,7 +819,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -807,13 +831,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -824,7 +848,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -884,7 +908,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -920,7 +948,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -932,13 +960,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -949,7 +977,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1009,7 +1037,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1045,7 +1077,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1057,13 +1089,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1074,7 +1106,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1134,7 +1166,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1175,7 +1211,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1187,13 +1223,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1204,7 +1240,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE)  
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1264,7 +1300,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1300,7 +1340,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1312,13 +1352,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1329,7 +1369,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1389,7 +1429,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1425,7 +1469,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1437,13 +1481,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1454,7 +1498,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1514,7 +1558,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1550,7 +1598,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1562,13 +1610,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1579,7 +1627,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1639,7 +1687,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1675,7 +1727,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1687,13 +1739,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1704,7 +1756,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1764,7 +1816,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1800,7 +1856,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1812,13 +1868,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1829,7 +1885,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1889,7 +1945,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -1925,7 +1985,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -1937,13 +1997,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -1954,7 +2014,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -2014,7 +2074,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -2050,7 +2114,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -2062,13 +2126,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -2079,7 +2143,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -2139,7 +2203,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  
@@ -2175,7 +2243,7 @@
                                     ->whereNotNull('Status') 
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->whereBetween('StartDate', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])
                                     ->whereNotNull('Status') 
@@ -2187,13 +2255,13 @@
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first(); 
-            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
+            $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime'])
                                     ->where('Vessel', $Vessel->VesselName) 
                                     ->where('StartDate', $_GET['SpecificDay'])
                                     ->orderBy('EndTime', 'DESC') 
                                     ->first();
         } else {
-        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName) 
                                 ->where('EndDate', '>=', $STARTDATE) 
                                 ->orWhere(function($query) use ($Vessel) {
@@ -2204,7 +2272,7 @@
                                 ->orderBy('StartTime', 'DESC') 
                                 ->orderBy('EndTime', 'DESC')
                                 ->first(); 
-        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
+        $Availability_STATUS_2 = \DB::table('vessel_availabilities')->select(['Vessel', 'Comment', 'StartDate', 'EndDate', 'Status', 'StartTime', 'EndTime', 'TillNow'])
                                 ->where('Vessel', $Vessel->VesselName)  
                                 ->where('EndDate', '>=', $STARTDATE)
                                 ->orWhere(function($query) use ($Vessel) {
@@ -2264,7 +2332,11 @@
                 <span class="Hide">{{ round((count($_NumberOfVessels_INSPECTION) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_MAINTENANCE) / $TotalActivities) * 100) }}</span>
                 <span class="Hide">{{ round((count($_NumberOfVessels_BREAKDOWN) / $TotalActivities) * 100) }}</span> 
-                <span class="Hide">{{ $Availability_STATUS->Comment ?? 'No Comment' }}</span> 
+                @php
+                    $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
+                @endphp
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is working, no issues' }}</span> 
+                <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
                 <span class="">{{ $Vessel->VesselName }}</span>  

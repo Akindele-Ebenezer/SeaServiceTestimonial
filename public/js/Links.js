@@ -191,3 +191,15 @@ FILTERVALUE_X.forEach(Value => {
         window.location =  window.location.pathname + '?FilterValue=' + Value.textContent;
     })
 });
+
+let PieLinks = document.querySelectorAll('.pieID li');
+
+PieLinks.forEach(Link => {
+    Link.addEventListener('click', () => {
+        setTimeout(() => {
+            Loader.style.display = 'none';
+        }, 9000);
+        Loader.style.display = 'flex';
+        window.location = '/Availability?VesselStatus=True&Vessel=' + Link.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent + '&Status=' + Link.firstElementChild.textContent;
+    })
+});

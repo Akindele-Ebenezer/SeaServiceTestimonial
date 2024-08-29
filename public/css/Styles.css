@@ -1461,6 +1461,9 @@ main .left-navigation ul li .total {
   justify-content: center;
   width: 100%;
 }
+.chart-4 .Comment {
+  text-align: center;
+}
 .chart-4-wrapper {
   background: #fff;
   border-radius: 0.5em;
@@ -1476,6 +1479,11 @@ main .left-navigation ul li .total {
   right: 0.75em;
   top: 0.25em;
 }
+.chart-4-wrapper h1 {
+  left: 1em;
+  position: absolute;
+  top: 2.655em;
+}
 .chart-4-wrapper h2 {
   color: #333;
   font-weight: 600;
@@ -1490,6 +1498,12 @@ main .left-navigation ul li .total {
 .pieID {
   display: inline-block;
   vertical-align: top;
+}
+.pieID li {
+  cursor: pointer;
+}
+.pieID li:hover {
+  background: #eee;
 }
 
 .pie {

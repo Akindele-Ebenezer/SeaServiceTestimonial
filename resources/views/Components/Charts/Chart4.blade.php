@@ -1,6 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <div class="form-1 chart-4 {{ (isset($_GET['FilterValue']) || isset($_GET['page']) || isset($_GET['Vessel_FILTER'])) ? 'Hide' : '' }}">
   <div class="chart-4-wrapper">
+    <h1 class="indicator">
+      <span class="status-x"></span>
+    </h1>
     <h2></h2>
     <p class="Close">✖</p>
     <div class="pieID pie"></div>
@@ -26,6 +29,6 @@
         <span class="BreakdownCount">1145</span>
       </li>
     </ul>
+    <div class="Comment"></div>
   </div>
-  <div class="Comment"></div>
 </div>

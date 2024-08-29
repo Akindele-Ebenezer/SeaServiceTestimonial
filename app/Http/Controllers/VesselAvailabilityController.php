@@ -18,6 +18,7 @@ class VesselAvailabilityController extends Controller
             'EndDate' => date('Y-m-d'),
         ]);
 
+
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();
@@ -32,8 +33,7 @@ class VesselAvailabilityController extends Controller
                                             ->orWhere('EndDate', '>=', date('Y-m-d'));
                                 }) 
                                 ->groupBy('Vessel')->get(); 
-        // $NumberOfVessels_IDLE = VesselAvailability::select('Vessel')->join('vessels_vessel_information', 'vessels_vessel_information.VesselName', '=', 'vessel_availabilities.Vessel')->where('EndDate', '<', date('Y-m-d'))->orWhere('Status', 'IDLE')->groupBy('Vessel')->get();
-
+        
         $NumberOfVessels_BUNKERY = VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('EndDate', '>=', date('Y-m-d')) 
                                 ->orWhere(function($query) {
                                     $query->where('Status', 'BUNKERY') 
@@ -65,6 +65,10 @@ class VesselAvailabilityController extends Controller
                                             ->where('TillNow', 'YES');
                                 })->groupBy('Vessel')->get(); 
          
+        
+        if ((isset($Request->VesselStatus))) {
+            $VesselAvailability = VesselAvailability::where('Vessel', $Request->Vessel)->where('Status', $Request->Status)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
+        }
         
         if (isset($Request->SpecificDay)) {
             $VesselAvailability = VesselAvailability::where('Vessel', $Request->Vessel_FILTER)->where('StartDate', $Request->SpecificDay)->orderBy('StartDate', 'DESC')->orderBy('EndDate', 'DESC')->orderBy('EndTime', 'DESC')->paginate(20); 
