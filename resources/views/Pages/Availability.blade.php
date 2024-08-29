@@ -138,7 +138,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                 "></span>
@@ -266,7 +266,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -395,7 +395,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -524,7 +524,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -653,7 +653,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -782,7 +782,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -911,7 +911,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1040,7 +1040,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1169,7 +1169,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1303,7 +1303,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1432,7 +1432,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1561,7 +1561,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1690,7 +1690,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1819,7 +1819,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -1948,7 +1948,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -2077,7 +2077,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -2206,7 +2206,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
@@ -2335,7 +2335,7 @@
                 @php
                     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
                 @endphp
-                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'ready') }}</span> 
+                <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . strtolower($Availability_STATUS->Status ?? 'operation') }}</span> 
                 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span> 
                 <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                 "></span>
