@@ -206,12 +206,13 @@ setInterval(function() {
   let Chart4Modal_BreakdownCount = document.querySelector('.chart-4 .chart-4-wrapper .BreakdownCount');
   let Chart4Modal_Comment = document.querySelector('.chart-4 .Comment');
   let Chart4Modal_Indicator = document.querySelector('.chart-4 .indicator');
-  let __Vessels__ = document.querySelectorAll('.availability .notification-wrapper');
+  let __Vessels__ = document.querySelectorAll('.availability .notification-wrapper'); 
 
   __Vessels__.forEach(Vessel => {
     Vessel.addEventListener('click', () => {
         Chart4Modal.style.display = 'flex';
         Chart4Modal_Title.textContent = Vessel.firstElementChild.textContent;
+        document.querySelector('.OpenChart4Filter').nextElementSibling.textContent = Chart4Modal_Title.textContent;
         Chart4Modal_DockingCount.textContent = Vessel.firstElementChild.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';
         Chart4Modal_BunkeringCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';
         Chart4Modal_InspectionCount.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' (' + Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + '%)';

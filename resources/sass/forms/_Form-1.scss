@@ -13,7 +13,7 @@
     width: 100vw;
     z-index: 200;
 
-    &.AddVessel { z-index: 300; }
+    &.AddVessel, &.FilterChart4ForVesselData { z-index: 300; }
 
     .close-button, .close-button-report, .close-button-update {
         align-items: center; 
@@ -42,7 +42,7 @@
         }
     }
 
-    &.FilterByDate, &.FilterReportByDate, &.FilterReportForVesselByDate, &.ChartReport {
+    &.FilterByDate, &.FilterReportByDate, &.FilterReportForVesselByDate, &.FilterChart4ForVesselData, &.ChartReport {
         .inner {
             padding-bottom: 0;
 

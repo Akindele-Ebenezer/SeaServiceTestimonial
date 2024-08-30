@@ -322,7 +322,7 @@
   width: 100vw;
   z-index: 200;
 }
-.form-1.AddVessel {
+.form-1.AddVessel, .form-1.FilterChart4ForVesselData {
   z-index: 300;
 }
 .form-1 .close-button, .form-1 .close-button-report, .form-1 .close-button-update {
@@ -349,14 +349,14 @@
   color: #fff;
   padding: 0.5em;
 }
-.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner, .form-1.FilterReportForVesselByDate .inner, .form-1.ChartReport .inner {
+.form-1.FilterByDate .inner, .form-1.FilterReportByDate .inner, .form-1.FilterReportForVesselByDate .inner, .form-1.FilterChart4ForVesselData .inner, .form-1.ChartReport .inner {
   padding-bottom: 0;
 }
-.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm, .form-1.ChartReport .inner .FilterByDateForm, .form-1.ChartReport .inner .FilterReportByDateForm, .form-1.ChartReport .inner .FilterReportForVesselByDateForm {
+.form-1.FilterByDate .inner .FilterByDateForm, .form-1.FilterByDate .inner .FilterReportByDateForm, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportByDate .inner .FilterByDateForm, .form-1.FilterReportByDate .inner .FilterReportByDateForm, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm, .form-1.FilterChart4ForVesselData .inner .FilterByDateForm, .form-1.FilterChart4ForVesselData .inner .FilterReportByDateForm, .form-1.FilterChart4ForVesselData .inner .FilterReportForVesselByDateForm, .form-1.ChartReport .inner .FilterByDateForm, .form-1.ChartReport .inner .FilterReportByDateForm, .form-1.ChartReport .inner .FilterReportForVesselByDateForm {
   flex-wrap: wrap;
   width: 20em;
 }
-.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.ChartReport .inner .FilterByDateForm .input input, .form-1.ChartReport .inner .FilterReportByDateForm .input input, .form-1.ChartReport .inner .FilterReportForVesselByDateForm .input input {
+.form-1.FilterByDate .inner .FilterByDateForm .input input, .form-1.FilterByDate .inner .FilterReportByDateForm .input input, .form-1.FilterByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportByDate .inner .FilterByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportByDateForm .input input, .form-1.FilterReportForVesselByDate .inner .FilterReportForVesselByDateForm .input input, .form-1.FilterChart4ForVesselData .inner .FilterByDateForm .input input, .form-1.FilterChart4ForVesselData .inner .FilterReportByDateForm .input input, .form-1.FilterChart4ForVesselData .inner .FilterReportForVesselByDateForm .input input, .form-1.ChartReport .inner .FilterByDateForm .input input, .form-1.ChartReport .inner .FilterReportByDateForm .input input, .form-1.ChartReport .inner .FilterReportForVesselByDateForm .input input {
   margin-top: 0.5em;
   width: unset;
 }
@@ -1464,6 +1464,13 @@ main .left-navigation ul li .total {
 .chart-4 .Comment {
   text-align: center;
 }
+.chart-4 .OpenChart4Filter {
+  bottom: 1em;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  width: 3em;
+}
 .chart-4-wrapper {
   background: #fff;
   border-radius: 0.5em;
@@ -1598,7 +1605,7 @@ main .left-navigation ul li .total {
 .availability.dashboard {
   width: 70%;
 }
-.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .RecordAvailabilityButton, .availability .dashboard-inner .DisplayChart3Button {
+.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .FilterChart4ForVesselData, .availability .dashboard-inner .RecordAvailabilityButton, .availability .dashboard-inner .DisplayChart3Button {
   background-color: #ff6868;
   color: #fff;
   border: none;

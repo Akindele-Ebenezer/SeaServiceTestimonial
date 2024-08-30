@@ -1,9 +1,9 @@
 @php
-    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->get();
-    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->get();
-    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->get();
-    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->get();
-    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('Vessel')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->get();
+    $_NumberOfVessels_DOCKING = \App\Models\VesselAvailability::select('id')->where('Status', 'DOCKING')->where('Vessel', $Vessel->VesselName)->get();
+    $_NumberOfVessels_BUNKERY = \App\Models\VesselAvailability::select('id')->where('Status', 'BUNKERY')->where('Vessel', $Vessel->VesselName)->get();
+    $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('id')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->get();
+    $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('id')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->get();
+    $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('id')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->get();
     $TotalActivities = (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN)) == 0 ? 1 : (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN));
 @endphp
 <span class="Hide">{{ $Vessel->VesselName }}</span>
