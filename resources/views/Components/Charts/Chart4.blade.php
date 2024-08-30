@@ -7,7 +7,7 @@
     <h2>{{ isset($_GET['Chart4']) ? $_GET['Vessel'] : '' }}</h2>
     <p class="Close">✖</p>
     <div class="pieID pie"></div>
-    {{-- @if (isset($_GET['Chart4']))
+    @if (isset($_GET['Chart4']))
       @php
           $MonthlyVessel_DOCKING_STATS = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $_GET['Vessel'])->where('Status', 'DOCKING')->whereMonth('StartDate', $_GET['Month'])->get();
           $MonthlyVessel_BUNKERY_STATS = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $_GET['Vessel'])->where('Status', 'BUNKERY')->whereMonth('StartDate', $_GET['Month'])->get();
@@ -15,7 +15,7 @@
           $MonthlyVessel_MAINTENANCE_STATS = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $_GET['Vessel'])->where('Status', 'MAINTENANCE')->whereMonth('StartDate', $_GET['Month'])->get();
           $MonthlyVessel_BREAKDOWN_STATS = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $_GET['Vessel'])->where('Status', 'BREAKDOWN')->whereMonth('StartDate', $_GET['Month'])->get();
       @endphp
-    @endif --}}
+    @endif
     <ul class="pieID legend">
       <li>
         <em>Docking</em>
