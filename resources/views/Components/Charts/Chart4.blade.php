@@ -2,7 +2,7 @@
 <div class="form-1 chart-4 {{ (isset($_GET['FilterValue']) || isset($_GET['page']) || isset($_GET['Vessel_FILTER'])) ? 'Hide' : '' }}" style="display: {{ isset($_GET['Chart4']) ? 'flex !important' : '' }}">
   <div class="chart-4-wrapper">
     <h1 class="indicator">
-      <span class="status-x"></span>
+      <span class="status-x {{ isset($_GET['Chart4']) ? $_GET['Status'] : '' }}"></span>
     </h1>
     <h2>{{ isset($_GET['Chart4']) ? $_GET['Vessel'] : '' }}</h2>
     <p class="Close">✖</p>
@@ -40,6 +40,7 @@
     </ul>
     <div class="Comment"></div>
     <img class="OpenChart4Filter" src="{{ asset('Images/data-analytics.png') }}" alt="">
-    <span class="Hide">{{ isset($_GET['Chart4']) ? $_GET['Vessel'] : '' }}</span> 
+    <span class="Hide">{{ isset($_GET['Chart4']) ? $_GET['Vessel'] : '' }}</span>
+    <span class="Hide"></span> 
   </div>
 </div>

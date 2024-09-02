@@ -209,8 +209,7 @@ setInterval(function() {
   let __Vessels__ = document.querySelectorAll('.availability .notification-wrapper'); 
 
   __Vessels__.forEach(Vessel => {
-    Vessel.addEventListener('click', () => {
-        console.log(Chart4Modal);
+    Vessel.addEventListener('click', () => { 
         Chart4Modal.classList.remove('Hide');
         Chart4Modal.style.display = 'flex';
         Chart4Modal_Title.textContent = Vessel.firstElementChild.textContent;
@@ -223,6 +222,7 @@ setInterval(function() {
         Chart4Modal_Comment.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         Chart4Modal_Indicator.firstElementChild.classList.add('status-x');
         Chart4Modal_Indicator.firstElementChild.classList.add(Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent);
+        document.querySelector('.OpenChart4Filter').nextElementSibling.nextElementSibling.textContent = Vessel.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
     })
     Chart4Modal_CloseButton.addEventListener('click', () => {
         Chart4Modal.style.display = 'none';

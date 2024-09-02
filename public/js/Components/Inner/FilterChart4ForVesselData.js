@@ -20,5 +20,5 @@ CancelButtonFilterChart4ForVesselData.addEventListener('click', () => {
 FilterChart4ForVesselData_GoButton.addEventListener('click', () => { 
         FilterChart4ForVesselData_GoButton.style.backgroundColor = '#1fb95e';
         FilterChart4ForVesselData_GoButton.textContent = '+ Processing..';
-        window.location = '/Availability?Chart4=true&Vessel=' + VesselName_CHART4.value + '&FilterValue=&Month=' + Month_CHART4.value;
+        window.location = '/Availability?Chart4=true&Vessel=' + VesselName_CHART4.value + '&FilterValue=&Month=' + Month_CHART4.value + '&Status=' + OpenChart4Filter.nextElementSibling.nextElementSibling.textContent;
 });
