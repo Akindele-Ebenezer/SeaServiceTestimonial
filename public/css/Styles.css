@@ -1575,6 +1575,11 @@ main .left-navigation ul li .total {
   width: 15em;
 }
 
+.chart-1 .legend {
+  box-shadow: none;
+  justify-content: center !important;
+}
+
 .legend li {
   height: 1.25em;
   margin-bottom: 0.7em;

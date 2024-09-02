@@ -210,6 +210,8 @@ setInterval(function() {
 
   __Vessels__.forEach(Vessel => {
     Vessel.addEventListener('click', () => {
+        console.log(Chart4Modal);
+        Chart4Modal.classList.remove('Hide');
         Chart4Modal.style.display = 'flex';
         Chart4Modal_Title.textContent = Vessel.firstElementChild.textContent;
         document.querySelector('.OpenChart4Filter').nextElementSibling.textContent = Chart4Modal_Title.textContent;

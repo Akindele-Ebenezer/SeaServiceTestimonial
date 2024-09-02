@@ -275,16 +275,22 @@
     width: 1000
     };  
     @endif
+    @if (isset($Vessels[0]))
     new Chart('#chart2',  {
         type: '{{ strtolower($ChartType) }}',
         ...options
     }); 
+    @endif
+    @if (isset($Vessels[1]))
     new Chart('#chart1',  {
         type: '{{ strtolower($ChartType) }}',
         ...options2
     }); 
+    @endif
+    @if (isset($Vessels[2]))
     new Chart('#chart3',  {
         type: '{{ strtolower($ChartType) }}',
         ...options3
     }); 
+    @endif
 </script> 
