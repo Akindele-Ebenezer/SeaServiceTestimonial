@@ -1,5 +1,5 @@
 <script src="cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
+<script defer>
     function sliceSize(dataNum, dataTotal) {
         return (dataNum / dataTotal) * 360;
     }
@@ -18,12 +18,14 @@
     function iterateSlices(sliceSize, pieElement, offset, dataCount, sliceCount, color) {
     var sliceID = "s"+dataCount+"-"+sliceCount;
     var maxSize = 179;
-    if(sliceSize<=maxSize) {
-        addSlice(sliceSize, pieElement, offset, sliceID, color);
-    } else {
-        addSlice(maxSize, pieElement, offset, sliceID, color);
-        iterateSlices(sliceSize-maxSize, pieElement, offset+maxSize, dataCount, sliceCount+1, color);
-    }
+    while (sliceSize > 0) {
+        sliceID = "s" + dataCount + "-" + sliceCount;
+        var currentSliceSize = Math.min(sliceSize, maxSize);
+        addSlice(currentSliceSize, pieElement, offset, sliceID, color);
+        offset += currentSliceSize;
+        sliceSize -= currentSliceSize;
+        sliceCount++;
+    } 
     }
     function createPie(dataElement, pieElement) {
     var listData = [];
