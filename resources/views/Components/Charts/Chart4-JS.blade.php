@@ -27,10 +27,14 @@
         sliceCount++;
     } 
     }
-    function createPie(dataElement, pieElement) {
+   
+  __Vessels__.forEach(Vessel => {
+    Vessel.addEventListener('click', () => { 
     var listData = [];
-    $(dataElement+" span").each(function() {
-        listData.push(Number($(this).html()));
+    function createPie(dataElement, pieElement) {
+    // var listData = [];
+    $(dataElement+" span").each(function(index, el) {
+        listData.push(Number($(this).html().split(" ")[0])); 
     });
     var listTotal = 0;
     for(var i=0; i<listData.length; i++) {
@@ -57,4 +61,9 @@
     }
     }
     createPie(".pieID.legend", ".pieID.pie");
+    Chart4Modal_CloseButton.addEventListener('click', () => {
+        listData.length = 0; 
+    })
+    })
+  });
 </script>
