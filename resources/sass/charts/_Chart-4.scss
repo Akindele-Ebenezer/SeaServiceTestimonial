@@ -118,7 +118,7 @@
   font-size: 13px;
   box-shadow: 1px 1px 0 #DDD,
               2px 2px 0 #BBB;
-width: 15em;
+width: 18em;
 }
 .chart-1 .legend {
   box-shadow: none;
@@ -137,4 +137,8 @@ width: 15em;
 }
 .legend span {
   float: right;
+
+  small {
+    font-size: x-small;
+  }
 } 

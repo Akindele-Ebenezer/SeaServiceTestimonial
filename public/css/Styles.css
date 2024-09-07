@@ -1572,7 +1572,7 @@ main .left-navigation ul li .total {
   padding: 15px;
   font-size: 13px;
   box-shadow: 1px 1px 0 #DDD, 2px 2px 0 #BBB;
-  width: 15em;
+  width: 18em;
 }
 
 .chart-1 .legend {
@@ -1594,6 +1594,9 @@ main .left-navigation ul li .total {
 
 .legend span {
   float: right;
+}
+.legend span small {
+  font-size: x-small;
 }
 
 .availability {

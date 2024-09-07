@@ -66,4 +66,34 @@
     })
     })
   });
+  function createPie(dataElement, pieElement) {
+    var listData = [];
+    $(dataElement+" span").each(function(index, el) { 
+        listData.push(Number($(this).html().split(" ")[3])); 
+    });
+    var listTotal = 0;
+    for(var i=0; i<listData.length; i++) {
+        listTotal += listData[i];
+    }
+    var offset = 0;
+    var color = [
+        "#03AED2", 
+        "#8a3ffc", 
+        "#ff832b", 
+        "#eee", 
+        "#da1e28", 
+        "#52f781", 
+        "turquoise", 
+        "forestgreen", 
+        "navy", 
+        "gray"
+    ];
+    for(var i=0; i<listData.length; i++) {
+        var size = sliceSize(listData[i], listTotal);
+        iterateSlices(size, pieElement, offset, i, 0, color[i]);
+        $(dataElement+" li:nth-child("+(i+1)+")").css("border-color", color[i]);
+        offset += size;
+    }
+    }
+    createPie(".pieID.legend", ".pieID.pie");
 </script>
