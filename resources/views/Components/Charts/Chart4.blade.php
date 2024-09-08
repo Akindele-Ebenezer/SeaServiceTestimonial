@@ -9,11 +9,17 @@
     <div class="pieID pie"></div> 
     @if (isset($_GET['Chart4']))
     @php 
-      $MonthlyVessel_DOCKING_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'DOCKING')
+      $MonthlyVessel_DOCKING_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'DOCKING')->whereYear('EndDate', $_GET['Year'])
                                     ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function ($query) {
+                                              if($_GET['Month'] == '0') {
+                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                              }
                                             });
                                           })->get(); 
       $TotalDaysArr_DOCKING = [];
@@ -29,11 +35,17 @@
           array_push($TotalDaysArr_DOCKING, $TotalDays); 
           array_push($TotalHoursArr_DOCKING, $TotalHours); 
       }  
-      $MonthlyVessel_BUNKERY_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'BUNKERY')
+      $MonthlyVessel_BUNKERY_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'BUNKERY')->whereYear('EndDate', $_GET['Year'])
                                           ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function ($query) {
+                                              if($_GET['Month'] == '0') {
+                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                              }
                                             });
                                           })->get();
       $TotalDaysArr_BUNKERY = [];
@@ -49,11 +61,17 @@
           array_push($TotalDaysArr_BUNKERY, $TotalDays); 
           array_push($TotalHoursArr_BUNKERY, $TotalHours); 
       }  
-      $MonthlyVessel_INSPECTION_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'INSPECTION')
+      $MonthlyVessel_INSPECTION_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'INSPECTION')->whereYear('EndDate', $_GET['Year'])
                                           ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function ($query) {
+                                              if($_GET['Month'] == '0') {
+                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                              }
                                             });
                                           })->get();
       $TotalDaysArr_INSPECTION = [];
@@ -69,11 +87,17 @@
           array_push($TotalDaysArr_INSPECTION, $TotalDays); 
           array_push($TotalHoursArr_INSPECTION, $TotalHours); 
       }  
-      $MonthlyVessel_MAINTENANCE_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'MAINTENANCE')
+      $MonthlyVessel_MAINTENANCE_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'MAINTENANCE')->whereYear('EndDate', $_GET['Year'])
                                           ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function ($query) {
+                                              if($_GET['Month'] == '0') {
+                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                              }
                                             });
                                           })->get();
       $TotalDaysArr_MAINTENANCE = [];
@@ -89,11 +113,17 @@
           array_push($TotalDaysArr_MAINTENANCE, $TotalDays); 
           array_push($TotalHoursArr_MAINTENANCE, $TotalHours); 
       }  
-      $MonthlyVessel_BREAKDOWN_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'BREAKDOWN')
+      $MonthlyVessel_BREAKDOWN_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'BREAKDOWN')->whereYear('EndDate', $_GET['Year'])
                                           ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function ($query) {
+                                              if($_GET['Month'] == '0') {
+                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                              }
                                             });
                                           })->get();
       $TotalDaysArr_BREAKDOWN = [];

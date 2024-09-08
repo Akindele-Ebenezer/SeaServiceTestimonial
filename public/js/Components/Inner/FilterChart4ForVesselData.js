@@ -5,6 +5,8 @@ let FilterChart4ForVesselData_GoButton = document.querySelector('.FilterChart4Fo
 let VesselName_CHART4 = document.querySelector('select[name=VesselName_CHART4]');
 let Month_CHART4 = document.querySelector('select[name=Month_CHART4]');
 let Year_CHART4 = document.querySelector('select[name=Year_CHART4]');
+let __StartDate__ = document.querySelector('input[name=__StartDate__]');
+let __EndDate__ = document.querySelector('input[name=__EndDate__]');
   
 OpenChart4Filter.addEventListener('click', () => {
     VesselName_CHART4.value = OpenChart4Filter.nextElementSibling.textContent;
@@ -20,5 +22,5 @@ CancelButtonFilterChart4ForVesselData.addEventListener('click', () => {
 FilterChart4ForVesselData_GoButton.addEventListener('click', () => { 
         FilterChart4ForVesselData_GoButton.style.backgroundColor = '#1fb95e';
         FilterChart4ForVesselData_GoButton.textContent = '+ Processing..';
-        window.location = '/Availability?Chart4=true&Vessel=' + VesselName_CHART4.value + '&FilterValue=&Month=' + Month_CHART4.value + '&Status=' + OpenChart4Filter.nextElementSibling.nextElementSibling.textContent;
+        window.location = '/Availability?Chart4=true&Vessel=' + VesselName_CHART4.value + '&FilterValue=&Month=' + Month_CHART4.value + '&Year=' + Year_CHART4.value + '&Status=' + OpenChart4Filter.nextElementSibling.nextElementSibling.textContent + '&StartDate=' + __StartDate__.value + '&EndDate=' + __EndDate__.value;
 });

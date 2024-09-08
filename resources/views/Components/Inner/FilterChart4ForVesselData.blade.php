@@ -38,6 +38,7 @@
                                 ];
                             @endphp
                             <select name="Month_CHART4">
+                                <option value="0">NULL</option>
                                 @foreach ($Months as $Month)
                                     <option value="{{ $loop->iteration }}">{{ $Month }}</option>
                                 @endforeach
@@ -58,13 +59,13 @@
                     <section>
                         <div class="input">
                             <label for="">Date From</label>
-                            <input type="date" name="" id="">
+                            <input type="date" name="__StartDate__" id="">
                         </div>  
                     </section>
                     <section>
                         <div class="input">
                             <label for="">Date To</label>
-                            <input type="date" name="" id="">
+                            <input type="date" name="__EndDate__" id="">
                         </div>  
                     </section>    
                 </div>
