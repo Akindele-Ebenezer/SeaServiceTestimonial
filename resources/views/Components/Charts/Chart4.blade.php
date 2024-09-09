@@ -40,13 +40,13 @@
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
-                                            })
-                                            ->orWhere(function ($query) {
-                                              if($_GET['Month'] == '0') {
-                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
-                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
-                                              }
                                             });
+                                            // ->orWhere(function ($query) {
+                                            //   if($_GET['Month'] == '0') {
+                                            //     $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                            //           ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                            //   }
+                                            // });
                                           })->get();
       $TotalDaysArr_BUNKERY = [];
       $TotalHoursArr_BUNKERY = [];
