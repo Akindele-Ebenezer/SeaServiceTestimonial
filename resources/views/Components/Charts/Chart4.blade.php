@@ -15,6 +15,10 @@
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                      ->whereMonth('EndDate', '>', $_GET['Month']);
+                                            })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
                                                 $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
@@ -43,6 +47,10 @@
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                      ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
@@ -73,6 +81,10 @@
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                      ->whereMonth('EndDate', '>', $_GET['Month']);
+                                            })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
                                                 $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
@@ -102,6 +114,10 @@
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                      ->whereMonth('EndDate', '>', $_GET['Month']);
+                                            })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
                                                 $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
@@ -130,6 +146,10 @@
                                       $query->whereMonth('EndDate', $_GET['Month'])
                                             ->orWhere(function($query) {
                                                 $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                      ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
