@@ -189,7 +189,7 @@
       </li>
     </ul>
     @if (isset($_GET['Chart4']))
-    <div class="Comment">In {{  \Carbon\Carbon::create(null, $_GET['Month'], 1)->format('F') }}</div>
+    <div class="Comment">In {{  \Carbon\Carbon::create(null, $_GET['Month'], 1)->format('F') . ' ' . $_GET['Year'] }}</div>
     @endif
     <div class="Comment"></div>
     <img class="OpenChart4Filter" src="{{ asset('Images/data-analytics.png') }}" alt="">
