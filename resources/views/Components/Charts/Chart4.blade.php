@@ -38,9 +38,10 @@
       $MonthlyVessel_BUNKERY_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'BUNKERY')->whereYear('EndDate', $_GET['Year'])
                                           ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
-                                            ->orWhere(function($query) {
-                                                $query->whereMonth('StartDate', $_GET['Month']);
-                                            })
+                                            ->orWhereMonth('StartDate', $_GET['Month'])
+                                            // ->orWhere(function($query) {
+                                            //     $query->whereMonth('StartDate', $_GET['Month']);
+                                            // })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
                                                 $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
