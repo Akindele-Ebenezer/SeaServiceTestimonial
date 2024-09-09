@@ -81,7 +81,7 @@
         "#03AED2", 
         "#8a3ffc", 
         "#ff832b", 
-        "#eee", 
+        "#ccc", 
         "#da1e28", 
         "#52f781", 
         "turquoise", 
