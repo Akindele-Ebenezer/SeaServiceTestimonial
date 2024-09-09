@@ -16,7 +16,7 @@
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
                                             ->orWhere(function($query) {
-                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                $query->whereMonth('StartDate', '<', $_GET['Month'])
                                                       ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
@@ -49,7 +49,7 @@
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
                                             ->orWhere(function($query) {
-                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                $query->whereMonth('StartDate', '<', $_GET['Month'])
                                                       ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
@@ -82,7 +82,7 @@
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
                                             ->orWhere(function($query) {
-                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                $query->whereMonth('StartDate', '<', $_GET['Month'])
                                                       ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
@@ -115,7 +115,7 @@
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
                                             ->orWhere(function($query) {
-                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                $query->whereMonth('StartDate', '<', $_GET['Month'])
                                                       ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
@@ -148,7 +148,7 @@
                                                 $query->whereMonth('StartDate', $_GET['Month']);
                                             })
                                             ->orWhere(function($query) {
-                                                $query->whereMonth('StartDate', '<', $_GET['Month']);
+                                                $query->whereMonth('StartDate', '<', $_GET['Month'])
                                                       ->whereMonth('EndDate', '>', $_GET['Month']);
                                             })
                                             ->orWhere(function ($query) {
