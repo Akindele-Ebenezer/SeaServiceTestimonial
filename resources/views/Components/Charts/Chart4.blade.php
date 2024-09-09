@@ -161,7 +161,7 @@
         <em>Docking</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="DockingCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_DOCKING_STATS) : '1000' }}</span> --}}
-        <span class="DockingCount"><small>{{ ((collect($TotalHoursArr_DOCKING)->sum() == 0) ? collect($TotalMinutesArr_DOCKING)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_DOCKING)->sum() }} hour(s)</small></span>
+        <span class="DockingCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) . ' day(s)' }} : {{ ((collect($TotalHoursArr_DOCKING)->sum() == 0) ? collect($TotalMinutesArr_DOCKING)->sum() . ' min(s)' : collect($TotalHoursArr_DOCKING)->sum() . ' hour(s)') }}</small></span>
         @else
         <span class="DockingCount"></span>
         @endif
@@ -170,7 +170,7 @@
         <em>Bunkering</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="BunkeringCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_BUNKERY_STATS) : '1000' }}</span> --}}
-        <span class="BunkeringCount"><small>{{ ((collect($TotalHoursArr_BUNKERY)->sum() == 0) ? collect($TotalMinutesArr_BUNKERY)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_BUNKERY)->sum() }} hour(s)</small></span>
+        <span class="BunkeringCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) . ' day(s)' }} : {{ ((collect($TotalHoursArr_BUNKERY)->sum() == 0) ? collect($TotalMinutesArr_BUNKERY)->sum() . ' min(s)' : collect($TotalHoursArr_BUNKERY)->sum() . ' hour(s)') }}</small></span>
         @else
         <span class="BunkeringCount"></span>
         @endif
@@ -179,7 +179,7 @@
         <em>Inspection</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="InspectionCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_INSPECTION_STATS) : '1000' }}</span> --}}
-        <span class="InspectionCount"><small>{{ ((collect($TotalHoursArr_INSPECTION)->sum() == 0) ? collect($TotalMinutesArr_INSPECTION)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_INSPECTION)->sum() }} hour(s)</small></span>
+        <span class="InspectionCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) . ' day(s)' }} : {{ ((collect($TotalHoursArr_INSPECTION)->sum() == 0) ? collect($TotalMinutesArr_INSPECTION)->sum() . ' min(s)' : collect($TotalHoursArr_INSPECTION)->sum() . ' hour(s)') }}</small></span>
         @else
         <span class="InspectionCount"></span>
         @endif
@@ -188,7 +188,7 @@
         <em>Maintenance</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="MaintenanceCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_MAINTENANCE_STATS) : '1000' }}</span> --}}
-        <span class="MaintenanceCount"><small>{{ ((collect($TotalHoursArr_MAINTENANCE)->sum() == 0) ? collect($TotalMinutesArr_MAINTENANCE)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_MAINTENANCE)->sum() }} hour(s)</small></span>
+        <span class="MaintenanceCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) . ' day(s)' }} : {{ ((collect($TotalHoursArr_MAINTENANCE)->sum() == 0) ? collect($TotalMinutesArr_MAINTENANCE)->sum() . ' min(s)' : collect($TotalHoursArr_MAINTENANCE)->sum() . ' hour(s)') }}</small></span>
         @else
         <span class="MaintenanceCount"></span>
         @endif
@@ -197,7 +197,7 @@
         <em>Breakdown</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="BreakdownCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_BREAKDOWN_STATS) : '1000' }}</span> --}}
-        <span class="BreakdownCount"><small>{{ ((collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? collect($TotalMinutesArr_BREAKDOWN)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_BREAKDOWN)->sum() }} hour(s)</small></span>
+        <span class="BreakdownCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) . ' day(s)' }} : {{ ((collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? collect($TotalMinutesArr_BREAKDOWN)->sum() . ' min(s)' : collect($TotalHoursArr_BREAKDOWN)->sum() . ' hour(s)') }}</small></span>
         @else
         <span class="BreakdownCount"></span>
         @endif
