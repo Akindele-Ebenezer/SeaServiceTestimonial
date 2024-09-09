@@ -69,7 +69,8 @@
   function createPie(dataElement, pieElement) {
     var listData = [];
     $(dataElement+" span").each(function(index, el) { 
-        listData.push(Number($(this).html().split(" ")[3])); 
+        // listData.push(Number($(this).html().split(" ")[3])); 
+        listData.push(Number($(this).find("p.Hide").text())); 
     });
     var listTotal = 0;
     for(var i=0; i<listData.length; i++) {
