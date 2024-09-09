@@ -24,6 +24,7 @@
                                           })->get(); 
       $TotalDaysArr_DOCKING = [];
       $TotalHoursArr_DOCKING = [];
+      $TotalMinutesArr_DOCKING = [];
       if (count($MonthlyVessel_DOCKING_STATS) == 0) {
           $TotalDaysArr_DOCKING = [0];
       }  
@@ -32,16 +33,17 @@
           $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
           $TotalDays = $EndDateTime->diffInDays($StartDateTime);
           $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_DOCKING, $TotalMinutes); 
           array_push($TotalDaysArr_DOCKING, $TotalDays); 
           array_push($TotalHoursArr_DOCKING, $TotalHours); 
       }  
       $MonthlyVessel_BUNKERY_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'BUNKERY')->whereYear('EndDate', $_GET['Year'])
                                           ->where(function($query) {
                                       $query->whereMonth('EndDate', $_GET['Month'])
-                                            ->orWhereMonth('StartDate', $_GET['Month'])
-                                            // ->orWhere(function($query) {
-                                            //     $query->whereMonth('StartDate', $_GET['Month']);
-                                            // })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
                                             ->orWhere(function ($query) {
                                               if($_GET['Month'] == '0') {
                                                 $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
@@ -51,6 +53,7 @@
                                           })->get();
       $TotalDaysArr_BUNKERY = [];
       $TotalHoursArr_BUNKERY = [];
+      $TotalMinutesArr_BUNKERY = [];
       if (count($MonthlyVessel_BUNKERY_STATS) == 0) {
           $TotalDaysArr_BUNKERY = [0];
       }  
@@ -59,6 +62,8 @@
           $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
           $TotalDays = $EndDateTime->diffInDays($StartDateTime);
           $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_BUNKERY, $TotalMinutes); 
           array_push($TotalDaysArr_BUNKERY, $TotalDays); 
           array_push($TotalHoursArr_BUNKERY, $TotalHours); 
       }  
@@ -77,6 +82,7 @@
                                           })->get();
       $TotalDaysArr_INSPECTION = [];
       $TotalHoursArr_INSPECTION = [];
+      $TotalMinutesArr_INSPECTION = [];
       if (count($MonthlyVessel_INSPECTION_STATS) == 0) {
           $TotalDaysArr_INSPECTION = [0];
       }  
@@ -85,6 +91,8 @@
           $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
           $TotalDays = $EndDateTime->diffInDays($StartDateTime);
           $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_INSPECTION, $TotalMinutes); 
           array_push($TotalDaysArr_INSPECTION, $TotalDays); 
           array_push($TotalHoursArr_INSPECTION, $TotalHours); 
       }  
@@ -103,6 +111,7 @@
                                           })->get();
       $TotalDaysArr_MAINTENANCE = [];
       $TotalHoursArr_MAINTENANCE = [];
+      $TotalMinutesArr_MAINTENANCE = [];
       if (count($MonthlyVessel_MAINTENANCE_STATS) == 0) {
           $TotalDaysArr_MAINTENANCE = [0];
       }  
@@ -111,6 +120,8 @@
           $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
           $TotalDays = $EndDateTime->diffInDays($StartDateTime);
           $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_MAINTENANCE, $TotalMinutes); 
           array_push($TotalDaysArr_MAINTENANCE, $TotalDays); 
           array_push($TotalHoursArr_MAINTENANCE, $TotalHours); 
       }  
@@ -129,6 +140,7 @@
                                           })->get();
       $TotalDaysArr_BREAKDOWN = [];
       $TotalHoursArr_BREAKDOWN = [];
+      $TotalMinutesArr_BREAKDOWN = [];
       if (count($MonthlyVessel_BREAKDOWN_STATS) == 0) {
           $TotalDaysArr_BREAKDOWN = [0];
       }  
@@ -137,6 +149,8 @@
           $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
           $TotalDays = $EndDateTime->diffInDays($StartDateTime);
           $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_BREAKDOWN, $TotalMinutes); 
           array_push($TotalDaysArr_BREAKDOWN, $TotalDays); 
           array_push($TotalHoursArr_BREAKDOWN, $TotalHours); 
       }  
@@ -147,7 +161,7 @@
         <em>Docking</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="DockingCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_DOCKING_STATS) : '1000' }}</span> --}}
-        <span class="DockingCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) }} day(s) : {{ collect($TotalHoursArr_DOCKING)->sum() }} hour(s)</small></span>
+        <span class="DockingCount"><small>{{ ((collect($TotalHoursArr_DOCKING)->sum() == 0) ? collect($TotalMinutesArr_DOCKING)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_DOCKING)->sum() }} hour(s)</small></span>
         @else
         <span class="DockingCount"></span>
         @endif
@@ -156,7 +170,7 @@
         <em>Bunkering</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="BunkeringCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_BUNKERY_STATS) : '1000' }}</span> --}}
-        <span class="BunkeringCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) }} day(s) : {{ collect($TotalHoursArr_BUNKERY)->sum() }} hour(s)</small></span>
+        <span class="BunkeringCount"><small>{{ ((collect($TotalHoursArr_BUNKERY)->sum() == 0) ? collect($TotalMinutesArr_BUNKERY)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_BUNKERY)->sum() }} hour(s)</small></span>
         @else
         <span class="BunkeringCount"></span>
         @endif
@@ -165,7 +179,7 @@
         <em>Inspection</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="InspectionCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_INSPECTION_STATS) : '1000' }}</span> --}}
-        <span class="InspectionCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) }} day(s) : {{ collect($TotalHoursArr_INSPECTION)->sum() }} hour(s)</small></span>
+        <span class="InspectionCount"><small>{{ ((collect($TotalHoursArr_INSPECTION)->sum() == 0) ? collect($TotalMinutesArr_INSPECTION)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_INSPECTION)->sum() }} hour(s)</small></span>
         @else
         <span class="InspectionCount"></span>
         @endif
@@ -174,7 +188,7 @@
         <em>Maintenance</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="MaintenanceCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_MAINTENANCE_STATS) : '1000' }}</span> --}}
-        <span class="MaintenanceCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) }} day(s) : {{ collect($TotalHoursArr_MAINTENANCE)->sum() }} hour(s)</small></span>
+        <span class="MaintenanceCount"><small>{{ ((collect($TotalHoursArr_MAINTENANCE)->sum() == 0) ? collect($TotalMinutesArr_MAINTENANCE)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_MAINTENANCE)->sum() }} hour(s)</small></span>
         @else
         <span class="MaintenanceCount"></span>
         @endif
@@ -183,7 +197,7 @@
         <em>Breakdown</em>
         @if (isset($_GET['Chart4']))
         {{-- <span class="BreakdownCount">{{ isset($_GET['Chart4']) ? count($MonthlyVessel_BREAKDOWN_STATS) : '1000' }}</span> --}}
-        <span class="BreakdownCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) }} day(s) : {{ collect($TotalHoursArr_BREAKDOWN)->sum() }} hour(s)</small></span>
+        <span class="BreakdownCount"><small>{{ ((collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? collect($TotalMinutesArr_BREAKDOWN)->sum() . ' min(s)' : round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) . ' day(s)') }} : {{ collect($TotalHoursArr_BREAKDOWN)->sum() }} hour(s)</small></span>
         @else
         <span class="BreakdownCount"></span>
         @endif
