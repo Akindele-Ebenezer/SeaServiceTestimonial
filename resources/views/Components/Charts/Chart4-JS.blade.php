@@ -33,7 +33,7 @@
     var listData = [];
     function createPie(dataElement, pieElement) {
     // var listData = [];
-    $(dataElement+" span").each(function(index, el) {
+    $(dataElement+" span small").each(function(index, el) {
         listData.push(Number($(this).html().split(" ")[0])); 
     });
     var listTotal = 0;
@@ -45,7 +45,7 @@
         "#03AED2", 
         "#8a3ffc", 
         "#ff832b", 
-        "#eee", 
+        "#ccc", 
         "#da1e28", 
         "#52f781", 
         "turquoise", 
