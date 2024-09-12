@@ -174,6 +174,39 @@
           array_push($TotalDaysArr_BREAKDOWN, $TotalDays); 
           array_push($TotalHoursArr_BREAKDOWN, $TotalHours); 
       }  
+      $MonthlyVessel_IDLE_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $_GET['Vessel'])->where('Status', 'IDLE')->whereYear('EndDate', $_GET['Year'])
+                                          ->where(function($query) {
+                                      $query->whereMonth('EndDate', $_GET['Month'])
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', $_GET['Month']);
+                                            })
+                                            ->orWhere(function($query) {
+                                                $query->whereMonth('StartDate', '<', $_GET['Month'])
+                                                      ->whereMonth('EndDate', '>', $_GET['Month']);
+                                            })
+                                            ->orWhere(function ($query) {
+                                              if($_GET['Month'] == '0') {
+                                                $query->whereBetween('StartDate', [$_GET['StartDate'], $_GET['EndDate']])
+                                                      ->whereBetween('EndDate', [$_GET['StartDate'], $_GET['EndDate']]);
+                                              }
+                                            });
+                                          })->get();
+      $TotalDaysArr_IDLE = [];
+      $TotalHoursArr_IDLE = [];
+      $TotalMinutesArr_IDLE = [];
+      if (count($MonthlyVessel_IDLE_STATS) == 0) {
+          $TotalDaysArr_IDLE = [0];
+      }  
+      foreach($MonthlyVessel_IDLE_STATS as $Period) { 
+          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
+          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
+          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_IDLE, $TotalMinutes); 
+          array_push($TotalDaysArr_IDLE, $TotalDays); 
+          array_push($TotalHoursArr_IDLE, $TotalHours); 
+      }    
     @endphp 
     @endif
     <ul class="pieID legend">
@@ -215,6 +248,14 @@
         <span class="BreakdownCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? round(collect($TotalMinutesArr_BREAKDOWN)->sum() / 60, 2) : collect($TotalHoursArr_BREAKDOWN)->sum() }}</p> : {{ ((collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? collect($TotalMinutesArr_BREAKDOWN)->sum() . ' min(s)' : collect($TotalHoursArr_BREAKDOWN)->sum() . ' hour(s)') }}</small></span>
         @else
         <span class="BreakdownCount"><small></small></span>
+        @endif
+      </li>
+      <li>
+        <em>Ready</em>
+        @if (isset($_GET['Chart4']))
+        <span class="ReadyCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_IDLE)->sum() == 0) ? round(collect($TotalMinutesArr_IDLE)->sum() / 60, 2) : collect($TotalHoursArr_IDLE)->sum() }}</p> : {{ ((collect($TotalHoursArr_IDLE)->sum() == 0) ? collect($TotalMinutesArr_IDLE)->sum() . ' min(s)' : collect($TotalHoursArr_IDLE)->sum() . ' hour(s)') }}</small></span>
+        @else
+        <span class="ReadyCount"><small></small></span>
         @endif
       </li>
     </ul>

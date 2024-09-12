@@ -4,6 +4,7 @@
     $_NumberOfVessels_INSPECTION = \App\Models\VesselAvailability::select('id')->where('Status', 'INSPECTION')->where('Vessel', $Vessel->VesselName)->get();
     $_NumberOfVessels_MAINTENANCE = \App\Models\VesselAvailability::select('id')->where('Status', 'MAINTENANCE')->where('Vessel', $Vessel->VesselName)->get();
     $_NumberOfVessels_BREAKDOWN = \App\Models\VesselAvailability::select('id')->where('Status', 'BREAKDOWN')->where('Vessel', $Vessel->VesselName)->get();
+    $_NumberOfVessels_IDLE = \App\Models\VesselAvailability::select('id')->where('Status', 'IDLE')->where('Vessel', $Vessel->VesselName)->get();
       
     $MonthlyVessel_DOCKING_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $Vessel->VesselName)->where('Status', 'DOCKING')
                                           ->where(function($query) {
@@ -113,9 +114,30 @@
           array_push($TotalMinutesArr_BREAKDOWN, $TotalMinutes); 
           array_push($TotalDaysArr_BREAKDOWN, $TotalDays); 
           array_push($TotalHoursArr_BREAKDOWN, $TotalHours); 
+      }   
+    $MonthlyVessel_IDLE_STATS = \DB::table('vessel_availabilities')->select(['StartDate', 'StartTime', 'EndDate', 'EndTime'])->where('Vessel', $Vessel->VesselName)->where('Status', 'IDLE')
+                                          ->where(function($query) {
+                                            $query->where('StartDate', '>=', '01-01-' . date('Y'))
+                                                    ->where('EndDate', '<=', '31-12-' . date('Y'));
+                                          })->get();
+      $TotalDaysArr_IDLE = [];
+      $TotalHoursArr_IDLE = [];
+      $TotalMinutesArr_IDLE = [];
+      if (count($MonthlyVessel_IDLE_STATS) == 0) {
+          $TotalDaysArr_IDLE = [0];
       }  
-    $TotalActivities = (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN)) == 0 ? 1 : (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN));
-    $TotalActivities_ = round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays);
+      foreach($MonthlyVessel_IDLE_STATS as $Period) { 
+          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
+          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
+          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
+          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          array_push($TotalMinutesArr_IDLE, $TotalMinutes); 
+          array_push($TotalDaysArr_IDLE, $TotalDays); 
+          array_push($TotalHoursArr_IDLE, $TotalHours); 
+      }  
+    $TotalActivities = (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_IDLE)) == 0 ? 1 : (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN) + count($_NumberOfVessels_IDLE));
+    $TotalActivities_ = round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays);
 @endphp
 <span class="Hide">{{ $Vessel->VesselName }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) }}</span> 
@@ -133,3 +155,12 @@
 @endphp
 <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . (strtolower($Availability_STATUS->Status ?? 'operation') == 'idle' ? 'operation' : strtolower($Availability_STATUS->Status ?? 'operation')) }}</span> 
 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span>
+<span class="Hide">{{ round(collect($TotalMinutesArr_DOCKING)->sum()) }}</span>
+<span class="Hide">{{ round(collect($TotalMinutesArr_BUNKERY)->sum()) }}</span>
+<span class="Hide">{{ round(collect($TotalMinutesArr_INSPECTION)->sum()) }}</span>
+<span class="Hide">{{ round(collect($TotalMinutesArr_MAINTENANCE)->sum()) }}</span>
+<span class="Hide">{{ round(collect($TotalMinutesArr_BREAKDOWN)->sum()) }}</span>
+<span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) }}</span> 
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays / $TotalActivities_) * 100) }}</span> 
+<span class="Hide">{{ round(collect($TotalMinutesArr_IDLE)->sum()) }}</span>
+
