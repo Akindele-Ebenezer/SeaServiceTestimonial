@@ -137,19 +137,20 @@
           array_push($TotalHoursArr_IDLE, $TotalHours); 
       }  
     $TotalActivities = (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_IDLE)) == 0 ? 1 : (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN) + count($_NumberOfVessels_IDLE));
-    $TotalActivities_ = round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays);
-@endphp
+    // $TotalActivities_ = round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays);
+    $TotalActivities_ = collect($TotalMinutesArr_BUNKERY)->sum() + collect($TotalMinutesArr_INSPECTION)->sum() + collect($TotalMinutesArr_MAINTENANCE)->sum() + collect($TotalMinutesArr_BREAKDOWN)->sum() + collect($TotalMinutesArr_IDLE)->sum() + collect($TotalMinutesArr_DOCKING)->sum();
+@endphp 
 <span class="Hide">{{ $Vessel->VesselName }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) }}</span> 
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays / $TotalActivities_) * 100) }}</span> 
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_DOCKING)->sum() / 1) * 100) : round((collect($TotalMinutesArr_DOCKING)->sum() / $TotalActivities_) * 100) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BUNKERY)->sum() / 1) * 100) : round((collect($TotalMinutesArr_BUNKERY)->sum() / $TotalActivities_) * 100) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_INSPECTION)->sum() / 1) * 100) : round((collect($TotalMinutesArr_INSPECTION)->sum() / $TotalActivities_) * 100) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_MAINTENANCE)->sum() / 1) * 100) : round((collect($TotalMinutesArr_MAINTENANCE)->sum() / $TotalActivities_) * 100) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BREAKDOWN)->sum() / 1) * 100) : round((collect($TotalMinutesArr_BREAKDOWN)->sum() / $TotalActivities_) * 100) }}</span> 
 @php
     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
 @endphp
@@ -161,6 +162,6 @@
 <span class="Hide">{{ round(collect($TotalMinutesArr_MAINTENANCE)->sum()) }}</span>
 <span class="Hide">{{ round(collect($TotalMinutesArr_BREAKDOWN)->sum()) }}</span>
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) }}</span> 
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays / 1) * 100) : round((\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays / $TotalActivities_) * 100) }}</span> 
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_IDLE)->sum() / 1) * 100) : round((collect($TotalMinutesArr_IDLE)->sum() / $TotalActivities_) * 100) }}</span> 
 <span class="Hide">{{ round(collect($TotalMinutesArr_IDLE)->sum()) }}</span>
 
