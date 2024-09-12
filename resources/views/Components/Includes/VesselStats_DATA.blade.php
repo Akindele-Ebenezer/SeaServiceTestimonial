@@ -146,11 +146,11 @@
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) }}</span> 
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_DOCKING)->sum() / 1) * 100) : round((collect($TotalMinutesArr_DOCKING)->sum() / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BUNKERY)->sum() / 1) * 100) : round((collect($TotalMinutesArr_BUNKERY)->sum() / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_INSPECTION)->sum() / 1) * 100) : round((collect($TotalMinutesArr_INSPECTION)->sum() / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_MAINTENANCE)->sum() / 1) * 100) : round((collect($TotalMinutesArr_MAINTENANCE)->sum() / $TotalActivities_) * 100) }}</span>
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BREAKDOWN)->sum() / 1) * 100) : round((collect($TotalMinutesArr_BREAKDOWN)->sum() / $TotalActivities_) * 100) }}</span> 
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_DOCKING)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_DOCKING)->sum() / $TotalActivities_) * 100, 2) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BUNKERY)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_BUNKERY)->sum() / $TotalActivities_) * 100, 2) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_INSPECTION)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_INSPECTION)->sum() / $TotalActivities_) * 100, 2) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_MAINTENANCE)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_MAINTENANCE)->sum() / $TotalActivities_) * 100, 2) }}</span>
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BREAKDOWN)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_BREAKDOWN)->sum() / $TotalActivities_) * 100, 2) }}</span> 
 @php
     $VesselComment = \App\Models\VesselAvailability::select('Comment')->where('Vessel', $Vessel->VesselName)->orderBy('StartDate', 'DESC')->orderBy('StartTime', 'DESC')->first();
 @endphp
@@ -162,6 +162,6 @@
 <span class="Hide">{{ round(collect($TotalMinutesArr_MAINTENANCE)->sum()) }}</span>
 <span class="Hide">{{ round(collect($TotalMinutesArr_BREAKDOWN)->sum()) }}</span>
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) }}</span> 
-<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_IDLE)->sum() / 1) * 100) : round((collect($TotalMinutesArr_IDLE)->sum() / $TotalActivities_) * 100) }}</span> 
+<span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_IDLE)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_IDLE)->sum() / $TotalActivities_) * 100, 2) }}</span> 
 <span class="Hide">{{ round(collect($TotalMinutesArr_IDLE)->sum()) }}</span>
 
