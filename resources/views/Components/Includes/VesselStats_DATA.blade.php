@@ -156,12 +156,12 @@
 @endphp
 <span class="Hide">{{ $VesselComment->Comment ?? 'Vessel is on ' . (strtolower($Availability_STATUS->Status ?? 'operation') == 'idle' ? 'operation' : strtolower($Availability_STATUS->Status ?? 'operation')) }}</span> 
 <span class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'idle') }}</span>
-<span class="Hide">{{ round(collect($TotalMinutesArr_DOCKING)->sum()) }}</span>
-<span class="Hide">{{ round(collect($TotalMinutesArr_BUNKERY)->sum()) }}</span>
-<span class="Hide">{{ round(collect($TotalMinutesArr_INSPECTION)->sum()) }}</span>
-<span class="Hide">{{ round(collect($TotalMinutesArr_MAINTENANCE)->sum()) }}</span>
-<span class="Hide">{{ round(collect($TotalMinutesArr_BREAKDOWN)->sum()) }}</span>
+<span class="Hide">{{ (collect($TotalHoursArr_DOCKING)->sum() == 0) ? round(collect($TotalMinutesArr_DOCKING)->sum() / 60, 2) . ' min(s)' : collect($TotalHoursArr_DOCKING)->sum() . ' hour(s)' }}</span>
+<span class="Hide">{{ (collect($TotalHoursArr_BUNKERY)->sum() == 0) ? round(collect($TotalMinutesArr_BUNKERY)->sum() / 60, 2) . ' min(s)' : collect($TotalHoursArr_BUNKERY)->sum() . ' hour(s)' }}</span>
+<span class="Hide">{{ (collect($TotalHoursArr_INSPECTION)->sum() == 0) ? round(collect($TotalMinutesArr_INSPECTION)->sum() / 60, 2) . ' min(s)' : collect($TotalHoursArr_INSPECTION)->sum() . ' hour(s)' }}</span>
+<span class="Hide">{{ (collect($TotalHoursArr_MAINTENANCE)->sum() == 0) ? round(collect($TotalMinutesArr_MAINTENANCE)->sum() / 60, 2) . ' min(s)' : collect($TotalHoursArr_MAINTENANCE)->sum() . ' hour(s)' }}</span>
+<span class="Hide">{{ (collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? round(collect($TotalMinutesArr_BREAKDOWN)->sum() / 60, 2) . ' min(s)' : collect($TotalHoursArr_BREAKDOWN)->sum() . ' hour(s)' }}</span>
 <span class="Hide">{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) }}</span> 
 <span class="Hide">{{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_IDLE)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_IDLE)->sum() / $TotalActivities_) * 100, 2) }}</span> 
-<span class="Hide">{{ round(collect($TotalMinutesArr_IDLE)->sum()) }}</span>
+<span class="Hide">{{ (collect($TotalHoursArr_IDLE)->sum() == 0) ? round(collect($TotalMinutesArr_IDLE)->sum() / 60, 2) . ' min(s)' : collect($TotalHoursArr_IDLE)->sum() . ' hour(s)' }}</span>
 
