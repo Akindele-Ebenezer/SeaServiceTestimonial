@@ -18,7 +18,7 @@ $Color-6: #8cff9a;
 
 ::-webkit-scrollbar {
     background-color: none;
-    width: .75em;
+    width: .5em;
 }
 ::-webkit-scrollbar-thumb {
     background-color: lighten($color: $Color-2, $amount: 10); 
