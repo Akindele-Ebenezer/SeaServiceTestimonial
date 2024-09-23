@@ -76,6 +76,13 @@ class VesselAvailabilityPdf extends Controller
                                             $query->where('Vessel', $Request->Vessel)
                                             ->whereYear('EndDate', $Year)
                                             ->whereMonth('EndDate', $Request->Month);
+                                        })
+                                        ->orWhere(function($query) use ($Request, $Year) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
+                                            ->where('Status', 'BUNKERY')
+                                            ->whereMonth('StartDate', '<', $Request->Month)
+                                            ->whereMonth('EndDate', '>', $Request->Month);
                                         })->orderBy('StartDate')->get();                           
             $TotalDocking = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'DOCKING')
@@ -108,6 +115,13 @@ class VesselAvailabilityPdf extends Controller
                                             ->whereYear('EndDate', $Year)
                                             ->where('Status', 'BUNKERY')
                                             ->whereMonth('EndDate', $Request->Month);
+                                        })
+                                        ->orWhere(function($query) use ($Request, $Year) {
+                                            $query->where('Vessel', $Request->Vessel)
+                                            ->whereYear('EndDate', $Year)
+                                            ->where('Status', 'BUNKERY')
+                                            ->whereMonth('StartDate', '<', $Request->Month)
+                                            ->whereMonth('EndDate', '>', $Request->Month);
                                         })->get();
             $TotalMaintenance = \DB::table('vessel_availabilities')->select('id')->where('Vessel', $Request->Vessel)->whereYear('StartDate', $Year)->whereMonth('StartDate', $Request->Month)
                                         ->where('Status', 'MAINTENANCE')
@@ -146,24 +160,25 @@ class VesselAvailabilityPdf extends Controller
             $TotalMinutesWorked = [];
             $TotalDaysWorked = [];
             foreach ($VesselAvailability as $Vessel) {
-                $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
-                $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
-                $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
-                $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                if ($Vessel->Status == 'IDLE') {
-                    $Status = 'READY';
-                } else if ($Vessel->Status == 'BUNKERY') {
-                    $Status = 'BUNKERING';
-                } else {
-                    $Status = $Vessel->Status;
-                }
+                include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php');
+                // $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                // $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                // $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
+                // $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
+                // $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+                // if ($Vessel->Status == 'IDLE') {
+                //     $Status = 'READY';
+                // } else if ($Vessel->Status == 'BUNKERY') {
+                //     $Status = 'BUNKERING';
+                // } else {
+                //     $Status = $Vessel->Status;
+                // }
 
                 $fpdf->Cell(31.7, 5, $Status, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->StartDate, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->StartTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, $Vessel->EndDate, 1);
-                $fpdf->Cell(31.7, 5, $Vessel->EndTime . ' HRS', 1);
+                $fpdf->Cell(31.7, 5, $StartDate, 1);
+                $fpdf->Cell(31.7, 5, $StartTime . ' HRS', 1);
+                $fpdf->Cell(31.7, 5, $EndDate, 1);
+                $fpdf->Cell(31.7, 5, $EndTime . ' HRS', 1);
                 $fpdf->Cell(31.7, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
                 $fpdf->Ln();
                 if($TotalDays == 0) {
@@ -261,25 +276,26 @@ class VesselAvailabilityPdf extends Controller
             $TotalMinutesWorked = [];
             $TotalDaysWorked = [];
             foreach ($VesselAvailability as $Vessel) {
-                $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
-                $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
-                $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
-                $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                if ($Vessel->Status == 'IDLE') {
-                    $Status = 'READY';
-                } else if ($Vessel->Status == 'BUNKERY') {
-                    $Status = 'BUNKERING';
-                } else {
-                    $Status = $Vessel->Status;
-                }
+                include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php');
+                // $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
+                // $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
+                // $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
+                // $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
+                // $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+                // if ($Vessel->Status == 'IDLE') {
+                //     $Status = 'READY';
+                // } else if ($Vessel->Status == 'BUNKERY') {
+                //     $Status = 'BUNKERING';
+                // } else {
+                //     $Status = $Vessel->Status;
+                // }
 
                 $fpdf->Cell(31.7, 5, $Vessel->Vessel, 1);
                 $fpdf->Cell(24.4, 5, $Status, 1);
-                $fpdf->Cell(24.4, 5, $Vessel->StartDate, 1);
-                $fpdf->Cell(24.4, 5, $Vessel->StartTime . ' HRS', 1);
-                $fpdf->Cell(24.4, 5, $Vessel->EndDate, 1);
-                $fpdf->Cell(24.4, 5, $Vessel->EndTime . ' HRS', 1);
+                $fpdf->Cell(24.4, 5, $StartDate, 1);
+                $fpdf->Cell(24.4, 5, $StartTime . ' HRS', 1);
+                $fpdf->Cell(24.4, 5, $EndDate, 1);
+                $fpdf->Cell(24.4, 5, $EndTime . ' HRS', 1);
                 $fpdf->Cell(36.4, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
                 $fpdf->Ln();
                 if($TotalDays == 0) {

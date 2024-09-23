@@ -12,7 +12,7 @@ class VesselAvailabilityController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $Request)
-    { 
+    {  
         VesselAvailability::where('TillNow', 'YES')->update([
             'EndTime' => date('H:i'),
             'EndDate' => date('Y-m-d'),
@@ -240,7 +240,7 @@ class VesselAvailabilityController extends Controller
             'Vessel' => $Request->EditVessel, 
             'Action' => 'Update',
             'Subject' => 'Availability Update!',
-            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . date('H:i A', strtotime($Request->EditStartTime)) . ' till ' . date('H:i A', strtotime($Request->EditEndTime)) . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
+            'Notification' => $Request->EditDoneBy . ' has updated availability for ' . $Request->EditVessel . '! The Vessel is currently on ' . $Request->EditStatus . ' from ' . date('H:i A', strtotime(substr($Request->EditStartTime, 0, 5))) . ' till ' . date('H:i A', strtotime(substr($Request->EditEndTime, 0, 5))) . ' (' . $Request->EditStartDate .' - ' . $Request->EditEndDate . ').',
         ]); 
         return back();
     }

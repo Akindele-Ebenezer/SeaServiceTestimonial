@@ -33,11 +33,7 @@
           $TotalDaysArr_DOCKING = [0];
       }  
       foreach($MonthlyVessel_DOCKING_STATS as $Period) { 
-          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
-          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          include('../resources/views/Components/Includes/CheckStartDateForEachMonth.php');
           array_push($TotalMinutesArr_DOCKING, $TotalMinutes); 
           array_push($TotalDaysArr_DOCKING, $TotalDays); 
           array_push($TotalHoursArr_DOCKING, $TotalHours); 
@@ -65,12 +61,8 @@
       if (count($MonthlyVessel_BUNKERY_STATS) == 0) {
           $TotalDaysArr_BUNKERY = [0];
       }  
-      foreach($MonthlyVessel_BUNKERY_STATS as $Period) { 
-          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
-          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+      foreach($MonthlyVessel_BUNKERY_STATS as $Period) {
+          include('../resources/views/Components/Includes/CheckStartDateForEachMonth.php'); 
           array_push($TotalMinutesArr_BUNKERY, $TotalMinutes); 
           array_push($TotalDaysArr_BUNKERY, $TotalDays); 
           array_push($TotalHoursArr_BUNKERY, $TotalHours); 
@@ -99,11 +91,7 @@
           $TotalDaysArr_INSPECTION = [0];
       }  
       foreach($MonthlyVessel_INSPECTION_STATS as $Period) { 
-          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
-          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          include('../resources/views/Components/Includes/CheckStartDateForEachMonth.php');
           array_push($TotalMinutesArr_INSPECTION, $TotalMinutes); 
           array_push($TotalDaysArr_INSPECTION, $TotalDays); 
           array_push($TotalHoursArr_INSPECTION, $TotalHours); 
@@ -132,11 +120,7 @@
           $TotalDaysArr_MAINTENANCE = [0];
       }  
       foreach($MonthlyVessel_MAINTENANCE_STATS as $Period) { 
-          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
-          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          include('../resources/views/Components/Includes/CheckStartDateForEachMonth.php');
           array_push($TotalMinutesArr_MAINTENANCE, $TotalMinutes); 
           array_push($TotalDaysArr_MAINTENANCE, $TotalDays); 
           array_push($TotalHoursArr_MAINTENANCE, $TotalHours); 
@@ -165,11 +149,7 @@
           $TotalDaysArr_BREAKDOWN = [0];
       }  
       foreach($MonthlyVessel_BREAKDOWN_STATS as $Period) { 
-          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
-          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          include('../resources/views/Components/Includes/CheckStartDateForEachMonth.php');
           array_push($TotalMinutesArr_BREAKDOWN, $TotalMinutes); 
           array_push($TotalDaysArr_BREAKDOWN, $TotalDays); 
           array_push($TotalHoursArr_BREAKDOWN, $TotalHours); 
@@ -198,11 +178,7 @@
           $TotalDaysArr_IDLE = [0];
       }  
       foreach($MonthlyVessel_IDLE_STATS as $Period) { 
-          $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-          $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-          $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-          $TotalHours = $EndDateTime->diffInHours($StartDateTime);
-          $TotalMinutes = $EndDateTime->diffInMinutes($StartDateTime);
+          include('../resources/views/Components/Includes/CheckStartDateForEachMonth.php');
           array_push($TotalMinutesArr_IDLE, $TotalMinutes); 
           array_push($TotalDaysArr_IDLE, $TotalDays); 
           array_push($TotalHoursArr_IDLE, $TotalHours); 

@@ -137,7 +137,6 @@
           array_push($TotalHoursArr_IDLE, $TotalHours); 
       }  
     $TotalActivities = (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_IDLE)) == 0 ? 1 : (count($_NumberOfVessels_DOCKING) + count($_NumberOfVessels_BUNKERY) + count($_NumberOfVessels_INSPECTION) + count($_NumberOfVessels_MAINTENANCE) + count($_NumberOfVessels_BREAKDOWN) + count($_NumberOfVessels_IDLE));
-    // $TotalActivities_ = round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) + round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays);
     $TotalActivities_ = collect($TotalMinutesArr_BUNKERY)->sum() + collect($TotalMinutesArr_INSPECTION)->sum() + collect($TotalMinutesArr_MAINTENANCE)->sum() + collect($TotalMinutesArr_BREAKDOWN)->sum() + collect($TotalMinutesArr_IDLE)->sum() + collect($TotalMinutesArr_DOCKING)->sum();
 @endphp 
 <span class="Hide">{{ $Vessel->VesselName }}</span> 

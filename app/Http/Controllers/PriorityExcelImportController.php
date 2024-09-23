@@ -43,7 +43,7 @@ class PriorityExcelImportController extends Controller
                 'TillNow' => $Request->TillNow,
                 'DateIn' => date('Y-m-d'),
                 'TimeIn' => date('H:i a'),
-            ]);
+            ]); 
             \DB::table('notifications')->insert([
                 'DateIn' => date('Y-m-d'),
                 'TimeIn' => date('H:i A'),
@@ -51,7 +51,7 @@ class PriorityExcelImportController extends Controller
                 'Vessel' => $Request->Vessel, 
                 'Action' => 'Create',
                 'Subject' => 'New Availability Alert!',
-                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime($Request->StartTime)) . ' to ' . date('H:i A', strtotime($Request->EndTime)) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
+                'Notification' =>  $Request->DoneBy . ' created availability for ' . $Request->Vessel . "'s tracking list. The Vessel is on " . $Request->Status . ' from ' . date('H:i A', strtotime(substr($Request->StartTime, 0, 5))) . ' to ' . date('H:i A', strtotime(substr($Request->EndTime, 0, 5))) . ' (' . $Request->StartDate . ' - ' . $Request->EndDate . ').',
             ]);   
             $PreviousRow = VesselAvailability::select('id')->where('id', '<', $CurrentRow->id)
                                                 ->where('Vessel', $Request->Vessel) 
