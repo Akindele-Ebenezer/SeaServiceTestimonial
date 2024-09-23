@@ -79,8 +79,7 @@ class VesselAvailabilityPdf extends Controller
                                         })
                                         ->orWhere(function($query) use ($Request, $Year) {
                                             $query->where('Vessel', $Request->Vessel)
-                                            ->whereYear('EndDate', $Year)
-                                            ->where('Status', 'BUNKERY')
+                                            ->whereYear('EndDate', $Year) 
                                             ->whereMonth('StartDate', '<', $Request->Month)
                                             ->whereMonth('EndDate', '>', $Request->Month);
                                         })->orderBy('StartDate')->get();                           
