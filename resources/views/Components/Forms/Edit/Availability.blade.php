@@ -16,15 +16,16 @@
                         </div> 
                         <div class="input">
                             <label for="">Status</label>
-                            <select name="EditStatus" id="">
-                                <option value="DOCKING">DOCKING</option>
+                            <input type="text" name="EditStatus" readonly>
+                            {{-- <select name="EditStatus" id="" readonly>
+                                <option value="DOCKING">DOCKING</option> --}}
                                 {{-- <option value="OPERATION">OPERATION</option>  --}}
-                                <option value="MAINTENANCE">MAINTENANCE</option> 
+                                {{-- <option value="MAINTENANCE">MAINTENANCE</option> 
                                 <option value="BREAKDOWN">BREAKDOWN</option> 
                                 <option value="INSPECTION">INSPECTION</option> 
                                 <option value="BUNKERY">BUNKERING</option> 
                                 <option value="IDLE">READY TO GO</option> 
-                            </select>
+                            </select> --}}
                         </div> 
                         <div class="input">
                             <label for="">Done By</label>

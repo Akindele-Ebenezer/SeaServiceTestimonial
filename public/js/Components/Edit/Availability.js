@@ -10,7 +10,7 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
         EditAvailabilityModal.style.display = 'flex';
         let AvailabilityId = EditAvailabilityButton.parentElement.parentElement.firstElementChild.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditVessel]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.textContent;
-        document.querySelector('.UpdateAvailabilityForm select[name=EditStatus]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.textContent;
+        document.querySelector('.UpdateAvailabilityForm input[name=EditStatus]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditDoneBy]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
         document.querySelector('.UpdateAvailabilityForm input[name=EditStartTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' HRS';
         document.querySelector('.UpdateAvailabilityForm input[name=EditEndTime]').value = EditAvailabilityButton.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' HRS';
