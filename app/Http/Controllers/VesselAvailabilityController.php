@@ -216,9 +216,10 @@ class VesselAvailabilityController extends Controller
      */
     public function update(Request $Request, $Id)
     { 
+
         VesselAvailability::where('id', $Id)->update([
             'Vessel' => $Request->EditVessel,
-            'Status' => $Request->EditStatus,
+            // 'Status' => $Request->EditStatus,
             'DoneBy' => $Request->EditDoneBy,
             'Attachment' => $Request->EditAttachment,
             'Comment' => $Request->EditComment,
