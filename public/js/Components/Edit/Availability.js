@@ -81,6 +81,8 @@ EditAvailabilityButtons.forEach(EditAvailabilityButton => {
                 ErrorAvailability_Update.textContent =  'Status is required';
             } else if (EditDoneByInput.value.trim() == '') { 
                 ErrorAvailability_Update.textContent =  'Done by field is required';
+            } else if ((EditStartTimeInput.value.length < 9) || (EditEndTimeInput.value.length < 9)) {
+                ErrorAvailability_Update.textContent =  'Value of Start/End Time not correct.. kindly clear and re-enter correct value';
             } else if (
                 EditStartTimeInput.value == '' || 
                 EditEndTimeInput.value == '' 

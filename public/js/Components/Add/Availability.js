@@ -133,6 +133,8 @@ if (AddAvailabilityButton !== null) {
                 } else {
                     ErrorAvailability.textContent =  'Start time/Start date is required';
                 }
+            } else if ((StartTimeInput.value.length < 9) || (EndTimeInput.value.length < 9)) {
+                ErrorAvailability.textContent =  'Value of Start/End Time not correct.. kindly clear and re-enter correct value';
             } else if (StatusInput.value.trim() == '') { 
                 ErrorAvailability.textContent =  'Status is required';
             } else if (DoneByInput.value.trim() == '') { 
