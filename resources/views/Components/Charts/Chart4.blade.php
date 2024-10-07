@@ -196,6 +196,7 @@
         @endif
       </li>
       <li>
+        <span class="Hide">Bunkery</span>
         <em>Bunkering</em>
         @if (isset($_GET['Chart4']))
         <span class="BunkeringCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_BUNKERY)->sum() == 0) ? round(collect($TotalMinutesArr_BUNKERY)->sum() / 60, 2) : collect($TotalHoursArr_BUNKERY)->sum() }}</p> : {{ ((collect($TotalHoursArr_BUNKERY)->sum() == 0) ? collect($TotalMinutesArr_BUNKERY)->sum() . ' min(s)' : collect($TotalHoursArr_BUNKERY)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BUNKERY)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_BUNKERY)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
@@ -228,6 +229,7 @@
         @endif
       </li>
       <li>
+        <span class="Hide">Idle</span>
         <em>Working</em>
         @if (isset($_GET['Chart4']))
         <span class="ReadyCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_IDLE)->sum() == 0) ? round(collect($TotalMinutesArr_IDLE)->sum() / 60, 2) : collect($TotalHoursArr_IDLE)->sum() }}</p> : {{ ((collect($TotalHoursArr_IDLE)->sum() == 0) ? collect($TotalMinutesArr_IDLE)->sum() . ' min(s)' : collect($TotalHoursArr_IDLE)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_IDLE)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_IDLE)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
