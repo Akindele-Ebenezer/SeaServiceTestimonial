@@ -47,11 +47,7 @@
         "#ff832b", 
         "#ccc", 
         "#da1e28", 
-        "#52f781", 
-        "turquoise", 
-        "forestgreen", 
-        "navy", 
-        "gray"
+        "#52f781",  
     ];
     for(var i=0; i<listData.length; i++) {
         var size = sliceSize(listData[i], listTotal);
@@ -71,6 +67,7 @@
     $(dataElement+" span").each(function(index, el) { 
         // listData.push(Number($(this).html().split(" ")[3])); 
         listData.push(Number($(this).find("p.Hide").text())); 
+        // console.log($(this).html());
     });
     var listTotal = 0;
     for(var i=0; i<listData.length; i++) {
@@ -83,11 +80,7 @@
         "#ff832b", 
         "#ccc", 
         "#da1e28", 
-        "#52f781", 
-        "turquoise", 
-        "forestgreen", 
-        "navy", 
-        "gray"
+        "#52f781",  
     ];
     for(var i=0; i<listData.length; i++) {
         var size = sliceSize(listData[i], listTotal);

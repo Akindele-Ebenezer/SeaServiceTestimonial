@@ -187,7 +187,7 @@
     @endphp 
     @endif
     <ul class="pieID legend">
-      <li>
+      <li> 
         <em>Docking</em>
         @if (isset($_GET['Chart4']))
         <span class="DockingCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_DOCKING)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_DOCKING)->sum() == 0) ? round(collect($TotalMinutesArr_DOCKING)->sum() / 60, 2) : collect($TotalHoursArr_DOCKING)->sum() }}</p> : {{ ((collect($TotalHoursArr_DOCKING)->sum() == 0) ? collect($TotalMinutesArr_DOCKING)->sum() . ' min(s)' : collect($TotalHoursArr_DOCKING)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_DOCKING)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_DOCKING)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
@@ -196,7 +196,7 @@
         @endif
       </li>
       <li>
-        <span class="Hide">Bunkery</span>
+        <em class="Hide">Bunkery</em>
         <em>Bunkering</em>
         @if (isset($_GET['Chart4']))
         <span class="BunkeringCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BUNKERY)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_BUNKERY)->sum() == 0) ? round(collect($TotalMinutesArr_BUNKERY)->sum() / 60, 2) : collect($TotalHoursArr_BUNKERY)->sum() }}</p> : {{ ((collect($TotalHoursArr_BUNKERY)->sum() == 0) ? collect($TotalMinutesArr_BUNKERY)->sum() . ' min(s)' : collect($TotalHoursArr_BUNKERY)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BUNKERY)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_BUNKERY)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
@@ -204,7 +204,7 @@
         <span class="BunkeringCount"><small></small></span>
         @endif
       </li>
-      <li>
+      <li> 
         <em>Inspection</em>
         @if (isset($_GET['Chart4']))
         <span class="InspectionCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_INSPECTION)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_INSPECTION)->sum() == 0) ? round(collect($TotalMinutesArr_INSPECTION)->sum() / 60, 2) : collect($TotalHoursArr_INSPECTION)->sum() }}</p> : {{ ((collect($TotalHoursArr_INSPECTION)->sum() == 0) ? collect($TotalMinutesArr_INSPECTION)->sum() . ' min(s)' : collect($TotalHoursArr_INSPECTION)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_INSPECTION)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_INSPECTION)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
@@ -212,7 +212,7 @@
         <span class="InspectionCount"><small></small></span>
         @endif
       </li>
-      <li>
+      <li> 
         <em>Maintenance</em>
         @if (isset($_GET['Chart4']))
         <span class="MaintenanceCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_MAINTENANCE)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_MAINTENANCE)->sum() == 0) ? round(collect($TotalMinutesArr_MAINTENANCE)->sum() / 60, 2) : collect($TotalHoursArr_MAINTENANCE)->sum() }}</p> : {{ ((collect($TotalHoursArr_MAINTENANCE)->sum() == 0) ? collect($TotalMinutesArr_MAINTENANCE)->sum() . ' min(s)' : collect($TotalHoursArr_MAINTENANCE)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_MAINTENANCE)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_MAINTENANCE)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
@@ -220,7 +220,7 @@
         <span class="MaintenanceCount"><small></small></span>
         @endif
       </li>
-      <li>
+      <li> 
         <em>Breakdown</em>
         @if (isset($_GET['Chart4']))
         <span class="BreakdownCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_BREAKDOWN)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? round(collect($TotalMinutesArr_BREAKDOWN)->sum() / 60, 2) : collect($TotalHoursArr_BREAKDOWN)->sum() }}</p> : {{ ((collect($TotalHoursArr_BREAKDOWN)->sum() == 0) ? collect($TotalMinutesArr_BREAKDOWN)->sum() . ' min(s)' : collect($TotalHoursArr_BREAKDOWN)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_BREAKDOWN)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_BREAKDOWN)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
@@ -229,7 +229,7 @@
         @endif
       </li>
       <li>
-        <span class="Hide">Idle</span>
+        <em class="Hide">Idle</em>
         <em>Working</em>
         @if (isset($_GET['Chart4']))
         <span class="ReadyCount"><small>{{ round(\Carbon\CarbonInterval::hours(collect($TotalHoursArr_IDLE)->sum())->totalDays) . ' day(s)' }} <p class="Hide">{{ (collect($TotalHoursArr_IDLE)->sum() == 0) ? round(collect($TotalMinutesArr_IDLE)->sum() / 60, 2) : collect($TotalHoursArr_IDLE)->sum() }}</p> : {{ ((collect($TotalHoursArr_IDLE)->sum() == 0) ? collect($TotalMinutesArr_IDLE)->sum() . ' min(s)' : collect($TotalHoursArr_IDLE)->sum() . ' hour(s)') }} ({{ ($TotalActivities_ == 0) ? round((collect($TotalMinutesArr_IDLE)->sum() / 1) * 100, 2) : round((collect($TotalMinutesArr_IDLE)->sum() / $TotalActivities_) * 100, 2) }}%)</small></span>
