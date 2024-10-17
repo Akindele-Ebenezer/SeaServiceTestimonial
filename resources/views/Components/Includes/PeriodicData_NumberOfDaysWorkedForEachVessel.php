@@ -8,16 +8,12 @@ $TotalDaysArr = [];
 foreach($Periods as $Period) { 
     $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
     $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00')); 
-    if (($StartDate_ >= $Period->StartDate) AND 
-        ($EndDate_ >= $Period->EndDate)) {
-        $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-        $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-    } else if (($Period->StartDate <= $EndDate_) AND 
+    if (($Period->StartDate <= $EndDate_) AND 
         ($Period->EndDate >= $StartDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     }
-    $TotalDays = $EndDateTime->diffInDays($StartDateTime);
+    $TotalDays = $EndDateTime->diffInDays($StartDateTime) + 1;
     array_push($TotalDaysArr, $TotalDays); 
 }    
 $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
