@@ -275,19 +275,7 @@ class VesselAvailabilityPdf extends Controller
             $TotalMinutesWorked = [];
             $TotalDaysWorked = [];
             foreach ($VesselAvailability as $Vessel) {
-                include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php');
-                // $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
-                // $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
-                // $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                // $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
-                // $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                // if ($Vessel->Status == 'IDLE') {
-                //     $Status = 'READY';
-                // } else if ($Vessel->Status == 'BUNKERY') {
-                //     $Status = 'BUNKERING';
-                // } else {
-                //     $Status = $Vessel->Status;
-                // }
+                include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php'); 
 
                 $fpdf->Cell(31.7, 5, $Vessel->Vessel, 1);
                 $fpdf->Cell(24.4, 5, $Status, 1);

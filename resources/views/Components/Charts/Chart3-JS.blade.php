@@ -42,22 +42,22 @@
         barColor: [
             @switch($Status)
                 @case('DOCKING')
-                    '#03AED2, blue'
+                    '#03AED2'
                     @break
                 @case('BREAKDOWN')
-                    '#ed5f7d, red'
+                    '#ed5f7d'
                     @break 
                 @case('INSPECTION')
-                    '#ff832b, orange'
+                    '#ff832b'
                     @break 
                 @case('IDLE')
-                    '#52f781, lightgreen'
+                    '#52f781'
                     @break 
                 @case('BUNKERY')
-                    '#8a3ffc, purple'
+                    '#8a3ffc'
                     @break 
                 @case('MAINTENANCE')
-                    '#ddd, white'
+                    '#ddd'
                     @break  
             @endswitch
         ],
@@ -69,19 +69,7 @@
             pointInnerColor: "white",
         points: [ 
             @foreach($Vessel_ as $Vessel)
-                @php  
-                    $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->orderBy('EndDate', 'DESC')->get();
-                    if (count($Periods) == 0) {
-                        $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $EndDate_)->where('EndDate', '>=', $EndDate_)->orderBy('EndDate', 'DESC')->get();
-                    }  
-                    $TotalDaysArr = [];
-                    foreach($Periods as $Period) { 
-                        $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-                        $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-                        $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                        array_push($TotalDaysArr, $TotalDays); 
-                    } 
-                @endphp 
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 "{{ array_sum($TotalDaysArr) }}", 
             @endforeach  
         ],
@@ -125,22 +113,22 @@
         barColor: [
             @switch($Status)
                 @case('DOCKING')
-                    '#03AED2, blue'
+                    '#03AED2'
                     @break
                 @case('BREAKDOWN')
-                    '#ed5f7d, red'
+                    '#ed5f7d'
                     @break 
                 @case('INSPECTION')
-                    '#ff832b, orange'
+                    '#ff832b'
                     @break 
                 @case('IDLE')
-                    '#52f781, lightgreen'
+                    '#52f781'
                     @break 
                 @case('BUNKERY')
-                    '#8a3ffc, purple'
+                    '#8a3ffc'
                     @break 
                 @case('MAINTENANCE')
-                    '#ddd, white'
+                    '#ddd'
                     @break  
             @endswitch
         ],
@@ -151,20 +139,8 @@
             pointStyle: "circle-dot",
             pointInnerColor: "white",
         points: [
-            @foreach($Vessels[1] as $Vessel)
-                @php  
-                    $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->orderBy('EndDate', 'DESC')->get();
-                    if (count($Periods) == 0) {
-                        $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $EndDate_)->where('EndDate', '>=', $EndDate_)->orderBy('EndDate', 'DESC')->get();
-                    }  
-                    $TotalDaysArr = [];
-                    foreach($Periods as $Period) { 
-                        $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-                        $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-                        $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                        array_push($TotalDaysArr, $TotalDays); 
-                    } 
-                @endphp 
+            @foreach($Vessels[1] as $Vessel) 
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 "{{ array_sum($TotalDaysArr) }}",
             @endforeach 
         ],
@@ -207,22 +183,22 @@
         barColor: [
             @switch($Status)
                 @case('DOCKING')
-                    '#03AED2, blue'
+                    '#03AED2'
                     @break
                 @case('BREAKDOWN')
-                    '#ed5f7d, red'
+                    '#ed5f7d'
                     @break 
                 @case('INSPECTION')
-                    '#ff832b, orange'
+                    '#ff832b'
                     @break 
                 @case('IDLE')
-                    '#52f781, lightgreen'
+                    '#52f781'
                     @break 
                 @case('BUNKERY')
-                    '#8a3ffc, purple'
+                    '#8a3ffc'
                     @break 
                 @case('MAINTENANCE')
-                    '#ddd, white'
+                    '#ddd'
                     @break  
             @endswitch
         ],
@@ -234,19 +210,7 @@
             pointInnerColor: "white",
         points: [
             @foreach($Vessels[2] as $Vessel)
-                @php  
-                    $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->orderBy('EndDate', 'DESC')->get();
-                    if (count($Periods) == 0) {
-                        $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $EndDate_)->where('EndDate', '>=', $EndDate_)->orderBy('EndDate', 'DESC')->get();
-                    }  
-                    $TotalDaysArr = [];
-                    foreach($Periods as $Period) { 
-                        $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-                        $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-                        $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                        array_push($TotalDaysArr, $TotalDays); 
-                    } 
-                @endphp 
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 "{{ array_sum($TotalDaysArr) }}",
             @endforeach 
         ],

@@ -18,15 +18,12 @@
         <div class="cell">
             <span class="days">Days</span>
             @foreach ($Vessels[0] as $Vessel)
+            @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
             <span class="percents"> 
-                @include('Components.Includes.PercentageCalculation')
-            %</span> 
-            @php  
-                $NumberOfStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
-                $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
-            @endphp
-            <span class="status-percentage Hide">{{ round(($NumberOfTotalStatusForCurrentVessel == 0 ? ($NumberOfStatusForCurrentVessel / 1) : ($NumberOfStatusForCurrentVessel / $NumberOfTotalStatusForCurrentVessel)) * 100, 0) }} %</span>
-            <span class="Hide">{{ $NumberOfStatusForCurrentVessel }}</span>
+                {{ array_sum($TotalDaysArr) }}
+            %</span>  
+            <span class="status-percentage Hide">{{ $PeriodicPercentageOfVesselAvailability }} %</span>
+            <span class="Hide">{{ array_sum($TotalDaysArr); }}</span>
             @endforeach  
             <div id="chart2"></div>
         </div>
@@ -35,15 +32,12 @@
         <div class="cell">
             <span class="days">Days</span>
             @foreach ($Vessels[1] as $Vessel)
-            <span class="percents">
-                @include('Components.Includes.PercentageCalculation')
-            %</span>
-            @php  
-                $NumberOfStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
-                $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
-            @endphp
-            <span class="status-percentage Hide">{{ round(($NumberOfTotalStatusForCurrentVessel == 0 ? ($NumberOfStatusForCurrentVessel / 1) : ($NumberOfStatusForCurrentVessel / $NumberOfTotalStatusForCurrentVessel)) * 100, 0) }} %</span>
-            <span class="Hide">{{ $NumberOfStatusForCurrentVessel }}</span>
+            @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+            <span class="percents"> 
+                {{ array_sum($TotalDaysArr); }}
+            %</span>  
+            <span class="status-percentage Hide">{{ $PeriodicPercentageOfVesselAvailability }} %</span>
+            <span class="Hide">{{ array_sum($TotalDaysArr); }}</span>
             @endforeach
             <div id="chart1"></div>
         </div>
@@ -52,15 +46,12 @@
         <div class="cell"> 
             <span class="days">Days</span>
             @foreach ($Vessels[2] ?? $Vessels[0] as $Vessel)
-            <span class="percents">
-                @include('Components.Includes.PercentageCalculation')
-            %</span>
-            @php  
-                $NumberOfStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
-                $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
-            @endphp
-            <span class="status-percentage Hide">{{ round(($NumberOfTotalStatusForCurrentVessel == 0 ? ($NumberOfStatusForCurrentVessel / 1) : ($NumberOfStatusForCurrentVessel / $NumberOfTotalStatusForCurrentVessel)) * 100, 0) }} %</span>
-            <span class="Hide">{{ $NumberOfStatusForCurrentVessel }}</span>
+            @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+            <span class="percents"> 
+                {{ array_sum($TotalDaysArr); }}
+            %</span>  
+            <span class="status-percentage Hide">{{ $PeriodicPercentageOfVesselAvailability }} %</span>
+            <span class="Hide">{{ array_sum($TotalDaysArr); }}</span>
             @endforeach
             <div id="chart3"></div>
         </div>
