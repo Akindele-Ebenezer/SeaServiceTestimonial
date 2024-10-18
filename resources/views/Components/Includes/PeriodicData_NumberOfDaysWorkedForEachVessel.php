@@ -34,11 +34,11 @@ foreach($Periods as $Period) {
     //     // print_r($EndDateTime);
     // } 
     if (($Period->StartDate <= $EndDate_) AND 
-        ($Period->EndDate >= $StartDate_)) {
+        ($Period->EndDate <= $StartDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     }
-    $TotalDays = $EndDateTime->diffInDays($StartDateTime) + 1;
+    $TotalDays = $StartDateTime->diffInDays($EndDateTime) + 1;
     array_push($TotalDaysArr, $TotalDays); 
 }    
 $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)
