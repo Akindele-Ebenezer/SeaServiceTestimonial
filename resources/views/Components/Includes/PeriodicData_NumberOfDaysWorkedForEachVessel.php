@@ -60,10 +60,7 @@ if (count($TotalDays_PeriodArr) == 0) {
     $TotalDays_PeriodArr = [1];
 }
 
-foreach($Periods_ as $Period) {  
-    // $StartDateTime_Period = \Carbon\Carbon::parse(($Period->StartDate ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
-    // $EndDateTime_Period = \Carbon\Carbon::parse(($Period->EndDate ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
- 
+foreach($Periods_ as $Period) {   
     if (($Period->StartDate <= $StartDate_)) {
         $StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
     }
@@ -80,6 +77,7 @@ foreach($Periods_ as $Period) {
     array_push($TotalDays_PeriodArr, $TotalDays_Period);  
 }  
 if (array_sum($TotalDays_PeriodArr) > 100) {
-    $TotalDays_PeriodArr = [100];
+    $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / 100) * 100, 0));
+} else {
+    $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / array_sum($TotalDays_PeriodArr)) * 100, 0));
 }
-$PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / array_sum($TotalDays_PeriodArr)) * 100, 0));
