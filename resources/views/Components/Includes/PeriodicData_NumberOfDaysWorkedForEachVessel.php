@@ -1,6 +1,4 @@
 <?php
-
-// $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->orderBy('EndDate', 'DESC')->get();
 $Periods = \DB::table('vessel_availabilities')
 ->where('Vessel', $Vessel->VesselName)
 ->where('Status', $Status)
@@ -19,30 +17,9 @@ $Periods = \DB::table('vessel_availabilities')
             ->where('EndDate', '>=', $EndDate_)
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
-})->orderBy('EndDate', 'DESC')->get();
-// if (count($Periods) == 0) {
-//     $Periods = \DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->where('Status', $Status)->where('StartDate', '<=', $EndDate_)->where('EndDate', '>=', $EndDate_)->orderBy('EndDate', 'DESC')->get();
-// }  
+})->orderBy('EndDate', 'DESC')->get(); 
 $TotalDaysArr = [];
-foreach($Periods as $Period) { 
-    // if (
-    //     ($Period->StartDate <= $StartDate_)) {
-    //     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-    //     $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-    //     // print_r($EndDateTime);
-    // } 
-    // if (($Period->StartDate <= $EndDate_) AND 
-    //     ($Period->EndDate <= $StartDate_)) {
-    //     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-    //     $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-    // } else if (($Period->StartDate >= $StartDate_) AND 
-    //     ($Period->EndDate <= $EndDate_)) {
-    //     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-    //     $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-    // } else {
-    //     $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
-    //     $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
-    // } 
+foreach($Periods as $Period) {  
         $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
     if (($Period->StartDate <= $StartDate_)) {
@@ -71,8 +48,8 @@ $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')
     $query->where('StartDate', '<=', $StartDate_)
             ->where('EndDate', '>=', $EndDate_);
 })->orderBy('EndDate', 'DESC')->get());
-$NumberOfTotalStatusForCurrentVessel = count($Periods);
+// $NumberOfTotalStatusForCurrentVessel = count($Periods);
 if ($NumberOfTotalStatusForCurrentVessel == 0) {
     $NumberOfTotalStatusForCurrentVessel = 1;
 } 
-$PeriodicPercentageOfVesselAvailability = (round(count($Periods) / $NumberOfTotalStatusForCurrentVessel * 100, 0));
+$PeriodicPercentageOfVesselAvailability = (round((count($Periods) / $NumberOfTotalStatusForCurrentVessel) * 100, 0));
