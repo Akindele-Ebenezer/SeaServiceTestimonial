@@ -44,8 +44,9 @@ if ($NumberOfTotalStatusForCurrentVessel == 0) {
     $NumberOfTotalStatusForCurrentVessel = 1;
 } 
 // $PeriodicPercentageOfVesselAvailability = (round((array($TotalDaysArr) / $NumberOfTotalStatusForCurrentVessel) * 100, 0));
-$StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_) . ' ' . ($Period->StartTime));
-$EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_) . ' ' . ($Period->EndTime));
-$TotalDays_Period = $StartDateTime_Period->diffInHours($EndDateTime_Period) + 1;
-// $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) * 24) / $TotalDays_Period, 0));
-$PeriodicPercentageOfVesselAvailability = (round((count($Periods) / $NumberOfTotalStatusForCurrentVessel) * 100, 0));
+$StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_) . ' ' . ('00:00'));
+$EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_) . ' ' . ('00:00'));
+$TotalDays_Period = $StartDateTime_Period->diffInDays($EndDateTime_Period) + 1;
+$PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / $TotalDays_Period) * 100, 0));
+// print_r('---------' . $TotalDays_Period . '---------');
+// $PeriodicPercentageOfVesselAvailability = (round((count($Periods) / $NumberOfTotalStatusForCurrentVessel) * 100, 0));
