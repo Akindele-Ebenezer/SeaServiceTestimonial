@@ -10,8 +10,8 @@ $Periods = \DB::table('vessel_availabilities')
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
 })->orWhere(function($query) use ($StartDate_, $EndDate_, $Vessel, $Status) {
-    $query->where('StartDate', '<=', $StartDate_)
-            ->where('EndDate', '>=', $EndDate_)
+    $query->where('StartDate', '<=', $EndDate_)
+            ->where('EndDate', '>=', $StartDate_)
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
 })->orderBy('EndDate', 'DESC')->get();
