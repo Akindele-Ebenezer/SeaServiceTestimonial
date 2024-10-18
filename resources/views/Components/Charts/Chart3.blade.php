@@ -23,7 +23,8 @@
                 {{ array_sum($TotalDaysArr) }}
             %</span>  
             <span class="status-percentage Hide">{{ $PeriodicPercentageOfVesselAvailability }} %</span>
-            <span class="Hide">{{ array_sum($TotalDaysArr); }}</span>
+            <span class="Hide">{{ array_sum($TotalDaysArr) }}</span>
+            <span class="Hide">{{ array_sum($TotalDays_PeriodArr) }}</span>
             @endforeach  
             <div id="chart2"></div>
         </div>
