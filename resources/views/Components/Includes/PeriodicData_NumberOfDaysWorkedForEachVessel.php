@@ -76,7 +76,7 @@ foreach($Periods_ as $Period) {
     if (($Period->EndDate >= $EndDate_)) {
         $EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     }  
-    $TotalDays_Period = $StartDateTime_Period->diffInDays($EndDateTime_Period) + 1;
+    $TotalDays_Period = $StartDateTime_Period->diffInDays($EndDateTime_Period);
     array_push($TotalDays_PeriodArr, $TotalDays_Period);  
 }  
 $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / array_sum($TotalDays_PeriodArr)) * 100, 0));
