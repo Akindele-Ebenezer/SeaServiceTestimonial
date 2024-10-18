@@ -41,7 +41,8 @@ foreach($Periods as $Period) {
     $TotalDays = $EndDateTime->diffInDays($StartDateTime) + 1;
     array_push($TotalDaysArr, $TotalDays); 
 }    
-$NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
+// $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)->whereBetween('StartDate', [$StartDate_, $EndDate_])->whereBetween('EndDate', [$StartDate_, $EndDate_])->get());
+$NumberOfTotalStatusForCurrentVessel = count($Periods);
 if ($NumberOfTotalStatusForCurrentVessel == 0) {
     $NumberOfTotalStatusForCurrentVessel = 1;
 } 
