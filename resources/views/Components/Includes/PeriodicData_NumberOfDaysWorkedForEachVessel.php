@@ -12,12 +12,11 @@ foreach($Periods as $Period) {
         ($Period->EndDate >= $StartDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-    } else if (($StartDate_ >= $Period->StartDate) AND 
-        ($EndDate >= $Period->EndDate)) {
+    } else if (($Period->StartDate <= $StartDate_) AND 
+        ($Period->EndDate <= $EndDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-        print_r($EndDateTime);
-
+        // print_r($EndDateTime);
     }
     $TotalDays = $EndDateTime->diffInDays($StartDateTime) + 1;
     array_push($TotalDaysArr, $TotalDays); 
