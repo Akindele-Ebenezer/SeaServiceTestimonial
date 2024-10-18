@@ -10,13 +10,13 @@ $Periods = \DB::table('vessel_availabilities')
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
 })->orWhere(function($query) use ($StartDate_, $EndDate_, $Vessel, $Status) {
-    $query->where('StartDate', '<=', $StartDate_)
-            ->where('EndDate', '>=', $EndDate_)
+    $query->where('StartDate', '<=', $EndDate_)
+            ->where('EndDate', '>=', $StartDate_)
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
 })->orWhere(function($query) use ($StartDate_, $EndDate_, $Vessel, $Status) {
-    $query->where('StartDate', '<=', $EndDate_)
-            ->where('EndDate', '>=', $StartDate_)
+    $query->where('StartDate', '<=', $StartDate_)
+            ->where('EndDate', '>=', $EndDate_)
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
 })->orderBy('EndDate', 'DESC')->get();
@@ -33,11 +33,11 @@ foreach($Periods as $Period) {
     //     $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     //     // print_r($EndDateTime);
     // } 
-    // if (($Period->StartDate <= $EndDate_) AND 
-    //     ($Period->EndDate >= $StartDate_)) {
-    //     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-    //     $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-    // }
+    if (($Period->StartDate <= $EndDate_) AND 
+        ($Period->EndDate >= $StartDate_)) {
+        $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
+        $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
+    }
     $TotalDays = $EndDateTime->diffInDays($StartDateTime) + 1;
     array_push($TotalDaysArr, $TotalDays); 
 }    
