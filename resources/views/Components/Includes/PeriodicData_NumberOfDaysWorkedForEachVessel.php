@@ -26,5 +26,5 @@ $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')
 if ($NumberOfTotalStatusForCurrentVessel == 0) {
     $NumberOfTotalStatusForCurrentVessel = 1;
 }
-$TotalDaysArr = [];
+$TotalDaysArr = [23];
 $PeriodicPercentageOfVesselAvailability = (round(count($Periods) / $NumberOfTotalStatusForCurrentVessel * 100, 0));
