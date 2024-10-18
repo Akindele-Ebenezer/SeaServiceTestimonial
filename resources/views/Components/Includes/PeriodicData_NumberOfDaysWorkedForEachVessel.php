@@ -16,7 +16,7 @@ foreach($Periods as $Period) {
         ($EndDate >= $Period->EndDate)) {
         $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-        // print_r($EndDate_);
+        print_r($EndDateTime);
 
     }
     $TotalDays = $EndDateTime->diffInDays($StartDateTime) + 1;
