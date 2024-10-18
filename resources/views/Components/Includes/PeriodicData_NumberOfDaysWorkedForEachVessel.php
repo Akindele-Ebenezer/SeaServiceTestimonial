@@ -38,16 +38,7 @@ foreach($Periods as $Period) {
     array_push($TotalDaysArr, $TotalDays); 
 }    
 $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)
-->where(function($query) use ($StartDate_, $EndDate_) {
-    $query->where('StartDate', $StartDate_)
-            ->where('EndDate', $EndDate_);
-})->orWhere(function($query) use ($StartDate_, $EndDate_) {
-    $query->where('StartDate', '<=', $EndDate_)
-            ->where('EndDate', '>=', $StartDate_);
-})->orWhere(function($query) use ($StartDate_, $EndDate_) {
-    $query->where('StartDate', '<=', $StartDate_)
-            ->where('EndDate', '>=', $EndDate_);
-})->orderBy('EndDate', 'DESC')->get());
+->where('Status', $Status)->orderBy('EndDate', 'DESC')->get());
 // $NumberOfTotalStatusForCurrentVessel = count($Periods);
 if ($NumberOfTotalStatusForCurrentVessel == 0) {
     $NumberOfTotalStatusForCurrentVessel = 1;
