@@ -30,11 +30,11 @@ foreach($Periods as $Period) {
     }
     if (($Period->StartDate >= $StartDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
-        $StartDateTime_Period = \Carbon\Carbon::parse($StartDate_ . ' ' . ($Period->EndTime ?? '00:00'));
+        $StartDateTime_Period = \Carbon\Carbon::parse($Period->StartDate . ' ' . ($Period->EndTime ?? '00:00'));
     } 
     if (($Period->EndDate <= $EndDate_)) {
         $EndDateTime = \Carbon\Carbon::parse(($Period->EndDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
-        $EndDateTime_Period = \Carbon\Carbon::parse($EndDate_ . ' ' . ($Period->EndTime ?? '00:00'));
+        $EndDateTime_Period = \Carbon\Carbon::parse($Period->EndDate . ' ' . ($Period->EndTime ?? '00:00'));
     }
     if (($Period->EndDate >= $EndDate_)) {
         $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
