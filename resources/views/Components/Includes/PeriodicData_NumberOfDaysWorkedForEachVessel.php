@@ -76,8 +76,7 @@ foreach($Periods_ as $Period) {
     $TotalDays_Period = $StartDateTime_Period->diffInDays($EndDateTime_Period);
     array_push($TotalDays_PeriodArr, $TotalDays_Period);  
 }  
-if (array_sum($TotalDays_PeriodArr) > 100) {
-    $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / 100) * 100, 0));
-} else {
-    $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / array_sum($TotalDays_PeriodArr)) * 100, 0));
-}
+$PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / array_sum($TotalDays_PeriodArr)) * 100, 0));
+if ($PeriodicPercentageOfVesselAvailability > 100) {
+    $PeriodicPercentageOfVesselAvailability = 100;
+} 
