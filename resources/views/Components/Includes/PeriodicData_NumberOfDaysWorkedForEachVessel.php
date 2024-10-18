@@ -37,10 +37,11 @@ foreach($Periods as $Period) {
     $TotalDays = $StartDateTime->diffInDays($EndDateTime) + 1;
     array_push($TotalDaysArr, $TotalDays); 
 }    
-$NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)
-->get());
-// $NumberOfTotalStatusForCurrentVessel = count($Periods);
+// $NumberOfTotalStatusForCurrentVessel = count(\DB::table('vessel_availabilities')->where('Vessel', $Vessel->VesselName)
+// ->get());
+$NumberOfTotalStatusForCurrentVessel = count($Periods);
 if ($NumberOfTotalStatusForCurrentVessel == 0) {
     $NumberOfTotalStatusForCurrentVessel = 1;
 } 
+// $PeriodicPercentageOfVesselAvailability = (round((count($Periods) / $NumberOfTotalStatusForCurrentVessel) * 100, 0));
 $PeriodicPercentageOfVesselAvailability = (round((count($Periods) / $NumberOfTotalStatusForCurrentVessel) * 100, 0));

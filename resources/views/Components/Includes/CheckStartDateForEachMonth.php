@@ -1,7 +1,10 @@
 <?php 
 $MonthStartNumber = date('n', strtotime($Period->StartDate));
 $MonthEndNumber = date('n', strtotime($Period->EndDate));
-if (($MonthStartNumber == $_GET['Month']) AND
+if ($_GET['Month'] == 0) {
+    $StartDateTime = \Carbon\Carbon::parse($_GET['StartDate'] . ' 00:00');
+    $EndDateTime = \Carbon\Carbon::parse($_GET['EndDate'] . ' 23:59');  
+} else if (($MonthStartNumber == $_GET['Month']) AND
     ($MonthEndNumber > $MonthStartNumber)) {
         $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse((date('Y-m-t', strtotime($Period->StartDate))) . ' ' . $Period->EndTime); 
