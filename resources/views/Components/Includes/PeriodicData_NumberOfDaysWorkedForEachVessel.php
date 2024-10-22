@@ -17,6 +17,11 @@ $Periods = \DB::table('vessel_availabilities')
             ->where('EndDate', '>=', $EndDate_)
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
+})->orWhere(function($query) use ($StartDate_, $EndDate_, $Vessel, $Status) {
+    $query->whereBetween('StartDate', [$StartDate_, $EndDate_])
+          ->whereBetween('EndDate', [$StartDate_, $EndDate_])
+          ->where('Vessel', $Vessel->VesselName)
+          ->where('Status', $Status);
 })->orderBy('EndDate', 'DESC')->get(); 
 
 $Periods_ = \DB::table('vessel_availabilities')
@@ -43,7 +48,7 @@ foreach($Periods as $Period) {
     
     if (($Period->StartDate <= $StartDate_) AND
         ($Period->EndDate >= $EndDate_)) {
-        $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
+        $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
         $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
     }
     if (($Period->StartDate <= $StartDate_)) {

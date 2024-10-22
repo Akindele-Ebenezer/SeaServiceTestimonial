@@ -13,6 +13,7 @@
 @include('Components.Charts.Chart1') 
 @include('Components.Charts.Chart3') 
 @include('Components.Charts.Chart4') 
+@include('Components.Charts.Chart5') 
 <button class="DisplayChart3Button">
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>
 </button>
@@ -2638,6 +2639,7 @@
     });
 </script> 
 @include('Components.Charts.Chart1-JS') 
-@include('Components.Charts.Chart3-JS') 
+{{-- @include('Components.Charts.Chart3-JS')  --}}
 @include('Components.Charts.Chart4-JS') 
+@include('Components.Charts.Chart5-JS') 
 @endsection

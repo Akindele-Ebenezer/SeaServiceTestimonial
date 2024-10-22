@@ -1,0 +1,20 @@
+.Chart5 {
+    display: flex;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 2000;
+    background: #fff;
+
+    canvas {
+        // height:400px; 
+    }
+
+    .inner {
+        overflow: scroll; 
+        width:60%; 
+    }
+}
