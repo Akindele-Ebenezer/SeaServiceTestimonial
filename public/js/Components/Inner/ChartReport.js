@@ -4,6 +4,7 @@ let ChartReportCloseButton = document.querySelector('.Chart5 .Close');
 let ChartReportGoButton = document.querySelector('.ChartReport .ChartREPORT_GoButton');
 let ChartReportModal = document.querySelector('.Chart5');
 let ChartReport = document.querySelector('.ChartReport');
+let ErrorChartReport = document.querySelector('.error-chart-report');
 
 OpenChartFilterButton.addEventListener('click', () => {
     ChartReport.style.display = 'flex';
@@ -13,9 +14,13 @@ OpenChartFilterButton.addEventListener('click', () => {
     let EndDate = document.querySelector('.ChartReportForm input[name=EndDate_ChartREPORT]');
     
     ChartReportGoButton.addEventListener('click', () => {
-        ChartReportGoButton.textContent = 'Processing..';
-        ChartReportGoButton.style.backgroundColor = '#1fb95e';
-        window.location = '/Availability?ChartReportStatus=' + Status.value + '&ChartReportChartType=' + ChartType.value + '&StartDate_ChartREPORT=' + StartDate.value + '&EndDate_ChartREPORT=' + EndDate.value;
+        if ((StartDate.value == '') || (EndDate.value == '')) {
+            ErrorChartReport.textContent = 'Enter Start/End Date..';
+        } else {
+            ChartReportGoButton.textContent = 'Processing..';
+            ChartReportGoButton.style.backgroundColor = '#1fb95e';
+            window.location = '/Availability?ChartReportStatus=' + Status.value + '&ChartReportChartType=' + ChartType.value + '&StartDate_ChartREPORT=' + StartDate.value + '&EndDate_ChartREPORT=' + EndDate.value;
+        }
     })
 
     ChartFilterCloseButton.addEventListener('click', () => {
