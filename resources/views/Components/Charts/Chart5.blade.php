@@ -7,8 +7,9 @@
     <div class="inner">
         <p class="Close">✖</p>
         <img class="OpenChartFilterButton" src="{{ asset('images/bar-chart.png') }}" alt=""> 
-        <h2>VESSEL AVAILABILITY — {{ $Year }} Report</h2>
-        <h3>From {{ $StartDate_ }} to {{ $EndDate_ }}.</h3>
+        <h2>ORI MARINE AVAILABILITY — {{ $Year }} Report</h2>
+        <h3>From {{ \Carbon\Carbon::createFromFormat('Y-m-d', $StartDate_)->format('F j, Y') }} to {{ \Carbon\Carbon::createFromFormat('Y-m-d', $EndDate_)->format('F j, Y') }}.</h3>
+        <br>
         <div> 
           <canvas id="barChart"></canvas>
           <canvas id="barChart1"></canvas>

@@ -1633,6 +1633,9 @@ main .left-navigation ul li .total {
 .Chart5 .inner h2 {
   font-weight: 400;
 }
+.Chart5 .inner h2, .Chart5 .inner h3 {
+  text-align: center;
+}
 .Chart5 .inner img {
   cursor: pointer;
   margin-right: 1em;
