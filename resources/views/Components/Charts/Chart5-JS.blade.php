@@ -174,8 +174,8 @@ options: {
         sums1[i] += dataset.data[i];
       }
     } 
-var ctx = document.getElementById("barChart1").getContext('2d');
-var barChart1 = new Chart(ctx, {
+var ctx1 = document.getElementById("barChart1").getContext('2d');
+var barChart1 = new Chart(ctx1, {
   type: 'bar', 
 	data: {
         labels: [
@@ -281,8 +281,8 @@ options: {
         sums2[i] += dataset.data[i];
       }
     } 
-var ctx = document.getElementById("barChart2").getContext('2d');
-var barChart2 = new Chart(ctx, {
+var ctx2 = document.getElementById("barChart2").getContext('2d');
+var barChart2 = new Chart(ctx2, {
   type: 'bar', 
 	data: {
         labels: [
