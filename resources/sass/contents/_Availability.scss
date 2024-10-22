@@ -16,7 +16,7 @@
     } 
 
     .dashboard-inner {
-        .FilterByDateButton, .FilterReportByDateButton,.FilterReportForVesselByDate, .FilterChart4ForVesselData, .RecordAvailabilityButton, .DisplayChart3Button {
+        .FilterByDateButton, .FilterReportByDateButton,.FilterReportForVesselByDate, .FilterChart4ForVesselData, .RecordAvailabilityButton, .DisplayChart5Button {
             background-color: #ff6868;
             color: #fff;
             border: none;
@@ -137,7 +137,7 @@
     }
   }
 
-  .DisplayChart3Button {
+  .DisplayChart5Button {
     cursor: pointer;
     position: absolute;
     top: unset;

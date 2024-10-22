@@ -1655,7 +1655,7 @@ main .left-navigation ul li .total {
 .availability.dashboard {
   width: 70%;
 }
-.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .FilterChart4ForVesselData, .availability .dashboard-inner .RecordAvailabilityButton, .availability .dashboard-inner .DisplayChart3Button {
+.availability .dashboard-inner .FilterByDateButton, .availability .dashboard-inner .FilterReportByDateButton, .availability .dashboard-inner .FilterReportForVesselByDate, .availability .dashboard-inner .FilterChart4ForVesselData, .availability .dashboard-inner .RecordAvailabilityButton, .availability .dashboard-inner .DisplayChart5Button {
   background-color: #ff6868;
   color: #fff;
   border: none;
@@ -1726,7 +1726,7 @@ main .left-navigation ul li .total {
     font-size: 0.75em;
   }
 }
-.DisplayChart3Button {
+.DisplayChart5Button {
   cursor: pointer;
   position: absolute;
   top: unset;
@@ -1738,7 +1738,7 @@ main .left-navigation ul li .total {
   border-radius: 0.3em;
   padding: 0.3em;
 }
-.DisplayChart3Button svg {
+.DisplayChart5Button svg {
   fill: #fff;
 }
 

@@ -23,11 +23,11 @@ OpenChartFilterButton.addEventListener('click', () => {
     })
 })
 ChartReportCloseButton.addEventListener('click', () => { 
-    ChartReportModal.style.visibility = 'hidden'; 
+    ChartReportModal.style.display = 'none'; 
 })
  
-let DisplayChart3Button = document.querySelector('.DisplayChart3Button');
+let DisplayChart5Button = document.querySelector('.DisplayChart5Button');
 
-DisplayChart3Button.addEventListener('click', () => {
-    ChartReportModal.style.visibility = 'visible'; 
+DisplayChart5Button.addEventListener('click', () => {
+    ChartReportModal.style.display = 'flex'; 
 })
