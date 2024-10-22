@@ -117,7 +117,7 @@ options: {
 }); 
 @endif
 @if (isset($Vessels[1]))
-  let datasets = [{
+  let datasets1 = [{
       label: 'Breakdown',
 			backgroundColor: "rgba(255,0,0,1)",
       data: [ 
@@ -170,7 +170,7 @@ options: {
 		}]
   let sums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < sums.length; i++) {
-    for (let dataset of datasets) {
+    for (let dataset of datasets1) {
         sums[i] += dataset.data[i];
       }
     } 
@@ -224,7 +224,7 @@ options: {
 }); 
 @endif
 @if (isset($Vessels[2]))
-  let datasets = [{
+  let datasets2 = [{
       label: 'Breakdown',
 			backgroundColor: "rgba(255,0,0,1)",
       data: [ 
@@ -277,7 +277,7 @@ options: {
 		}]
   let sums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < sums.length; i++) {
-    for (let dataset of datasets) {
+    for (let dataset of datasets2) {
         sums[i] += dataset.data[i];
       }
     } 
