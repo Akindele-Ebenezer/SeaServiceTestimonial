@@ -1600,7 +1600,7 @@ main .left-navigation ul li .total {
 }
 
 .Chart5 {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3) !important;
   display: flex;
   display: none;
   justify-content: center;
