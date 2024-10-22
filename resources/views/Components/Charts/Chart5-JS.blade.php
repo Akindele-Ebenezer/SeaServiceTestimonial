@@ -193,7 +193,7 @@ var barChart1 = new Chart(ctx1, {
                 "{{ substr($Vessel->VesselName, 0, 3) }}", 
             @endforeach 
         ],
-		datasets: datasets,
+		datasets: datasets1,
 	},
 options: {
     tooltips: {
@@ -303,7 +303,7 @@ var barChart2 = new Chart(ctx2, {
                 "{{ substr($Vessel->VesselName, 0, 3) }}", 
             @endforeach 
         ],
-		datasets: datasets,
+		datasets: datasets2,
 	},
 options: {
     tooltips: {
