@@ -256,7 +256,8 @@ options: {
 @if (isset($Vessels[2]))
   let datasets2 = [{
       label: 'Breakdown',
-			backgroundColor: "rgba(255,0,0,1)",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels[2] as $Vessel)
