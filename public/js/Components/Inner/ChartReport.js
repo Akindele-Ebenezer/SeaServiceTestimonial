@@ -17,8 +17,9 @@ OpenChartFilterButton.addEventListener('click', () => {
         if ((StartDate.value == '') || (EndDate.value == '')) {
             ErrorChartReport.textContent = 'Enter Start/End Date..';
         } else if ((StartDate.value > EndDate.value)) {
-            ErrorChartReport.textContent =  'Value of Start Date is greater than Start Date.. Check!!';
+            ErrorChartReport.textContent =  'Value of Start Date is greater than End Date.. Check!!';
         } else {
+            ErrorChartReport.textContent = '';
             ChartReportGoButton.textContent = 'Processing..';
             ChartReportGoButton.style.backgroundColor = '#1fb95e';
             window.location = '/Availability?ChartReportStatus=' + Status.value + '&ChartReportChartType=' + ChartType.value + '&StartDate_ChartREPORT=' + StartDate.value + '&EndDate_ChartREPORT=' + EndDate.value;
