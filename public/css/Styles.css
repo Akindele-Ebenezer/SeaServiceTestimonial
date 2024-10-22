@@ -1612,6 +1612,7 @@ main .left-navigation ul li .total {
   background: #fff;
 }
 .Chart5 .inner {
+  background-color: #fff;
   overflow: scroll;
   padding: 1em;
   width: 65%;
