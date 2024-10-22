@@ -1601,6 +1601,7 @@ main .left-navigation ul li .total {
 
 .Chart5 {
   display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100vw;
