@@ -1600,18 +1600,24 @@ main .left-navigation ul li .total {
 }
 
 .Chart5 {
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   display: none;
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  padding: 1em;
   position: absolute;
   z-index: 2000;
   background: #fff;
 }
 .Chart5 .inner {
   overflow: scroll;
-  width: 60%;
+  padding: 1em;
+  width: 65%;
+}
+.Chart5 .inner canvas {
+  margin-bottom: 5em;
 }
 
 .availability {
