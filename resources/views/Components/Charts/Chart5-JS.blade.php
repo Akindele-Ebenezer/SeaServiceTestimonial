@@ -6,7 +6,7 @@ $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
 $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
 $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
 $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
-$Vessels = collect($Vessels)->chunk(15);    
+$Vessels = collect($Vessels)->chunk(12);    
 @endphp
 <script> 
 @if (isset($Vessels[0]))
