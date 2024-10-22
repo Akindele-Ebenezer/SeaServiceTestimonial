@@ -168,10 +168,10 @@ options: {
             @endforeach  
       ],
 		}]
-  let sums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  for (let i = 0; i < sums.length; i++) {
+  let sums1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < sums1.length; i++) {
     for (let dataset of datasets1) {
-        sums[i] += dataset.data[i];
+        sums1[i] += dataset.data[i];
       }
     } 
 var ctx = document.getElementById("barChart1").getContext('2d');
@@ -193,7 +193,7 @@ options: {
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
-            let Total = sums[tooltipItem.index]; 
+            let Total = sums1[tooltipItem.index]; 
             return 'Days: ' + value + ' (' + Math.round(((value/Total) * 100)) + '%)';
         }
       },
@@ -201,7 +201,7 @@ options: {
     scales: {
       x2: {
         position: 'top',
-        labels: sums    
+        labels: sums1    
       },
       xAxes: [{
         stacked: true,
@@ -275,10 +275,10 @@ options: {
             @endforeach  
       ],
 		}]
-  let sums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  for (let i = 0; i < sums.length; i++) {
+  let sums2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < sums2.length; i++) {
     for (let dataset of datasets2) {
-        sums[i] += dataset.data[i];
+        sums2[i] += dataset.data[i];
       }
     } 
 var ctx = document.getElementById("barChart2").getContext('2d');
@@ -300,7 +300,7 @@ options: {
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
-            let Total = sums[tooltipItem.index]; 
+            let Total = sums2[tooltipItem.index]; 
             return 'Days: ' + value + ' (' + Math.round(((value/Total) * 100)) + '%)';
         }
       },
@@ -308,7 +308,7 @@ options: {
     scales: {
       x2: {
         position: 'top',
-        labels: sums    
+        labels: sums2    
       },
       xAxes: [{
         stacked: true,
