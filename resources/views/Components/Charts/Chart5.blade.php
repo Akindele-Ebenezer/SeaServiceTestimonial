@@ -6,7 +6,7 @@
         <div> 
           <canvas id="barChart"></canvas>
           <canvas id="barChart1"></canvas>
-          {{-- <canvas id="barChart2"></canvas>  --}}
+          <canvas id="barChart2"></canvas> 
         </div>
     </div>
   </div>
