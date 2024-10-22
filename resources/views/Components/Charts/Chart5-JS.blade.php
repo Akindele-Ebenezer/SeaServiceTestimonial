@@ -12,7 +12,8 @@ $Vessels = collect($Vessels)->chunk(12);
 @if (isset($Vessels[0]))
   let datasets = [{
       label: 'Breakdown',
-			backgroundColor: "rgba(255,0,0,1)",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels[0] as $Vessel)
@@ -22,7 +23,8 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Ready',
-			backgroundColor: "#45c490",
+      backgroundColor: "rgba(0, 99, 0, 0.2)",
+      borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
             @foreach($Vessels[0] as $Vessel)
@@ -32,7 +34,8 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Bunkering',
-			backgroundColor: "#8a3ffc",
+      backgroundColor: "rgba(99, 0, 159, 0.2)",
+      borderColor: "rgba(99, 0, 159, 1)", 
       data: [ 
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels[0] as $Vessel)
@@ -42,7 +45,8 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Maintenance',
-			backgroundColor: "#eee",
+      backgroundColor: "#eee",
+      borderColor: "#aaa", 
       data: [ 
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels[0] as $Vessel)
@@ -52,7 +56,8 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Inspection',
-			backgroundColor: "#ff832b",
+      backgroundColor: "rgba(255, 165, 0, 0.2)",
+      borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels[0] as $Vessel)
