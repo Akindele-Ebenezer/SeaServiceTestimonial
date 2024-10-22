@@ -180,9 +180,8 @@ options: {
 		}]
   let sums1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < sums1.length; i++) {
-    for (let dataset of datasets1) {
-        sums1[i] += dataset.data[i];
-        console.log(dataset.data[i]);
+    for (let dataset1 of datasets1) {
+        sums1[i] += dataset1.data[i]; 
       }
     } 
 var ctx1 = document.getElementById("barChart1").getContext('2d');
@@ -291,8 +290,8 @@ options: {
 		}]
   let sums2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < sums2.length; i++) {
-    for (let dataset of datasets2) {
-        sums2[i] += dataset.data[i];
+    for (let dataset2 of datasets2) {
+        sums2[i] += dataset2.data[i];
       }
     } 
 var ctx2 = document.getElementById("barChart2").getContext('2d');
