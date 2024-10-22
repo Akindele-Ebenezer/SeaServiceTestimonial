@@ -3,7 +3,7 @@
   $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
   $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
 @endphp
-<div class="Chart5 {{ isset($_GET['ChartReportStatus']) ? 'Show' : '' }}">
+<div class="Chart5" style="display: {{ isset($_GET['ChartReportStatus']) ? 'flex' : '' }}">
     <div class="inner">
         <p class="Close">✖</p>
         <img class="OpenChartFilterButton" src="{{ asset('images/bar-chart.png') }}" alt=""> 
