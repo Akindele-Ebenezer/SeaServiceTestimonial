@@ -5,13 +5,16 @@
         <h2>Vessel Availability — Bar Chart</h2>
         <div>
           @if (isset($Vessels[0]))
-          <canvas id="barChart"></canvas>
+          <canvas style="width: 1135px; height: 567px;" width="1135" height="567" id="barChart"></canvas>
+          {{-- <canvas id="barChart"></canvas> --}}
           @endif
           @if (isset($Vessels[1]))
-          <canvas id="barChart1"></canvas>
+          <canvas style="width: 1135px; height: 567px;" width="1135" height="567" id="barChart1"></canvas>
+          {{-- <canvas id="barChart1"></canvas> --}}
           @endif
           @if (isset($Vessels[2]))
-          <canvas id="barChart2"></canvas> 
+          <canvas style="width: 1135px; height: 567px;" width="1135" height="567" id="barChart2"></canvas>
+          {{-- <canvas id="barChart2"></canvas>  --}}
           @endif
         </div>
     </div>
