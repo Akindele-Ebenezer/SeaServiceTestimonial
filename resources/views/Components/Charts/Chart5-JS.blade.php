@@ -70,6 +70,7 @@ $Vessels = collect($Vessels)->chunk(12);
   for (let i = 0; i < sums.length; i++) {
     for (let dataset of datasets) {
         sums[i] += dataset.data[i];
+        console.log(dataset.data[i]);
       }
     } 
 var ctx = document.getElementById("barChart").getContext('2d');
@@ -182,6 +183,7 @@ options: {
   for (let i = 0; i < sums1.length; i++) {
     for (let dataset of datasets1) {
         sums1[i] += dataset.data[i];
+        console.log(dataset.data[i]);
       }
     } 
 var ctx1 = document.getElementById("barChart1").getContext('2d');
