@@ -44,6 +44,16 @@ $Vessels = collect($Vessels)->chunk(12);
             @endforeach  
       ],
 		}, {
+			label: 'Docking',
+			backgroundColor: "rgba(0, 0, 255, 0.2)",
+      data: [ 
+        @php $Status = 'Docking' @endphp
+            @foreach($Vessels[0] as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalDaysArr) }}, 
+            @endforeach  
+      ],
+		}, {
 			label: 'Maintenance',
       backgroundColor: "#eee",
       borderColor: "#aaa", 
@@ -156,6 +166,16 @@ options: {
             @endforeach  
       ],
 		}, {
+			label: 'Docking',
+			backgroundColor: "rgba(0, 0, 255, 0.2)",
+      data: [ 
+        @php $Status = 'Docking' @endphp
+            @foreach($Vessels[1] as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalDaysArr) }}, 
+            @endforeach  
+      ],
+		}, {
 			label: 'Maintenance',
 			backgroundColor: "#eee",
       borderColor: "#aaa", 
@@ -261,6 +281,16 @@ options: {
       borderColor: "rgba(99, 0, 159, 1)",
       data: [ 
         @php $Status = 'Bunkery' @endphp
+            @foreach($Vessels[2] as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalDaysArr) }}, 
+            @endforeach  
+      ],
+		}, {
+			label: 'Docking',
+			backgroundColor: "rgba(0, 0, 255, 0.2)",
+      data: [ 
+        @php $Status = 'Docking' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalDaysArr) }}, 
