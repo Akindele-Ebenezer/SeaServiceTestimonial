@@ -1,8 +1,8 @@
 let OpenChartFilterButton = document.querySelector('.OpenChartFilterButton');
 let ChartFilterCloseButton = document.querySelector('.ChartReport .cancel-button-chart-report');
-let ChartReportCloseButton = document.querySelector('.chart-3 .Close');
+let ChartReportCloseButton = document.querySelector('.Chart5 .Close');
 let ChartReportGoButton = document.querySelector('.ChartReport .ChartREPORT_GoButton');
-let ChartReportModal = document.querySelector('.chart-3');
+let ChartReportModal = document.querySelector('.Chart5');
 let ChartReport = document.querySelector('.ChartReport');
 
 OpenChartFilterButton.addEventListener('click', () => {

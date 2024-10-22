@@ -11,7 +11,7 @@
 @include('Components.Inner.FilterChart4ForVesselData')  
 @include('Components.Inner.ChartReport')  
 @include('Components.Charts.Chart1') 
-@include('Components.Charts.Chart3') 
+{{-- @include('Components.Charts.Chart3')  --}}
 @include('Components.Charts.Chart4') 
 @include('Components.Charts.Chart5') 
 <button class="DisplayChart3Button">

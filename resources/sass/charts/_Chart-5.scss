@@ -1,23 +1,45 @@
 .Chart5 {
-    background: rgba(0, 0, 0, .3) !important;
+    background: rgba(0, 0, 0, .4) !important;
     display: flex;
-    display: none;
+    // display: none;
     justify-content: center; 
     width: 100vw;
     height: 100vh;
     padding: 1em;
     position: absolute;
-    z-index: 2000;
+    z-index: 290;
     background: #fff; 
 
     .inner {
         background-color: #fff;
         overflow: scroll; 
         padding: 1em;
+        position: relative;
         width:65%; 
 
         canvas {
             margin-bottom: 5em;
+        }
+
+        .Close {
+            color: red;
+            cursor: pointer;
+            font-size: 1.3em;
+            font-weight: bold;
+            position: absolute;
+            right: 1.5em;
+            top: 1em;
+        }
+
+        h2 {
+            font-weight: 400;
+        }
+        
+        img {
+            cursor: pointer;
+            margin-right: 1em; 
+            translate: 0 -.25em;
+            width: 2em;
         }
     }
 }

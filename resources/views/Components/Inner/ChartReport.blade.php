@@ -12,13 +12,15 @@
                         <div class="input">
                             <label for="">Chart Type</label>
                             <select name="ChartType_ChartREPORT" id="">
-                                <option value="BAR">BAR</option>
-                                <option value="AREA">AREA</option>
-                                <option value="LINE">LINE</option>
+                                <option value="line">Line</option>
+                                <option value="bar">Bar</option>
+                                <option value="radar">Radar</option>
+                                <option value="polarArea">Polar Area</option>
+                                <option value="doughnut">Doughnut</option>
                             </select>
                         </div>  
                     </section>
-                    <section>
+                    <section class="Hide">
                         <div class="input">
                             <label for="">Status</label>
                             <select name="Status_ChartREPORT" id="">

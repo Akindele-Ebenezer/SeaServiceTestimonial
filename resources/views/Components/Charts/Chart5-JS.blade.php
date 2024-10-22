@@ -1,7 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 @php 
 $Status = $_GET['ChartReportStatus'] ?? 'BREAKDOWN';
-$ChartType = $_GET['ChartReportChartType'] ?? 'BAR';
+$ChartType = $_GET['ChartReportChartType'] ?? 'bar';
 $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
 $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
 $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
@@ -69,7 +69,7 @@ $Vessels = collect($Vessels)->chunk(12);
     } 
 var ctx = document.getElementById("barChart").getContext('2d');
 var barChart = new Chart(ctx, {
-  type: 'bar', 
+  type: '{{ $ChartType }}', 
 	data: {
         labels: [
             @foreach($Vessels[0] as $Vessel)
@@ -176,7 +176,7 @@ options: {
     } 
 var ctx1 = document.getElementById("barChart1").getContext('2d');
 var barChart1 = new Chart(ctx1, {
-  type: 'bar', 
+  type: '{{ $ChartType }}', 
 	data: {
         labels: [
             @foreach($Vessels[1] as $Vessel)
@@ -283,7 +283,7 @@ options: {
     } 
 var ctx2 = document.getElementById("barChart2").getContext('2d');
 var barChart2 = new Chart(ctx2, {
-  type: 'bar', 
+  type: '{{ $ChartType }}', 
 	data: {
         labels: [
             @foreach($Vessels[2] as $Vessel)
