@@ -1603,7 +1603,6 @@ main .left-navigation ul li .total {
   display: flex;
   display: none;
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   position: absolute;
