@@ -1600,6 +1600,7 @@ main .left-navigation ul li .total {
 }
 
 .Chart5 {
+  align-items: center;
   background: rgba(0, 0, 0, 0.4) !important;
   display: flex;
   display: none;
@@ -1616,6 +1617,7 @@ main .left-navigation ul li .total {
   overflow: scroll;
   padding: 1em;
   position: relative;
+  height: 80%;
   width: 65%;
 }
 .Chart5 .inner canvas {
