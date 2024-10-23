@@ -5,7 +5,7 @@ $ChartType = $_GET['ChartReportChartType'] ?? 'bar';
 $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
 $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
 $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
-$Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->get();
+$Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->orderBy('VesselType', 'DESC')->get();
 $Vessels = collect($Vessels)->chunk(12);    
 @endphp
 <script> 
@@ -94,6 +94,14 @@ var barChart = new Chart(ctx, {
 		datasets: datasets,
 	},
 options: {
+    plugins: {
+      datalabels: {
+        color: '#000',
+        display: function(context) {
+          return context.dataset.data[context.dataIndex];
+        }
+      }
+    },  
     tooltips: {
       displayColors: true,
       callbacks:{
@@ -216,6 +224,14 @@ var barChart1 = new Chart(ctx1, {
 		datasets: datasets1,
 	},
 options: {
+    plugins: {
+      datalabels: {
+        color: '#000',
+        display: function(context) {
+          return context.dataset.data[context.dataIndex];
+        }
+      }
+    },  
     tooltips: {
       displayColors: true,
       callbacks:{
@@ -337,6 +353,14 @@ var barChart2 = new Chart(ctx2, {
 		datasets: datasets2,
 	},
 options: {
+    plugins: {
+      datalabels: {
+        color: '#000',
+        display: function(context) {
+          return context.dataset.data[context.dataIndex];
+        }
+      }
+    },  
     tooltips: {
       displayColors: true,
       callbacks:{
