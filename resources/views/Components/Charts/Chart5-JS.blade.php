@@ -12,7 +12,7 @@ $Vessels = collect($Vessels)->chunk(12);
 @if (isset($Vessels[0]))
   let datasets = [{
       label: 'Breakdown',
-      backgroundColor: "rgba(255,99,132,0.2)",
+      backgroundColor: "#F95454",
       borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
@@ -23,7 +23,7 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Ready',
-      backgroundColor: "rgba(0, 99, 0, 0.2)",
+      backgroundColor: "#86D293",
       borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
@@ -34,7 +34,7 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Bunkering',
-      backgroundColor: "rgba(99, 0, 159, 0.2)",
+      backgroundColor: "#9B7EBD",
       borderColor: "rgba(99, 0, 159, 1)", 
       data: [ 
         @php $Status = 'Bunkery' @endphp
@@ -45,7 +45,7 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Docking',
-			backgroundColor: "rgba(0, 0, 255, 0.2)",
+			backgroundColor: "#77CDFF",
       data: [ 
         @php $Status = 'Docking' @endphp
             @foreach($Vessels[0] as $Vessel)
@@ -66,7 +66,7 @@ $Vessels = collect($Vessels)->chunk(12);
       ],
 		}, {
 			label: 'Inspection',
-      backgroundColor: "rgba(255, 165, 0, 0.2)",
+      backgroundColor: "#FFD09B",
       borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
@@ -134,7 +134,7 @@ options: {
 @if (isset($Vessels[1]))
   let datasets1 = [{
       label: 'Breakdown',
-      backgroundColor: "rgba(255,99,132,0.2)",
+      backgroundColor: "#F95454",
       borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
@@ -145,7 +145,7 @@ options: {
       ],
 		}, {
 			label: 'Ready',
-      backgroundColor: "rgba(0, 99, 0, 0.2)",
+      backgroundColor: "#86D293",
       borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
@@ -156,7 +156,7 @@ options: {
       ],
 		}, {
 			label: 'Bunkering',
-      backgroundColor: "rgba(99, 0, 159, 0.2)",
+      backgroundColor: "#9B7EBD",
       borderColor: "rgba(99, 0, 159, 1)",
       data: [ 
         @php $Status = 'Bunkery' @endphp
@@ -167,7 +167,7 @@ options: {
       ],
 		}, {
 			label: 'Docking',
-			backgroundColor: "rgba(0, 0, 255, 0.2)",
+			backgroundColor: "#77CDFF",
       data: [ 
         @php $Status = 'Docking' @endphp
             @foreach($Vessels[1] as $Vessel)
@@ -188,7 +188,7 @@ options: {
       ],
 		}, {
 			label: 'Inspection',
-      backgroundColor: "rgba(255, 165, 0, 0.2)",
+      backgroundColor: "#FFD09B",
       borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
@@ -256,7 +256,7 @@ options: {
 @if (isset($Vessels[2]))
   let datasets2 = [{
       label: 'Breakdown',
-      backgroundColor: "rgba(255,99,132,0.2)",
+      backgroundColor: "#F95454",
       borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
@@ -267,7 +267,7 @@ options: {
       ],
 		}, {
 			label: 'Ready',
-      backgroundColor: "rgba(0, 99, 0, 0.2)",
+      backgroundColor: "#86D293",
       borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
@@ -278,7 +278,7 @@ options: {
       ],
 		}, {
 			label: 'Bunkering',
-      backgroundColor: "rgba(99, 0, 159, 0.2)",
+      backgroundColor: "#9B7EBD",
       borderColor: "rgba(99, 0, 159, 1)",
       data: [ 
         @php $Status = 'Bunkery' @endphp
@@ -289,7 +289,7 @@ options: {
       ],
 		}, {
 			label: 'Docking',
-			backgroundColor: "rgba(0, 0, 255, 0.2)",
+			backgroundColor: "#77CDFF",
       data: [ 
         @php $Status = 'Docking' @endphp
             @foreach($Vessels[2] as $Vessel)
@@ -309,7 +309,7 @@ options: {
       ],
 		}, {
 			label: 'Inspection',
-      backgroundColor: "rgba(255, 165, 0, 0.2)",
+      backgroundColor: "#FFD09B",
       borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
