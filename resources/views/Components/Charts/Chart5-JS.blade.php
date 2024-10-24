@@ -1,4 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+<script> 
+  Chart.defaults.font.size = 10;
+</script>
 @php 
 $Status = $_GET['ChartReportStatus'] ?? 'BREAKDOWN';
 $ChartType = $_GET['ChartReportChartType'] ?? 'bar';
@@ -18,7 +21,7 @@ $Vessels = collect($Vessels)->chunk(12);
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels[0] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -29,7 +32,7 @@ $Vessels = collect($Vessels)->chunk(12);
         @php $Status = 'Idle' @endphp
             @foreach($Vessels[0] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -40,7 +43,7 @@ $Vessels = collect($Vessels)->chunk(12);
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels[0] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -50,7 +53,7 @@ $Vessels = collect($Vessels)->chunk(12);
         @php $Status = 'Docking' @endphp
             @foreach($Vessels[0] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -61,7 +64,7 @@ $Vessels = collect($Vessels)->chunk(12);
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels[0] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -72,7 +75,7 @@ $Vessels = collect($Vessels)->chunk(12);
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels[0] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]
@@ -110,7 +113,13 @@ options: {
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
             let Total = sums[tooltipItem.index]; 
-            return 'Days: ' + value + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            if (value < 60) {
+              return 'Minute(s): ' + value + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if ((value > 60) && (value < 1440)) {
+              return 'Hour(s): ' + Math.round(value / 60) + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if (value > 1440) {
+              return 'Day(s): ' + Math.round((value / 1440)) + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            }
         }
       },
     },
@@ -129,6 +138,9 @@ options: {
         stacked: true,
         ticks: {
           beginAtZero: true,
+          callback: function(value) {
+              return Math.round(value / 1440); // Convert to percentage
+          }
         },
         type: 'linear',
       }]
@@ -148,7 +160,7 @@ options: {
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels[1] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -159,7 +171,7 @@ options: {
         @php $Status = 'Idle' @endphp
             @foreach($Vessels[1] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -170,7 +182,7 @@ options: {
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels[1] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -180,7 +192,7 @@ options: {
         @php $Status = 'Docking' @endphp
             @foreach($Vessels[1] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -191,7 +203,7 @@ options: {
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels[1] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -202,7 +214,7 @@ options: {
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels[1] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]
@@ -240,7 +252,13 @@ options: {
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
             let Total = sums1[tooltipItem.index]; 
-            return 'Days: ' + value + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            if (value < 60) {
+              return 'Minute(s): ' + value + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if ((value > 60) && (value < 1440)) {
+              return 'Hour(s): ' + Math.round(value / 60) + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if (value > 1440) {
+              return 'Day(s): ' + Math.round((value / 1440)) + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            }
         }
       },
     },
@@ -259,6 +277,9 @@ options: {
         stacked: true,
         ticks: {
           beginAtZero: true,
+          callback: function(value) {
+              return Math.round(value / 1440); // Convert to percentage
+          }
         },
         type: 'linear',
       }]
@@ -278,7 +299,7 @@ options: {
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -289,7 +310,7 @@ options: {
         @php $Status = 'Idle' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -300,7 +321,7 @@ options: {
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -310,7 +331,7 @@ options: {
         @php $Status = 'Docking' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -320,7 +341,7 @@ options: {
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -331,7 +352,7 @@ options: {
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels[2] as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ array_sum($TotalDaysArr) }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]
@@ -369,7 +390,13 @@ options: {
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
             let Total = sums2[tooltipItem.index]; 
-            return 'Days: ' + value + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            if (value < 60) {
+              return 'Minute(s): ' + value + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if ((value > 60) && (value < 1440)) {
+              return 'Hour(s): ' + Math.round(value / 60) + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if (value > 1440) {
+              return 'Day(s): ' + Math.round((value / 1440)) + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            }
         }
       },
     },
@@ -388,6 +415,9 @@ options: {
         stacked: true,
         ticks: {
           beginAtZero: true,
+          callback: function(value) {
+              return Math.round(value / 1440); // Convert to percentage
+          }
         },
         type: 'linear',
       }]

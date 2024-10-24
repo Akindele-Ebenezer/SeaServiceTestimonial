@@ -42,6 +42,10 @@ $Periods_ = \DB::table('vessel_availabilities')
 
 $TotalDaysArr = [];
 $TotalDays_PeriodArr = [];
+$TotalHoursArr = [];
+$TotalHours_PeriodArr = [];
+$TotalMinutesArr = [];
+$TotalMinutes_PeriodArr = [];
 foreach($Periods as $Period) {  
     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
     $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
@@ -64,7 +68,11 @@ foreach($Periods as $Period) {
         $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     }  
     $TotalDays = $StartDateTime->diffInDays($EndDateTime) + 1; 
+    $TotalHours = $StartDateTime->diffInHours($EndDateTime); 
+    $TotalMinutes = $StartDateTime->diffInMinutes($EndDateTime); 
     array_push($TotalDaysArr, $TotalDays);   
+    array_push($TotalHoursArr, $TotalHours);   
+    array_push($TotalMinutesArr, $TotalMinutes);   
 }  
 if (count($TotalDays_PeriodArr) == 0) {
     $TotalDays_PeriodArr = [1];
@@ -84,7 +92,11 @@ foreach($Periods_ as $Period) {
         $EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     }  
     $TotalDays_Period = $StartDateTime_Period->diffInDays($EndDateTime_Period);
+    $TotalHours_Period = $StartDateTime->diffInHours($EndDateTime); 
+    $TotalMinutes_Period = $StartDateTime->diffInMinutes($EndDateTime); 
     array_push($TotalDays_PeriodArr, $TotalDays_Period);  
+    array_push($TotalHours_PeriodArr, $TotalHours_Period);   
+    array_push($TotalMinutes_PeriodArr, $TotalMinutes_Period);    
 }  
 $PeriodicPercentageOfVesselAvailability = (round((array_sum($TotalDaysArr) / array_sum($TotalDays_PeriodArr)) * 100, 0));
 if ($PeriodicPercentageOfVesselAvailability > 100) {
