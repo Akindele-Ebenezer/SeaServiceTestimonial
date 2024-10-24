@@ -92,8 +92,8 @@ foreach($Periods_ as $Period) {
         $EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_ ?? date('Y-m-d')) . ' ' . ($Period->EndTime ?? '00:00'));
     }  
     $TotalDays_Period = $StartDateTime_Period->diffInDays($EndDateTime_Period);
-    $TotalHours_Period = $StartDateTime->diffInHours($EndDateTime); 
-    $TotalMinutes_Period = $StartDateTime->diffInMinutes($EndDateTime); 
+    $TotalHours_Period = $StartDateTime_Period->diffInHours($EndDateTime_Period); 
+    $TotalMinutes_Period = $StartDateTime_Period->diffInMinutes($EndDateTime_Period); 
     array_push($TotalDays_PeriodArr, $TotalDays_Period);  
     array_push($TotalHours_PeriodArr, $TotalHours_Period);   
     array_push($TotalMinutes_PeriodArr, $TotalMinutes_Period);    
