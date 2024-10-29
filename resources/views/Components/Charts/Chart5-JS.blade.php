@@ -110,8 +110,8 @@ options: {
       callbacks:{
         mode: 'x',
         title: function(tooltipItem, data) {
-          // console.log(tooltipItem)
-          return tooltipItem[0].xLabel + ': (' + data.datasets[0].label + ')';
+          // console.log(data.datasets[tooltipItem[0].datasetIndex].label)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[tooltipItem[0].datasetIndex].label + ')';
         },
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
@@ -253,8 +253,8 @@ options: {
       callbacks:{
         mode: 'x',
         title: function(tooltipItem, data) {
-          // console.log(tooltipItem)
-          return tooltipItem[0].xLabel + ': (' + data.datasets[0].label + ')';
+          // console.log(data.datasets[tooltipItem[0].datasetIndex].label)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[tooltipItem[0].datasetIndex].label + ')';
         },
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
@@ -395,8 +395,8 @@ options: {
       callbacks:{
         mode: 'x',
         title: function(tooltipItem, data) {
-          // console.log(tooltipItem)
-          return tooltipItem[0].xLabel + ': (' + data.datasets[0].label + ')';
+          // console.log(data.datasets[tooltipItem[0].datasetIndex].label)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[tooltipItem[0].datasetIndex].label + ')';
         },
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
