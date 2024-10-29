@@ -109,6 +109,10 @@ options: {
       displayColors: true,
       callbacks:{
         mode: 'x',
+        title: function(tooltipItem, data) {
+          // console.log(tooltipItem)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[0].label + ')';
+        },
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
@@ -139,7 +143,7 @@ options: {
         ticks: {
           beginAtZero: true,
           callback: function(value) {
-              return Math.round(value / 1440); // Convert to percentage
+              return Math.round(value / 1440); 
           }
         },
         type: 'linear',
@@ -248,6 +252,10 @@ options: {
       displayColors: true,
       callbacks:{
         mode: 'x',
+        title: function(tooltipItem, data) {
+          // console.log(tooltipItem)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[0].label + ')';
+        },
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
@@ -278,7 +286,7 @@ options: {
         ticks: {
           beginAtZero: true,
           callback: function(value) {
-              return Math.round(value / 1440); // Convert to percentage
+              return Math.round(value / 1440); 
           }
         },
         type: 'linear',
@@ -386,6 +394,10 @@ options: {
       displayColors: true,
       callbacks:{
         mode: 'x',
+        title: function(tooltipItem, data) {
+          // console.log(tooltipItem)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[0].label + ')';
+        },
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
@@ -416,7 +428,7 @@ options: {
         ticks: {
           beginAtZero: true,
           callback: function(value) {
-              return Math.round(value / 1440); // Convert to percentage
+              return Math.round(value / 1440); 
           }
         },
         type: 'linear',

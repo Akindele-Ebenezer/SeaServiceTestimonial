@@ -158,27 +158,17 @@ class VesselAvailabilityPdf extends Controller
             $TotalHoursWorked = [];
             $TotalMinutesWorked = [];
             $TotalDaysWorked = [];
+            $StartDates = [];
+            $EndDates = ['2000-02-01'];
             foreach ($VesselAvailability as $Vessel) {
-                include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php');
-                // $StartDateTime = \Carbon\Carbon::parse($Vessel->StartDate . ' ' . $Vessel->StartTime);
-                // $EndDateTime = \Carbon\Carbon::parse($Vessel->EndDate . ' ' . $Vessel->EndTime);
-                // $HoursBetween = $EndDateTime->diffInHours($StartDateTime);
-                // $MinutesBetween = $StartDateTime->diffInMinutes($EndDateTime) % 60; 
-                // $TotalDays = $EndDateTime->diffInDays($StartDateTime);
-                // if ($Vessel->Status == 'IDLE') {
-                //     $Status = 'READY';
-                // } else if ($Vessel->Status == 'BUNKERY') {
-                //     $Status = 'BUNKERING';
-                // } else {
-                //     $Status = $Vessel->Status;
-                // }
+                include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php'); 
 
                 $fpdf->Cell(31.7, 5, $Status, 1);
                 $fpdf->Cell(31.7, 5, $StartDate, 1);
                 $fpdf->Cell(31.7, 5, $StartTime . ' HRS', 1);
                 $fpdf->Cell(31.7, 5, $EndDate, 1);
                 $fpdf->Cell(31.7, 5, $EndTime . ' HRS', 1);
-                $fpdf->Cell(31.7, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
+                $fpdf->Cell(31.7, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . (\Carbon\Carbon::createFromFormat('Y-m-d', $StartDate)->diffInDays(\Carbon\Carbon::createFromFormat('Y-m-d', $EndDate))) + 1 . ' day(s)', 1);
                 $fpdf->Ln();
                 if($TotalDays == 0) {
                     array_push($TotalDaysWorked, 1);
@@ -186,9 +176,11 @@ class VesselAvailabilityPdf extends Controller
                 array_push($TotalHoursWorked, $HoursBetween);
                 array_push($TotalMinutesWorked, $MinutesBetween);
                 array_push($TotalDaysWorked, $TotalDays);
+                array_push($StartDates, $StartDate);
+                array_push($EndDates, $EndDate);
             } 
             $fpdf->Cell(158.5, 5, '', 0);
-            $fpdf->Cell(31.7, 5, collect($TotalHoursWorked)->sum() == 0 ? 'T: ' . collect($TotalMinutesWorked)->sum() . ' min(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)' : 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
+            $fpdf->Cell(31.7, 5, collect($TotalHoursWorked)->sum() == 0 ? 'T: ' . collect($TotalMinutesWorked)->sum() . ' min(s) : ' . \Carbon\Carbon::createFromFormat('Y-m-d', (end($EndDates)))->day . ' day(s)' : 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . \Carbon\Carbon::createFromFormat('Y-m-d', (end($EndDates)))->day . ' day(s)', 1);
             $fpdf->Ln(15);
             $fpdf->SetFont('Arial', 'B', 14);  
             $fpdf->Cell(190.4, 10, 'OVERVIEW', 0, 1, 1, 'L');
@@ -274,6 +266,8 @@ class VesselAvailabilityPdf extends Controller
             $TotalHoursWorked = [];
             $TotalMinutesWorked = [];
             $TotalDaysWorked = [];
+            $StartDates = [];
+            $EndDates = ['2000-02-01'];
             foreach ($VesselAvailability as $Vessel) {
                 include('../resources/views/Components/Includes/CheckStartDateForEachMonth_PDF.php'); 
 
@@ -283,7 +277,7 @@ class VesselAvailabilityPdf extends Controller
                 $fpdf->Cell(24.4, 5, $StartTime . ' HRS', 1);
                 $fpdf->Cell(24.4, 5, $EndDate, 1);
                 $fpdf->Cell(24.4, 5, $EndTime . ' HRS', 1);
-                $fpdf->Cell(36.4, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . ($TotalDays == 0 ? 1 : $TotalDays) . ' day(s)', 1);
+                $fpdf->Cell(36.4, 5, ($HoursBetween == 0 ? $MinutesBetween . ' mins' : $HoursBetween) . ' hour(s) : ' . (\Carbon\Carbon::createFromFormat('Y-m-d', $StartDate)->diffInDays(\Carbon\Carbon::createFromFormat('Y-m-d', $EndDate))) + 1 . ' day(s)', 1);
                 $fpdf->Ln();
                 if($TotalDays == 0) {
                     array_push($TotalDaysWorked, 1);
@@ -291,9 +285,11 @@ class VesselAvailabilityPdf extends Controller
                 array_push($TotalHoursWorked, $HoursBetween);
                 array_push($TotalMinutesWorked, $MinutesBetween);
                 array_push($TotalDaysWorked, $TotalDays);
+                array_push($StartDates, $StartDate);
+                array_push($EndDates, $EndDate);
             } 
             $fpdf->Cell(153.8, 5, '', 0);
-            $fpdf->Cell(36.2, 5, 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . collect($TotalDaysWorked)->sum() . ' day(s)', 1);
+            $fpdf->Cell(36.2, 5, 'T: ' . collect($TotalHoursWorked)->sum() . ' hour(s) : ' . \Carbon\Carbon::createFromFormat('Y-m-d', (end($EndDates)))->day . ' day(s)', 1);
             $fpdf->Ln(15);
             $fpdf->SetFont('Arial', 'B', 14);  
             $fpdf->Cell(190.4, 10, 'OVERVIEW', 0, 1, 1, 'L');
