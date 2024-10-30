@@ -32,12 +32,12 @@
                         </div> 
                         <div class="input">
                             @php
-                                $Companies = \DB::table('companies')->select('Company')->get();
+                                $Companies = \DB::table('availability_status_codes')->select('Alias')->get();
                             @endphp
                             <label for="">COMPANY</label>
                             <select name="EditCompany"> 
                                 @foreach ($Companies as $Company)
-                                <option value="{{ $Company->Company }}">{{ $Company->Company }}</option>
+                                <option value="{{ $Company->Alias }}">{{ $Company->Alias }}</option>
                                 @endforeach
                             </select>   
                         </div> 

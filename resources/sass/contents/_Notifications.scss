@@ -156,8 +156,10 @@
                     color: #eee;
                     display: block;
                     font-weight: 500;
+                    overflow-wrap: anywhere;
                     padding-block: 0.5em;
-                    text-align: center; 
+                    text-align: center;
+                    width: 100%;
                 }
 
                 svg {

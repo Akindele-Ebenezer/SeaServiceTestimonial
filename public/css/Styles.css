@@ -2035,8 +2035,10 @@ main .left-navigation ul li .total {
   color: #eee;
   display: block;
   font-weight: 500;
+  overflow-wrap: anywhere;
   padding-block: 0.5em;
   text-align: center;
+  width: 100%;
 }
 .dashboard-inner .board-1 .div svg, .dashboard-inner .board-2 .div svg, .dashboard-inner .board-3 .div svg {
   fill: #eee;
