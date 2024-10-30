@@ -23,7 +23,7 @@
     @unless (count($Vessels) > 0)
         <p class="empty-data">There's no vessel in the system..</p>
     @endunless
-    @foreach (\DB::table('availability_status_codes')->get() as $StatusCode)
+    @foreach (\DB::table('companies_')->get() as $StatusCode)
         <h3 class="company-heading">
             <span>
                 {{ $StatusCode->Organization }}        
@@ -2917,7 +2917,7 @@
                 </h1>
                 <h2 class="sub-heading">
                     @php
-                        $Companies = \DB::table('availability_status_codes')->get();
+                        $Companies = \DB::table('companies_')->get();
                     @endphp
                     @foreach ($Companies as $Company)
                         {{ $Company->Organization }}/

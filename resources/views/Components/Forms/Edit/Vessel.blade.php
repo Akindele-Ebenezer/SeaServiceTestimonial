@@ -32,7 +32,7 @@
                         </div> 
                         <div class="input">
                             @php
-                                $Companies = \DB::table('availability_status_codes')->select('Alias')->get();
+                                $Companies = \DB::table('companies_')->select('Alias')->get();
                             @endphp
                             <label for="">COMPANY</label>
                             <select name="EditCompany"> 
