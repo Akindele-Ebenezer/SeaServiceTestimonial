@@ -133,7 +133,8 @@
    
     let NumberOfVessels_READY1 = document.querySelectorAll('.availability-status.ready.to.go');
     let NumberOfVessels_READY2 = document.querySelectorAll('.availability-status.ready.idle');
-    let NumberOfVessels_READY = NumberOfVessels_READY1.length + NumberOfVessels_READY2.length;
+    let NumberOfVessels_READY3 = document.querySelectorAll('.availability-status.idle');
+    let NumberOfVessels_READY = NumberOfVessels_READY1.length + NumberOfVessels_READY2.length + NumberOfVessels_READY3.length;
     document.querySelector('.ready-x').textContent = NumberOfVessels_READY;
     console.log(NumberOfVessels_READY1);
     console.log(NumberOfVessels_READY2);
