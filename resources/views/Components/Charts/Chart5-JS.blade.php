@@ -11,7 +11,7 @@ $Year = date("Y", strtotime($StartDate_)) ?? date('Y');
 $Vessels_TUGS = \DB::table('vessels_vessel_information')->select('VesselName')->where('VesselType', 'TUG BOAT')->orderByRaw("FIELD(VesselName, 'MAJIYA', 'UBIMA', 'UROMI', 'ZARANDA', 'ASAGA', 'EMEKUKU', 'GUSAU', 'DAURA')")->get();   
 $Vessels_PILOTS = \DB::table('vessels_vessel_information')->select('VesselName')->where('VesselType', 'PILOT CUTTERS')->orderByRaw("FIELD(VesselName, 'P.C KOKO', 'P.C TOMBIA', 'LAGOS 1', 'LAGOS 2')")->get();   
 $Vessels_DREDGERS_MULTICAT_PLOUGHING = \DB::table('vessels_vessel_information')->select('VesselName')->whereIn('VesselType', ['DREDGER', 'MULTICAT', 'PLOUGHING'])->orderByRaw("FIELD(VesselName, 'S.D GUMEL', 'RIVER CHALAWA', 'TIGADAM', 'ANTELOPE', 'BLUE LATITUDE')")->get();   
-$Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select('VesselName')->whereIn('VesselType', ['SPEED BOAT', 'MOORING'])->orderByRaw("FIELD(VesselName, 'SEA FOX', 'SEA TIME', 'DONZI', 'HORIZON II', 'JOY BOAT', 'HADIZA', 'FARIDA', 'KASIRI', 'AMASIRI', 'MOORING 1', 'MOORING 2')")->get();   
+$Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select('VesselName')->whereIn('VesselType', ['SPEED BOAT', 'MOORING'])->orderByRaw("FIELD(VesselName, 'SEA FOX', 'SEA TIME', 'DONZI', 'HORIZON II', 'JOY BOAT', 'HADIZA', 'FARIDA', 'KASHERE', 'AMASIRI', 'MOORING 1', 'MOORING 2')")->get();   
 
 @endphp
 <script> 
