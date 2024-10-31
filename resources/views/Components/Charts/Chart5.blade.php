@@ -11,9 +11,14 @@
         <h3>From {{ \Carbon\Carbon::createFromFormat('Y-m-d', $StartDate_)->format('F j, Y') }} to {{ \Carbon\Carbon::createFromFormat('Y-m-d', $EndDate_)->format('F j, Y') }}.</h3>
         <br>
         <div> 
+          <h1>TUG BOATS</h1>
           <canvas id="barChart"></canvas>
+          <h1>PILOT BOATS</h1>
           <canvas id="barChart1"></canvas>
+          <h1>DREDGERS/ MULTICAT/ PLOUGHING</h1>
           <canvas id="barChart2"></canvas> 
+          <h1>SPEED/ MOORING BOATS</h1>
+          <canvas id="barChart3"></canvas> 
         </div>
     </div>
   </div>

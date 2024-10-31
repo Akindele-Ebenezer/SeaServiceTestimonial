@@ -1632,6 +1632,12 @@ main .left-navigation ul li .total {
   right: 1.5em;
   top: 1em;
 }
+.Chart5 .inner h1 {
+  background: #efefef;
+  padding: 0.5em;
+  font-weight: 300;
+  width: fit-content;
+}
 .Chart5 .inner h2 {
   font-weight: 400;
 }

@@ -9,17 +9,22 @@ $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
 $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
 $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
 $Vessels = \DB::table('vessels_vessel_information')->select('VesselName')->orderBy('VesselType', 'DESC')->get();
-$Vessels = collect($Vessels)->chunk(12);    
+$Vessels = collect($Vessels)->chunk(12);   
+$Vessels_TUGS = \DB::table('vessels_vessel_information')->select('VesselName')->where('VesselType', 'TUG BOAT')->get();   
+$Vessels_PILOTS = \DB::table('vessels_vessel_information')->select('VesselName')->where('VesselType', 'PILOT CUTTERS')->get();   
+$Vessels_DREDGERS_MULTICAT_PLOUGHING = \DB::table('vessels_vessel_information')->select('VesselName')->whereIn('VesselType', ['DREDGER', 'MULTICAT', 'PLOUGHING'])->get();   
+$Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select('VesselName')->whereIn('VesselType', ['SPEED BOAT', 'MOORING'])->get();   
+
 @endphp
 <script> 
-@if (isset($Vessels[0]))
+@if (isset($Vessels_TUGS))
   let datasets = [{
       label: 'Breakdown',
       backgroundColor: "#F95454",
       borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -30,7 +35,7 @@ $Vessels = collect($Vessels)->chunk(12);
       borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -41,7 +46,7 @@ $Vessels = collect($Vessels)->chunk(12);
       borderColor: "rgba(99, 0, 159, 1)", 
       data: [ 
         @php $Status = 'Bunkery' @endphp
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -51,7 +56,7 @@ $Vessels = collect($Vessels)->chunk(12);
 			backgroundColor: "#77CDFF",
       data: [ 
         @php $Status = 'Docking' @endphp
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -62,7 +67,7 @@ $Vessels = collect($Vessels)->chunk(12);
       borderColor: "#aaa", 
       data: [ 
         @php $Status = 'Maintenance' @endphp
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -73,7 +78,7 @@ $Vessels = collect($Vessels)->chunk(12);
       borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
-            @foreach($Vessels[0] as $Vessel)
+            @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -90,8 +95,8 @@ var barChart = new Chart(ctx, {
   type: '{{ $ChartType }}', 
 	data: {
         labels: [
-            @foreach($Vessels[0] as $Vessel)
-                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+            @foreach($Vessels_TUGS as $Vessel)
+                "{{ $Vessel->VesselName }}", 
             @endforeach 
         ],
 		datasets: datasets,
@@ -155,14 +160,14 @@ options: {
 	}
 }); 
 @endif
-@if (isset($Vessels[1]))
+@if (isset($Vessels_PILOTS))
   let datasets1 = [{
       label: 'Breakdown',
       backgroundColor: "#F95454",
       borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
-            @foreach($Vessels[1] as $Vessel)
+            @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -173,7 +178,7 @@ options: {
       borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
-            @foreach($Vessels[1] as $Vessel)
+            @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -184,7 +189,7 @@ options: {
       borderColor: "rgba(99, 0, 159, 1)",
       data: [ 
         @php $Status = 'Bunkery' @endphp
-            @foreach($Vessels[1] as $Vessel)
+            @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -194,7 +199,7 @@ options: {
 			backgroundColor: "#77CDFF",
       data: [ 
         @php $Status = 'Docking' @endphp
-            @foreach($Vessels[1] as $Vessel)
+            @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -205,7 +210,7 @@ options: {
       borderColor: "#aaa", 
       data: [ 
         @php $Status = 'Maintenance' @endphp
-            @foreach($Vessels[1] as $Vessel)
+            @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -216,7 +221,7 @@ options: {
       borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
-            @foreach($Vessels[1] as $Vessel)
+            @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -233,8 +238,8 @@ var barChart1 = new Chart(ctx1, {
   type: '{{ $ChartType }}', 
 	data: {
         labels: [
-            @foreach($Vessels[1] as $Vessel)
-                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+            @foreach($Vessels_PILOTS as $Vessel)
+                "{{ $Vessel->VesselName }}", 
             @endforeach 
         ],
 		datasets: datasets1,
@@ -298,14 +303,14 @@ options: {
 	}
 }); 
 @endif
-@if (isset($Vessels[2]))
+@if (isset($Vessels_DREDGERS_MULTICAT_PLOUGHING))
   let datasets2 = [{
       label: 'Breakdown',
       backgroundColor: "#F95454",
       borderColor: "rgba(255,99,132,1)",
       data: [ 
         @php $Status = 'BREAKDOWN' @endphp
-            @foreach($Vessels[2] as $Vessel)
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -316,7 +321,7 @@ options: {
       borderColor: "rgba(0, 99, 0, 1)", 
       data: [ 
         @php $Status = 'Idle' @endphp
-            @foreach($Vessels[2] as $Vessel)
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -327,7 +332,7 @@ options: {
       borderColor: "rgba(99, 0, 159, 1)",
       data: [ 
         @php $Status = 'Bunkery' @endphp
-            @foreach($Vessels[2] as $Vessel)
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -337,7 +342,7 @@ options: {
 			backgroundColor: "#77CDFF",
       data: [ 
         @php $Status = 'Docking' @endphp
-            @foreach($Vessels[2] as $Vessel)
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -347,7 +352,7 @@ options: {
 			backgroundColor: "#eee",
       data: [ 
         @php $Status = 'Maintenance' @endphp
-            @foreach($Vessels[2] as $Vessel)
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -358,7 +363,7 @@ options: {
       borderColor: "rgba(255, 165, 0, 1)", 
       data: [ 
         @php $Status = 'Inspection' @endphp
-            @foreach($Vessels[2] as $Vessel)
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
                 {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
@@ -375,8 +380,8 @@ var barChart2 = new Chart(ctx2, {
   type: '{{ $ChartType }}', 
 	data: {
         labels: [
-            @foreach($Vessels[2] as $Vessel)
-                "{{ substr($Vessel->VesselName, 0, 3) }}", 
+            @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
+                "{{ $Vessel->VesselName }}", 
             @endforeach 
         ],
 		datasets: datasets2,
@@ -416,6 +421,148 @@ options: {
       x2: {
         position: 'top',
         labels: sums2    
+      },
+      xAxes: [{
+        stacked: true,
+        gridLines: {
+          display: false,
+        }
+      }],
+      yAxes: [{
+        stacked: true,
+        ticks: {
+          beginAtZero: true,
+          callback: function(value) {
+              return Math.round(value / 1440); 
+          }
+        },
+        type: 'linear',
+      }]
+    },
+		responsive: true,
+		// maintainAspectRatio: false,
+		// legend: { position: 'bottom' },
+	}
+}); 
+@endif
+@if (isset($Vessels_SPEED_MOORING_BOATS))
+  let datasets3 = [{
+      label: 'Breakdown',
+      backgroundColor: "#F95454",
+      borderColor: "rgba(255,99,132,1)",
+      data: [ 
+        @php $Status = 'BREAKDOWN' @endphp
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalMinutesArr) }}, 
+            @endforeach  
+      ],
+		}, {
+			label: 'Ready',
+      backgroundColor: "#86D293",
+      borderColor: "rgba(0, 99, 0, 1)", 
+      data: [ 
+        @php $Status = 'Idle' @endphp
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalMinutesArr) }}, 
+            @endforeach  
+      ],
+		}, {
+			label: 'Bunkering',
+      backgroundColor: "#9B7EBD",
+      borderColor: "rgba(99, 0, 159, 1)",
+      data: [ 
+        @php $Status = 'Bunkery' @endphp
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalMinutesArr) }}, 
+            @endforeach  
+      ],
+		}, {
+			label: 'Docking',
+			backgroundColor: "#77CDFF",
+      data: [ 
+        @php $Status = 'Docking' @endphp
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalMinutesArr) }}, 
+            @endforeach  
+      ],
+		}, {
+			label: 'Maintenance',
+			backgroundColor: "#eee",
+      data: [ 
+        @php $Status = 'Maintenance' @endphp
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalMinutesArr) }}, 
+            @endforeach  
+      ],
+		}, {
+			label: 'Inspection',
+      backgroundColor: "#FFD09B",
+      borderColor: "rgba(255, 165, 0, 1)", 
+      data: [ 
+        @php $Status = 'Inspection' @endphp
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
+                {{ array_sum($TotalMinutesArr) }}, 
+            @endforeach  
+      ],
+		}]
+  let sums3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < sums3.length; i++) {
+    for (let dataset3 of datasets3) {
+        sums3[i] += dataset3.data[i];
+      }
+    } 
+var ctx3 = document.getElementById("barChart3").getContext('2d');
+var barChart3 = new Chart(ctx3, {
+  type: '{{ $ChartType }}', 
+	data: {
+        labels: [
+            @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
+                "{{ $Vessel->VesselName }}", 
+            @endforeach 
+        ],
+		datasets: datasets3,
+	},
+options: {
+    plugins: {
+      datalabels: {
+        color: '#000',
+        display: function(context) {
+          return context.dataset.data[context.dataIndex];
+        }
+      }
+    },  
+    tooltips: {
+      displayColors: true,
+      callbacks:{
+        mode: 'x',
+        title: function(tooltipItem, data) {
+          // console.log(data.datasets[tooltipItem[0].datasetIndex].label)
+          return tooltipItem[0].xLabel + ': (' + data.datasets[tooltipItem[0].datasetIndex].label + ')';
+        },
+        label: function(tooltipItem, data) { 
+            const dataset = data.datasets[tooltipItem.datasetIndex];
+            const value = dataset.data[tooltipItem.index];
+            let Total = sums2[tooltipItem.index]; 
+            if (value < 60) {
+              return 'Minute(s): ' + value + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if ((value > 60) && (value < 1440)) {
+              return 'Hour(s): ' + Math.round(value / 60) + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
+            } else if (value > 1440) {
+              return 'Day(s): ' + Math.round((value / 1440)) + ' (' + Math.round(((value/Total) * 100)) + '%)';
+            }
+        }
+      },
+    },
+    scales: {
+      x2: {
+        position: 'top',
+        labels: sums3    
       },
       xAxes: [{
         stacked: true,
