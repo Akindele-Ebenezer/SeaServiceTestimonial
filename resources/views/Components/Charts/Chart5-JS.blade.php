@@ -546,7 +546,7 @@ options: {
         label: function(tooltipItem, data) { 
             const dataset = data.datasets[tooltipItem.datasetIndex];
             const value = dataset.data[tooltipItem.index];
-            let Total = sums2[tooltipItem.index]; 
+            let Total = sums3[tooltipItem.index]; 
             if (value < 60) {
               return 'Minute(s): ' + value + ' (' + ((value/Total) * 100).toFixed(2) + '%)';
             } else if ((value > 60) && (value < 1440)) {
