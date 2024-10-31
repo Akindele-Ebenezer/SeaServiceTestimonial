@@ -135,6 +135,8 @@
     let NumberOfVessels_READY2 = document.querySelectorAll('.availability-status.ready.idle');
     let NumberOfVessels_READY = NumberOfVessels_READY1.length + NumberOfVessels_READY2.length;
     document.querySelector('.ready-x').textContent = NumberOfVessels_READY;
+    console.log(NumberOfVessels_READY1);
+    console.log(NumberOfVessels_READY2);
     let NumberOfVessels_MAINTENANCE = document.querySelectorAll('.availability-status.maintenance');
     let NumberOfVessels_BREAKDOWN = document.querySelectorAll('.availability-status.breakdown');
     let NumberOfVessels_DOCKING = document.querySelectorAll('.availability-status.docking');
