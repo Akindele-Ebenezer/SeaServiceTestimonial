@@ -1686,6 +1686,9 @@ main .left-navigation ul li .total {
   display: flex;
   padding: 0 0.5em;
 }
+.availability .list .-x .notification-wrapper .vessel-name-- {
+  width: 9em;
+}
 .availability .list .-x .notification-wrapper span:nth-child(2) {
   margin-left: 1em;
   width: 7em;

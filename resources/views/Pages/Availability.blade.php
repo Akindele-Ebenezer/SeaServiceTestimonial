@@ -122,7 +122,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span> 
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span> 
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
                             {{ (($Availability_STATUS->Status ?? 'READY') == 'IDLE' ? 'READY' : (($Availability_STATUS->Status ?? 'READY') == 'BUNKERY' ? 'BUNKERING' : $Availability_STATUS->Status ?? 'READY')) }}
@@ -227,7 +227,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">   
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -333,7 +333,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -439,7 +439,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -545,7 +545,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -651,7 +651,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -757,7 +757,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -863,7 +863,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
@@ -969,7 +969,7 @@
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
                     "></span>
-                    <span class="">{{ $Vessel->VesselName }}</span>  
+                    <span class="vessel-name--">{{ $Vessel->VesselName }}</span>  
                     <span class="imo availability-status {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }} {{ $Availability_STATUS->Status ?? 'ready' == 'IDLE' ? 'ready' : $Availability_STATUS->Status ?? 'ready' }}
                         status-1">
                         @if (!empty($Availability_STATUS->TillNow) == 'YES')
