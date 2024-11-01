@@ -1011,7 +1011,7 @@ main .left-navigation ul li .total {
 .vessel-content h3.company-heading {
   padding-block: 0em;
   position: sticky;
-  top: 6.85em;
+  top: 7.85em;
   width: 100%;
   z-index: 20;
 }
@@ -1657,6 +1657,7 @@ main .left-navigation ul li .total {
 }
 .availability .company-logo {
   background-color: #fff;
+  height: 8em;
   position: sticky;
   text-align: center;
   translate: 0 -1em;
