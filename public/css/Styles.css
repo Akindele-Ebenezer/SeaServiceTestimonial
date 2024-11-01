@@ -1101,7 +1101,7 @@ main .left-navigation ul li .total {
 .vessel-content .list .inner strong .imo.availability-status.status-1, .vessel-content .empty-data .inner strong .imo.availability-status.status-1 {
   color: #fff !important;
   font-size: small;
-  translate: -2.5em -0.3em;
+  translate: -3.5em -0.3em;
 }
 .vessel-content .list .inner strong .imo.availability-status.status-1.idle, .vessel-content .empty-data .inner strong .imo.availability-status.status-1.idle {
   background-color: #35cd60;
