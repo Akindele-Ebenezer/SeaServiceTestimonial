@@ -110,8 +110,8 @@ foreach($Periods_ as $Period) {
     }  
     if (($Period->StartDate <= $StartDate_) AND
         ($Period->EndDate >= $EndDate_)) {
-        $StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
-        $EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
+        $StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ('00:00' ?? '00:00'));
+        $EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ('00:00' ?? '00:00')); 
     }
     if ($StartDate_ == $EndDate_) { 
         $StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ('00:00' ?? '00:00'));
