@@ -53,8 +53,9 @@ $Periods = \DB::table('vessel_availabilities')
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
 })->orderBy('EndDate', 'DESC')->get(); 
- 
-// print_r($Periods);
+
+echo '------------------------';
+print_r($Periods);
 $TotalDaysArr = [];
 $TotalDays_PeriodArr = [];
 $TotalHoursArr = [];
@@ -92,9 +93,6 @@ foreach($Periods as $Period) {
     array_push($TotalDaysArr, $TotalDays);   
     array_push($TotalHoursArr, $TotalHours);   
     array_push($TotalMinutesArr, $TotalMinutes);   
-    // echo 'StartDateTime: ' . $StartDateTime . ' - EndDateTime: ' . $EndDateTime;
-    // print_r(' === ' . $TotalMinutes . ' mins.        ');
-    // echo '------------------------';
 }  
 if (count($TotalDays_PeriodArr) == 0) {
     $TotalDays_PeriodArr = [1];
