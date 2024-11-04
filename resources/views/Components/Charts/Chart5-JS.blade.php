@@ -142,7 +142,7 @@ options: {
         stacked: true,
         ticks: {
           beginAtZero: true,
-          callback: function(value) {
+          callback: function(value) { 
               return Math.round(value / 1440); 
           }
         },
