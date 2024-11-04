@@ -93,8 +93,8 @@ if (count($TotalDays_PeriodArr) == 0) {
 }
 
 foreach($Periods_ as $Period) {    
-    $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ('00:00' ?? '00:00'));
-    $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ('16:00' ?? '00:00')); 
+    $StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ('00:00' ?? '00:00'));
+    $EndDateTime_Period = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ('16:00' ?? '00:00')); 
     
     // if (($Period->StartDate <= $StartDate_)) {
     //     $StartDateTime_Period = \Carbon\Carbon::parse(($StartDate_ ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
