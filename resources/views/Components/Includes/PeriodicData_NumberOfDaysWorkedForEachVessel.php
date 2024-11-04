@@ -84,6 +84,9 @@ foreach($Periods as $Period) {
     array_push($TotalDaysArr, $TotalDays);   
     array_push($TotalHoursArr, $TotalHours);   
     array_push($TotalMinutesArr, $TotalMinutes);   
+    echo 'StartDateTime: ' . $StartDateTime . ' - EndDateTime: ' . $EndDateTime;
+    print_r(' === ' . $TotalDays . ' days.        ');
+    echo '------------------------';
 }  
 if (count($TotalDays_PeriodArr) == 0) {
     $TotalDays_PeriodArr = [1];
