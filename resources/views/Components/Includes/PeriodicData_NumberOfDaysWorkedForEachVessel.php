@@ -43,16 +43,7 @@ $Periods_ = \DB::table('vessel_availabilities')
             ->whereBetween('EndDate', [$StartDate_, $EndDate_])
             ->where('Vessel', $Vessel->VesselName)
             ->where('Status', $Status);
-})->orderBy('EndDate', 'DESC')->get(); 
-$Periods = \DB::table('vessel_availabilities')
-->where('Vessel', $Vessel->VesselName)
-->where('Status', $Status)
-->where(function($query) use ($StartDate_, $EndDate_, $Vessel, $Status) {
-    $query->where('StartDate', '<=', '2024-11-01')
-            ->where('EndDate', '>=', '2024-11-02') 
-            ->where('Vessel', $Vessel->VesselName)
-            ->where('Status', $Status);
-})->orderBy('EndDate', 'DESC')->get(); 
+})->orderBy('EndDate', 'DESC')->get();  
 
 // echo '------------------------';
 // print_r($Periods);
