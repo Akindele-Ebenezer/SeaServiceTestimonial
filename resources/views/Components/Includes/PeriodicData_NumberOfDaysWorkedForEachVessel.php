@@ -84,9 +84,9 @@ foreach($Periods as $Period) {
     array_push($TotalDaysArr, $TotalDays);   
     array_push($TotalHoursArr, $TotalHours);   
     array_push($TotalMinutesArr, $TotalMinutes);   
-    echo $Period->Vessel . ': StartDateTime: ' . $StartDateTime . ' - EndDateTime: ' . $EndDateTime;
-    print_r(' === ' . $TotalMinutes . ' mins.        ');
-    echo '------------------------';
+    // echo $Period->Vessel . ': StartDateTime: ' . $StartDateTime . ' - EndDateTime: ' . $EndDateTime;
+    // print_r(' === ' . $TotalMinutes . ' mins.        ');
+    // echo '------------------------';
 }  
 if (count($TotalDays_PeriodArr) == 0) {
     $TotalDays_PeriodArr = [1];
