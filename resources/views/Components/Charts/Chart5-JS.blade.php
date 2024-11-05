@@ -21,7 +21,7 @@ $Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select(
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -32,7 +32,7 @@ $Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select(
         @php $Status = 'Idle' @endphp
             @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -43,7 +43,7 @@ $Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select(
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -53,7 +53,7 @@ $Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select(
         @php $Status = 'Docking' @endphp
             @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -64,7 +64,7 @@ $Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select(
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -75,7 +75,7 @@ $Vessels_SPEED_MOORING_BOATS = \DB::table('vessels_vessel_information')->select(
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels_TUGS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]
@@ -164,7 +164,7 @@ options: {
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -175,7 +175,7 @@ options: {
         @php $Status = 'Idle' @endphp
             @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -186,7 +186,7 @@ options: {
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -196,7 +196,7 @@ options: {
         @php $Status = 'Docking' @endphp
             @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -207,7 +207,7 @@ options: {
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -218,7 +218,7 @@ options: {
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels_PILOTS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]
@@ -307,7 +307,7 @@ options: {
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -318,7 +318,7 @@ options: {
         @php $Status = 'Idle' @endphp
             @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -329,7 +329,7 @@ options: {
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -339,7 +339,7 @@ options: {
         @php $Status = 'Docking' @endphp
             @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -349,7 +349,7 @@ options: {
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -360,7 +360,7 @@ options: {
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels_DREDGERS_MULTICAT_PLOUGHING as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]
@@ -449,7 +449,7 @@ options: {
         @php $Status = 'BREAKDOWN' @endphp
             @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -460,7 +460,7 @@ options: {
         @php $Status = 'Idle' @endphp
             @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -471,7 +471,7 @@ options: {
         @php $Status = 'Bunkery' @endphp
             @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -481,7 +481,7 @@ options: {
         @php $Status = 'Docking' @endphp
             @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -491,7 +491,7 @@ options: {
         @php $Status = 'Maintenance' @endphp
             @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}, {
@@ -502,7 +502,7 @@ options: {
         @php $Status = 'Inspection' @endphp
             @foreach($Vessels_SPEED_MOORING_BOATS as $Vessel)
                 @php include('../resources/views/Components/Includes/PeriodicData_NumberOfDaysWorkedForEachVessel.php'); @endphp
-                {{ ceil(array_sum($TotalMinutesArr) / 1000) * 1000 }}, 
+                {{ array_sum($TotalMinutesArr) }}, 
             @endforeach  
       ],
 		}]

@@ -2044,7 +2044,7 @@ main .left-navigation ul li .total {
   font-weight: 500;
   overflow-wrap: anywhere;
   padding-block: 0.5em;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 .dashboard-inner .board-1 .div svg, .dashboard-inner .board-2 .div svg, .dashboard-inner .board-3 .div svg {
