@@ -55,8 +55,8 @@ foreach($Periods as $Period) {
     // $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
     // $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
     
-// echo $Period->Vessel. '- Start: '. $Period->StartDate. ', End: '. $Period->EndDate;
-// echo '------------------------';
+echo $Period->Vessel. '- Start: '. $Period->StartDate. ' '. $Period->StartTime . ', End: '. $Period->EndDate. ' '. $Period->EndTime ;
+echo '------------------------';
     if (($Period->StartDate > $StartDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ('00:00' ?? '00:00'));
     }
