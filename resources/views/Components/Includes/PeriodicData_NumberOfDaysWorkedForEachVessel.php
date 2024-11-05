@@ -55,8 +55,8 @@ foreach($Periods as $Period) {
     // $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ($Period->StartTime ?? '00:00'));
     // $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
     
-echo $Period->Vessel. '- Start: '. $Period->StartDate. ' '. $Period->StartTime . ', End: '. $Period->EndDate. ' '. $Period->EndTime ;
-echo '------------------------';
+// echo $Period->Vessel. '- Start: '. $Period->StartDate. ' '. $Period->StartTime . ', End: '. $Period->EndDate. ' '. $Period->EndTime ;
+// echo '------------------------';
     if (($Period->StartDate > $StartDate_)) {
         $StartDateTime = \Carbon\Carbon::parse(($Period->StartDate ?? date('Y-m-d')) . ' ' . ($Period->StartTime ?? '00:00'));
     }
@@ -96,9 +96,9 @@ echo '------------------------';
     //     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ('00:00' ?? '00:00'));
     //     $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
     // }
-    echo '################';
-    echo $Period->Vessel. '- Start: '. $StartDateTime . ', End: '. $EndDateTime;
-    echo '################';
+    // echo '################';
+    // echo $Period->Vessel. '- Start: '. $StartDateTime . ', End: '. $EndDateTime;
+    // echo '################';
     $TotalDays = $StartDateTime->diffInDays($EndDateTime) + 1; 
     $TotalHours = $StartDateTime->diffInHours($EndDateTime); 
     $TotalMinutes = $StartDateTime->diffInMinutes($EndDateTime); 
