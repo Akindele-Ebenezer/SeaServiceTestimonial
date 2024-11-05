@@ -96,6 +96,9 @@ echo '------------------------';
     //     $StartDateTime = \Carbon\Carbon::parse(($StartDate_ ?? $StartDate_) . ' ' . ('00:00' ?? '00:00'));
     //     $EndDateTime = \Carbon\Carbon::parse(($EndDate_ ?? $EndDate_) . ' ' . ($Period->EndTime ?? '00:00')); 
     // }
+    echo '################';
+    echo $Period->Vessel. '- Start: '. $StartDateTime . ', End: '. $EndDateTime;
+    echo '################';
     $TotalDays = $StartDateTime->diffInDays($EndDateTime) + 1; 
     $TotalHours = $StartDateTime->diffInHours($EndDateTime); 
     $TotalMinutes = $StartDateTime->diffInMinutes($EndDateTime); 
