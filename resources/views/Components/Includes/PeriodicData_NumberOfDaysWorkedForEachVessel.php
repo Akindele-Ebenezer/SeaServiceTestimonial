@@ -45,8 +45,8 @@ $Periods_ = \DB::table('vessel_availabilities')
             ->where('Status', $Status);
 })->orderBy('EndDate', 'DESC')->get();  
  
-print_r($Periods);
-echo '------------------------';
+// print_r($Periods);
+// echo '------------------------';
 $TotalDaysArr = [];
 $TotalDays_PeriodArr = [];
 $TotalHoursArr = [];
