@@ -19,6 +19,8 @@
           <canvas id="barChart2"></canvas> 
           <h1>SPEED/ MOORING BOATS</h1>
           <canvas id="barChart3"></canvas> 
+          <h1>SURVEY/ OTHER BOATS</h1>
+          <canvas id="barChart4"></canvas> 
         </div>
     </div>
   </div>
