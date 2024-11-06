@@ -2,6 +2,9 @@
 @section('Title', 'Availability - ' . session()->get('APP_NAME'))
 
 @section('Content')
+@include('Components.Forms.Add.Maintenance1')
+{{-- @include('Components.Forms.Edit.Availability')
+@include('Components.Forms.Delete.Availability') --}}
 @include('Components.Forms.Add.Availability')
 @include('Components.Forms.Edit.Availability')
 @include('Components.Forms.Delete.Availability')
