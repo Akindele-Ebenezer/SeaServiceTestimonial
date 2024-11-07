@@ -2,9 +2,12 @@
 @section('Title', 'Availability - ' . session()->get('APP_NAME'))
 
 @section('Content')
-@include('Components.Forms.Add.Maintenance1')
-{{-- @include('Components.Forms.Edit.Availability')
-@include('Components.Forms.Delete.Availability') --}}
+@include('Components.Forms.Add.Checklists.SmallBoats')
+@include('Components.Forms.Edit.Checklists.SmallBoats')
+{{-- @include('Components.Forms.Delete.Checklists.SmallBoats') --}}
+@include('Components.Forms.Add.Checklists.SpeedBoats')
+@include('Components.Forms.Edit.Checklists.SpeedBoats')
+{{-- @include('Components.Forms.Delete.Checklists.SpeedBoats') --}}
 @include('Components.Forms.Add.Availability')
 @include('Components.Forms.Edit.Availability')
 @include('Components.Forms.Delete.Availability')

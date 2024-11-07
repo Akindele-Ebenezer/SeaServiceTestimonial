@@ -12,6 +12,8 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\VesselAvailabilityController;
 use App\Http\Controllers\PriorityExcelImportController;
 use App\Http\Controllers\VesselAvailabilityPdf;
+use App\Http\Controllers\SpeedBoatsPdf;
+use App\Http\Controllers\SmallBoatsPdf;
  
 Route::get('/', [LoginController::class, 'login']);
 Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
@@ -72,3 +74,6 @@ Route::get('/Testimonials/Template/4_', [SeaServiceTestimonialPdf::class, 'templ
 Route::get('/Testimonials/Template/5_', [SeaServiceTestimonialPdf::class, 'template_5_'])->name('template_5_');
 
 Route::get('/Availability/Report', [VesselAvailabilityPdf::class, 'vessel_availability_report'])->name('vessel_availability_report');
+
+Route::get('/Availability/Report/Checklists/SpeedBoats', [SpeedBoatsPdf::class, 'speed_boat_report'])->name('speed_boat_report');
+Route::get('/Availability/Report/Checklists/SmallBoats', [SmallBoatsPdf::class, 'small_boat_report'])->name('speed_boat_report');

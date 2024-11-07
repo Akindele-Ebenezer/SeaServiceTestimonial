@@ -1,15 +1,15 @@
-<div class="form-1 AddMaintenance1">
+<div class="form-1 EditSmallBoats_Checklist">
     <div class="inner">
         <div class="close-button">
             <span>    </span>
-            <button class="cancel-button-maintenance1">✖</button>
+            <button class="cancel-button-small-boats-checklist">✖</button>
         </div>
-        <form action="" class="AddMaintenance1Form" enctype="multipart/form-data"> 
+        <form action="" class="EditSmallBoats_ChecklistForm" enctype="multipart/form-data"> 
             @csrf
             <div class="inner-1"> 
                 <div class="fields">
-                    <p class="error-maintenance1 error"></p>
-                    <h1>SMALL BOATS,  
+                    <p class="error-small-boats-checklist error"></p>
+                    <h1>EDIT SMALL BOATS,  
                         CAPTAINS & ENGINEERS
                         HANDOVER STATEMENT
                         </h1>
@@ -51,7 +51,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Clean & Tidy</label>
@@ -67,7 +67,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">VHF 1</label>
@@ -101,7 +101,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">SOP to date</label>
@@ -141,7 +141,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Steering System</label>
@@ -187,7 +187,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Magnetic compass</label>
@@ -222,7 +222,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Bits and Bollards</label>
@@ -250,7 +250,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Life rafts and cradles</label>
@@ -278,7 +278,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">All crew on board</label>
@@ -294,7 +294,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Fuel oil (ROB)</label>
@@ -322,7 +322,7 @@
                         <label class="th-1" for=""></label>
                         <span class="th-2">Good</span>
                         <span class="th-3">Not Good</span>
-                        <span class="th-4">Comment</span>
+                        <span class="th-4">Comments</span>
                     </div>   
                     <div class="input">
                         <label for="">Condition of main engine(s)</label>
@@ -375,7 +375,7 @@
                 </section> 
                 <br><br>
                 <section class="t-f">
-                    <h1>The service on the Vessel has been taken over in accordance with the <br>above findings and comments  </h1>
+                    <h1>The service on the Vessel has been taken over in accordance with<br> the above findings and comments  </h1>
                     <div class="input">
                         <label for="">Outgoing Captain /Engineer <br> comments (If any): </label>
                         <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -388,7 +388,7 @@
             </div>
         </form>
         <div class="button">
-            <button class="AddMaintenance1Button">Handover →</button>
+            <button class="EditSmallBoats_ChecklistButton">Update →</button>
         </div>
     </div>
 </div>
