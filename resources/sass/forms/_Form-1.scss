@@ -15,7 +15,7 @@
 
     &.AddVessel, &.FilterChart4ForVesselData { z-index: 300; }
     &.AddSmallBoats_Checklist, &.AddSpeedBoats_Checklist, &.EditSmallBoats_Checklist, &.EditSpeedBoats_Checklist {
-        display: flex;
+        // display: flex;
         .inner {
             height: 85%;
             overflow-y: scroll;

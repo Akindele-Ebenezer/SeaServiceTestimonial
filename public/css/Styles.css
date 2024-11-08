@@ -325,9 +325,6 @@
 .form-1.AddVessel, .form-1.FilterChart4ForVesselData {
   z-index: 300;
 }
-.form-1.AddSmallBoats_Checklist, .form-1.AddSpeedBoats_Checklist, .form-1.EditSmallBoats_Checklist, .form-1.EditSpeedBoats_Checklist {
-  display: flex;
-}
 .form-1.AddSmallBoats_Checklist .inner, .form-1.AddSpeedBoats_Checklist .inner, .form-1.EditSmallBoats_Checklist .inner, .form-1.EditSpeedBoats_Checklist .inner {
   height: 85%;
   overflow-y: scroll;
@@ -1520,28 +1517,75 @@ main .left-navigation ul li .total {
   width: 6.5em;
 }
 
-.chart-4 {
+.diagram {
+  background: rgba(0, 0, 0, 0.9);
+}
+.diagram .-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+}
+.diagram .-wrapper .image {
+  border-radius: 0.5em;
+  margin: 4em;
+  width: 25em;
+}
+.diagram .-wrapper .image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+  width: 30%;
+}
+.diagram .-wrapper .Properties-Wrapper {
+  margin-inline: 1em;
+}
+.diagram .-wrapper .Properties-Wrapper .Inner {
+  display: flex;
+  margin-block: 1em;
+}
+.diagram .-wrapper .Properties-Wrapper .Inner h1 {
+  color: #ddd;
+  font-weight: 400;
+  font-size: smaller;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  width: 9em;
+}
+.diagram .-wrapper .Properties-Wrapper .Inner img {
+  width: 1.5em;
+}
+.diagram .-wrapper .Properties-Wrapper .Title {
+  padding: 0.25em;
+  font-size: smaller;
+  border-bottom: 1px solid #444;
+  text-transform: uppercase;
+}
+
+.chart-4, .diagram {
   display: none;
   justify-content: center;
   width: 100%;
 }
-.chart-4 .Comment {
+.chart-4 .Comment, .diagram .Comment {
   text-align: center;
 }
-.chart-4 .OpenChart4Filter {
+.chart-4 .OpenChart4Filter, .diagram .OpenChart4Filter {
   bottom: 1em;
   cursor: pointer;
   position: absolute;
   right: 1em;
   width: 3em;
 }
-.chart-4-wrapper {
+.chart-4-wrapper, .diagram-wrapper {
   background: #fff;
   border-radius: 0.5em;
   padding: 3em;
   position: relative;
 }
-.chart-4-wrapper .Close {
+.chart-4-wrapper .Close, .diagram-wrapper .Close {
   color: red;
   cursor: pointer;
   font-size: 1.3em;
@@ -1550,12 +1594,12 @@ main .left-navigation ul li .total {
   right: 0.75em;
   top: 0.25em;
 }
-.chart-4-wrapper h1 {
+.chart-4-wrapper h1, .diagram-wrapper h1 {
   left: 1em;
   position: absolute;
   top: 2.655em;
 }
-.chart-4-wrapper h2 {
+.chart-4-wrapper h2, .diagram-wrapper h2 {
   color: #333;
   font-weight: 600;
   margin-bottom: 1em;
