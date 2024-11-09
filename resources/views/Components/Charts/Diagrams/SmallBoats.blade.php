@@ -1,4 +1,5 @@
 <div class="form-1 diagram {{ (isset($_GET['FilterValue']) || isset($_GET['page']) || isset($_GET['Vessel_FILTER'])) ? 'Hide' : '' }}" style="display: {{ isset($_GET['Chart4']) ? 'flex !important' : '' }}; display: flex">
+    @include('Components.Charts.Chart6') 
     <div class="-wrapper"> 
         <div class="Properties-Wrapper">
             <div class="Title">General</div>
@@ -110,7 +111,7 @@
             </div> 
         </div>
         <div class="image">
-            <img src="{{ asset('Images/small-boat.png') }}" alt="">
+            <img src="{{ asset('Images/small-boat-x.png') }}" alt="">
         </div>
         <div class="Properties-Wrapper">
             <div class="Inner">

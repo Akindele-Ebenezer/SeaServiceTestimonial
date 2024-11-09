@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;0,400;1,600;1,400&display=swap");
 * {
   box-sizing: border-box;
   font-family: "system-ui", sans-serif;
@@ -1517,53 +1518,6 @@ main .left-navigation ul li .total {
   width: 6.5em;
 }
 
-.diagram {
-  background: rgba(0, 0, 0, 0.9);
-}
-.diagram .-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: #fff;
-  width: 100%;
-}
-.diagram .-wrapper .image {
-  border-radius: 0.5em;
-  margin: 4em;
-  width: 25em;
-}
-.diagram .-wrapper .image img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-48%, -50%);
-  width: 30%;
-}
-.diagram .-wrapper .Properties-Wrapper {
-  margin-inline: 1em;
-}
-.diagram .-wrapper .Properties-Wrapper .Inner {
-  display: flex;
-  margin-block: 1em;
-}
-.diagram .-wrapper .Properties-Wrapper .Inner h1 {
-  color: #ddd;
-  font-weight: 400;
-  font-size: smaller;
-  margin-left: 0.5em;
-  margin-bottom: 0.5em;
-  width: 9em;
-}
-.diagram .-wrapper .Properties-Wrapper .Inner img {
-  width: 1.5em;
-}
-.diagram .-wrapper .Properties-Wrapper .Title {
-  padding: 0.25em;
-  font-size: smaller;
-  border-bottom: 1px solid #444;
-  text-transform: uppercase;
-}
-
 .chart-4, .diagram {
   display: none;
   justify-content: center;
@@ -1757,6 +1711,120 @@ main .left-navigation ul li .total {
   margin-right: 1em;
   translate: 0 -0.25em;
   width: 2em;
+}
+
+.chart-6 {
+  width: 20em;
+  position: absolute;
+  height: 10%;
+  top: 2em;
+}
+.chart-6 h2, .chart-6 h3 {
+  color: #fff;
+}
+.chart-6 hr {
+  border: none;
+  border-bottom: 1px solid #666;
+}
+.chart-6 button {
+  background-color: #000;
+  border: 0;
+  border-radius: 0;
+  padding: 1rem 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.chart-6 button:hover {
+  border-radius: 6px;
+  background-color: #f50045;
+  transition: all 500ms ease;
+}
+.chart-6.ce_ixelgen_progress_bar {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.chart-6.ce_ixelgen_progress_bar .progress_bar_item {
+  margin-bottom: 2rem;
+}
+.chart-6.ce_ixelgen_progress_bar .item_label,
+.chart-6.ce_ixelgen_progress_bar .item_value {
+  background-color: unset;
+  padding: unset;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+.chart-6.ce_ixelgen_progress_bar .item_value {
+  color: #fff;
+  font-weight: 400;
+  text-align: right;
+}
+.chart-6.ce_ixelgen_progress_bar .item_bar {
+  padding: unset;
+  position: relative;
+  height: 0.5rem;
+  width: 100%;
+  background-color: #000;
+  border-radius: 4px;
+}
+.chart-6.ce_ixelgen_progress_bar .item_bar .progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  height: 0.5rem;
+  margin: 0;
+  background-color: #f50045;
+  border-radius: 4px;
+  transition: width 100ms ease;
+}
+
+.diagram {
+  background: rgba(0, 0, 0, 0.9);
+}
+.diagram .-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+}
+.diagram .-wrapper .image {
+  border-radius: 0.5em;
+  margin: 4em;
+  width: 25em;
+}
+.diagram .-wrapper .image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+  width: 30%;
+}
+.diagram .-wrapper .Properties-Wrapper {
+  margin-inline: 1em;
+}
+.diagram .-wrapper .Properties-Wrapper .Inner {
+  display: flex;
+  margin-block: 1em;
+}
+.diagram .-wrapper .Properties-Wrapper .Inner h1 {
+  color: #ddd;
+  font-weight: 400;
+  font-size: smaller;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  width: 9em;
+}
+.diagram .-wrapper .Properties-Wrapper .Inner img {
+  width: 1.5em;
+}
+.diagram .-wrapper .Properties-Wrapper .Title {
+  padding: 0.25em;
+  font-size: smaller;
+  border-bottom: 1px solid #444;
+  text-transform: uppercase;
 }
 
 .availability {

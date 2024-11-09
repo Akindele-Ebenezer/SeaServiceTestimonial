@@ -1,0 +1,73 @@
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;0,400;1,600;1,400&display=swap');
+
+ $primary-color: #f50045;
+ $secondary-color: #000;
+ $bar-height: .5rem;
+.chart-6 { 
+    width: 20em;
+    position: absolute;
+    height: 10%;
+    top: 2em;
+
+    h2, h3 {
+        color: #fff;
+    }
+
+    hr {
+        border: none;
+        border-bottom: 1px solid #666;
+    }
+    button {
+        background-color: $secondary-color;
+        border: 0;
+        border-radius: 0;
+        padding: 1rem 2rem;
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            border-radius: 6px;
+            background-color: $primary-color;
+            transition: all 500ms ease;
+        }
+    }
+    &.ce_ixelgen_progress_bar {
+        max-width: 800px;
+        margin: 0 auto;
+        .progress_bar_item {
+            margin-bottom: 2rem;
+        }
+        .item_label,
+        .item_value {
+            background-color: unset;
+            padding: unset;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .item_value {
+            color: #fff;
+            font-weight: 400;
+            text-align: right;
+        }
+        .item_bar {
+            padding: unset;
+            position: relative;
+            height: $bar-height;
+            width: 100%;
+            background-color: $secondary-color;
+            border-radius: 4px;
+            .progress {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 0;
+                height: $bar-height;
+                margin: 0;
+                background-color: $primary-color;
+                border-radius: 4px;
+                transition: width 100ms ease;
+            }
+        }
+    }
+}

@@ -1700,4 +1700,5 @@
 {{-- @include('Components.Charts.Chart3-JS')  --}}
 @include('Components.Charts.Chart4-JS') 
 @include('Components.Charts.Chart5-JS') 
+@include('Components.Charts.Chart6-JS') 
 @endsection
