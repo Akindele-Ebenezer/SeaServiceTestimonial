@@ -108,7 +108,12 @@ if (AddAvailabilityButton !== null) {
         let StartDateInput = document.querySelector('input[name=StartDate]');
         let EndDateInput = document.querySelector('input[name=EndDate]');
         let TillNowInput = document.querySelector('select[name=TillNow]');
-        
+        // 
+        const dateToCheck = new Date(StartDateInput.value);
+        const today = new Date(); 
+        // Set the time of today's date to midnight to ignore time in comparison
+        today.setHours(0, 0, 0, 0); 
+        // 
         if (AttachmentInput.value.trim() == '') { 
             ErrorAvailability.textContent =  'Attachment is required/Fill other fields manually';
         }
@@ -154,7 +159,9 @@ if (AddAvailabilityButton !== null) {
                 /[a-zA-Z]/.test(EndTimeInput.value.substring(0, 6))
             ) {
                 ErrorAvailability.textContent =  'Time cannot include alphabets';
-            } else { 
+            } else if (dateToCheck < today) { 
+                ErrorAvailability.textContent =  'Start Date is not today.. Contact the administrator to add this availability from the database.';
+            }  else { 
                 ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorAvailability.style.color =  '#fff';
                 ErrorAvailability.style.padding =  '1em';
@@ -234,3 +241,4 @@ setInterval(function() {
         Chart4Modal_Indicator.firstElementChild.className = '';
     })
   });
+ 

@@ -142,7 +142,7 @@
     }
   }
 
-  .DisplayChart5Button {
+  .DisplayChart5Button, .DisplayAddChecklist1Button {
     cursor: pointer;
     position: absolute;
     top: unset;
@@ -157,4 +157,7 @@
     svg {
         fill: #fff;
     }
+  }
+  .DisplayAddChecklist1Button {
+    right: 4em;
   }

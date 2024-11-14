@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('UserId')->nullable();
             $table->string('DateIn')->nullable();
             $table->string('TimeIn')->nullable();
+            $table->string('VesselName')->nullable();
             $table->string('ImoNumber')->nullable();
             $table->string('SummerLoadDraught')->nullable();
             $table->string('Lpp')->nullable();

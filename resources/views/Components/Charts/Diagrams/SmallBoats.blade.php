@@ -1,4 +1,19 @@
-<div class="form-1 diagram {{ (isset($_GET['FilterValue']) || isset($_GET['page']) || isset($_GET['Vessel_FILTER'])) ? 'Hide' : '' }}" style="display: {{ isset($_GET['Chart4']) ? 'flex !important' : '' }}; display: flex">
+<div class="form-1 diagram Diagram1 {{ (isset($_GET['FilterValue']) || isset($_GET['page']) || isset($_GET['Vessel_FILTER'])) ? 'Hide' : '' }}" style="display: {{ isset($_GET['Chart4']) ? 'flex !important' : '' }}">
+    <p class="Close">✖</p>
+    <div class="VesselName">
+        <h1 class="indicator">
+            <span class="status-x"></span>
+        </h1>
+        <h2>SEA FOX</h2>
+        <h3>
+        </h3>
+        <h3>
+            <img class="EditChecklist1_Icon" src="{{ asset('Images/write.png') }}" alt="">
+        </h3>
+        <h3>
+            <img class="Checklist1_PdfIcon" src="{{ asset('Images/pdf.png') }}" alt="">
+        </h3>
+    </div>
     @include('Components.Charts.Chart6') 
     <div class="-wrapper"> 
         <div class="Properties-Wrapper">
@@ -211,6 +226,10 @@
             <div class="Inner">
                 <div><img src="{{ asset('Images/yes.png') }}" alt=""></div>
                 <h1>Navigational Lights</h1>
+            </div>
+            <div class="Inner">
+                <div><img src="{{ asset('Images/yes.png') }}" alt=""></div>
+                <h1>Search Lights</h1>
             </div>
             <div class="Inner">
                 <div><img src="{{ asset('Images/yes.png') }}" alt=""></div>

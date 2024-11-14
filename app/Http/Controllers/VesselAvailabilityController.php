@@ -17,8 +17,7 @@ class VesselAvailabilityController extends Controller
             'EndTime' => date('H:i'),
             'EndDate' => date('Y-m-d'),
         ]);
-
-
+ 
         $Employees = Employee::orderBy('EmployeeId', 'DESC')->get();
         $Vessels = \DB::table('vessels_vessel_information')->get();
         $Ranks = \DB::table('ranks')->get();

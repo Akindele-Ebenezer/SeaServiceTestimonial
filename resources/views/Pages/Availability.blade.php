@@ -21,6 +21,9 @@
 @include('Components.Charts.Chart4') 
 @include('Components.Charts.Chart5') 
 @include('Components.Charts.Diagrams.SmallBoats') 
+<button class="DisplayAddChecklist1Button" title="Add new handover statement for small boats">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M479-418ZM158-200 82-468q-3-12 2.5-28t23.5-22l52-18v-184q0-33 23.5-56.5T240-800h120v-120h240v120h120q33 0 56.5 23.5T800-720v184l52 18q21 8 25 23.5t1 26.5l-76 268q-50 0-91-23.5T640-280q-30 33-71 56.5T480-200q-48 0-89-23.5T320-280q-30 33-71 56.5T158-200ZM80-40v-80h80q42 0 83-13t77-39q36 26 77 38t83 12q42 0 83-12t77-38q36 26 77 39t83 13h80v80h-80q-42 0-82-10t-78-30q-38 20-78.5 30T480-40q-41 0-81.5-10T320-80q-38 20-78 30t-82 10H80Zm160-522 240-78 240 78v-158H240v158Zm240 282q47 0 79.5-33t80.5-89q48 54 65 74t41 34l44-160-310-102-312 102 46 158q24-14 41-32t65-74q50 57 81.5 89.5T480-280Z"/></svg>
+</button>
 <button class="DisplayChart5Button">
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>
 </button>
@@ -124,7 +127,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper"> 
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}  
@@ -229,7 +234,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -335,7 +342,106 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide">{{ $Vessel->VesselName }}</div>
+                @php
+                    $Checklist1a = \DB::table('checklist_1a')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
+                    $Checklist1b = \DB::table('checklist_1b')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
+                    $Checklist1c = \DB::table('checklist_1c')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
+                    $Checklist1d = \DB::table('checklist_1d')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
+                    $Checklist1e = \DB::table('checklist_1e')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
+                @endphp
+                <div class="Checklist1_Data">
+                {{-- Checklist1a --}}
+                    <div class="Hide">{{ $Checklist1a->id }}</div>
+                    <div class="Hide Port_PlaceOfHandover">{{ $Checklist1a->Port_PlaceOfHandover ?? '-' }}</div>
+                    <div class="Hide Date">{{ $Checklist1a->Date ?? '-' }}</div>
+                    <div class="Hide OutgoingCapt_EngName">{{ $Checklist1a->OutgoingCapt_EngName ?? '-' }}</div>
+                    <div class="Hide IncomingCapt_EngName">{{ $Checklist1a->IncomingCapt_EngName ?? '-' }}</div>
+                    <div class="Hide Clean_Tidy">{{ $Checklist1a->Clean_Tidy ?? '-' }}</div>
+                    <div class="Hide Clean_Tidy_Comment">{{ $Checklist1a->Clean_Tidy_Comment ?? '-' }}</div>
+                    <div class="Hide VHF_1">{{ $Checklist1a->VHF_1 ?? '-' }}</div>
+                    <div class="Hide VHF_1_Comment">{{ $Checklist1a->VHF_1_Comment ?? '-' }}</div>
+                    <div class="Hide VHF_2">{{ $Checklist1a->VHF_2 ?? '-' }}</div>
+                    <div class="Hide VHF_2_Comment">{{ $Checklist1a->VHF_2_Comment ?? '-' }}</div>
+                    <div class="Hide Handheld">{{ $Checklist1a->Handheld ?? '-' }}</div>
+                    <div class="Hide Handheld_Comment">{{ $Checklist1a->Handheld_Comment ?? '-' }}</div>
+                    <div class="Hide AIS">{{ $Checklist1a->AIS ?? '-' }}</div>
+                    <div class="Hide AIS_Comment">{{ $Checklist1a->AIS_Comment ?? '-' }}</div>
+                    {{-- Checklist1b --}}
+                    <div class="Hide SOPToDate">{{ $Checklist1b->SOPToDate ?? '-' }}</div>
+                    <div class="Hide SOPToDate_Comment">{{ $Checklist1b->SOPToDate_Comment ?? '-' }}</div>
+                    <div class="Hide CompanyOrdersToDate">{{ $Checklist1b->CompanyOrdersToDate ?? '-' }}</div>
+                    <div class="Hide CompanyOrdersToDate_Comment">{{ $Checklist1b->CompanyOrdersToDate_Comment ?? '-' }}</div>
+                    <div class="Hide LogbooksToDate">{{ $Checklist1b->LogbooksToDate ?? '-' }}</div>
+                    <div class="Hide LogbooksToDate_Comment">{{ $Checklist1b->LogbooksToDate_Comment ?? '-' }}</div>
+                    <div class="Hide RequisitionBookToDate">{{ $Checklist1b->RequisitionBookToDate ?? '-' }}</div>
+                    <div class="Hide RequisitionBookToDate_Comment">{{ $Checklist1b->RequisitionBookToDate_Comment ?? '-' }}</div>
+                    <div class="Hide PendingRequisutions_Name">{{ $Checklist1b->PendingRequisutions_Name ?? '-' }}</div>
+                    <div class="Hide PendingRequisutions_Name_Comment">{{ $Checklist1b->PendingRequisutions_Name_Comment ?? '-' }}</div>
+                    <div class="Hide SteeringSytem">{{ $Checklist1b->SteeringSytem ?? '-' }}</div>
+                    <div class="Hide SteeringSytem_Comment">{{ $Checklist1b->SteeringSytem_Comment ?? '-' }}</div>
+                    <div class="Hide EmergencySteering">{{ $Checklist1b->EmergencySteering ?? '-' }}</div>
+                    <div class="Hide EmergencySteering_Comment">{{ $Checklist1b->EmergencySteering_Comment ?? '-' }}</div>
+                    <div class="Hide NavigationalLights">{{ $Checklist1b->NavigationalLights ?? '-' }}</div>
+                    <div class="Hide NavigationalLights_Comment">{{ $Checklist1b->NavigationalLights_Comment ?? '-' }}</div>
+                    <div class="Hide SearchLight">{{ $Checklist1b->SearchLight ?? '-' }}</div>
+                    <div class="Hide SearchLight_Comment">{{ $Checklist1b->SearchLight_Comment ?? '-' }}</div>
+                    <div class="Hide A_B_Flags">{{ $Checklist1b->A_B_Flags ?? '-' }}</div>
+                    <div class="Hide A_B_Flags_Comment">{{ $Checklist1b->A_B_Flags_Comment ?? '-' }}</div>
+                    {{-- Checklist1c --}}
+                    <div class="Hide Siren_Horn">{{ $Checklist1c->Siren_Horn ?? '-' }}</div>
+                    <div class="Hide Siren_Horn_Comment">{{ $Checklist1c->Siren_Horn_Comment ?? '-' }}</div>
+                    <div class="Hide MagneticCompass">{{ $Checklist1c->MagneticCompass ?? '-' }}</div>
+                    <div class="Hide MagneticCompass_Comment">{{ $Checklist1c->MagneticCompass_Comment ?? '-' }}</div>
+                    <div class="Hide Radar">{{ $Checklist1c->Radar ?? '-' }}</div>
+                    <div class="Hide Radar_Comment">{{ $Checklist1c->Radar_Comment ?? '-' }}</div>
+                    <div class="Hide EchoSounder">{{ $Checklist1c->EchoSounder ?? '-' }}</div>
+                    <div class="Hide EchoSounder_Comment">{{ $Checklist1c->EchoSounder_Comment ?? '-' }}</div>
+                    <div class="Hide GPS">{{ $Checklist1c->GPS ?? '-' }}</div>
+                    <div class="Hide GPS_Comment">{{ $Checklist1c->GPS_Comment ?? '-' }}</div>
+                    <div class="Hide BitsAndBollards">{{ $Checklist1c->BitsAndBollards ?? '-' }}</div>
+                    <div class="Hide BitsAndBollards_Comment">{{ $Checklist1c->BitsAndBollards_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfRopes">{{ $Checklist1c->ConditionOfRopes ?? '-' }}</div>
+                    <div class="Hide ConditionOfRopes_Comment">{{ $Checklist1c->ConditionOfRopes_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfWindows">{{ $Checklist1c->ConditionOfWindows ?? '-' }}</div>
+                    <div class="Hide ConditionOfWindows_Comment">{{ $Checklist1c->ConditionOfWindows_Comment ?? '-' }}</div>
+                    <div class="Hide LifeRaftsAndCradles">{{ $Checklist1c->LifeRaftsAndCradles ?? '-' }}</div>
+                    <div class="Hide LifeRaftsAndCradles_Comment">{{ $Checklist1c->LifeRaftsAndCradles_Comment ?? '-' }}</div>
+                    <div class="Hide LifeRings">{{ $Checklist1c->LifeRings ?? '-' }}</div>
+                    <div class="Hide LifeRings_Comment">{{ $Checklist1c->LifeRings_Comment ?? '-' }}</div>  
+                    {{-- Checklist1d --}}
+                    <div class="Hide LifeJacketsAndWorkVest">{{ $Checklist1d->LifeJacketsAndWorkVest ?? '-' }}</div>
+                    <div class="Hide LifeJacketsAndWorkVest_Comment">{{ $Checklist1d->LifeJacketsAndWorkVest_Comment ?? '-' }}</div>
+                    <div class="Hide AllCrewOnBoard">{{ $Checklist1d->AllCrewOnBoard ?? '-' }}</div>
+                    <div class="Hide AllCrewOnBoard_Comment">{{ $Checklist1d->AllCrewOnBoard_Comment ?? '-' }}</div>
+                    <div class="Hide FuelOil">{{ $Checklist1d->FuelOil ?? '-' }}</div>
+                    <div class="Hide FuelOil_Comment">{{ $Checklist1d->FuelOil_Comment ?? '-' }}</div>
+                    <div class="Hide LubeOil">{{ $Checklist1d->LubeOil ?? '-' }}</div>
+                    <div class="Hide LubeOil_Comment">{{ $Checklist1d->LubeOil_Comment ?? '-' }}</div>
+                    <div class="Hide FreshWater">{{ $Checklist1d->FreshWater ?? '-' }}</div>
+                    <div class="Hide FreshWater_Comment">{{ $Checklist1d->FreshWater_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfMainEngine">{{ $Checklist1d->ConditionOfMainEngine ?? '-' }}</div>
+                    <div class="Hide ConditionOfMainEngine_Comment">{{ $Checklist1d->ConditionOfMainEngine_Comment ?? '-' }}</div>
+                    <div class="Hide LubeOil_Cons_hour_Engine">{{ $Checklist1d->LubeOil_Cons_hour_Engine ?? '-' }}</div>
+                    <div class="Hide LubeOil_Cons_hour_Engine_Comment">{{ $Checklist1d->LubeOil_Cons_hour_Engine_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfGearBox">{{ $Checklist1d->ConditionOfGearBox ?? '-' }}</div>
+                    <div class="Hide ConditionOfGearBox_Comment">{{ $Checklist1d->ConditionOfGearBox_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfGenSet">{{ $Checklist1d->ConditionOfGenSet ?? '-' }}</div>
+                    <div class="Hide ConditionOfGenSet_Comment">{{ $Checklist1d->ConditionOfGenSet_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfBilgePump">{{ $Checklist1d->ConditionOfBilgePump ?? '-' }}</div>
+                    <div class="Hide ConditionOfBilgePump_Comment">{{ $Checklist1d->ConditionOfBilgePump_Comment ?? '-' }}</div> 
+                    {{-- Checklist1e --}}
+                    <div class="Hide ConditionOfBilgeSystem">{{ $Checklist1e->ConditionOfBilgeSystem ?? '-' }}</div>
+                    <div class="Hide ConditionOfBilgeSystem_Comment">{{ $Checklist1e->ConditionOfBilgeSystem_Comment ?? '-' }}</div>
+                    <div class="Hide ConditionOfBattery">{{ $Checklist1e->ConditionOfBattery ?? '-' }}</div>
+                    <div class="Hide ConditionOfBattery_Comment">{{ $Checklist1e->ConditionOfBattery_Comment ?? '-' }}</div>
+                    <div class="Hide ShoreConnectionCables">{{ $Checklist1e->ShoreConnectionCables ?? '-' }}</div>
+                    <div class="Hide ShoreConnectionCables_Comment">{{ $Checklist1e->ShoreConnectionCables_Comment ?? '-' }}</div>
+                    <div class="Hide Outgoing_Captain_Engineer_Comment">{{ $Checklist1e->Outgoing_Captain_Engineer ?? '-' }}</div> 
+                    <div class="Hide Incoming_Captain_Engineer_Comment">{{ $Checklist1e->Incoming_Captain_Engineer ?? '-' }}</div> 
+                </div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -441,7 +547,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -547,7 +655,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -653,7 +763,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -759,7 +871,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -865,7 +979,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -971,7 +1087,9 @@
                 <span class="Hide tooltip-x-span"><div class="{{ strtolower($Availability_STATUS->Status ?? '') }} tooltip-x-div"></div> On {{ $Availability_STATUS->Status ?? 'READY TO GO' }} <br> {{ $StartTime }} - {{ $EndTime_2 }}</span>
             @endif
             <div class="inner -x">  
-                <img src="{{ asset('images/ship (2).png') }}" alt="">
+                <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
+                <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
+                <div class="Hide"> {{ $Vessel->VesselName }}</div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
                     <span class="status-x  {{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}
@@ -1683,6 +1801,9 @@
         </div> 
     </div>
 </div>   
+<script src="{{ asset('js/Components/Add/Checklist1.js') }}"></script>
+<script src="{{ asset('js/Components/Edit/Checklist1.js') }}"></script>
+{{-- <script src="{{ asset('js/Components/Delete/Checklist1.js') }}"></script> --}}
 <script src="{{ asset('js/Components/Add/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>
