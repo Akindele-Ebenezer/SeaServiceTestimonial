@@ -107,6 +107,39 @@ let Checklist1_LifeRings_Comment_Edit = document.querySelector('.EditSmallBoats_
 let Checklist1_LifeJacketsAndWorkVest_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=LifeJacketsAndWorkVest][value=Good]');
 let Checklist1_LifeJacketsAndWorkVest_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=LifeJacketsAndWorkVest][value=NotGood]');
 let Checklist1_LifeJacketsAndWorkVest_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=LifeJacketsAndWorkVest_Comment]');
+let Checklist1_DeckMaintenanceCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=DeckMaintenanceCondition][value=Good]');
+let Checklist1_DeckMaintenanceCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=DeckMaintenanceCondition][value=NotGood]');
+let Checklist1_DeckMaintenanceCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=DeckMaintenanceCondition_Comment]');
+let Checklist1_AccommodationMaintenanceCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=AccommodationMaintenanceCondition][value=Good]');
+let Checklist1_AccommodationMaintenanceCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=AccommodationMaintenanceCondition][value=NotGood]');
+let Checklist1_AccommodationMaintenanceCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=AccommodationMaintenanceCondition_Comment]');
+let Checklist1_PilotHandrailsCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=PilotHandrailsCondition][value=Good]');
+let Checklist1_PilotHandrailsCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=PilotHandrailsCondition][value=NotGood]');
+let Checklist1_PilotHandrailsCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=PilotHandrailsCondition_Comment]');
+let Checklist1_TyreFenderCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=TyreFenderCondition][value=Good]');
+let Checklist1_TyreFenderCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=TyreFenderCondition][value=NotGood]');
+let Checklist1_TyreFenderCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=TyreFenderCondition_Comment]');
+let Checklist1_HullFendersCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=HullFendersCondition][value=Good]');
+let Checklist1_HullFendersCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=HullFendersCondition][value=NotGood]');
+let Checklist1_HullFendersCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=HullFendersCondition_Comment]');
+let Checklist1_GarbageCollecting_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=GarbageCollecting][value=Good]');
+let Checklist1_GarbageCollecting_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=GarbageCollecting][value=NotGood]');
+let Checklist1_GarbageCollecting_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=GarbageCollecting_Comment]');
+let Checklist1_GarbageDepositing_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=GarbageDepositing][value=Good]');
+let Checklist1_GarbageDepositing_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=GarbageDepositing][value=NotGood]');
+let Checklist1_GarbageDepositing_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=GarbageDepositing_Comment]');
+let Checklist1_EngineSmoking_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=EngineSmoking][value=Good]');
+let Checklist1_EngineSmoking_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=EngineSmoking][value=NotGood]');
+let Checklist1_EngineSmoking_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=EngineSmoking_Comment]');
+let Checklist1_Extinguishers_Exp_Date_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Extinguishers_Exp_Date][value=Good]');
+let Checklist1_Extinguishers_Exp_Date_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Extinguishers_Exp_Date][value=NotGood]');
+let Checklist1_Extinguishers_Exp_Date_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Extinguishers_Exp_Date_Comment]');
+let Checklist1_FireHosesCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=FireHosesCondition][value=Good]');
+let Checklist1_FireHosesCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=FireHosesCondition][value=NotGood]');
+let Checklist1_FireHosesCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=FireHosesCondition_Comment]');
+let Checklist1_Nozzles_NoCondition_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Nozzles_NoCondition][value=Good]');
+let Checklist1_Nozzles_NoCondition_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Nozzles_NoCondition][value=NotGood]');
+let Checklist1_Nozzles_NoCondition_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Nozzles_NoCondition_Comment]');
 let Checklist1_AllCrewOnBoard_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=AllCrewOnBoard][value=Good]');
 let Checklist1_AllCrewOnBoard_Edit_ = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=AllCrewOnBoard][value=NotGood]');
 let Checklist1_AllCrewOnBoard_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=AllCrewOnBoard_Comment]');
@@ -320,6 +353,74 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
           Checklist1_LifeJacketsAndWorkVest_Edit_.checked = true;
       }
       Checklist1_LifeJacketsAndWorkVest_Comment_Edit.value = Checklist1_Data.querySelector('.LifeJacketsAndWorkVest_Comment').textContent;
+    //   
+      if (Checklist1_Data.querySelector('.DeckMaintenanceCondition').textContent == 'Good') {
+          Checklist1_DeckMaintenanceCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.DeckMaintenanceCondition').textContent == 'NotGood') {
+          Checklist1_DeckMaintenanceCondition_Edit_.checked = true;
+      }
+      Checklist1_DeckMaintenanceCondition_Comment_Edit.value = Checklist1_Data.querySelector('.DeckMaintenanceCondition_Comment').textContent;
+      if (Checklist1_Data.querySelector('.AccommodationMaintenanceCondition').textContent == 'Good') {
+          Checklist1_AccommodationMaintenanceCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.AccommodationMaintenanceCondition').textContent == 'NotGood') {
+          Checklist1_AccommodationMaintenanceCondition_Edit_.checked = true;
+      }
+      Checklist1_AccommodationMaintenanceCondition_Comment_Edit.value = Checklist1_Data.querySelector('.AccommodationMaintenanceCondition_Comment').textContent;
+      if (Checklist1_Data.querySelector('.PilotHandrailsCondition').textContent == 'Good') {
+          Checklist1_PilotHandrailsCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.PilotHandrailsCondition').textContent == 'NotGood') {
+          Checklist1_PilotHandrailsCondition_Edit_.checked = true;
+      }
+      Checklist1_PilotHandrailsCondition_Comment_Edit.value = Checklist1_Data.querySelector('.PilotHandrailsCondition_Comment').textContent;
+      if (Checklist1_Data.querySelector('.TyreFenderCondition').textContent == 'Good') {
+          Checklist1_TyreFenderCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.TyreFenderCondition').textContent == 'NotGood') {
+          Checklist1_TyreFenderCondition_Edit_.checked = true;
+      }
+      Checklist1_TyreFenderCondition_Comment_Edit.value = Checklist1_Data.querySelector('.TyreFenderCondition_Comment').textContent;
+      if (Checklist1_Data.querySelector('.HullFendersCondition').textContent == 'Good') {
+          Checklist1_HullFendersCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.HullFendersCondition').textContent == 'NotGood') {
+          Checklist1_HullFendersCondition_Edit_.checked = true;
+      }
+      Checklist1_HullFendersCondition_Comment_Edit.value = Checklist1_Data.querySelector('.HullFendersCondition_Comment').textContent;
+      if (Checklist1_Data.querySelector('.GarbageCollecting').textContent == 'Good') {
+          Checklist1_GarbageCollecting_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.GarbageCollecting').textContent == 'NotGood') {
+          Checklist1_GarbageCollecting_Edit_.checked = true;
+      }
+      Checklist1_GarbageCollecting_Comment_Edit.value = Checklist1_Data.querySelector('.GarbageCollecting_Comment').textContent;
+      if (Checklist1_Data.querySelector('.GarbageDepositing').textContent == 'Good') {
+          Checklist1_GarbageDepositing_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.GarbageDepositing').textContent == 'NotGood') {
+          Checklist1_GarbageDepositing_Edit_.checked = true;
+      }
+      Checklist1_GarbageDepositing_Comment_Edit.value = Checklist1_Data.querySelector('.GarbageDepositing_Comment').textContent;
+      if (Checklist1_Data.querySelector('.EngineSmoking').textContent == 'Good') {
+          Checklist1_EngineSmoking_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.EngineSmoking').textContent == 'NotGood') {
+          Checklist1_EngineSmoking_Edit_.checked = true;
+      }
+      Checklist1_EngineSmoking_Comment_Edit.value = Checklist1_Data.querySelector('.EngineSmoking_Comment').textContent;
+      if (Checklist1_Data.querySelector('.Extinguishers_Exp_Date').textContent == 'Good') {
+          Checklist1_Extinguishers_Exp_Date_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.Extinguishers_Exp_Date').textContent == 'NotGood') {
+          Checklist1_Extinguishers_Exp_Date_Edit_.checked = true;
+      }
+      Checklist1_Extinguishers_Exp_Date_Comment_Edit.value = Checklist1_Data.querySelector('.Extinguishers_Exp_Date_Comment').textContent;
+      if (Checklist1_Data.querySelector('.FireHosesCondition').textContent == 'Good') {
+          Checklist1_FireHosesCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.FireHosesCondition').textContent == 'NotGood') {
+          Checklist1_FireHosesCondition_Edit_.checked = true;
+      }
+      Checklist1_FireHosesCondition_Comment_Edit.value = Checklist1_Data.querySelector('.FireHosesCondition_Comment').textContent;
+      if (Checklist1_Data.querySelector('.Nozzles_NoCondition').textContent == 'Good') {
+          Checklist1_Nozzles_NoCondition_Edit.checked = true;
+      } else if (Checklist1_Data.querySelector('.Nozzles_NoCondition').textContent == 'NotGood') {
+          Checklist1_Nozzles_NoCondition_Edit_.checked = true;
+      }
+      Checklist1_Nozzles_NoCondition_Comment_Edit.value = Checklist1_Data.querySelector('.Nozzles_NoCondition_Comment').textContent;
+    //   
       if (Checklist1_Data.querySelector('.AllCrewOnBoard').textContent == 'Good') {
           Checklist1_AllCrewOnBoard_Edit.checked = true;
       } else if (Checklist1_Data.querySelector('.AllCrewOnBoard').textContent == 'NotGood') {
@@ -398,7 +499,9 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
       Diagram1_VesselStatus.classList.remove(Status);
   })
   Checklist1_PdfIcon.addEventListener('click', () => {
-      window.open('/Availability/Report/Checklists/SmallBoats');
+    let BoatName = Diagram1_VesselName.textContent;  
+    let Checklist1Id = EditSmallBoats_ChecklistButton.nextElementSibling.textContent; 
+    window.open('/Availability/Report/Checklists/SmallBoats/?Boat='+ BoatName + '&Id=' + Checklist1Id);
   })
 });
 

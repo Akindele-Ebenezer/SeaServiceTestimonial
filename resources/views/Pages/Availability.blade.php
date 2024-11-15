@@ -346,15 +346,15 @@
                 <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
                 <div class="Hide">{{ $Vessel->VesselName }}</div>
                 @php
-                    $Checklist1a = \DB::table('checklist_1a')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
-                    $Checklist1b = \DB::table('checklist_1b')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
-                    $Checklist1c = \DB::table('checklist_1c')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
-                    $Checklist1d = \DB::table('checklist_1d')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
-                    $Checklist1e = \DB::table('checklist_1e')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->first();
+                    $Checklist1a = \DB::table('checklist_1a')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1b = \DB::table('checklist_1b')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1c = \DB::table('checklist_1c')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1d = \DB::table('checklist_1d')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1e = \DB::table('checklist_1e')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
                 @endphp
                 <div class="Checklist1_Data">
                 {{-- Checklist1a --}}
-                    <div class="Hide">{{ $Checklist1a->id }}</div>
+                    <div class="Hide">{{ $Checklist1a->id ?? '-' }}</div>
                     <div class="Hide Port_PlaceOfHandover">{{ $Checklist1a->Port_PlaceOfHandover ?? '-' }}</div>
                     <div class="Hide Date">{{ $Checklist1a->Date ?? '-' }}</div>
                     <div class="Hide OutgoingCapt_EngName">{{ $Checklist1a->OutgoingCapt_EngName ?? '-' }}</div>
@@ -441,6 +441,28 @@
                     <div class="Hide ShoreConnectionCables_Comment">{{ $Checklist1e->ShoreConnectionCables_Comment ?? '-' }}</div>
                     <div class="Hide Outgoing_Captain_Engineer_Comment">{{ $Checklist1e->Outgoing_Captain_Engineer ?? '-' }}</div> 
                     <div class="Hide Incoming_Captain_Engineer_Comment">{{ $Checklist1e->Incoming_Captain_Engineer ?? '-' }}</div> 
+                    <div class="Hide DeckMaintenanceCondition">{{ $Checklist1e->DeckMaintenanceCondition ?? '-' }}</div>
+                    <div class="Hide DeckMaintenanceCondition_Comment">{{ $Checklist1e->DeckMaintenanceCondition_Comment ?? '-' }}</div>
+                    <div class="Hide AccommodationMaintenanceCondition">{{ $Checklist1e->AccommodationMaintenanceCondition ?? '-' }}</div>
+                    <div class="Hide AccommodationMaintenanceCondition_Comment">{{ $Checklist1e->AccommodationMaintenanceCondition_Comment ?? '-' }}</div>
+                    <div class="Hide PilotHandrailsCondition">{{ $Checklist1e->PilotHandrailsCondition ?? '-' }}</div>
+                    <div class="Hide PilotHandrailsCondition_Comment">{{ $Checklist1e->PilotHandrailsCondition_Comment ?? '-' }}</div>
+                    <div class="Hide TyreFenderCondition">{{ $Checklist1e->TyreFenderCondition ?? '-' }}</div>
+                    <div class="Hide TyreFenderCondition_Comment">{{ $Checklist1e->TyreFenderCondition_Comment ?? '-' }}</div>
+                    <div class="Hide HullFendersCondition">{{ $Checklist1e->HullFendersCondition ?? '-' }}</div>
+                    <div class="Hide HullFendersCondition_Comment">{{ $Checklist1e->HullFendersCondition_Comment ?? '-' }}</div>
+                    <div class="Hide GarbageCollecting">{{ $Checklist1e->GarbageCollecting ?? '-' }}</div>
+                    <div class="Hide GarbageCollecting_Comment">{{ $Checklist1e->GarbageCollecting_Comment ?? '-' }}</div>
+                    <div class="Hide GarbageDepositing">{{ $Checklist1e->GarbageDepositing ?? '-' }}</div>
+                    <div class="Hide GarbageDepositing_Comment">{{ $Checklist1e->GarbageDepositing_Comment ?? '-' }}</div>
+                    <div class="Hide EngineSmoking">{{ $Checklist1e->EngineSmoking ?? '-' }}</div>
+                    <div class="Hide EngineSmoking_Comment">{{ $Checklist1e->EngineSmoking_Comment ?? '-' }}</div>
+                    <div class="Hide Nozzles_NoCondition">{{ $Checklist1e->Nozzles_NoCondition ?? '-' }}</div>
+                    <div class="Hide Nozzles_NoCondition_Comment">{{ $Checklist1e->Nozzles_NoCondition_Comment ?? '-' }}</div>
+                    <div class="Hide Extinguishers_Exp_Date">{{ $Checklist1e->Extinguishers_Exp_Date ?? '-' }}</div>
+                    <div class="Hide Extinguishers_Exp_Date_Comment">{{ $Checklist1e->Extinguishers_Exp_Date_Comment ?? '-' }}</div>
+                    <div class="Hide FireHosesCondition">{{ $Checklist1e->FireHosesCondition ?? '-' }}</div>
+                    <div class="Hide FireHosesCondition_Comment">{{ $Checklist1e->FireHosesCondition_Comment ?? '-' }}</div>
                 </div>
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')

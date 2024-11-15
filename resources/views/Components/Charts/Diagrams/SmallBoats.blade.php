@@ -12,6 +12,7 @@
         </h3>
         <h3>
             <img class="Checklist1_PdfIcon" src="{{ asset('Images/pdf.png') }}" alt="">
+            <div class="Hide"></div>
         </h3>
     </div>
     @include('Components.Charts.Chart6') 

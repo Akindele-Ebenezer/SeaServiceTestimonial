@@ -221,7 +221,35 @@
                         <input type="radio" name="GPS" value="NotGood">
                         <input class="comment" name="GPS_Comment" type="text">
                     </div>  
-                </section>   
+                </section>
+                <br><br>
+                <section class="t-f">
+                    <h1>Fire Equipment</h1>
+                    <div class="input">
+                        <label class="th-1" for=""></label>
+                        <span class="th-2">Good</span>
+                        <span class="th-3">Not Good</span>
+                        <span class="th-4">Comments</span>
+                    </div>   
+                    <div class="input">
+                        <label for="">Extinguishers (exp. date)</label>
+                        <input type="radio" name="Extinguishers_Exp_Date" value="Good">
+                        <input type="radio" name="Extinguishers_Exp_Date" value="NotGood">
+                        <input class="comment" name="Extinguishers_Exp_Date_Comment" type="text">
+                    </div>    
+                    <div class="input">
+                        <label for="">Fire hoses (no condition)</label>
+                        <input type="radio" name="FireHosesCondition" value="Good">
+                        <input type="radio" name="FireHosesCondition" value="NotGood">
+                        <input class="comment" name="FireHosesCondition_Comment" type="text">
+                    </div>      
+                    <div class="input">
+                        <label for="">Nozzles (No condition) </label>
+                        <input type="radio" name="Nozzles_NoCondition" value="Good">
+                        <input type="radio" name="Nozzles_NoCondition" value="NotGood">
+                        <input class="comment" name="Nozzles_NoCondition_Comment" type="text">
+                    </div>     
+                </section>     
             </div>
             <div class="inner-2"> 
                 <section class="t-f">
@@ -280,6 +308,74 @@
                     </div>    
                 </section>   
                 <br><br>
+                <section class="t-f">
+                    <h1>Hull (Dents and damages)</h1>
+                    <div class="input">
+                        <label class="th-1" for=""></label>
+                        <span class="th-2">Good</span>
+                        <span class="th-3">Not Good</span>
+                        <span class="th-4">Comments</span>
+                    </div>   
+                    <div class="input">
+                        <label for="">Deck maintenance condition</label>
+                        <input type="radio" name="DeckMaintenanceCondition" value="Good">
+                        <input type="radio" name="DeckMaintenanceCondition" value="NotGood">
+                        <input class="comment" name="DeckMaintenanceCondition_Comment" type="text">
+                    </div>     
+                    <div class="input">
+                        <label for="">Accommodation Maint. Condition</label>
+                        <input type="radio" name="AccommodationMaintenanceCondition" value="Good">
+                        <input type="radio" name="AccommodationMaintenanceCondition" value="NotGood">
+                        <input class="comment" name="AccommodationMaintenanceCondition_Comment" type="text">
+                    </div>     
+                    <div class="input">
+                        <label for="">Pilot Handrails condition</label>
+                        <input type="radio" name="PilotHandrailsCondition" value="Good">
+                        <input type="radio" name="PilotHandrailsCondition" value="NotGood">
+                        <input class="comment" name="PilotHandrailsCondition_Comment" type="text">
+                    </div>     
+                    <div class="input">
+                        <label for="">Tyre fender condition</label>
+                        <input type="radio" name="TyreFenderCondition" value="Good">
+                        <input type="radio" name="TyreFenderCondition" value="NotGood">
+                        <input class="comment" name="TyreFenderCondition_Comment" type="text">
+                    </div>     
+                    <div class="input">
+                        <label for="">Hull fenders condition</label>
+                        <input type="radio" name="HullFendersCondition" value="Good">
+                        <input type="radio" name="HullFendersCondition" value="NotGood">
+                        <input class="comment" name="HullFendersCondition_Comment" type="text">
+                    </div>     
+                </section>   
+                <br><br>
+                <section class="t-f">
+                    <h1>Environmental</h1>
+                    <div class="input">
+                        <label class="th-1" for=""></label>
+                        <span class="th-2">Good</span>
+                        <span class="th-3">Not Good</span>
+                        <span class="th-4">Comments</span>
+                    </div>   
+                    <div class="input">
+                        <label for="">Garbage collecting</label>
+                        <input type="radio" name="GarbageCollecting" value="Good">
+                        <input type="radio" name="GarbageCollecting" value="NotGood">
+                        <input class="comment" name="GarbageCollecting_Comment" type="text">
+                    </div>   
+                    <div class="input">
+                        <label for="">Garbage depositing</label>
+                        <input type="radio" name="GarbageDepositing" value="Good">
+                        <input type="radio" name="GarbageDepositing" value="NotGood">
+                        <input class="comment" name="GarbageDepositing_Comment" type="text">
+                    </div> 
+                    <div class="input">
+                        <label for="">Engine smoking</label>
+                        <input type="radio" name="EngineSmoking" value="Good">
+                        <input type="radio" name="EngineSmoking" value="NotGood">
+                        <input class="comment" name="EngineSmoking_Comment" type="text">
+                    </div>      
+                </section>  
+                <br><br> 
                 <section class="t-f">
                     <h1>Crew Presence on board</h1>
                     <div class="input">

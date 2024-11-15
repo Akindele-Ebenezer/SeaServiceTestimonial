@@ -23,6 +23,17 @@ return new class extends Migration
             $table->string('ShoreConnectionCables_Comment')->nullable(); 
             $table->string('Outgoing_Captain_Engineer')->nullable(); 
             $table->string('Incoming_Captain_Engineer')->nullable(); 
+            $table->string('DeckMaintenanceCondition')->nullable(); 
+            $table->string('AccommodationMaintenanceCondition')->nullable(); 
+            $table->string('PilotHandrailsCondition')->nullable(); 
+            $table->string('TyreFenderCondition')->nullable(); 
+            $table->string('HullFendersCondition')->nullable(); 
+            $table->string('GarbageCollecting')->nullable(); 
+            $table->string('GarbageDepositing')->nullable(); 
+            $table->string('EngineSmoking')->nullable(); 
+            $table->string('Extinguishers_Exp_Date')->nullable(); 
+            $table->string('FireHosesCondition')->nullable(); 
+            $table->string('Nozzles_NoCondition')->nullable(); 
             $table->string('DateIn')->nullable();
             $table->string('TimeIn')->nullable();
             $table->timestamps();
