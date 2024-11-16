@@ -90,7 +90,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1a->Clean_Tidy_Comment, 1, 1); 
                 
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Communication (General)', 1, 1, 'C');
@@ -114,7 +114,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1a->VHF_1_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '3', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'VHF 2', 1, 0);
@@ -135,7 +135,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1a->VHF_2_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '4', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Handheld', 1, 0);
@@ -156,7 +156,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1a->Handheld_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '5', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'AIS', 1, 0);
@@ -177,7 +177,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1);
+        $fpdf->Cell(68, 7, $Checklist1a->AIS_Comment, 1, 1);
         $fpdf->SetFont('Arial', 'B', 12); 
 
                 
@@ -203,7 +203,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->SOPToDate_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '7', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Company orders to date', 1, 0);
@@ -224,7 +224,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->CompanyOrdersToDate_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '8', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Logbooks to date', 1, 0);
@@ -245,7 +245,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->LogbooksToDate_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '9', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Requisition book to date', 1, 0);
@@ -266,7 +266,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1);
+        $fpdf->Cell(68, 7, $Checklist1b->RequisitionBookToDate_Comment, 1, 1);
 
         $fpdf->Cell(7, 7, '10', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Pending requisitions (Name)', 1, 0);
@@ -287,7 +287,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->PendingRequisutions_Name_Comment, 1, 1); 
                 
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Navigation & Electronic Equipment', 1, 1, 'C');
@@ -311,7 +311,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->MagneticCompass_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '12', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Radar', 1, 0);
@@ -332,7 +332,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->Radar_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '13', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Echo sounder', 1, 0);
@@ -353,7 +353,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->EchoSounder_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '14', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'GPS', 1, 0);
@@ -374,7 +374,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1);
+        $fpdf->Cell(68, 7, $Checklist1c->GPS_Comment, 1, 1);
         $fpdf->SetFont('Arial', 'B', 12); 
         
                 
@@ -400,7 +400,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->BitsAndBollards_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '16', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Condition of ropes', 1, 0);
@@ -421,7 +421,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->ConditionOfRopes_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '17', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Condition of windows', 1, 0);
@@ -442,7 +442,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->ConditionOfWindows_Comment, 1, 1); 
  
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Hull (Dents and damages)', 1, 1, 'C');
@@ -466,7 +466,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->DeckMaintenanceCondition_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '19', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Accommodation Maint. Condition', 1, 0);
@@ -487,7 +487,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->AccommodationMaintenanceCondition_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '20', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Pilot Handrails condition', 1, 0);
@@ -508,7 +508,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->PilotHandrailsCondition_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '21', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Tyre fender condition', 1, 0);
@@ -529,7 +529,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->TyreFenderCondition_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '22', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Hull fenders condition', 1, 0);
@@ -550,7 +550,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1);
+        $fpdf->Cell(68, 7, $Checklist1e->HullFendersCondition_Comment, 1, 1);
         $fpdf->SetFont('Arial', 'B', 12); 
         
                 
@@ -576,7 +576,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->GarbageCollecting_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '24', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Garbage depositing', 1, 0);
@@ -597,7 +597,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->GarbageDepositing_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '25', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Engine smoking', 1, 0);
@@ -618,7 +618,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->EngineSmoking_Comment, 1, 1); 
  
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Fire Equipment', 1, 1, 'C');
@@ -642,7 +642,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->Extinguishers_Exp_Date_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '27', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Fire hoses (no condition)', 1, 0);
@@ -663,7 +663,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->FireHosesCondition_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '28', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Nozzles (No condition)', 1, 0);
@@ -684,7 +684,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->Nozzles_NoCondition_Comment, 1, 1); 
  
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Safety Equipment (Condition)', 1, 1, 'C');
@@ -708,7 +708,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->LifeRaftsAndCradles_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '30', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Life rings', 1, 0);
@@ -729,7 +729,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1c->LifeRings_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '31', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Life jackets and work vest', 1, 0);
@@ -750,7 +750,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->LifeJacketsAndWorkVest_Comment, 1, 1); 
  
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Crew Presence on board', 1, 1, 'C');
@@ -774,7 +774,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->AllCrewOnBoard_Comment, 1, 1); 
           
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Liquids on board', 1, 1, 'C');
@@ -798,7 +798,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->FuelOil_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '34', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Lube oil (ROB)', 1, 0);
@@ -819,7 +819,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->LubeOil_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '35', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Fresh water (ROB)', 1, 0);
@@ -840,7 +840,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->FreshWater_Comment, 1, 1); 
  
         $fpdf->SetFont('Arial', 'B', 12); 
         $fpdf->Cell(190, 7, 'Engine Maintenance ', 1, 1, 'C');
@@ -864,7 +864,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->ConditionOfMainEngine_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '37', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Lube oil cons/hour/engine', 1, 0);
@@ -885,7 +885,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->LubeOil_Cons_hour_Engine_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '38', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Condition of gear box(es)', 1, 0);
@@ -906,7 +906,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->ConditionOfGearBox_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '39', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Condition of gen set(s)', 1, 0);
@@ -927,7 +927,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->ConditionOfGenSet_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '40', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Condition of Bilge Pump', 1, 0);
@@ -948,7 +948,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1d->ConditionOfBilgePump_Comment, 1, 1); 
 
 
         $fpdf->Cell(7, 7, '41', 1, 0, 'C');
@@ -970,7 +970,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->ConditionOfBilgeSystem_Comment, 1, 1); 
  
         $fpdf->Cell(7, 7, '42', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Condition of Battery(es)', 1, 0);
@@ -991,7 +991,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->ConditionOfBattery_Comment, 1, 1); 
  
         $fpdf->Cell(7, 7, '43', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Shore connection cables', 1, 0);
@@ -1012,7 +1012,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1e->ShoreConnectionCables_Comment, 1, 1); 
 
 
         $fpdf->SetFont('Arial', 'B', 12); 
@@ -1037,7 +1037,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->SteeringSytem_Comment, 1, 1); 
          
         $fpdf->Cell(7, 7, '45', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Emergency Steering', 1, 0);
@@ -1058,7 +1058,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->EmergencySteering_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '46', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Navigational Lights', 1, 0);
@@ -1079,7 +1079,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->NavigationalLights_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '47', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Search Light', 1, 0);
@@ -1100,7 +1100,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->SearchLight_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '48', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'A and B Flags', 1, 0);
@@ -1121,7 +1121,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1); 
+        $fpdf->Cell(68, 7, $Checklist1b->A_B_Flags_Comment, 1, 1); 
 
         $fpdf->Cell(7, 7, '49', 1, 0, 'C');
         $fpdf->Cell(70, 7, 'Siren/ Horn', 1, 0);
@@ -1142,7 +1142,7 @@ class SmallBoatsPdf extends Controller
         $fpdf->SetY($fpdf->GetY() - 1);
         $fpdf->SetX(115);  
         $fpdf->Cell(17, 7, 'Capt/Eng', 1, 0, 'C');
-        $fpdf->Cell(68, 7, '', 1, 1);
+        $fpdf->Cell(68, 7, $Checklist1c->Siren_Horn_Comment, 1, 1);
         $fpdf->SetFont('Arial', 'B', 9); 
         
         $fpdf->Ln(15); 
