@@ -8,7 +8,6 @@
             @csrf
             <div class="inner-1"> 
                 <div class="fields">
-                    <p class="error-small-boats-checklist error"></p>
                     <h1>SMALL BOATS,  
                         CAPTAINS & ENGINEERS
                         HANDOVER STATEMENT
@@ -494,5 +493,6 @@
         <div class="button">
             <button class="AddSmallBoats_ChecklistButton">Handover →</button>
         </div>
+        <p class="error-small-boats-checklist error"></p>
     </div>
 </div>
