@@ -502,7 +502,6 @@
 }
 .form-1 form .inner-1, .form-1 form .inner-2 {
   padding-inline: 1em;
-  width: 50%;
 }
 .form-1 form .inner-1 h1, .form-1 form .inner-2 h1 {
   align-items: center;
@@ -586,7 +585,6 @@
 }
 .form-1 .inner {
   background-color: #fff;
-  border-radius: 0.5em;
   overflow-y: scroll;
   padding: 1em;
   padding-bottom: 5em;
@@ -1535,7 +1533,6 @@ main .left-navigation ul li .total {
 }
 .chart-4-wrapper, .diagram-wrapper {
   background: #fff;
-  border-radius: 0.5em;
   padding: 3em;
   position: relative;
 }
