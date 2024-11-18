@@ -1567,6 +1567,44 @@
                 {{ $VesselAvailability->appends(request()->query())->links() }}
             </div> 
         </div>
+        @php
+            $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->paginate(20);
+        @endphp
+        <div class="board-3">
+            <div class="div">
+                <h1>Handover statements, inspections and maintenance logs</h1>
+                <table>
+                    <tr>
+                        <th>Vessel</th>
+                        <th>Date</th> 
+                        <th>#</th>
+                     :: {{ count($Checklist1) }}</tr> 
+                    @unless (count($Checklist1) > 0)
+                    <tr>
+                        <td class="action">System don't have any records yet..</td>
+                    </tr>
+                    @endunless
+                    @foreach ($Checklist1 as $Checklist) 
+                    <tr class="scheduled history Hide">
+                        {{-- <td>Scheduled :: {{ 2 }}</td>  --}}
+                    </tr> 
+                    @include('Components.History.History') 
+                    <tr> 
+                        <td>{{ $Checklist->Boat }}</td> 
+                        <td>{{ $Checklist->Date }}</td>
+                        <td class="action"> 
+                            <span class="Hide">{{ $Checklist->id }}</span> 
+                            <span class="Hide"> {{ $Checklist->Boat }}</span> 
+                            <img class="EditChecklist1Button" src="{{ asset('images/write.png') }}" alt=""> 
+                            <img class="DeleteChecklist1Button" src="{{ asset('images/delete.png') }}" alt="">
+                            <img class="Checklist1_PdfIcon" src="{{ asset('images/pdf.png') }}" alt="">
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+                {{ $Checklist1->appends(request()->query())->links() }}
+            </div> 
+        </div>
         <div class="board-2">
             @php 
                 $NumberOfVessels_IDLE_LASTMONTH = App\Models\VesselAvailability::select('Vessel')

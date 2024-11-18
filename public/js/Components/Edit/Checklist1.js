@@ -18,7 +18,7 @@ let Diagram1 = document.querySelector('.Diagram1');
 let Diagram1_CloseButton = document.querySelector('.Diagram1 .Close');
 let Diagram1_VesselName = document.querySelector('.Diagram1 .VesselName h2');
 let Diagram1_VesselStatus = document.querySelector('.Diagram1 .VesselName .indicator .status-x');
-let Checklist1_PdfIcon = document.querySelector('.Checklist1_PdfIcon');
+let Checklist1_PdfIcons = document.querySelectorAll('.Checklist1_PdfIcon');
 
 let Checklist1_VesselName_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=Boat]');
 let Checklist1_Date_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Date]');
@@ -27,6 +27,7 @@ let Checklist1_OutgoingCapt_EngName_Edit = document.querySelector('.EditSmallBoa
 let Checklist1_IncomingCapt_EngName_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=IncomingCapt_EngName]');
 let Checklist1_OutgoingCapt_EngineerName_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input textarea[name=Outgoing_Captain_Engineer]');
 let Checklist1_IncomingCapt_EngineerName_Comment_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input textarea[name=Incoming_Captain_Engineer]');
+let PdfWrapper = document.querySelector('.PdfWrapper');
 
 OpenMaintenanceInfoIcon.forEach(Icon => {
     Icon.addEventListener('click', () => {
@@ -37,6 +38,8 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
       Diagram1_VesselStatus.className = '';
       Diagram1_VesselStatus.classList.add('status-x', Status);
       Diagram1_VesselName.textContent = Icon.nextElementSibling.nextElementSibling.textContent;
+      PdfWrapper.firstElementChild.textContent = Checklist1Id;
+      PdfWrapper.firstElementChild.nextElementSibling.textContent = Diagram1_VesselName.textContent;
       Checklist1_VesselName_Edit.value = Diagram1_VesselName.textContent;
       const Checklist1_Data = Icon.nextElementSibling.nextElementSibling.nextElementSibling; 
       Checklist1_Date_Edit.value = Checklist1_Data.querySelector('.Date').textContent;
@@ -77,11 +80,15 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
       Diagram1.style.display = 'none';
       Diagram1_VesselStatus.classList.remove(Status);
   })
-  Checklist1_PdfIcon.addEventListener('click', () => {
-    let BoatName = Diagram1_VesselName.textContent;  
-    let Checklist1Id = EditSmallBoats_ChecklistButton.nextElementSibling.textContent; 
-    window.open('/Availability/Report/Checklists/SmallBoats/?Boat='+ BoatName + '&Id=' + Checklist1Id);
-  })
+  Checklist1_PdfIcons.forEach(PdfIcon => {
+    PdfIcon.addEventListener('click', () => {
+        let Checklist1Id = PdfIcon.parentElement.firstElementChild.textContent;  
+        let BoatName = PdfIcon.parentElement.firstElementChild.nextElementSibling.textContent; 
+        // let BoatName = Diagram1_VesselName.textContent;  
+        // let Checklist1Id = EditSmallBoats_ChecklistButton.nextElementSibling.textContent; 
+        window.open('/Availability/Report/Checklists/SmallBoats/?Boat='+ BoatName + '&Id=' + Checklist1Id);
+      })
+  });
 });
 
 let Checklist1_Edit_Error = document.querySelector('.error-edit-small-boats-checklist'); 

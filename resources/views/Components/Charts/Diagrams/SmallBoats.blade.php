@@ -10,7 +10,9 @@
         <h3>
             <img class="EditChecklist1_Icon" src="{{ asset('Images/write.png') }}" alt="">
         </h3>
-        <h3>
+        <h3 class="PdfWrapper">
+            <div class="Hide"></div>
+            <div class="Hide"></div>
             <img class="Checklist1_PdfIcon" src="{{ asset('Images/pdf.png') }}" alt="">
             <div class="Hide"></div>
         </h3>
