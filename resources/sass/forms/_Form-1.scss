@@ -184,6 +184,7 @@
 
             label { 
                 font-weight: 500;
+                padding-right: 1em;
                 text-align: left;
                 width: 9em; 
             }
@@ -404,6 +405,14 @@
                 svg {
                     margin-right: .5em;
                 }
+            }
+        }
+    }
+
+    .AddSpeedBoats_ChecklistForm {
+        .input {
+            input[type=checkbox] {
+                width: 6%;
             }
         }
     }

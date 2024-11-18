@@ -461,6 +461,7 @@
 }
 .form-1 form .input label, .form-1 form td label {
   font-weight: 500;
+  padding-right: 1em;
   text-align: left;
   width: 9em;
 }
@@ -619,6 +620,9 @@
 }
 .form-1 .inner section .footer svg {
   margin-right: 0.5em;
+}
+.form-1 .AddSpeedBoats_ChecklistForm .input input[type=checkbox] {
+  width: 6%;
 }
 
 .DeleteModal {
