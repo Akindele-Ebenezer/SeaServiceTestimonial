@@ -19,12 +19,14 @@ let InputFields = [
 let TextareaFields = ['Outgoing_Captain_Engineer','Incoming_Captain_Engineer',];
 let SelectFields = ['Boat','IncomingCapt_EngName','OutgoingCapt_EngName',];
 let OtherFields = ['Port_PlaceOfHandover','Date',];
+let Checklist1_Error = document.querySelector('.error-small-boats-checklist');
 
 DisplayAddChecklist1Button.addEventListener('click', () => {
     AddSmallBoats_Checklist.style.display = 'flex';
     AddSmallBoats_Checklist.style.zIndex = '210';
 
     AddSmallBoats_ChecklistButton.addEventListener('click', () => {
+        Checklist1_Error.textContent = '';
         InputFields.forEach(InputField => {
             if ((!document.querySelector('.AddSmallBoats_ChecklistForm .input input[name=' + InputField + '][value=NotGood]').checked) &&
                 (!document.querySelector('.AddSmallBoats_ChecklistForm .input input[name=' + InputField + '][value=Good]').checked)) {
@@ -57,10 +59,12 @@ DisplayAddChecklist1Button.addEventListener('click', () => {
                 return;
             } 
         });
-        // AddSmallBoats_ChecklistButton.style.backgroundColor = '#1fb95e';
-        // AddSmallBoats_ChecklistButton.textContent = '+ Creating..';
-        // AddSmallBoats_ChecklistForm.setAttribute('action', '/Add/Checklist1'); 
-        // AddSmallBoats_ChecklistForm.submit();
+        if (Checklist1_Error.textContent == '') { 
+            AddSmallBoats_ChecklistButton.style.backgroundColor = '#1fb95e';
+            AddSmallBoats_ChecklistButton.textContent = '+ Creating..';
+            AddSmallBoats_ChecklistForm.setAttribute('action', '/Add/Checklist1'); 
+            AddSmallBoats_ChecklistForm.submit();
+        }
     })
 
     AddSmallBoats_Checklist_CloseButton.addEventListener('click', () => {

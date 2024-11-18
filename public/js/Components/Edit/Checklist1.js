@@ -84,10 +84,11 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
   })
 });
 
-let Checklist1_Edit_Error = document.querySelector('.error-edit-small-boats-checklist');
+let Checklist1_Edit_Error = document.querySelector('.error-edit-small-boats-checklist'); 
 EditSmallBoats_ChecklistButton.addEventListener('click', () => {
-    let Checklist1Id = EditSmallBoats_ChecklistButton.nextElementSibling.textContent;
-      SelectFields.forEach(SelectField => {
+      Checklist1_Edit_Error.textContent = '';
+      let Checklist1Id = EditSmallBoats_ChecklistButton.nextElementSibling.textContent;
+      SelectFields.forEach(SelectField => { 
         if (document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=' + SelectField + ']').value == '') {
             Checklist1_Edit_Error.textContent = document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=' + SelectField + ']').parentElement.firstElementChild.textContent + ' field is required';
             document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=' + SelectField + ']').parentElement.firstElementChild.style.color = 'red';
@@ -106,9 +107,11 @@ EditSmallBoats_ChecklistButton.addEventListener('click', () => {
             document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + OtherField + ']').parentElement.firstElementChild.style.color = '#888';
             return;
         } 
-    });
-    // EditSmallBoats_ChecklistButton.style.backgroundColor = '#1fb95e';
-    // EditSmallBoats_ChecklistButton.textContent = '+ Processing..';
-    // EditSmallBoats_ChecklistForm.setAttribute('action', '/Edit/Checklist1/' + Checklist1Id)
-    // EditSmallBoats_ChecklistForm.submit();
+    }); 
+    if (Checklist1_Edit_Error.textContent == '') { 
+        EditSmallBoats_ChecklistButton.style.backgroundColor = '#1fb95e';
+        EditSmallBoats_ChecklistButton.textContent = '+ Processing..';
+        EditSmallBoats_ChecklistForm.setAttribute('action', '/Edit/Checklist1/' + Checklist1Id);
+        EditSmallBoats_ChecklistForm.submit();
+    }
 })

@@ -15,7 +15,7 @@
                     <section>
                         @php
                             $Boats = \DB::table('vessels_vessel_information')->select('VesselName')->get();
-                            $Captains_Engineers = \DB::table('employees')->select('FullName')->where('Rank', ['CAPTAIN', 'ENGINEER'])->get();
+                            $Captains_Engineers = \DB::table('employees')->select('FullName')->whereIn('Rank', ['CAPTAIN', 'ENGINEER'])->get();
                         @endphp
                         <div class="input">
                             <label for="">Boat</label> 
@@ -27,7 +27,7 @@
                         </div> 
                         <div class="input">
                             <label for="">Port/Place of Handover</label>
-                            <input type="text" name="Port_PlaceOfHandover">
+                            <input maxlength="23" type="text" name="Port_PlaceOfHandover">
                         </div> 
                         <div class="input">
                             <label for="">Date</label>
@@ -481,11 +481,11 @@
                     <h1>The service on the Vessel has been taken over in accordance with<br> the above findings and comments  </h1>
                     <div class="input">
                         <label for="">Outgoing Captain /Engineer <br> comments (If any): </label>
-                        <textarea name="Outgoing_Captain_Engineer" id="" cols="30" rows="10"></textarea>
+                        <textarea maxlength="50" name="Outgoing_Captain_Engineer" id="" cols="30" rows="10"></textarea>
                     </div> 
                     <div class="input">
                         <label for="">Incoming Captain/Engineer <br> comments (If any):</label>
-                        <textarea name="Incoming_Captain_Engineer" id="" cols="30" rows="10"></textarea>
+                        <textarea maxlength="50" name="Incoming_Captain_Engineer" id="" cols="30" rows="10"></textarea>
                     </div>  
                 </section>  
             </div>
