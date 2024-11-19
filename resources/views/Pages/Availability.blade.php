@@ -1575,7 +1575,13 @@
             </div> 
         </div>
         @php
-            $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
+            if (isset($_GET['Vessel_FILTER'])) { 
+                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->whereBetween('Date', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
+            } else if (isset($_GET['SpecificDay'])) { 
+                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->where('Date', $_GET['SpecificDay'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
+            } else {
+                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
+            }
         @endphp
         <div class="board-3">
             <div class="div">

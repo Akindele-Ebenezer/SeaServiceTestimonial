@@ -12,7 +12,6 @@ EditChecklist1_Icons.forEach(EditChecklist1_Icon => {
         EditSmallBoats_Checklist_CloseButton.addEventListener('click', () => {
             EditSmallBoats_Checklist.style.display = 'none';
         })
-      EditSmallBoats_ChecklistButton.nextElementSibling.textContent = EditChecklist1_Icon.parentElement.firstElementChild.textContent;
       Checklist1_VesselName_Edit.value = EditChecklist1_Icon.parentElement.firstElementChild.nextElementSibling.textContent;
       const Checklist1_Data = EditChecklist1_Icon.nextElementSibling.nextElementSibling.nextElementSibling; 
       EditFields(Checklist1_Data);
@@ -39,7 +38,7 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
     Icon.addEventListener('click', () => {
     let Checklist1Id = Icon.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.textContent;
     let Status = Icon.nextElementSibling.textContent.split(" ")[0];
-    EditSmallBoats_ChecklistButton.nextElementSibling.textContent = Checklist1Id;
+    EditSmallBoats_ChecklistButton.nextElementSibling.textContent = Checklist1Id; 
       Diagram1.style.display = 'flex'; 
       Diagram1_VesselStatus.className = '';
       Diagram1_VesselStatus.classList.add('status-x', Status);
@@ -109,6 +108,7 @@ EditSmallBoats_ChecklistButton.addEventListener('click', () => {
 })
 
 function EditFields(Checklist1_Data) {
+    EditSmallBoats_ChecklistButton.nextElementSibling.textContent = Checklist1_Data.firstElementChild.textContent;
     Checklist1_Date_Edit.value = Checklist1_Data.querySelector('.Date').textContent;
       Checklist1_Port_PlaceOfHandover_Edit.value = Checklist1_Data.querySelector('.Port_PlaceOfHandover').textContent;
       Checklist1_OutgoingCapt_EngName_Edit.value = Checklist1_Data.querySelector('.OutgoingCapt_EngName').textContent;
