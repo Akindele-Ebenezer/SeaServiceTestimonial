@@ -7,7 +7,7 @@
 {{-- @include('Components.Forms.Delete.Checklists.SmallBoats') --}}
 @include('Components.Forms.Add.Checklists.SpeedBoats')
 @include('Components.Forms.Edit.Checklists.SpeedBoats')
-{{-- @include('Components.Forms.Delete.Checklists.SpeedBoats') --}}
+@include('Components.Forms.Delete.Checklists.Checklist1')
 @include('Components.Forms.Add.Availability')
 @include('Components.Forms.Edit.Availability')
 @include('Components.Forms.Delete.Availability')
@@ -345,6 +345,13 @@
                 <img class="OpenMaintenanceInfoIcon" src="{{ asset('images/ship (2).png') }}" alt="">
                 <div class="Hide">{{ strtolower($Availability_STATUS->Status ?? 'READY TO GO') }}</div>
                 <div class="Hide">{{ $Vessel->VesselName }}</div>
+                @php
+                    $Checklist1a = \DB::table('checklist_1a')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1b = \DB::table('checklist_1b')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1c = \DB::table('checklist_1c')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1d = \DB::table('checklist_1d')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                    $Checklist1e = \DB::table('checklist_1e')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
+                @endphp
                 @include('Components.Includes.Checklists.Checklist1_DATA')
                 <strong class="notification-wrapper">
                     @include('Components.Includes.VesselStats_DATA')
@@ -1568,7 +1575,7 @@
             </div> 
         </div>
         @php
-            $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->paginate(20);
+            $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
         @endphp
         <div class="board-3">
             <div class="div">
@@ -1592,10 +1599,20 @@
                     <tr> 
                         <td>{{ $Checklist->Boat }}</td> 
                         <td>{{ $Checklist->Date }}</td>
+                        @php
+                            $Checklist1a = \DB::table('checklist_1a')->where('id', $Checklist->id)->first();
+                            $Checklist1b = \DB::table('checklist_1b')->where('id', $Checklist->id)->first();
+                            $Checklist1c = \DB::table('checklist_1c')->where('id', $Checklist->id)->first();
+                            $Checklist1d = \DB::table('checklist_1d')->where('id', $Checklist->id)->first();
+                            $Checklist1e = \DB::table('checklist_1e')->where('id', $Checklist->id)->first();
+                        @endphp
                         <td class="action"> 
                             <span class="Hide">{{ $Checklist->id }}</span> 
-                            <span class="Hide"> {{ $Checklist->Boat }}</span> 
-                            <img class="EditChecklist1Button" src="{{ asset('images/write.png') }}" alt=""> 
+                            <span class="Hide">{{ $Checklist->Boat }}</span> 
+                            <img class="EditChecklist1_Icon" src="{{ asset('images/write.png') }}" alt=""> 
+                            <div class="Hide"></div>
+                            <div class="Hide"></div>
+                            @include('Components.Includes.Checklists.Checklist1_DATA')
                             <img class="DeleteChecklist1Button" src="{{ asset('images/delete.png') }}" alt="">
                             <img class="Checklist1_PdfIcon" src="{{ asset('images/pdf.png') }}" alt="">
                         </td>
@@ -1745,7 +1762,7 @@
 </div>   
 <script src="{{ asset('js/Components/Add/Checklist1.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Checklist1.js') }}"></script>
-{{-- <script src="{{ asset('js/Components/Delete/Checklist1.js') }}"></script> --}}
+<script src="{{ asset('js/Components/Delete/Checklist1.js') }}"></script>
 <script src="{{ asset('js/Components/Add/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Edit/Availability.js') }}"></script>
 <script src="{{ asset('js/Components/Delete/Availability.js') }}"></script>

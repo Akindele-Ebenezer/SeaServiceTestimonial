@@ -1,11 +1,4 @@
-@php
-    $Checklist1a = \DB::table('checklist_1a')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
-    $Checklist1b = \DB::table('checklist_1b')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
-    $Checklist1c = \DB::table('checklist_1c')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
-    $Checklist1d = \DB::table('checklist_1d')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
-    $Checklist1e = \DB::table('checklist_1e')->where('Boat', $Vessel->VesselName)->orderBy('Date', 'DESC')->orderBy('TimeIn')->first();
-@endphp
-<div class="Checklist1_Data">
+<div class="Checklist1_Data Hide">
 {{-- Checklist1a --}}
     <div class="Hide">{{ $Checklist1a->id ?? '-' }}</div>
     <div class="Hide Port_PlaceOfHandover">{{ $Checklist1a->Port_PlaceOfHandover ?? '-' }}</div>

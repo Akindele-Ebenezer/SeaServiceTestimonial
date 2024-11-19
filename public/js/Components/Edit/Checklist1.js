@@ -1,17 +1,23 @@
-let EditChecklist1_Icon = document.querySelector('.EditChecklist1_Icon');
+let EditChecklist1_Icons = document.querySelectorAll('.EditChecklist1_Icon');
 let EditSmallBoats_Checklist = document.querySelector('.EditSmallBoats_Checklist');
 let EditSmallBoats_Checklist_CloseButton = document.querySelector('.EditSmallBoats_Checklist .cancel-button-small-boats-checklist');
 let EditSmallBoats_ChecklistButton = document.querySelector('.EditSmallBoats_ChecklistButton');
 let EditSmallBoats_ChecklistForm = document.querySelector('.EditSmallBoats_ChecklistForm');
 
-EditChecklist1_Icon.addEventListener('click', () => {
-    EditSmallBoats_Checklist.style.display = 'flex';
-    EditSmallBoats_Checklist.style.zIndex = '210'; 
-
-    EditSmallBoats_Checklist_CloseButton.addEventListener('click', () => {
-        EditSmallBoats_Checklist.style.display = 'none';
-    })
-})
+EditChecklist1_Icons.forEach(EditChecklist1_Icon => {
+    EditChecklist1_Icon.addEventListener('click', () => {
+        EditSmallBoats_Checklist.style.display = 'flex';
+        EditSmallBoats_Checklist.style.zIndex = '210'; 
+    
+        EditSmallBoats_Checklist_CloseButton.addEventListener('click', () => {
+            EditSmallBoats_Checklist.style.display = 'none';
+        })
+      EditSmallBoats_ChecklistButton.nextElementSibling.textContent = EditChecklist1_Icon.parentElement.firstElementChild.textContent;
+      Checklist1_VesselName_Edit.value = EditChecklist1_Icon.parentElement.firstElementChild.nextElementSibling.textContent;
+      const Checklist1_Data = EditChecklist1_Icon.nextElementSibling.nextElementSibling.nextElementSibling; 
+      EditFields(Checklist1_Data);
+    });
+});
 
 let OpenMaintenanceInfoIcon = document.querySelectorAll('.OpenMaintenanceInfoIcon');
 let Diagram1 = document.querySelector('.Diagram1');
@@ -42,26 +48,7 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
       PdfWrapper.firstElementChild.nextElementSibling.textContent = Diagram1_VesselName.textContent;
       Checklist1_VesselName_Edit.value = Diagram1_VesselName.textContent;
       const Checklist1_Data = Icon.nextElementSibling.nextElementSibling.nextElementSibling; 
-      Checklist1_Date_Edit.value = Checklist1_Data.querySelector('.Date').textContent;
-      Checklist1_Port_PlaceOfHandover_Edit.value = Checklist1_Data.querySelector('.Port_PlaceOfHandover').textContent;
-      Checklist1_OutgoingCapt_EngName_Edit.value = Checklist1_Data.querySelector('.OutgoingCapt_EngName').textContent;
-      Checklist1_IncomingCapt_EngName_Edit.value = Checklist1_Data.querySelector('.IncomingCapt_EngName').textContent;
-      Checklist1_OutgoingCapt_EngineerName_Comment_Edit.value = Checklist1_Data.querySelector('.Outgoing_Captain_Engineer_Comment').textContent;
-      Checklist1_IncomingCapt_EngineerName_Comment_Edit.value = Checklist1_Data.querySelector('.Incoming_Captain_Engineer_Comment').textContent;
-      // 
-      InputFields.forEach(InputField => {
-        if (Checklist1_Data.querySelector('.' + InputField).textContent == 'Good') {
-            document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '][value=Good]').checked = true;
-            document.querySelector('.' + InputField + '_Indicator').setAttribute('src', window.location.origin + '/Images/yes.png')
-          } else if (Checklist1_Data.querySelector('.' + InputField).textContent == 'NotGood') {
-            document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '][value=NotGood]').checked = true;
-            document.querySelector('.' + InputField + '_Indicator').setAttribute('src', window.location.origin + '/Images/no.png')
-        }
-        if (document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '_Comment]') === null) {
-            return; 
-        }
-        document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '_Comment]').value = Checklist1_Data.querySelector('.' + InputField + '_Comment').textContent;
-      });
+      EditFields(Checklist1_Data);
       // 
         let Yes_Indicator = document.querySelectorAll('img[src="' + window.location.origin + '/Images/yes.png"]').length;
         let No_Indicator = document.querySelectorAll('img[src="' + window.location.origin + '/Images/no.png"]').length;
@@ -83,9 +70,7 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
   Checklist1_PdfIcons.forEach(PdfIcon => {
     PdfIcon.addEventListener('click', () => {
         let Checklist1Id = PdfIcon.parentElement.firstElementChild.textContent;  
-        let BoatName = PdfIcon.parentElement.firstElementChild.nextElementSibling.textContent; 
-        // let BoatName = Diagram1_VesselName.textContent;  
-        // let Checklist1Id = EditSmallBoats_ChecklistButton.nextElementSibling.textContent; 
+        let BoatName = PdfIcon.parentElement.firstElementChild.nextElementSibling.textContent;  
         window.open('/Availability/Report/Checklists/SmallBoats/?Boat='+ BoatName + '&Id=' + Checklist1Id);
       })
   });
@@ -122,3 +107,26 @@ EditSmallBoats_ChecklistButton.addEventListener('click', () => {
         EditSmallBoats_ChecklistForm.submit();
     }
 })
+
+function EditFields(Checklist1_Data) {
+    Checklist1_Date_Edit.value = Checklist1_Data.querySelector('.Date').textContent;
+      Checklist1_Port_PlaceOfHandover_Edit.value = Checklist1_Data.querySelector('.Port_PlaceOfHandover').textContent;
+      Checklist1_OutgoingCapt_EngName_Edit.value = Checklist1_Data.querySelector('.OutgoingCapt_EngName').textContent;
+      Checklist1_IncomingCapt_EngName_Edit.value = Checklist1_Data.querySelector('.IncomingCapt_EngName').textContent;
+      Checklist1_OutgoingCapt_EngineerName_Comment_Edit.value = Checklist1_Data.querySelector('.Outgoing_Captain_Engineer_Comment').textContent;
+      Checklist1_IncomingCapt_EngineerName_Comment_Edit.value = Checklist1_Data.querySelector('.Incoming_Captain_Engineer_Comment').textContent;
+      // 
+      InputFields.forEach(InputField => {
+        if (Checklist1_Data.querySelector('.' + InputField).textContent == 'Good') {
+            document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '][value=Good]').checked = true;
+            document.querySelector('.' + InputField + '_Indicator').setAttribute('src', window.location.origin + '/Images/yes.png')
+          } else if (Checklist1_Data.querySelector('.' + InputField).textContent == 'NotGood') {
+            document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '][value=NotGood]').checked = true;
+            document.querySelector('.' + InputField + '_Indicator').setAttribute('src', window.location.origin + '/Images/no.png')
+        }
+        if (document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '_Comment]') === null) {
+            return; 
+        }
+        document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=' + InputField + '_Comment]').value = Checklist1_Data.querySelector('.' + InputField + '_Comment').textContent;
+      });
+}

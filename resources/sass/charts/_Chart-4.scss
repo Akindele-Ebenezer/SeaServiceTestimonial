@@ -5,6 +5,7 @@
 
     .Comment {
       text-align: center;
+      text-transform: uppercase;
     }
 
     .OpenChart4Filter {
@@ -20,6 +21,7 @@
         // border-radius: .5em;
         padding: 3em;
         position: relative;
+        width: 50em;
 
         .Close {    
             color: red;

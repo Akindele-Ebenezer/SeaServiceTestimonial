@@ -187,8 +187,23 @@ class Checklist1Controller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($Id)
     {
-        //
+        $Checklist1 = \DB::table('checklist_1a')->where('id', $Id)->first();
+        \DB::table('notifications')->insert([
+        'DateIn' => date('Y-m-d'),
+        'TimeIn' => date('H:i A'),
+        'UserId' => session()->get('USER_ID'),
+        'Vessel' => $Checklist1->Boat, 
+        'Action' => 'Delete',
+        'Subject' => 'Handover Statement Removed!',
+        'Notification' => 'Handover Statement for ' . $Checklist1->Boat . ' have been deleted. The tracking status is no longer available.',
+    ]);
+        \DB::table('checklist_1a')->where('id', $Id)->delete();
+        \DB::table('checklist_1b')->where('id', $Id)->delete();
+        \DB::table('checklist_1c')->where('id', $Id)->delete();
+        \DB::table('checklist_1d')->where('id', $Id)->delete();
+        \DB::table('checklist_1e')->where('id', $Id)->delete();
+        return redirect()->route('Availability');
     }
 }

@@ -78,7 +78,7 @@ Route::get('/Availability/Report', [VesselAvailabilityPdf::class, 'vessel_availa
 
 Route::get('/Add/Checklist1', [Checklist1Controller::class, 'create'])->name('AddChecklist1');
 Route::get('/Edit/Checklist1/{Id}', [Checklist1Controller::class, 'update'])->name('EditChecklist1');
-// Route::get('/Delete/Checklist1/{Id}', [Checklist1Controller::class, 'destroy'])->name('DeleteRank');
+Route::get('/Delete/Checklist1/{Id}', [Checklist1Controller::class, 'destroy'])->name('DeleteChecklist1');
 
 Route::get('/Availability/Report/Checklists/SpeedBoats', [SpeedBoatsPdf::class, 'speed_boat_report'])->name('speed_boat_report');
 Route::get('/Availability/Report/Checklists/SmallBoats', [SmallBoatsPdf::class, 'small_boat_report'])->name('speed_boat_report');

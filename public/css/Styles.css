@@ -1527,6 +1527,7 @@ main .left-navigation ul li .total {
 }
 .chart-4 .Comment, .diagram .Comment {
   text-align: center;
+  text-transform: uppercase;
 }
 .chart-4 .OpenChart4Filter, .diagram .OpenChart4Filter {
   bottom: 1em;
@@ -1539,6 +1540,7 @@ main .left-navigation ul li .total {
   background: #fff;
   padding: 3em;
   position: relative;
+  width: 50em;
 }
 .chart-4-wrapper .Close, .diagram-wrapper .Close {
   color: red;
@@ -1804,7 +1806,6 @@ main .left-navigation ul li .total {
   align-items: center;
 }
 .diagram .VesselName h2 {
-  border-bottom: 5px solid #f50045;
   font-size: xx-large;
 }
 .diagram .VesselName h3 {
