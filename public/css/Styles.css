@@ -460,7 +460,8 @@
   color: rgb(101, 78, 204);
 }
 .form-1 form .input label, .form-1 form td label {
-  font-weight: 500;
+  color: #888;
+  font-weight: 400;
   padding-right: 1em;
   text-align: left;
   width: 9em;
@@ -506,7 +507,6 @@
 }
 .form-1 form .inner-1 h1, .form-1 form .inner-2 h1 {
   align-items: center;
-  border-bottom: 1px solid rgb(211.6037735849, 232.7811320755, 243.1962264151);
   display: flex;
   font-weight: 500;
   margin-bottom: 0.5em;

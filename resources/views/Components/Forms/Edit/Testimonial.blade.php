@@ -4,7 +4,8 @@
             <span> </span>
             <button>✖</button>
         </div>
-        <form action="" class="UpdateTestimonialForm">
+        <form action="" class="UpdateTestimonialForm" method="POST">
+            @csrf
             <div class="inner-1"> 
                 <div class="fields">
                     <p class="error-update-testimonial error"></p>

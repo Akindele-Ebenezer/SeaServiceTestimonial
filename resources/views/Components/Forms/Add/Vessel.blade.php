@@ -4,7 +4,8 @@
             <span>    </span>
             <button class="cancel-button-add-vessel">✖</button>
         </div>
-        <form class="VesselForm" action="">
+        <form class="VesselForm" action="" method="POST">
+            @csrf
             <div class="inner-1"> 
                 <div class="fields">
                     <p class="error-vessel error"></p>

@@ -4,7 +4,7 @@
             <span>    </span>
             <button class="cancel-button-small-boats-checklist">✖</button>
         </div>
-        <form action="" class="AddSmallBoats_ChecklistForm" enctype="multipart/form-data"> 
+        <form action="" class="AddSmallBoats_ChecklistForm" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="inner-1"> 
                 <div class="fields">

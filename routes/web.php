@@ -21,8 +21,8 @@ Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
 Route::get('/Logout', [LoginController::class, 'logout'])->name('Logout');
 
 Route::get('/Vessels', [VesselController::class, 'index'])->name('Vessels');
-Route::get('/Add/Vessel', [VesselController::class, 'create'])->name('AddVessel');
-Route::get('/Edit/Vessel/{Id?}', [VesselController::class, 'update'])->name('EditVessel');
+Route::post('/Add/Vessel', [VesselController::class, 'create'])->name('AddVessel');
+Route::post('/Edit/Vessel/{Id?}', [VesselController::class, 'update'])->name('EditVessel');
 Route::get('/Delete/Vessel/{Id}', [VesselController::class, 'destroy'])->name('DeleteVessel');
 
 Route::get('/Availability', [VesselAvailabilityController::class, 'index'])->name('Availability');
@@ -32,8 +32,8 @@ Route::post('/Edit/Availability/{Id}', [VesselAvailabilityController::class, 'up
 Route::get('/Delete/Availability/{Id}', [VesselAvailabilityController::class, 'destroy'])->name('DeleteAvailability');
 
 Route::get('/Testimonials', [SeaServiceTestimonialController::class, 'index'])->name('Testimonials');
-Route::get('/Add/Testimonial', [SeaServiceTestimonialController::class, 'create'])->name('AddTestimonial');
-Route::get('/Edit/Testimonial/{Id}', [SeaServiceTestimonialController::class, 'update'])->name('EditTestimonial');
+Route::post('/Add/Testimonial', [SeaServiceTestimonialController::class, 'create'])->name('AddTestimonial');
+Route::post('/Edit/Testimonial/{Id}', [SeaServiceTestimonialController::class, 'update'])->name('EditTestimonial');
 Route::get('/Delete/Testimonial/{Id}', [SeaServiceTestimonialController::class, 'destroy'])->name('DeleteTestimonial');
 
 Route::get('/Operations', [VesselController::class, 'operations'])->name('Operations');
@@ -41,21 +41,21 @@ Route::get('/Operations', [VesselController::class, 'operations'])->name('Operat
 Route::get('/Notifications', [SeaServiceTestimonialController::class, 'notifications'])->name('Notifications');
 
 Route::get('/Employees', [EmployeeController::class, 'index'])->name('Employees');
-Route::get('/Add/Employee', [EmployeeController::class, 'create'])->name('AddEmployee');
-Route::get('/Edit/Employee/{Id}', [EmployeeController::class, 'update'])->name('EditEmployee');
+Route::post('/Add/Employee', [EmployeeController::class, 'create'])->name('AddEmployee');
+Route::post('/Edit/Employee/{Id}', [EmployeeController::class, 'update'])->name('EditEmployee');
 Route::get('/Delete/Employee/{Id}', [EmployeeController::class, 'destroy'])->name('DeleteEmployee');
  
-Route::get('/Add/Rank', [RankController::class, 'create'])->name('AddRank');
-Route::get('/Edit/Rank/{Id}', [RankController::class, 'update'])->name('EditRank');
+Route::post('/Add/Rank', [RankController::class, 'create'])->name('AddRank');
+Route::post('/Edit/Rank/{Id}', [RankController::class, 'update'])->name('EditRank');
 Route::get('/Delete/Rank/{Id}', [RankController::class, 'destroy'])->name('DeleteRank');
 
-Route::get('/Add/Company', [CompanyController::class, 'create'])->name('AddCompany');
-Route::get('/Edit/Company/{Id}', [CompanyController::class, 'update'])->name('EditCompany');
+Route::post('/Add/Company', [CompanyController::class, 'create'])->name('AddCompany');
+Route::post('/Edit/Company/{Id}', [CompanyController::class, 'update'])->name('EditCompany');
 Route::get('/Delete/Company/{Id}', [CompanyController::class, 'destroy'])->name('DeleteCompany');
 
 Route::get('/Users', [UserController::class, 'index'])->name('Users');
-Route::get('/Add/User', [UserController::class, 'create'])->name('AddUser');
-Route::get('/Edit/User/{Id}', [UserController::class, 'update'])->name('EditUser');
+Route::post('/Add/User', [UserController::class, 'create'])->name('AddUser');
+Route::post('/Edit/User/{Id}', [UserController::class, 'update'])->name('EditUser');
 Route::get('/Delete/User/{Id}', [UserController::class, 'destroy'])->name('DeleteUser');
 
 Route::get('/DeckRating', [EmployeeController::class, 'deck_rating'])->name('DeckRating');
@@ -76,8 +76,8 @@ Route::get('/Testimonials/Template/5_', [SeaServiceTestimonialPdf::class, 'templ
 
 Route::get('/Availability/Report', [VesselAvailabilityPdf::class, 'vessel_availability_report'])->name('vessel_availability_report');
 
-Route::get('/Add/Checklist1', [Checklist1Controller::class, 'create'])->name('AddChecklist1');
-Route::get('/Edit/Checklist1/{Id}', [Checklist1Controller::class, 'update'])->name('EditChecklist1');
+Route::post('/Add/Checklist1', [Checklist1Controller::class, 'create'])->name('AddChecklist1');
+Route::post('/Edit/Checklist1/{Id}', [Checklist1Controller::class, 'update'])->name('EditChecklist1');
 Route::get('/Delete/Checklist1/{Id}', [Checklist1Controller::class, 'destroy'])->name('DeleteChecklist1');
 
 Route::get('/Availability/Report/Checklists/SpeedBoats', [SpeedBoatsPdf::class, 'speed_boat_report'])->name('speed_boat_report');

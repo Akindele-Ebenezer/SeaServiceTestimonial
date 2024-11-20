@@ -129,8 +129,7 @@ if (AddAvailabilityButton !== null) {
                     ErrorAvailability.style.padding =  '1em';
                     ErrorAvailability.textContent = 'Creating availability..';
                     AddAvailabilityButton.style.backgroundColor = '#1fb95e';
-                    AddAvailabilityButton.textContent = '+ Processing..';
-                    AddAvailabilityForm.setAttribute('method', 'POST');
+                    AddAvailabilityButton.textContent = '+ Processing..'; 
                     AddAvailabilityForm.setAttribute('action', '/Add/Availability?Vessel=' + VesselInput.value + '&Status=' + StatusInput.value + '&DoneBy=' + DoneByInput.value + '&StartTime=' + StartTimeInput.value + '&EndTime=' + EndTimeInput.value + '&StartDate=' + StartDateInput.value + '&EndDate=' + EndDateInput.value + '&Attachment=' + AttachmentInput.value);
                     AddAvailabilityForm.submit();
                 } else if (DoneByInput.value.trim() == '') { 
@@ -167,8 +166,7 @@ if (AddAvailabilityButton !== null) {
                 ErrorAvailability.style.padding =  '1em';
                 ErrorAvailability.textContent = 'Creating availability..';
                 AddAvailabilityButton.style.backgroundColor = '#1fb95e';
-                AddAvailabilityButton.textContent = '+ Processing..';
-                AddAvailabilityForm.setAttribute('method', 'POST');
+                AddAvailabilityButton.textContent = '+ Processing..'; 
                 AddAvailabilityForm.setAttribute('action', '/Add/Availability?Vessel=' + VesselInput.value + '&Status=' + StatusInput.value + '&DoneBy=' + DoneByInput.value + '&StartTime=' + StartTimeInput.value + '&EndTime=' + EndTimeInput.value + '&StartDate=' + StartDateInput.value + '&EndDate=' + EndDateInput.value + '&Attachment=' + AttachmentInput.value);
                 AddAvailabilityForm.submit();
             }
@@ -183,8 +181,7 @@ if (AddAvailabilityButton !== null) {
                 ErrorAvailability.style.padding =  '1em';
                 ErrorAvailability.textContent = 'Creating availability..';
                 AddAvailabilityButton.style.backgroundColor = '#1fb95e';
-                AddAvailabilityButton.textContent = '+ Processing..';
-                AddAvailabilityForm.setAttribute('method', 'POST');
+                AddAvailabilityButton.textContent = '+ Processing..'; 
                 AddAvailabilityForm.setAttribute('action', '/Add/Availability?Vessel=' + VesselInput.value + '&Status=' + StatusInput.value + '&DoneBy=' + DoneByInput.value + '&StartTime=' + StartTimeInput.value + '&EndTime=' + EndTimeInput.value + '&StartDate=' + StartDateInput.value + '&EndDate=' + EndDateInput.value + '&Attachment=' + AttachmentInput.value);
                 AddAvailabilityForm.submit();
             } else {

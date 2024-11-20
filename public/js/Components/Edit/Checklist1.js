@@ -13,6 +13,7 @@ EditChecklist1_Icons.forEach(EditChecklist1_Icon => {
             EditSmallBoats_Checklist.style.display = 'none';
         })
       Checklist1_VesselName_Edit.value = EditChecklist1_Icon.parentElement.firstElementChild.nextElementSibling.textContent;
+      Checklist1_VesselName_Edit_Disabled.value = EditChecklist1_Icon.parentElement.firstElementChild.nextElementSibling.textContent;
       const Checklist1_Data = EditChecklist1_Icon.nextElementSibling.nextElementSibling.nextElementSibling; 
       EditFields(Checklist1_Data);
     });
@@ -25,7 +26,8 @@ let Diagram1_VesselName = document.querySelector('.Diagram1 .VesselName h2');
 let Diagram1_VesselStatus = document.querySelector('.Diagram1 .VesselName .indicator .status-x');
 let Checklist1_PdfIcons = document.querySelectorAll('.Checklist1_PdfIcon');
 
-let Checklist1_VesselName_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=Boat]');
+let Checklist1_VesselName_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input.Hide select[name=Boat]');
+let Checklist1_VesselName_Edit_Disabled = document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=Boat_]');
 let Checklist1_Date_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Date]');
 let Checklist1_Port_PlaceOfHandover_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input input[name=Port_PlaceOfHandover]');
 let Checklist1_OutgoingCapt_EngName_Edit = document.querySelector('.EditSmallBoats_ChecklistForm .input select[name=OutgoingCapt_EngName]');
@@ -46,6 +48,7 @@ OpenMaintenanceInfoIcon.forEach(Icon => {
       PdfWrapper.firstElementChild.textContent = Checklist1Id;
       PdfWrapper.firstElementChild.nextElementSibling.textContent = Diagram1_VesselName.textContent;
       Checklist1_VesselName_Edit.value = Diagram1_VesselName.textContent;
+      Checklist1_VesselName_Edit_Disabled.value = Diagram1_VesselName.textContent;
       const Checklist1_Data = Icon.nextElementSibling.nextElementSibling.nextElementSibling; 
       EditFields(Checklist1_Data);
       // 

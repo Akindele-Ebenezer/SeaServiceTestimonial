@@ -4,7 +4,7 @@
             <span>    </span>
             <button class="cancel-button-small-boats-checklist">✖</button>
         </div>
-        <form action="" class="EditSmallBoats_ChecklistForm" enctype="multipart/form-data"> 
+        <form action="" class="EditSmallBoats_ChecklistForm" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="inner-1"> 
                 <div class="fields">
@@ -19,12 +19,20 @@
                         @endphp
                         <div class="input">
                             <label for="">Boat</label> 
+                            <select name="Boat_" id="" disabled>
+                                @foreach ($Boats as $Boat)
+                                <option value="{{ $Boat->VesselName }}">{{ $Boat->VesselName }}</option>
+                                @endforeach
+                            </select>
+                        </div>  
+                        <div class="input Hide">
+                            <label for="">Boat</label> 
                             <select name="Boat" id="">
                                 @foreach ($Boats as $Boat)
                                 <option value="{{ $Boat->VesselName }}">{{ $Boat->VesselName }}</option>
                                 @endforeach
                             </select>
-                        </div> 
+                        </div>
                         <div class="input">
                             <label for="">Port/Place of Handover</label>
                             <input maxlength="23" type="text" name="Port_PlaceOfHandover">

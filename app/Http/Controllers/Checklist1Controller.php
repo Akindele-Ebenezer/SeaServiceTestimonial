@@ -163,6 +163,14 @@ class Checklist1Controller extends Controller
      */
     public function create(Request $Request)
     {
+        \DB::table('notifications')->insert([
+            'DateIn' => date('Y-m-d'),
+            'TimeIn' => date('H:i A'), 
+            'Vessel' => $Request->Boat, 
+            'Action' => 'Create',
+            'Subject' => 'New Handover Alert!',
+            'Notification' =>  $Request->OutgoingCapt_EngName . ' handed over to ' . $Request->IncomingCapt_EngName . ' on ' . $Request->Date . '.',
+        ]); 
         \DB::table('checklist_1a')->insert($this->checklist_1a($Request));
         \DB::table('checklist_1b')->insert($this->checklist_1b($Request));
         \DB::table('checklist_1c')->insert($this->checklist_1c($Request));
@@ -176,6 +184,14 @@ class Checklist1Controller extends Controller
      */
     public function update(Request $Request, string $Id)
     {   
+        \DB::table('notifications')->insert([
+            'DateIn' => date('Y-m-d'),
+            'TimeIn' => date('H:i A'), 
+            'Vessel' => $Request->Boat, 
+            'Action' => 'Update',
+            'Subject' => 'Handover Statement Updated!',
+            'Notification' => session()->get('FullName') . ' made changes to this handover statement.',
+        ]); 
         \DB::table('checklist_1a')->where('id', $Id)->update($this->checklist_1a($Request));
         \DB::table('checklist_1b')->where('id', $Id)->update($this->checklist_1b($Request));
         \DB::table('checklist_1c')->where('id', $Id)->update($this->checklist_1c($Request));

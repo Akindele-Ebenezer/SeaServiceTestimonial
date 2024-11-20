@@ -55,7 +55,7 @@ EditVesselButtons.forEach(EditVesselButton => {
         UpdateVesselButton.addEventListener('click', () => {
             UpdateVesselButton.style.backgroundColor = '#1fb95e';
             UpdateVesselButton.textContent = '+ Updating..';
-            EditVesselForm.setAttribute('action', '/Edit/Vessel/' + VesselId);
+            EditVesselForm.setAttribute('action', '/Edit/Vessel/' + VesselId); 
             EditVesselForm.submit();
         })
 

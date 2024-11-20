@@ -4,7 +4,7 @@
             <span>    </span>
             <button class="close-button-update-availability">✖</button>
         </div>
-        <form action="" class="UpdateAvailabilityForm"> 
+        <form action="" class="UpdateAvailabilityForm" method="POST">
             @csrf
             <div class="inner-1"> 
                 <div class="fields">

@@ -4,7 +4,7 @@
             <span>    </span>
             <button class="cancel-button-availability">✖</button>
         </div>
-        <form action="" class="AddAvailabilityForm" enctype="multipart/form-data"> 
+        <form action="" class="AddAvailabilityForm" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="inner-1"> 
                 <div class="fields">

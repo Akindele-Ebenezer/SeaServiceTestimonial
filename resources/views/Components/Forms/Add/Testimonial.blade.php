@@ -4,7 +4,8 @@
             <span>    </span>
             <button class="cancel-button">✖</button>
         </div>
-        <form action="{{ route('AddTestimonial') }}" class="AddTestimonialForm">
+        <form action="{{ route('AddTestimonial') }}" class="AddTestimonialForm" method="POST">
+            @csrf
             <div class="inner-1"> 
                 <div class="fields">
                     <p class="error-testimonial error"></p>

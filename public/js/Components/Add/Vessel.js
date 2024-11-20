@@ -28,7 +28,7 @@ CreateVesselButton.addEventListener('click', () => {
         } else {
             CreateNewVesselButton.style.backgroundColor = '#1fb95e';
             CreateNewVesselButton.textContent = '+ Creating..';
-            AddVesselForm.setAttribute('action', '/Add/Vessel');
+            AddVesselForm.setAttribute('action', '/Add/Vessel'); 
             AddVesselForm.submit();
         }
     })
