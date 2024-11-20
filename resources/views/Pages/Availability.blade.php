@@ -1576,9 +1576,9 @@
         </div>
         @php
             if (isset($_GET['Vessel_FILTER'])) { 
-                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->whereBetween('Date', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
+                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->where('Boat', $_GET['Vessel_FILTER'])->whereBetween('Date', [$_GET['FromDate_FILTERBYDATE'], $_GET['EndDate_FILTERBYDATE']])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
             } else if (isset($_GET['SpecificDay'])) { 
-                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->where('Date', $_GET['SpecificDay'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
+                $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->where('Boat', $_GET['Vessel_FILTER'])->where('Date', $_GET['SpecificDay'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
             } else {
                 $Checklist1 = \DB::table('checklist_1a')->select(['id', 'Boat', 'Date'])->orderBy('Date', 'DESC')->orderBy('TimeIn', 'DESC')->paginate(20);
             }
@@ -1601,7 +1601,7 @@
                     <tr class="scheduled history Hide">
                         {{-- <td>Scheduled :: {{ 2 }}</td>  --}}
                     </tr> 
-                    @include('Components.History.History') 
+                    {{-- @include('Components.History.History')  --}}
                     <tr> 
                         <td>{{ $Checklist->Boat }}</td> 
                         <td>{{ $Checklist->Date }}</td>

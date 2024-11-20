@@ -474,7 +474,7 @@
   outline: none;
   padding: 0.5em;
   text-transform: uppercase;
-  width: 65%;
+  width: 52%;
 }
 .form-1 form .input select:focus, .form-1 form .input input:focus, .form-1 form .input textarea:focus, .form-1 form td select:focus, .form-1 form td input:focus, .form-1 form td textarea:focus {
   border-bottom: 3px solid #225f7d;
