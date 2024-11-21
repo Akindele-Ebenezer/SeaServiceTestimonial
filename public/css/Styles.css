@@ -629,15 +629,13 @@
   display: none;
 }
 .DeleteModal .inner {
-  padding: 5em;
-  padding-top: 2em;
   position: relative;
 }
 .DeleteModal .inner .action {
   bottom: 1.5em;
   padding-top: 2em;
   position: absolute;
-  right: 5em;
+  right: 1em;
 }
 .DeleteModal .inner .action button {
   background-color: #fff;
@@ -657,7 +655,7 @@
 }
 .DeleteModal .inner center h1 {
   font-size: 2em;
-  padding-top: 1em;
+  width: 80%;
 }
 .DeleteModal .inner center p {
   color: #777;

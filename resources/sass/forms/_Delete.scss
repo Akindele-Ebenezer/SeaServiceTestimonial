@@ -1,16 +1,14 @@
 .DeleteModal {
     display: none;
 
-    .inner {
-        padding: 5em;
-        padding-top: 2em;
+    .inner { 
         position: relative; 
 
         .action {
             bottom: 1.5em;
             padding-top: 2em;
             position: absolute;
-            right: 5em;
+            right: 1em;
 
             button {
                 background-color: #fff;
@@ -35,7 +33,7 @@
         center {
             h1 {
                 font-size: 2em;
-                padding-top: 1em;
+                width: 80%;
             }
 
             p {
