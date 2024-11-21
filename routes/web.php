@@ -17,7 +17,7 @@ use App\Http\Controllers\SmallBoatsPdf;
 use App\Http\Controllers\Checklist1Controller;
  
 Route::get('/', [LoginController::class, 'login']);
-Route::get('/Auth', [LoginController::class, 'auth'])->name('Auth');
+Route::post('/Auth', [LoginController::class, 'auth'])->name('Auth');
 Route::get('/Logout', [LoginController::class, 'logout'])->name('Logout');
 
 Route::get('/Vessels', [VesselController::class, 'index'])->name('Vessels');
