@@ -14,13 +14,13 @@
                         </h1>
                     <section>
                         @php
-                            $Boats = \DB::table('vessels_vessel_information')->select('VesselName')->get();
+                            $SmallBoats = \DB::table('vessels_vessel_information')->select('VesselName')->whereIn('VesselType', ['PILOT CUTTERS', 'SURVEY', 'MULTICAT', 'MOORING'])->get();
                             $Captains_Engineers = \DB::table('employees')->select('FullName')->whereIn('Rank', ['CAPTAIN', 'ENGINEER'])->get();
                         @endphp
                         <div class="input">
                             <label for="">Boat</label> 
                             <select name="Boat" id="">
-                                @foreach ($Boats as $Boat)
+                                @foreach ($SmallBoats as $Boat)
                                 <option value="{{ $Boat->VesselName }}">{{ $Boat->VesselName }}</option>
                                 @endforeach
                             </select>
