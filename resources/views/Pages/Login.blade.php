@@ -25,7 +25,7 @@
             <h3>software solutions</h3>
         </div>
     </div>
-    <div class="Login" style="transition: background-image 1s ease; background-image: url('@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252'){{ asset('images/bg-2.jpg') }}@elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com'){{ asset('images/bg.jpg') }}@endif'); background-size: cover; background-position: center">
+    <div class="Login" style="transition: background-image 4s ease; background-image: url('@if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252'){{ asset('images/bg-2.jpg') }}@elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com'){{ asset('images/bg.jpg') }}@endif'); background-size: cover; background-position: center">
         <div class="inner"> 
             <form class="LoginForm" action="{{ route('Auth') }}" method="POST">
                 @csrf
