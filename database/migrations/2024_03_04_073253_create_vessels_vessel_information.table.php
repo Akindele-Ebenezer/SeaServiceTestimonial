@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('TimeIn')->nullable();
             $table->string('VesselName')->nullable();
             $table->string('VesselType')->nullable();
+            $table->string('Picture')->nullable();
             $table->string('ImoNumber')->nullable();
             $table->string('Company')->nullable();
             $table->string('CallSign')->nullable();

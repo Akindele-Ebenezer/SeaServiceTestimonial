@@ -14,8 +14,7 @@
     }
 
     .inner {
-        background: rgba(0, 0, 0, .02);
-        border: 1px solid #bbb;
+        background: rgb(0, 0, 0, .45); 
         border-radius: 0.5em; 
         padding: 1em;
         width: 27em;
@@ -40,7 +39,7 @@
         }
 
         h1 { 
-            color: darken($color: $Color-4, $amount:  13);
+            color: #fff !important;
             font-size: 3em;
             font-weight: 900;
             padding: .2em;

@@ -788,8 +788,7 @@ nav[role] span svg {
   padding: 0.5em;
 }
 .Login .inner {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid #bbb;
+  background: rgba(0, 0, 0, 0.45);
   border-radius: 0.5em;
   padding: 1em;
   width: 27em;
@@ -811,7 +810,7 @@ nav[role] span svg {
   text-align: center;
 }
 .Login .inner h1 {
-  color: rgb(255, 139.7, 139.7);
+  color: #fff !important;
   font-size: 3em;
   font-weight: 900;
   padding: 0.2em;

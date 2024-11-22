@@ -2,6 +2,20 @@ let Loader2 = document.querySelector('.loader-2');
 let Loader2X = document.querySelector('.loader-2 .x');
 let LoaderPercentage = document.querySelector('.loader-2 p');
 let Login = document.querySelector('.Login');
+// 
+const images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg',
+                '7.jpg','8.jpg','9.jpg','10.jpg','11.jpg'];
+
+let currentIndex = 0;
+
+function changeBackground() {
+    document.querySelector('.Login').style.backgroundImage = 'url(' + window.location.href + 'images/Vessels/' + images[currentIndex] + ')';
+    currentIndex = (currentIndex + 1) % images.length; 
+}
+
+changeBackground(); 
+setInterval(changeBackground, 3000);
+// 
 setTimeout(() => {
     Loader2.style.display = 'none';
     Login.style.display = 'flex'; 
