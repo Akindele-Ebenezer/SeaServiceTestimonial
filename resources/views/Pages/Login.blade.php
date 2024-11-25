@@ -30,7 +30,7 @@
             <form class="LoginForm" action="{{ route('Auth') }}" method="POST">
                 @csrf
                 @if (parse_url(url()->current())['host'] == 'vesseltracker.lttcoastalmarine.com' || parse_url(url()->current())['host'] == '192.168.20.252')
-                <h1 style="color: #225f7d">ORI MARINE <br> AVAILABILITY</h1>
+                <h1 style="color: #225f7d">ORI</h1>
                 @elseif (parse_url(url()->current())['host'] == 'seaservice.lttcoastalmarine.com')
                 <h1>SEA SERVICE <br> TESTIMONIAL</h1>
                 @endif

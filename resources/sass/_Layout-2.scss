@@ -60,7 +60,7 @@ main {
         ul {
             position: relative;
 
-            .filter-list-wrapper-2,  {
+            .filter-list-wrapper-2  {
                 translate: 0 11em;
             }
         }
@@ -198,5 +198,21 @@ main {
                 }
             }
         }
+    }
+}
+
+@media (max-width: 1215px) {
+    .left-navigation {
+        &.one {
+            display: none;
+        }
+    }
+
+    .availability.dashboard {
+        display: none;
+    }
+
+    .vessel-content.notifications {
+        width: 95%;
     }
 }

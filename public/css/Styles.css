@@ -310,6 +310,7 @@
 
 .error {
   color: red;
+  max-width: 30em;
 }
 
 .form-1 {
@@ -1027,6 +1028,17 @@ main .left-navigation ul li .total {
   width: fit-content;
 }
 
+@media (max-width: 1215px) {
+  .left-navigation.one {
+    display: none;
+  }
+  .availability.dashboard {
+    display: none;
+  }
+  .vessel-content.notifications {
+    width: 95%;
+  }
+}
 .vessel-content {
   background: #fff;
   border-right: 1px solid rgb(199.5754716981, 226.6226415094, 239.9245283019);
