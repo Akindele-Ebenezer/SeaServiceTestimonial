@@ -147,8 +147,7 @@
                     font-size: .85em;
                     text-decoration: underline;
 
-                    &.availability-status {
-                        border-radius: .3em;
+                    &.availability-status { 
                         padding: .15em .4em;
                         position: absolute;
                         right: 1em; 
@@ -157,7 +156,7 @@
 
                         &.status-1 { 
                             color: #fff !important;
-                            font-size: small;
+                            font-size: smaller;
                             translate: -3.5em -.3em;
 
                             &.idle {
