@@ -9,8 +9,8 @@
         $Coordinates = [];
     @endphp
 
-    @foreach (\DB::table('vessel_availabilities')->select(['Vessel', \DB::raw('MAX(Location) as Location')])
-            ->whereNotNull('Location')->groupBy(['Vessel'])->where('TillNow', 'YES')->get() as $Vessel)  
+    @foreach (\DB::table('vessel_availabilities')->select(['Vessel', \DB::raw('MAX(Location) as Location'), \DB::raw('MAX(Status) as Status')])
+                ->whereNotNull('Location')->groupBy(['Vessel'])->where('TillNow', 'YES')->get() as $Vessel)  
         @php
             array_push($Coordinates, $Vessel->Location);
             ${"Location_" . $loop->index } = str_replace(", ", " ", $Vessel->Location); 
@@ -25,7 +25,7 @@
             geocoder_{{ $loop->index }}.reverse(latlng_{{ $loop->index }}, map.options.crs.scale(map.getZoom()), function(results) {
                 var Address;
                 if (results.length > 0) {
-                    Address = '<strong>{{ $Vessel->Vessel }}</strong> ' + results[0].name;  
+                    Address = '<strong>{{ $Vessel->Vessel }}:</strong> {{ ($Vessel->Status == "IDLE" ? "READY" : $Vessel->Status) }} <strong>@Location: </strong>' + results[0].name;  
                 } else {
                     Address = '<strong>{{ $Vessel->Vessel }}</strong>';  
                 } 

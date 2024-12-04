@@ -14,6 +14,7 @@ class VesselAvailability extends Model
         'DoneBy',
         'Source',
         'Comment',
+        'Location',
         'StartTime',
         'EndTime',
         'StartDate',

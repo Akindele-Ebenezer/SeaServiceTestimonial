@@ -26,7 +26,7 @@ class PriorityExcelImportController extends Controller
                 $PictureFileName = $PictureFile->getClientOriginalName();    
                 $FileName_Picture = $PictureFileName; 
                 $PictureFile->move(public_path('Documents/Pictures/Vessels/' . $Request->Vessel), $PictureFileName);  
-            }
+            } 
             $CurrentRow = VesselAvailability::create([    
                 'Vessel' => $Request->Vessel,
                 'Status' => $Request->Status,
