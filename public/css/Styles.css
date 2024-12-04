@@ -100,12 +100,13 @@
   position: absolute !important;
   z-index: 200;
   border-radius: 1em;
-  display: flex;
+  visibility: hidden;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5);
 }
 .map #map {
+  border-radius: 1em;
   height: 70%;
   width: 70%;
 }
@@ -1988,7 +1989,7 @@ main .left-navigation ul li .total {
     font-size: 0.75em;
   }
 }
-.DisplayChart5Button, .DisplayAddChecklist1Button {
+.DisplayChart5Button, .DisplayAddChecklist1Button, .DisplayMap1Button {
   cursor: pointer;
   position: absolute;
   top: unset;
@@ -2000,12 +2001,16 @@ main .left-navigation ul li .total {
   border-radius: 0.3em;
   padding: 0.3em;
 }
-.DisplayChart5Button svg, .DisplayAddChecklist1Button svg {
+.DisplayChart5Button svg, .DisplayAddChecklist1Button svg, .DisplayMap1Button svg {
   fill: #fff;
 }
 
 .DisplayAddChecklist1Button {
   right: 4em;
+}
+
+.DisplayMap1Button {
+  right: 7em;
 }
 
 .testimonial-content, .table-1 {

@@ -225,6 +225,7 @@ class VesselAvailabilityController extends Controller
             'Report' => $Request->EditReport,
             'Picture' => $Request->EditPicture,
             'Attachment' => $Request->EditAttachment,
+            'Location' => $Request->EditLocation,
             'StartTime' => substr($Request->EditStartTime, 0, 5),
             'EndTime' => substr($Request->EditEndTime, 0, 5),
             'StartDate' => $Request->EditStartDate,

@@ -142,7 +142,7 @@
     }
   }
 
-  .DisplayChart5Button, .DisplayAddChecklist1Button {
+  .DisplayChart5Button, .DisplayAddChecklist1Button, .DisplayMap1Button {
     cursor: pointer;
     position: absolute;
     top: unset;
@@ -160,4 +160,7 @@
   }
   .DisplayAddChecklist1Button {
     right: 4em;
+  }
+  .DisplayMap1Button {
+    right: 7em;
   }
