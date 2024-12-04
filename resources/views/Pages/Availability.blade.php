@@ -1,6 +1,8 @@
 @extends('Layouts.Layout-2')
 @section('Title', 'Availability - ' . session()->get('APP_NAME'))
 
+@include('Components.Maps.Map1') 
+
 @section('Content')
 @include('Components.Forms.Add.Checklists.Checklist1')
 @include('Components.Forms.Edit.Checklists.Checklist1')
@@ -1787,4 +1789,5 @@
 @include('Components.Charts.Chart4-JS') 
 @include('Components.Charts.Chart5-JS') 
 @include('Components.Charts.Chart6-JS') 
+@include('Components.Maps.Map1-JS') 
 @endsection

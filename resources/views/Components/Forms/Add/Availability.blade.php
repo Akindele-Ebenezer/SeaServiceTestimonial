@@ -77,7 +77,7 @@
                     <h1>Dredging/Working area</h1>
                     <div class="input">
                         <label for="">Location</label>
-                        <input type="text" name="Location">
+                        <input type="text" name="Location" placeholder="Latitude, Longitude..">
                     </div>   
                 </section> 
             </div>
