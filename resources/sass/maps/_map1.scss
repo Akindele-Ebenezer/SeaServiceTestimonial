@@ -7,11 +7,11 @@
     visibility: hidden;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .75);
     #map {
-        border-radius: 1em;
-        height: 70%;
-        width: 70%;
+        // border-radius: 1em;
+        height: 90%;
+        width: 80%;
         .cancel-button-map {
             position: absolute;
             z-index: 500;
