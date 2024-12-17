@@ -11,10 +11,10 @@
 
     @foreach (\DB::table('vessel_availabilities')->select(['Vessel', \DB::raw('MAX(Location) as Location'), \DB::raw('MAX(Status) as Status')])
                 ->whereNotNull('Location')->groupBy(['Vessel'])->where('TillNow', 'YES')->get() as $Vessel)  
-        @php
+        @php  
             array_push($Coordinates, $Vessel->Location);
             ${"Location_" . $loop->index } = str_replace(", ", " ", $Vessel->Location); 
-        @endphp
+        @endphp 
         let lat_{{ $loop->index }} = {{ explode(", ", $Coordinates[$loop->index])[0] }};
         let lng_{{ $loop->index }} = {{ explode(", ", $Coordinates[$loop->index])[1] }};
         var marker_{{ $loop->index }} = L.marker([lat_{{ $loop->index }}, lng_{{ $loop->index }}]).addTo(map);
@@ -44,6 +44,6 @@
     })
     Map_CloseButton.addEventListener('click', () => {
         Map_.style.visibility = 'hidden';
-    })
+    }) 
 </script>   
  
