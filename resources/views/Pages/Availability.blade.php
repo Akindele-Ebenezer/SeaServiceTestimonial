@@ -1570,8 +1570,10 @@
                         <td>{{ date('H:i', strtotime($Availabilty->EndTime)).' HRS' }}</td> 
                         <td>{{ $Availabilty->Source }}</td>
                         <td class="action"> 
-                            <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 
-                            <img class="DeleteAvailabilityButton" src="{{ asset('images/delete.png') }}" alt="">
+                            @if ($Availabilty->TillNow == 'YES')
+                                <img class="EditAvailabilityButton" src="{{ asset('images/write.png') }}" alt=""> 
+                                <img class="DeleteAvailabilityButton" src="{{ asset('images/delete.png') }}" alt="">
+                            @endif
                         </td>
                     </tr>
                     @endforeach
