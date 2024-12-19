@@ -62,7 +62,9 @@
         .Inner {
           display: flex;
           margin-block: 1em;
-  
+          background: unset !important;
+          padding: unset !important;
+          
           h1 {
             color: #ddd;
             font-weight: 400;

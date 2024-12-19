@@ -1879,6 +1879,8 @@ main .left-navigation ul li .total {
 .diagram .-wrapper .Properties-Wrapper .Inner {
   display: flex;
   margin-block: 1em;
+  background: unset !important;
+  padding: unset !important;
 }
 .diagram .-wrapper .Properties-Wrapper .Inner h1 {
   color: #ddd;
