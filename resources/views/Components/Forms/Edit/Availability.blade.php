@@ -59,7 +59,7 @@
                     <h1>Dredging/Working area</h1>
                     <div class="input">
                         <label for="">Location</label>
-                        <input type="text" name="EditLocation">
+                        <input type="text" name="EditLocation" readonly>
                     </div>   
                 </section>
             </div>
@@ -78,7 +78,7 @@
                     <h1>Date</h1>
                     <div class="input">
                         <label for="">Start date</label>
-                        <input type="date" name="EditStartDate">
+                        <input type="date" name="EditStartDate" readonly>
                     </div>  
                     <div class="input">
                         <label for="">End date</label>
