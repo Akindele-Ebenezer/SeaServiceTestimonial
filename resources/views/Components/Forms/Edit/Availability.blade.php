@@ -71,7 +71,7 @@
                 </div>  
                 <div class="input">
                     <label for="">End time</label>
-                    <input type="text" name="EditEndTime">
+                    <input type="text" name="EditEndTime" readonly>
                 </div>  
                 </div>
                 <section class="t-f">
@@ -82,7 +82,7 @@
                     </div>  
                     <div class="input">
                         <label for="">End date</label>
-                        <input type="date" name="EditEndDate">
+                        <input type="date" name="EditEndDate" readonly>
                     </div>  
                 </section>
                 <section class="t-f"> 
