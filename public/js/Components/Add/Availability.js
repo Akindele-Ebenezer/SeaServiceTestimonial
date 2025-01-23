@@ -158,8 +158,8 @@ if (AddAvailabilityButton !== null) {
                 /[a-zA-Z]/.test(EndTimeInput.value.substring(0, 6))
             ) {
                 ErrorAvailability.textContent =  'Time cannot include alphabets';
-            } else if (dateToCheck < today) { 
-                ErrorAvailability.textContent =  'Start Date is not today.. Contact the administrator to add this availability from the database.';
+            // } else if (dateToCheck < today) { 
+            //     ErrorAvailability.textContent =  'Start Date is not today.. Contact the administrator to add this availability from the database.';
             }  else { 
                 ErrorAvailability.style.backgroundColor =  'rgb(106, 97, 233)';
                 ErrorAvailability.style.color =  '#fff';

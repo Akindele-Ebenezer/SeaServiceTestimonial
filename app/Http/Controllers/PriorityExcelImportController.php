@@ -62,6 +62,21 @@ class PriorityExcelImportController extends Controller
             ->where('Vessel', $Request->Vessel)->update([ 
                 'TillNow' => 'NO',
             ]); 
+            if ($CurrentRow->StartDate < date('Y-m-d')) {
+                \DB::table('notifications')->insert([
+                    'DateIn' => date('Y-m-d'),
+                    'TimeIn' => date('H:i A'), 
+                    'Vessel' => $Request->Vessel, 
+                    'Action' => 'Delete',
+                    'Subject' => 'User Creation Alert!',
+                    'Notification' =>  session()->get('FullName') . ' created availability that is not today! Vessel Availability ID: ' . $CurrentRow->id . ', Start Date: ' . $Request->StartDate . ', Start Time: ' . $Request->StartTime . ', End Date: ' . $Request->EndDate . ', End Time: ' . $Request->EndTime,
+                ]); 
+                VesselAvailability::where('id', $PreviousRow->id)->update([
+                    'EndTime' => substr($Request->StartTime, 0, 5), 
+                    'EndDate' => $Request->StartDate, 
+                    'TillNow' => 'NO',
+                ]);  
+            }
             if (!(($CurrentRow->StartDate < date('Y-m-d')) AND
                 ($CurrentRow->DateIn == date('Y-m-d')))
             ) {  
