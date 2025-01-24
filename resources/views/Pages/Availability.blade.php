@@ -1566,12 +1566,15 @@
                             $_EndDateTime = \Carbon\Carbon::parse(($Availabilty->EndDate ?? date('Y-m-d')) . ' ' . ($Availabilty->EndTime ?? '00:00'));
                             $_HoursBetween = $_EndDateTime->diffInHours($_StartDateTime);
                             $_MinutesBetween = $_StartDateTime->diffInMinutes($_EndDateTime); 
+                            $_SecondsBetween = $_StartDateTime->diffInSeconds($_EndDateTime); 
                             $_TotalDays = $_EndDateTime->diffInDays($_StartDateTime); 
                         @endphp
                         <td>
                             {{ $Availabilty->Status == 'IDLE' ? 'READY' : ($Availabilty->Status == 'BUNKERY' ? 'BUNKERING' : $Availabilty->Status) }} 
                             <small>
-                                @if ($_MinutesBetween < 60)
+                                @if ($_SecondsBetween < 60)
+                                    {{ $_EndDateTime->diffInSeconds($_StartDateTime) }} seconds
+                                @elseif ($_MinutesBetween < 60)
                                     {{ $_EndDateTime->diffInMinutes($_StartDateTime) }} minutes
                                 @elseif($_HoursBetween < 24)
                                     {{ $_EndDateTime->diffInHours($_StartDateTime) }} hour(s)
