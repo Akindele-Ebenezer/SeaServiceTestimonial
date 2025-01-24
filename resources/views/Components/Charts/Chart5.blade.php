@@ -1,6 +1,6 @@
 @php
   $StartDate_ = $_GET['StartDate_ChartREPORT'] ?? date('Y') . '-01-01';
-  $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y') . '-12-31';
+  $EndDate_ = $_GET['EndDate_ChartREPORT'] ?? date('Y-m-d');
   $Year = date("Y", strtotime($StartDate_)) ?? date('Y');   
 @endphp
 <div class="Chart5" style="display: {{ isset($_GET['ChartReportStatus']) ? 'flex' : '' }}">
