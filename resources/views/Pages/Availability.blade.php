@@ -1575,7 +1575,7 @@
                                     {{ $_EndDateTime->diffInMinutes($_StartDateTime) }} minutes
                                 @elseif($_HoursBetween < 24)
                                     {{ $_EndDateTime->diffInHours($_StartDateTime) }} hour(s)
-                                @elseif($_TotalDays > 1)
+                                @elseif($_TotalDays > 0)
                                     {{ $_EndDateTime->diffInDays($_StartDateTime) }} day(s)
                                 @endif
                             </small>
