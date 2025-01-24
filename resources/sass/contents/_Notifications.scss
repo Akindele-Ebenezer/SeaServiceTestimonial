@@ -307,8 +307,10 @@
                         border-bottom: 1px solid lighten($color: $Color-2, $amount: 11);
                         padding-block: .5em;
                         color: #eee;
-
-
+                        small {
+                            font-size: x-small;
+                        }
+ 
                         &.action {
                             background-color: darken($color: $Color-2, $amount: 15);
                         }

@@ -2418,6 +2418,9 @@ main .left-navigation ul li .total {
   padding-block: 0.5em;
   color: #eee;
 }
+.dashboard-inner .board-3 .div table td small {
+  font-size: x-small;
+}
 .dashboard-inner .board-3 .div table td.action {
   background-color: rgb(17.641509434, 49.2924528302, 64.858490566);
 }

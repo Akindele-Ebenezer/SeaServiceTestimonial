@@ -1561,7 +1561,25 @@
                         <td class="Hide">{{ $Availabilty->Picture }}</td> 
                         <td class="Hide">{{ $Availabilty->Location }}</td>  
                         <td>{{ $Availabilty->Vessel }}</td> 
-                        <td>{{ $Availabilty->Status == 'IDLE' ? 'READY' : ($Availabilty->Status == 'BUNKERY' ? 'BUNKERING' : $Availabilty->Status) }}</td>
+                        @php
+                            $_StartDateTime = \Carbon\Carbon::parse(($Availabilty->StartDate ?? date('Y-m-d')) . ' ' . ($Availabilty->StartTime ?? '00:00'));
+                            $_EndDateTime = \Carbon\Carbon::parse(($Availabilty->EndDate ?? date('Y-m-d')) . ' ' . ($Availabilty->EndTime ?? '00:00'));
+                            $_HoursBetween = $_EndDateTime->diffInHours($_StartDateTime);
+                            $_MinutesBetween = $_StartDateTime->diffInMinutes($_EndDateTime); 
+                            $_TotalDays = $_EndDateTime->diffInDays($_StartDateTime); 
+                        @endphp
+                        <td>
+                            {{ $Availabilty->Status == 'IDLE' ? 'READY' : ($Availabilty->Status == 'BUNKERY' ? 'BUNKERING' : $Availabilty->Status) }} 
+                            <small>
+                                @if ($_MinutesBetween < 60)
+                                    {{ $_EndDateTime->diffInMinutes($_StartDateTime) }} minutes
+                                @elseif($_HoursBetween < 24)
+                                    {{ $_EndDateTime->diffInHours($_StartDateTime) }} hour(s)
+                                @elseif($_TotalDays > 1)
+                                    {{ $_EndDateTime->diffInDays($_StartDateTime) }} day(s)
+                                @endif
+                            </small>
+                        </td>
                         <td>{{ strtoupper($Availabilty->DoneBy) }}</td>
                         {{-- <td>{{ $Availabilty->Attachment }}</td> --}}
                         <td>{{ $Availabilty->StartDate }}</td>
